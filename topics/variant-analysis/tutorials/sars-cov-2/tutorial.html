@@ -1,0 +1,1606 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <title>From NCBI's Sequence Read Archive (SRA) to Galaxy: SARS-CoV-2 variant analysis</title>
+        
+            <script async defer data-domain="training.galaxyproject.org" src="https://plausible.galaxyproject.eu/js/plausible.js"></script>
+
+        
+        <link rel="stylesheet" href="/training-material/assets/css/bootstrap.min.css?v=3">
+        <link rel="stylesheet" href="/training-material/assets/css/bootstrap-toc.min.css">
+        <link rel="stylesheet" href="/training-material/assets/css/main.css?v=2">
+        <script src="https://kit.fontawesome.com/67b3f98409.js" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="/training-material/assets/css/academicons.css">
+        <link rel="stylesheet" href="/training-material/assets/css/syntax_highlighting.css">
+        <link rel="shortcut icon" href="/training-material/favicon.ico" type="image/x-icon" />
+
+        
+        
+        
+        
+        
+        <meta name="description" content="Genetic differences (variants) between healthy and diseas..." />
+        <meta property="og:title" content="Galaxy Training: From NCBI's Sequence Read Archive (SRA) to Galaxy: SARS-C..." />
+        <meta property="og:description" content="Genetic differences (variants) between healthy and diseas..." />
+        <meta property="og:image" content="/training-material/assets/images/GTNLogo1000.png" />
+    </head>
+    <body data-spy="scroll" data-target="#toc">
+        
+
+
+
+
+
+
+
+
+
+
+
+<!-- Gitter -->
+
+
+<script>
+  ((window.gitter = {}).chat = {}).options = {
+  room: 'Galaxy-Training-Network/Lobby'
+  };
+</script>
+<script src="https://sidecar.gitter.im/dist/sidecar.v1.js" async defer></script>
+
+<header>
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="/training-material/">
+                <img src="/training-material/assets/images/GTN-60px.png" height="30" alt="Galaxy Training Network logo">
+                Galaxy Training!
+            </a>
+
+            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#top-navbar" aria-controls="top-navbar" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="top-navbar">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/training-material/topics/variant-analysis" title="Go back to list of tutorials">
+                            <i class="far fa-folder" aria-hidden="true"></i><span class="visually-hidden">topic</span> Variant Analysis
+                        </a>
+                    </li>
+
+                    <li class="nav-item dropdown">
+    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false" title="Help">
+        <i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden">help</span> Help
+    </a>
+    <div class="dropdown-menu dropdown-menu-right">
+        <!-- disable Tess for now
+        <form method="get" action="https://tess.elixir-europe.org/materials">
+            <input type="text" id="search" name="q" value="" style="margin-left: 0.5em;/*! border-radius: 0px; */">
+            <input type="hidden" value="Galaxy Training" name="content_provider">
+            <input type="submit" value="Search on TeSS" style="width: 92%;border-radius: 0px;margin: 0.5em;background: #f47d20;border: 0px;padding: 0.25em;" class="">
+        </form>
+        -->
+
+        <a class="dropdown-item" href="/training-material/faq" title="Check our FAQ">
+           <i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden">question</span> FAQ
+        </a>
+        <a class="dropdown-item" href="https://help.galaxyproject.org/" title="Discuss on Galaxy Help">
+            <i class="far fa-comments" aria-hidden="true"></i><span class="visually-hidden">feedback</span> Galaxy Help Forum
+        </a>
+        <a class="dropdown-item" href="https://gitter.im/Galaxy-Training-Network/Lobby" title="Discuss on gitter">
+           <i class="fab fa-gitter" aria-hidden="true"></i><span class="visually-hidden">gitter</span> Discuss on Gitter
+        </a>
+    </div>
+</li>
+
+
+                    <li class="nav-item dropdown">
+    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false" title="Extras">
+        <i class="far fa-star" aria-hidden="true"></i><span class="visually-hidden">galaxy-star</span> Extras
+    </a>
+    <div class="dropdown-menu dropdown-menu-right">
+
+        
+        <a class="dropdown-item" href="https://github.com/galaxyproject/training-material/edit/master/topics/variant-analysis/tutorials/sars-cov-2/tutorial.md" title="Edit on GitHub">
+          <i class="fab fa-github" aria-hidden="true"></i><span class="visually-hidden">github</span> Edit on GitHub
+        </a>
+
+        <a class="dropdown-item" href="https://plausible.galaxyproject.eu/training.galaxyproject.org?period=12mo&page=/training-material/topics/variant-analysis/tutorials/sars-cov-2/tutorial.html" title="Show view statistics of this page">
+            <i class="fas fa-chart-bar" aria-hidden="true"></i><span class="visually-hidden">galaxy-barchart</span> Page Metrics
+        </a>
+
+        <div class="dropdown-item">
+            <div>
+                <i class="fas fa-language" aria-hidden="true"></i><span class="visually-hidden">language</span> Translate this page
+            </div>
+
+            <div id="lang-selector">
+                
+                <a class="btn btn-info" href="https://translate.google.com/translate?hl=jp&sl=en&tl=fr&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/variant-analysis/tutorials/sars-cov-2/tutorial.html&edit-text=&act=url">
+                Français
+                </a>
+                
+                <a class="btn btn-info" href="https://translate.google.com/translate?hl=jp&sl=en&tl=ja&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/variant-analysis/tutorials/sars-cov-2/tutorial.html&edit-text=&act=url">
+                日本語
+                </a>
+                
+                <a class="btn btn-info" href="https://translate.google.com/translate?hl=jp&sl=en&tl=es&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/variant-analysis/tutorials/sars-cov-2/tutorial.html&edit-text=&act=url">
+                Español
+                </a>
+                
+                <a class="btn btn-info" href="https://translate.google.com/translate?hl=jp&sl=en&tl=pt&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/variant-analysis/tutorials/sars-cov-2/tutorial.html&edit-text=&act=url">
+                Português
+                </a>
+                
+                <a class="btn btn-info" href="https://translate.google.com/translate?hl=jp&sl=en&tl=ar&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/variant-analysis/tutorials/sars-cov-2/tutorial.html&edit-text=&act=url">
+                العربية
+                </a>
+                
+                <a class="btn btn-info" href="https://translate.google.com/translate?hl=jp&sl=en&tl=&u=https%3A%2F%2Ftraining.galaxyproject.org%2Ftopics%2Fvariant-analysis%2Ftutorials%2Fsars-cov-2%2Ftutorial.html&edit-text=&act=url" title="">
+                And more!
+                </a>
+            </div>
+        </div>
+
+        <div class="dropdown-item">
+            <div>
+                Theme
+            </div>
+
+            <div id="theme-selector" data-toggle="buttons">
+                <label data-value="default" class="btn btn-secondary">
+                    <input type="radio" name="options" id="default" autocomplete="off"> Default
+                </label>
+                <label data-value="night" class="btn btn-secondary">
+                    <input type="radio" name="options" id="night" autocomplete="off"> Night
+                </label>
+                <label data-value="midnight" class="btn btn-secondary">
+                    <input type="radio" name="options" id="midnight" autocomplete="off"> Midnight
+                </label>
+                <label data-value="rainbow" class="btn btn-secondary">
+                    <input type="radio" name="options" id="rainbow" autocomplete="off"> Rainbow
+                </label>
+                <label data-value="halloween" class="btn btn-secondary">
+                    <input type="radio" name="options" id="halloween" autocomplete="off"> 🎃
+                </label>
+                <label data-value="straya" class="btn btn-secondary">
+                    <input type="radio" name="options" id="downunder" autocomplete="off"> 🇦🇺
+                </label>
+            </div>
+
+        </div>
+    </div>
+</li>
+
+                    <!--
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://github.com/galaxyproject/training-material/edit/master/topics/variant-analysis/tutorials/sars-cov-2/tutorial.md">
+                            <i class="fab fa-github" aria-hidden="true"></i><span class="visually-hidden">github</span> Edit
+                        </a>
+                    </li>
+                    -->
+
+                     <!-- Search bar-->
+                    <li class="nav-item">
+                      <div id="navbarSupportedContent">
+                        <!-- Search form -->
+                        <form class="form-inline mr-auto" method="GET" action="/training-material/search">
+                          <i class="fas fa-search nav-link" aria-hidden="true"></i>
+                          <div class="md-form mb-2">
+                            <input name="query" class="form-control nicer" type="text" placeholder="Search Tutorials" aria-label="Search">
+                          </div>
+                        </form>
+                      </div>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<div class="container main-content">
+    <script type="application/ld+json">
+        
+
+
+{
+  "@context": "http://schema.org",
+  "@type": "Course",
+  "accessMode": [
+    "textual",
+    "visual"
+  ],
+  "accessModeSufficient": [
+    "textual",
+    "visual"
+  ],
+  "accessibilityControl": [
+    "fullKeyboardControl",
+    "fullMouseControl"
+  ],
+  "accessibilityFeature": [
+    "alternativeText",
+    "tableOfContents"
+  ],
+  "accessibilitySummary": "Short descriptions are present but long descriptions will be needed for non-visual users",
+  "audience": {
+    "@type": "EducationalAudience",
+    "educationalRole": "students"
+  },
+  "citation": {
+    "@type": "CreativeWork",
+    "name": "Community-Driven Data Analysis Training for Biology",
+    "url": "https://doi.org/10.1016/j.cels.2018.05.012"
+  },
+  "copyrightHolder": {
+    "@type": "Organization",
+    "email": "galaxytrainingnetwork@gmail.com",
+    "name": "Galaxy Training Network",
+    "url": "https://galaxyproject.org/teach/gtn/"
+  },
+  "discussionUrl": "https://gitter.im/Galaxy-Training-Network/Lobby",
+  "headline": "From NCBI's Sequence Read Archive (SRA) to Galaxy: SARS-CoV-2 variant analysis",
+  "inLanguage": {
+    "@type": "Language",
+    "name": "English",
+    "alternateName": "en"
+  },
+  "interactivityType": "mixed",
+  "isAccessibleForFree": true,
+  "license": "https://github.com/galaxyproject/training-material/blob/master/LICENSE.md",
+  "producer": {
+    "@type": "Organization",
+    "email": "galaxytrainingnetwork@gmail.com",
+    "name": "Galaxy Training Network",
+    "url": "https://galaxyproject.org/teach/gtn/"
+  },
+  "provider": {
+    "@type": "Organization",
+    "email": "galaxytrainingnetwork@gmail.com",
+    "name": "Galaxy Training Network",
+    "url": "https://galaxyproject.org/teach/gtn/"
+  },
+  "sourceOrganization": {
+    "@type": "Organization",
+    "email": "galaxytrainingnetwork@gmail.com",
+    "name": "Galaxy Training Network",
+    "url": "https://galaxyproject.org/teach/gtn/"
+  },
+  "isPartOf": {
+    "@type": "CreativeWork",
+    "name": "Variant Analysis",
+    "description": "Genetic differences (variants) between healthy and diseased tissue,\nbetween individuals of a population, or between strains of an organism\ncan provide mechanistic insight into disease processes and the natural\nfunction of affected genes.\n\nThe tutorials in this section show how to detect evidence for\ngenetic variants in next-generation sequencing data, a process termed\nvariant calling.\n\nOf equal importance, they also demonstrate how you can interpret, for\na range of different organisms, the resulting sets of variants by\npredicting their molecular effects on genes and proteins, by\nannotating previously observed variants with published knowledge, and\nby trying to link phenotypes of the sequenced samples to their variant\ngenotypes.\n",
+    "url": "https://training.galaxyproject.org//training-material/topics/variant-analysis/"
+  },
+  "courseCode": "variant-analysis / sars-cov-2 / hands-on",
+  "learningResourceType": "hands-on tutorial",
+  "name": "Hands-on for 'From NCBI's Sequence Read Archive (SRA) to Galaxy: SARS-CoV-2 variant analysis' tutorial",
+  "url": "https://training.galaxyproject.org//training-material/topics/variant-analysis/tutorials/sars-cov-2/tutorial.html",
+  "timeRequired": "PT45M",
+  "keywords": "covid19",
+  "description": "The questions this  addresses are:\n - Learn how to get and use data from the Sequence Read Archive in Galaxy.\n\n\\nThe objectives are:\n - Understand how Galaxy and the Sequence Read Archive interact.\n - Be able to go from Galaxy to the Short Reach Archive, query SRA, use the SRA Run Selector to send selected metadata to Galaxy, and then import sequence data from SRA into Galaxy.\n\n",
+  "coursePrerequisites": [
+    {
+      "@type": "CreativeWork",
+      "url": "https://training.galaxyproject.org//training-material/topics/introduction/",
+      "name": "Introduction to Galaxy Analyses",
+      "description": "Introduction to Galaxy Analyses",
+      "provider": {
+        "@type": "Organization",
+        "email": "galaxytrainingnetwork@gmail.com",
+        "name": "Galaxy Training Network",
+        "url": "https://galaxyproject.org/teach/gtn/"
+      }
+    },
+    {
+      "@type": "Course",
+      "url": "https://training.galaxyproject.org//training-material/topics/sequence-analysis/tutorials/quality-control/slides.html",
+      "name": "Quality Control",
+      "description": "Slides for 'Quality Control' tutorial",
+      "learningResourceType": "slides",
+      "interactivityType": "expositive",
+      "provider": {
+        "@type": "Organization",
+        "email": "galaxytrainingnetwork@gmail.com",
+        "name": "Galaxy Training Network",
+        "url": "https://galaxyproject.org/teach/gtn/"
+      }
+    },
+    {
+      "@type": "Course",
+      "url": "https://training.galaxyproject.org//training-material/topics/sequence-analysis/tutorials/quality-control/tutorial.html",
+      "name": "Quality Control",
+      "description": "Hands-on for 'Quality Control' tutorial",
+      "learningResourceType": "hands-on tutorial",
+      "interactivityType": "expositive",
+      "provider": {
+        "@type": "Organization",
+        "email": "galaxytrainingnetwork@gmail.com",
+        "name": "Galaxy Training Network",
+        "url": "https://galaxyproject.org/teach/gtn/"
+      }
+    },
+    {
+      "@type": "Course",
+      "url": "https://training.galaxyproject.org//training-material/topics/sequence-analysis/tutorials/mapping/slides.html",
+      "name": "Mapping",
+      "description": "Slides for 'Mapping' tutorial",
+      "learningResourceType": "slides",
+      "interactivityType": "expositive",
+      "provider": {
+        "@type": "Organization",
+        "email": "galaxytrainingnetwork@gmail.com",
+        "name": "Galaxy Training Network",
+        "url": "https://galaxyproject.org/teach/gtn/"
+      }
+    },
+    {
+      "@type": "Course",
+      "url": "https://training.galaxyproject.org//training-material/topics/sequence-analysis/tutorials/mapping/tutorial.html",
+      "name": "Mapping",
+      "description": "Hands-on for 'Mapping' tutorial",
+      "learningResourceType": "hands-on tutorial",
+      "interactivityType": "expositive",
+      "provider": {
+        "@type": "Organization",
+        "email": "galaxytrainingnetwork@gmail.com",
+        "name": "Galaxy Training Network",
+        "url": "https://galaxyproject.org/teach/gtn/"
+      }
+    }
+  ],
+  "hasPart": [
+
+  ],
+  "author": [
+    {
+      "@type": "Person",
+      "name": "Marius van den Beek"
+    },
+    {
+      "@type": "Person",
+      "name": "Dave Clements"
+    },
+    {
+      "@type": "Person",
+      "name": "Daniel Blankenberg"
+    },
+    {
+      "@type": "Person",
+      "name": "Anton Nekrutenko"
+    }
+  ],
+  "contributor": [
+    {
+      "@type": "Person",
+      "name": "Marius van den Beek"
+    },
+    {
+      "@type": "Person",
+      "name": "Dave Clements"
+    },
+    {
+      "@type": "Person",
+      "name": "Daniel Blankenberg"
+    },
+    {
+      "@type": "Person",
+      "name": "Anton Nekrutenko"
+    }
+  ],
+  "about": [
+    {
+      "@type": "CreativeWork",
+      "name": "Variant Analysis",
+      "description": "Genetic differences (variants) between healthy and diseased tissue,\nbetween individuals of a population, or between strains of an organism\ncan provide mechanistic insight into disease processes and the natural\nfunction of affected genes.\n\nThe tutorials in this section show how to detect evidence for\ngenetic variants in next-generation sequencing data, a process termed\nvariant calling.\n\nOf equal importance, they also demonstrate how you can interpret, for\na range of different organisms, the resulting sets of variants by\npredicting their molecular effects on genes and proteins, by\nannotating previously observed variants with published knowledge, and\nby trying to link phenotypes of the sequenced samples to their variant\ngenotypes.\n",
+      "url": "https://training.galaxyproject.org//training-material/topics/variant-analysis/"
+    },
+    {
+      "@type": "DefinedTerm",
+      "@id": "http://edamontology.org/topic_0199",
+      "inDefinedTermSet": "http://edamontology.org",
+      "termCode": "topic_0199",
+      "url": "https://bioportal.bioontology.org/ontologies/EDAM/?p=classes&conceptid=http%3A%2F%2Fedamontology.org%2Ftopic_0199"
+    }
+  ]
+}
+    </script>
+
+    <section class="tutorial">
+        <h1 data-toc-skip>From NCBI's Sequence Read Archive (SRA) to Galaxy: SARS-CoV-2 variant analysis</h1>
+        
+
+        <div class="contributors-line">By: 
+
+ <a href="/training-material/hall-of-fame/mvdbeek/" class="contributor-badge"><img src="https://avatars.githubusercontent.com/mvdbeek" alt="Marius van den Beek">Marius van den Beek</a> <a href="/training-material/hall-of-fame/tnabtaf/" class="contributor-badge"><img src="https://avatars.githubusercontent.com/tnabtaf" alt="Dave Clements">Dave Clements</a> <a href="/training-material/hall-of-fame/blankenberg/" class="contributor-badge"><img src="https://avatars.githubusercontent.com/blankenberg" alt="Daniel Blankenberg">Daniel Blankenberg</a> <a href="/training-material/hall-of-fame/nekrut/" class="contributor-badge"><img src="https://avatars.githubusercontent.com/nekrut" alt="Anton Nekrutenko">Anton Nekrutenko</a>
+
+</div>
+
+        <blockquote class="overview">
+            <h3>Overview</h3>
+            <strong><i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden">question</span> Questions</strong>
+            <ul>
+            
+            <li><p>Learn how to get and use data from the Sequence Read Archive in Galaxy.</p>
+</li>
+            
+            </ul>
+
+            <strong><i class="fas fa-bullseye" aria-hidden="true"></i><span class="visually-hidden">objectives</span> Objectives</strong>
+            <ul>
+            
+            <li><p>Understand how Galaxy and the Sequence Read Archive interact.</p>
+</li>
+            
+            <li><p>Be able to go from Galaxy to the Short Reach Archive, query SRA, use the SRA Run Selector to send selected metadata to Galaxy, and then import sequence data from SRA into Galaxy.</p>
+</li>
+            
+            </ul>
+
+            
+            <strong><i class="fas fa-check-circle" aria-hidden="true"></i><span class="visually-hidden">requirements</span> Requirements</strong>
+            <ul>
+            
+    <li>
+    
+        
+        
+        <a href="/training-material/topics/introduction">Introduction to Galaxy Analyses</a>
+        
+    
+    </li>
+
+    <li>
+    
+        
+        
+        <a href="/training-material/topics/sequence-analysis">Sequence analysis</a>
+        
+            <ul>
+                
+                    
+                        
+                    
+                        
+                            
+                            <li> Quality Control:
+                            
+                                <a href="/training-material/topics/sequence-analysis/tutorials/quality-control/slides.html"><i class="fab fa-slideshare" aria-hidden="true"></i><span class="visually-hidden">slides</span> slides</a>
+                                
+                            
+                            
+                                
+                                    - <a href="/training-material/topics/sequence-analysis/tutorials/quality-control/tutorial.html"><i class="fas fa-laptop" aria-hidden="true"></i><span class="visually-hidden">tutorial</span> hands-on</a>
+                                
+                            
+                            </li>
+                        
+                    
+                
+                    
+                        
+                            
+                            <li> Mapping:
+                            
+                                <a href="/training-material/topics/sequence-analysis/tutorials/mapping/slides.html"><i class="fab fa-slideshare" aria-hidden="true"></i><span class="visually-hidden">slides</span> slides</a>
+                                
+                            
+                            
+                                
+                                    - <a href="/training-material/topics/sequence-analysis/tutorials/mapping/tutorial.html"><i class="fas fa-laptop" aria-hidden="true"></i><span class="visually-hidden">tutorial</span> hands-on</a>
+                                
+                            
+                            </li>
+                        
+                    
+                        
+                    
+                
+            </ul>
+        
+    
+    </li>
+
+            
+            </ul>
+            
+
+            
+            <p><strong><i class="fas fa-hourglass-half" aria-hidden="true"></i><span class="visually-hidden">time</span> Time estimation:</strong> 45 minutes</p>
+            
+
+            
+
+            
+            
+
+            
+            <p id="supporting-materials"><strong><i class="fa fa-external-link" aria-hidden="true"></i> Supporting Materials</strong></p>
+            <ul>
+                <div class="supporting_material">
+                
+                    <li class="btn btn-default supporting_material"><a href="/training-material/topics/variant-analysis/slides/introduction.html" title="Topic Overview slides">
+                        <i class="fab fa-slideshare" aria-hidden="true"></i><span class="visually-hidden">slides</span> Topic Overview slides
+                    </a></li>
+                
+
+                
+                    <li class="btn btn-default supporting_material">
+<a class="topic-icon" href="http://zenodo.org/record/3906454">
+    <i class="far fa-copy" aria-hidden="true"></i><span class="visually-hidden">zenodo_link</span> Datasets
+</a>
+
+</li>
+                
+
+                
+                    <li class="btn btn-default supporting_material">
+    <a class="topic-icon" href="/training-material/topics/variant-analysis/tutorials/sars-cov-2/workflows/" title="Workflows" alt="From NCBI's Sequence Read Archive (SRA) to Galaxy: SARS-CoV-2 variant analysis workflows">
+        <i class="fas fa-share-alt" aria-hidden="true"></i><span class="visually-hidden">workflow</span> Workflows
+    </a>
+
+</li>
+                
+
+                
+
+                
+                    <li class="btn btn-default supporting_material">
+
+    <a href="#" class="btn btn-default dropdown-toggle topic-icon" data-toggle="dropdown" aria-expanded="false" title="Where to run the tutorial">
+        <i class="fas fa-globe" aria-hidden="true"></i><span class="visually-hidden">instances</span> Available on these Galaxies
+    </a>
+    <ul class="dropdown-menu">
+    
+        <li>
+            <a class="dropdown-item" href="https://github.com/galaxyproject/training-material/tree/master/topics/variant-analysis/docker" title="Docker image for this tutorial">
+                <i class="fab fa-docker" aria-hidden="true"></i><span class="visually-hidden">docker_image</span> Docker image
+            </a>
+        </li>
+    
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+        <a class="dropdown-item" href="https://africa.usegalaxy.eu/" title="Galaxy Africa">
+            Galaxy Africa
+        </a>
+        
+    
+        
+    
+        
+    
+        
+        <a class="dropdown-item" href="https://galaxy.genouest.org" title="Galaxy@GenOuest">
+            Galaxy@GenOuest
+        </a>
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+        <a class="dropdown-item" href="https://streetscience.usegalaxy.eu/" title="Street Science">
+            Street Science
+        </a>
+        
+    
+        
+    
+        
+        <a class="dropdown-item" href="https://usegalaxy.be/" title="UseGalaxy.be">
+            UseGalaxy.be
+        </a>
+        
+    
+        
+        <a class="dropdown-item" href="https://usegalaxy.eu" title="UseGalaxy.eu">
+            UseGalaxy.eu
+        </a>
+        
+    
+        
+    
+        
+        <a class="dropdown-item" href="https://usegalaxy.no/" title="UseGalaxy.no">
+            UseGalaxy.no
+        </a>
+        
+    
+        
+        <a class="dropdown-item" href="https://usegalaxy.org" title="UseGalaxy.org (Main)">
+            UseGalaxy.org (Main)
+        </a>
+        
+    
+        
+        <a class="dropdown-item" href="https://usegalaxy.org.au" title="UseGalaxy.org.au">
+            UseGalaxy.org.au
+        </a>
+        
+    
+        
+    
+        
+    
+    </ul>
+
+
+</li>
+                
+                </div>
+            </ul>
+            
+
+            <p><strong> <i class="far fa-calendar" aria-hidden="true"></i><span class="visually-hidden">last_modification</span> Last modification:</strong> Feb 25, 2021 </p>
+        </blockquote>
+
+        <div class="container">
+            <div class="row">
+                <!-- sidebar, which will move to the top on a small screen -->
+                <div class="col-sm-2">
+                    <nav id="toc" data-toggle="toc" class="sticky-top"></nav>
+                </div>
+                <div class="col-sm-10">
+                    <h1 class="no_toc" id="introduction">Introduction</h1>
+
+<p>The aim of this tutorial is to introduce you to the processing of next generation sequencing data in <span class="notranslate">Galaxy</span>.  This tutorial uses a COVID-19 variant calling from Illumina data, but it isn’t about variant calling <em>per se</em>.</p>
+
+<!--
+SRA, like many data sources is Galaxy aware.  It has support for sending information directly to Galaxy, and it tracks which Galaxy instance it was invoked from.  Getting sequence data from SRA is a multi-step process.  This tutorial explains each step in the process and then demonstrates a particular example of how to use SRA data in Galaxy.
+-->
+
+<p>At the completion of this tutorial you will know:</p>
+
+<!--
+
+* how to go from Galaxy to SRA.
+* a basic understanding of how to select data in SRA
+  * see the [Search in SRA documentation](https://www.ncbi.nlm.nih.gov/sra/docs/srasearch/) from the SRA team for a fuller introduction to this topic
+* how to send SRA *metadata* (such as accession numbers) to Galaxy
+* how to use that SRA metadata to import *sequence* data from SRA into Galaxy.
+* how to run a simple variant analysis in Galaxy using that data
+  * See these [variant analysis tutorials](/training-material/topics/variant-analysis) for a more in-depth explanation of variant analysis.
+
+-->
+
+<ul>
+  <li>How to find data in SRA and transfer this information to <span class="notranslate">Galaxy</span></li>
+  <li>How to perform basic NGS data processing in <span class="notranslate">Galaxy</span> including:
+    <ul>
+      <li>Quality Control (QC) of Illumina data</li>
+      <li><span class="notranslate">Mapping</span></li>
+      <li>Removal of duplicates</li>
+      <li>Variant calling with <code class="language-plaintext highlighter-rouge">lofreq</code></li>
+      <li>Variant annotation</li>
+    </ul>
+  </li>
+  <li>Using datasets collections</li>
+  <li>Importing data to Jupyter</li>
+</ul>
+
+<!--
+> ### Agenda
+>
+> In this tutorial, we will cover:
+>
+> 1. TOC
+> {:toc}
+>
+{: .agenda}
+
+## Two paths through this tutorial
+
+We created twoi trajectories that you can follow through this tutorial. 
+
+1. **Trajectory 1** - start with NCBI's SRA and search for available accessions &rarr; Start [here](#the-sequence-read-archive)
+2. **Trajectory 2** - bypass NCBI's SRA and start with Galaxy directly. &rarr; Start [here](#back-in-galaxy)
+
+We recommend beginning with **Trajectory 2**.
+# The Sequence Read Archive
+
+The [Sequence Read Archive (SRA)](https://www.ncbi.nlm.nih.gov/sra) is the primary archive of *unassembled reads*  for the [US National Institutes of Health (NIH)](https://www.ncbi.nlm.nih.gov/).  SRA is a great place to get the sequencing data that underlie publications and studies.
+
+This tutorial covers how to get sequence data from SRA into Galaxy using a direct connection between the two.
+
+> ### <i class="far fa-comment-dots" aria-hidden="true"></i><span class="visually-hidden">comment</span> Comment
+>
+> You will also hear SRA referred to as the *Short Read Archive*, its original name.
+>
+{: .comment}
+
+
+## Accessing SRA
+
+SRA can be reached either directly through it's website, or through the tool panel on Galaxy.
+
+> ### <i class="far fa-comment-dots" aria-hidden="true"></i><span class="visually-hidden">comment</span> Comment
+>
+> Initially the tool panel option for accessing SRA exists only on the [usegalaxy.org server](https://usegalaxy.org/).  Support for the direct connection to SRA will be included in the 20.05 release of Galaxy
+{: .comment}
+
+
+> ### <i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden">hands_on</span> Hands-on: Explore SRA Entrez
+>
+> 1. Go to your Galaxy instance of choice such as one of the [usegalaxy.org](https://usegalaxy.org/), [usegalaxy.eu](https://usegalaxy.eu), [usegalaxy.org.au](https://usegalaxy.org.au) or any other. (This tutorial uses usegalaxy.org).
+> 1. If your history is not already empty, than start a new history (see [here](https://training.galaxyproject.org/training-material/topics/galaxy-interface/tutorials/history/tutorial.html) for more on Galaxy histories)
+> 1. **Click** `Get Data` at the top of the tool panel.
+> 1. **Click** `SRA Server` in the list of tools shown under `Get Data`.
+>    This takes you the [Sequence Read Archive home page](https://www.ncbi.nlm.nih.gov/sra) -- you can also start directly from the SRA.  A search box is shown at the top of the page.  Try searching for something you are interested in, such as `dolphin` or `kidney` or `dolphin kidney` and then **click** the  `Search` button.
+>
+>    This returns a list of *SRA Experiments* that match your search string.  SRA Experiments, also know as *SRX entries*, contain sequence data from a particular experiment, as well as an explanation of the experiment itself and any other related data. You can explore the returned experiments by clicking on their name.  See [Understanding SRA Search Results](https://www.ncbi.nlm.nih.gov/books/NBK56913/) in the [SRA Knowledge Base](https://www.ncbi.nlm.nih.gov/books/n/helpsrakb/) for more.
+>
+>    When you enter text in the SRA search box, you are using [SRA's Entrez search interface](https://www.ncbi.nlm.nih.gov/sra/docs/srasearch/).  Entrez supports both simple text searches, and very precise searches that check specific metadata and use arbitrarily complex logical expressions.  Entrez allows you to scale up your searches from basic to advanced as you narrow your searches.  The syntax of advanced searches can seem daunting, but SRA provides a graphical [Advanced Search Builder](https://www.ncbi.nlm.nih.gov/sra/advanced/) to generate the specific syntax.  And, as we shall see below, the SRA Run Selector provides an even friendlier user interface for narrowing our selected data.
+>
+>    Play around with the SRA Entrez interface, including the advanced query builder, to see if you can identify a set of SRA experiments that are relevant to one of your research areas.
+{: .hands_on}
+
+
+> ### <i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden">hands_on</span> Hands-on: Generate list of matching experiments using Entrez
+>
+> Now that you have a basic familiarity with SRA Entrez, let's find the sequences used in this tutorial.
+>
+> 1. If you aren't already there, **navigate** back to the [Sequence Read Archive search page](https://www.ncbi.nlm.nih.gov/sra)
+> 1. **Clear** any search text from the search box.
+> 1. **Type** `sars-cov-2` in the search box and **click** `Search`.
+>    This returns a longish list of SRA experiments that match our search, and that list is far too long to use in a tutorial exercise.  At this point we could use the advanced Entrez query builder we learned about above.
+>    But we won't.  Instead lets send the *too long for a tutorial* list results we have to the SRA Run Selector, and use its friendlier interface to narrow our results.
+>
+> ![sra entrez](../../images/sra_entrez.png)
+{: .hands_on}
+
+
+> ### <i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden">hands_on</span> Hands-on: Go from Entrez to SRA Run Selector
+>
+> View results as an expanded interactive table using the RunSelector.
+>
+> 1. Click <u>Send results to Run selector</u>, which appears in a box at the top of the search results.
+>
+> ![sra entrez result](../../images/sra_entrez_result.png)
+>
+> > ### <i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden">tip</span> What if you don't see the Run Selector Link?
+> >
+> > You may have noticed this text earlier when you were exploring Entrez search.  This text only appears some of the time, when the number of search results falls within a fairly broad window.  You won't see it if you only have a few results, and you won't see it if you have more results than the Run Selector can accept.
+> >
+> > *You need to get to Run Selector to send your results to Galaxy.* What if you don't have enough results to trigger this link being shown?  In that case you call get to the Run Selector by **clicking** on the `Send to` pulldown menu at the top right of the results panel.  To get to Run Selector, **select** `Run Selector` and then **click** the `Go` button.
+> ![sra entrez send to](../../images/sra_entrez_send_to.png)
+> {: .tip}
+>
+>
+> 1. **Click** `Send results to Run selector` at the top of the search results panel. (If you don't see this link, then see the comment directly above.)
+{: .hands_on}
+
+## SRA Run Selector
+
+We learned earlier how to narrow our search results by using Entrez's advanced syntax.  However, we didn't take advantage of that power when we were in Entrez.  Instead we used a simple search and then sent all the results to the Run Selector.  We don't yet have the (short) list of results we want to run analysis on. *What are we doing?*
+
+We are using Entrez and the Run Selector how they are designed to be used:
+
+ * Use the Entrez interface to narrow your results down to a size that the Run Selector can consume.
+ * Send those Entrez results to the SRA Run Selector
+ * Use the Run Selector's much friendlier interface to
+    1. More easily understand the data we have
+    1. Narrow those results using that knowledge.
+
+
+> ### <i class="far fa-comment-dots" aria-hidden="true"></i><span class="visually-hidden">comment</span> Run Selector is both more and less than Entrez
+>
+> Run Selector can do most, but not all of what Entrez search syntax can do.  Run selector uses *faceted search* technology which is easy to use, and powerful, but which has inherent limits.  Specifically, Entrez will work better when searching on attributes that have tens, hundreds, or thousands of different values.  Run Selector will work better searching attributes with fewer than 20 different values.  Fortunately, that describes most searches.
+{: .comment}
+
+
+The Run Selector window is divided into several panels:
+
+* **`Filters List`**: In the upper left hand corner.  This is where we will refine our search.
+* **`Select`**: A summary of what was initially passed to Run Selector, and how much of that we have selected so far.  (And so far, we haven't selected any of it.)  Also note the tantalizing, but still grayed out, `Galaxy` button.
+* **`Found x Items`** Initially, this is the list of items sent to Run Selector from Entrez.  This list will shrink as we apply filters to it.
+![sra run selector](../../images/sra_run_selector.png)
+
+> ### <i class="far fa-comment-dots" aria-hidden="true"></i><span class="visually-hidden">comment</span> Why did the number of found items *go up?*
+>
+> Recall that the Entrez interface lists SRA experiments (SRX entries).  Run Selector lists *runs* &mdash; sequencing datasets &mdash; and there are *one or more* runs per experiment. We have the same data as before, we are now just seeing it in finer detail.
+{: .comment}
+
+The `Filters List` in the upper left shows columns in our results that have either continuous numerical values, or 10 or less (you can change this number) distinct values in them.  **Scroll** down through the list select a few of the filters.  When a filter is selected, a *values* box appears below, listing options for this filter, and the number of runs with each option.  These values / options are pulled from the dataset metadata.  Try **selecting** a few interesting sounding filters and then **select** one or more options for each filter. Try **unselecting** options and filters. As you do this, the number of found results will decrease or increase.
+
+> ### <i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden">tip</span> Tip: Use Filters to better understand the data
+>
+> Filters are how you narrow the datasets under consideration for sending to Galaxy, but they are also an excellent way to understand your data:
+> First, selecting a filter is an easy way to see the range of values in a column.  You may not be able to [find documentation on what the `sirs_outcome` column means](https://www.google.com/search?q=sra+sirs_outcome), but you can possibly figure it out by seeing what values are in it.
+> Second, you can explore how different columns relate to each other.  Is there a relationship between `sirs_outcome` values and `disease_stage` values?
+{: .tip}
+
+
+> ### <i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden">hands_on</span> Hands-on: Narrow your results using Run Selector
+>
+> 1. If you have any filters turned on, **unselect** them.
+>     Once you have done this, there won't be any *values* boxes appearing below the `Filters List`.
+> 2. **Copy and paste** this search string into the `Found Items` search box.
+>     ```
+>      SRR11772204 OR SRR11597145 OR SRR11667145
+>     ```
+>     This hand-picked set of runs limits our results to 3 runs from different geographic distribution.
+{: .hands_on}
+
+This reduces your `Found Items` list from tens of thousands of runs to 3 runs (a manageable number for a tutorial!). But we aren't quite done with Run Selector yet. Note that the `Galaxy` button is still grayed out.  We have narrowed our options, but we haven't actually selected anything to send to Galaxy yet.
+
+It's possible to select every remaining run by **clicking** the checkmark at the top of the first column.  You can unselect everything by **clicking** the `X`.
+
+> ### <i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden">hands_on</span> Hands-on: Select runs and send to Galaxy
+>
+> 1. Select all runs by **clicking** the `X`.
+>    And now, the `Galaxy` button is live.
+> 1. **Click** the `Galaxy` button in the `Select` section at the top of the page.
+{: .hands_on}
+
+
+## Back in Galaxy
+
+When we click `Galaxy` in Run Selector several things happen.  First, it launches a new browser tab or window which opens in Galaxy.  You will see the *big green box* indicating that the handshake between SRA and Galaxy was successful and you will then see a new `SRA` job in your history panel.  This box may start out as gray / pending, indicating that the transfer has not yet started, or it may go straight to yellow / running or to green / done.
+
+> ### <i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden">hands_on</span> Hands-on: Examine the new SRA Dataset
+>
+> 1. Once the `SRA` transfer is complete, **click** on the dataset's <i class="far fa-eye" aria-hidden="true"></i><span class="visually-hidden"><span class="notranslate">galaxy</span>-eye</span> (eye) icon.
+>
+>    This displays the dataset in Galaxy's center panel.
+{: .hands_on}
+
+
+The `SRA` dataset is not sequence data, but rather *metadata* that we will use to get sequence data from SRA.  This metadata mirrors the information we saw in the Run Selector's `Found Items` section.  The metadata is not the end data that we are seeking from SRA, but having all that metadata is often useful in subsequent analysis steps.
+
+Lets now use that metadata to fetch the sequence data from SRA.  SRA provides tools for extracting all sorts of information, including the sequence data itself.  The Galaxy Tool `Faster Download and Extract Reads in FASTQ` is based on the SRA [`fasterq-dump`](https://github.com/ncbi/sra-tools/wiki/HowTo:-fasterq-dump) utility, and does just that.
+
+-->
+
+<h2 id="find-necessary-data-in-sra">Find necessary data in SRA</h2>
+
+<p>First we need to find a good dataset to play with. The <a href="https://www.ncbi.nlm.nih.gov/sra">Sequence Read Archive (SRA)</a> is the primary archive of <em>unassembled <span class="notranslate">reads</span></em>  operated by the <a href="https://www.ncbi.nlm.nih.gov/">US National Institutes of Health (NIH)</a>.  SRA is a great place to get the sequencing data that underlie publications and studies. Let’s do that:</p>
+
+<blockquote class="notranslate hands_on">
+  <h3 id="hands_on-hands-on-task-description"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden">hands_on</span> Hands-on: Task description</h3>
+
+  <ol>
+    <li>Go to NCBI’s SRA page by pointing your browser to https://www.ncbi.nlm.nih.gov/sra</li>
+    <li>In the search box enter <code class="language-plaintext highlighter-rouge">SARS-CoV-2 Patient Sequencing From Partners / MGH</code>:
+<img src="../../../images/find_mgh_data.png" alt="Find data" /> (Alte<span class="notranslate">rna</span>tively, you simply click on this <a href="https://www.ncbi.nlm.nih.gov/sra/?term=SARS-CoV-2+Patient+Sequencing+From+Partners+%2F+MGH">link</a>)</li>
+    <li>The web page will show a large number of SRA datasets (at the time of writing there were 2,223). This is data from a <a href="https://science.sciencemag.org/content/early/2020/12/09/science.abe3261">study</a> describing analysis of SARS-CoV-2 in Boston area.</li>
+    <li>Download metadata describing these datasets by:
+      <ul>
+        <li>clicking on <strong>Send to:</strong> dropdown</li>
+        <li>Selecting <code class="language-plaintext highlighter-rouge">File</code></li>
+        <li>Changing <strong>Format</strong> to <code class="language-plaintext highlighter-rouge">RunInfo</code></li>
+        <li>Clicking <strong>Create file</strong>
+Here is how it should look like:
+<img src="../../images/get_runinfo.png" alt="GetRunInfo" /></li>
+      </ul>
+    </li>
+    <li>This would create a rather large <code class="language-plaintext highlighter-rouge">SraRunInfo.csv</code> file in your <code class="language-plaintext highlighter-rouge">Downloads</code> folder.</li>
+  </ol>
+</blockquote>
+
+<p>Now that we have downloaded this file we can go to a <span class="notranslate">Galaxy</span> instance and start processing it.</p>
+
+<blockquote class="comment">
+  <h3 id="comment-comment"><i class="far fa-comment-dots" aria-hidden="true"></i><span class="visually-hidden">comment</span> Comment</h3>
+
+  <p>Note that the file we just downloaded is <strong>not</strong> sequencing data itself. Rather, it is <em>metadata</em> describing properties of sequencing <span class="notranslate">reads</span>. We will filter this list down to just a few accessions that will be used in the remainder of this tutorial.</p>
+
+</blockquote>
+
+<h2 id="process-and-filter-sraruninfocsv-file-in-galaxy">Process and filter <code class="language-plaintext highlighter-rouge">SraRunInfo.csv</code> file in <span class="notranslate">Galaxy</span></h2>
+
+<blockquote class="notranslate hands_on">
+  <h3 id="hands_on-hands-on-upload-sraruninfocsv-file-into-galaxy"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden">hands_on</span> Hands-on: Upload <code class="language-plaintext highlighter-rouge">SraRunInfo.csv</code> file into <span class="notranslate">Galaxy</span></h3>
+
+  <ol>
+    <li>Go to your <span class="notranslate">Galaxy</span> instance of choice such as one of the <a href="https://usegalaxy.org/">use<span class="notranslate">galaxy</span>.org</a>, <a href="https://usegalaxy.eu">use<span class="notranslate">galaxy</span>.eu</a>, <a href="https://usegalaxy.org.au">use<span class="notranslate">galaxy</span>.org.au</a> or any other. (This tutorial uses use<span class="notranslate">galaxy</span>.org).</li>
+    <li>Click <em>Upload Data</em> button:
+<img src="../../images/upload_button.png" alt="Upload" /></li>
+    <li>In the dialog box that would appear click “<em>Choose local files</em>” button:
+<img src="../../../images/choose_local_files_button.png" alt="Choose local" /></li>
+    <li>Find and select <code class="language-plaintext highlighter-rouge">SraRunInfo.csv</code> file from your computer</li>
+    <li>Click <em>Start</em> button</li>
+    <li>Close dialog by pressing <strong>Close</strong> button</li>
+    <li>You can now look at the content of this file by clicking <i class="far fa-eye" aria-hidden="true"></i><span class="visually-hidden"><span class="notranslate">galaxy</span>-eye</span> (eye) icon. You will see that this file contains a lot of information about individual SRA accessions. In this study every accession corresponds to an individual patient whose samples were sequenced.</li>
+  </ol>
+</blockquote>
+
+<p><span class="notranslate">Galaxy</span> can process all 2,000+ datasets but to make this tutorial bearable we need to selected a smaller subset. In particular our previous experience with this data shows two interesting datasets <code class="language-plaintext highlighter-rouge">SRR11954102</code> and <code class="language-plaintext highlighter-rouge">SRR12733957</code>. So, let’s pull them out.</p>
+
+<blockquote class="comment">
+  <h3 id="comment-beware-of-cuts"><i class="far fa-comment-dots" aria-hidden="true"></i><span class="visually-hidden">comment</span> Beware of <strong>Cut</strong>s</h3>
+  <p>The Hands-on section below uses <strong>Cut</strong> tool. There are two <strong>cut</strong> tools in <span class="notranslate">Galaxy</span> due to historical reasons. This example uses tool with the full name <strong>Cut columns from a table (cut)</strong>. However, the same logic applies to the other tool. It simply has a slightly different interface.</p>
+</blockquote>
+
+<blockquote class="notranslate hands_on">
+  <h3 id="hands_on-hands-on-creating-a-subset-of-data"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden">hands_on</span> Hands-on: Creating a subset of data</h3>
+
+  <ol>
+    <li>Find <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> “<strong>Select lines that match an <span class="notranslate">expression</span></strong>” tool in <strong>Filter and Sort</strong> section of the tool panel.
+      <blockquote class="tip">
+        <h3 id="tip-tip-finding-tools"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden">tip</span> Tip: Finding tools</h3>
+        <p><span class="notranslate">Galaxy</span> may have an overwhelming amount of tools installed. To find a specific tool type the tool name in the tool panel search box to find the tool.</p>
+      </blockquote>
+    </li>
+    <li>Make sure the <code class="language-plaintext highlighter-rouge">SraRunInfo.csv</code> dataset we just uploaded is listed in the <i class="far fa-file" aria-hidden="true"></i><span class="visually-hidden">param-file</span> “<em>Select lines from</em>” field of the tool form.</li>
+    <li>In “<em>the pattern</em>” field enter the following <span class="notranslate">expression</span> → <code class="language-plaintext highlighter-rouge">SRR12733957|SRR11954102</code>. These are two accession we want to find separated by the pipe symbol <code class="language-plaintext highlighter-rouge">|</code>. The <code class="language-plaintext highlighter-rouge">|</code> means <code class="language-plaintext highlighter-rouge">or</code>: find lines containing <code class="language-plaintext highlighter-rouge">SRR12733957</code> <strong>or</strong> <code class="language-plaintext highlighter-rouge">SRR11954102</code>.</li>
+    <li>Click <code class="language-plaintext highlighter-rouge">Execute</code> button.</li>
+    <li>This will generate a file containing two lines (well … one line is also used as the header, so it will appear the the file has three lines. It is OK.)</li>
+    <li>Cut the first column from the file using <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> “<strong>Cut</strong>” tool, which you will find in <strong>Text Manipulation</strong> section of the tool pane.</li>
+    <li>Make sure the dataset produced by the previous step is selected in the “<em>File to cut</em>” field of the tool form.</li>
+    <li>Change “<em>Delimited by</em>” to <code class="language-plaintext highlighter-rouge">Comma</code></li>
+    <li>In “<em>List of fields</em>” select <code class="language-plaintext highlighter-rouge">Column: 1</code>.</li>
+    <li>Hit <code class="language-plaintext highlighter-rouge">Execute</code>
+This will produce a text file with just two lines:
+      <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>SRR12733957
+SRR11954102
+</code></pre></div>      </div>
+    </li>
+  </ol>
+</blockquote>
+
+<p>Now that we have identifiers of datasets we want we need to download the actual sequencing data.</p>
+
+<h2 id="download-sequencing-data-with-faster-download-and-extract-reads-in-fastq">Download sequencing data with <strong>Faster Download and Extract <span class="notranslate">Reads</span> in FASTQ</strong></h2>
+
+<blockquote class="notranslate hands_on">
+  <h3 id="hands_on-hands-on-task-description-1"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden">hands_on</span> Hands-on: Task description</h3>
+
+  <ol>
+    <li><strong>Faster Download and Extract <span class="notranslate">Reads</span> in FASTQ</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> with the following parameters:
+      <ul>
+        <li><em>“select input type”</em>: <code class="language-plaintext highlighter-rouge">List of SRA accession, one per line</code>
+          <ul>
+            <li>The parameter <i class="far fa-file" aria-hidden="true"></i><span class="visually-hidden">param-file</span> <em>“sra accession list”</em> should point the output of the <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> “<strong>Cut</strong>” from the previous step.</li>
+          </ul>
+        </li>
+        <li><strong>Click</strong> the <code class="language-plaintext highlighter-rouge">Execute</code> button. This will run the tool, which retrieves the sequence read datasets for the runs that were listed in the <code class="language-plaintext highlighter-rouge">SRA</code> dataset. It may take some time. So this may be a good time to do get coffee.</li>
+      </ul>
+    </li>
+    <li>Several entries are created in your history panel when you submit this job:
+      <ul>
+        <li><strong><code class="language-plaintext highlighter-rouge">Pair-end data (fasterq-dump)</code></strong>: Contains Paired-end datasets (if available)</li>
+        <li><strong><code class="language-plaintext highlighter-rouge">Single-end data (fasterq-dump)</code></strong> Contains Single-end datasets (if available)</li>
+        <li><strong><code class="language-plaintext highlighter-rouge">Other data (fasterq-dump)</code></strong> Contains Unpaired datasets (if available)</li>
+        <li><strong><code class="language-plaintext highlighter-rouge">fasterq-dump log</code></strong> Contains Information about the tool execution</li>
+      </ul>
+    </li>
+  </ol>
+</blockquote>
+
+<p>The first three items are actually <em>collections</em> of datasets.  <em>Collections</em> in <span class="notranslate">Galaxy</span> are logical groupings of datasets that reflect the semantic relationships between them in the experiment / analysis.  In this case the tool creates a separate collection each for paired-end <span class="notranslate">reads</span>, single <span class="notranslate">reads</span>, and <em>other</em>.
+See the Collections tutorials for more.</p>
+
+<p>Explore the collections by first <strong>clicking</strong> on the collection name in the history panel.  This takes you inside the collection and shows you the datasets in it.  You can then navigate back to the outer level of your history.</p>
+
+<p>Once <code class="language-plaintext highlighter-rouge">fasterq</code> finishes transferring data (all boxes are green / done), we are ready to analyze it.</p>
+
+<h1 id="now-what">Now what?</h1>
+
+<p>You can now analyze the retrieved data using any sequence analysis tools and workflows in <span class="notranslate">Galaxy</span>.  SRA holds backing data for every imaginable type of *-seq experiment.</p>
+
+<p>If you ran this tutorial, but retrieved datasets that you were interested in, then see the rest of the GTN library for ideas on how to analyze in <span class="notranslate">Galaxy</span>.</p>
+
+<p>However, if you retrieved the datasets used in this tutorial’s examples above, then you are ready to run the SARS-CoV-2 variant analysis below.</p>
+
+<h1 id="variation-analysis-of-sars-cov-2-sequencing-data">Variation Analysis of SARS-Cov-2 sequencing data</h1>
+
+<p>In this part of the tutorial we will perform variant calling and basic analysis of the datasets downloaded above. We will start by downloading the Wuhan-Hu-1 SARS-CoV-2 reference sequence, then run adapter trimming, alignment and variant calling and finally look at the geographic distribution of some of the found variants.</p>
+
+<blockquote class="comment">
+  <h3 id="comment-the-usegalaxy-covid-19-analysis-project"><i class="far fa-comment-dots" aria-hidden="true"></i><span class="visually-hidden">comment</span> The use<span class="notranslate">galaxy</span>.* COVID-19 analysis project</h3>
+  <p>This tutorial uses a subset of the data and runs through the
+<a href="https://covid19.galaxyproject.org/genomics/4-variation/">Variation Analysis</a>
+section of <a href="https://covid19.galaxyproject.org/">covid19.<span class="notranslate">galaxy</span>project.org</a>.
+The data for <a href="https://covid19.galaxyproject.org/">covid19.<span class="notranslate">galaxy</span>project.org</a> is
+being updated continuously as new datasets are made public.</p>
+</blockquote>
+
+<h1 id="get-the-reference-genome-data">Get the reference genome data</h1>
+
+<p>The reference genome data for today is for SARS-CoV-2, “Severe acute respiratory syndrome coronavirus 2 isolate Wuhan-Hu-1, complete genome”, having the accession ID of NC_045512.2.</p>
+
+<p>This data is available from Zenodo using the following <a href="https://doi.org/10.5281/zenodo.3906454">link</a>.</p>
+
+<blockquote class="notranslate hands_on">
+  <h3 id="hands_on-hands-on-get-the-reference-genome-data"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden">hands_on</span> Hands-on: Get the reference genome data</h3>
+
+  <ol>
+    <li>
+      <p>Import the following file into your history:</p>
+
+      <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>https://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/009/858/895/GCF_009858895.2_ASM985889v3/GCF_009858895.2_ASM985889v3_genomic.fna.gz
+</code></pre></div>      </div>
+    </li>
+  </ol>
+
+  <blockquote class="tip">  <h3 id="tip-tip-importing-data-via-links"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden">tip</span> Tip: Importing data via links</h3>  <ul>    <li>Copy the link location</li>    <li>      <p>Open the <span class="notranslate">Galaxy</span> Upload Manager (<i class="fas fa-upload" aria-hidden="true"></i><span class="visually-hidden"><span class="notranslate">galaxy</span>-upload</span> on the top-right of the tool panel)</p>    </li>    <li>Select <strong>Paste/Fetch Data</strong></li>    <li>      <p>Paste the link into the text field</p>    </li>    <li>      <p>Press <strong>Start</strong></p>    </li>    <li><strong>Close</strong> the window</li>  </ul>  <p>By default, <span class="notranslate">Galaxy</span> uses the URL as the name, so rename the files with a more useful name.</p></blockquote>
+
+</blockquote>
+
+<!-- Previous version of the link -> https://zenodo.org/record/3906454/files/NC_045512.2.fasta -->
+
+<h2 id="adapter-trimming-with-fastp">Adapter trimming with <strong>fastp</strong></h2>
+
+<p>Removing sequencing adapters improves alignments and variant calling. <strong>fastp</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> can automatically detect widely used sequencing adapters.</p>
+
+<blockquote class="notranslate hands_on">
+  <h3 id="hands_on-hands-on-task-description-2"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden">hands_on</span> Hands-on: Task description</h3>
+
+  <ol>
+    <li><strong>fastp</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> with the following parameters:
+      <ul>
+        <li><em>“Single-end or paired <span class="notranslate">reads</span>”</em>: <code class="language-plaintext highlighter-rouge">Paired Collection</code>
+          <ul>
+            <li><i class="far fa-file" aria-hidden="true"></i><span class="visually-hidden">param-file</span> <em>“Select paired collection(s)”</em>: <code class="language-plaintext highlighter-rouge">list_paired</code> (output of <strong>Faster Download and Extract <span class="notranslate">Reads</span> in FASTQ</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span>)</li>
+          </ul>
+        </li>
+        <li>In <em>“Output Options”</em>:
+          <ul>
+            <li><em>“Output JSON report”</em>: <code class="language-plaintext highlighter-rouge">Yes</code></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ol>
+</blockquote>
+
+<h2 id="alignment-with--map-with-bwa-mem">Alignment with  <strong>Map with BWA-MEM</strong></h2>
+
+<p><strong>BWA-MEM</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> is a widely used sequence aligner for short-read sequencing datasets such as those we are analysing in this tutorial.</p>
+
+<blockquote class="notranslate hands_on">
+  <h3 id="hands_on-hands-on-align-sequencing-reads-to-reference-genome"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden">hands_on</span> Hands-on: Align sequencing <span class="notranslate">reads</span> to reference genome</h3>
+
+  <ol>
+    <li><strong>Map with BWA-MEM</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> with the following parameters:
+      <ul>
+        <li><em>“Will you select a reference genome from your history or use a built-in index?”</em>: <code class="language-plaintext highlighter-rouge">Use a genome from history and build index</code>
+          <ul>
+            <li><i class="far fa-file" aria-hidden="true"></i><span class="visually-hidden">param-file</span> <em>“Use the following dataset as the reference sequence”</em>: <code class="language-plaintext highlighter-rouge">output</code> (Input dataset)</li>
+          </ul>
+        </li>
+        <li><em>“Single or Paired-end <span class="notranslate">reads</span>”</em>: <code class="language-plaintext highlighter-rouge">Paired Collection</code>
+          <ul>
+            <li><i class="far fa-file" aria-hidden="true"></i><span class="visually-hidden">param-file</span> <em>“Select a paired collection”</em>: <code class="language-plaintext highlighter-rouge">output_paired_coll</code> (output of <strong>fastp</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span>)</li>
+          </ul>
+        </li>
+        <li><em>“Set read groups information?”</em>: <code class="language-plaintext highlighter-rouge">Do not set</code></li>
+        <li><em>“Select analysis mode”</em>: <code class="language-plaintext highlighter-rouge">1.Simple Illumina mode</code></li>
+      </ul>
+    </li>
+  </ol>
+
+</blockquote>
+
+<h2 id="remove-duplicates-with-markduplicates">Remove duplicates with <strong>MarkDuplicates</strong></h2>
+
+<p><strong>MarkDuplicates</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> removes duplicate sequences originating from library preparation artifacts and sequencing artifacts. It is important to remove these artefactual sequences to avoid artificial overrepresentation of single molecule.</p>
+
+<blockquote class="notranslate hands_on">
+  <h3 id="hands_on-hands-on-remove-pcr-duplicates"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden">hands_on</span> Hands-on: Remove PCR duplicates</h3>
+
+  <ol>
+    <li><strong>MarkDuplicates</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> with the following parameters:
+      <ul>
+        <li><i class="far fa-file" aria-hidden="true"></i><span class="visually-hidden">param-file</span> <em>“Select SAM/BAM dataset or dataset collection”</em>: <code class="language-plaintext highlighter-rouge">bam_output</code> (output of <strong>Map with BWA-MEM</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span>)</li>
+        <li><em>“If true do not write duplicates to the output file instead of writing them with appropriate flags set”</em>: <code class="language-plaintext highlighter-rouge">Yes</code></li>
+      </ul>
+    </li>
+  </ol>
+
+</blockquote>
+
+<h2 id="generate-alignment-statistics-with-samtools-stats">Generate alignment statistics with <strong>Samtools stats</strong></h2>
+
+<p>After the duplicate marking step above we can generate statistic about the alignment we have generated.</p>
+
+<blockquote class="notranslate hands_on">
+  <h3 id="hands_on-hands-on-generate-alignment-statistics"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden">hands_on</span> Hands-on: Generate alignment statistics</h3>
+
+  <ol>
+    <li><strong>Samtools stats</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> with the following parameters:
+      <ul>
+        <li><i class="far fa-file" aria-hidden="true"></i><span class="visually-hidden">param-file</span> <em>“BAM file”</em>: <code class="language-plaintext highlighter-rouge">outFile</code> (output of <strong>MarkDuplicates</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span>)</li>
+        <li><em>“Set coverage distribution”</em>: <code class="language-plaintext highlighter-rouge">No</code></li>
+        <li><em>“Output”</em>: <code class="language-plaintext highlighter-rouge">One single summary file</code></li>
+        <li><em>“Filter by SAM flags”</em>: <code class="language-plaintext highlighter-rouge">Do not filter</code></li>
+        <li><em>“Use a reference sequence”</em>: <code class="language-plaintext highlighter-rouge">No</code></li>
+        <li><em>“Filter by regions”</em>: <code class="language-plaintext highlighter-rouge">No</code></li>
+      </ul>
+    </li>
+  </ol>
+</blockquote>
+
+<h2 id="realign-reads-with-lofreq-viterbi"><strong>Realign <span class="notranslate">reads</span></strong> with lofreq viterbi</h2>
+
+<p><strong>Realign <span class="notranslate">reads</span></strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> corrects misalignments around insertions and deletions. This is required in order to accurately detect variants.</p>
+
+<blockquote class="notranslate hands_on">
+  <h3 id="hands_on-hands-on-realign-reads-around-indels"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden">hands_on</span> Hands-on: Realign <span class="notranslate">reads</span> around indels</h3>
+
+  <ol>
+    <li><strong>Realign <span class="notranslate">reads</span></strong> with lofreq <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> with the following parameters:
+      <ul>
+        <li><i class="far fa-file" aria-hidden="true"></i><span class="visually-hidden">param-file</span> <em>“<span class="notranslate">Reads</span> to realign”</em>: <code class="language-plaintext highlighter-rouge">outFile</code> (output of <strong>MarkDuplicates</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span>)</li>
+        <li><em>“Choose the source for the reference genome”</em>: <code class="language-plaintext highlighter-rouge">History</code>
+          <ul>
+            <li><i class="far fa-file" aria-hidden="true"></i><span class="visually-hidden">param-file</span> <em>“Reference”</em>: <code class="language-plaintext highlighter-rouge">output</code> (Input dataset)</li>
+          </ul>
+        </li>
+        <li>In <em>“Advanced options”</em>:
+          <ul>
+            <li><em>“How to handle base qualities of 2?”</em>: <code class="language-plaintext highlighter-rouge">Keep unchanged</code></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ol>
+</blockquote>
+
+<h2 id="add-indel-qualities-with-lofreq-insert-indel-qualities">Add indel qualities with lofreq <strong>Insert indel qualities</strong></h2>
+
+<p>This step adds indel qualities into our alignment file. This is necessary in order to call variants using <strong>Call variants</strong> with lofreq <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span></p>
+
+<blockquote class="notranslate hands_on">
+  <h3 id="hands_on-hands-on-add-indel-qualities"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden">hands_on</span> Hands-on: Add indel qualities</h3>
+
+  <ol>
+    <li><strong>Insert indel qualities</strong> with lofreq <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> with the following parameters:
+      <ul>
+        <li><i class="far fa-file" aria-hidden="true"></i><span class="visually-hidden">param-file</span> <em>“<span class="notranslate">Reads</span>”</em>: <code class="language-plaintext highlighter-rouge">realigned</code> (output of <strong>Realign <span class="notranslate">reads</span></strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span>)</li>
+        <li><em>“Indel calculation approach”</em>: <code class="language-plaintext highlighter-rouge">Dindel</code>
+          <ul>
+            <li><em>“Choose the source for the reference genome”</em>: <code class="language-plaintext highlighter-rouge">History</code>
+              <ul>
+                <li><i class="far fa-file" aria-hidden="true"></i><span class="visually-hidden">param-file</span> <em>“Reference”</em>: <code class="language-plaintext highlighter-rouge">output</code> (Input dataset)</li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ol>
+
+</blockquote>
+
+<h2 id="call-variants-using-lofreq-call-variants">Call Variants using lofreq <strong>Call variants</strong></h2>
+
+<p>We are now ready to call variants.</p>
+
+<blockquote class="notranslate hands_on">
+  <h3 id="hands_on-hands-on-call-variants"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden">hands_on</span> Hands-on: Call variants</h3>
+
+  <ol>
+    <li><strong>Call variants</strong> with lofreq <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> with the following parameters:
+      <ul>
+        <li><i class="far fa-file" aria-hidden="true"></i><span class="visually-hidden">param-file</span> <em>“Input <span class="notranslate">reads</span> in BAM format”</em>: <code class="language-plaintext highlighter-rouge">output</code> (output of <strong>Insert indel qualities</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span>)</li>
+        <li><em>“Choose the source for the reference genome”</em>: <code class="language-plaintext highlighter-rouge">History</code>
+          <ul>
+            <li><i class="far fa-file" aria-hidden="true"></i><span class="visually-hidden">param-file</span> <em>“Reference”</em>: <code class="language-plaintext highlighter-rouge">output</code> (Input dataset)</li>
+          </ul>
+        </li>
+        <li><em>“Call variants across”</em>: <code class="language-plaintext highlighter-rouge">Whole reference</code></li>
+        <li><em>“Types of variants to call”</em>: <code class="language-plaintext highlighter-rouge">SNVs and indels</code></li>
+        <li><em>“Variant calling parameters”</em>: <code class="language-plaintext highlighter-rouge">Configure settings</code>
+          <ul>
+            <li>In <em>“Coverage”</em>:
+              <ul>
+                <li><em>“Minimal coverage”</em>: <code class="language-plaintext highlighter-rouge">50</code></li>
+              </ul>
+            </li>
+            <li>In <em>“Base-calling quality”</em>:
+              <ul>
+                <li><em>“Minimum baseQ”</em>: <code class="language-plaintext highlighter-rouge">30</code></li>
+                <li><em>“Minimum baseQ for alte<span class="notranslate">rna</span>te bases”</em>: <code class="language-plaintext highlighter-rouge">30</code></li>
+              </ul>
+            </li>
+            <li>In <em>“<span class="notranslate">Mapping</span> quality”</em>:
+              <ul>
+                <li><em>“Minimum <span class="notranslate">mapping</span> quality”</em>: <code class="language-plaintext highlighter-rouge">20</code></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li><em>“Variant filter parameters”</em>: <code class="language-plaintext highlighter-rouge">Preset filtering on QUAL score + coverage + strand bias (lofreq call default)</code></li>
+      </ul>
+    </li>
+  </ol>
+</blockquote>
+
+<p>The output of this step is a collection of VCF files that can be visualized in a genome browser.</p>
+
+<h2 id="annotate-variant-effects-with-snpeff-eff">Annotate variant effects with <strong>SnpEff eff:</strong></h2>
+
+<p>We will now annotate the variants we called in the previous step with the effect they have on the SARS-CoV-2 genome.</p>
+
+<blockquote class="notranslate hands_on">
+  <h3 id="hands_on-hands-on-annotate-variant-effects"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden">hands_on</span> Hands-on: Annotate variant effects</h3>
+
+  <ol>
+    <li><strong>SnpEff eff:</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> with the following parameters:
+      <ul>
+        <li><i class="far fa-file" aria-hidden="true"></i><span class="visually-hidden">param-file</span> <em>“Sequence changes (SNPs, MNPs, InDels)”</em>: <code class="language-plaintext highlighter-rouge">variants</code> (output of <strong>Call variants</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span>)</li>
+        <li><em>“Output format”</em>: <code class="language-plaintext highlighter-rouge">VCF (only if input is VCF)</code></li>
+        <li><em>“Create CSV report, useful for <span class="notranslate">downstream</span> analysis (-csvStats)”</em>: <code class="language-plaintext highlighter-rouge">Yes</code></li>
+        <li><em>“Annotation options”</em>: ``</li>
+        <li><em>“Filter output”</em>: ``</li>
+        <li><em>“Filter out specific Effects”</em>: <code class="language-plaintext highlighter-rouge">No</code></li>
+      </ul>
+    </li>
+  </ol>
+
+</blockquote>
+
+<p>The output of this step is a VCF file with added variant effects.</p>
+
+<h2 id="create-table-of-variants-using-snpsift-extract-fields">Create table of variants using <strong>SnpSift Extract Fields</strong></h2>
+
+<p>We will now select various effects from the VCF and create a tabular file that is easier to understand for humans.</p>
+
+<blockquote class="notranslate hands_on">
+  <h3 id="hands_on-hands-on-create-table-of-variants"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden">hands_on</span> Hands-on: Create table of variants</h3>
+
+  <ol>
+    <li><strong>SnpSift Extract Fields</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> with the following parameters:
+      <ul>
+        <li><i class="far fa-file" aria-hidden="true"></i><span class="visually-hidden">param-file</span> <em>“Variant input file in VCF format”</em>: <code class="language-plaintext highlighter-rouge">snpeff_output</code> (output of <strong>SnpEff eff:</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span>)</li>
+        <li><em>“Fields to extract”</em>: <code class="language-plaintext highlighter-rouge">CHROM POS REF ALT QUAL DP AF SB DP4 EFF[*].IMPACT EFF[*].FUNCLASS EFF[*].EFFECT EFF[*].GENE EFF[*].CODON</code></li>
+        <li><em>“multiple field separator”</em>: <code class="language-plaintext highlighter-rouge">,</code></li>
+        <li><em>“empty field text”</em>: <code class="language-plaintext highlighter-rouge">.</code></li>
+      </ul>
+    </li>
+  </ol>
+
+</blockquote>
+
+<p>We can inspect the output files and see check if Variants in this file are also described in <a href="https://observablehq.com/@spond/distribution-of-sars-cov-2-sequences-that-have-a-particular">an observable notebook that shows the geographic distribution of SARS-CoV-2 variant sequences</a></p>
+
+<p>Interesting variants include the C to T variant at position 14408 (14408C/T) in SRR11772204, 28144T/C in SRR11597145 and 25563G/T in SRR11667145.</p>
+
+<h2 id="summarize-data-with-multiqc">Summarize data with <strong>MultiQC</strong></h2>
+
+<p>We will now summarize our analysis with MultiQC, which generates a beautiful report for our data.</p>
+
+<blockquote class="notranslate hands_on">
+  <h3 id="hands_on-hands-on-summarize-data"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden">hands_on</span> Hands-on: Summarize data</h3>
+
+  <ol>
+    <li><strong>MultiQC</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> with the following parameters:
+      <ul>
+        <li>In <em>“Results”</em>:
+          <ul>
+            <li><i class="far fa-plus-square" aria-hidden="true"></i><span class="visually-hidden">param-repeat</span> <em>“Insert Results”</em>
+              <ul>
+                <li><em>“Which tool was used generate logs?”</em>: <code class="language-plaintext highlighter-rouge">fastp</code>
+                  <ul>
+                    <li><i class="far fa-file" aria-hidden="true"></i><span class="visually-hidden">param-file</span> <em>“Output of fastp”</em>: <code class="language-plaintext highlighter-rouge">report_json</code> (output of <strong>fastp</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span>)</li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+            <li><i class="far fa-plus-square" aria-hidden="true"></i><span class="visually-hidden">param-repeat</span> <em>“Insert Results”</em>
+              <ul>
+                <li><em>“Which tool was used generate logs?”</em>: <code class="language-plaintext highlighter-rouge">Samtools</code>
+                  <ul>
+                    <li>In <em>“Samtools output”</em>:
+                      <ul>
+                        <li><i class="far fa-plus-square" aria-hidden="true"></i><span class="visually-hidden">param-repeat</span> <em>“Insert Samtools output”</em>
+                          <ul>
+                            <li><em>“Type of Samtools output?”</em>: <code class="language-plaintext highlighter-rouge">stats</code>
+                              <ul>
+                                <li><i class="far fa-file" aria-hidden="true"></i><span class="visually-hidden">param-file</span> <em>“Samtools stats output”</em>: <code class="language-plaintext highlighter-rouge">output</code> (output of <strong>Samtools stats</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span>)</li>
+                              </ul>
+                            </li>
+                          </ul>
+                        </li>
+                      </ul>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+            <li><i class="far fa-plus-square" aria-hidden="true"></i><span class="visually-hidden">param-repeat</span> <em>“Insert Results”</em>
+              <ul>
+                <li><em>“Which tool was used generate logs?”</em>: <code class="language-plaintext highlighter-rouge">Picard</code>
+                  <ul>
+                    <li>In <em>“Picard output”</em>:
+                      <ul>
+                        <li><i class="far fa-plus-square" aria-hidden="true"></i><span class="visually-hidden">param-repeat</span> <em>“Insert Picard output”</em>
+                          <ul>
+                            <li><em>“Type of Picard output?”</em>: <code class="language-plaintext highlighter-rouge">Markdups</code></li>
+                            <li><i class="far fa-file" aria-hidden="true"></i><span class="visually-hidden">param-file</span> <em>“Picard output”</em>: <code class="language-plaintext highlighter-rouge">metrics_file</code> (output of <strong>MarkDuplicates</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span>)</li>
+                          </ul>
+                        </li>
+                      </ul>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+            <li><i class="far fa-plus-square" aria-hidden="true"></i><span class="visually-hidden">param-repeat</span> <em>“Insert Results”</em>
+              <ul>
+                <li><em>“Which tool was used generate logs?”</em>: <code class="language-plaintext highlighter-rouge">SnpEff</code>
+                  <ul>
+                    <li><i class="far fa-file" aria-hidden="true"></i><span class="visually-hidden">param-file</span> <em>“Output of SnpEff”</em>: <code class="language-plaintext highlighter-rouge">csvFile</code> (output of <strong>SnpEff eff:</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span>)</li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ol>
+</blockquote>
+
+<h1 class="no_toc" id="conclusion">Conclusion</h1>
+
+<p>Congratulations, you now know how to import sequence data from the SRA and how to run an example analysis on these datasets.</p>
+
+
+                    
+                    <blockquote class="key_points">
+                        <h3><i class="fas fa-key" aria-hidden="true"></i><span class="visually-hidden">keypoints</span> Key points</h3>
+                        <ul>
+                            
+                            <li><p>Sequence data in the SRA can be directly imported into Galaxy</p>
+</li>
+                            
+                        </ul>
+                    </blockquote>
+                    
+
+                    
+                    <h1 data-toc-skip>Useful literature</h1>
+                    <p>Further information, including links to documentation and original publications, regarding the tools, analysis techniques and the interpretation of results described in this tutorial can be found <a href="/training-material/topics/variant-analysis#references">here</a>.</p>
+                    
+
+                    
+
+                    <h1>Feedback</h1>
+                    <p class="text-muted">Did you use this material as an instructor? Feel free to give us feedback on <a href="https://github.com/galaxyproject/training-material/issues/1452" target="_blank">how it went</a>.</p>
+
+                    <div id="feedback-button">
+                        <img src="/training-material/shared/images/feedback.png" title="Click to activate" alt="Click here to load Google feedback frame" />
+                    </div>
+                    <div id="feedback-form">
+                    </div>
+                    <script type="text/javascript">
+                        (function (window, document) {
+                            function onDocumentReady(fn) {
+                                if (document.attachEvent ? document.readyState === "complete" : document.readyState !== "loading") {
+                                    fn();
+                                } else {
+                                    document.addEventListener('DOMContentLoaded', fn);
+                                }
+                            }
+
+                            onDocumentReady(function () {
+                                $("#feedback-button").click(function(evt){
+                                    var e = $(evt.target)
+                                    e.hide();
+
+                                    $("#feedback-form").html(`
+                                        <iframe id="feedback-google" class="google-form" src="https://docs.google.com/forms/d/e/1FAIpQLSd4VZptFTQ03kHkMz0JyW9b6_S8geU5KjNE_tLM0dixT3ZQmA/viewform?embedded=true&entry.1235803833=From NCBI's Sequence Read Archive (SRA) to Galaxy: SARS-CoV-2 variant analysis (Variant Analysis)">Loading...</iframe>
+                                    `)
+                                })
+                            });
+                        })(window, document);
+                    </script>
+
+
+
+                    <h1>Citing this Tutorial</h1>
+                    <p>
+                        <ol>
+                            <li id="citation-text">Marius van den Beek, Dave Clements, Daniel Blankenberg, Anton Nekrutenko, 2021 <b>From NCBI's Sequence Read Archive (SRA) to Galaxy: SARS-CoV-2 variant analysis (Galaxy Training Materials)</b>. <a href="/training-material/topics/variant-analysis/tutorials/sars-cov-2/tutorial.html">/training-material/topics/variant-analysis/tutorials/sars-cov-2/tutorial.html</a> Online; accessed TODAY
+                            </li>
+                            <li>
+                            Batut et al., 2018 <b>Community-Driven Data Analysis Training for Biology</b> Cell Systems <a href="https://doi.org/10.1016%2Fj.cels.2018.05.012">10.1016/j.cels.2018.05.012</a>
+                            </li>
+                        </ol>
+                    </p>
+
+
+                    <blockquote class="details">
+                      <h3><i class="fa fa-info-circle" aria-hidden="true"></i><span class="visually-hidden">details</span> BibTeX</h3>
+                      <p style="display: none;">
+
+                    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight">
+<code id="citation-code">@misc{variant-analysis-sars-cov-2,
+    author = "Marius van den Beek and Dave Clements and Daniel Blankenberg and Anton Nekrutenko",
+    title = "From NCBI's Sequence Read Archive (SRA) to Galaxy: SARS-CoV-2 variant analysis (Galaxy Training Materials)",
+    year = "2021",
+    month = "02",
+    day = "25"
+    url = "\url{/training-material/topics/variant-analysis/tutorials/sars-cov-2/tutorial.html}",
+    note = "[Online; accessed TODAY]"
+}
+@article{Batut_2018,
+        doi = {10.1016/j.cels.2018.05.012},
+        url = {https://doi.org/10.1016%2Fj.cels.2018.05.012},
+        year = 2018,
+        month = {jun},
+        publisher = {Elsevier {BV}},
+        volume = {6},
+        number = {6},
+        pages = {752--758.e1},
+        author = {B{\'{e}}r{\'{e}}nice Batut and Saskia Hiltemann and Andrea Bagnacani and Dannon Baker and Vivek Bhardwaj and Clemens Blank and Anthony Bretaudeau and Loraine Brillet-Gu{\'{e}}guen and Martin {\v{C}}ech and John Chilton and Dave Clements and Olivia Doppelt-Azeroual and Anika Erxleben and Mallory Ann Freeberg and Simon Gladman and Youri Hoogstrate and Hans-Rudolf Hotz and Torsten Houwaart and Pratik Jagtap and Delphine Larivi{\`{e}}re and Gildas Le Corguill{\'{e}} and Thomas Manke and Fabien Mareuil and Fidel Ram{\'{\i}}rez and Devon Ryan and Florian Christoph Sigloch and Nicola Soranzo and Joachim Wolff and Pavankumar Videm and Markus Wolfien and Aisanjiang Wubuli and Dilmurat Yusuf and James Taylor and Rolf Backofen and Anton Nekrutenko and Björn Grüning},
+        title = {Community-Driven Data Analysis Training for Biology},
+        journal = {Cell Systems}
+}</code>
+                    </pre></div></div>
+                    </p>
+                    </blockquote>
+
+
+<script type="text/javascript">
+// update the date on load, or leave fallback of 'today'
+d = new Date();
+document.getElementById("citation-code").innerHTML = document.getElementById("citation-code").innerHTML.replace("TODAY", d.toDateString());
+document.getElementById("citation-text").innerHTML = document.getElementById("citation-text").innerHTML.replace("TODAY", d.toDateString());
+</script>
+
+                </div>
+            </div>
+        </div>
+
+        <h3><i class="far fa-thumbs-up" aria-hidden="true"></i><span class="visually-hidden">congratulations</span> Congratulations on successfully completing this tutorial!</h3>
+
+        
+
+        
+    </section>
+</div>
+
+
+<footer>
+    <div class="container">
+        <p>
+            This material is the result of a collaborative work. Thanks to the
+            <a href="https://wiki.galaxyproject.org/Teach/GTN">Galaxy Training Network</a>
+            and all the <a href="/training-material/hall-of-fame">contributors</a> (Marius van den Beek, Dave Clements, Daniel Blankenberg, Anton Nekrutenko)!
+        </p>
+        <p>
+            Found a typo? Something is wrong in this tutorial? Edit it on
+            <a href="https://github.com/galaxyproject/training-material/tree/master/topics/variant-analysis/tutorials/sars-cov-2/tutorial.md">GitHub</a>.
+        </p>
+        <p>
+    The content of the tutorials and website is licensed under the <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.
+</p>
+    </div>
+</footer>
+
+    </body>
+    <script type="text/javascript" src="/training-material/assets/js/jquery.slim.min.js"></script>
+    <script type="text/javascript" src="/training-material/assets/js/popper.min.js"></script>
+    <script type="text/javascript" src="/training-material/assets/js/bootstrap.min.js?v=3"></script>
+    <script type="text/javascript" src="/training-material/assets/js/details-element-polyfill.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="/training-material/assets/js/bootstrap-toc.min.js"></script>
+    <script type="text/javascript" src="/training-material/assets/js/main.js"></script>
+    <script type="text/javascript" src="/training-material/assets/js/theme.js"></script>
+
+    <script type="text/javascript" src="/training-material/assets/js/clipboard.min.js"></script>
+    <script type="text/javascript">
+    var snippets=document.querySelectorAll('div.highlight');
+    [].forEach.call(snippets,function(snippet){
+        snippet.firstChild.insertAdjacentHTML('beforebegin','<button class="btn btn-light" data-clipboard-snippet><i class="fa fa-copy"></i>&nbsp;Copy</button>');
+    });
+
+    var clipboardSnippets=new ClipboardJS('[data-clipboard-snippet]',{
+        target:function(trigger){return trigger.nextElementSibling;
+    }});
+    </script>
+    
+
+    <script type="text/javascript">
+        if(window.location.hostname === "galaxyproject.github.io") {
+            // Redirect
+            var redirect = "https://training.galaxyproject.org" + window.location.pathname + window.location.search;
+            $('div.container.main-content').prepend("<div class='alert alert-warning'><strong>Note: </strong>This content has a new home at <a href=\"" + redirect + "\">" + redirect + "</a>, which you will be redirected to in 5 seconds.</div>");
+
+            window.setTimeout(function(){
+                window.location.href = redirect;
+            }, 5000)
+
+        }
+    </script>
+</html>

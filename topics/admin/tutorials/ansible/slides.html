@@ -13,17 +13,11 @@
     <meta charset="utf-8">
     <title>Ansible</title>
     
-    <script>
-        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-        })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-        ga('create', 'UA-45719423-18' , 'auto');
-        ga('send', 'pageview');
-    </script>
+        <script async defer data-domain="training.galaxyproject.org" src="https://plausible.galaxyproject.eu/js/plausible.js"></script>
+
     
     <link rel="stylesheet" href="/training-material/assets/css/slides.css">
-    <link rel="stylesheet" href="/training-material/assets/css/font-awesome.css" id="theme">
+    <script src="https://kit.fontawesome.com/67b3f98409.js" crossorigin="anonymous"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="shortcut icon" href="/training-material/favicon.ico" type="image/x-icon" />
 
@@ -83,7 +77,7 @@
   },
   "interactivityType": "mixed",
   "isAccessibleForFree": true,
-  "license": "/blob//LICENSE.md",
+  "license": "https://github.com/galaxyproject/training-material/blob/master/LICENSE.md",
   "producer": {
     "@type": "Organization",
     "email": "galaxytrainingnetwork@gmail.com",
@@ -112,7 +106,7 @@
   "learningResourceType": "slides",
   "name": "Slides for 'Ansible' tutorial",
   "url": "https://training.galaxyproject.org//training-material/topics/admin/tutorials/ansible/slides.html",
-  "description": "The questions this  addresses are:\n - Why Ansible?\n - How and when to use Ansible?\n - How to write a role?\n - How to leverage community build roles?\n\n\\nThe objectives are:\n - Learn Ansible basics\n - Write a simple role\n - Install a role from Ansible Galaxy\n\n",
+  "description": "The questions this  addresses are:\n - Why Ansible?\n - How and when to use Ansible?\n - How to write a role?\n - How to leverage community build roles?\n\n\\nThe objectives are:\n - Learn Ansible basics.\n - Write a simple role.\n - Install a role from Ansible Galaxy.\n\n",
   "hasPart": [
 
   ],
@@ -138,6 +132,7 @@
   ]
 }
     </script>
+    <script type="text/javascript" src="/training-material/assets/js/jquery.slim.min.js"></script>
   </head>
   <body>
     <textarea id="source">
@@ -160,7 +155,19 @@ class: center, middle, inverse
 
 ---
 
+<img src="/training-material/assets/images/GTN.png" alt="Galaxy Training Network" style="height: 8em;"/>
+
 # Ansible
+
+
+<div class="contributors-line">
+
+
+ <a href="/training-material/hall-of-fame/hexylena/" class="contributor-badge"><img src="https://avatars.githubusercontent.com/hexylena" alt="Helena Rasche">Helena Rasche</a>
+
+
+</div>
+
 
 
 
@@ -172,33 +179,79 @@ intend to use these slides for teaching.
 
 Press `P` again to switch presenter notes off
 
+Press `C` to create a new window where the same presentation will be displayed.
+This window is linked to the main window. Changing slides on one will cause the
+slide to change on the other. Useful when presenting.
+
 ---
+
+
+
+
+
+
+### &lt;i class=&quot;far fa-question-circle&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt;&lt;span class=&quot;visually-hidden&quot;&gt;question&lt;/span&gt; Questions
+
+
+- Why Ansible?
+
+- How and when to use Ansible?
+
+- How to write a role?
+
+- How to leverage community build roles?
+
+
+---
+
+
+
+### &lt;i class=&quot;fas fa-bullseye&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt;&lt;span class=&quot;visually-hidden&quot;&gt;objectives&lt;/span&gt; Objectives
+
+
+- Learn Ansible basics.
+
+- Write a simple role.
+
+- Install a role from Ansible Galaxy.
+
+
+---
+
 
 ## Configuration Management
 
-- Manages the configuration of machines
+Manages the configuration of machines.
 
-- Specifies what software is installed, how it is configured
+Specifies what software is installed, how it is configured
 
----
 
-### Why Configuration Management
+???
 
-What happened:
-
-- Precisely what changes were made?
-- Did you write them down?
-- Can you reproduce them precisely for the next machine?
-
-What if:
-
-- ... your server dies?
-- ... your VM is accidentally deleted?
-- Can you recover?
+- Configuration management manages the configuration of machines.
+- It specifies what software should be installed, and how it should be configured
 
 ---
 
-### Why Configuration Management
+### Why Configuration Management?
+
+- Are you keeping track of config changes?
+- What if your server dies?
+- ... or your VM is accidentally deleted?
+- Can you recover? How quickly?
+
+???
+
+- So why do you want configuration management?
+- What do you do when things go wrong?
+- What if your server dies?
+- Did you backup your configuration?
+- Did you back up your webserver configuration?
+- Ansible provides an answer.
+
+---
+
+### Configuration Management goals
 
 - Reproducibility
 
@@ -206,25 +259,44 @@ What if:
 
 - Easily recover from bad situations
 
+???
+
+- The goals of using CM are reproducibility, uniformity, and recovery.
+
 ---
 
 ### Ansible
 
-- Ansible is one of many tools (Chef, Puppet, Salt, etc)
+- [Ansible](https://www.ansible.com/) is an open-source configuration management tool, sponsored by Red Hat
 
-- It uses a 'push' model: SSH into machine and executes commands
+- Several [alternatives](https://en.wikipedia.org/wiki/Comparison_of_open-source_configuration_management_software) are available (Chef, Puppet, Salt, etc)
 
-- Very popular
+- It uses an agentless model: SSH into machine and executes commands
+
+- Very popular, especially among Galaxy admins!
 
 - Many modules for common tasks like copying files or managing users or services.
+
+???
+
+- Ansible is a very popular CM tool, sponsored by RedHat.
+- There are several alternatives, but Galaxy Project uses Ansible.
+- It uses an agent-less model. You SSH into machines and execute commands on them.
+- It has many popular pre-existing roles for common tasks.
 
 ---
 
 ## Important Terms
 
+???
+
+- Some important terms you should know
+
 ---
 
 ### Inventory File
+
+Defines the systems (called &quot;hosts&quot;) against which Ansible will work.
 
 ```ini
 [webservers]
@@ -237,15 +309,21 @@ db_1.example.org ansible_user=root
 
 ???
 
-Defines the systems (called &quot;hosts&quot;) against which Ansible will work.
-
-The headings in square brackets are group names, used to select a set of systems on which Ansible should operate.
-
-It is possible to assign variables to hosts and groups to be used later in playbooks.
+- First is the Inventory File.
+- This file lists all of your hosts.
+- The group name is in square brackets.
+- Group names are used to select a set of systems, on which Ansible should operate.
+- It is possible to assign variables to hosts and groups.
+- Here we override the ansible user variable on two hosts.
+- This variable controls which user is used in login.
 
 ---
 
 ### Ansible Module and Tasks
+
+A **module** is a piece of code that Ansible can execute on a host, collecting return values.
+
+A **task** is an invocation of single module with its configuration.
 
 ```yaml
 ---
@@ -263,11 +341,11 @@ It is possible to assign variables to hosts and groups to be used later in playb
 
 ???
 
-Tasks are module invocations with their configuration.
-
-Here is an example of invoking the `copy` module and the package module. Copy copies a file from `src` on the local host to destination (the remote host) and sets some attributes about the file
-
-Next we see an example of the `package` module, a generic OS package manager. It ensures that for the package named `ntpdate`, its state is `present` (i.e. installed)
+- Here is an example of invoking the copy module and the package module.
+- Copy copies a file from source, on the local host to destination, on the remote host.
+- Then it sets some attributes about the file like the owner and mode.
+- Next we see an example of the package module. This is a generic OS package manager module.
+- It ensures that for the package named ntpdate, its state is present, i.e. installed.
 
 ---
 
@@ -285,10 +363,13 @@ A collection of:
 ]
 
 .pull-right[
+with a predefined directory structure:
 ```
 .
 ├── defaults
 │   └── main.yml
+├── files
+│   └── cvmfs_wipecache.centos_7
 ├── handlers
 │   └── main.yml
 ├── meta
@@ -311,13 +392,18 @@ A collection of:
 
 ???
 
-**Tasks** will be executed which will usually include tasks to **copy** files from the `files` directory and **template** files from the `templates` directory over to the remote server.
-
-**variables** are defined for use in the templates and tasks, and **handlers** are used to automatically restart services when configuration changes.
+- A role is a collection of tasks, files, templates, variables, and handlers.
+- Tasks are things to be executed, like a copy task to add files to a remote machine.
+- Files have static, unchanging files that are used by the tasks.
+- The templates are like files, but they contain variables which will be replaced, when ansible deploys the file.
+- Variables contain definitions of variables for use in templates and tasks.
+- Handlers manage services, restarting them when configuration changes.
 
 ---
 
 ### Playbook
+
+A YAML file listing a set of tasks and/or roles that should be applied to a group of hosts.
 
 .pull-left[
 - We define a playbook which has a name
@@ -341,11 +427,20 @@ A collection of:
 ]
 
 
+???
+
+- This is an example playbook.
+- We give it a name, in this case CVMFS.
+- Then we select some hosts, i.e. all hosts known to our inventory file.
+- We specify some additional variables.
+- And then we invoke two roles.
+
 ---
 
 ### Vault
 
-Allows encryption of files, can collaborate on Ansible playbooks without worrying about accidentally sharing secrets like passwords.
+- Ansible playbooks should be kept under **version control** (typically with Git)
+- Playbooks can be safely shared on public Git repositories (e.g. GitHub) by storing secrets like passwords in encrypted files called **vaults**
 
 ```
 $ANSIBLE_VAULT;1.1;AES256
@@ -356,15 +451,28 @@ $ANSIBLE_VAULT;1.1;AES256
 31636265303430623731643766346434323565663436626466353765393465376533376366356463
 ```
 
+???
+
+- If you have secrets like API keys or passwords, you need to use Vault.
+- Vault encrypts your secrets with a password, so you can include them in your playbooks.
+- This lets you collaborate on playbooks and infrastructure publicly with git.
+
 ---
 
 ## Ansible Philosophies
 
 - Some people write a single playbook that completely manages a machine (installing everything on a brand new machine)
 
-- Other people write playbooks for a single task (e.g. upgrading software)
+- Other people write playbooks for a single task (e.g. upgrading software / installing nginx)
 
 - Which one depends on your use case.
+
+???
+
+- There are multiple ways of designing playbooks, use one that fits your use case.
+- Some prefer a playbook which does everything, so no step can be forgotten.
+- Others prefer playbooks which do individual steps. These can be faster, and you can only run the ones that change.
+
 ---
 
 ## Ansible Galaxy
@@ -374,6 +482,28 @@ $ANSIBLE_VAULT;1.1;AES256
 - Many for common software deployment (nginx, apache, postgresql)
 
 - Different &quot;Galaxy&quot; than the bioinformatics tool server (but Ansible can be used to install that too!)
+
+???
+
+- Ansible has a repository for public roles.
+- There are a huge number of available roles for common tasks.
+- It is called Ansible Galaxy, but it is a different Galaxy.
+
+
+
+
+---
+### &lt;i class=&quot;fas fa-key&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt;&lt;span class=&quot;visually-hidden&quot;&gt;keypoints&lt;/span&gt; Key points
+
+
+- Ansible lets you do system administration at scale
+
+- Many system administration, software installation, and software management tasks are already available as Ansible tasks or roles
+
+
+
+
+
 
 
 ---
@@ -386,7 +516,7 @@ This material is the result of a collaborative work. Thanks to the [Galaxy Train
 <div class="contributors-line">
 
 
-<a href="/training-material/hall-of-fame#erasche" class="contributor-badge"><img src="https://avatars.githubusercontent.com/erasche" alt="Helena Rasche">Helena Rasche</a>
+ <a href="/training-material/hall-of-fame/hexylena/" class="contributor-badge"><img src="https://avatars.githubusercontent.com/hexylena" alt="Helena Rasche">Helena Rasche</a>
 
 
 </div>
@@ -396,12 +526,12 @@ This material is the result of a collaborative work. Thanks to the [Galaxy Train
 <img src="/training-material/assets/images/GTN.png" alt="Galaxy Training Network" style="height: 100px;"/>
 
 
+This material is licensed under the <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.
 
-.footnote[Found a typo? Something is wrong in this tutorial? <br/>Edit it on [GitHub](https://github.com/galaxyproject/training-material/tree/master/topics/admin/tutorials/ansible/slides.html)]
 
     </textarea>
-    <script src="/training-material/assets/js/remark-latest.min.js" type="text/javascript">
-    </script>
+	<script src="/training-material/assets/js/remark-latest.min.js" type="text/javascript"></script>
+    <script type="text/javascript" src="/training-material/assets/js/theme.js"></script>
     <script type="text/javascript" src="/training-material/assets/js/clipboard.min.js"></script>
     <script type="text/javascript">
       var slideshow = remark.create({navigation: {scroll: false,}});
@@ -414,5 +544,19 @@ This material is the result of a collaborative work. Thanks to the [Galaxy Train
         target:function(trigger){return trigger.parentElement;
       }});
     </script>
+
+    <script type="text/javascript">
+        if(window.location.hostname === "galaxyproject.github.io") {
+            // Redirect
+            var redirect = "https://training.galaxyproject.org" + window.location.pathname + window.location.search;
+            $('body').prepend("<div style='text-align: center'><strong>Note: </strong>This content has a new home at <a href=\"" + redirect + "\">" + redirect + "</a>, which you will be redirected to in 5 seconds.</div>");
+
+            window.setTimeout(function(){
+                window.location.href = redirect;
+            }, 5000)
+
+        }
+    </script>
+
   </body>
 </html>

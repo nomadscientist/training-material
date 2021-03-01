@@ -13,17 +13,11 @@
     <meta charset="utf-8">
     <title>Connecting Galaxy to a compute cluster</title>
     
-    <script>
-        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-        })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-        ga('create', 'UA-45719423-18' , 'auto');
-        ga('send', 'pageview');
-    </script>
+        <script async defer data-domain="training.galaxyproject.org" src="https://plausible.galaxyproject.eu/js/plausible.js"></script>
+
     
     <link rel="stylesheet" href="/training-material/assets/css/slides.css">
-    <link rel="stylesheet" href="/training-material/assets/css/font-awesome.css" id="theme">
+    <script src="https://kit.fontawesome.com/67b3f98409.js" crossorigin="anonymous"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="shortcut icon" href="/training-material/favicon.ico" type="image/x-icon" />
 
@@ -83,7 +77,7 @@
   },
   "interactivityType": "mixed",
   "isAccessibleForFree": true,
-  "license": "/blob//LICENSE.md",
+  "license": "https://github.com/galaxyproject/training-material/blob/master/LICENSE.md",
   "producer": {
     "@type": "Organization",
     "email": "galaxytrainingnetwork@gmail.com",
@@ -163,6 +157,7 @@
   ]
 }
     </script>
+    <script type="text/javascript" src="/training-material/assets/js/jquery.slim.min.js"></script>
   </head>
   <body>
     <textarea id="source">
@@ -185,7 +180,19 @@ class: center, middle, inverse
 
 ---
 
+<img src="/training-material/assets/images/GTN.png" alt="Galaxy Training Network" style="height: 8em;"/>
+
 # Connecting Galaxy to a compute cluster
+
+
+<div class="contributors-line">
+
+
+ <a href="/training-material/hall-of-fame/natefoo/" class="contributor-badge"><img src="https://avatars.githubusercontent.com/natefoo" alt="Nate Coraor">Nate Coraor</a> <a href="/training-material/hall-of-fame/bgruening/" class="contributor-badge"><img src="https://avatars.githubusercontent.com/bgruening" alt="Björn Grüning">Björn Grüning</a> <a href="/training-material/hall-of-fame/nsoranzo/" class="contributor-badge"><img src="https://avatars.githubusercontent.com/nsoranzo" alt="Nicola Soranzo">Nicola Soranzo</a> <a href="/training-material/hall-of-fame/hexylena/" class="contributor-badge"><img src="https://avatars.githubusercontent.com/hexylena" alt="Helena Rasche">Helena Rasche</a>
+
+
+</div>
+
 
 
 
@@ -197,13 +204,18 @@ intend to use these slides for teaching.
 
 Press `P` again to switch presenter notes off
 
+Press `C` to create a new window where the same presentation will be displayed.
+This window is linked to the main window. Changing slides on one will cause the
+slide to change on the other. Useful when presenting.
+
 ---
 
 
 
 
 
-### &lt;i class=&quot;fa fa-question-circle&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt;&lt;span class=&quot;visually-hidden&quot;&gt;question&lt;/span&gt; Questions
+
+### &lt;i class=&quot;far fa-question-circle&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt;&lt;span class=&quot;visually-hidden&quot;&gt;question&lt;/span&gt; Questions
 
 
 - How to connect Galaxy to a compute cluster?
@@ -214,7 +226,8 @@ Press `P` again to switch presenter notes off
 ---
 
 
-### &lt;i class=&quot;fa fa-bullseye&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt;&lt;span class=&quot;visually-hidden&quot;&gt;objectives&lt;/span&gt; Objectives
+
+### &lt;i class=&quot;fas fa-bullseye&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt;&lt;span class=&quot;visually-hidden&quot;&gt;objectives&lt;/span&gt; Objectives
 
 
 - Understand all components of the Galaxy job running stack
@@ -231,15 +244,25 @@ Press `P` again to switch presenter notes off
 
 # Galaxy Job Configuration
 
-`config/job_conf.xml`:
+- Configured in `config/job_conf.xml`
 - XML format with macro support
 - Major components:
   - **Plugins**: distributed resource manager (DRM) modules to load
   - **Handlers**: job handler processes managing the lifecycle of jobs
   - **Destinations**: where to send jobs, and what parameters to run those jobs with
   - **Tool** to destination/handler mappings
-  - **Resource** selection mappings: give users job execution options on the tool form (experimental!)
+  - **Resource** selection mappings: give users job execution options on the tool form
   - **Limits**: job runtime limits, e.g. the max number of concurrent jobs
+
+???
+
+- The job_conf file is a very powerul galaxy configuration piece critical to smooth cluster operation.
+- Written in XML it connects your server with the available cluster resources.
+- You can configure it in myriad ways.
+- Study the advanced sample provided with codebase once you get a basic understanding.
+- There are several major components of the job conf file.
+- Plugins, handlers, destinations, tools, resources, and limits.
+- We'll go into detail on each of these in the tutorial.
 
 ---
 
@@ -251,13 +274,19 @@ Even adding one other host helps
 
 Can restart Galaxy without interrupting jobs
 
+???
+
+- Galaxy itself is not resource hungry, but the jobs often are.
+- Offloading the jobs to different machines is a more sustainable and reliable setup.
+- This can prevent user jobs from making Galaxy unresponsive.
+
 ---
 
 # Plugins
 
 Correspond to job runner plugins in [lib/galaxy/jobs/runners](https://github.com/galaxyproject/galaxy/tree/dev/lib/galaxy/jobs/runners)
 
-Plugins for:
+.left[Plugins for:]
 - local
 - Slurm (DRMAA subclass)
 - DRMAA: SGE, PBS Pro, LSF, Torque
@@ -269,86 +298,154 @@ Plugins for:
 - Go-Docker
 - Chronos
 
+???
+
+- Galaxy supports plugins for various job runners covering most of the popular DRMs.
+- The Galaxy community also maintains its own job management system called Pulsar.
+- If the scheduler you use is missing, talk to us!
+
 ---
 
 # Cluster library stack (DRMAA)
 
 ![Cluster library stack](../../images/cluster_lib_stack.png)
 
+???
+
+- The cluster library stack we use in this tutorial will use DRMAA.
+- DRMAA is an interface that many distributed resource managers provide.
+- Galaxy can use DRMAA to interact with these in an agnostic manner.
+- However, there are more underlying technologies that you are going to depend on.
+- You don't need to have an in-depth understanding to run cluster deployment correctly.
+
 ---
 
 # Handlers
 
-Define which Galaxy processes are job handlers:
+Define which Galaxy processes are job handlers
+
 - `id` attribute should match the `--server-name` param value of a process
 - Dedicated handlers can be reserved, e.g. for small, high throughput jobs
 - The list of plugins that are loaded by a job handler can be limited using `&lt;plugin&gt;` subelements (e.g. when the DRMAA plugin needs to be loaded with different library paths)
+- Not defined in `job_conf.xml` when using *job handler mules*
+- Defines how jobs are assigned to individual processes (use `db-skip-locked` !)
+
+???
+
+- Handlers are the Galaxy processes which interact with the cluster.
+- You can define dedicated handlers for different types of jobs, or to interact with different clusters.
+- Additionally, handlers definition in the job configuration controls how jobs are assigned to individual processes.
+- There are many options for the assignment process, all are discussed in the advanced sample job configuration.
+- db-skip-locked is the best choice for most cases, it enables handlers to grab multiple jobs to work on at once.
 
 ---
 
 # Destinations
 
-Define *how* jobs should be run:
-- Which plugin?
+Define *how* jobs should be run
+
+- Which plugin? (Slurm, Condor, Pulsar, etc?)
 - In a Docker container? Which one?
 - **DRM params** (queue, cores, memory, walltime)?
 - Environment (variables e.g. `$PATH`, source an env file, run a command)?
+
+???
+
+- The destination section of the job configuration file is a map that defines which jobs go where.
+- Jobs from any destination, can be processed by any plugin.
+- Every job will find a path through this configuration and eventually get dispatched to the matching runner.
+- These destinations can specify things like environment variables or resource requirements.
 
 ---
 
 # The default job configuration
 
-`config/job_conf.xml.sample_basic`:
+.left[`config/job_conf.xml.sample_basic`:]
 ```xml
 &lt;?xml version=&quot;1.0&quot;?&gt;
 &lt;job_conf&gt;
     &lt;plugins&gt;
         &lt;plugin id=&quot;local&quot; type=&quot;runner&quot; load=&quot;galaxy.jobs.runners.local:LocalJobRunner&quot; workers=&quot;4&quot;/&gt;
     &lt;/plugins&gt;
-    &lt;handlers&gt;
-        &lt;handler id=&quot;main&quot;/&gt;
-    &lt;/handlers&gt;
     &lt;destinations&gt;
         &lt;destination id=&quot;local&quot; runner=&quot;local&quot;/&gt;
     &lt;/destinations&gt;
 &lt;/job_conf&gt;
 ```
+
+???
+
+- This is the default job configuration.
+- It uses a local runner with 4 workers, or processes to process jobs.
+- As a result if you restart Galaxy, jobs will be lost.
+
 ---
 
 # Job Config - Tags
 
-Both destinations and handlers can be grouped by **tags**:
+Both destinations and handlers can be grouped by **tags**
+
 - Allows random selection from multiple resources
 - Allows concurrency limits at the destination group level
+
+???
+
+- Tags can be applied to both destinations and handlers.
+- This permits selecting randomly amongst the handlers or destinations.
+- Tags can help the load distribution.
+
 ---
 
 # Job Environment
 
-`&lt;env&gt;` tag in destinations: configure the job exec environment:
-- `&lt;env id=&quot;NAME&quot;&gt;VALUE&lt;/env&gt;`: Set `$NAME` to `VALUE`
-- `&lt;env file=&quot;/path/to/file&quot; /&gt;`: Source shell file at `/path/to/file`
-- `&lt;env exec=&quot;CMD&quot; /&gt;`: Execute `CMD`
+`&lt;env&gt;` tag in destinations: configure the job exec environment
+
+| tag syntax | function |
+| ---- | ---- |
+| `&lt;env id=&quot;NAME&quot;&gt;VALUE&lt;/env&gt;` | Set `$NAME` to `VALUE` |
+| `&lt;env file=&quot;/path/to/file&quot; /&gt;` | Source shell file at `/path/to/file` |
+| `&lt;env exec=&quot;CMD&quot; /&gt;` | Execute `CMD` |
 
 Source and command execution will be handled on the remote destination, don't need to work on the Galaxy server
+
+???
+
+- You can specify environment variables on the destination.
+- Galaxy will ensure these are executed in the same environment and ahead of the job.
 
 ---
 
 # Limits
 
-Available limits:
+Available limits
+
 - Walltime (if not available with your DRM)
 - Output size (if *any* tool output grows larger than this limit)
 - Concurrency: Number of &quot;active&quot; (queued or running) jobs
+
+???
+
+- Configuration of job limits is best acommplished using both the DRM provided limits and the ones from Galaxy.
+- Walltime is best set in your DRM, while output size is only possible through Galaxy.
+- We recommend you set these at the DRM level which is better equipped to terminate misbehaving jobs.
+- The most important limit however is usually concurrency.
 
 ---
 
 # Concurrency Limits
 
-Available limits:
+Available limits
+
 - Number of active jobs per registered user
 - Number of active jobs per unregistered user
 - Number of active jobs per registered user in a specified destination or destination tag
 - Number of total active jobs in a specified destination or destination tag
+
+???
+
+- Using concurrency limits lets you ensure quality of service for everyone.
+- By limiting jobs per user, you can prevent a single user from overwhelming the server, and ensure everyone can run jobs.
+- Additionally with concurrency limits you can balance your instance between internal and external users.
 
 ---
 
@@ -358,6 +455,10 @@ Most job plugins require a **shared filesystem** between the Galaxy server and c
 
 The exception is **Pulsar**. More on this in *Using heterogeneous compute resources*
 
+???
+
+- Most DRMs require a shared filesystem to ensure datasets are available to the jobs.
+- Galaxy's Pulsar does not, and can be used in situations where no shared filesystem is available.
 
 ---
 
@@ -376,6 +477,13 @@ The first can be worked around with symlinks or Pulsar embedded (later)
 
 The second can be worked around with Pulsar REST/MQ (with a performance/throughput penalty)
 
+???
+
+- For the DRMs which require a shared filesystem there are additional requirements.
+- First, Galaxy and the tool dependencies are at the same location on the head and compute nodes.
+- Job directories must be in a shared location on both head and compute nodes.
+- This is mentioned in more detail in the tutorial.
+
 ---
 
 # Multiprocessing
@@ -389,6 +497,12 @@ Galaxy automatically sets `$GALAXY_SLOTS` to the CPU/core count you specify when
 - Condor: `request_cpus: 4`
 
 Tool configs: Consume `\${GALAXY_SLOTS:-4}`
+
+???
+
+- For multiprocessing to be available both the tool and the Galaxy tool wrapper need to support it.
+- You need to understand what tools are being run and set destinations for them with the appropriate specification.
+- You'll need to check for presence of GALAXY_SLOTS in the tool wrappers and tool macros to see if the tool supports multiple threads.
 
 ---
 
@@ -406,6 +520,12 @@ For Java tools, be sure to set `-Xmx`, e.g.:
 &lt;/destination&gt;
 ```
 
+???
+
+- Memory requirements can be set as well.
+- For some tools, you'll need to additionally provide environment variables to specify memory limits.
+- This is different per DRM.
+
 ---
 
 # Run jobs as the &quot;real&quot; user
@@ -417,6 +537,10 @@ If your Galaxy users == System users:
 
 See: [Cluster documentation](https://wiki.galaxyproject.org/Admin/Config/Performance/Cluster)
 
+???
+
+- If you galaxy users map to the system users you can have Galaxy run the jobs with the account of those users.
+- This allows proper resource accounting, but comes at some additional configuration complexities.
 
 ---
 
@@ -426,27 +550,45 @@ Problem: Tool A uses single core, Tool B uses multiple
 - Both submit to the same cluster
 - Need different submit parameters (`--ntasks=1` vs. `--ntasks=4` in Slurm)
 
+???
+
+- Mapping tools to destinations is the heart of the job configuration.
+- This permits you to define which tools go to which destinations, and what resources they need.
+
 ---
 
 ## Job Config - Mapping Tools to Destinations
 
 Solution:
+
 ```xml
     &lt;destinations default=&quot;single&quot;&gt;
         &lt;destination id=&quot;single&quot; runner=&quot;slurm&quot; /&gt;
         &lt;destination id=&quot;multi&quot; runner=&quot;slurm&quot;&gt;
             &lt;param id=&quot;nativeSpecification&quot;&gt;--ntasks=4&lt;/param&gt;
         &lt;/destination&gt;
+    &lt;/destinations&gt;
     &lt;tools&gt;
         &lt;tool id=&quot;hisat2&quot; destination=&quot;multi&quot;/&gt;
     &lt;/tools&gt;
 ```
+
+???
+
+- Here is an example mapping the hisat2 tool to a definition named multi.
+- The multi destination specifies that 4 cores should be allocated for each job, and uses the slurm plugin.
 
 ---
 
 # The Dynamic Job Runner
 
 For when basic tool-to-destination mapping isn't enough
+
+???
+
+- However this static mapping sometimes isn't sufficient.
+- Here a dynamic mapping can be used instead.
+- Galaxy has several different methods for accomplishing this.
 
 ---
 
@@ -456,17 +598,22 @@ A special built-in job runner plugin
 
 Map jobs to destinations on more than just tool IDs
 
-Two types:
+.left[Two types:]
 - Dynamic Tool Destinations
 - Python function
 
 See: [Dynamic Destination Mapping](https://docs.galaxyproject.org/en/master/admin/jobs.html#dynamic-destination-mapping)
 
+???
+
+- There are two built in ways to do this: dynamic tool destinations, and custom Python functions.
+- We will cover both of these in the tutorial.
+
 ---
 
 ## Dynamic Tool Destinations
 
-Configurable mappings without programming:
+.left[Configurable mappings without programming:]
 - YAML format config file `tool_destinations.yml`
 - Map based on tool ID plus:
   - Input dataset size(s)
@@ -474,11 +621,17 @@ Configurable mappings without programming:
   - User
 - Maps to static destinations defined in job config
 
+???
+
+- The Dynamic Tool Destinations are written as a yaml file.
+- You can easily write rules based on file input sizes or number of inputs or user information.
+- This can be used to determine memory and cpu allocations.
+
 ---
 
 ## Arbitrary Python Functions
 
-Programmable mappings:
+.left[Programmable mappings:]
 - Written as Python function in `lib/galaxy/jobs/rules/`
 - Map based on:
   - Tool ID
@@ -491,139 +644,19 @@ Programmable mappings:
     - ...?
 - Can dynamically modify destinations in job config (i.e. `sbatch` params)
 
----
+???
 
-# Galaxy Dependency Resolver Configuration
-
-[Full documentation](https://docs.galaxyproject.org/en/master/admin/dependency_resolvers.html)
-
----
-
-# Dependency resolvers
-
-Specifies the order in which to attempt to resolve tool dependencies, e.g.:
-```xml
-&lt;dependency_resolvers&gt;
-    &lt;tool_shed_packages /&gt;
-    &lt;galaxy_packages /&gt;
-    &lt;conda /&gt;
-    &lt;galaxy_packages versionless=&quot;true&quot; /&gt;
-    &lt;conda versionless=&quot;true&quot; /&gt;
-    &lt;modules modulecmd=&quot;/opt/Modules/3.2.9/bin/modulecmd&quot; /&gt;
-    &lt;modules modulecmd=&quot;/opt/Modules/3.2.9/bin/modulecmd&quot; versionless=&quot;true&quot; default_indicator=&quot;default&quot; /&gt;
-&lt;/dependency_resolvers&gt;
-```
-
----
-
-# Dependency resolution
-
-Tool XML contains:
-```xml
-&lt;tool id=&quot;foo&quot;&gt;
-    &lt;requirements&gt;
-        &lt;requirement type=&quot;package&quot; version=&quot;4.2&quot;&gt;bar&lt;/requirement&gt;
-    &lt;/requirements&gt;
-&lt;/tool&gt;
-```
-
----
-
-# Dependency resolution
-
-`&lt;tool_shed_packages /&gt;`
-
-Did tool `foo` have a TS dependency providing `bar` 4.2 when installed?
-- Yes: Query install DB for `repo_owner`, `repo_name`, `changeset_id`, then source:
-  - `&lt;tool_dependencies_dir&gt;/bar/4.2/&lt;repo_owner&gt;/&lt;repo_name&gt;/&lt;changeset_id&gt;/env.sh`
-- No: continue
-
----
-
-# Dependency resolution
-
-`&lt;galaxy_packages /&gt;`
-
-Does `&lt;tool_dependency_dir&gt;/bar/4.2/env.sh` exist?:
-- Yes: source it
-- No: Does `&lt;tool_dependency_dir&gt;/bar/4.2/bin/` exist?:
-  - Yes: prepend it to `$PATH`
-  - No: continue
-
-Good for dependencies manually installed by an administrator
-
----
-
-# Dependency resolution
-
-`&lt;conda /&gt;`
-
-Does `bar==4.2` exist in Conda?:
-- Yes: use `conda create` to create a Conda env in `&lt;conda_prefix&gt;/envs/` (if it doesn't exist already), then activate it
-- No: continue
-
-[Conda for tool dependencies FAQ](https://docs.galaxyproject.org/en/master/admin/conda_faq.html)
-
----
-
-# Dependency resolution
-
-`&lt;galaxy_packages versionless=&quot;true&quot; /&gt;`
-
-Does `&lt;tool_dependency_dir&gt;/bar/default/` exist and is it a symlink?:
-- Yes: Does `&lt;tool_dependency_dir&gt;/bar/default/env.sh` exist?:
-  - Yes: source it
-  - No: Does `&lt;tool_dependency_dir&gt;/bar/default/bin/` exist?:
-    - Yes: prepend it to `$PATH`
-    - No: continue
-- No: continue
-
----
-
-# Dependency resolution
-
-`&lt;conda versionless=&quot;true&quot; /&gt;`
-
-Does `bar` (any version) exist in Conda?:
-- Yes: use `conda create` to create env in job working directory
-- No: continue
-
----
-
-# Dependency resolution
-
-`&lt;modules modulecmd=&quot;/opt/Modules/3.2.9/bin/modulecmd&quot; /&gt;`
-
-Is `bar/4.2` a registered module?:
-- Yes: Load module `bar/4.2`
-- No: continue
-
-See: [Environment Modules](http://modules.sourceforge.net/)
-
----
-
-# Dependency resolution
-
-`&lt;modules modulecmd=&quot;/opt/Modules/3.2.9/bin/modulecmd&quot; versionless=&quot;true&quot; default_indicator=&quot;default&quot; /&gt;`
-
-Is `bar/default` a registered module?:
-- Yes: Load module `bar/default`
-- No: continue
-
----
-
-# Dependency resolution
-
-Else: Dependency not resolved
-
-Submit the job anyway, maybe it's on `$PATH`
-
+- If Dynamic Tool Destinations are insufficiently flexible, then custom Python functions can be written.
+- These can use any arbitrary information you want.
+- They have full access to submitter information, job parameters, and any other resource you might want.
+- They can dynamically modify destination parameters during runtime.
+- If you need flexibility, these are what you want.
 
 
 
 
 ---
-### &lt;i class=&quot;fa fa-key&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt;&lt;span class=&quot;visually-hidden&quot;&gt;keypoints&lt;/span&gt; Key points
+### &lt;i class=&quot;fas fa-key&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt;&lt;span class=&quot;visually-hidden&quot;&gt;keypoints&lt;/span&gt; Key points
 
 
 - Galaxy supports a variety of different DRMs.
@@ -648,7 +681,7 @@ This material is the result of a collaborative work. Thanks to the [Galaxy Train
 <div class="contributors-line">
 
 
-<a href="/training-material/hall-of-fame#natefoo" class="contributor-badge"><img src="https://avatars.githubusercontent.com/natefoo" alt="Nate Coraor">Nate Coraor</a>, <a href="/training-material/hall-of-fame#bgruening" class="contributor-badge"><img src="https://avatars.githubusercontent.com/bgruening" alt="Björn Grüning">Björn Grüning</a>, <a href="/training-material/hall-of-fame#nsoranzo" class="contributor-badge"><img src="https://avatars.githubusercontent.com/nsoranzo" alt="Nicola Soranzo">Nicola Soranzo</a>, <a href="/training-material/hall-of-fame#erasche" class="contributor-badge"><img src="https://avatars.githubusercontent.com/erasche" alt="Helena Rasche">Helena Rasche</a>
+ <a href="/training-material/hall-of-fame/natefoo/" class="contributor-badge"><img src="https://avatars.githubusercontent.com/natefoo" alt="Nate Coraor">Nate Coraor</a> <a href="/training-material/hall-of-fame/bgruening/" class="contributor-badge"><img src="https://avatars.githubusercontent.com/bgruening" alt="Björn Grüning">Björn Grüning</a> <a href="/training-material/hall-of-fame/nsoranzo/" class="contributor-badge"><img src="https://avatars.githubusercontent.com/nsoranzo" alt="Nicola Soranzo">Nicola Soranzo</a> <a href="/training-material/hall-of-fame/hexylena/" class="contributor-badge"><img src="https://avatars.githubusercontent.com/hexylena" alt="Helena Rasche">Helena Rasche</a>
 
 
 </div>
@@ -658,10 +691,12 @@ This material is the result of a collaborative work. Thanks to the [Galaxy Train
 <img src="/training-material/assets/images/GTN.png" alt="Galaxy Training Network" style="height: 100px;"/>
 
 
+This material is licensed under the <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.
+
 
     </textarea>
-    <script src="/training-material/assets/js/remark-latest.min.js" type="text/javascript">
-    </script>
+	<script src="/training-material/assets/js/remark-latest.min.js" type="text/javascript"></script>
+    <script type="text/javascript" src="/training-material/assets/js/theme.js"></script>
     <script type="text/javascript" src="/training-material/assets/js/clipboard.min.js"></script>
     <script type="text/javascript">
       var slideshow = remark.create({navigation: {scroll: false,}});
@@ -674,5 +709,19 @@ This material is the result of a collaborative work. Thanks to the [Galaxy Train
         target:function(trigger){return trigger.parentElement;
       }});
     </script>
+
+    <script type="text/javascript">
+        if(window.location.hostname === "galaxyproject.github.io") {
+            // Redirect
+            var redirect = "https://training.galaxyproject.org" + window.location.pathname + window.location.search;
+            $('body').prepend("<div style='text-align: center'><strong>Note: </strong>This content has a new home at <a href=\"" + redirect + "\">" + redirect + "</a>, which you will be redirected to in 5 seconds.</div>");
+
+            window.setTimeout(function(){
+                window.location.href = redirect;
+            }, 5000)
+
+        }
+    </script>
+
   </body>
 </html>

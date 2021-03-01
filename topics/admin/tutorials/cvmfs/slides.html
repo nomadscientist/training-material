@@ -13,17 +13,11 @@
     <meta charset="utf-8">
     <title>Reference Data with CVMFS</title>
     
-    <script>
-        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-        })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-        ga('create', 'UA-45719423-18' , 'auto');
-        ga('send', 'pageview');
-    </script>
+        <script async defer data-domain="training.galaxyproject.org" src="https://plausible.galaxyproject.eu/js/plausible.js"></script>
+
     
     <link rel="stylesheet" href="/training-material/assets/css/slides.css">
-    <link rel="stylesheet" href="/training-material/assets/css/font-awesome.css" id="theme">
+    <script src="https://kit.fontawesome.com/67b3f98409.js" crossorigin="anonymous"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="shortcut icon" href="/training-material/favicon.ico" type="image/x-icon" />
 
@@ -83,7 +77,7 @@
   },
   "interactivityType": "mixed",
   "isAccessibleForFree": true,
-  "license": "/blob//LICENSE.md",
+  "license": "https://github.com/galaxyproject/training-material/blob/master/LICENSE.md",
   "producer": {
     "@type": "Organization",
     "email": "galaxytrainingnetwork@gmail.com",
@@ -154,6 +148,7 @@
   ]
 }
     </script>
+    <script type="text/javascript" src="/training-material/assets/js/jquery.slim.min.js"></script>
   </head>
   <body>
     <textarea id="source">
@@ -176,7 +171,19 @@ class: center, middle, inverse
 
 ---
 
+<img src="/training-material/assets/images/GTN.png" alt="Galaxy Training Network" style="height: 8em;"/>
+
 # Reference Data with CVMFS
+
+
+<div class="contributors-line">
+
+
+ <a href="/training-material/hall-of-fame/blankenberg/" class="contributor-badge"><img src="https://avatars.githubusercontent.com/blankenberg" alt="Daniel Blankenberg">Daniel Blankenberg</a> <a href="/training-material/hall-of-fame/slugger70/" class="contributor-badge"><img src="https://avatars.githubusercontent.com/slugger70" alt="Simon Gladman">Simon Gladman</a> <a href="/training-material/hall-of-fame/hexylena/" class="contributor-badge"><img src="https://avatars.githubusercontent.com/hexylena" alt="Helena Rasche">Helena Rasche</a>
+
+
+</div>
+
 
 
 
@@ -188,11 +195,44 @@ intend to use these slides for teaching.
 
 Press `P` again to switch presenter notes off
 
+Press `C` to create a new window where the same presentation will be displayed.
+This window is linked to the main window. Changing slides on one will cause the
+slide to change on the other. Useful when presenting.
+
 ---
+
+
+
+
+
+
+
+
+### &lt;i class=&quot;fas fa-bullseye&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt;&lt;span class=&quot;visually-hidden&quot;&gt;objectives&lt;/span&gt; Objectives
+
+
+- Have an understanding of what CVMFS is and how it works
+
+- Install and configure the CVMFS client on a linux machine and mount the Galaxy reference data repository
+
+- Configure your Galaxy to use these reference genomes and indices
+
+- Use an ansible playbook for all of the above.
+
+
+---
+
 
 # Built in Data
 
 ![List_of_data.png](../../images/i06-List_of_data.png)
+
+???
+
+- Many tools need reference data
+- E.g. this BWA-MEM tool requires a reference genome
+- But where do you get this data?
+- And how do tools know where to find it?
 
 ---
 
@@ -205,44 +245,73 @@ Press `P` again to switch presenter notes off
 * Better to pre-build the indices.
 ]
 
+???
+
+- Much of this reference data requires calculation to generate it
+- For example, building dataset indexes
+- It is better to build them beforehand, so Galaxy has a concept of reference data
+
 ---
 
 # Data schematics in Galaxy
 
 ![schematic](../../images/data_managers_schematic_overview.png)
 
+???
+
+- Here is a more conrete example
+- A reference dataset is required as input
+- A tool (e.g. bwa) is used to build the index
+- The outputs are registered with Galaxy's data registry in a loc file
+- The tool data table xml file has a listing of all of the loc files
+- When a user runs the BWA tool, Galaxy knows where to find this reference data
+
 ---
 
-# Using reference data in a tool
+# Index Generation with Data Manager
 
-#### bwa.xml
+- Allows for the **creation of built-in** (reference) data
+	- underlying data
+	- data tables
+	- \*.loc files
+- Specialized Galaxy tools that can only be accessed by an admin
+- Defined **locally** or installed from **ToolShed**
 
-```xml
-&lt;conditional name=&quot;reference_source&quot;&gt;
-      &lt;param name=&quot;reference_source_selector&quot; type=&quot;select&quot; label=&quot;Will you select a reference genome from your history or use a built-in index?&quot; help=&quot;Built-ins were indexed using default options. See 'Indexes' section of help below&quot;&gt;
-        &lt;option value=&quot;cached&quot;&gt;Use a built-in genome index&lt;/option&gt;
-        &lt;option value=&quot;history&quot;&gt;Use a genome from history and build index&lt;/option&gt;
-      &lt;/param&gt;
-      &lt;when value=&quot;cached&quot;&gt;
-        &lt;param name=&quot;ref_file&quot; type=&quot;select&quot; label=&quot;Using reference genome&quot; help=&quot;Select genome from the list&quot;&gt;
-          &lt;options from_data_table=&quot;bwa_mem_indexes&quot;&gt;
-            &lt;filter type=&quot;sort_by&quot; column=&quot;2&quot; /&gt;
-            &lt;validator type=&quot;no_options&quot; message=&quot;No indexes are available&quot; /&gt;
-          &lt;/options&gt;
-          &lt;validator type=&quot;no_options&quot; message=&quot;A built-in reference genome is not available for the build associated with the selected input file&quot;/&gt;
-        &lt;/param&gt;
-      &lt;/when&gt;
-      &lt;when value=&quot;history&quot;&gt;
+???
 
+- Data managers are special tools in Galaxy
+- They create the reference data
+- And update the loc files
+
+---
+
+# &quot;loc&quot; files - Short for location!
+
+```text
+#
+#&lt;unique_build_id&gt;   &lt;dbkey&gt;   &lt;display_name&gt;   &lt;file_path&gt;
+#
+bosTau7 bosTau7 Cow (bosTau7)   /genomes/bosTau7/bwa_mem_index/bosTau7/bosTau7.fa
+ce10    ce10    C. elegans (ce10)       /genomes/ce10/bwa_mem_index/ce10/ce10.fa
+danRer7 danRer7 Zebrafish (danRer7)     /genomes/danRer7/bwa_mem_index/danRer7/danRer7.fa
+dm3     dm3     D. melanogaster Apr. 2006 (BDGP R5/dm3) (dm3)   /genomes/dm3/bwa_mem_index/dm3/dm3.fa
+hg19    hg19    Human (hg19)    /genomes/hg19/bwa_mem_index/hg19/hg19.fa
+hg38    hg38    Human (hg38)    /genomes/hg38/bwa_mem_index/hg38/hg38.fa
+mm10    mm10    Mouse (mm10)    /genomes/mm10/bwa_mem_index/mm10/mm10.fa
 ```
+
+???
+
+- Here is an example loc file
+- They list all of the indexes of a specific type
+- Some of these indexes will be tool specific like this one, and some will be more general like a list of genomes
+- This file is updated by the data manager.
 
 ---
 
 # Where are the data tables?
 
-#### tool_data_table_conf.xml
-
-(Usually located in `galaxy/config/`)
+(Usually located in `galaxy/config/tool_data_table_conf.xml`)
 
 ```xml
   &lt;tables&gt;
@@ -254,46 +323,56 @@ Press `P` again to switch presenter notes off
   &lt;/tables&gt;
 ```
 
+???
+
+- The tool data table conf file lists table names, and their associated loc file
+- Additionally it defines the meaning of each column in the loc file
+
 ---
 
-# &quot;loc&quot; files - Short for location!
+# Using reference data in a tool
 
-bwa_index.loc
+#### bwa.xml
 
-```text
-...
-#
-#&lt;unique_build_id&gt;   &lt;dbkey&gt;   &lt;display_name&gt;   &lt;file_path&gt;
-#
-...
+```xml
+&lt;param name=&quot;ref_file&quot; type=&quot;select&quot; label=&quot;Using reference genome&quot; help=&quot;Select genome from the list&quot;&gt;
+  &lt;options from_data_table=&quot;bwa_mem_indexes&quot;&gt;
+    &lt;filter type=&quot;sort_by&quot; column=&quot;2&quot; /&gt;
+    &lt;validator type=&quot;no_options&quot; message=&quot;No indexes are available&quot; /&gt;
+  &lt;/options&gt;
+  &lt;validator type=&quot;no_options&quot; message=&quot;A built-in reference genome is not available for the build associated with the selected input file&quot;/&gt;
+&lt;/param&gt;
 
-bosTau7 bosTau7 Cow (bosTau7)   /mnt/galaxyIndices/genomes/bosTau7/bwa_mem_index/bosTau7/bosTau7.fa
-ce10    ce10    C. elegans (ce10)       /mnt/galaxyIndices/genomes/ce10/bwa_mem_index/ce10/ce10.fa
-danRer7 danRer7 Zebrafish (danRer7)     /mnt/galaxyIndices/genomes/danRer7/bwa_mem_index/danRer7/danRer7.fa
-dm3     dm3     D. melanogaster Apr. 2006 (BDGP R5/dm3) (dm3)   /mnt/galaxyIndices/genomes/dm3/bwa_mem_index/dm3/dm3.fa
-hg19    hg19    Human (hg19)    /mnt/galaxyIndices/genomes/hg19/bwa_mem_index/hg19/hg19.fa
-hg38    hg38    Human (hg38)    /mnt/galaxyIndices/genomes/hg38/bwa_mem_index/hg38/hg38.fa
-mm10    mm10    Mouse (mm10)    /mnt/galaxyIndices/genomes/mm10/bwa_mem_index/mm10/mm10.fa
-...
 ```
+
+???
+
+- When a tool wants to use the data from those tables, it needs to declare which tables it wants to access (see previous slide)
+- A select type parameter is created for the user's selections
+- The tool knows that the options should come from a BWA-MEM indexes loc file
+- These reference datasets are sorted by column 2, the name
+- An some validators ensure a helpful message is shown if no data is available
 
 ---
 
 # Some Problems!
 
-.large[
-* Time consuming!
-  * ~30 minutes work just to add a new genome to 1 tool!
+- Super complex, right?
+- Time consuming!
+  - ~30 minutes work just to add a new genome to 1 tool!
+- Administrator needs to know:
+  - how to index **every** tool
+  - expected format of the reference data
+  - format of the .loc file
+- Some parts solved by Data Managers
+- **But there's an easier way!**
 
-* Administrator needs to know:
-  * how to index **every** tool
-  * expected format of the reference data
-  * format of the .loc file
+???
 
-* Some parts solved by Data Managers
-
-* But there's an easier way!
-]
+- This was a lot of information
+- And very genomics specific in some places
+- A lot of work to create and update the reference data
+- But there is a better way!
 
 ---
 
@@ -304,20 +383,64 @@ mm10    mm10    Mouse (mm10)    /mnt/galaxyIndices/genomes/mm10/bwa_mem_index/mm
 ]
 ![ref_data_prob_flow.png](../../images/ref_data_prob_flow.png)
 
+???
+
+- Imagine going through this process every time a user request comes in
+- It would be unpleasant
+
 ---
 
-# CernVM-fs to the rescue
+# CernVM-FS to the rescue
 
-.largeish[
-* Needed a method of sharing reference data across country efficiently
-* **CVM-FS** is an efficient method for read only data sharing between systems
-    * Originally designed for distributed software installation at Cern
-    * Turns out it's really useful for read only data sets as well
-* All nodes of Galaxy Main get their reference genomes and indices from CVM-FS
-    * Shared via mirroring and caching across the country
-* It's also really useful to share data **globally**
-    * The **usegalaxy.*** initiative has taken full advantage of this.
+- Needed a method of sharing reference data across country efficiently
+- **CVMFS** is an efficient method for read only data sharing between systems
+    - Originally designed for distributed software installation at Cern
+    - Turns out it's really useful for read only data sets as well
+    - HTTP-based, firewall friendly
+- All nodes of Galaxy Main get their reference genomes and indices from CVMFS
+    - Shared via mirroring and caching across the country
+- It's also really useful to share data **globally**
+    - The **usegalaxy.\*** initiative has taken full advantage of this.
+
+???
+
+- CVMFS and the IDC solves these issues
+- CVMFS provides a global repository of reference data
+- Originally built by CERN for sharing software, we use it for data
+- It's an HTTP based protocol and very firewall friendly
+- All of the usegalaxy.* servers host a CVMFS repository
+
+---
+
+# IDC
+
+- Group of admins working on the CVMFS data repository
+- Wish to automate the management of data and generation of new indicies
+- Come join us: [github.com/galaxyproject/idc](https://github.com/galaxyproject/idc)
+
+???
+
+- The IDC is the other half of the puzzle
+- CVMFS provides the storage, and the IDC provides the data
+- Join us on github if you are interested
+
+---
+
+# CVMFS Global Structure
+
+.widen_image[
+![cvmfs_global_structure.png](../../images/cvmfs_global_structure.png)
 ]
+
+???
+
+- CVMFS has a hierarchical structure
+- At the top is the stratum 0 server, the original copy of the datasets
+- This is replicated to the read-only stratum 1 servers
+- Anyone can connect to these stratum 1 servers
+- And whenever connections fail, CVMFS will fail over to another mirror
+- The mirror selection process is based on connection round trip times
+- As a result, the nearest mirror is usually selected.
 
 ---
 
@@ -325,13 +448,18 @@ mm10    mm10    Mouse (mm10)    /mnt/galaxyIndices/genomes/mm10/bwa_mem_index/mm
 ![cvmfs_server_distribution.png](../../images/cvmfs_server_distribution.png)
 ]
 
----
+???
 
-# CVM-FS Global Structure
+- There are CVMFS servers across the entire world
+- The primary mirrors are run by Galaxy project, Galaxy Europe, and Galaxy Australia
+- If one of these mirrors fails, you will still be able to use the reference data
 
-.widen_image[
-![cvmfs_global_structure.png](../../images/cvmfs_global_structure.png)
-]
+
+
+
+
+
+
 
 
 ---
@@ -344,7 +472,7 @@ This material is the result of a collaborative work. Thanks to the [Galaxy Train
 <div class="contributors-line">
 
 
-<a href="/training-material/hall-of-fame#blankenberg" class="contributor-badge"><img src="https://avatars.githubusercontent.com/blankenberg" alt="Daniel Blankenberg">Daniel Blankenberg</a>, <a href="/training-material/hall-of-fame#slugger70" class="contributor-badge"><img src="https://avatars.githubusercontent.com/slugger70" alt="Simon Gladman">Simon Gladman</a>, <a href="/training-material/hall-of-fame#erasche" class="contributor-badge"><img src="https://avatars.githubusercontent.com/erasche" alt="Helena Rasche">Helena Rasche</a>
+ <a href="/training-material/hall-of-fame/blankenberg/" class="contributor-badge"><img src="https://avatars.githubusercontent.com/blankenberg" alt="Daniel Blankenberg">Daniel Blankenberg</a> <a href="/training-material/hall-of-fame/slugger70/" class="contributor-badge"><img src="https://avatars.githubusercontent.com/slugger70" alt="Simon Gladman">Simon Gladman</a> <a href="/training-material/hall-of-fame/hexylena/" class="contributor-badge"><img src="https://avatars.githubusercontent.com/hexylena" alt="Helena Rasche">Helena Rasche</a>
 
 
 </div>
@@ -354,12 +482,12 @@ This material is the result of a collaborative work. Thanks to the [Galaxy Train
 <img src="/training-material/assets/images/GTN.png" alt="Galaxy Training Network" style="height: 100px;"/>
 
 
+This material is licensed under the <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.
 
-.footnote[Found a typo? Something is wrong in this tutorial? <br/>Edit it on [GitHub](https://github.com/galaxyproject/training-material/tree/master/topics/admin/tutorials/cvmfs/slides.html)]
 
     </textarea>
-    <script src="/training-material/assets/js/remark-latest.min.js" type="text/javascript">
-    </script>
+	<script src="/training-material/assets/js/remark-latest.min.js" type="text/javascript"></script>
+    <script type="text/javascript" src="/training-material/assets/js/theme.js"></script>
     <script type="text/javascript" src="/training-material/assets/js/clipboard.min.js"></script>
     <script type="text/javascript">
       var slideshow = remark.create({navigation: {scroll: false,}});
@@ -372,5 +500,19 @@ This material is the result of a collaborative work. Thanks to the [Galaxy Train
         target:function(trigger){return trigger.parentElement;
       }});
     </script>
+
+    <script type="text/javascript">
+        if(window.location.hostname === "galaxyproject.github.io") {
+            // Redirect
+            var redirect = "https://training.galaxyproject.org" + window.location.pathname + window.location.search;
+            $('body').prepend("<div style='text-align: center'><strong>Note: </strong>This content has a new home at <a href=\"" + redirect + "\">" + redirect + "</a>, which you will be redirected to in 5 seconds.</div>");
+
+            window.setTimeout(function(){
+                window.location.href = redirect;
+            }, 5000)
+
+        }
+    </script>
+
   </body>
 </html>
