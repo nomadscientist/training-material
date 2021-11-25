@@ -9,6 +9,8 @@
 
 
 
+
+
   <head>
     <meta charset="utf-8">
     <title>Unicycler assembly of SARS-CoV-2 genome with preprocessing to remove human genome reads</title>
@@ -68,16 +70,13 @@
     "name": "Galaxy Training Network",
     "url": "https://galaxyproject.org/teach/gtn/"
   },
+  "dateModified": "1970-01-01 00:33:41 +0000",
   "discussionUrl": "https://gitter.im/Galaxy-Training-Network/Lobby",
   "headline": "Unicycler assembly of SARS-CoV-2 genome with preprocessing to remove human genome reads",
-  "inLanguage": {
-    "@type": "Language",
-    "name": "English",
-    "alternateName": "en"
-  },
   "interactivityType": "mixed",
   "isAccessibleForFree": true,
-  "license": "https://github.com/galaxyproject/training-material/blob/master/LICENSE.md",
+  "isFamilyFriendly": true,
+  "license": "https://spdx.org/licenses/CC-BY-4.0.html",
   "producer": {
     "@type": "Organization",
     "email": "galaxytrainingnetwork@gmail.com",
@@ -109,6 +108,11 @@
   "timeRequired": "PT4H",
   "keywords": "covid19",
   "description": "The questions this  addresses are:\n - How can a genome of interest be assembled against a background of contaminating reads from other genomes?\n - How can sequencing data used to obtain an assembled genome?\n\n\\nThe objectives are:\n - Know basic characteristics of SARS-CoV-2\n - Understand Nanopore and Illumina technologies\n - Detect and remove human reads from SARS-CoV-2 sequencing reads\n - Know main _de novo_ genome assembly algorithms\n - Perform a hybrid _de novo_ genome assembly \n\n",
+  "inLanguage": {
+    "@type": "Language",
+    "name": "English",
+    "alternateName": "en"
+  },
   "coursePrerequisites": [
     {
       "@type": "CreativeWork",
@@ -142,6 +146,20 @@
       "name": "Quality Control",
       "description": "Hands-on for 'Quality Control' tutorial",
       "learningResourceType": "hands-on tutorial",
+      "interactivityType": "expositive",
+      "provider": {
+        "@type": "Organization",
+        "email": "galaxytrainingnetwork@gmail.com",
+        "name": "Galaxy Training Network",
+        "url": "https://galaxyproject.org/teach/gtn/"
+      }
+    },
+    {
+      "@type": "Course",
+      "url": "https://training.galaxyproject.org//training-material/topics/sequence-analysis/tutorials/quality-control/slides.html",
+      "name": "Quality Control",
+      "description": "Slides for 'Quality Control' tutorial",
+      "learningResourceType": "slides",
       "interactivityType": "expositive",
       "provider": {
         "@type": "Organization",
@@ -187,7 +205,7 @@ class: center, middle, inverse
 <div class="my-header"><span>
 <a href="/training-material/topics/assembly" title="Return to topic page" ><i class="fa fa-level-up" aria-hidden="true"></i></a>
 
-<a class="nav-link" href="https://github.com/galaxyproject/training-material/edit/master/topics/assembly/tutorials/assembly-with-preprocessing/slides.html"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+<a class="nav-link" href="https://github.com/galaxyproject/training-material/edit/main/topics/assembly/tutorials/assembly-with-preprocessing/slides.html"><i class="fa fa-pencil" aria-hidden="true"></i></a>
 
 </span></div>
 
@@ -199,19 +217,38 @@ class: center, middle, inverse
 
 ---
 
-<img src="/training-material/assets/images/GTN.png" alt="Galaxy Training Network" style="height: 8em;"/>
+
+<img src="/training-material/assets/images/GTN.png" alt="Galaxy Training Network" class="cover-logo"/>
+
 
 # Unicycler assembly of SARS-CoV-2 genome with preprocessing to remove human genome reads
 
 
 <div class="contributors-line">
 
+<a href="/training-material/hall-of-fame/gallardoalba/" class="contributor-badge contributor-gallardoalba"><img src="https://avatars.githubusercontent.com/gallardoalba?s=27" alt="Avatar">Cristóbal Gallardo</a>
 
- <a href="/training-material/hall-of-fame/gallardoalba/" class="contributor-badge"><img src="https://avatars.githubusercontent.com/gallardoalba" alt="Cristóbal Gallardo">Cristóbal Gallardo</a>
+
+<a href="https://training.galaxyproject.org/training-material/topics/contributing/" class="contributor-badge contributor-newcontributors"><i class="fas fa-users" aria-hidden="true"></i><span class="visually-hidden">hall-of-fame</span>Add Contributions!</a>
 
 
 </div>
 
+
+<div class="footnote" style="bottom: 3em;"><i class="far fa-calendar" aria-hidden="true"></i><span class="visually-hidden">last_modification</span> Updated: Jul 26, 2021</div>
+<div class="footnote" style="bottom: 2em;"><i class="fas fa-file-alt" aria-hidden="true"></i><span class="visually-hidden">text-document</span><a href="slides-plain.html"> Or view the plain-text slides without JS</a></div>
+<div class="footnote" style="bottom: 1em;"><strong>Tip: </strong>press <kbd>P</kbd> to view the presenter notes</div>
+
+???
+Presenter notes contain extra information which might be useful if you intend to use these slides for teaching.
+
+Press `P` again to switch presenter notes off
+
+Press `C` to create a new window where the same presentation will be displayed.
+This window is linked to the main window. Changing slides on one will cause the
+slide to change on the other.
+
+Useful when presenting.
 
 
 
@@ -245,19 +282,8 @@ Before diving into this slide deck, we recommend you to have a look at:
 
 
 
-.footnote[Tip: press `P` to view the presenter notes]
-
-???
-Presenter notes contain extra information which might be useful if you
-intend to use these slides for teaching.
-
-Press `P` again to switch presenter notes off
-
-Press `C` to create a new window where the same presentation will be displayed.
-This window is linked to the main window. Changing slides on one will cause the
-slide to change on the other. Useful when presenting.
-
 ---
+
 
 
 
@@ -313,7 +339,7 @@ The severe acute respiratory syndrome coronavirus, known as SARS-CoV-2, is a bet
 
 # **SARS-CoV-2 genome structure**
 
-![](../../images/SARS-CoV-2_Genome.png)
+![Structure of the SARS CoV 2 genome, a 5' utr, a polyprotein pp1ab/pp1b, and several structural and accessory proteins before the 3' utr. The pp1ab polyprotein is shown exapnded into a series of non-structural proteins labelled nsp1 to nsp16.](../../images/SARS-CoV-2_Genome.png)
 
 - NSP1-NSP16 encodes the replicase-transcriptase complex
 - It includes four structural proteins: Spike (S), Envelope (E), Membrane (M) and Nucleocapsid (N).
@@ -322,7 +348,7 @@ The severe acute respiratory syndrome coronavirus, known as SARS-CoV-2, is a bet
 
 # **SARS-CoV-2 structure**
 
-![](../../images/structure_SARS-CoV_2.png)
+![A graphic of the virus as a sphere with spikes (S1 and S2) coming out from the membrane, envelope proteins embedded within the membrane, and then a nucelocapsid inside. The 3d protein structures are shown in two styles of the spike proteins with the receptor binding domain highlighted. ](../../images/structure_SARS-CoV_2.png)
 
 ---
 
@@ -338,7 +364,7 @@ Hybrid assembly consists in using a combination of long and short reads to produ
 Long reads are used to resolve ambiguities that exist in genomes previously assembled using the short reads. In addition, low rate-error short reads are used to correct errors that exist in the error-prone long reads.
 ]
 
-![](../../images/hybrid_assembly.png)
+![Cartoon of hybrid assembly. Step 1 shows short reads from Illumina and long reads from Nanopore. In step 2 these are assembled separately and there are ambiguities in sequence assembly. In step 3, hybrid assembly shows the assembly done with both sets of data and it helps resolve ambiguities with higher coverage.](../../images/hybrid_assembly.png)
 
 
 ---
@@ -357,7 +383,7 @@ Long reads are used to resolve ambiguities that exist in genomes previously asse
 - Short size: 200 bp
 - Low error rate (~1%)
 
-![](../../images/illumina_sequencing.png)
+![A picture of an illumina sequencer. It is a large white and grey box with a computer screen](../../images/illumina_sequencing.png)
 
 ]
 
@@ -369,7 +395,7 @@ Long reads are used to resolve ambiguities that exist in genomes previously asse
 - Long size:  &gt;40,000 bp
 - High error rate (~10%)
 
-![](../../images/nanopore_sequencing.png)
+![A picture of someone holding a nanopore device, approximately the size of an oversize usb stick with a chip visible.](../../images/nanopore_sequencing.png)
 
 ]
 
@@ -383,7 +409,7 @@ Long reads are used to resolve ambiguities that exist in genomes previously asse
 
 ]
 
-![](../../images/illumina_sequencing_cluster.png)
+![Cartoon of illumina sequence, DNA is fragmented and adapters added. This binds to nanowells with oligonucleotides. Then the DNA bends and attaches to another binder. A primer attaches to the adapter and polymerase adds flourescently tagged dNTPs. Imaging happens while these are added. Then it is split, the DNA strand is denaturalised and now it there are two strands, bound to different adapters in the well. This process is repeated many times.](../../images/illumina_sequencing_cluster.png)
 
 
 ---
@@ -395,7 +421,7 @@ Long reads are used to resolve ambiguities that exist in genomes previously asse
 
 ]
 
-![](../../images/nanopore_sequencing_process.png)
+![Single nucleic acid molecules pass through a nanopore and changes in electrical field are measured. The magnitude of the current density depends on which nucleotide occupies the nanopore. This produces a graph which is then rad into individual bases.](../../images/nanopore_sequencing_process.png)
 
 ---
 
@@ -408,7 +434,7 @@ Long reads are used to resolve ambiguities that exist in genomes previously asse
 
 Quality control, read trimming and filtering are essential preprocessing steps required to garantee accurate results from RNA-seq datasets. Due to their very different nature, Illumina and Nanopore reads should be processed by using different tools.
 
-![](../../images/rna-seq_processing.png)
+![Schematic of a workflow, RNA-seq dataset is input which consists of illumina and nanopore reads. Those go through quality assessment with fastp and nanoplot, trimming, and filtering, before producing processed reads.](../../images/rna-seq_processing.png)
 
 .reduce70[
 
@@ -437,7 +463,7 @@ Since the SARS-CoV-2 samples were obtained from human tissues, it is necessary t
 
 ]
 
-.image-75[![](../../images/mapping_human_genome.png)]
+.image-75[![A set of reads and a human genome are put together, mapping done with bowtie2 or minimap2 to identify reads which map to the human genome. (Then these are removed.)](../../images/mapping_human_genome.png)]
 
 .reduce70[
 
@@ -460,7 +486,7 @@ As with quality control, differential characteristics of Illumina and Nanopore r
 
 Now everything is ready to perform genome assembly!
 
-![](../../images/jigsaw_genome.png)
+![A picture of a jigsaw puzzle with a DNA image, and several missing pieces scattered around.](../../images/jigsaw_genome.png)
 
 Genome assembly is a complex computational process whose objetive is to reconstruct a genome from the reads obtained by sequencing technologies.
 
@@ -507,7 +533,7 @@ It finds overlaps between reads, then builds a consensus sequence from the align
 
 ]
 
-.image-75[![](../../images/greedy_algoritm.png)]
+.image-75[![Rainbow coloured reads are aligned locally to make small high quality overlaps. These are then built up into a larger consensus with the entire rainbow.](../../images/greedy_algoritm.png)]
 
 ]
 
@@ -526,7 +552,7 @@ Basically it represent reads as a set of nodes, and overlaps between these reads
 - Perform well on large read sets, specially when they contain repeat regions.
 ]
 
-.image-75[![](../../images/graph_example.png)]
+.image-75[![A graph with many nodes connected by lines in a large tangle.](../../images/graph_example.png)]
 
 ]
 
@@ -546,7 +572,7 @@ During the assembly process reads are broken into smaller fragments of a specifi
 
 ]
 
-.image-75[![](../../images/olc_pic.png)]
+.image-75[![Reads are provided to the algorithm, they are in the colours of the rainbow. Next overlaps are identified and the rainbow resolves itself. A subset of that is highlighted and points to reads connected by overlaps with many arrows going between the bluegreen fragments that are highlighted. This goes to the hamiltonian path identified with a re-run arrow between, indicating some mount of backtracking needed to find the best path. Finally the hamiltonian produces a consensus sequence with the correct final ordering.](../../images/olc_pic.png)]
 
 
 ---
@@ -569,7 +595,7 @@ The [de Brujin graph assembly tutorial](https://training.galaxyproject.org/train
 
 ]
 
-.image-50[![](../../images/unicycler_logo.png)]
+.image-50[![unicycler logo](../../images/unicycler_logo.png)]
 
 Unicycler is a software tool designed specifically for hybrid assembly of small genomes.
 
@@ -586,7 +612,7 @@ Unicycler is a software tool designed specifically for hybrid assembly of small 
 
 It employs a multi-step process that utilizes a set of software tools.
 
-![](../../images/unicycler_pipeline.png)
+![schematic of the unicycler pipeline, illumina short reads are assembled with spades into an assembly graph in one branch. Another branch brings nanopore reads through miniasm and racon to assemble and polish into long read contigs. Bridge application and contig merging combin the assembly graph and long reads, and this is sent to bowtie2 and pilon for polishing, producing the final assembly.](../../images/unicycler_pipeline.png)
 
 
 
@@ -611,15 +637,14 @@ It employs a multi-step process that utilizes a set of software tools.
 
 ---
 
-## Thank you!
+## Thank You!
 
-This material is the result of a collaborative work. Thanks to the [Galaxy Training Network](https://wiki.galaxyproject.org/Teach/GTN) and all the contributors!
+This material is the result of a collaborative work. Thanks to the [Galaxy Training Network](https://training.galaxyproject.org) and all the contributors!
 
 
 <div class="contributors-line">
 
-
- <a href="/training-material/hall-of-fame/gallardoalba/" class="contributor-badge"><img src="https://avatars.githubusercontent.com/gallardoalba" alt="Cristóbal Gallardo">Cristóbal Gallardo</a>
+<a href="/training-material/hall-of-fame/gallardoalba/" class="contributor-badge contributor-gallardoalba"><img src="https://avatars.githubusercontent.com/gallardoalba?s=27" alt="Avatar">Cristóbal Gallardo</a>
 
 
 </div>
@@ -629,7 +654,8 @@ This material is the result of a collaborative work. Thanks to the [Galaxy Train
 <img src="/training-material/assets/images/GTN.png" alt="Galaxy Training Network" style="height: 100px;"/>
 
 
-This material is licensed under the <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.
+<a rel="license" href="https://creativecommons.org/licenses/by/4.0/">
+This material is licensed under the Creative Commons Attribution 4.0 International License</a>.
 
 
     </textarea>
@@ -637,7 +663,7 @@ This material is licensed under the <a rel="license" href="https://creativecommo
     <script type="text/javascript" src="/training-material/assets/js/theme.js"></script>
     <script type="text/javascript" src="/training-material/assets/js/clipboard.min.js"></script>
     <script type="text/javascript">
-      var slideshow = remark.create({navigation: {scroll: false,}});
+      var slideshow = remark.create({navigation: {scroll: false}, ratio: '16:9'});
       var hljs = remark.highlighter.engine;
       var snippets = document.querySelectorAll('code.remark-code');
         [].forEach.call(snippets,function(snippet){

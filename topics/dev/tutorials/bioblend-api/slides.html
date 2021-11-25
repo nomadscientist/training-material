@@ -9,6 +9,8 @@
 
 
 
+
+
   <head>
     <meta charset="utf-8">
     <title>Scripting Galaxy using the API and BioBlend</title>
@@ -68,16 +70,13 @@
     "name": "Galaxy Training Network",
     "url": "https://galaxyproject.org/teach/gtn/"
   },
+  "dateModified": "1970-01-01 00:33:41 +0000",
   "discussionUrl": "https://gitter.im/Galaxy-Training-Network/Lobby",
   "headline": "Scripting Galaxy using the API and BioBlend",
-  "inLanguage": {
-    "@type": "Language",
-    "name": "English",
-    "alternateName": "en"
-  },
   "interactivityType": "mixed",
   "isAccessibleForFree": true,
-  "license": "https://github.com/galaxyproject/training-material/blob/master/LICENSE.md",
+  "isFamilyFriendly": true,
+  "license": "https://spdx.org/licenses/CC-BY-4.0.html",
   "producer": {
     "@type": "Organization",
     "email": "galaxytrainingnetwork@gmail.com",
@@ -108,6 +107,11 @@
   "url": "https://training.galaxyproject.org//training-material/topics/dev/tutorials/bioblend-api/slides.html",
   "timeRequired": "PT2H",
   "description": "The questions this  addresses are:\n - What is a REST API?\n - How to interact with Galaxy programmatically?\n - Why and when should I use BioBlend?\n\n",
+  "inLanguage": {
+    "@type": "Language",
+    "name": "English",
+    "alternateName": "en"
+  },
   "coursePrerequisites": [
     {
       "@type": "CreativeWork",
@@ -175,7 +179,7 @@ class: center, middle, inverse
 <div class="my-header"><span>
 <a href="/training-material/topics/dev" title="Return to topic page" ><i class="fa fa-level-up" aria-hidden="true"></i></a>
 
-<a class="nav-link" href="https://github.com/galaxyproject/training-material/edit/master/topics/dev/tutorials/bioblend-api/slides.html"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+<a class="nav-link" href="https://github.com/galaxyproject/training-material/edit/main/topics/dev/tutorials/bioblend-api/slides.html"><i class="fa fa-pencil" aria-hidden="true"></i></a>
 
 </span></div>
 
@@ -187,19 +191,47 @@ class: center, middle, inverse
 
 ---
 
-<img src="/training-material/assets/images/GTN.png" alt="Galaxy Training Network" style="height: 8em;"/>
+
+<img src="/training-material/assets/images/GTN.png" alt="Galaxy Training Network" class="cover-logo"/>
+
 
 # Scripting Galaxy using the API and BioBlend
 
 
 <div class="contributors-line">
 
+<a href="/training-material/hall-of-fame/odoppelt/" class="contributor-badge contributor-odoppelt"><img src="https://avatars.githubusercontent.com/odoppelt?s=27" alt="Avatar">Olivia Doppelt-Azeroual</a>
 
- <a href="/training-material/hall-of-fame/odoppelt/" class="contributor-badge"><img src="https://avatars.githubusercontent.com/odoppelt" alt="Olivia Doppelt-Azeroual">Olivia Doppelt-Azeroual</a> <a href="/training-material/hall-of-fame/fmareuil/" class="contributor-badge"><img src="https://avatars.githubusercontent.com/fmareuil" alt="Fabien Mareuil">Fabien Mareuil</a> <a href="/training-material/hall-of-fame/nsoranzo/" class="contributor-badge"><img src="https://avatars.githubusercontent.com/nsoranzo" alt="Nicola Soranzo">Nicola Soranzo</a> <a href="/training-material/hall-of-fame/dannon/" class="contributor-badge"><img src="https://avatars.githubusercontent.com/dannon" alt="Dannon Baker">Dannon Baker</a>
+
+<a href="/training-material/hall-of-fame/fmareuil/" class="contributor-badge contributor-fmareuil"><img src="https://avatars.githubusercontent.com/fmareuil?s=27" alt="Avatar">Fabien Mareuil</a>
+
+
+<a href="/training-material/hall-of-fame/nsoranzo/" class="contributor-badge contributor-nsoranzo"><img src="https://avatars.githubusercontent.com/nsoranzo?s=27" alt="Avatar">Nicola Soranzo</a>
+
+
+<a href="/training-material/hall-of-fame/dannon/" class="contributor-badge contributor-dannon"><img src="https://avatars.githubusercontent.com/dannon?s=27" alt="Avatar">Dannon Baker</a>
+
+
+<a href="https://training.galaxyproject.org/training-material/topics/contributing/" class="contributor-badge contributor-newcontributors"><i class="fas fa-users" aria-hidden="true"></i><span class="visually-hidden">hall-of-fame</span>Add Contributions!</a>
 
 
 </div>
 
+
+<div class="footnote" style="bottom: 3em;"><i class="far fa-calendar" aria-hidden="true"></i><span class="visually-hidden">last_modification</span> Updated: May 27, 2021</div>
+<div class="footnote" style="bottom: 2em;"><i class="fas fa-file-alt" aria-hidden="true"></i><span class="visually-hidden">text-document</span><a href="slides-plain.html"> Or view the plain-text slides without JS</a></div>
+<div class="footnote" style="bottom: 1em;"><strong>Tip: </strong>press <kbd>P</kbd> to view the presenter notes</div>
+
+???
+Presenter notes contain extra information which might be useful if you intend to use these slides for teaching.
+
+Press `P` again to switch presenter notes off
+
+Press `C` to create a new window where the same presentation will be displayed.
+This window is linked to the main window. Changing slides on one will cause the
+slide to change on the other.
+
+Useful when presenting.
 
 
 
@@ -220,19 +252,8 @@ Before diving into this slide deck, we recommend you to have a look at:
 
 
 
-.footnote[Tip: press `P` to view the presenter notes]
-
-???
-Presenter notes contain extra information which might be useful if you
-intend to use these slides for teaching.
-
-Press `P` again to switch presenter notes off
-
-Press `C` to create a new window where the same presentation will be displayed.
-This window is linked to the main window. Changing slides on one will cause the
-slide to change on the other. Useful when presenting.
-
 ---
+
 
 
 
@@ -499,6 +520,28 @@ slide to change on the other. Useful when presenting.
 
 ---
 
+## Galaxy API Modernization
+
+.left[Moving to [FastAPI](https://fastapi.tiangolo.com/)]
+
+- Main advantages:
+  - [Async requests](https://fastapi.tiangolo.com/async/)
+  - Subscriptions via [websockets](https://fastapi.tiangolo.com/advanced/websockets/)
+  - [OpenAPI](https://spec.openapis.org/oas/v3.1.0) interactive documentation
+  - Reduce maintenance burden
+- Challenges:
+  - Need to refactor over 200 endpoints
+
+???
+
+- The Galaxy API is currently in the process of migrating towards FastAPI, which is a modern framework for building REST APIs in Python with really interesting features.
+- For example, FastAPI can serve requests with better performances using asynchronous coroutines.
+- Another performance advantage is the ability to avoid inefficient polling by using WebSockets subscriptions.
+- In addition to the performance benefits, by using FastAPI in combination with type annotations, the Galaxy API can comply with the OpenAPI standard.
+- This standard can greatly enhance interoperability with other systems and reduce the maintenance burden of documentation and client code generation.
+
+---
+
 ## Galaxy API pros and cons
 
 - Pros:
@@ -538,7 +581,7 @@ slide to change on the other. Useful when presenting.
 - Wraps all main Galaxy API controllers
 - Extensive Continuous Integration testing:
   - on Galaxy release_17.09 and later
-  - \&gt;180 unit tests
+  - \&gt;230 unit tests
 - Well-documented on https://bioblend.readthedocs.io
 
 ???
@@ -555,7 +598,7 @@ slide to change on the other. Useful when presenting.
 We have prepared
 [some tutorials](https://github.com/nsoranzo/bioblend-tutorial/) as Jupyter
 notebooks, which can be executed online with Binder at
-https://mybinder.org/v2/gh/nsoranzo/bioblend-tutorial/master
+https://mybinder.org/v2/gh/nsoranzo/bioblend-tutorial/main
 
 Walk-throughs:
 - `galaxy_api_histories.ipynb`: interact with histories using the **Galaxy API**
@@ -598,19 +641,23 @@ Exercises:
 - BioBlend.objects is an extra layer which adds an **object-oriented interface** for the Galaxy API
 - Started by Simone Leo, Luca Pireddu and Nicola Soranzo at CRS4 in 2013
 - Distributed with BioBlend
-- Presently limited to datasets, histories, jobs, libraries, tools and workflows
+- Presently limited to datasets, histories, invocations, jobs, libraries, tools and workflows
 
 ???
 
 - To implement this modelling of Galaxy entities, some years ago an object-oriented interface was added on top of BioBlend: BioBlend objects
-- It is developed and distributed together with BioBlend itself.
-- When using this interface, method calls will return objects encapsulating the dictionaries returned by the Galaxy API.
+- This is developed and distributed together with BioBlend itself.
+- When using this interface, methods will return objects encapsulating the dictionaries returned by the Galaxy API.
 - The user can then invoke further methods on these objects, for example the download method for a Dataset object.
 - Only a subset of BioBlend is available through the object interface, but most of the common user functionalities are included.
 
 ---
 
 ## Tutorials - part 2
+
+More [Jupyter notebooks](https://github.com/nsoranzo/bioblend-tutorial/) which
+can be executed online with Binder at
+https://mybinder.org/v2/gh/nsoranzo/bioblend-tutorial/main
 
 Walk-throughs:
 - `bioblend.objects_histories.ipynb`: interact with histories using **BioBlend.objects**
@@ -629,7 +676,7 @@ Exercises:
 
 - Galaxy API docs: https://docs.galaxyproject.org/en/master/api_doc.html
 - BioBlend docs: https://bioblend.readthedocs.io/
-- BioBlend chat: https://gitter.im/galaxyproject/bioblend
+- BioBlend chat: https://matrix.to/#/#galaxyproject_bioblend:gitter.im
 - C. Sloggett, N. Goonasekera, E. Afgan. BioBlend: automating pipeline analyses within Galaxy and CloudMan. *Bioinformatics* 29(13), 1685-1686, 2013, doi:[10.1093/bioinformatics/btt199](https://doi.org/10.1093/bioinformatics/btt199)
 - S. Leo, L. Pireddu, G. Cuccuru, L. Lianas, N. Soranzo, E. Afgan, G. Zanetti. BioBlend.objects: metacomputing with Galaxy. *Bioinformatics* 30 (19), 2816-2817, 2014, doi:[10.1093/bioinformatics/btu386](https://doi.org/10.1093/bioinformatics/btu386)
 
@@ -660,15 +707,23 @@ Exercises:
 
 ---
 
-## Thank you!
+## Thank You!
 
-This material is the result of a collaborative work. Thanks to the [Galaxy Training Network](https://wiki.galaxyproject.org/Teach/GTN) and all the contributors!
+This material is the result of a collaborative work. Thanks to the [Galaxy Training Network](https://training.galaxyproject.org) and all the contributors!
 
 
 <div class="contributors-line">
 
+<a href="/training-material/hall-of-fame/odoppelt/" class="contributor-badge contributor-odoppelt"><img src="https://avatars.githubusercontent.com/odoppelt?s=27" alt="Avatar">Olivia Doppelt-Azeroual</a>
 
- <a href="/training-material/hall-of-fame/odoppelt/" class="contributor-badge"><img src="https://avatars.githubusercontent.com/odoppelt" alt="Olivia Doppelt-Azeroual">Olivia Doppelt-Azeroual</a> <a href="/training-material/hall-of-fame/fmareuil/" class="contributor-badge"><img src="https://avatars.githubusercontent.com/fmareuil" alt="Fabien Mareuil">Fabien Mareuil</a> <a href="/training-material/hall-of-fame/nsoranzo/" class="contributor-badge"><img src="https://avatars.githubusercontent.com/nsoranzo" alt="Nicola Soranzo">Nicola Soranzo</a> <a href="/training-material/hall-of-fame/dannon/" class="contributor-badge"><img src="https://avatars.githubusercontent.com/dannon" alt="Dannon Baker">Dannon Baker</a>
+
+<a href="/training-material/hall-of-fame/fmareuil/" class="contributor-badge contributor-fmareuil"><img src="https://avatars.githubusercontent.com/fmareuil?s=27" alt="Avatar">Fabien Mareuil</a>
+
+
+<a href="/training-material/hall-of-fame/nsoranzo/" class="contributor-badge contributor-nsoranzo"><img src="https://avatars.githubusercontent.com/nsoranzo?s=27" alt="Avatar">Nicola Soranzo</a>
+
+
+<a href="/training-material/hall-of-fame/dannon/" class="contributor-badge contributor-dannon"><img src="https://avatars.githubusercontent.com/dannon?s=27" alt="Avatar">Dannon Baker</a>
 
 
 </div>
@@ -678,7 +733,8 @@ This material is the result of a collaborative work. Thanks to the [Galaxy Train
 <img src="/training-material/assets/images/GTN.png" alt="Galaxy Training Network" style="height: 100px;"/>
 
 
-This material is licensed under the <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.
+<a rel="license" href="https://creativecommons.org/licenses/by/4.0/">
+This material is licensed under the Creative Commons Attribution 4.0 International License</a>.
 
 
     </textarea>
@@ -686,7 +742,7 @@ This material is licensed under the <a rel="license" href="https://creativecommo
     <script type="text/javascript" src="/training-material/assets/js/theme.js"></script>
     <script type="text/javascript" src="/training-material/assets/js/clipboard.min.js"></script>
     <script type="text/javascript">
-      var slideshow = remark.create({navigation: {scroll: false,}});
+      var slideshow = remark.create({navigation: {scroll: false}, ratio: '16:9'});
       var hljs = remark.highlighter.engine;
       var snippets = document.querySelectorAll('code.remark-code');
         [].forEach.call(snippets,function(snippet){
