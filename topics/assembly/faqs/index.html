@@ -17,6 +17,14 @@
         <link rel="stylesheet" href="/training-material/assets/css/syntax_highlighting.css">
         <link rel="shortcut icon" href="/training-material/favicon.ico" type="image/x-icon" />
         <link rel="alternate" type="application/atom+xml" href="/training-material/feed.xml" />
+        <link rel="canonical" href="https://training.galaxyproject.org/training-material/topics/assembly/faqs/" />
+        <link rel="license" href="https://creativecommons.org/licenses/by/4.0/" />
+
+        <meta name="DC.identifier" content="https://github.com/galaxyproject/training-material" />
+<meta name="DC.type" content="text" />
+<meta name="DC.title" content="" />
+<meta name="DC.publisher" content="Galaxy Training Network" />
+<meta name="DC.date" content="1970-01-01 00:33:41 +0000" />
 
         
         
@@ -24,9 +32,11 @@
         
         
         <meta name="description" content="DNA sequence data has become an indispensable tool for Mo..." />
+        <meta property="og:site_name" content="Galaxy Training Network" />
         <meta property="og:title" content="Galaxy Training: Assembly" />
         <meta property="og:description" content="DNA sequence data has become an indispensable tool for Mo..." />
         <meta property="og:image" content="/training-material/assets/images/GTNLogo1000.png" />
+
     </head>
     <body data-spy="scroll" data-target="#toc">
         <header>
@@ -258,14 +268,27 @@
 
 
 
-<!-- Add the "help my tool is missing FAQ to all tutorial faq pages -->
 
 
 
 
 
+<h3 id="tutorial-faqs"> <a href="#tutorial-faqs"> Tutorial Questions </a></h3>
+
+<hr/>
+
+
+
+<h4 class="faq-area"> Most tools seem to have options for assembly using long and short <span class="notranslate">reads</span>, what are the pros and cons of the different tools? <a href="/training-material/topics/assembly/faqs/hybrid_assembly.html"><i class="fas fa-external-link-alt"></i></a> </h4>
+
+<!--SNIPPET--><blockquote class="question">  <h3 data-toc-skip id="-most-tools-seem-to-have-options-for-assembly-using-long-and-short-reads-what-are-the-pros-and-cons-of-the-different-tools"><i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden"></span> Most tools seem to have options for assembly using long and short <span class="notranslate">reads</span>, what are the pros and cons of the different tools?</h3>  <p>In our experience, when both long and short <span class="notranslate">reads</span> are allowed as input, the difference comes down to the order in which set is assembled first. For example, Unicycler assembles the short <span class="notranslate">reads</span> first (which can be good, because they are more accurate), and then scaffolds these into larger contigs using long <span class="notranslate">reads</span>. Other tools (or workflows) often assemble long <span class="notranslate">reads</span> first (which can also be good because these can span repeat regions), then correct this assembly with information from the more accurate short <span class="notranslate">reads</span>. There may also be other variations on long/short read assembly, and/or iterations of these types of steps (assemble, correct). My preference is to assemble long <span class="notranslate">reads</span> first, but that’s because I’m really interested in covering repeat regions. If accuracy was the aim, rather than contig length, the short-<span class="notranslate">reads</span>-first approach may be better. For even more complexity … I think some tools now allow input of “trusted contigs” - i.e. contigs assembled from other tools. Ryan Wick has a new tool called <a href="https://github.com/rrwick/Trycycler/wiki">Trycyler</a> that can take in multiple assemblies to make a consensus (bacterial genomes).</p></blockquote>
+
+
+
+ <br> 
 
 <h3 id="igv"> <a href="#igv"> Igv </a></h3>
+
 <hr/>
 
 
@@ -280,6 +303,21 @@
 <h4 class="faq-area"> Add Mapped <span class="notranslate">reads</span> track to IGV from <span class="notranslate">Galaxy</span> <a href="/training-material/topics/assembly/faqs/visualizations_igv_view_mapping.html"><i class="fas fa-external-link-alt"></i></a> </h4>
 
 <!--SNIPPET--><blockquote class="tip">  <h3 data-toc-skip id="-tip-add-mapped-reads-track-to-igv-from-galaxy"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: Add Mapped <span class="notranslate">reads</span> track to IGV from <span class="notranslate">Galaxy</span></h3>  <ol>  <li>Install <a href="https://software.broadinstitute.org/software/igv/download">IGV</a> (if not already installed)</li>  <li>Launch IGV on your computer</li>  <li>Check if the reference genome is available on the IGV instance</li>  <li>Expand the BAM dataset with the mapped <span class="notranslate">reads</span> in the history</li>  <li>Click on the <code class="language-plaintext highlighter-rouge">local</code> in <code class="language-plaintext highlighter-rouge">display with IGV</code> to load the <span class="notranslate">reads</span> into the IGV browser</li>  <li>    <p>Switch to the IGV instance</p>    <p>The mapped <span class="notranslate">reads</span> track should appear. Be sure that all files have the same genome ID</p>  </li></ol></blockquote>
+
+
+
+ <br> 
+
+<h3 id="visualisation"> <a href="#visualisation"> Visualisation </a></h3>
+
+<hr/>
+
+
+
+<h4 class="faq-area"> Using IGV with <span class="notranslate">Galaxy</span> <a href="/training-material/topics/assembly/faqs/visualisations_igv.html"><i class="fas fa-external-link-alt"></i></a> </h4>
+
+<!--SNIPPET--><blockquote class="tip">  <h3 data-toc-skip id="-tip-using-igv-with-galaxy"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: Using IGV with <span class="notranslate">Galaxy</span></h3>  <p>You can send data from your <span class="notranslate">Galaxy</span> history to IGV for viewing as follows:</p>  <ol>  <li>Install IGV on your computer (<a href="https://software.broadinstitute.org/software/igv/download">IGV download page</a>)</li>  <li>Start IGV</li>  <li>In recent versions of IGV, you will have to enable the port:    <ul>      <li>In IGV, go to <code class="language-plaintext highlighter-rouge">View &gt; Preferences &gt; Advanced</code></li>      <li>Check the box <code class="language-plaintext highlighter-rouge">Enable Port</code></li>    </ul>  </li>  <li>In <span class="notranslate">Galaxy</span>, expand the dataset you would like to view in IGV    <ul>      <li>Make sure you have set a reference genome/database correctly (dbkey) (<a href="/training-material/faqs/galaxy/datasets_change_dbkey.html">instructions</a>)</li>      <li>Under <code class="language-plaintext highlighter-rouge">display in IGV</code>, click on <code class="language-plaintext highlighter-rouge">local</code></li>    </ul>  </li></ol></blockquote>
+
 
 
 
@@ -341,9 +379,10 @@ add a button, include configuration options:
             provides researchers with online training materials, connects them with local trainers, and helps promoting open data analysis practices worldwide.
         </p>
         <p>
-The content of the tutorials is licensed under the <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>. The website and infrastructure is licensed under <a rel="license" href="https://github.com/galaxyproject/training-material/blob/main/LICENSE.md">MIT</a>.
-</p>
-        <p>This is revision <a href="https://github.com/galaxyproject/training-material/commit/8ee58297f8fb036e54b741ea077c38063055305d">8ee58297f8fb036e54b741ea077c38063055305d</a></p>
+        The content of the tutorials is licensed under the <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>. The website and infrastructure is licensed under <a rel="license" href="https://github.com/galaxyproject/training-material/blob/main/LICENSE.md">MIT</a>.
+        </p>
+
+        <p>This is revision <a href="https://github.com/galaxyproject/training-material/commit/ec60a64f8f606f537d266ceaf152ab095dc79f64">ec60a64f8f606f537d266ceaf152ab095dc79f64</a></p>
     </div>
 </footer>
 

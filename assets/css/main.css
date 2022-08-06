@@ -1,4 +1,30 @@
 @charset "UTF-8";
+.color-overview { background: #8A9AD0; }
+
+.color-agenda { background: #86D486; }
+
+.color-keypoints { background: #FFA1A1; }
+
+.color-tip { background: #FFE19E; }
+
+.color-warning { background: #de8875; }
+
+.color-comment { background: #ffecc1; }
+
+.color-handson { background: #dfe5f9; }
+
+.color-question { background: #8A9AD0; }
+
+.color-solution { background: #B8C3EA; }
+
+.color-details { background: #ddd; }
+
+.color-feedback { background: #86D486; }
+
+.color-code { background: #86D486; }
+
+.color-code-out { background: #fb99d0; }
+
 body { font-size: 15px; word-wrap: break-word; position: relative; }
 
 /*! Dark; http://bytefluent.com/devify/ */
@@ -716,11 +742,11 @@ nav input.nicer::placeholder { color: white; }
 
 nav input.nicer:focus, nav input.nicer:active { color: white; background: #fff2; border-bottom: 2px solid white; text-decoration: underline; }
 
-#search-container input.nicer { background: transparent; color: white; border: none; border-bottom: 2px solid white; border-radius: 0px; padding: 0.4em 0 0 0; }
+#search-container input.nicer { background: transparent; color: black; border: none; border-bottom: 2px solid black; border-radius: 0px; padding: 0.4em 0 0 0; }
 
-#search-container input.nicer::placeholder { color: white; }
+#search-container input.nicer::placeholder { color: black; }
 
-#search-container input.nicer:focus, #search-container input.nicer:active { color: white; background: #fff2; border-bottom: 2px solid white; text-decoration: underline; }
+#search-container input.nicer:focus, #search-container input.nicer:active { color: black; background: #fff2; border-bottom: 2px solid black; text-decoration: underline; }
 
 #search-input { margin-right: 1em; }
 
@@ -740,11 +766,11 @@ nav input.nicer:focus, nav input.nicer:active { color: white; background: #fff2;
 
 .tutorial > h1:first-child { margin-bottom: 1rem; }
 
-.tutorial table { display: block; width: 100%; overflow-x: auto; max-width: 100%; margin-bottom: 1rem; }
+.tutorial table:not(.contributions) { display: block; width: 100%; overflow-x: auto; max-width: 100%; margin-bottom: 1rem; }
 
-.tutorial table th, .tutorial table td { padding: .75rem; vertical-align: top; border-top: 1px solid #eceeef; }
+.tutorial table:not(.contributions) th, .tutorial table:not(.contributions) td { padding: .75rem; vertical-align: top; border-top: 1px solid #eceeef; }
 
-.tutorial table thead th { vertical-align: bottom; border-bottom: 2px solid #eceeef; }
+.tutorial table:not(.contributions) thead th { vertical-align: bottom; border-bottom: 2px solid #eceeef; }
 
 .tutorial div.container blockquote ul, .tutorial div.container blockquote p, .tutorial div.container blockquote li > p:last-child { margin-bottom: 0.5rem; }
 
@@ -752,7 +778,7 @@ nav input.nicer:focus, nav input.nicer:active { color: white; background: #fff2;
 
 .tutorial .google-form { width: 100%; height: 1100px; border: 0; }
 
-blockquote ul, blockquote ol, blockquote > blockquote, blockquote p { margin-bottom: 0px; }
+blockquote ul, blockquote ol, blockquote > blockquote, blockquote li p { margin-bottom: 0px; }
 
 blockquote img { display: block; }
 
@@ -960,13 +986,15 @@ nav[data-toggle='toc'] .nav-link.active:hover { padding-left: 0px; color: #00459
 
 .contributors-line { color: #555; font-size: 1.2em; display: flex; flex-wrap: wrap; align-content: baseline; line-height: 1.5em; }
 
-.contributors-line .contributor-badge img { height: 1.5em; }
+.contributors-line .contributor-badge img { height: 1.5em; line-height: 1.5em; }
 
-.contributors-line .contributor-badge i { margin-left: 0.5em; margin-right: 0.5em; }
+.contributors-line .contributor-badge i { height: 1.5em; line-height: 1.5em; margin-left: 0.5em; margin-right: 0.5em; }
 
-.contributor-badge { /* prevent breaking across lines */ white-space: nowrap; display: inline-flex; flex-direction: row; align-items: center; border-radius: 1em; border: 1px solid #b7daff; padding-right: 0.5em; margin: 0.2em; line-height: 1em; }
+.contributor-badge { /* prevent breaking across lines */ white-space: nowrap; display: inline-flex; flex-direction: row; align-items: center; border-radius: 1em; border: 1px solid #b7daff; padding-right: 0.5em; margin: 0.2em; line-height: 1em; flex-shrink: 0; }
 
 .contributor-badge img { height: 1em; border-radius: 50%; margin: 0 0.25em 0 0; }
+
+table.contributions tr td:nth-child(1) { display: flex; flex-wrap: wrap; }
 
 div.highlight { position: relative; }
 
@@ -1030,6 +1058,12 @@ abbr { text-decoration: underline dotted; cursor: help; font-variant: none; }
 
 .fdbk .accordion .accordion-card .mb-0 { margin-top: 0px; }
 
+div.contributors-line dl { display: flex; flex-wrap: wrap; margin-bottom: 0; }
+
+div.contributors-line dt { width: 8em; text-align: right; font-weight: initial; }
+
+div.contributors-line dd { margin-left: auto; width: calc(100% - 9em); display: flex; }
+
 a.btn { display: inline-flex; align-items: center; white-space: normal; }
 
 a.btn div { width: 100%; font-size: 1rem; }
@@ -1055,5 +1089,29 @@ a.btn div { width: 100%; font-size: 1rem; }
 .btn-square-large { width: 150px !important; max-width: 100% !important; max-height: 100% !important; height: 150px !important; text-align: center; padding: 5px; font-size: 1.25rem; margin: 5px; }
 
 .btn-square-extralarge { width: 200px !important; max-width: 100% !important; max-height: 100% !important; height: 200px !important; text-align: center; padding: 5px; font-size: 1.5rem; margin: 5px; }
+
+/* CYOA */
+.gtn-cyoa input[type="radio"] { display: none; }
+
+.gtn-cyoa input[type="radio"]:checked + label { background-color: #8A9AD0; }
+
+.gtn-cyoa .btn-secondary { color: #292b2c; background-color: #dfe5f9; border-color: transparent; }
+
+.gtn-cyoa .btn-secondary:hover { background-color: #B8C3EA; }
+
+.gtn-cyoa label { padding: 1em; display: inline-block; }
+
+.gtn-cyoa-hidden { height: 0px; visibility: hidden; display: none; padding: 0rem; }
+
+/* Maybe something like this for the case where they do not select anything? .openstack { border-left: 2px solid red; } .digitalocean { border-left: 2px solid blue; } */
+ul.text-list, ol.text-list { list-style: none; padding-left: 0; }
+
+ul.text-list li, ol.text-list li { display: inline; }
+
+.gtn-card { border-radius: 10px; }
+
+.gtn-card .card-title { font-size: 500%; font-weight: 900; margin-bottom: 0; }
+
+.gtn-card .card-text { text-align: center; font-size: 150%; padding: 0.3em; }
 
 /*# sourceMappingURL=main.css.map */

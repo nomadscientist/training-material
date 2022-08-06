@@ -17,6 +17,18 @@
         <link rel="stylesheet" href="/training-material/assets/css/syntax_highlighting.css">
         <link rel="shortcut icon" href="/training-material/favicon.ico" type="image/x-icon" />
         <link rel="alternate" type="application/atom+xml" href="/training-material/feed.xml" />
+        <link rel="canonical" href="https://training.galaxyproject.org/training-material/topics/dev/tutorials/bioblend-api/slides-plain.html" />
+        <link rel="license" href="https://creativecommons.org/licenses/by/4.0/" />
+
+        <meta name="DC.identifier" content="https://github.com/galaxyproject/training-material" />
+<meta name="DC.type" content="text" />
+<meta name="DC.title" content="Scripting Galaxy using the API and BioBlend" />
+<meta name="DC.publisher" content="Galaxy Training Network" />
+<meta name="DC.date" content="1970-01-01 00:33:42 +0000" />
+<meta name="DC.creator" content="Olivia Doppelt-Azeroual" />
+<meta name="DC.creator" content="Fabien Mareuil" />
+<meta name="DC.creator" content="Nicola Soranzo" />
+<meta name="DC.creator" content="Dannon Baker" />
 
         
         
@@ -24,9 +36,11 @@
         
         
         <meta name="description" content="Collection of tutorials developed and maintained by the w..." />
+        <meta property="og:site_name" content="Galaxy Training Network" />
         <meta property="og:title" content="Galaxy Training: Scripting Galaxy using the API and BioBlend" />
         <meta property="og:description" content="Collection of tutorials developed and maintained by the w..." />
         <meta property="og:image" content="/training-material/assets/images/GTNLogo1000.png" />
+
     </head>
     <body data-spy="scroll" data-target="#toc">
         <header>
@@ -214,18 +228,29 @@
 	<a href="https://github.com/galaxyproject/training-material/blob/main//topics/dev/tutorials/bioblend-api/slides.html">View markdown source on GitHub</a>
 	<h1>Scripting Galaxy using the API and BioBlend</h1>
 		<h2>Contributors</h2>
-		
+<div markdown="0">
+
+	<div class="contributors-line">
+		Authors: 
 <a href="/training-material/hall-of-fame/odoppelt/" class="contributor-badge contributor-odoppelt"><img src="https://avatars.githubusercontent.com/odoppelt?s=27" alt="Avatar">Olivia Doppelt-Azeroual</a>
 
- 
+
+
 <a href="/training-material/hall-of-fame/fmareuil/" class="contributor-badge contributor-fmareuil"><img src="https://avatars.githubusercontent.com/fmareuil?s=27" alt="Avatar">Fabien Mareuil</a>
 
- 
-<a href="/training-material/hall-of-fame/nsoranzo/" class="contributor-badge contributor-nsoranzo"><img src="https://avatars.githubusercontent.com/nsoranzo?s=27" alt="Avatar">Nicola Soranzo</a>
 
- 
+
+<a href="/training-material/hall-of-fame/nsoranzo/" class="contributor-badge contributor-nsoranzo"><img src="/training-material/assets/images/orcid.png" alt="orcid logo"/><img src="https://avatars.githubusercontent.com/nsoranzo?s=27" alt="Avatar">Nicola Soranzo</a>
+
+
+
 <a href="/training-material/hall-of-fame/dannon/" class="contributor-badge contributor-dannon"><img src="https://avatars.githubusercontent.com/dannon?s=27" alt="Avatar">Dannon Baker</a>
 
+
+
+	</div>
+
+</div>
 
 
 		
@@ -253,14 +278,14 @@
 		
     <li>
     
-        <a href="https://ipython.org">IPython</a>
+        <a href="https://jupyterlab.readthedocs.io/">JupyterLab</a>
     
     </li>
 
 		</ul>
 		
 
-		<div><strong> <i class="far fa-calendar" aria-hidden="true"></i><span class="visually-hidden">last_modification</span> Last modification:</strong> May 27, 2021 </div>
+		<div><strong> <i class="far fa-calendar" aria-hidden="true"></i><span class="visually-hidden">last_modification</span> Last modification:</strong> Jul 14, 2022 </div>
 
 	<hr />
 
@@ -295,14 +320,14 @@
       <li>exploring and visualizing data</li>
       <li>experimenting</li>
       <li>graphically designing workflows</li>
-      <li>people not comfortable with command line</li>
+      <li>people not comfortable with the command line</li>
     </ul>
   </li>
   <li>The Galaxy API is good for:
     <ul>
       <li>interact programmatically with the server
         <ul>
-          <li>complex control: <strong>branching</strong> and <strong>looping</strong> (not possible in workflows)</li>
+          <li>complex control: <strong>branching</strong> and <strong>looping</strong> (not yet possible in workflows)</li>
         </ul>
       </li>
       <li>automate repetitive tasks</li>
@@ -609,7 +634,7 @@ Keep it secure, it’s the same as a username+password!</li>
     <ul>
       <li><a href="https://fastapi.tiangolo.com/async/">Async requests</a></li>
       <li>Subscriptions via <a href="https://fastapi.tiangolo.com/advanced/websockets/">websockets</a></li>
-      <li><a href="https://spec.openapis.org/oas/v3.1.0">OpenAPI</a> interactive documentation</li>
+      <li>Integrated <a href="https://spec.openapis.org/oas/v3.1.0">OpenAPI</a> interactive documentation, e.g. https://usegalaxy.org/api/docs</li>
       <li>Reduce maintenance burden</li>
     </ul>
   </li>
@@ -682,12 +707,12 @@ Keep it secure, it’s the same as a username+password!</li>
 
 <ul>
   <li>Stable procedural API</li>
-  <li>Supported under Python &gt;=3.6</li>
+  <li>Supported under Python &gt;=3.7</li>
   <li>Wraps all main Galaxy API controllers</li>
   <li>Extensive Continuous Integration testing:
     <ul>
       <li>on Galaxy release_17.09 and later</li>
-      <li>&gt;230 unit tests</li>
+      <li>&gt;240 unit tests</li>
     </ul>
   </li>
   <li>Well-documented on https://bioblend.readthedocs.io</li>
@@ -700,34 +725,6 @@ Keep it secure, it’s the same as a username+password!</li>
   <li>It provides methods wrapping all the important Galaxy API endpoints.</li>
   <li>The library uses Continuous Integration to perform a large number of tests on a wide range of Galaxy releases.</li>
   <li>The documentation of BioBlend is very well curated and is often more accurate than the corresponding Galaxy API one.</li>
-</ul>
-
-<hr />
-
-<h2 id="tutorials---part-1">Tutorials - part 1</h2>
-
-<p>We have prepared
-<a href="https://github.com/nsoranzo/bioblend-tutorial/">some tutorials</a> as Jupyter
-notebooks, which can be executed online with Binder at
-https://mybinder.org/v2/gh/nsoranzo/bioblend-tutorial/main</p>
-
-<p>Walk-throughs:</p>
-<ul>
-  <li><code class="language-plaintext highlighter-rouge">galaxy_api_histories.ipynb</code>: interact with histories using the <strong>Galaxy API</strong></li>
-  <li><code class="language-plaintext highlighter-rouge">bioblend_histories.ipynb</code>: interact with histories using <strong>BioBlend</strong></li>
-</ul>
-
-<p>Exercises:</p>
-<ul>
-  <li><code class="language-plaintext highlighter-rouge">ex1_galaxy_api.ipynb</code>: launch a workflow using the <strong>Galaxy API</strong></li>
-  <li><code class="language-plaintext highlighter-rouge">ex1_bioblend.ipynb</code>: launch a workflow using <strong>BioBlend</strong></li>
-</ul>
-
-<p><span>Speaker Notes</span></p>
-
-<ul>
-  <li>Now it’s a good time to try the Galaxy API and BioBlend!</li>
-  <li>Follow the instructions on the slide to access the tutorials and exercises.</li>
 </ul>
 
 <hr />
@@ -784,31 +781,6 @@ https://mybinder.org/v2/gh/nsoranzo/bioblend-tutorial/main</p>
 
 <hr />
 
-<h2 id="tutorials---part-2">Tutorials - part 2</h2>
-
-<p>More <a href="https://github.com/nsoranzo/bioblend-tutorial/">Jupyter notebooks</a> which
-can be executed online with Binder at
-https://mybinder.org/v2/gh/nsoranzo/bioblend-tutorial/main</p>
-
-<p>Walk-throughs:</p>
-<ul>
-  <li><code class="language-plaintext highlighter-rouge">bioblend.objects_histories.ipynb</code>: interact with histories using <strong>BioBlend.objects</strong></li>
-</ul>
-
-<p>Exercises:</p>
-<ul>
-  <li><code class="language-plaintext highlighter-rouge">ex1_bioblend.objects.ipynb</code>: launch a workflow using <strong>BioBlend.objects</strong></li>
-</ul>
-
-<p><span>Speaker Notes</span></p>
-
-<ul>
-  <li>Now you can try BioBlend objects and see how it compares with BioBlend.</li>
-  <li>Follow the instructions on the slide to access the tutorials and exercises.</li>
-</ul>
-
-<hr />
-
 <h2 id="references">References</h2>
 
 <ul>
@@ -854,13 +826,13 @@ https://mybinder.org/v2/gh/nsoranzo/bioblend-tutorial/main</p>
 This material is the result of a collaborative work. Thanks to the <a href="https://training.galaxyproject.org" aria-label="Visit the GTN">Galaxy Training Network</a> and all the contributors!
 
 
-
-
 <img src="/training-material/assets/images/GTN.png" alt="Galaxy Training Network" style="height: 100px;"/>
 
 
 This material is licensed under the <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.
 </section>
+
+
 
 
 
@@ -874,9 +846,10 @@ This material is licensed under the <a rel="license" href="https://creativecommo
             provides researchers with online training materials, connects them with local trainers, and helps promoting open data analysis practices worldwide.
         </p>
         <p>
-The content of the tutorials is licensed under the <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>. The website and infrastructure is licensed under <a rel="license" href="https://github.com/galaxyproject/training-material/blob/main/LICENSE.md">MIT</a>.
-</p>
-        <p>This is revision <a href="https://github.com/galaxyproject/training-material/commit/8ee58297f8fb036e54b741ea077c38063055305d">8ee58297f8fb036e54b741ea077c38063055305d</a></p>
+        The content of the tutorials is licensed under the <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>. The website and infrastructure is licensed under <a rel="license" href="https://github.com/galaxyproject/training-material/blob/main/LICENSE.md">MIT</a>.
+        </p>
+
+        <p>This is revision <a href="https://github.com/galaxyproject/training-material/commit/ec60a64f8f606f537d266ceaf152ab095dc79f64">ec60a64f8f606f537d266ceaf152ab095dc79f64</a></p>
     </div>
 </footer>
 
