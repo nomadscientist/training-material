@@ -24,7 +24,7 @@
 <meta name="DC.type" content="text" />
 <meta name="DC.title" content="Introduction to metagenomics" />
 <meta name="DC.publisher" content="Galaxy Training Network" />
-<meta name="DC.date" content="2021-07-09 11:43:26 +0000" />
+<meta name="DC.date" content="2022-11-13 01:56:38 +0000" />
 <meta name="DC.creator" content="Bérénice Batut" />
 <meta name="DC.creator" content="Saskia Hiltemann" />
 
@@ -143,6 +143,7 @@
             <i class="fas fa-chart-bar" aria-hidden="true"></i><span class="visually-hidden">galaxy-barchart</span> Page Metrics
         </a>
 
+        <!-- link to feedback -->
         
             <a class="dropdown-item" href="/training-material/feedback.html" title="Show feedback statistics about this repository">
                 <i class="fas fa-chart-bar" aria-hidden="true"></i><span class="visually-hidden">galaxy-barchart</span> GTN feedback
@@ -185,7 +186,6 @@
                 <i class="fas fa-history" aria-hidden="true"></i><span class="visually-hidden">galaxy-rulebuilder-history</span> Previous Versions
             </div>
 
-            
             <div id="archive-selector">
             
                 <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2020-01-06/topics/metagenomics/slides/slides-plain.html" title="Version 2020-01-06">2020-01-06</a>
@@ -249,7 +249,7 @@
 
 		
 
-		<div><strong> <i class="far fa-calendar" aria-hidden="true"></i><span class="visually-hidden">last_modification</span> Last modification:</strong> Jul 9, 2021 </div>
+		<div><strong> <i class="far fa-calendar" aria-hidden="true"></i><span class="visually-hidden">last_modification</span> Last modification:</strong> Nov 13, 2022 </div>
 
 	<hr />
 
@@ -361,8 +361,8 @@
 <h2 id="amplicon">Amplicon</h2>
 
 <ul>
-  <li>Targetted approach (e.g. 16S/18S rRNA gene)</li>
-  <li>Amplifies bacteria, not host or environmental fungi, plants</li>
+  <li>Targetted approach, e.g. 16S (bacteria), 18S (eukaryotes), ITS (fungi)</li>
+  <li>Amplify gene of specific taxonomic group, i.e. not host or environment</li>
 </ul>
 
 <p><img src="../images/16S_gene.png" alt="left is picture of e. coli ribosome with &quot;so much rna&quot; written, right is the RNA structure in a diagram" /></p>
@@ -453,6 +453,13 @@ Shotgun:             ~ ? reads
 
 <p><img src="../images/metagenomics_pipeline.png" alt="comparison of amplicon and shotgun pipelines. amplicon pipeline goes to community structure viz, shotgun pipeline goes to community structure in addition to functional assignment." /></p>
 
+<p>Amplicon analysis variants:</p>
+
+<ul>
+  <li>OTU: operational taxonomic units</li>
+  <li>ASV: amplicon sequence variants</li>
+</ul>
+
 <hr />
 
 <h2 id="pre-processing">Pre-processing</h2>
@@ -466,6 +473,37 @@ Shotgun:             ~ ? reads
 
 <hr />
 
+<h2 id="otu-clustering--denoising">OTU Clustering / Denoising</h2>
+
+<p>.pull-left[
+OTU clustering:</p>
+
+<ul>
+  <li>Cluster on 97% sequence similarity for genus-level differentiation</li>
+  <li>OTUs depend on the data set: no comparability of data sets</li>
+</ul>
+
+<p>.image-75[ <img src="../images/otu.png" alt="tree with clusters around the leaves labelled OTUs and 97% identity threshold" /> ]</p>
+
+<p>]</p>
+
+<p>.pull-right[
+ASV Denoising:</p>
+
+<ul>
+  <li>Discriminate sequence variations from sequencing errors</li>
+  <li>Based on an error model and the assumption that sequences containing errors are less likely observed repeatedly</li>
+</ul>
+
+<p>.image-90[ <img src="../images/clustering.png" alt="DNA sequences with hierarchical clustering shown" /> ]</p>
+
+<p>]</p>
+
+<p><span>Speaker Notes</span>
+ASV stands for “Amplicon Sequence Variants”</p>
+
+<h2 id="todo-expand-on-otu-vs-asv-a-bit-more">TODO: expand on OTU vs ASV a bit more</h2>
+
 <h2 id="chimera-removal">Chimera Removal</h2>
 
 <ul>
@@ -474,16 +512,6 @@ Shotgun:             ~ ? reads
 </ul>
 
 <p><img src="../images/chimeras.png" alt="aborted extension leads to mispriming, which gets extended with the wrong sequence, and results in a chimera" /></p>
-
-<hr />
-
-<h2 id="otu-clustering">OTU Clustering</h2>
-
-<p>Cluster on 97% sequence similarity for genus-level differentiation</p>
-
-<p>.pull-left[ .image-100[ <img src="../images/clustering.png" alt="dna sequences with hierarchical clustering shown" /> ]]</p>
-
-<p>.pull-right[.image-100[ <img src="../images/otu.png" alt="tree with clusters around the leaves labelled OTUs and 97% identity threshold." /> ]]</p>
 
 <hr />
 
@@ -609,44 +637,44 @@ This material is licensed under the <a rel="license" href="https://creativecommo
         The content of the tutorials is licensed under the <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>. The website and infrastructure is licensed under <a rel="license" href="https://github.com/galaxyproject/training-material/blob/main/LICENSE.md">MIT</a>.
         </p>
 
-        <p>This is revision <a href="https://github.com/galaxyproject/training-material/commit/9af3f1fe03d70efdf04c13692a07d167a762b953">9af3f1fe03d70efdf04c13692a07d167a762b953</a></p>
+        <p>This is revision <a href="https://github.com/galaxyproject/training-material/commit/57c643f5af292a87c73557e220f81a79b1b28fd3">57c643f5af292a87c73557e220f81a79b1b28fd3</a></p>
     </div>
 </footer>
 
         
+        <script type="text/javascript" src="/training-material/assets/js/jquery.slim.min.js"></script>
+        <script type="text/javascript" src="/training-material/assets/js/popper.min.js"></script>
+        <script type="text/javascript" src="/training-material/assets/js/bootstrap.min.js?v=3"></script>
+        <script type="text/javascript" src="/training-material/assets/js/details-element-polyfill.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script type="text/javascript" src="/training-material/assets/js/bootstrap-toc.min.js"></script>
+        <script type="text/javascript" src="/training-material/assets/js/main.js"></script>
+        <script type="text/javascript" src="/training-material/assets/js/theme.js"></script>
+
+        <script type="text/javascript" src="/training-material/assets/js/clipboard.min.js"></script>
+        <script type="text/javascript">
+        var snippets=document.querySelectorAll('div.highlight');
+        [].forEach.call(snippets,function(snippet){
+            snippet.firstChild.insertAdjacentHTML('beforebegin','<button class="btn btn-light" data-clipboard-snippet><i class="fa fa-copy"></i>&nbsp;Copy</button>');
+        });
+
+        var clipboardSnippets=new ClipboardJS('[data-clipboard-snippet]',{
+            target:function(trigger){return trigger.nextElementSibling;
+        }});
+        </script>
+        
+
+        <script type="text/javascript">
+            if(window.location.hostname === "galaxyproject.github.io") {
+                // Redirect
+                var redirect = "https://training.galaxyproject.org" + window.location.pathname + window.location.search;
+                $('div.container.main-content').prepend("<div class='alert alert-warning'><strong>Note: </strong>This content has a new home at <a href=\"" + redirect + "\">" + redirect + "</a>, which you will be redirected to in 5 seconds.</div>");
+
+                window.setTimeout(function(){
+                    window.location.href = redirect;
+                }, 5000)
+
+            }
+        </script>
     </body>
-    <script type="text/javascript" src="/training-material/assets/js/jquery.slim.min.js"></script>
-    <script type="text/javascript" src="/training-material/assets/js/popper.min.js"></script>
-    <script type="text/javascript" src="/training-material/assets/js/bootstrap.min.js?v=3"></script>
-    <script type="text/javascript" src="/training-material/assets/js/details-element-polyfill.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <script type="text/javascript" src="/training-material/assets/js/bootstrap-toc.min.js"></script>
-    <script type="text/javascript" src="/training-material/assets/js/main.js"></script>
-    <script type="text/javascript" src="/training-material/assets/js/theme.js"></script>
-
-    <script type="text/javascript" src="/training-material/assets/js/clipboard.min.js"></script>
-    <script type="text/javascript">
-    var snippets=document.querySelectorAll('div.highlight');
-    [].forEach.call(snippets,function(snippet){
-        snippet.firstChild.insertAdjacentHTML('beforebegin','<button class="btn btn-light" data-clipboard-snippet><i class="fa fa-copy"></i>&nbsp;Copy</button>');
-    });
-
-    var clipboardSnippets=new ClipboardJS('[data-clipboard-snippet]',{
-        target:function(trigger){return trigger.nextElementSibling;
-    }});
-    </script>
-    
-
-    <script type="text/javascript">
-        if(window.location.hostname === "galaxyproject.github.io") {
-            // Redirect
-            var redirect = "https://training.galaxyproject.org" + window.location.pathname + window.location.search;
-            $('div.container.main-content').prepend("<div class='alert alert-warning'><strong>Note: </strong>This content has a new home at <a href=\"" + redirect + "\">" + redirect + "</a>, which you will be redirected to in 5 seconds.</div>");
-
-            window.setTimeout(function(){
-                window.location.href = redirect;
-            }, 5000)
-
-        }
-    </script>
 </html>

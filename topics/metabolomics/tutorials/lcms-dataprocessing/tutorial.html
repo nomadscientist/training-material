@@ -24,7 +24,7 @@
 <meta name="DC.type" content="text" />
 <meta name="DC.title" content="Mass spectrometry: LC-MS data processing" />
 <meta name="DC.publisher" content="Galaxy Training Network" />
-<meta name="DC.date" content="1970-01-01 00:33:42 +0000" />
+<meta name="DC.date" content="2022-10-18 14:23:35 +0000" />
 <meta name="DC.creator" content="Mélanie Petera" />
 <meta name="DC.creator" content="Workflow4Metabolomics core team" />
 
@@ -146,10 +146,14 @@
             <i class="fas fa-chart-bar" aria-hidden="true"></i><span class="visually-hidden">galaxy-barchart</span> Page Metrics
         </a>
 
+        <!-- link to feedback -->
         
-            <a class="dropdown-item" href="/training-material/feedback.html" title="Show feedback statistics about this repository">
-                <i class="fas fa-chart-bar" aria-hidden="true"></i><span class="visually-hidden">galaxy-barchart</span> GTN feedback
-            </a>
+            
+            
+                <a class="dropdown-item" href="/training-material/feedback.html" title="Show feedback statistics about this repository">
+                    <i class="fas fa-chart-bar" aria-hidden="true"></i><span class="visually-hidden">galaxy-barchart</span> GTN feedback
+                </a>
+            
         
 
         <div class="dropdown-item">
@@ -188,7 +192,6 @@
                 <i class="fas fa-history" aria-hidden="true"></i><span class="visually-hidden">galaxy-rulebuilder-history</span> Previous Versions
             </div>
 
-            
             <div id="archive-selector">
             
                 <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2020-01-06/topics/metabolomics/tutorials/lcms-dataprocessing/tutorial.html" title="Version 2020-01-06">2020-01-06</a>
@@ -275,7 +278,7 @@
     "name": "Galaxy Training Network",
     "url": "https://galaxyproject.org/teach/gtn/"
   },
-  "dateModified": "1970-01-01 00:33:42 +0000",
+  "dateModified": "2022-10-18 14:23:35 +0000",
   "discussionUrl": "https://gitter.im/Galaxy-Training-Network/Lobby",
   "headline": "Mass spectrometry: LC-MS data processing",
   "interactivityType": "mixed",
@@ -329,7 +332,7 @@
   "url": "https://training.galaxyproject.org/training-material/topics/metabolomics/tutorials/lcms-dataprocessing/tutorial.html",
   "timeRequired": "PT2H",
   "keywords": "metabolomics",
-  "description": "The questions this  addresses are:\n - Why should one consider performing data processing steps when dealing with Metabolomics data?\n - How to conduct LCMS-based untargeted metabolomic data processing using Galaxy?\n\n\\nThe objectives are:\n - To comprehend the key role of data processing.\n - To comprehend the diversity of steps necessary to perform untargeted LC-MS metabolomic data processing.\n - To be familiar with the \"identify then perform\" approach necessary to deploy relevant data processing strategies.\n\n",
+  "description": "The questions this  addresses are:\n - Why should one consider performing data processing steps when dealing with Metabolomics data?\n - How to conduct LCMS-based untargeted metabolomic data processing using Galaxy?\n\n\nThe objectives are:\n - To comprehend the key role of data processing.\n - To comprehend the diversity of steps necessary to perform untargeted LC-MS metabolomic data processing.\n - To be familiar with the \"identify then perform\" approach necessary to deploy relevant data processing strategies.\n\n",
   "inLanguage": {
     "@type": "Language",
     "name": "English",
@@ -479,7 +482,7 @@
 
 
     <blockquote class="overview">
-        <h3>Overview</h3>
+        <div class="box-title" aria-label="overview box">Overview</div>
         
         <img alt="Creative Commons License" class="float-right" style="border-width:0; display: inline-block; margin:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" aria-hidden="true" />
         
@@ -558,7 +561,7 @@
                 <li class="btn btn-default supporting_material">
 
 
-<a class="topic-icon" title="Zenodo datasets used in this tutorial" href="https://zenodo.org/record/5179809">
+<a class="btn btn-default topic-icon" title="Zenodo datasets used in this tutorial" href="https://zenodo.org/record/5179809">
     <i class="far fa-copy" aria-hidden="true"></i> Datasets
 </a>
 
@@ -626,7 +629,7 @@
         </ul>
         
 
-        <div><strong><i class="far fa-calendar" aria-hidden="true"></i> Last modification:</strong> Jul 22, 2022 </div>
+        <div><strong><i class="far fa-calendar" aria-hidden="true"></i> Last modification:</strong> Oct 18, 2022 </div>
         <div><strong><i class="fas fa-balance-scale" aria-hidden="true"></i> License:</strong>
             
             <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Tutorial Content is licensed under Creative Commons Attribution 4.0 International License</a>
@@ -644,7 +647,7 @@
             <div class="col-sm-10">
                  
 
-                <h1 class="no_toc" id="introduction">Introduction</h1>
+                <h1 id="introduction">Introduction</h1>
 
 <p>Metabolomics is a <em>-omic</em> science known for being one of the most closely related to phenotypes.
 It involves the study of different types of matrices, such as blood, urine, tissues, in various organisms including plants.
@@ -662,11 +665,12 @@ What you may want now is to get some relevant information from your tables. Howe
 What should you do to ensure the quality of your tables? This tutorial will show you what the usual quality steps are.</p>
 
 <blockquote class="agenda">
-  <h3 id="agenda">Agenda</h3>
+  <div id="agenda" class="box-title" aria-label="agenda box: ">Agenda</div>
 
   <p>In this tutorial, we will cover:</p>
 
 <ol id="markdown-toc">
+  <li><a href="#introduction" id="markdown-toc-introduction">Introduction</a></li>
   <li><a href="#overview-and-data-upload" id="markdown-toc-overview-and-data-upload">Overview and data upload</a>    <ol>
       <li><a href="#galaxy-tools-workflow" id="markdown-toc-galaxy-tools-workflow"><span class="notranslate">Galaxy</span> tools’ <span class="notranslate">workflow</span></a></li>
       <li><a href="#dataset-description" id="markdown-toc-dataset-description">Dataset description</a></li>
@@ -692,6 +696,7 @@ What should you do to ensure the quality of your tables? This tutorial will show
       <li><a href="#checking-the-resulting-data" id="markdown-toc-checking-the-resulting-data">Checking the resulting data</a></li>
     </ol>
   </li>
+  <li><a href="#conclusion" id="markdown-toc-conclusion">Conclusion</a></li>
 </ol>
 
 </blockquote>
@@ -716,7 +721,7 @@ In this tutorial we will focus on three main types of processing:</p>
 They are compatible with the whole data analysis solution maintained by the W4M team.</p>
 
 <blockquote class="comment">
-  <h3 id="comment-workflow4metabolomics-public-history"><i class="far fa-comment-dots" aria-hidden="true"></i><span class="visually-hidden">comment</span> Workflow4Metabolomics public history</h3>
+  <div id="comment-workflow4metabolomics-public-history" class="box-title" aria-label="comment box: Workflow4Metabolomics public history"><i class="far fa-comment-dots" aria-hidden="true"></i><span class="visually-hidden"></span> Comment: Workflow4Metabolomics public history</div>
 
   <p>This training material can be followed running it on any <span class="notranslate">Galaxy</span> instance holding the <span class="notranslate">Galaxy</span> modules needed.
 Nonetheless, if you happen to be a W4M user and do not want to run the hands-on yourself, please note that
@@ -756,7 +761,7 @@ Two sample characteristics are given:</p>
 <p>To perform the different exercices of this tutorial, you need to create a new history and upload the dedicated dataset.</p>
 
 <blockquote class="notranslate hands_on">
-  <h3 id="hands_on-hands-on-data-upload"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden">hands_on</span> Hands-on: Data upload</h3>
+  <div id="hands-on-data-upload" class="box-title" aria-label="hands-on box: Data upload"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Data upload</div>
 
   <ol>
     <li>Create a new history for this tutorial</li>
@@ -772,24 +777,24 @@ https://zenodo.org/record/5179809/files/Dataprocessing_variableMetadata.txt
 </code></pre></div>      </div>
 
       <!--SNIPPET-->
-      <blockquote class="tip">  <h3 data-toc-skip="" id="-tip-importing-via-links"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: Importing via links</h3>  <ul>  <li>Copy the link location</li>  <li>    <p>Open the <span class="notranslate">Galaxy</span> Upload Manager (<i class="fas fa-upload" aria-hidden="true"></i><span class="visually-hidden"><span class="notranslate">galaxy</span>-upload</span> on the top-right of the tool panel)</p>  </li>  <li>Select <strong>Paste/Fetch Data</strong></li>  <li>    <p>Paste the link into the text field</p>  </li>  <li>    <p>Press <strong>Start</strong></p>  </li>  <li><strong>Close</strong> the window</li></ul></blockquote>
+      <blockquote class="tip">  <div id="tip-importing-via-links" class="box-title"><button type="button" aria-controls="tip-importing-via-links-contents" aria-expanded="true" aria-label="Toggle tip box: Importing via links"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: Importing via links<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>  <ul>  <li>Copy the link location</li>  <li>    <p>Open the <span class="notranslate">Galaxy</span> Upload Manager (<i class="fas fa-upload" aria-hidden="true"></i><span class="visually-hidden"><span class="notranslate">galaxy</span>-upload</span> on the top-right of the tool panel)</p>  </li>  <li>Select <strong>Paste/Fetch Data</strong></li>  <li>    <p>Paste the link into the text field</p>  </li>  <li>    <p>Press <strong>Start</strong></p>  </li>  <li><strong>Close</strong> the window</li></ul></blockquote>
     </li>
     <li>
       <p>Rename the datasets for their names to be shorter: “dataMatrix”, “sampleMetadata”, “variableMetadata”.</p>
 
       <!--SNIPPET-->
-      <blockquote class="tip">  <h3 data-toc-skip="" id="-tip-renaming-a-dataset"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: Renaming a dataset</h3>  <ul>  <li>Click on the <i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"><span class="notranslate">galaxy</span>-pencil</span> <strong>pencil icon</strong> for the dataset to edit its attributes</li>  <li>In the central panel, change the <strong>Name</strong> field</li>  <li>Click the <strong>Save</strong> button</li></ul></blockquote>
+      <blockquote class="tip">  <div id="tip-renaming-a-dataset" class="box-title"><button type="button" aria-controls="tip-renaming-a-dataset-contents" aria-expanded="true" aria-label="Toggle tip box: Renaming a dataset"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: Renaming a dataset<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>  <ul>  <li>Click on the <i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"><span class="notranslate">galaxy</span>-pencil</span> <strong>pencil icon</strong> for the dataset to edit its attributes</li>  <li>In the central panel, change the <strong>Name</strong> field</li>  <li>Click the <strong>Save</strong> button</li></ul></blockquote>
     </li>
     <li>
       <p>Check that the datatype is “tabular”. If not, you may change it.</p>
 
       <!--SNIPPET-->
-      <blockquote class="tip">  <h3 data-toc-skip="" id="-tip-changing-the-datatype"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: Changing the datatype</h3>  <ul>  <li>Click on the <i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"><span class="notranslate">galaxy</span>-pencil</span> <strong>pencil icon</strong> for the dataset to edit its attributes</li>  <li>In the central panel, click on the <i class="fas fa-database" aria-hidden="true"></i><span class="visually-hidden"><span class="notranslate">galaxy</span>-chart-select-data</span> <strong>Datatypes</strong> tab on the top</li>  <li>Select <code class="language-plaintext highlighter-rouge">datatypes</code>    <ul>      <li>tip: you can start typing the datatype into the field to filter the dropdown menu</li>    </ul>  </li>  <li>Click the <strong>Save</strong> button</li></ul></blockquote>
+      <blockquote class="tip">  <div id="tip-changing-the-datatype" class="box-title"><button type="button" aria-controls="tip-changing-the-datatype-contents" aria-expanded="true" aria-label="Toggle tip box: Changing the datatype"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: Changing the datatype<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>  <ul>  <li>Click on the <i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"><span class="notranslate">galaxy</span>-pencil</span> <strong>pencil icon</strong> for the dataset to edit its attributes</li>  <li>In the central panel, click on the <i class="fas fa-database" aria-hidden="true"></i><span class="visually-hidden"><span class="notranslate">galaxy</span>-chart-select-data</span> <strong>Datatypes</strong> tab on the top</li>  <li>Select <code class="language-plaintext highlighter-rouge">datatypes</code>    <ul>      <li>tip: you can start typing the datatype into the field to filter the dropdown menu</li>    </ul>  </li>  <li>Click the <strong>Save</strong> button</li></ul></blockquote>
     </li>
   </ol>
 
   <blockquote class="tip">
-    <h3 id="tip-comment-to-w4m-users"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden">tip</span> Comment to W4M users</h3>
+    <div id="tip-comment-to-w4m-users" class="box-title"><button type="button" aria-controls="tip-comment-to-w4m-users-contents" aria-expanded="true" aria-label="Toggle tip box: Comment to W4M users"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: Comment to W4M users<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
 
     <p>In the <a href="https://workflow4metabolomics.usegalaxy.fr/u/peteram/h/gtnlcmsdataprocessing">GTN_LCMSprocessing</a> history,
 this step corresponds to the datasets number 1 to 3.</p>
@@ -822,7 +827,7 @@ A quick check at the variableMetadata file reveals that a retention time column 
 We can then use this column to filter the dataset.</p>
 
 <blockquote class="notranslate hands_on">
-  <h3 id="hands_on-hands-on-using-generic_filter-to-filter-ions-found-at-specific-retention-times"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden">hands_on</span> Hands-on: Using <strong>Generic_filter</strong> to filter ions found at specific retention times</h3>
+  <div id="hands-on-using-b-generic-filter-b-to-filter-ions-found-at-specific-retention-times" class="box-title" aria-label="hands-on box: Using &lt;b&gt;Generic_filter&lt;/b&gt; to filter ions found at specific retention times"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Using <b>Generic_filter</b> to filter ions found at specific retention times</div>
 
   <ol>
     <li><span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/melpetera/generic_filter/generic_filter/2020.01" title="Tested with toolshed.g2.bx.psu.edu/repos/melpetera/generic_filter/generic_filter/2020.01"><strong>Generic_Filter</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: <span class="notranslate">toolshed</span>.g2.bx.psu.edu/repos/melpetera/generic_filter/generic_filter/2020.01</span></span>  with the following parameters:
@@ -854,7 +859,7 @@ We can then use this column to filter the dataset.</p>
       </ul>
 
       <blockquote class="tip">
-        <h3 id="tip-comment-to-w4m-users-1"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden">tip</span> Comment to W4M users</h3>
+        <div id="tip-comment-to-w4m-users-1" class="box-title"><button type="button" aria-controls="tip-comment-to-w4m-users-1-contents" aria-expanded="true" aria-label="Toggle tip box: Comment to W4M users"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: Comment to W4M users<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
 
         <p>In the <a href="https://workflow4metabolomics.usegalaxy.fr/u/peteram/h/gtnlcmsdataprocessing">GTN_LCMSprocessing</a> history,
 this step corresponds to the datasets number 4 to 6.</p>
@@ -869,12 +874,12 @@ except the content has been filtered according to the specified parameters.
 By “filtering”, it means removing from the dataset some variables (ions) and/or samples according to the defined filters.</p>
 
 <blockquote class="question">
-  <h3 id="question-question"><i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden">question</span> Question</h3>
+  <div id="question" class="box-title" aria-label="question box: "><i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden"></span> Question</div>
 
   <p>What have changed between the 3 input tables and the 3 output ones?</p>
 
   <blockquote class="solution">
-    <h3 id="solution-solution"><i class="far fa-eye" aria-hidden="true"></i><span class="visually-hidden">solution</span> Solution</h3>
+    <div id="solution" class="box-title"><button type="button" aria-controls="solution-contents" aria-expanded="true" aria-label="Toggle solution box: "><i class="far fa-eye" aria-hidden="true"></i><span class="visually-hidden"></span> Solution<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
 
     <p>The sampleMetadata output is identical to the input one since no filter on samples has been applied.
  The variableMetadata output contains less lines than the input one: some ions has been removed from the table.
@@ -916,7 +921,7 @@ In this tutorial, we will choose to calculate a mean fold change between blanks 
 <p>The mean fold change (“fold”) for each ion can be calculated using the <strong>Intensity Check</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> tool.</p>
 
 <blockquote class="notranslate hands_on">
-  <h3 id="hands_on-hands-on-using-intensity-check-to-generate-the-information-needed-to-filter"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden">hands_on</span> Hands-on: Using <strong>Intensity Check</strong> to generate the information needed to filter</h3>
+  <div id="hands-on-using-b-intensity-check-b-to-generate-the-information-needed-to-filter" class="box-title" aria-label="hands-on box: Using &lt;b&gt;Intensity Check&lt;/b&gt; to generate the information needed to filter"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Using <b>Intensity Check</b> to generate the information needed to filter</div>
 
   <ol>
     <li><span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/melpetera/intensity_checks/intens_check/1.2.8" title="Tested with toolshed.g2.bx.psu.edu/repos/melpetera/intensity_checks/intens_check/1.2.8"><strong>Intensity Check</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: <span class="notranslate">toolshed</span>.g2.bx.psu.edu/repos/melpetera/intensity_checks/intens_check/1.2.8</span></span>  with the following parameters:
@@ -938,7 +943,7 @@ In this tutorial, we will choose to calculate a mean fold change between blanks 
       </ul>
 
       <blockquote class="tip">
-        <h3 id="tip-comment-to-w4m-users-2"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden">tip</span> Comment to W4M users</h3>
+        <div id="tip-comment-to-w4m-users-2" class="box-title"><button type="button" aria-controls="tip-comment-to-w4m-users-2-contents" aria-expanded="true" aria-label="Toggle tip box: Comment to W4M users"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: Comment to W4M users<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
 
         <p>In the <a href="https://workflow4metabolomics.usegalaxy.fr/u/peteram/h/gtnlcmsdataprocessing">GTN_LCMSprocessing</a> history,
 this step corresponds to the datasets number 7 and 8.</p>
@@ -953,14 +958,14 @@ and a table corresponding to the variableMetadata file used as input, completed 
 In our case, it generated a column named <em>fold_Other_VS_blank</em> that we will use for filtering.</p>
 
 <blockquote class="question">
-  <h3 id="question-question-1"><i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden">question</span> Question</h3>
+  <div id="question-1" class="box-title" aria-label="question box: "><i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden"></span> Question</div>
 
   <p>What does a value of “4” mean in the <em>fold_Other_VS_blank</em> column?
 Remember that we used as parameter <em>“Selected class”</em>=<code class="language-plaintext highlighter-rouge">blank</code> and
 <em>“Where should the class be placed for the mean fold change calculation?”</em>=<code class="language-plaintext highlighter-rouge">Denominator (Bottom)</code>.</p>
 
   <blockquote class="solution">
-    <h3 id="solution-solution-1"><i class="far fa-eye" aria-hidden="true"></i><span class="visually-hidden">solution</span> Solution</h3>
+    <div id="solution-1" class="box-title"><button type="button" aria-controls="solution-1-contents" aria-expanded="true" aria-label="Toggle solution box: "><i class="far fa-eye" aria-hidden="true"></i><span class="visually-hidden"></span> Solution<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
 
     <p>Since <em>“Selected class”</em>=<code class="language-plaintext highlighter-rouge">blank</code>, the samples are devided in two groups: the blank samples on one hand
 and all the other samples on the other hand. 
@@ -980,7 +985,7 @@ meaning that the mean values of biological samples’ intensities for theses ion
 to be resulting from relevant compounds.</p>
 
 <blockquote class="notranslate hands_on">
-  <h3 id="hands_on-hands-on-using-generic_filter-to-filter-ions-with-insuffisant-mean-contrast-with-blank-samples"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden">hands_on</span> Hands-on: Using <strong>Generic_filter</strong> to filter ions with insuffisant mean contrast with blank samples</h3>
+  <div id="hands-on-using-b-generic-filter-b-to-filter-ions-with-insuffisant-mean-contrast-with-blank-samples" class="box-title" aria-label="hands-on box: Using &lt;b&gt;Generic_filter&lt;/b&gt; to filter ions with insuffisant mean contrast with blank samples"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Using <b>Generic_filter</b> to filter ions with insuffisant mean contrast with blank samples</div>
 
   <ol>
     <li><span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/melpetera/generic_filter/generic_filter/2020.01" title="Tested with toolshed.g2.bx.psu.edu/repos/melpetera/generic_filter/generic_filter/2020.01"><strong>Generic_Filter</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: <span class="notranslate">toolshed</span>.g2.bx.psu.edu/repos/melpetera/generic_filter/generic_filter/2020.01</span></span>  with the following parameters:
@@ -1011,7 +1016,7 @@ to be resulting from relevant compounds.</p>
       </ul>
 
       <blockquote class="tip">
-        <h3 id="tip-comment-to-w4m-users-3"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden">tip</span> Comment to W4M users</h3>
+        <div id="tip-comment-to-w4m-users-3" class="box-title"><button type="button" aria-controls="tip-comment-to-w4m-users-3-contents" aria-expanded="true" aria-label="Toggle tip box: Comment to W4M users"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: Comment to W4M users<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
 
         <p>In the <a href="https://workflow4metabolomics.usegalaxy.fr/u/peteram/h/gtnlcmsdataprocessing">GTN_LCMSprocessing</a> history,
 this step corresponds to the datasets number 9 to 11.</p>
@@ -1024,12 +1029,12 @@ this step corresponds to the datasets number 9 to 11.</p>
 <p>As for the previous use of <strong>Generic Filter</strong>, we now have a dataset filtered from noise signals.</p>
 
 <blockquote class="question">
-  <h3 id="question-questions"><i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden">question</span> Questions</h3>
+  <div id="question-2" class="box-title" aria-label="question box: "><i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden"></span> Question</div>
 
   <p>What is the current stage of our training dataset?</p>
 
   <blockquote class="solution">
-    <h3 id="solution-solution-2"><i class="far fa-eye" aria-hidden="true"></i><span class="visually-hidden">solution</span> Solution</h3>
+    <div id="solution-2" class="box-title"><button type="button" aria-controls="solution-2-contents" aria-expanded="true" aria-label="Toggle solution box: "><i class="far fa-eye" aria-hidden="true"></i><span class="visually-hidden"></span> Solution<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
 
     <p>From a dataset containing originally 200 ions, the two successive filters lead to a dataset containing only 131 ions.
 The number of samples did not change, so we still have 30 biological samples, 8 QC pools and 6 blanks.</p>
@@ -1050,7 +1055,7 @@ Thus, there are some assumptions we can begin to make, that we can try to check 
 <p>Here, we will use a tool that is called <strong>Quality Metrics</strong> to have an overview of our dataset through the generation of a pdf file containing some plots.</p>
 
 <blockquote class="notranslate hands_on">
-  <h3 id="hands_on-hands-on-using-quality-metrics-to-get-an-overview-of-the-dataset"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden">hands_on</span> Hands-on: Using <strong>Quality Metrics</strong> to get an overview of the dataset</h3>
+  <div id="hands-on-using-b-quality-metrics-b-to-get-an-overview-of-the-dataset" class="box-title" aria-label="hands-on box: Using &lt;b&gt;Quality Metrics&lt;/b&gt; to get an overview of the dataset"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Using <b>Quality Metrics</b> to get an overview of the dataset</div>
 
   <ol>
     <li><span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/ethevenot/qualitymetrics/quality_metrics/2.2.8" title="Tested with toolshed.g2.bx.psu.edu/repos/ethevenot/qualitymetrics/quality_metrics/2.2.8"><strong>Quality Metrics</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: <span class="notranslate">toolshed</span>.g2.bx.psu.edu/repos/ethevenot/qualitymetrics/quality_metrics/2.2.8</span></span>  with the following parameters:
@@ -1063,7 +1068,7 @@ Thus, there are some assumptions we can begin to make, that we can try to check 
       </ul>
 
       <blockquote class="tip">
-        <h3 id="tip-comment-to-w4m-users-4"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden">tip</span> Comment to W4M users</h3>
+        <div id="tip-comment-to-w4m-users-4" class="box-title"><button type="button" aria-controls="tip-comment-to-w4m-users-4-contents" aria-expanded="true" aria-label="Toggle tip box: Comment to W4M users"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: Comment to W4M users<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
 
         <p>In the <a href="https://workflow4metabolomics.usegalaxy.fr/u/peteram/h/gtnlcmsdataprocessing">GTN_LCMSprocessing</a> history,
 this step corresponds to the datasets number 12 to 15.</p>
@@ -1092,7 +1097,7 @@ if a sample is positioned at the same area as the blanks, it is suspicious and a
 Again, this can be done running the <strong>Generic Filter</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> tool, using the <em>sampleType</em> column of the sampleMetadata table.</p>
 
 <blockquote class="notranslate hands_on">
-  <h3 id="hands_on-hands-on-using-generic_filter-to-remove-blank-samples-from-the-dataset"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden">hands_on</span> Hands-on: Using <strong>Generic_filter</strong> to remove blank samples from the dataset</h3>
+  <div id="hands-on-using-b-generic-filter-b-to-remove-blank-samples-from-the-dataset" class="box-title" aria-label="hands-on box: Using &lt;b&gt;Generic_filter&lt;/b&gt; to remove blank samples from the dataset"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Using <b>Generic_filter</b> to remove blank samples from the dataset</div>
 
   <ol>
     <li><span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/melpetera/generic_filter/generic_filter/2020.01" title="Tested with toolshed.g2.bx.psu.edu/repos/melpetera/generic_filter/generic_filter/2020.01"><strong>Generic_Filter</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: <span class="notranslate">toolshed</span>.g2.bx.psu.edu/repos/melpetera/generic_filter/generic_filter/2020.01</span></span>  with the following parameters:
@@ -1118,14 +1123,14 @@ Again, this can be done running the <strong>Generic Filter</strong> <i class="fa
       </ul>
 
       <blockquote class="comment">
-        <h3 id="comment-comment"><i class="far fa-comment-dots" aria-hidden="true"></i><span class="visually-hidden">comment</span> Comment</h3>
+        <div id="comment" class="box-title" aria-label="comment box: "><i class="far fa-comment-dots" aria-hidden="true"></i><span class="visually-hidden"></span> Comment</div>
 
         <p>The tabular outputs of the previous <strong>Quality Metrics</strong> job are not needed here.
 This is why what we use as input here are the outputs from the last <strong>Generic Filter</strong> job.</p>
       </blockquote>
 
       <blockquote class="tip">
-        <h3 id="tip-comment-to-w4m-users-5"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden">tip</span> Comment to W4M users</h3>
+        <div id="tip-comment-to-w4m-users-5" class="box-title"><button type="button" aria-controls="tip-comment-to-w4m-users-5-contents" aria-expanded="true" aria-label="Toggle tip box: Comment to W4M users"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: Comment to W4M users<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
 
         <p>In the <a href="https://workflow4metabolomics.usegalaxy.fr/u/peteram/h/gtnlcmsdataprocessing">GTN_LCMSprocessing</a> history,
 this step corresponds to the datasets number 16 to 18.</p>
@@ -1142,14 +1147,14 @@ To prevent very long and not-so-informative names due to successive use of modul
 Here, we completed a first row of data processing with the filter of trash signals. Now is a good time for a little renaming.</p>
 
 <blockquote class="notranslate hands_on">
-  <h3 id="hands_on-hands-on-rename-the-last-3-tables"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden">hands_on</span> Hands-on: Rename the last 3 tables</h3>
+  <div id="hands-on-rename-the-last-3-tables" class="box-title" aria-label="hands-on box: Rename the last 3 tables"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Rename the last 3 tables</div>
 
   <ol>
     <li>
       <p>Rename the tables for their names to be shorter: “RT_blank_Filter_dataMatrix”, “RT_blank_Filter_sampleMetadata”, “RT_blank_Filter_variableMetadata”.</p>
 
       <!--SNIPPET-->
-      <blockquote class="tip">  <h3 data-toc-skip="" id="-tip-renaming-a-dataset"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: Renaming a dataset</h3>  <ul>  <li>Click on the <i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"><span class="notranslate">galaxy</span>-pencil</span> <strong>pencil icon</strong> for the dataset to edit its attributes</li>  <li>In the central panel, change the <strong>Name</strong> field</li>  <li>Click the <strong>Save</strong> button</li></ul></blockquote>
+      <blockquote class="tip">  <div id="tip-renaming-a-dataset-1" class="box-title"><button type="button" aria-controls="tip-renaming-a-dataset-1-contents" aria-expanded="true" aria-label="Toggle tip box: Renaming a dataset"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: Renaming a dataset<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>  <ul>  <li>Click on the <i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"><span class="notranslate">galaxy</span>-pencil</span> <strong>pencil icon</strong> for the dataset to edit its attributes</li>  <li>In the central panel, change the <strong>Name</strong> field</li>  <li>Click the <strong>Save</strong> button</li></ul></blockquote>
     </li>
   </ol>
 
@@ -1186,7 +1191,7 @@ one could suppose that the groups may have something to do with it.</p>
 This can be done using the <strong>Multivariate</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> tool.</p>
 
 <blockquote class="notranslate hands_on">
-  <h3 id="hands_on-hands-on-using-multivariate-to-get-a-coloured-score-plot-from-a-pca"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden">hands_on</span> Hands-on: Using <strong>Multivariate</strong> to get a coloured score plot from a PCA</h3>
+  <div id="hands-on-using-b-multivariate-b-to-get-a-coloured-score-plot-from-a-pca" class="box-title" aria-label="hands-on box: Using &lt;b&gt;Multivariate&lt;/b&gt; to get a coloured score plot from a PCA"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Using <b>Multivariate</b> to get a coloured score plot from a PCA</div>
 
   <ol>
     <li><span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/ethevenot/multivariate/Multivariate/2.3.10" title="Tested with toolshed.g2.bx.psu.edu/repos/ethevenot/multivariate/Multivariate/2.3.10"><strong>Multivariate</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: <span class="notranslate">toolshed</span>.g2.bx.psu.edu/repos/ethevenot/multivariate/Multivariate/2.3.10</span></span>  with the following parameters:
@@ -1205,14 +1210,14 @@ This can be done using the <strong>Multivariate</strong> <i class="fas fa-wrench
       </ul>
 
       <blockquote class="comment">
-        <h3 id="comment-comment-1"><i class="far fa-comment-dots" aria-hidden="true"></i><span class="visually-hidden">comment</span> Comment</h3>
+        <div id="comment-1" class="box-title" aria-label="comment box: "><i class="far fa-comment-dots" aria-hidden="true"></i><span class="visually-hidden"></span> Comment</div>
 
         <p>Changing the <code class="language-plaintext highlighter-rouge">0.8</code> value to <code class="language-plaintext highlighter-rouge">0.4</code> makes the text size of labels on the score plot smaller.
 Since the plot box size by default is tiny, this enhances the readability of the plot.</p>
       </blockquote>
 
       <blockquote class="tip">
-        <h3 id="tip-comment-to-w4m-users-6"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden">tip</span> Comment to W4M users</h3>
+        <div id="tip-comment-to-w4m-users-6" class="box-title"><button type="button" aria-controls="tip-comment-to-w4m-users-6-contents" aria-expanded="true" aria-label="Toggle tip box: Comment to W4M users"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: Comment to W4M users<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
 
         <p>In the <a href="https://workflow4metabolomics.usegalaxy.fr/u/peteram/h/gtnlcmsdataprocessing">GTN_LCMSprocessing</a> history,
 this step corresponds to the datasets number 19 to 22.</p>
@@ -1248,7 +1253,7 @@ By injecting these pools all through the injection sequence of the study samples
 the analytical effects we want to correct, since biologically they are supposed to be identical.</p>
 
 <blockquote class="details">
-  <h3 id="details-more-details-about-the-theory"><i class="fas fa-info-circle" aria-hidden="true"></i><span class="visually-hidden">details</span> More details about the theory</h3>
+  <div id="details-more-details-about-the-theory" class="box-title"><button type="button" aria-controls="details-more-details-about-the-theory-contents" aria-expanded="true" aria-label="Toggle details box: More details about the theory"><i class="fas fa-info-circle" aria-hidden="true"></i><span class="visually-hidden"></span> Details: More details about the theory<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
 
   <p>The procedure that is used to correct data in this tutorial is the following.</p>
 
@@ -1278,7 +1283,7 @@ Thus, if your sequence is divided into several batches, the idea is to obtain so
 <p>We can then use the <strong>Batch correction</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> tool to perform the correction.</p>
 
 <blockquote class="notranslate hands_on">
-  <h3 id="hands_on-hands-on-using-batch-correction-to-correct-the-data-from-signal-drift-and-batch-effet"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden">hands_on</span> Hands-on: Using <strong>Batch correction</strong> to correct the data from signal drift and batch effet</h3>
+  <div id="hands-on-using-b-batch-correction-b-to-correct-the-data-from-signal-drift-and-batch-effet" class="box-title" aria-label="hands-on box: Using &lt;b&gt;Batch correction&lt;/b&gt; to correct the data from signal drift and batch effet"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Using <b>Batch correction</b> to correct the data from signal drift and batch effet</div>
 
   <ol>
     <li><span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/melpetera/batchcorrection/Batch_correction/3.0.0" title="Tested with toolshed.g2.bx.psu.edu/repos/melpetera/batchcorrection/Batch_correction/3.0.0"><strong>Batch_correction</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: <span class="notranslate">toolshed</span>.g2.bx.psu.edu/repos/melpetera/batchcorrection/Batch_correction/3.0.0</span></span>  with the following parameters:
@@ -1295,14 +1300,14 @@ Thus, if your sequence is divided into several batches, the idea is to obtain so
       </ul>
 
       <blockquote class="comment">
-        <h3 id="comment-comment-2"><i class="far fa-comment-dots" aria-hidden="true"></i><span class="visually-hidden">comment</span> Comment</h3>
+        <div id="comment-2" class="box-title" aria-label="comment box: "><i class="far fa-comment-dots" aria-hidden="true"></i><span class="visually-hidden"></span> Comment</div>
 
         <p>The tabular outputs of the previous <strong>Multivariate</strong> job are not needed here.
 This is why what we use as input here are the outputs from the last <strong>Generic Filter</strong> job.</p>
       </blockquote>
 
       <blockquote class="tip">
-        <h3 id="tip-comment-to-w4m-users-7"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden">tip</span> Comment to W4M users</h3>
+        <div id="tip-comment-to-w4m-users-7" class="box-title"><button type="button" aria-controls="tip-comment-to-w4m-users-7-contents" aria-expanded="true" aria-label="Toggle tip box: Comment to W4M users"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: Comment to W4M users<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
 
         <p>In the <a href="https://workflow4metabolomics.usegalaxy.fr/u/peteram/h/gtnlcmsdataprocessing">GTN_LCMSprocessing</a> history,
 this step corresponds to the datasets number 23 to 25.</p>
@@ -1337,7 +1342,7 @@ Here we generated all the plots that are available. This means that the PDF file
 plus 3 additional pages at the end that display overall before/after indicators (sum of intensities, PCA plots, pools’ coefficients of variation).</p>
 
 <blockquote class="question">
-  <h3 id="question-question-2"><i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden">question</span> Question</h3>
+  <div id="question-3" class="box-title" aria-label="question box: "><i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden"></span> Question</div>
 
   <p>Look at the penultimate page of the PDF output (page n°133).
 This page represents before/after PCA plots with various colouring.
@@ -1347,7 +1352,7 @@ The two plots are coloured according to the batch information (B1 and B2).
 What can you say about the batch effect after the correction process compared to before?</p>
 
   <blockquote class="solution">
-    <h3 id="solution-solution-3"><i class="far fa-eye" aria-hidden="true"></i><span class="visually-hidden">solution</span> Solution</h3>
+    <div id="solution-3" class="box-title"><button type="button" aria-controls="solution-3-contents" aria-expanded="true" aria-label="Toggle solution box: "><i class="far fa-eye" aria-hidden="true"></i><span class="visually-hidden"></span> Solution<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
 
     <p>Compared to the batch effect that was highlighted as the main effect in the data before the correction process,
 we can see that after correction, the batch effect is no longer explaining the first PCA component.
@@ -1399,7 +1404,7 @@ These two indicators are automatically calculated as long as the input datasets 
 Thus, for these two indicators the tool can be run without specific parameters to set.</p>
 
 <blockquote class="notranslate hands_on">
-  <h3 id="hands_on-hands-on-using-quality-metrics-to-compute-the-cv-indicators"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden">hands_on</span> Hands-on: Using <strong>Quality Metrics</strong> to compute the CV indicators</h3>
+  <div id="hands-on-using-b-quality-metrics-b-to-compute-the-cv-indicators" class="box-title" aria-label="hands-on box: Using &lt;b&gt;Quality Metrics&lt;/b&gt; to compute the CV indicators"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Using <b>Quality Metrics</b> to compute the CV indicators</div>
 
   <ol>
     <li><span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/ethevenot/qualitymetrics/quality_metrics/2.2.8" title="Tested with toolshed.g2.bx.psu.edu/repos/ethevenot/qualitymetrics/quality_metrics/2.2.8"><strong>Quality Metrics</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: <span class="notranslate">toolshed</span>.g2.bx.psu.edu/repos/ethevenot/qualitymetrics/quality_metrics/2.2.8</span></span>  with the following parameters:
@@ -1412,7 +1417,7 @@ Thus, for these two indicators the tool can be run without specific parameters t
       </ul>
 
       <blockquote class="comment">
-        <h3 id="comment-comment-3"><i class="far fa-comment-dots" aria-hidden="true"></i><span class="visually-hidden">comment</span> Comment</h3>
+        <div id="comment-3" class="box-title" aria-label="comment box: "><i class="far fa-comment-dots" aria-hidden="true"></i><span class="visually-hidden"></span> Comment</div>
 
         <p>You may have noticed that we already used this tool previously in the tutorial.
 Although CV columns were already available at that time, here you need to use this tool again since this time indicators will be computed on intensities
@@ -1421,7 +1426,7 @@ Note that what we are going to use this time is the tabular output, but while yo
       </blockquote>
 
       <blockquote class="tip">
-        <h3 id="tip-comment-to-w4m-users-8"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden">tip</span> Comment to W4M users</h3>
+        <div id="tip-comment-to-w4m-users-8" class="box-title"><button type="button" aria-controls="tip-comment-to-w4m-users-8-contents" aria-expanded="true" aria-label="Toggle tip box: Comment to W4M users"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: Comment to W4M users<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
 
         <p>In the <a href="https://workflow4metabolomics.usegalaxy.fr/u/peteram/h/gtnlcmsdataprocessing">GTN_LCMSprocessing</a> history,
 this step corresponds to the datasets number 26 to 29.</p>
@@ -1439,7 +1444,7 @@ Here we have two indicators we want to use. One is the pool CVs, the other is th
 This means that we will need to set two distinct thresholds, and to add two numerical filters in <strong>Generic Filter</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span>.</p>
 
 <blockquote class="notranslate hands_on">
-  <h3 id="hands_on-hands-on-using-generic-filter-to-filter-the-dataset"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden">hands_on</span> Hands-on: Using <strong>Generic Filter</strong> to filter the dataset</h3>
+  <div id="hands-on-using-b-generic-filter-b-to-filter-the-dataset" class="box-title" aria-label="hands-on box: Using &lt;b&gt;Generic Filter&lt;/b&gt; to filter the dataset"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Using <b>Generic Filter</b> to filter the dataset</div>
 
   <ol>
     <li><span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/melpetera/generic_filter/generic_filter/2020.01" title="Tested with toolshed.g2.bx.psu.edu/repos/melpetera/generic_filter/generic_filter/2020.01"><strong>Generic_Filter</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: <span class="notranslate">toolshed</span>.g2.bx.psu.edu/repos/melpetera/generic_filter/generic_filter/2020.01</span></span>  with the following parameters:
@@ -1494,7 +1499,7 @@ This means that we will need to set two distinct thresholds, and to add two nume
       </ul>
 
       <blockquote class="comment">
-        <h3 id="comment-comment-4"><i class="far fa-comment-dots" aria-hidden="true"></i><span class="visually-hidden">comment</span> Comment</h3>
+        <div id="comment-4" class="box-title" aria-label="comment box: "><i class="far fa-comment-dots" aria-hidden="true"></i><span class="visually-hidden"></span> Comment</div>
 
         <p>Here, we took the opportunity of this filter to remove the pools from the dataset. 
 Indeed, pools will be no longer used in this tutorial’s steps, so we can remove them from the dataset.</p>
@@ -1504,10 +1509,10 @@ Indeed, pools will be no longer used in this tutorial’s steps, so we can remov
       <p>Rename the output tables for their names to be shorter: “Filtered_dataMatrix”, “Filtered_sampleMetadata”, “Filtered_variableMetadata”.</p>
 
       <!--SNIPPET-->
-      <blockquote class="tip">  <h3 data-toc-skip="" id="-tip-renaming-a-dataset"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: Renaming a dataset</h3>  <ul>  <li>Click on the <i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"><span class="notranslate">galaxy</span>-pencil</span> <strong>pencil icon</strong> for the dataset to edit its attributes</li>  <li>In the central panel, change the <strong>Name</strong> field</li>  <li>Click the <strong>Save</strong> button</li></ul></blockquote>
+      <blockquote class="tip">  <div id="tip-renaming-a-dataset-2" class="box-title"><button type="button" aria-controls="tip-renaming-a-dataset-2-contents" aria-expanded="true" aria-label="Toggle tip box: Renaming a dataset"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: Renaming a dataset<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>  <ul>  <li>Click on the <i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"><span class="notranslate">galaxy</span>-pencil</span> <strong>pencil icon</strong> for the dataset to edit its attributes</li>  <li>In the central panel, change the <strong>Name</strong> field</li>  <li>Click the <strong>Save</strong> button</li></ul></blockquote>
 
       <blockquote class="tip">
-        <h3 id="tip-comment-to-w4m-users-9"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden">tip</span> Comment to W4M users</h3>
+        <div id="tip-comment-to-w4m-users-9" class="box-title"><button type="button" aria-controls="tip-comment-to-w4m-users-9-contents" aria-expanded="true" aria-label="Toggle tip box: Comment to W4M users"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: Comment to W4M users<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
 
         <p>In the <a href="https://workflow4metabolomics.usegalaxy.fr/u/peteram/h/gtnlcmsdataprocessing">GTN_LCMSprocessing</a> history,
 this step corresponds to the datasets number 30 to 32.</p>
@@ -1518,7 +1523,7 @@ this step corresponds to the datasets number 30 to 32.</p>
 </blockquote>
 
 <blockquote class="question">
-  <h3 id="question-questions-1"><i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden">question</span> Questions</h3>
+  <div id="question-4" class="box-title" aria-label="question box: "><i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden"></span> Question</div>
 
   <ol>
     <li>What does the <em>0.3</em> threshold mean in the hands-on exercise you just executed?</li>
@@ -1527,7 +1532,7 @@ this step corresponds to the datasets number 30 to 32.</p>
   </ol>
 
   <blockquote class="solution">
-    <h3 id="solution-solution-4"><i class="far fa-eye" aria-hidden="true"></i><span class="visually-hidden">solution</span> Solution</h3>
+    <div id="solution-4" class="box-title"><button type="button" aria-controls="solution-4-contents" aria-expanded="true" aria-label="Toggle solution box: "><i class="far fa-eye" aria-hidden="true"></i><span class="visually-hidden"></span> Solution<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
 
     <ol>
       <li>The <em>0.3</em> value corresponds to the maximum value kept in the dataset (‘Interval of values to remove: <em>upper</em>’) regarding the
@@ -1588,7 +1593,7 @@ one way to represent the overall concentration of urine samples.
 Let’s try to colour the PCA score plots according to that variable. For this, we will use the <strong>Multivariate</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> <span class="notranslate">Galaxy</span> module.</p>
 
 <blockquote class="notranslate hands_on">
-  <h3 id="hands_on-hands-on-using-multivariate-tool-to-visualise-the-two-first-components-of-a-pca"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden">hands_on</span> Hands-on: Using <strong>Multivariate</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> to visualise the two first components of a PCA</h3>
+  <div id="hands-on-using-b-multivariate-b-to-visualise-the-two-first-components-of-a-pca" class="box-title" aria-label="hands-on box: Using &lt;b&gt;Multivariate&lt;/b&gt; to visualise the two first components of a PCA"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Using <b>Multivariate</b> to visualise the two first components of a PCA</div>
 
   <ol>
     <li><span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/ethevenot/multivariate/Multivariate/2.3.10" title="Tested with toolshed.g2.bx.psu.edu/repos/ethevenot/multivariate/Multivariate/2.3.10"><strong>Multivariate</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: <span class="notranslate">toolshed</span>.g2.bx.psu.edu/repos/ethevenot/multivariate/Multivariate/2.3.10</span></span>  with the following parameters:
@@ -1607,7 +1612,7 @@ Let’s try to colour the PCA score plots according to that variable. For this, 
       </ul>
 
       <blockquote class="tip">
-        <h3 id="tip-comment-to-w4m-users-10"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden">tip</span> Comment to W4M users</h3>
+        <div id="tip-comment-to-w4m-users-10" class="box-title"><button type="button" aria-controls="tip-comment-to-w4m-users-10-contents" aria-expanded="true" aria-label="Toggle tip box: Comment to W4M users"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: Comment to W4M users<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
 
         <p>In the <a href="https://workflow4metabolomics.usegalaxy.fr/u/peteram/h/gtnlcmsdataprocessing">GTN_LCMSprocessing</a> history,
 this step corresponds to the datasets number 33 to 36.</p>
@@ -1661,7 +1666,7 @@ It provides different normalisation strategies, some of them particularly of int
 In our example, what we are interested in is a normalisation based on the <em>Osmo</em> variable, which is one of the possibilities provided by the module.</p>
 
 <blockquote class="notranslate hands_on">
-  <h3 id="hands_on-hands-on-using-normalization-tool-to-handle-the-total-concentration-effect"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden">hands_on</span> Hands-on: Using <strong>Normalization</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> to handle the total concentration effect</h3>
+  <div id="hands-on-using-b-normalization-b-to-handle-the-total-concentration-effect" class="box-title" aria-label="hands-on box: Using &lt;b&gt;Normalization&lt;/b&gt; to handle the total concentration effect"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Using <b>Normalization</b> to handle the total concentration effect</div>
 
   <ol>
     <li><span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/marie-tremblay-metatoul/normalization/normalization/1.0.7" title="Tested with toolshed.g2.bx.psu.edu/repos/marie-tremblay-metatoul/normalization/normalization/1.0.7"><strong>Normalization</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: <span class="notranslate">toolshed</span>.g2.bx.psu.edu/repos/marie-tremblay-metatoul/normalization/normalization/1.0.7</span></span>  with the following parameters:
@@ -1676,7 +1681,7 @@ In our example, what we are interested in is a normalisation based on the <em>Os
       </ul>
 
       <blockquote class="tip">
-        <h3 id="tip-comment-to-w4m-users-11"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden">tip</span> Comment to W4M users</h3>
+        <div id="tip-comment-to-w4m-users-11" class="box-title"><button type="button" aria-controls="tip-comment-to-w4m-users-11-contents" aria-expanded="true" aria-label="Toggle tip box: Comment to W4M users"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: Comment to W4M users<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
 
         <p>In the <a href="https://workflow4metabolomics.usegalaxy.fr/u/peteram/h/gtnlcmsdataprocessing">GTN_LCMSprocessing</a> history,
 this step corresponds to the datasets number 37 and 38.</p>
@@ -1701,7 +1706,7 @@ In our tutorial example we observed the <em>Osmo</em> effect on the two first co
 Thus, we can compute a similar PCA using the normalised intensities and see whether the two first components still cary the unwanted variability.</p>
 
 <blockquote class="notranslate hands_on">
-  <h3 id="hands_on-hands-on-using-multivariate-tool-to-visualise-the-two-first-components-of-a-pca-1"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden">hands_on</span> Hands-on: Using <strong>Multivariate</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> to visualise the two first components of a PCA</h3>
+  <div id="hands-on-using-b-multivariate-b-to-visualise-the-two-first-components-of-a-pca-1" class="box-title" aria-label="hands-on box: Using &lt;b&gt;Multivariate&lt;/b&gt; to visualise the two first components of a PCA"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Using <b>Multivariate</b> to visualise the two first components of a PCA</div>
 
   <ol>
     <li><span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/ethevenot/multivariate/Multivariate/2.3.10" title="Tested with toolshed.g2.bx.psu.edu/repos/ethevenot/multivariate/Multivariate/2.3.10"><strong>Multivariate</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: <span class="notranslate">toolshed</span>.g2.bx.psu.edu/repos/ethevenot/multivariate/Multivariate/2.3.10</span></span>  with the following parameters:
@@ -1720,7 +1725,7 @@ Thus, we can compute a similar PCA using the normalised intensities and see whet
       </ul>
 
       <blockquote class="tip">
-        <h3 id="tip-comment-to-w4m-users-12"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden">tip</span> Comment to W4M users</h3>
+        <div id="tip-comment-to-w4m-users-12" class="box-title"><button type="button" aria-controls="tip-comment-to-w4m-users-12-contents" aria-expanded="true" aria-label="Toggle tip box: Comment to W4M users"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: Comment to W4M users<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
 
         <p>In the <a href="https://workflow4metabolomics.usegalaxy.fr/u/peteram/h/gtnlcmsdataprocessing">GTN_LCMSprocessing</a> history,
 this step corresponds to the datasets number 39 to 42.</p>
@@ -1742,7 +1747,7 @@ In the sampleMetadata we have, there is a <em>Group</em> column, supposedly repr
 Let’s see how theses groups are projected on the final PCA we have.</p>
 
 <blockquote class="notranslate hands_on">
-  <h3 id="hands_on-hands-on-using-multivariate-tool-to-visualise-the-two-first-components-of-a-pca-2"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden">hands_on</span> Hands-on: Using <strong>Multivariate</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> to visualise the two first components of a PCA</h3>
+  <div id="hands-on-using-b-multivariate-b-to-visualise-the-two-first-components-of-a-pca-2" class="box-title" aria-label="hands-on box: Using &lt;b&gt;Multivariate&lt;/b&gt; to visualise the two first components of a PCA"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Using <b>Multivariate</b> to visualise the two first components of a PCA</div>
 
   <ol>
     <li><span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/ethevenot/multivariate/Multivariate/2.3.10" title="Tested with toolshed.g2.bx.psu.edu/repos/ethevenot/multivariate/Multivariate/2.3.10"><strong>Multivariate</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: <span class="notranslate">toolshed</span>.g2.bx.psu.edu/repos/ethevenot/multivariate/Multivariate/2.3.10</span></span>  with the following parameters:
@@ -1761,14 +1766,14 @@ Let’s see how theses groups are projected on the final PCA we have.</p>
       </ul>
 
       <blockquote class="comment">
-        <h3 id="comment-comment-5"><i class="far fa-comment-dots" aria-hidden="true"></i><span class="visually-hidden">comment</span> Comment</h3>
+        <div id="comment-5" class="box-title" aria-label="comment box: "><i class="far fa-comment-dots" aria-hidden="true"></i><span class="visually-hidden"></span> Comment</div>
 
         <p>To run this exercice, you can choose to re-run the previous one and simply change the <em>“Sample colors”</em> parameter
 from <code class="language-plaintext highlighter-rouge">Osmo</code> to<code class="language-plaintext highlighter-rouge">Group</code>.</p>
       </blockquote>
 
       <blockquote class="tip">
-        <h3 id="tip-comment-to-w4m-users-13"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden">tip</span> Comment to W4M users</h3>
+        <div id="tip-comment-to-w4m-users-13" class="box-title"><button type="button" aria-controls="tip-comment-to-w4m-users-13-contents" aria-expanded="true" aria-label="Toggle tip box: Comment to W4M users"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: Comment to W4M users<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
 
         <p>In the <a href="https://workflow4metabolomics.usegalaxy.fr/u/peteram/h/gtnlcmsdataprocessing">GTN_LCMSprocessing</a> history,
 this step corresponds to the datasets number 43 to 46.</p>
@@ -1779,12 +1784,12 @@ this step corresponds to the datasets number 43 to 46.</p>
 </blockquote>
 
 <blockquote class="question">
-  <h3 id="question-questions-2"><i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden">question</span> Questions</h3>
+  <div id="question-5" class="box-title" aria-label="question box: "><i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden"></span> Question</div>
 
   <p>What major comment can you do when looking at the PCA scores plot obtain from the last hands-on exercise?</p>
 
   <blockquote class="solution">
-    <h3 id="solution-solution-5"><i class="far fa-eye" aria-hidden="true"></i><span class="visually-hidden">solution</span> Solution</h3>
+    <div id="solution-5" class="box-title"><button type="button" aria-controls="solution-5-contents" aria-expanded="true" aria-label="Toggle solution box: "><i class="far fa-eye" aria-hidden="true"></i><span class="visually-hidden"></span> Solution<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
 
     <p>We can see that the groups that seemed to be shown on the first PCA component match perfectly the biological categories available in the <em>Group</em>
 column of the sampleMetadata file. 
@@ -1803,7 +1808,7 @@ This does not mean that further data processing steps could not be considered de
 but we reached the end of the example used to illustrate the meaning and importance of untargeted LC-MS metabolomic data processing
 through this tutorial.</p>
 
-<h1 class="no_toc" id="conclusion">Conclusion</h1>
+<h1 id="conclusion">Conclusion</h1>
 
 <p>The question of data filtering and correction must be addressed in all projects, even thought in some cases it may lead to the decision of no action on data. 
 In particular, the removing of “trash” signals, the signal drift and batch effect correction and the filtering of signals of insufficient quality 
@@ -1814,7 +1819,7 @@ Once you complete your customed processing procedure, your tables are ready for 
 
                 
                 <blockquote class="key_points">
-                    <h3><i class="fas fa-key" aria-hidden="true"></i> Key points</h3>
+                    <div class="box-title" aria-label="key-points box"><i class="fas fa-key" aria-hidden="true"></i> Key points</div>
                     <ul>
                         
                         <li><p>Data processing is a key step in untargeted Metabolomics analyses. The question of data filtering and correction must be addressed in all projects, even thought in some cases it may lead to the decision of no action on data. In particular, blank filtering, pool variation study and signal drift correction are common aspects to consider when dealing with LC-MS.</p>
@@ -1886,7 +1891,8 @@ Once you complete your customed processing procedure, your tables are ready for 
                 <h1>Citing this Tutorial</h1>
                 <p>
                     <ol>
-                        <li id="citation-text">Mélanie Petera, Workflow4Metabolomics core team, 2022 <b>Mass spectrometry: LC-MS data processing (Galaxy Training Materials)</b>. <a href="https://training.galaxyproject.org/training-material/topics/metabolomics/tutorials/lcms-dataprocessing/tutorial.html">https://training.galaxyproject.org/training-material/topics/metabolomics/tutorials/lcms-dataprocessing/tutorial.html</a> Online; accessed TODAY
+                        <li id="citation-text">
+                            Mélanie Petera, Workflow4Metabolomics core team,  <b>Mass spectrometry: LC-MS data processing (Galaxy Training Materials)</b>. <a href="https://training.galaxyproject.org/training-material/topics/metabolomics/tutorials/lcms-dataprocessing/tutorial.html">https://training.galaxyproject.org/training-material/topics/metabolomics/tutorials/lcms-dataprocessing/tutorial.html</a> Online; accessed TODAY
                         </li>
                         <li>
                         Batut et al., 2018 <b>Community-Driven Data Analysis Training for Biology</b> Cell Systems <a href="https://doi.org/10.1016%2Fj.cels.2018.05.012">10.1016/j.cels.2018.05.012</a>
@@ -1894,18 +1900,26 @@ Once you complete your customed processing procedure, your tables are ready for 
                     </ol>
                 </p>
 
-
+                <!-- collapsible boxcontaining the BibTeX-formatted citation -->
                 <blockquote class="details">
-                  <h3><i class="fa fa-info-circle" aria-hidden="true"></i><span class="visually-hidden">details</span> BibTeX</h3>
-                  <p style="display: none;">
 
-                <div class="highlighter-rouge"><div class="highlight"><pre class="highlight">
+                  <div id="citation-bibtex" class="box-title">
+                    <button type="button" aria-controls="citation-bibtex" aria-expanded="false" aria-label="Toggle details box: BibTeX for citing this tutorial">
+                      <i class="fas fa-info-circle" aria-hidden="true"></i>
+                      <span class="visually-hidden"></span> BibTeX<span role="button" class="fold-unfold fa fa-minus-square" aria-hidden="true"></span>
+                    </button>
+                   </div>
+                   <p style="display: none;">
+
+                   <div class="highlighter-rouge"><div class="highlight"><pre class="highlight">
+
+
 <code id="citation-code">@misc{metabolomics-lcms-dataprocessing,
 author = "Mélanie Petera and Workflow4Metabolomics core team",
 title = "Mass spectrometry: LC-MS data processing (Galaxy Training Materials)",
-year = "2022",
-month = "07",
-day = "22"
+year = "",
+month = "",
+day = ""
 url = "\url{https://training.galaxyproject.org/training-material/topics/metabolomics/tutorials/lcms-dataprocessing/tutorial.html}",
 note = "[Online; accessed TODAY]"
 }
@@ -1922,8 +1936,8 @@ note = "[Online; accessed TODAY]"
     title = {Community-Driven Data Analysis Training for Biology},
     journal = {Cell Systems}
 }</code>
-                </pre></div></div>
-                </p>
+                   </pre></div></div>
+                   </p>
                 </blockquote>
 
                 
@@ -1936,7 +1950,7 @@ document.getElementById("citation-code").innerHTML = document.getElementById("ci
 document.getElementById("citation-text").innerHTML = document.getElementById("citation-text").innerHTML.replace("TODAY", d.toDateString());
 </script>
 
-                <h3><i class="far fa-thumbs-up" aria-hidden="true"></i> Congratulations on successfully completing this tutorial!</h3>
+                <i class="far fa-thumbs-up" aria-hidden="true"></i> Congratulations on successfully completing this tutorial!
 
                 
 
@@ -1952,39 +1966,39 @@ document.getElementById("citation-text").innerHTML = document.getElementById("ci
 
         </div>
         
+        <script type="text/javascript" src="/training-material/assets/js/jquery.slim.min.js"></script>
+        <script type="text/javascript" src="/training-material/assets/js/popper.min.js"></script>
+        <script type="text/javascript" src="/training-material/assets/js/bootstrap.min.js?v=3"></script>
+        <script type="text/javascript" src="/training-material/assets/js/details-element-polyfill.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script type="text/javascript" src="/training-material/assets/js/bootstrap-toc.min.js"></script>
+        <script type="text/javascript" src="/training-material/assets/js/main.js"></script>
+        <script type="text/javascript" src="/training-material/assets/js/theme.js"></script>
+
+        <script type="text/javascript" src="/training-material/assets/js/clipboard.min.js"></script>
+        <script type="text/javascript">
+        var snippets=document.querySelectorAll('div.highlight');
+        [].forEach.call(snippets,function(snippet){
+            snippet.firstChild.insertAdjacentHTML('beforebegin','<button class="btn btn-light" data-clipboard-snippet><i class="fa fa-copy"></i>&nbsp;Copy</button>');
+        });
+
+        var clipboardSnippets=new ClipboardJS('[data-clipboard-snippet]',{
+            target:function(trigger){return trigger.nextElementSibling;
+        }});
+        </script>
+        
+
+        <script type="text/javascript">
+            if(window.location.hostname === "galaxyproject.github.io") {
+                // Redirect
+                var redirect = "https://training.galaxyproject.org" + window.location.pathname + window.location.search;
+                $('div.container.main-content').prepend("<div class='alert alert-warning'><strong>Note: </strong>This content has a new home at <a href=\"" + redirect + "\">" + redirect + "</a>, which you will be redirected to in 5 seconds.</div>");
+
+                window.setTimeout(function(){
+                    window.location.href = redirect;
+                }, 5000)
+
+            }
+        </script>
     </body>
-    <script type="text/javascript" src="/training-material/assets/js/jquery.slim.min.js"></script>
-    <script type="text/javascript" src="/training-material/assets/js/popper.min.js"></script>
-    <script type="text/javascript" src="/training-material/assets/js/bootstrap.min.js?v=3"></script>
-    <script type="text/javascript" src="/training-material/assets/js/details-element-polyfill.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <script type="text/javascript" src="/training-material/assets/js/bootstrap-toc.min.js"></script>
-    <script type="text/javascript" src="/training-material/assets/js/main.js"></script>
-    <script type="text/javascript" src="/training-material/assets/js/theme.js"></script>
-
-    <script type="text/javascript" src="/training-material/assets/js/clipboard.min.js"></script>
-    <script type="text/javascript">
-    var snippets=document.querySelectorAll('div.highlight');
-    [].forEach.call(snippets,function(snippet){
-        snippet.firstChild.insertAdjacentHTML('beforebegin','<button class="btn btn-light" data-clipboard-snippet><i class="fa fa-copy"></i>&nbsp;Copy</button>');
-    });
-
-    var clipboardSnippets=new ClipboardJS('[data-clipboard-snippet]',{
-        target:function(trigger){return trigger.nextElementSibling;
-    }});
-    </script>
-    
-
-    <script type="text/javascript">
-        if(window.location.hostname === "galaxyproject.github.io") {
-            // Redirect
-            var redirect = "https://training.galaxyproject.org" + window.location.pathname + window.location.search;
-            $('div.container.main-content').prepend("<div class='alert alert-warning'><strong>Note: </strong>This content has a new home at <a href=\"" + redirect + "\">" + redirect + "</a>, which you will be redirected to in 5 seconds.</div>");
-
-            window.setTimeout(function(){
-                window.location.href = redirect;
-            }, 5000)
-
-        }
-    </script>
 </html>
