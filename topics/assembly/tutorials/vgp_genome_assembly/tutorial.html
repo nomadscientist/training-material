@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="utf-8">
@@ -14,7 +14,6 @@
         <link rel="stylesheet" href="/training-material/assets/css/main.css?v=2">
         <script src="https://kit.fontawesome.com/67b3f98409.js" crossorigin="anonymous"></script>
         <link rel="stylesheet" href="/training-material/assets/css/academicons.css">
-        <link rel="stylesheet" href="/training-material/assets/css/syntax_highlighting.css">
         <link rel="shortcut icon" href="/training-material/favicon.ico" type="image/x-icon" />
         <link rel="alternate" type="application/atom+xml" href="/training-material/feed.xml" />
         <link rel="canonical" href="https://training.galaxyproject.org/training-material/topics/assembly/tutorials/vgp_genome_assembly/tutorial.html" />
@@ -38,228 +37,15 @@
         
         
         
-        
         <meta name="description" content="DNA sequence data has become an indispensable tool for Mo..." />
         <meta property="og:site_name" content="Galaxy Training Network" />
         <meta property="og:title" content="Galaxy Training: VGP assembly pipeline" />
         <meta property="og:description" content="DNA sequence data has become an indispensable tool for Mo..." />
         <meta property="og:image" content="/training-material/assets/images/GTNLogo1000.png" />
 
-    </head>
-    <body data-spy="scroll" data-target="#toc">
-        <header>
-    <nav class="navbar navbar-expand-md navbar-dark" aria-label="Site Navigation">
-        <div class="container">
-            <a class="navbar-brand" href="/training-material/">
-                <img src="/training-material/assets/images/GTN-60px.png" height="30" alt="Galaxy Training Network logo">
-                Galaxy Training!
-            </a>
-
-            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#top-navbar" aria-controls="top-navbar" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="top-navbar">
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        
-                        <a class="nav-link" href="/training-material/topics/assembly" title="Go back to list of tutorials">
-                            <i class="far fa-folder" aria-hidden="true"></i> Assembly
-                        </a>
-                        
-                    </li>
-
-                    <li class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false" title="Languages">
-                            <i class="fas fa-language" aria-hidden="true"></i><span class="visually-hidden">language</span> Languages
-                        </a>
-                        <div class="dropdown-menu dropdown-menu-right">
-                            
-                              <strong class="dropdown-header">Automatic Translations</strong>
-            
-            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=fr&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/assembly/tutorials/vgp_genome_assembly/tutorial.html&edit-text=&act=url">
-                            Français
-                            </a>
-                            
-            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=ja&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/assembly/tutorials/vgp_genome_assembly/tutorial.html&edit-text=&act=url">
-                            日本語
-                            </a>
-                            
-            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=es&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/assembly/tutorials/vgp_genome_assembly/tutorial.html&edit-text=&act=url">
-                            Español
-                            </a>
-                            
-            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=pt&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/assembly/tutorials/vgp_genome_assembly/tutorial.html&edit-text=&act=url">
-                            Português
-                            </a>
-                            
-            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=ar&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/assembly/tutorials/vgp_genome_assembly/tutorial.html&edit-text=&act=url">
-                            العربية
-                            </a>
-                            
-                            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/assembly/tutorials/vgp_genome_assembly/tutorial.html&edit-text=&act=url" title="">
-                            And more!
-                            </a>
-                        </div>
-                    </li>
-
-                    <li class="nav-item dropdown">
-    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false" title="Help">
-        <i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden">help</span> Help
-    </a>
-    <div class="dropdown-menu dropdown-menu-right">
-        <!-- disable Tess for now
-        <form method="get" action="https://tess.elixir-europe.org/materials">
-            <input type="text" id="search" name="q" value="" style="margin-left: 0.5em;/*! border-radius: 0px; */">
-            <input type="hidden" value="Galaxy Training" name="content_provider">
-            <input type="submit" value="Search on TeSS" style="width: 92%;border-radius: 0px;margin: 0.5em;background: #f47d20;border: 0px;padding: 0.25em;" class="">
-        </form>
-        -->
-
-        <a class="dropdown-item" href="/training-material/faq" title="Check our FAQs">
-           <i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden">question</span> FAQs
-        </a>
         
-        <a class="dropdown-item" href="/training-material/topics/assembly/faqs/" title="Check our FAQs for the Assembly topic">
-           <i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden">question</span> Topic FAQs
-        </a>
-        
-        <a class="dropdown-item" href="https://help.galaxyproject.org/" title="Discuss on Galaxy Help">
-            <i class="far fa-comments" aria-hidden="true"></i><span class="visually-hidden">feedback</span> Galaxy Help Forum
-        </a>
-        <a class="dropdown-item" href="https://gitter.im/Galaxy-Training-Network/Lobby" title="Discuss on gitter">
-           <i class="fab fa-gitter" aria-hidden="true"></i><span class="visually-hidden">gitter</span> Discuss on Gitter
-        </a>
-    </div>
-</li>
-
-
-                    <li class="nav-item dropdown">
-    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false" title="Extras">
-        <i class="far fa-star" aria-hidden="true"></i><span class="visually-hidden">galaxy-star</span> Extras
-    </a>
-    <div class="dropdown-menu dropdown-menu-right">
-
-        
-        <a class="dropdown-item" href="https://github.com/galaxyproject/training-material/edit/main/topics/assembly/tutorials/vgp_genome_assembly/tutorial.md" title="Edit on GitHub">
-          <i class="fab fa-github" aria-hidden="true"></i><span class="visually-hidden">github</span> Edit on GitHub
-        </a>
-
-        <a class="dropdown-item" href="/training-material/stats.html" title="Show view statistics about this repository">
-            <i class="fas fa-chart-bar" aria-hidden="true"></i><span class="visually-hidden">galaxy-barchart</span> GTN statistics
-        </a>
-
-        <a class="dropdown-item" href="https://plausible.galaxyproject.eu/training.galaxyproject.org?period=12mo&page=/training-material/topics/assembly/tutorials/vgp_genome_assembly/tutorial.html" title="Show view statistics of this page">
-            <i class="fas fa-chart-bar" aria-hidden="true"></i><span class="visually-hidden">galaxy-barchart</span> Page Metrics
-        </a>
-
-        <!-- link to feedback -->
-        
+        <script type="application/ld+json">
             
-            
-                <a class="dropdown-item" href="/training-material/feedback.html" title="Show feedback statistics about this repository">
-                    <i class="fas fa-chart-bar" aria-hidden="true"></i><span class="visually-hidden">galaxy-barchart</span> GTN feedback
-                </a>
-            
-        
-
-        <div class="dropdown-item">
-            <div>
-                <i class="fas fa-palette" aria-hidden="true"></i><span class="visually-hidden">gtn-theme</span> Theme
-            </div>
-
-            <div id="theme-selector" data-toggle="buttons">
-                <label data-value="default" class="btn btn-secondary">
-                    <input type="radio" name="options" id="default" autocomplete="off"> Default
-                </label>
-                <label data-value="night" class="btn btn-secondary">
-                    <input type="radio" name="options" id="night" autocomplete="off"> Night
-                </label>
-                <label data-value="midnight" class="btn btn-secondary">
-                    <input type="radio" name="options" id="midnight" autocomplete="off"> Midnight
-                </label>
-                <label data-value="rainbow" class="btn btn-secondary">
-                    <input type="radio" name="options" id="rainbow" autocomplete="off"> Rainbow
-                </label>
-                <label data-value="progress" class="btn btn-secondary">
-                    <input type="radio" name="options" id="progress" autocomplete="off">🏳️‍🌈
-                </label>
-                <label data-value="halloween" class="btn btn-secondary">
-                    <input type="radio" name="options" id="halloween" autocomplete="off"> 🎃
-                </label>
-                <label data-value="straya" class="btn btn-secondary">
-                    <input type="radio" name="options" id="downunder" autocomplete="off"> 🇦🇺
-                </label>
-            </div>
-
-        </div>
-
-        <div class="dropdown-item">
-            <div>
-                <i class="fas fa-history" aria-hidden="true"></i><span class="visually-hidden">galaxy-rulebuilder-history</span> Previous Versions
-            </div>
-
-            <div id="archive-selector">
-            
-                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2020-01-06/topics/assembly/tutorials/vgp_genome_assembly/tutorial.html" title="Version 2020-01-06">2020-01-06</a>
-            
-                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2019-12-01/topics/assembly/tutorials/vgp_genome_assembly/tutorial.html" title="Version 2019-12-01">2019-12-01</a>
-            
-                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2019-11-01/topics/assembly/tutorials/vgp_genome_assembly/tutorial.html" title="Version 2019-11-01">2019-11-01</a>
-            
-                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/" title="Older Versions">Older Versions</a>
-            </div>
-
-        </div>
-
-    </div>
-</li>
-
-
-                    <!-- Search bar-->
-                    <li class="nav-item">
-                      <div id="navbarSupportedContent" role="search">
-                        <!-- Search form -->
-                        <form class="form-inline mr-auto" method="GET" action="/training-material/search">
-                          <i class="fas fa-search nav-link" aria-hidden="true"></i>
-                          <div class="md-form mb-2">
-                            <input name="query" class="form-control nicer" type="text" placeholder="Search Tutorials" aria-label="Search">
-                          </div>
-                        </form>
-                      </div>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-</header>
-
-        <div class="container main-content" role="main">
-        
-
-
-
-
-
-
-
-
-
-
-
-<!-- Gitter -->
-
-
-
-
-<script>
-  ((window.gitter = {}).chat = {}).options = {
-  room: 'Galaxy-Training-Network/Lobby'
-  };
-</script>
-<script src="https://sidecar.gitter.im/dist/sidecar.v1.js" async defer></script>
-
-<script type="application/ld+json">
-    
 
 
 {
@@ -739,7 +525,210 @@
   ],
   "educationalLevel": "Intermediate"
 }
+        </script>
+        
+    </head>
+    <body data-spy="scroll" data-target="#toc">
+        <script type="text/javascript" src="/training-material/assets/js/theme.js"></script>
+        <header>
+    <nav class="navbar navbar-expand-md navbar-dark" aria-label="Site Navigation">
+        <div class="container">
+            <a class="navbar-brand" href="/training-material/">
+                <img src="/training-material/assets/images/GTN-60px.png" height="30" alt="Galaxy Training Network logo">
+                Galaxy Training!
+            </a>
+
+            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#top-navbar" aria-controls="top-navbar" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="top-navbar">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        
+                        <a class="nav-link" href="/training-material/topics/assembly" title="Go back to list of tutorials">
+                            <i class="far fa-folder" aria-hidden="true"></i> Assembly
+                        </a>
+                        
+                    </li>
+
+                    <li class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false" title="Languages">
+                            <i class="fas fa-language" aria-hidden="true"></i><span class="visually-hidden">language</span> Languages
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right">
+                            
+                              <strong class="dropdown-header">Automatic Translations</strong>
+            
+            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=fr&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/assembly/tutorials/vgp_genome_assembly/tutorial.html&edit-text=&act=url">
+                            Français
+                            </a>
+                            
+            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=ja&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/assembly/tutorials/vgp_genome_assembly/tutorial.html&edit-text=&act=url">
+                            日本語
+                            </a>
+                            
+            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=es&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/assembly/tutorials/vgp_genome_assembly/tutorial.html&edit-text=&act=url">
+                            Español
+                            </a>
+                            
+            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=pt&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/assembly/tutorials/vgp_genome_assembly/tutorial.html&edit-text=&act=url">
+                            Português
+                            </a>
+                            
+            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=ar&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/assembly/tutorials/vgp_genome_assembly/tutorial.html&edit-text=&act=url">
+                            العربية
+                            </a>
+                            
+                            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/assembly/tutorials/vgp_genome_assembly/tutorial.html&edit-text=&act=url" title="">
+                            And more!
+                            </a>
+                        </div>
+                    </li>
+
+                    <li class="nav-item dropdown">
+    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false" title="Help">
+        <i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden">help</span> Help
+    </a>
+    <div class="dropdown-menu dropdown-menu-right">
+        <!-- disable Tess for now
+        <form method="get" action="https://tess.elixir-europe.org/materials">
+            <input type="text" id="search" name="q" value="" style="margin-left: 0.5em;/*! border-radius: 0px; */">
+            <input type="hidden" value="Galaxy Training" name="content_provider">
+            <input type="submit" value="Search on TeSS" style="width: 92%;border-radius: 0px;margin: 0.5em;background: #f47d20;border: 0px;padding: 0.25em;" class="">
+        </form>
+        -->
+
+        <a class="dropdown-item" href="/training-material/faq" title="Check our FAQs">
+           <i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden">question</span> FAQs
+        </a>
+        
+        
+        <a class="dropdown-item" href="/training-material/topics/assembly/faqs/" title="Check our FAQs for the Assembly topic">
+           <i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden">question</span> Topic FAQs
+        </a>
+        
+        
+        <a class="dropdown-item" href="https://help.galaxyproject.org/" title="Discuss on Galaxy Help">
+            <i class="far fa-comments" aria-hidden="true"></i><span class="visually-hidden">feedback</span> Galaxy Help Forum
+        </a>
+        <a class="dropdown-item" href="https://gitter.im/Galaxy-Training-Network/Lobby" title="Discuss on gitter">
+           <i class="fab fa-gitter" aria-hidden="true"></i><span class="visually-hidden">gitter</span> Discuss on Gitter
+        </a>
+    </div>
+</li>
+
+
+                    <li class="nav-item dropdown">
+    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false" title="Extras">
+        <i class="far fa-star" aria-hidden="true"></i><span class="visually-hidden">galaxy-star</span> Extras
+    </a>
+    <div class="dropdown-menu dropdown-menu-right">
+
+        
+        <a class="dropdown-item" href="https://github.com/galaxyproject/training-material/edit/main/topics/assembly/tutorials/vgp_genome_assembly/tutorial.md" title="Edit on GitHub">
+          <i class="fab fa-github" aria-hidden="true"></i><span class="visually-hidden">github</span> Edit on GitHub
+        </a>
+
+        <a class="dropdown-item" href="/training-material/stats.html" title="Show view statistics about this repository">
+            <i class="fas fa-chart-bar" aria-hidden="true"></i><span class="visually-hidden">galaxy-barchart</span> GTN statistics
+        </a>
+
+        <a class="dropdown-item" href="https://plausible.galaxyproject.eu/training.galaxyproject.org?period=12mo&page=/training-material/topics/assembly/tutorials/vgp_genome_assembly/tutorial.html" title="Show view statistics of this page">
+            <i class="fas fa-chart-bar" aria-hidden="true"></i><span class="visually-hidden">galaxy-barchart</span> Page Metrics
+        </a>
+
+        <!-- link to feedback -->
+        
+            
+            
+                <a class="dropdown-item" href="/training-material/feedback.html" title="Show feedback statistics about this repository">
+                    <i class="fas fa-chart-bar" aria-hidden="true"></i><span class="visually-hidden">galaxy-barchart</span> GTN feedback
+                </a>
+            
+        
+
+        <div class="dropdown-item">
+            <div>
+                <i class="fas fa-palette" aria-hidden="true"></i><span class="visually-hidden">gtn-theme</span> Theme
+            </div>
+
+            <div id="theme-selector" data-toggle="buttons">
+                    <button class="btn" data-theme="default">Default</button>
+                    <button class="btn" data-theme="night">Night</button>
+                    <button class="btn" data-theme="midnight">Midnight</button>
+                    <button class="btn" data-theme="rainbow">Rainbow</button>
+                    <button class="btn" data-theme="blm">✊🏿</button>
+                    <button class="btn" data-theme="progress" >🏳️‍🌈</button>
+                    <button class="btn" data-theme="halloween">🎃</button>
+                    <button class="btn" data-theme="straya">🇦🇺</button>
+            </div>
+
+        </div>
+
+        <div class="dropdown-item">
+            <div>
+                <i class="fas fa-history" aria-hidden="true"></i><span class="visually-hidden">galaxy-rulebuilder-history</span> Previous Versions
+            </div>
+
+            <div id="archive-selector">
+            
+                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2020-01-06/topics/assembly/tutorials/vgp_genome_assembly/tutorial.html" title="Version 2020-01-06">2020-01-06</a>
+            
+                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2019-12-01/topics/assembly/tutorials/vgp_genome_assembly/tutorial.html" title="Version 2019-12-01">2019-12-01</a>
+            
+                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2019-11-01/topics/assembly/tutorials/vgp_genome_assembly/tutorial.html" title="Version 2019-11-01">2019-11-01</a>
+            
+                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/" title="Older Versions">Older Versions</a>
+            </div>
+
+        </div>
+
+    </div>
+</li>
+
+
+                    <!-- Search bar-->
+                    <li class="nav-item">
+                      <div id="navbarSupportedContent" role="search">
+                        <!-- Search form -->
+                        <form class="form-inline mr-auto" method="GET" action="/training-material/search">
+                          <i class="fas fa-search nav-link" aria-hidden="true"></i>
+                          <div class="md-form mb-2">
+                            <input name="query" class="form-control nicer" type="text" placeholder="Search Tutorials" aria-label="Search">
+                          </div>
+                        </form>
+                      </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
+        <div class="container main-content" role="main">
+        
+
+
+
+
+
+
+
+
+
+
+
+<!-- Gitter -->
+
+
+
+
+<script>
+  ((window.gitter = {}).chat = {}).options = {
+  room: 'Galaxy-Training-Network/Lobby'
+  };
 </script>
+<script src="https://sidecar.gitter.im/dist/sidecar.v1.js" async defer></script>
 
 <section class="tutorial topic-assembly">
     <h1 data-toc-skip>VGP assembly pipeline</h1>
@@ -804,8 +793,6 @@
                 
                     
                         
-                    
-                        
                             
                             <li> Quality Control:
                             
@@ -818,6 +805,10 @@
                                 
                             
                             </li>
+                        
+                    
+                        
+                    
                         
                     
                         
@@ -862,7 +853,7 @@
 
 
 <a class="btn btn-default topic-icon" title="Zenodo datasets used in this tutorial" href="https://zenodo.org/record/5887339">
-    <i class="far fa-copy" aria-hidden="true"></i> Datasets
+    <i class="far fa-copy" aria-hidden="true"></i>&nbsp;Datasets
 </a>
 
 </li>
@@ -873,7 +864,7 @@
 
 
     <a class="btn btn-default topic-icon" href="/training-material/topics/assembly/tutorials/vgp_genome_assembly/workflows/" title="Workflows" alt="VGP assembly pipeline workflows">
-        <i class="fas fa-share-alt" aria-hidden="true"></i> Workflows
+        <i class="fas fa-share-alt" aria-hidden="true"></i>&nbsp;Workflows
     </a>
 
 </li>
@@ -1027,6 +1018,8 @@
         
     
         
+    
+        
         <a class="dropdown-item" href="https://metagenomics.usegalaxy.eu/" title="Metagenomics">
             Metagenomics
         </a>
@@ -1133,7 +1126,7 @@
 <p>The G10K consortium launched the Vertebrate Genomes Project (VGP), whose goal is generating high-quality, near-error-free, gap-free, chromosome-level, haplotype-phased, annotated reference genome assemblies for every vertebrate species (<span class="citation"><a href="#Rhie2021">Rhie <i>et al.</i> 2021</a></span>). This tutorial will guide you step by step to assemble a high-quality genome using the VGP assembly pipeline.</p>
 
 <blockquote class="agenda">
-  <div id="agenda" class="box-title" aria-label="agenda box: ">Agenda</div>
+  <div class="box-title agenda-title" id="agenda" aria-label="agenda box: ">Agenda</div>
 
   <p>In this tutorial, we will cover:</p>
 
@@ -1179,7 +1172,7 @@
 <p>In order to reduce computation time, we will assemble samples from the yeast <em>Saccharomyces cerevisiae</em> S288C, a widely used laboratory strain isolated in the 1950s by Robert Mortimer. Using <em>S. cerevisae</em>, one of the most intensively studied eukaryotic model organisms, has the additional advantage of allowing us to evaluate the final result of our assembly with great precision. For this tutorial, we generated a set of synthetic HiFi <span class="notranslate">reads</span> corresponding to a theoretical diploid genome.</p>
 
 <blockquote class="details">
-  <div id="details-generation-of-synthetic-reads" class="box-title"><button type="button" aria-controls="details-generation-of-synthetic-reads-contents" aria-expanded="true" aria-label="Toggle details box: Generation of synthetic reads"><i class="fas fa-info-circle" aria-hidden="true"></i><span class="visually-hidden"></span> Details: Generation of synthetic <span class="notranslate">reads</span><span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
+  <div class="box-title details-title" id="details-generation-of-synthetic-reads"><button class="gtn-boxify-button details" type="button" aria-controls="details-generation-of-synthetic-reads-contents" aria-expanded="true" aria-label="Toggle details box: Generation of synthetic reads"><i class="fas fa-info-circle" aria-hidden="true"></i><span class="visually-hidden"></span> Details: Generation of synthetic <span class="notranslate">reads</span><span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
   <p>The synthetic HiFi <span class="notranslate">reads</span> were generated by using the <a href="https://www.ncbi.nlm.nih.gov/genome/15?genome_assembly_id=22535">S288C assembly</a> as reference genome. With this objective we used <a href="https://github.com/thegenemyers/HI.SIM">HIsim</a>, a HiFi shotgun simulator. The commands used are detailed below:</p>
 
   <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>./FastK <span class="nt">-T8</span> <span class="nt">-Nsynthetic</span> <span class="nt">-k40</span> <span class="nt">-t4</span> ./hifi_<span class="notranslate">reads</span>.fastq.gz
@@ -1196,7 +1189,7 @@
 <p>The first step is to get the datasets from Zenodo. The VGP assembly pipeline uses data generated by a variety of technologies, including PacBio HiFi <span class="notranslate">reads</span>, Bionano optical maps, and Hi-C chromatin interaction maps.</p>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-data-upload" class="box-title" aria-label="hands-on box: Data upload"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Data upload</div>
+  <div class="box-title hands-on-title" id="hands-on-data-upload" aria-label="hands-on box: Data upload"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Data upload</div>
 
   <ol>
     <li>Create a new history for this tutorial</li>
@@ -1262,7 +1255,7 @@ dataset_03    https://zenodo.org/record/6098306/files/HiFi_synthetic_50x_03.fast
 <p>Adapter trimming usually means trimming the adapter sequence off the ends of <span class="notranslate">reads</span>, which is where the adapter sequence is usually located in NGS <span class="notranslate">reads</span>. However, due to the nature of SMRT sequencing technology, adapters do not have a specific, predictable location in  HiFi <span class="notranslate">reads</span>. Additionally, the <span class="notranslate">reads</span> containing adapter sequence could be of generally lower quality compared to the rest of the <span class="notranslate">reads</span>. Thus, we will use Cutadapt not to trim, but to remove the entire read if a read is found to have an adapter inside of it.</p>
 
 <blockquote class="comment">
-  <div id="comment-background-on-pacbio-hifi-reads" class="box-title" aria-label="comment box: Background on PacBio HiFi reads"><i class="far fa-comment-dots" aria-hidden="true"></i><span class="visually-hidden"></span> Comment: Background on PacBio HiFi <span class="notranslate">reads</span></div>
+  <div class="box-title comment-title" id="comment-background-on-pacbio-hifi-reads" aria-label="comment box: Background on PacBio HiFi reads"><i class="far fa-comment-dots" aria-hidden="true"></i><span class="visually-hidden"></span> Comment: Background on PacBio HiFi <span class="notranslate">reads</span></div>
 
   <p>PacBio HiFi <span class="notranslate">reads</span> rely on the Single Molecule Real-Time (SMRT) sequencing technology. SMRT is based on real-time imaging of fluorescently tagged nucleotides as they are added to a newly synthesized <span class="notranslate">DNA</span> strand. HiFi further combine multiple sub<span class="notranslate">reads</span> from the same circular template to produce one highly accurate consensus sequence (fig. 2).</p>
 
@@ -1273,7 +1266,7 @@ dataset_03    https://zenodo.org/record/6098306/files/HiFi_synthetic_50x_03.fast
 </blockquote>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-primer-removal-with-cutadapt" class="box-title" aria-label="hands-on box: Primer removal with Cutadapt"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Primer removal with Cutadapt</div>
+  <div class="box-title hands-on-title" id="hands-on-primer-removal-with-cutadapt" aria-label="hands-on box: Primer removal with Cutadapt"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Primer removal with Cutadapt</div>
 
   <ol>
     <li><span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/lparsons/cutadapt/cutadapt/3.4" title="Tested with toolshed.g2.bx.psu.edu/repos/lparsons/cutadapt/cutadapt/3.4"><strong>Cutadapt</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: <span class="notranslate">toolshed</span>.g2.bx.psu.edu/repos/lparsons/cutadapt/cutadapt/3.4</span></span>  with the following parameters:
@@ -1326,7 +1319,7 @@ dataset_03    https://zenodo.org/record/6098306/files/HiFi_synthetic_50x_03.fast
       </ul>
 
       <blockquote class="tip">
-        <div id="tip-select-collection-dataset" class="box-title"><button type="button" aria-controls="tip-select-collection-dataset-contents" aria-expanded="true" aria-label="Toggle tip box: Select collection dataset"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: Select collection dataset<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
+        <div class="box-title tip-title" id="tip-select-collection-dataset"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-select-collection-dataset-contents" aria-expanded="true" aria-label="Toggle tip box: Select collection dataset"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: Select collection dataset<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
 
         <ol>
           <li>Click on <i class="far fa-folder" aria-hidden="true"></i><span class="visually-hidden">param-collection</span> <strong>Dataset collection</strong> in front of the input parameter you want to supply the collection to.</li>
@@ -1339,7 +1332,7 @@ dataset_03    https://zenodo.org/record/6098306/files/HiFi_synthetic_50x_03.fast
   </ol>
 
   <!--SNIPPET-->
-  <blockquote class="tip">  <div id="tip-renaming-a-dataset" class="box-title"><button type="button" aria-controls="tip-renaming-a-dataset-contents" aria-expanded="true" aria-label="Toggle tip box: Renaming a dataset"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: Renaming a dataset<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>  <ul>  <li>Click on the <i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"><span class="notranslate">galaxy</span>-pencil</span> <strong>pencil icon</strong> for the dataset to edit its attributes</li>  <li>In the central panel, change the <strong>Name</strong> field</li>  <li>Click the <strong>Save</strong> button</li></ul></blockquote>
+  <blockquote class="tip">   <div class="box-title tip-title" id="tip-renaming-a-dataset"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-renaming-a-dataset-contents" aria-expanded="true" aria-label="Toggle tip box: Renaming a dataset"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: Renaming a dataset<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>   <ul>   <li>Click on the <i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"><span class="notranslate">galaxy</span>-pencil</span> <strong>pencil icon</strong> for the dataset to edit its attributes</li>   <li>In the central panel, change the <strong>Name</strong> field</li>   <li>Click the <strong>Save</strong> button</li> </ul> </blockquote>
 
 </blockquote>
 
@@ -1350,7 +1343,7 @@ dataset_03    https://zenodo.org/record/6098306/files/HiFi_synthetic_50x_03.fast
 <p>Before starting a <em>de novo</em> genome assembly project, it is useful to collect metrics on the properties of the genome under consideration, such as the expected genome size. Traditionally, <span class="notranslate">DNA</span> flow cytometry was considered the golden standard for estimating the genome size. Nowadays, experimental methods have been replaced by computational approaches (<span class="citation"><a href="#wang2020estimation">Wang <i>et al.</i> 2020</a></span>). One of the widely used genome profiling methods is based on the analysis of k-mer frequencies. It allows one to provide information not only about the genomic complexity, such as the genome size and levels of heterozygosity and repeat content, but also about the data quality.</p>
 
 <blockquote class="comment">
-  <div id="comment-k-mer-size-sequencing-coverage-and-genome-size" class="box-title" aria-label="comment box: K-mer size, sequencing coverage and genome size"><i class="far fa-comment-dots" aria-hidden="true"></i><span class="visually-hidden"></span> Comment: K-mer size, sequencing coverage and genome size</div>
+  <div class="box-title comment-title" id="comment-k-mer-size-sequencing-coverage-and-genome-size" aria-label="comment box: K-mer size, sequencing coverage and genome size"><i class="far fa-comment-dots" aria-hidden="true"></i><span class="visually-hidden"></span> Comment: K-mer size, sequencing coverage and genome size</div>
 
   <p><em>K</em>-mers are unique substrings of length k contained within a <span class="notranslate">DNA</span> sequence. For example, the <span class="notranslate">DNA</span> sequence <em>TCGATCACA</em> can be decomposed into five unique <em>k</em>-mers that have five bases long: <em>TCGAT</em>, <em>CGATC</em>, <em>GATCA</em>, <em>ATCAC</em> and <em>TCACA</em>. A sequence of length L will have  L-k+1 <em>k</em>-mers. On the other hand, the number of possible <em>k</em>-mers can be calculated as  n<sup>k</sup>, where n is the number of possible monomers and k is the k-mer size.</p>
 
@@ -1401,14 +1394,14 @@ dataset_03    https://zenodo.org/record/6098306/files/HiFi_synthetic_50x_03.fast
 <p>Meryl will allow us to generate the <em>k</em>-mer profile by decomposing the sequencing data into <em>k</em>-length substrings, counting the occurrence of each <em>k</em>-mer and determining its frequency. The original version of Meryl was developed for the Celera Assembler. The current Meryl version comprises three main modules: one for generating <em>k</em>-mer databases, one for filtering and combining databases, and one for searching databases. <em>K</em>-mers are stored in lexicographical order in the database, similar to words in a dictionary (<span class="citation"><a href="#Rhie2020">Rhie <i>et al.</i> 2020</a></span>).</p>
 
 <blockquote class="comment">
-  <div id="comment-i-k-i-mer-size-estimation" class="box-title" aria-label="comment box: &lt;i&gt;k&lt;/i&gt;-mer size estimation"><i class="far fa-comment-dots" aria-hidden="true"></i><span class="visually-hidden"></span> Comment: <i>k</i>-mer size estimation</div>
+  <div class="box-title comment-title" id="comment-i-k-i-mer-size-estimation" aria-label="comment box: &lt;i&gt;k&lt;/i&gt;-mer size estimation"><i class="far fa-comment-dots" aria-hidden="true"></i><span class="visually-hidden"></span> Comment: <i>k</i>-mer size estimation</div>
 
   <p>Given an estimated genome size (G) and a tolerable collision rate (p), an appropriate k can be computed as k = log4 (G(1 − p)/p).</p>
 
 </blockquote>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-generate-i-k-i-mers-count-distribution" class="box-title" aria-label="hands-on box: Generate &lt;i&gt;k&lt;/i&gt;-mers count distribution"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Generate <i>k</i>-mers count distribution</div>
+  <div class="box-title hands-on-title" id="hands-on-generate-i-k-i-mers-count-distribution" aria-label="hands-on box: Generate &lt;i&gt;k&lt;/i&gt;-mers count distribution"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Generate <i>k</i>-mers count distribution</div>
 
   <ol>
     <li>Run <span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/iuc/meryl/meryl/1.3+galaxy2" title="Tested with toolshed.g2.bx.psu.edu/repos/iuc/meryl/meryl/1.3+galaxy2"><strong>Meryl</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: <span class="notranslate">toolshed</span>.g2.bx.psu.edu/repos/iuc/meryl/meryl/1.3+<span class="notranslate">galaxy</span>2</span></span>  with the following parameters:
@@ -1427,7 +1420,7 @@ dataset_03    https://zenodo.org/record/6098306/files/HiFi_synthetic_50x_03.fast
       </ul>
 
       <blockquote class="comment">
-        <div id="comment-selection-of-i-k-i-mer-size" class="box-title" aria-label="comment box: Selection of &lt;i&gt;k&lt;/i&gt;-mer size"><i class="far fa-comment-dots" aria-hidden="true"></i><span class="visually-hidden"></span> Comment: Selection of <i>k</i>-mer size</div>
+        <div class="box-title comment-title" id="comment-selection-of-i-k-i-mer-size" aria-label="comment box: Selection of &lt;i&gt;k&lt;/i&gt;-mer size"><i class="far fa-comment-dots" aria-hidden="true"></i><span class="visually-hidden"></span> Comment: Selection of <i>k</i>-mer size</div>
 
         <p>We used 32 as <em>k</em>-mer size, as this length has demonstrated to be sufficiently long that most <em>k</em>-mers are not repetitive and is short enough to be more robust to sequencing errors. For very large (haploid size &gt; 10 Gb) and/or very repetitive genomes, larger <em>k</em>-mer length is recommended to increase the number of unique <em>k</em>-mers.</p>
       </blockquote>
@@ -1467,7 +1460,7 @@ dataset_03    https://zenodo.org/record/6098306/files/HiFi_synthetic_50x_03.fast
 <p>The next step is to infer the genome properties from the <em>k</em>-mer histogram generated by Meryl, for which we will use GenomeScope2. Genomescope2 relies on a nonlinear least-squares optimization to fit a mixture of negative binomial distributions, generating estimated values for genome size, repetitiveness, and heterozygosity rates (<span class="citation"><a href="#RanalloBenavidez2020">Ranallo-Benavidez <i>et al.</i> 2020</a></span>).</p>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-estimate-genome-properties" class="box-title" aria-label="hands-on box: Estimate genome properties"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Estimate genome properties</div>
+  <div class="box-title hands-on-title" id="hands-on-estimate-genome-properties" aria-label="hands-on box: Estimate genome properties"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Estimate genome properties</div>
 
   <ol>
     <li><span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/iuc/genomescope/genomescope/2.0" title="Tested with toolshed.g2.bx.psu.edu/repos/iuc/genomescope/genomescope/2.0"><strong>GenomeScope</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: <span class="notranslate">toolshed</span>.g2.bx.psu.edu/repos/iuc/genomescope/genomescope/2.0</span></span>  with the following parameters:
@@ -1515,7 +1508,7 @@ dataset_03    https://zenodo.org/record/6098306/files/HiFi_synthetic_50x_03.fast
 <p>The first relevant parameter is the <code class="language-plaintext highlighter-rouge">estimated genome size</code>.</p>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-get-estimated-genome-size" class="box-title" aria-label="hands-on box: Get estimated genome size"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Get estimated genome size</div>
+  <div class="box-title hands-on-title" id="hands-on-get-estimated-genome-size" aria-label="hands-on box: Get estimated genome size"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Get estimated genome size</div>
 
   <ol>
     <li><span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/bgruening/text_processing/tp_find_and_replace/1.1.3" title="Tested with toolshed.g2.bx.psu.edu/repos/bgruening/text_processing/tp_find_and_replace/1.1.3"><strong>Replace parts of text</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: <span class="notranslate">toolshed</span>.g2.bx.psu.edu/repos/bgruening/text_processing/tp_find_and_replace/1.1.3</span></span>  with the following parameters:
@@ -1562,12 +1555,12 @@ dataset_03    https://zenodo.org/record/6098306/files/HiFi_synthetic_50x_03.fast
   </ol>
 
   <blockquote class="question">
-    <div id="question" class="box-title" aria-label="question box: "><i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden"></span> Question</div>
+    <div class="box-title question-title" id="question" aria-label="question box: "><i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden"></span> Question</div>
 
     <p>What is the estimated genome size?</p>
 
     <blockquote class="solution">
-      <div id="solution" class="box-title"><button type="button" aria-controls="solution-contents" aria-expanded="true" aria-label="Toggle solution box: "><i class="far fa-eye" aria-hidden="true"></i><span class="visually-hidden"></span> Solution<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
+      <div class="box-title solution-title" id="solution"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-contents" aria-expanded="true" aria-label="Toggle solution box: "><i class="far fa-eye" aria-hidden="true"></i><span class="visually-hidden"></span> Solution<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
 
       <p>The estimated genome size is 11.747.076 bp.</p>
 
@@ -1580,7 +1573,7 @@ dataset_03    https://zenodo.org/record/6098306/files/HiFi_synthetic_50x_03.fast
 <p>Now let’s parse the <code class="language-plaintext highlighter-rouge">upper bound for the read depth estimation</code> parameter. This parameter will be used later by purge_dups as high read depth cutoff to identify <em>junk contigs</em>.</p>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-get-maximum-read-depth" class="box-title" aria-label="hands-on box: Get maximum read depth"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Get maximum read depth</div>
+  <div class="box-title hands-on-title" id="hands-on-get-maximum-read-depth" aria-label="hands-on box: Get maximum read depth"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Get maximum read depth</div>
 
   <ol>
     <li><span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/devteam/column_maker/Add_a_column1/1.6" title="Tested with toolshed.g2.bx.psu.edu/repos/devteam/column_maker/Add_a_column1/1.6"><strong>Compute an <span class="notranslate">expression</span> on every row</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: <span class="notranslate">toolshed</span>.g2.bx.psu.edu/repos/devteam/column_maker/Add_a_column1/1.6</span></span>  with the following parameters:
@@ -1616,7 +1609,7 @@ dataset_03    https://zenodo.org/record/6098306/files/HiFi_synthetic_50x_03.fast
   </ol>
 
   <blockquote class="question">
-    <div id="question-1" class="box-title" aria-label="question box: "><i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden"></span> Question</div>
+    <div class="box-title question-title" id="question-1" aria-label="question box: "><i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden"></span> Question</div>
 
     <ol>
       <li>What is the estimated maximum depth?</li>
@@ -1624,7 +1617,7 @@ dataset_03    https://zenodo.org/record/6098306/files/HiFi_synthetic_50x_03.fast
     </ol>
 
     <blockquote class="solution">
-      <div id="solution-1" class="box-title"><button type="button" aria-controls="solution-1-contents" aria-expanded="true" aria-label="Toggle solution box: "><i class="far fa-eye" aria-hidden="true"></i><span class="visually-hidden"></span> Solution<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
+      <div class="box-title solution-title" id="solution-1"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-1-contents" aria-expanded="true" aria-label="Toggle solution box: "><i class="far fa-eye" aria-hidden="true"></i><span class="visually-hidden"></span> Solution<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
 
       <ol>
         <li>The estimated maximum depth is 114 <span class="notranslate">reads</span>.</li>
@@ -1640,7 +1633,7 @@ dataset_03    https://zenodo.org/record/6098306/files/HiFi_synthetic_50x_03.fast
 <p>Finally, let’s parse the <code class="language-plaintext highlighter-rouge">transition between haploid and diploid coverage depths</code> parameter. This will be used as threshold to discriminate between haploid and diploid depths.</p>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-get-transition-parameter" class="box-title" aria-label="hands-on box: Get transition parameter        "><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Get transition parameter</div>
+  <div class="box-title hands-on-title" id="hands-on-get-transition-parameter" aria-label="hands-on box: Get transition parameter        "><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Get transition parameter</div>
   <ol>
     <li><span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/bgruening/text_processing/tp_cut_tool/1.1.0" title="Tested with toolshed.g2.bx.psu.edu/repos/bgruening/text_processing/tp_cut_tool/1.1.0"><strong>Advanced Cut</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: <span class="notranslate">toolshed</span>.g2.bx.psu.edu/repos/bgruening/text_processing/tp_cut_tool/1.1.0</span></span>  with the following parameters:
       <ul>
@@ -1656,12 +1649,12 @@ dataset_03    https://zenodo.org/record/6098306/files/HiFi_synthetic_50x_03.fast
   </ol>
 
   <blockquote class="question">
-    <div id="question-2" class="box-title" aria-label="question box: "><i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden"></span> Question</div>
+    <div class="box-title question-title" id="question-2" aria-label="question box: "><i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden"></span> Question</div>
 
     <p>What is the estimated transition parameter?</p>
 
     <blockquote class="solution">
-      <div id="solution-2" class="box-title"><button type="button" aria-controls="solution-2-contents" aria-expanded="true" aria-label="Toggle solution box: "><i class="far fa-eye" aria-hidden="true"></i><span class="visually-hidden"></span> Solution<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
+      <div class="box-title solution-title" id="solution-2"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-2-contents" aria-expanded="true" aria-label="Toggle solution box: "><i class="far fa-eye" aria-hidden="true"></i><span class="visually-hidden"></span> Solution<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
 
       <p>The estimated transition parameter is 38 <span class="notranslate">reads</span>.</p>
 
@@ -1682,7 +1675,7 @@ dataset_03    https://zenodo.org/record/6098306/files/HiFi_synthetic_50x_03.fast
 <p>One of the key advantages of hifiasm is that it allows us to resolve near-identical, but not exactly identical sequences, such as repeats and segmental duplications (<span class="citation"><a href="#Cheng2021">Cheng <i>et al.</i> 2021</a></span>).</p>
 
 <blockquote class="comment">
-  <div id="comment-hifiasm-algorithm-details" class="box-title" aria-label="comment box: Hifiasm algorithm details"><i class="far fa-comment-dots" aria-hidden="true"></i><span class="visually-hidden"></span> Comment: Hifiasm algorithm details</div>
+  <div class="box-title comment-title" id="comment-hifiasm-algorithm-details" aria-label="comment box: Hifiasm algorithm details"><i class="far fa-comment-dots" aria-hidden="true"></i><span class="visually-hidden"></span> Comment: Hifiasm algorithm details</div>
 
   <p>By default hifiasm performs three rounds of haplotype-aware error correction to correct sequence errors but keeping heterozygous alleles. A position on the target read to be corrected is considered informative if there are two different nucleotides at that position in the alignment, and each allele is supported by at least three <span class="notranslate">reads</span>.</p>
 
@@ -1693,7 +1686,7 @@ dataset_03    https://zenodo.org/record/6098306/files/HiFi_synthetic_50x_03.fast
 </blockquote>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-phased-assembly-with-b-hifiasm-b" class="box-title" aria-label="hands-on box: Phased assembly with &lt;b&gt;hifiasm&lt;/b&gt;"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Phased assembly with <b>hifiasm</b></div>
+  <div class="box-title hands-on-title" id="hands-on-phased-assembly-with-b-hifiasm-b" aria-label="hands-on box: Phased assembly with &lt;b&gt;hifiasm&lt;/b&gt;"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Phased assembly with <b>hifiasm</b></div>
 
   <ol>
     <li><span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/bgruening/hifiasm/hifiasm/0.14+galaxy0" title="Tested with toolshed.g2.bx.psu.edu/repos/bgruening/hifiasm/hifiasm/0.14+galaxy0"><strong>Hifiasm</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: <span class="notranslate">toolshed</span>.g2.bx.psu.edu/repos/bgruening/hifiasm/hifiasm/0.14+<span class="notranslate">galaxy</span>0</span></span>  with the following parameters:
@@ -1732,7 +1725,7 @@ dataset_03    https://zenodo.org/record/6098306/files/HiFi_synthetic_50x_03.fast
 <p>We have obtained the fully phased contig graphs of the primary and alte<span class="notranslate">rna</span>te haplotypes, but the output format of hifiasm must be converted to FASTA format for the subsequent steps.</p>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-convert-gfa-to-fasta" class="box-title" aria-label="hands-on box: convert GFA to FASTA"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: convert GFA to FASTA</div>
+  <div class="box-title hands-on-title" id="hands-on-convert-gfa-to-fasta" aria-label="hands-on box: convert GFA to FASTA"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: convert GFA to FASTA</div>
 
   <ol>
     <li><span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/iuc/gfa_to_fa/gfa_to_fa/0.1.2" title="Tested with toolshed.g2.bx.psu.edu/repos/iuc/gfa_to_fa/gfa_to_fa/0.1.2"><strong>GFA to FASTA</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: <span class="notranslate">toolshed</span>.g2.bx.psu.edu/repos/iuc/gfa_to_fa/gfa_to_fa/0.1.2</span></span>  with the following parameters:
@@ -1741,7 +1734,7 @@ dataset_03    https://zenodo.org/record/6098306/files/HiFi_synthetic_50x_03.fast
       </ul>
 
       <blockquote class="tip">
-        <div id="tip-select-multiple-datasets" class="box-title"><button type="button" aria-controls="tip-select-multiple-datasets-contents" aria-expanded="true" aria-label="Toggle tip box: Select multiple datasets"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: Select multiple datasets<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
+        <div class="box-title tip-title" id="tip-select-multiple-datasets"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-select-multiple-datasets-contents" aria-expanded="true" aria-label="Toggle tip box: Select multiple datasets"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: Select multiple datasets<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
         <ol>
           <li>Click on <i class="far fa-copy" aria-hidden="true"></i><span class="visually-hidden">param-files</span> <strong>Multiple datasets</strong></li>
           <li>Select several files by keeping the <kbd>Ctrl</kbd> (or <kbd>COMMAND</kbd>) key pressed and clicking on the files of interest</li>
@@ -1758,7 +1751,7 @@ dataset_03    https://zenodo.org/record/6098306/files/HiFi_synthetic_50x_03.fast
 <p>The VGP assembly pipeline contains several built-in QC steps, including QUAST, BUSCO (Benchmarking Universal Single-Copy Orthologs), Merqury, and Pretext. QUAST will generate summary statistics, BUSCO will search for universal single-copy ortholog genes, Merqury will evaluate assembly copy-numbers using <em>k</em>-mers, and Pretext will be used to evaluate the assembly contiguity.</p>
 
 <blockquote class="comment">
-  <div id="comment-quast-statistics" class="box-title" aria-label="comment box: QUAST statistics"><i class="far fa-comment-dots" aria-hidden="true"></i><span class="visually-hidden"></span> Comment: QUAST statistics</div>
+  <div class="box-title comment-title" id="comment-quast-statistics" aria-label="comment box: QUAST statistics"><i class="far fa-comment-dots" aria-hidden="true"></i><span class="visually-hidden"></span> Comment: QUAST statistics</div>
 
   <p>QUAST will provide us with the following statistics:</p>
 
@@ -1776,7 +1769,7 @@ dataset_03    https://zenodo.org/record/6098306/files/HiFi_synthetic_50x_03.fast
 <p>QUAST default pipeline utilizes Minimap2. Functional elements prediction modules include GeneMarkS, GeneMark-ES, GlimmerHMM, Bar<span class="notranslate">rna</span>p, and BUSCO.</p>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-assembly-evaluation-with-quast" class="box-title" aria-label="hands-on box: assembly evaluation with QUAST"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: assembly evaluation with QUAST</div>
+  <div class="box-title hands-on-title" id="hands-on-assembly-evaluation-with-quast" aria-label="hands-on box: assembly evaluation with QUAST"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: assembly evaluation with QUAST</div>
 
   <ol>
     <li><span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/iuc/quast/quast/5.0.2+galaxy1" title="Tested with toolshed.g2.bx.psu.edu/repos/iuc/quast/quast/5.0.2+galaxy1"><strong>Quast</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: <span class="notranslate">toolshed</span>.g2.bx.psu.edu/repos/iuc/quast/quast/5.0.2+<span class="notranslate">galaxy</span>1</span></span>  with the following parameters:
@@ -1814,7 +1807,7 @@ dataset_03    https://zenodo.org/record/6098306/files/HiFi_synthetic_50x_03.fast
       </ul>
 
       <blockquote class="comment">
-        <div id="comment" class="box-title" aria-label="comment box: "><i class="far fa-comment-dots" aria-hidden="true"></i><span class="visually-hidden"></span> Comment</div>
+        <div class="box-title comment-title" id="comment" aria-label="comment box: "><i class="far fa-comment-dots" aria-hidden="true"></i><span class="visually-hidden"></span> Comment</div>
 
         <p>Remember that for this training we are using <em>S. cerevisiae</em>, a reduced genome. In the case of assembling a vertebrate genome, you must select <code class="language-plaintext highlighter-rouge">yes</code> in the previous option.</p>
       </blockquote>
@@ -1831,7 +1824,7 @@ dataset_03    https://zenodo.org/record/6098306/files/HiFi_synthetic_50x_03.fast
 <p>According to the report, both assemblies are quite similar; the primary assembly includes 18 contigs, whose cumulative length is around 12.1Mbp. On the other hand, the second alte<span class="notranslate">rna</span>te assembly includes 17 contigs, whose total lenght is 11.3Mbp. As we can see in the figure 5b, the alte<span class="notranslate">rna</span>te assembly is slighly smaller than the primary assembly.</p>
 
 <blockquote class="question">
-  <div id="question-3" class="box-title" aria-label="question box: "><i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden"></span> Question</div>
+  <div class="box-title question-title" id="question-3" aria-label="question box: "><i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden"></span> Question</div>
 
   <ol>
     <li>What is the longest contig in the primary assembly? And in the alte<span class="notranslate">rna</span>te one?</li>
@@ -1840,7 +1833,7 @@ dataset_03    https://zenodo.org/record/6098306/files/HiFi_synthetic_50x_03.fast
   </ol>
 
   <blockquote class="solution">
-    <div id="solution-3" class="box-title"><button type="button" aria-controls="solution-3-contents" aria-expanded="true" aria-label="Toggle solution box: "><i class="far fa-eye" aria-hidden="true"></i><span class="visually-hidden"></span> Solution<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
+    <div class="box-title solution-title" id="solution-3"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-3-contents" aria-expanded="true" aria-label="Toggle solution box: "><i class="far fa-eye" aria-hidden="true"></i><span class="visually-hidden"></span> Solution<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
 
     <ol>
       <li>The longest contig in the primary assembly is 1.531.728 bp, and 1.532.843 bp in the alte<span class="notranslate">rna</span>te assembly.</li>
@@ -1855,7 +1848,7 @@ dataset_03    https://zenodo.org/record/6098306/files/HiFi_synthetic_50x_03.fast
 <p>Next, we will use BUSCO, which will provide quantitative assessment of the completeness of a genome assembly in terms of expected gene content. It relies on the analysis of genes that should be present only once in a complete assembly or gene set, while allowing for rare gene duplications or losses (<span class="citation"><a href="#Simo2015">Simão <i>et al.</i> 2015</a></span>).</p>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-assessing-assembly-completeness-with-busco" class="box-title" aria-label="hands-on box: assessing assembly completeness with BUSCO"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: assessing assembly completeness with BUSCO</div>
+  <div class="box-title hands-on-title" id="hands-on-assessing-assembly-completeness-with-busco" aria-label="hands-on box: assessing assembly completeness with BUSCO"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: assessing assembly completeness with BUSCO</div>
 
   <ol>
     <li><span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/iuc/busco/busco/5.0.0+galaxy0" title="Tested with toolshed.g2.bx.psu.edu/repos/iuc/busco/busco/5.0.0+galaxy0"><strong>Busco</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: <span class="notranslate">toolshed</span>.g2.bx.psu.edu/repos/iuc/busco/busco/5.0.0+<span class="notranslate">galaxy</span>0</span></span>  with the following parameters:
@@ -1875,7 +1868,7 @@ dataset_03    https://zenodo.org/record/6098306/files/HiFi_synthetic_50x_03.fast
       </ul>
 
       <blockquote class="comment">
-        <div id="comment-1" class="box-title" aria-label="comment box: "><i class="far fa-comment-dots" aria-hidden="true"></i><span class="visually-hidden"></span> Comment</div>
+        <div class="box-title comment-title" id="comment-1" aria-label="comment box: "><i class="far fa-comment-dots" aria-hidden="true"></i><span class="visually-hidden"></span> Comment</div>
 
         <p>Remember to modify the lineage option if you are working with vertebrate genomes.</p>
       </blockquote>
@@ -1892,7 +1885,7 @@ dataset_03    https://zenodo.org/record/6098306/files/HiFi_synthetic_50x_03.fast
 <p>As we can see in the figure, the detailed report includes valuable information, such as the status of the gene identified in the input sequence, its position (start/end coordinates and strand), the BUSCO score, the gene length and a keyword description.</p>
 
 <blockquote class="question">
-  <div id="question-4" class="box-title" aria-label="question box: "><i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden"></span> Question</div>
+  <div class="box-title question-title" id="question-4" aria-label="question box: "><i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden"></span> Question</div>
 
   <ol>
     <li>How many complete BUSCO genes have been identified in the primary assembly? You can find that information in the short summary.</li>
@@ -1900,7 +1893,7 @@ dataset_03    https://zenodo.org/record/6098306/files/HiFi_synthetic_50x_03.fast
   </ol>
 
   <blockquote class="solution">
-    <div id="solution-4" class="box-title"><button type="button" aria-controls="solution-4-contents" aria-expanded="true" aria-label="Toggle solution box: "><i class="far fa-eye" aria-hidden="true"></i><span class="visually-hidden"></span> Solution<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
+    <div class="box-title solution-title" id="solution-4"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-4-contents" aria-expanded="true" aria-label="Toggle solution box: "><i class="far fa-eye" aria-hidden="true"></i><span class="visually-hidden"></span> Solution<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
 
     <ol>
       <li>According to the report, our assembly contains the complete sequence of 2046 complete BUSCO genes (95.7%).</li>
@@ -1914,7 +1907,7 @@ dataset_03    https://zenodo.org/record/6098306/files/HiFi_synthetic_50x_03.fast
 <p>Despite BUSCO being robust for species that have been widely studied, it can be inaccurate when the newly assembled genome belongs to a taxonomic group that is not well represented in <a href="https://www.orthodb.org/">OrthoDB</a>. Merqury provides a complementary approach for assessing genome assembly quality metrics in a reference-free manner via <em>k</em>-mer copy number analysis.</p>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-i-k-i-mer-based-evaluation-with-merqury" class="box-title" aria-label="hands-on box: &lt;i&gt;k&lt;/i&gt;-mer based evaluation with Merqury"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: <i>k</i>-mer based evaluation with Merqury</div>
+  <div class="box-title hands-on-title" id="hands-on-i-k-i-mer-based-evaluation-with-merqury" aria-label="hands-on box: &lt;i&gt;k&lt;/i&gt;-mer based evaluation with Merqury"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: <i>k</i>-mer based evaluation with Merqury</div>
 
   <ol>
     <li><span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/iuc/merqury/merqury/1.3" title="Tested with toolshed.g2.bx.psu.edu/repos/iuc/merqury/merqury/1.3"><strong>Merqury</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: <span class="notranslate">toolshed</span>.g2.bx.psu.edu/repos/iuc/merqury/merqury/1.3</span></span>  with the following parameters:
@@ -1959,7 +1952,7 @@ dataset_03    https://zenodo.org/record/6098306/files/HiFi_synthetic_50x_03.fast
 <p>Initially, we need to collapse our HiFi trimmed <span class="notranslate">reads</span> collection into a single dataset.</p>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-collapse-the-collection" class="box-title" aria-label="hands-on box: Collapse the collection"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Collapse the collection</div>
+  <div class="box-title hands-on-title" id="hands-on-collapse-the-collection" aria-label="hands-on box: Collapse the collection"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Collapse the collection</div>
 
   <ol>
     <li><span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/nml/collapse_collections/collapse_dataset/4.2" title="Tested with toolshed.g2.bx.psu.edu/repos/nml/collapse_collections/collapse_dataset/4.2"><strong>Collapse Collection</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: <span class="notranslate">toolshed</span>.g2.bx.psu.edu/repos/nml/collapse_collections/collapse_dataset/4.2</span></span>  with the following parameters:
@@ -1974,7 +1967,7 @@ dataset_03    https://zenodo.org/record/6098306/files/HiFi_synthetic_50x_03.fast
 <p>Now, we will map the <span class="notranslate">reads</span> against the primary assembly by using Minimap2 (<span class="citation"><a href="#Li2018">Li 2018</a></span>), an alignment program designed to map long sequences.</p>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-map-the-reads-to-contigs-with-b-minimap2-b" class="box-title" aria-label="hands-on box: Map the reads to contigs with &lt;b&gt;Minimap2&lt;/b&gt;"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Map the <span class="notranslate">reads</span> to contigs with <b>Minimap2</b></div>
+  <div class="box-title hands-on-title" id="hands-on-map-the-reads-to-contigs-with-b-minimap2-b" aria-label="hands-on box: Map the reads to contigs with &lt;b&gt;Minimap2&lt;/b&gt;"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Map the <span class="notranslate">reads</span> to contigs with <b>Minimap2</b></div>
 
   <ol>
     <li><span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/iuc/minimap2/minimap2/2.17+galaxy4" title="Tested with toolshed.g2.bx.psu.edu/repos/iuc/minimap2/minimap2/2.17+galaxy4"><strong>Map with minimap2</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: <span class="notranslate">toolshed</span>.g2.bx.psu.edu/repos/iuc/minimap2/minimap2/2.17+<span class="notranslate">galaxy</span>4</span></span>  with the following parameters:
@@ -2004,7 +1997,7 @@ dataset_03    https://zenodo.org/record/6098306/files/HiFi_synthetic_50x_03.fast
 <p>Finally, we will use the <code class="language-plaintext highlighter-rouge"><span class="notranslate">Reads</span> mapped to contigs</code> pairwise <span class="notranslate">mapping</span> format (PAF) file for calculating some statistics required in a later stage. In this step, purge_dups (listed as <strong>Purge overlaps</strong> in <span class="notranslate">Galaxy</span> tool panel) initially produces a read-depth histogram from base-level coverages. This information is used for estimating the coverage cutoffs, taking into account that collapsed haplotype contigs will lead to <span class="notranslate">reads</span> from both alleles <span class="notranslate">mapping</span> to those contigs, whereas if the alleles have assembled as separate contigs, then the <span class="notranslate">reads</span> will be split over the two contigs, resulting in half the read-depth (<span class="citation"><a href="#Roach2018">Roach <i>et al.</i> 2018</a></span>).</p>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-read-depth-analisys" class="box-title" aria-label="hands-on box: Read-depth analisys"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Read-depth analisys</div>
+  <div class="box-title hands-on-title" id="hands-on-read-depth-analisys" aria-label="hands-on box: Read-depth analisys"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Read-depth analisys</div>
   <ol>
     <li><span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/iuc/purge_dups/purge_dups/1.2.5+galaxy3" title="Tested with toolshed.g2.bx.psu.edu/repos/iuc/purge_dups/purge_dups/1.2.5+galaxy3"><strong>Purge overlaps</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: <span class="notranslate">toolshed</span>.g2.bx.psu.edu/repos/iuc/purge_dups/purge_dups/1.2.5+<span class="notranslate">galaxy</span>3</span></span>  with the following parameters:
       <ul>
@@ -2039,7 +2032,7 @@ dataset_03    https://zenodo.org/record/6098306/files/HiFi_synthetic_50x_03.fast
 <p>Now, we will segment the draft assembly into contigs by cutting at blocks of <em>N</em>s, and use minimap2 to generate an all by all self-alignment.</p>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-purge-dups-pipeline" class="box-title" aria-label="hands-on box: purge_dups pipeline    "><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: purge_dups pipeline</div>
+  <div class="box-title hands-on-title" id="hands-on-purge-dups-pipeline" aria-label="hands-on box: purge_dups pipeline    "><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: purge_dups pipeline</div>
   <ol>
     <li><span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/iuc/purge_dups/purge_dups/1.2.5+galaxy2" title="Tested with toolshed.g2.bx.psu.edu/repos/iuc/purge_dups/purge_dups/1.2.5+galaxy2"><strong>Purge overlaps</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: <span class="notranslate">toolshed</span>.g2.bx.psu.edu/repos/iuc/purge_dups/purge_dups/1.2.5+<span class="notranslate">galaxy</span>2</span></span>  with the following parameters:
       <ul>
@@ -2082,7 +2075,7 @@ dataset_03    https://zenodo.org/record/6098306/files/HiFi_synthetic_50x_03.fast
 <p>During the final step of the purge_dups pipeline, it will use the self alignments and the cutoffs for identifying the haplotypic duplications.</p>
 
 <blockquote class="comment">
-  <div id="comment-purge-overlaps-purge-dups-algorithm-details" class="box-title" aria-label="comment box: Purge overlaps (purge_dups) algorithm details"><i class="far fa-comment-dots" aria-hidden="true"></i><span class="visually-hidden"></span> Comment: Purge overlaps (purge_dups) algorithm details</div>
+  <div class="box-title comment-title" id="comment-purge-overlaps-purge-dups-algorithm-details" aria-label="comment box: Purge overlaps (purge_dups) algorithm details"><i class="far fa-comment-dots" aria-hidden="true"></i><span class="visually-hidden"></span> Comment: Purge overlaps (purge_dups) algorithm details</div>
 
   <p>In order to identify the haplotypic duplications, purge_dups uses the  base-level coverage information to flag the contigs according the following criteria:</p>
   <ul>
@@ -2107,7 +2100,7 @@ dataset_03    https://zenodo.org/record/6098306/files/HiFi_synthetic_50x_03.fast
 </blockquote>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-resolution-of-haplotigs-and-overlaps" class="box-title" aria-label="hands-on box: Resolution of haplotigs and overlaps"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Resolution of haplotigs and overlaps</div>
+  <div class="box-title hands-on-title" id="hands-on-resolution-of-haplotigs-and-overlaps" aria-label="hands-on box: Resolution of haplotigs and overlaps"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Resolution of haplotigs and overlaps</div>
 
   <ol>
     <li><span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/iuc/purge_dups/purge_dups/1.2.5+galaxy5" title="Tested with toolshed.g2.bx.psu.edu/repos/iuc/purge_dups/purge_dups/1.2.5+galaxy5"><strong>Purge overlaps</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: <span class="notranslate">toolshed</span>.g2.bx.psu.edu/repos/iuc/purge_dups/purge_dups/1.2.5+<span class="notranslate">galaxy</span>5</span></span>  with the following parameters:
@@ -2144,7 +2137,7 @@ dataset_03    https://zenodo.org/record/6098306/files/HiFi_synthetic_50x_03.fast
 <p>Now we should repeat the same procedure with the alte<span class="notranslate">rna</span>te contigs generated by hifiasm.  In that case, we should start by merging the <code class="language-plaintext highlighter-rouge">Alte<span class="notranslate">rna</span>te haplotype contigs</code> generated in the previous step and the <code class="language-plaintext highlighter-rouge">Alte<span class="notranslate">rna</span>te contigs FASTA</code> file.</p>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-merge-the-purged-sequences-and-the-alternate-contigs" class="box-title" aria-label="hands-on box: Merge the purged sequences and the Alternate contigs"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Merge the purged sequences and the Alte<span class="notranslate">rna</span>te contigs</div>
+  <div class="box-title hands-on-title" id="hands-on-merge-the-purged-sequences-and-the-alternate-contigs" aria-label="hands-on box: Merge the purged sequences and the Alternate contigs"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Merge the purged sequences and the Alte<span class="notranslate">rna</span>te contigs</div>
 
   <ol>
     <li><span class="tool" data-tool="cat1" title="Tested with cat1"><strong>Concatenate datasets</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: cat1</span></span>  with the following parameters:
@@ -2162,7 +2155,7 @@ dataset_03    https://zenodo.org/record/6098306/files/HiFi_synthetic_50x_03.fast
       </ul>
 
       <blockquote class="comment">
-        <div id="comment-2" class="box-title" aria-label="comment box: "><i class="far fa-comment-dots" aria-hidden="true"></i><span class="visually-hidden"></span> Comment</div>
+        <div class="box-title comment-title" id="comment-2" aria-label="comment box: "><i class="far fa-comment-dots" aria-hidden="true"></i><span class="visually-hidden"></span> Comment</div>
 
         <p>Remember that the <code class="language-plaintext highlighter-rouge">Alte<span class="notranslate">rna</span>te haplotype contigs</code> file contains those contigs that were considered to be haplotypic duplications of the primary contigs.</p>
       </blockquote>
@@ -2175,7 +2168,7 @@ dataset_03    https://zenodo.org/record/6098306/files/HiFi_synthetic_50x_03.fast
 <p>Once we have merged the files, we should run the purge_dups pipeline again, but using the <code class="language-plaintext highlighter-rouge">Alte<span class="notranslate">rna</span>te contigs full</code> file as input.</p>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-process-the-alternate-assembly-with-i-purge-dups-i" class="box-title" aria-label="hands-on box: Process the alternate assembly with &lt;i&gt;purge_dups&lt;/i&gt;"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Process the alte<span class="notranslate">rna</span>te assembly with <i>purge_dups</i></div>
+  <div class="box-title hands-on-title" id="hands-on-process-the-alternate-assembly-with-i-purge-dups-i" aria-label="hands-on box: Process the alternate assembly with &lt;i&gt;purge_dups&lt;/i&gt;"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Process the alte<span class="notranslate">rna</span>te assembly with <i>purge_dups</i></div>
 
   <ol>
     <li><span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/iuc/minimap2/minimap2/2.17+galaxy4" title="Tested with toolshed.g2.bx.psu.edu/repos/iuc/minimap2/minimap2/2.17+galaxy4"><strong>Map with minimap2</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: <span class="notranslate">toolshed</span>.g2.bx.psu.edu/repos/iuc/minimap2/minimap2/2.17+<span class="notranslate">galaxy</span>4</span></span>  with the following parameters:
@@ -2293,7 +2286,7 @@ dataset_03    https://zenodo.org/record/6098306/files/HiFi_synthetic_50x_03.fast
 <p>In this step, the linkage information provided by optical maps is integrated with primary assembly sequences, and the overlaps are used to orient and order the contigs, resolve chimeric joins, and estimate the length of gaps between adjacent contigs. One of the advantages of optical maps is that they can easily span genomic regions that are difficult to resolve using <span class="notranslate">DNA</span> sequencing technologies (<span class="citation"><a href="#Savara2021">Savara <i>et al.</i> 2021</a></span>, <span class="citation"><a href="#Yuan2020">Yuan <i>et al.</i> 2020</a></span>).</p>
 
 <blockquote class="comment">
-  <div id="comment-background-on-bionano-optical-maps" class="box-title" aria-label="comment box: Background on Bionano optical maps"><i class="far fa-comment-dots" aria-hidden="true"></i><span class="visually-hidden"></span> Comment: Background on Bionano optical maps</div>
+  <div class="box-title comment-title" id="comment-background-on-bionano-optical-maps" aria-label="comment box: Background on Bionano optical maps"><i class="far fa-comment-dots" aria-hidden="true"></i><span class="visually-hidden"></span> Comment: Background on Bionano optical maps</div>
 
   <p>Bionano technology relies on the isolation of kilobase-long <span class="notranslate">DNA</span> fragments, which are labeled at specific sequence motifs with a fluorescent dye, resulting in a unique fluorescent pattern for each genome. <span class="notranslate">DNA</span> molecules are stretched into nanoscale channels and imaged with a high-resolution camera, allowing us to build optical maps that include the physical locations of labels rather than base-level information (<span class="citation"><a href="#Lam2012">Lam <i>et al.</i> 2012</a></span>, <span class="citation"><a href="#Giani2020">Giani <i>et al.</i> 2020</a></span>, <span class="citation"><a href="#Savara2021">Savara <i>et al.</i> 2021</a></span>).</p>
 
@@ -2314,7 +2307,7 @@ dataset_03    https://zenodo.org/record/6098306/files/HiFi_synthetic_50x_03.fast
 </ol>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-bionano-hybrid-scaffolding" class="box-title" aria-label="hands-on box: Bionano hybrid scaffolding"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Bionano hybrid scaffolding</div>
+  <div class="box-title hands-on-title" id="hands-on-bionano-hybrid-scaffolding" aria-label="hands-on box: Bionano hybrid scaffolding"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Bionano hybrid scaffolding</div>
 
   <ol>
     <li><span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/bgruening/bionano_scaffold/bionano_scaffold/3.6.1+galaxy2" title="Tested with toolshed.g2.bx.psu.edu/repos/bgruening/bionano_scaffold/bionano_scaffold/3.6.1+galaxy2"><strong>Bionano Hybrid Scaffold</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: <span class="notranslate">toolshed</span>.g2.bx.psu.edu/repos/bgruening/bionano_scaffold/bionano_scaffold/3.6.1+<span class="notranslate">galaxy</span>2</span></span>  with the following parameters:
@@ -2327,7 +2320,7 @@ dataset_03    https://zenodo.org/record/6098306/files/HiFi_synthetic_50x_03.fast
       </ul>
 
       <blockquote class="comment">
-        <div id="comment-3" class="box-title" aria-label="comment box: "><i class="far fa-comment-dots" aria-hidden="true"></i><span class="visually-hidden"></span> Comment</div>
+        <div class="box-title comment-title" id="comment-3" aria-label="comment box: "><i class="far fa-comment-dots" aria-hidden="true"></i><span class="visually-hidden"></span> Comment</div>
 
         <p>If your data are not associated with VGP, make sure that the configuration mode fits with your samples.</p>
       </blockquote>
@@ -2355,7 +2348,7 @@ dataset_03    https://zenodo.org/record/6098306/files/HiFi_synthetic_50x_03.fast
 <p>Once we have run purge_dups and Bionano, we can evaluate the assembly again, and compare the results.</p>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-bionano-assembly-evaluation-with-quast-and-busco" class="box-title" aria-label="hands-on box: Bionano assembly evaluation with QUAST and BUSCO"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Bionano assembly evaluation with QUAST and BUSCO</div>
+  <div class="box-title hands-on-title" id="hands-on-bionano-assembly-evaluation-with-quast-and-busco" aria-label="hands-on box: Bionano assembly evaluation with QUAST and BUSCO"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Bionano assembly evaluation with QUAST and BUSCO</div>
 
   <ol>
     <li><span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/iuc/quast/quast/5.0.2+galaxy1" title="Tested with toolshed.g2.bx.psu.edu/repos/iuc/quast/quast/5.0.2+galaxy1"><strong>Quast</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: <span class="notranslate">toolshed</span>.g2.bx.psu.edu/repos/iuc/quast/quast/5.0.2+<span class="notranslate">galaxy</span>1</span></span>  with the following parameters:
@@ -2423,7 +2416,7 @@ dataset_03    https://zenodo.org/record/6098306/files/HiFi_synthetic_50x_03.fast
 <p>Finally, the BUSCO’s summary image (fig. 10c) shows that most of the universal single-copy orthologs are present in our assembly.</p>
 
 <blockquote class="question">
-  <div id="question-5" class="box-title" aria-label="question box: "><i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden"></span> Question</div>
+  <div class="box-title question-title" id="question-5" aria-label="question box: "><i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden"></span> Question</div>
 
   <ol>
     <li>How many scaffolds are in the primary assembly after the hybrid scaffolding?</li>
@@ -2432,7 +2425,7 @@ dataset_03    https://zenodo.org/record/6098306/files/HiFi_synthetic_50x_03.fast
   </ol>
 
   <blockquote class="solution">
-    <div id="solution-5" class="box-title"><button type="button" aria-controls="solution-5-contents" aria-expanded="true" aria-label="Toggle solution box: "><i class="far fa-eye" aria-hidden="true"></i><span class="visually-hidden"></span> Solution<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
+    <div class="box-title solution-title" id="solution-5"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-5-contents" aria-expanded="true" aria-label="Toggle solution box: "><i class="far fa-eye" aria-hidden="true"></i><span class="visually-hidden"></span> Solution<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
 
     <ol>
       <li>The number of contigs is 17.</li>
@@ -2451,7 +2444,7 @@ dataset_03    https://zenodo.org/record/6098306/files/HiFi_synthetic_50x_03.fast
 <p>Hi-C is a sequencing-based molecular assay designed to identify regions of frequent physical interaction in the genome by measuring the contact frequency between all pairs of loci, allowing us to provide an insight into the three-dimensional organization of a genome  (<span class="citation"><a href="#Dixon2012">Dixon <i>et al.</i> 2012</a></span>, <span class="citation"><a href="#LiebermanAiden2009">Lieberman-Aiden <i>et al.</i> 2009</a></span>). In this final stage, we will exploit the fact that the contact frequency between a pair of loci strongly correlates with the one-dimensional distance between them with the objective of linking the Bionano scaffolds to a chromosome scale.</p>
 
 <blockquote class="comment">
-  <div id="comment-background-about-hi-c-data" class="box-title" aria-label="comment box: Background about Hi-C data"><i class="far fa-comment-dots" aria-hidden="true"></i><span class="visually-hidden"></span> Comment: Background about Hi-C data</div>
+  <div class="box-title comment-title" id="comment-background-about-hi-c-data" aria-label="comment box: Background about Hi-C data"><i class="far fa-comment-dots" aria-hidden="true"></i><span class="visually-hidden"></span> Comment: Background about Hi-C data</div>
 
   <p>The high-throughput chromosome conformation capture (Hi-C) technology is based on the capture of the chromatin in three-dimensional space. During Hi-C library preparation, <span class="notranslate">DNA</span> is crosslinked in its 3D conformation. Then, the <span class="notranslate">DNA</span> is digested using restriction enzymes, and the digested ends are filled with biotinylated nucleotides (fig. 11). The biotinylated nucleotides enable the specific purification of the ligation junctions, preventing the sequencing of <span class="notranslate">DNA</span> molecules that do not contain such junctions which are thus mostly uninformative (<span class="citation"><a href="#Lajoie2015">Lajoie <i>et al.</i> 2015</a></span>).</p>
 
@@ -2466,7 +2459,7 @@ dataset_03    https://zenodo.org/record/6098306/files/HiFi_synthetic_50x_03.fast
 <p>Despite Hi-C generating paired-end <span class="notranslate">reads</span>, we need to map each read separately. This is because most aligners assume that the distance between paired-end <span class="notranslate">reads</span> fit a known distribution, but in Hi-C data the insert size of the ligation product can vary between one base pair to hundreds of megabases (<span class="citation"><a href="#Lajoie2015">Lajoie <i>et al.</i> 2015</a></span>).</p>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-mapping-hi-c-reads" class="box-title" aria-label="hands-on box: Mapping Hi-C reads"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: <span class="notranslate">Mapping</span> Hi-C <span class="notranslate">reads</span></div>
+  <div class="box-title hands-on-title" id="hands-on-mapping-hi-c-reads" aria-label="hands-on box: Mapping Hi-C reads"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: <span class="notranslate">Mapping</span> Hi-C <span class="notranslate">reads</span></div>
 
   <ol>
     <li><span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/iuc/bwa_mem2/bwa_mem2/2.2.1+galaxy0" title="Tested with toolshed.g2.bx.psu.edu/repos/iuc/bwa_mem2/bwa_mem2/2.2.1+galaxy0"><strong>BWA-MEM2</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: <span class="notranslate">toolshed</span>.g2.bx.psu.edu/repos/iuc/bwa_mem2/bwa_mem2/2.2.1+<span class="notranslate">galaxy</span>0</span></span>  with the following parameters:
@@ -2526,7 +2519,7 @@ dataset_03    https://zenodo.org/record/6098306/files/HiFi_synthetic_50x_03.fast
 <p>After <span class="notranslate">mapping</span> the Hi-C <span class="notranslate">reads</span>, the next step is to generate an initial Hi-C contact map, which will allow us to compare the Hi-C contact maps before and after using the Hi-C for scaffolding.</p>
 
 <blockquote class="comment">
-  <div id="comment-biological-basis-of-hi-c-contact-maps" class="box-title" aria-label="comment box: Biological basis of Hi-C contact maps"><i class="far fa-comment-dots" aria-hidden="true"></i><span class="visually-hidden"></span> Comment: Biological basis of Hi-C contact maps</div>
+  <div class="box-title comment-title" id="comment-biological-basis-of-hi-c-contact-maps" aria-label="comment box: Biological basis of Hi-C contact maps"><i class="far fa-comment-dots" aria-hidden="true"></i><span class="visually-hidden"></span> Comment: Biological basis of Hi-C contact maps</div>
 
   <p>Hi-C contact maps reflect the interaction frequency between genomic loci. In order to understand the Hi-C contact maps, it is necessary to take into account two factors: the higher interaction frequency between loci that reside in the same chromosome (<em>i.e.</em>, in cis), and the distance-dependent decay of interaction frequency (<span class="citation"><a href="#Lajoie2015">Lajoie <i>et al.</i> 2015</a></span>).</p>
 
@@ -2539,7 +2532,7 @@ dataset_03    https://zenodo.org/record/6098306/files/HiFi_synthetic_50x_03.fast
 </blockquote>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-generate-a-contact-map-with-b-pretextmap-b-and-b-pretext-snapshot-b" class="box-title" aria-label="hands-on box: Generate a contact map with &lt;b&gt;PretextMap&lt;/b&gt; and &lt;b&gt;Pretext Snapshot&lt;/b&gt;"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Generate a contact map with <b>PretextMap</b> and <b>Pretext Snapshot</b></div>
+  <div class="box-title hands-on-title" id="hands-on-generate-a-contact-map-with-b-pretextmap-b-and-b-pretext-snapshot-b" aria-label="hands-on box: Generate a contact map with &lt;b&gt;PretextMap&lt;/b&gt; and &lt;b&gt;Pretext Snapshot&lt;/b&gt;"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Generate a contact map with <b>PretextMap</b> and <b>Pretext Snapshot</b></div>
 
   <ol>
     <li><span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/iuc/pretext_map/pretext_map/0.1.6+galaxy0" title="Tested with toolshed.g2.bx.psu.edu/repos/iuc/pretext_map/pretext_map/0.1.6+galaxy0"><strong>PretextMap</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: <span class="notranslate">toolshed</span>.g2.bx.psu.edu/repos/iuc/pretext_map/pretext_map/0.1.6+<span class="notranslate">galaxy</span>0</span></span>  with the following parameters:
@@ -2574,7 +2567,7 @@ dataset_03    https://zenodo.org/record/6098306/files/HiFi_synthetic_50x_03.fast
 <p>SALSA2 is an open source software that makes use of Hi-C to linearly orient and order assembled contigs along entire chromosomes (<span class="citation"><a href="#Ghurye2019">Ghurye <i>et al.</i> 2019</a></span>). One of the advantages of SALSA2 with respect to most existing Hi-C scaffolding tools is that it doesn’t require the estimated number of chromosomes.</p>
 
 <blockquote class="comment">
-  <div id="comment-salsa2-algorithm-overview" class="box-title" aria-label="comment box: SALSA2 algorithm overview"><i class="far fa-comment-dots" aria-hidden="true"></i><span class="visually-hidden"></span> Comment: SALSA2 algorithm overview</div>
+  <div class="box-title comment-title" id="comment-salsa2-algorithm-overview" aria-label="comment box: SALSA2 algorithm overview"><i class="far fa-comment-dots" aria-hidden="true"></i><span class="visually-hidden"></span> Comment: SALSA2 algorithm overview</div>
 
   <p>Initially SALSA2 uses the physical coverage of Hi-C pairs to identify suspicious regions and break the sequence at the likely point of mis-assembly. Then, a hybrid scaffold graph is constructed using edges from the Hi-C <span class="notranslate">reads</span>, scoring the edges according to a <em>best buddy</em> scheme (fig. 14a).</p>
 
@@ -2587,7 +2580,7 @@ dataset_03    https://zenodo.org/record/6098306/files/HiFi_synthetic_50x_03.fast
 <p>Before launching SALSA2, we need to carry out some modifications on our datasets.</p>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-bam-to-bed-conversion" class="box-title" aria-label="hands-on box: BAM to BED conversion"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: BAM to <span class="notranslate">BED</span> conversion</div>
+  <div class="box-title hands-on-title" id="hands-on-bam-to-bed-conversion" aria-label="hands-on box: BAM to BED conversion"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: BAM to <span class="notranslate">BED</span> conversion</div>
 
   <ol>
     <li><span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/iuc/bedtools/bedtools_bamtobed/2.30.0+galaxy1" title="Tested with toolshed.g2.bx.psu.edu/repos/iuc/bedtools/bedtools_bamtobed/2.30.0+galaxy1"><strong><span class="notranslate">bed</span>tools BAM to <span class="notranslate">BED</span></strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: <span class="notranslate">toolshed</span>.g2.bx.psu.edu/repos/iuc/<span class="notranslate">bed</span>tools/<span class="notranslate">bed</span>tools_bamtobed/2.30.0+<span class="notranslate">galaxy</span>1</span></span>  with the following parameters:
@@ -2625,7 +2618,7 @@ dataset_03    https://zenodo.org/record/6098306/files/HiFi_synthetic_50x_03.fast
 <p>Now we can launch SALSA2 in order to generate the hybrid scaffolding based on the Hi-C data.</p>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-salsa-scaffolding" class="box-title" aria-label="hands-on box: Salsa scaffolding"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Salsa scaffolding</div>
+  <div class="box-title hands-on-title" id="hands-on-salsa-scaffolding" aria-label="hands-on box: Salsa scaffolding"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Salsa scaffolding</div>
 
   <ol>
     <li><span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/iuc/salsa/salsa/2.3+galaxy0" title="Tested with toolshed.g2.bx.psu.edu/repos/iuc/salsa/salsa/2.3+galaxy0"><strong>SALSA</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: <span class="notranslate">toolshed</span>.g2.bx.psu.edu/repos/iuc/salsa/salsa/2.3+<span class="notranslate">galaxy</span>0</span></span>  with the following parameters:
@@ -2645,7 +2638,7 @@ dataset_03    https://zenodo.org/record/6098306/files/HiFi_synthetic_50x_03.fast
 <p>Finally, we should repeat the procedure described previously for generating the contact maps, but in that case, we will use the scaffold generated by SALSA2.</p>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-mapping-reads-against-the-scaffold" class="box-title" aria-label="hands-on box: Mapping reads against the scaffold"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: <span class="notranslate">Mapping</span> <span class="notranslate">reads</span> against the scaffold</div>
+  <div class="box-title hands-on-title" id="hands-on-mapping-reads-against-the-scaffold" aria-label="hands-on box: Mapping reads against the scaffold"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: <span class="notranslate">Mapping</span> <span class="notranslate">reads</span> against the scaffold</div>
 
   <ol>
     <li><span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/iuc/bwa_mem2/bwa_mem2/2.2.1+galaxy0" title="Tested with toolshed.g2.bx.psu.edu/repos/iuc/bwa_mem2/bwa_mem2/2.2.1+galaxy0"><strong>BWA-MEM2</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: <span class="notranslate">toolshed</span>.g2.bx.psu.edu/repos/iuc/bwa_mem2/bwa_mem2/2.2.1+<span class="notranslate">galaxy</span>0</span></span>  with the following parameters:
@@ -2864,19 +2857,21 @@ day = ""
 url = "\url{https://training.galaxyproject.org/training-material/topics/assembly/tutorials/vgp_genome_assembly/tutorial.html}",
 note = "[Online; accessed TODAY]"
 }
-@article{Batut_2018,
-    doi = {10.1016/j.cels.2018.05.012},
-    url = {https://doi.org/10.1016%2Fj.cels.2018.05.012},
-    year = 2018,
-    month = {jun},
-    publisher = {Elsevier {BV}},
-    volume = {6},
-    number = {6},
-    pages = {752--758.e1},
-    author = {B{\'{e}}r{\'{e}}nice Batut and Saskia Hiltemann and Andrea Bagnacani and Dannon Baker and Vivek Bhardwaj and Clemens Blank and Anthony Bretaudeau and Loraine Brillet-Gu{\'{e}}guen and Martin {\v{C}}ech and John Chilton and Dave Clements and Olivia Doppelt-Azeroual and Anika Erxleben and Mallory Ann Freeberg and Simon Gladman and Youri Hoogstrate and Hans-Rudolf Hotz and Torsten Houwaart and Pratik Jagtap and Delphine Larivi{\`{e}}re and Gildas Le Corguill{\'{e}} and Thomas Manke and Fabien Mareuil and Fidel Ram{\'{\i}}rez and Devon Ryan and Florian Christoph Sigloch and Nicola Soranzo and Joachim Wolff and Pavankumar Videm and Markus Wolfien and Aisanjiang Wubuli and Dilmurat Yusuf and James Taylor and Rolf Backofen and Anton Nekrutenko and Björn Grüning},
-    title = {Community-Driven Data Analysis Training for Biology},
-    journal = {Cell Systems}
-}</code>
+@article{Hiltemann_2023,
+	doi = {10.1371/journal.pcbi.1010752},
+	url = {https://doi.org/10.1371%2Fjournal.pcbi.1010752},
+	year = 2023,
+	month = {jan},
+	publisher = {Public Library of Science ({PLoS})},
+	volume = {19},
+	number = {1},
+	pages = {e1010752},
+	author = {Saskia Hiltemann and Helena Rasche and Simon Gladman and Hans-Rudolf Hotz and Delphine Larivi{\`{e}}re and Daniel Blankenberg and Pratik D. Jagtap and Thomas Wollmann and Anthony Bretaudeau and Nadia Gou{\'{e}} and Timothy J. Griffin and Coline Royaux and Yvan Le Bras and Subina Mehta and Anna Syme and Frederik Coppens and Bert Droesbeke and Nicola Soranzo and Wendi Bacon and Fotis Psomopoulos and Crist{\'{o}}bal Gallardo-Alba and John Davis and Melanie Christine Föll and Matthias Fahrner and Maria A. Doyle and Beatriz Serrano-Solano and Anne Claire Fouilloux and Peter van Heusden and Wolfgang Maier and Dave Clements and Florian Heyl and Björn Grüning and B{\'{e}}r{\'{e}}nice Batut and},
+	editor = {Francis Ouellette},
+	title = {Galaxy Training: A powerful framework for teaching!},
+	journal = {PLoS Comput Biol} Computational Biology}
+}
+</code>
                    </pre></div></div>
                    </p>
                 </blockquote>
@@ -2914,8 +2909,6 @@ document.getElementById("citation-text").innerHTML = document.getElementById("ci
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
         <script type="text/javascript" src="/training-material/assets/js/bootstrap-toc.min.js"></script>
         <script type="text/javascript" src="/training-material/assets/js/main.js"></script>
-        <script type="text/javascript" src="/training-material/assets/js/theme.js"></script>
-
         <script type="text/javascript" src="/training-material/assets/js/clipboard.min.js"></script>
         <script type="text/javascript">
         var snippets=document.querySelectorAll('div.highlight');

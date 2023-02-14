@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="utf-8">
@@ -14,7 +14,6 @@
         <link rel="stylesheet" href="/training-material/assets/css/main.css?v=2">
         <script src="https://kit.fontawesome.com/67b3f98409.js" crossorigin="anonymous"></script>
         <link rel="stylesheet" href="/training-material/assets/css/academicons.css">
-        <link rel="stylesheet" href="/training-material/assets/css/syntax_highlighting.css">
         <link rel="shortcut icon" href="/training-material/favicon.ico" type="image/x-icon" />
         <link rel="alternate" type="application/atom+xml" href="/training-material/feed.xml" />
         <link rel="canonical" href="https://training.galaxyproject.org/training-material/topics/single-cell/tutorials/scrna-case_monocle3-trajectories/slides-plain.html" />
@@ -24,10 +23,9 @@
 <meta name="DC.type" content="text" />
 <meta name="DC.title" content="Trajectory analysis" />
 <meta name="DC.publisher" content="Galaxy Training Network" />
-<meta name="DC.date" content="2023-02-14 01:40:53 +0000" />
+<meta name="DC.date" content="2023-02-14 18:02:54 +0000" />
 <meta name="DC.creator" content="Julia Jakiela" />
 
-        
         
         
         
@@ -38,8 +36,10 @@
         <meta property="og:description" content="Collection of tutorials developed and maintained by the w..." />
         <meta property="og:image" content="/training-material/assets/images/GTNLogo1000.png" />
 
+        
     </head>
     <body data-spy="scroll" data-target="#toc">
+        <script type="text/javascript" src="/training-material/assets/js/theme.js"></script>
         <header>
     <nav class="navbar navbar-expand-md navbar-dark" aria-label="Site Navigation">
         <div class="container">
@@ -155,27 +155,14 @@
             </div>
 
             <div id="theme-selector" data-toggle="buttons">
-                <label data-value="default" class="btn btn-secondary">
-                    <input type="radio" name="options" id="default" autocomplete="off"> Default
-                </label>
-                <label data-value="night" class="btn btn-secondary">
-                    <input type="radio" name="options" id="night" autocomplete="off"> Night
-                </label>
-                <label data-value="midnight" class="btn btn-secondary">
-                    <input type="radio" name="options" id="midnight" autocomplete="off"> Midnight
-                </label>
-                <label data-value="rainbow" class="btn btn-secondary">
-                    <input type="radio" name="options" id="rainbow" autocomplete="off"> Rainbow
-                </label>
-                <label data-value="progress" class="btn btn-secondary">
-                    <input type="radio" name="options" id="progress" autocomplete="off">🏳️‍🌈
-                </label>
-                <label data-value="halloween" class="btn btn-secondary">
-                    <input type="radio" name="options" id="halloween" autocomplete="off"> 🎃
-                </label>
-                <label data-value="straya" class="btn btn-secondary">
-                    <input type="radio" name="options" id="downunder" autocomplete="off"> 🇦🇺
-                </label>
+                    <button class="btn" data-theme="default">Default</button>
+                    <button class="btn" data-theme="night">Night</button>
+                    <button class="btn" data-theme="midnight">Midnight</button>
+                    <button class="btn" data-theme="rainbow">Rainbow</button>
+                    <button class="btn" data-theme="blm">✊🏿</button>
+                    <button class="btn" data-theme="progress" >🏳️‍🌈</button>
+                    <button class="btn" data-theme="halloween">🎃</button>
+                    <button class="btn" data-theme="straya">🇦🇺</button>
             </div>
 
         </div>
@@ -287,6 +274,16 @@
                 
                     
                         
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
                             
                             <li> An introduction to scRNA-seq data analysis:
                             
@@ -295,8 +292,6 @@
                             
                             
                             </li>
-                        
-                    
                         
                     
                         
@@ -340,7 +335,7 @@
 
 
 	<h3 id="what-is-trajectory-analysis">What is trajectory analysis?</h3>
-<p>.footnote[<a href="https://doi.org/10.1016/j.coisb.2021.05.005">Deconinck et al. Recent advances in trajectory inference from single-cell omics data</a>]</p>
+<p>.footnote[<span class="citation"><a href="#Deconinck2021">Deconinck <i>et al.</i> 2021</a></span>]</p>
 
 <p>–</p>
 
@@ -364,7 +359,7 @@
 </table>
 
 <p>–
-TI allows studying how cells evolve from one cell state to another, and subsequently when and how cell fate decisions are made.</p>
+TI allows us to study how cells evolve from one cell state to another, and subsequently when and how cell fate decisions are made.</p>
 
 <p>.image-40[ <img src="../../images/scrna-casestudy-monocle/4_process.png" alt="A cell changing its shape in three steps (showing the evolution from one state to another)" /> ]</p>
 
@@ -377,11 +372,11 @@ TI allows studying how cells evolve from one cell state to another, and subseque
 </ul>
 
 <h3 id="clustering-trajectory-and-pseudotime">Clustering, trajectory and pseudotime</h3>
-<p>.footnote[<a href="https://doi.org/10.1016/j.coisb.2021.05.005">Deconinck et al. Recent advances in trajectory inference from single-cell omics data</a>]
+<p>.footnote[<span class="citation"><a href="#Deconinck2021">Deconinck <i>et al.</i> 2021</a></span>]
 –</p>
 
 <p>.pull-left[
-<strong>Clustering</strong> calculates cell similarities to identify group cell types, that can be identified based on the marker genes expressed in each cluster.</p>
+<strong>Clustering</strong> calculates cell similarities to group specific cell types, that can be identified based on the marker genes expressed in each cluster.</p>
 
 <p>.image-75[ <img src="../../images/scrna-casestudy-monocle/5_clusters.png" alt="A graph with axis labels ‘t-SNE’, showing the cells being clustered into several groups – each group marked in a  different colour." /> ]</p>
 
@@ -418,19 +413,19 @@ TI allows studying how cells evolve from one cell state to another, and subseque
 
 <p><span>Speaker Notes</span></p>
 <ul>
-  <li>snapshot data with cells in different stages of differentiaiton</li>
+  <li>snapshot data with cells in different stages of differentiation</li>
   <li>
     <h2 id="multiple-methods-and-how-they-work-in-biological-context">multiple methods and how they work in biological context</h2>
   </li>
   <li>It would be quite difficult to analyse a sample every few seconds to see how the cells are changing. Therefore, we assume that snapshot data encompass all naïve, intermediate, and mature cell states with sufficient sampling coverage to allow the reconstruction of differentiation trajectories.
-<a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7115822/">Sagar and Grün, 2020</a></li>
+<br /> <span class="citation"><a href="#Sagar2020">Sagar and Grün 2020</a></span></li>
 </ul>
 
 <p>–</p>
 
 <ul>
   <li>As different TI methods make different assumptions about the data, a first choice to make is based on which biological process is to be expected: <strong>not all TI methods are designed to infer all kinds of biological processes.</strong>
-<a href="https://doi.org/10.1016/j.coisb.2021.05.005">Deconinck et al., 2021</a></li>
+<br /> <span class="citation"><a href="#Deconinck2021">Deconinck <i>et al.</i> 2021</a></span></li>
 </ul>
 
 <hr />
@@ -441,13 +436,13 @@ There are multiple algorithms used to analyse scRNA-seq data to make it more rea
 Note that this is a graph from 2016 - many new approaches has been developed since then, but this scheme shows how those methods are built.
 –</p>
 
-<p>Look at the pipeline presented by <a href="https://onlinelibrary.wiley.com/doi/10.1002/eji.201646347">Robrecht Cannoodt et al., 2016</a></p>
+<p>Look at the pipeline presented by <span class="citation"><a href="#Cannoodt2016">Cannoodt <i>et al.</i> 2016</a></span></p>
 
 <p>–</p>
 
 <h2 id="image-100--">.image-100[ <img src="../../images/scrna-casestudy-monocle/7_methods.jpg" alt="A scheme showing a pipeline how single cell expression data is being processed: 1) similarity: cosine and Euclidean, 2) manifold learning:  t-SNE, diffusion maps, LLE, PCA, ICA, 3) clustering: Mclust, k-Means, Hierarchical, 4) graph: Bootstrap, KNN, MST, 5) pathfinding: principal curve, shortest path from origin, longest path, binary tree, 6) cell ordering: principal curve, average orderings, mutual disagreement, detect branches, OU process, project cells to path, optimize tree, 7) method: SCUBA pseudotime, Wanderlust, Wishbone, SLICER, SCOUP, Waterfall, Mpath, TSCAN, Monocle, SCUBA" /> ]</h2>
-
-<p>There are multiple methods using particular algorithms, or even their combinations, so you must consider which one would be best for analysing your sample.</p>
+<p><br />
+There are multiple methods using particular algorithms, or even their combinations, so you must consider which one would be best for analysing your sample.</p>
 
 <p><span>Speaker Notes</span>
 We will consider some aspects shown here to better understand similarities and differences of TI methods. Those are also the things that highly affect the output or are quite important to be aware of.</p>
@@ -482,7 +477,7 @@ We will consider some aspects shown here to better understand similarities and d
 
 <hr />
 
-<h3 id="manifold-learning--dimentionality-reduction">Manifold learning / dimentionality reduction</h3>
+<h3 id="manifold-learning--dimensionality-reduction">Manifold learning / dimensionality reduction</h3>
 
 <p>.pull-left[</p>
 
@@ -496,19 +491,19 @@ We will consider some aspects shown here to better understand similarities and d
 
 <ul>
   <li>Making a manifold is like making a flat map of a sphere (the Earth)</li>
-  <li>We try to ‘flatten’ our data, changing it from high-dimensional to low-dimentional</li>
-  <li>UMAP (Uniform Manifold Approximation and Projection) is another often used dimentionality reduction method</li>
+  <li>We try to ‘flatten’ our data, changing it from high-dimensional to low-dimensional</li>
+  <li>UMAP (Uniform Manifold Approximation and Projection) is another often used dimensionality reduction method</li>
 </ul>
 
-<p>.image-100[ <img src="../../images/scrna-casestudy-monocle/dim_red_methods.png" alt="Four graphs showing the alignment of cell types depending on the algorithm of dimentionality reduction that was chosen: UMAP, tSNE, PCA, LSI. UMAP shows distinct cell groups, transitioning smoothly from one to another, creating kind of semicircle. tSNE shows distinct cell groups, however no smooth transitions are observed, all groups gathered into one big grouping. PCA shows cell groups whose boundaries are blurred between each other. On LSI graph, the cell types are all mixed together." /> ]</p>
+<p>.image-100[ <img src="../../images/scrna-casestudy-monocle/dim_red_methods.png" alt="Four graphs showing the alignment of cell types depending on the algorithm of dimensionality reduction that was chosen: UMAP, tSNE, PCA, LSI. UMAP shows distinct cell groups, transitioning smoothly from one to another, creating kind of semicircle. tSNE shows distinct cell groups, however no smooth transitions are observed, all groups gathered into one big grouping. PCA shows cell groups whose boundaries are blurred between each other. On LSI graph, the cell types are all mixed together." /> ]</p>
 
 <p>]</p>
 
 <p><span>Speaker Notes</span></p>
 <ul>
-  <li>Assumes that data lays on a low-dimentional manifold embedded in a higher-dimentional space</li>
+  <li>Assumes that data lays on a low-dimensional manifold embedded in a higher-dimensional space</li>
   <li>Uses principal curves and graphs to obtain smooth trajectories</li>
-  <li>figure shows how using different dimentionality reduction methods in Monocle3 affects the outcome</li>
+  <li>figure shows how using different dimensionality reduction methods in Monocle3 affects the outcome</li>
 </ul>
 
 <hr />
@@ -582,7 +577,7 @@ We will consider some aspects shown here to better understand similarities and d
 </ul>
 
 <h3 id="graph-based-approach-1">Graph-based approach</h3>
-<p>.footnote[<a href="https://doi.org/10.1101/041384">Haghverdi et al. Diffusion pseudotime robustly reconstructs lineage branching, 2016</a>]</p>
+<p>.footnote[<span class="citation"><a href="#Haghverdi2016">Haghverdi <i>et al.</i> 2016</a></span>]</p>
 
 <p>.pull-left[</p>
 
@@ -608,7 +603,7 @@ We will consider some aspects shown here to better understand similarities and d
 <hr />
 
 <h3 id="extensions-of-trajectory-inference-rna-velocity-methods">Extensions of trajectory inference: <strong>RNA velocity methods</strong></h3>
-<p>.footnote[<a href="https://doi.org/10.1016/j.coisb.2021.05.005">Deconinck et al. Recent advances in trajectory inference from single-cell omics data</a>]
+<p>.footnote[<span class="citation"><a href="#Deconinck2021">Deconinck <i>et al.</i> 2021</a></span>]
 –</p>
 
 <ul>
@@ -625,7 +620,7 @@ We will consider some aspects shown here to better understand similarities and d
 <hr />
 
 <h3 id="extensions-of-trajectory-inference-rna-velocity-methods-1">Extensions of trajectory inference: <strong>RNA velocity methods</strong></h3>
-<p>.footnote[<a href="https://doi.org/10.1016/j.coisb.2021.05.005">Deconinck et al. Recent advances in trajectory inference from single-cell omics data</a>]</p>
+<p>.footnote[<span class="citation"><a href="#Deconinck2021">Deconinck <i>et al.</i> 2021</a></span>]</p>
 
 <ul>
   <li>scVelo and CellRank use this extra velocity information to construct a directed k-nearest neighbor graph, as a starting step for the TI method.</li>
@@ -650,7 +645,7 @@ We will consider some aspects shown here to better understand similarities and d
 
 <ul>
   <li>
-    <p>Tissue from which the cells come from</p>
+    <p>Tissue from which the cells were analysed</p>
   </li>
   <li>
     <p>Branching points</p>
@@ -683,7 +678,7 @@ We will consider some aspects shown here to better understand similarities and d
 
 <hr />
 
-<h3 id="when-analysing-your-data-consider-the-following-tissue-from-which-the-cells-come-from">When analysing your data, consider the following: <strong>Tissue from which the cells come from</strong></h3>
+<h3 id="when-analysing-your-data-consider-the-following-tissue-from-which-the-cells-were-analysed">When analysing your data, consider the following: <strong>Tissue from which the cells were analysed</strong></h3>
 <p>–</p>
 
 <p>.pull-left[</p>
@@ -720,7 +715,7 @@ We will consider some aspects shown here to better understand similarities and d
 
 <p>–</p>
 
-<p>![A table showing trajectory topologies: cycle, linear, bifurcation, multifurcation, tree, connected graph, disconnected graph] (../../images/scrna-casestudy-monocle/table.jpg)</p>
+<p><img src="../../images/scrna-casestudy-monocle/table.jpg" alt="A table showing trajectory topologies: cycle, linear, bifurcation, multifurcation, tree, connected graph, disconnected graph" /></p>
 
 <hr />
 
@@ -734,13 +729,15 @@ We will consider some aspects shown here to better understand similarities and d
   <li>DPT does not rely on dimension reduction and can thus detect subtle changes in high-dimensional gene expression patterns</li>
   <li>
     <p>DPT-based analysis proceeds by identifying branching points that occur after cells progress from a root cell through a common ‘trunk trajectory’
- <sub><a href="http://dx.doi.org/10.1038/nmeth.3971">L. Haghverdi et al. (2016)</a></sub></p>
+ <br />
+ <sub><span class="citation"><a href="#Haghverdi2016">Haghverdi <i>et al.</i> 2016</a></span></sub></p>
   </li>
   <li>binning and DNB (Dynamical Network Biomarker) theory</li>
   <li>order cells, according to the pseudotime, evenly segmented into nonoverlap bins with each bin containing X cells</li>
   <li>categorize DNB and non-DNB markers for each bin</li>
   <li>one bin contains some unassigned cells - annotated as branch bin; of the remaining bins, there are bins on the trunk, and bins for each of the branch1 and branch2
- <sub><a href="https://ieeexplore.ieee.org/document/8386685">Z. Chen et al. (2018)</a> </sub></li>
+ <br />
+ <sub><span class="citation"><a href="#Chen2019">Chen <i>et al.</i> 2018</a></span></sub></li>
 </ul>
 
 <p>]</p>
@@ -790,7 +787,7 @@ We will consider some aspects shown here to better understand similarities and d
     <p>However, many of them take the ‘starting cell’, or ‘end cell’ as information that helps to infer the trajectory which best represents the actual biological processes.</p>
   </li>
   <li>
-    <p>On the other hand, priors can bias the outcome of the method, but if chosen appropriately, they are really helpful.</p>
+    <p>Priors can bias the outcome of the method, but if chosen appropriately, they are really helpful.</p>
   </li>
 </ul>
 
@@ -853,7 +850,7 @@ We will consider some aspects shown here to better understand similarities and d
   <li>Implementations</li>
 </ul>
 
-<p>.image-100[ <img src="../../images/scrna-casestudy-monocle/implementation_1.jpg" alt="A table showing implementations for different methods. R: Monocle, SLICE, TSCAN, Waterfall, SLICER, StemID, Slingshot, RNA velocity, FateID, DPT. Python: Wanderlust, Wishbone, PAGA, P-creode, RNA velocity, GPfates, DPT, Waddington-OT. Matlab: SCUBA, Wishbone, Pseudo-dynamics. Java: GRAND-SLAM." /> ]</p>
+<p>.image-120[ <img src="../../images/scrna-casestudy-monocle/implementation_1.jpg" alt="A table showing implementations for different methods. R: Monocle, SLICE, TSCAN, Waterfall, SLICER, StemID, Slingshot, RNA velocity, FateID, DPT. Python: Wanderlust, Wishbone, PAGA, P-creode, RNA velocity, GPfates, DPT, Waddington-OT. Matlab: SCUBA, Wishbone, Pseudo-dynamics. Java: GRAND-SLAM." /> ]</p>
 
 <hr />
 <h3 id="when-analysing-your-data-consider-the-following-number-of-cells-and-features">When analysing your data, consider the following: <strong>Number of cells and features</strong></h3>
@@ -909,13 +906,23 @@ We will consider some aspects shown here to better understand similarities and d
 <p>–</p>
 
 <ul>
+  <li>Monocle3 in RStudio (coming soon)</li>
+</ul>
+
+<!--- 
+([Trajectory Analysis: Monocle3 in RStudio](/training-material/topics/single-cell/tutorials/scrna-case_monocle3-rstudio/tutorial.html))
+-->
+
+<p>–</p>
+
+<ul>
   <li>scVelo (coming soon)</li>
 </ul>
 
 <hr />
 
 <h3 id="trajectory-analysis-methods-used-in-galaxy-paga-partition-based-graph-abstraction">Trajectory analysis methods used in Galaxy: <strong>PAGA (Partition-based graph abstraction)</strong></h3>
-<p>.footnote[<a href="https://doi.org/10.1186/s13059-019-1663-x">F.A. Wolf et al. ‘PAGA: graph abstraction reconciles clustering with trajectory inference through a topology preserving map of single cells’ (2019)</a>]</p>
+<p>.footnote[<span class="citation"><a href="#Wolf2019">Wolf <i>et al.</i> 2018</a></span>]</p>
 
 <p>–</p>
 
@@ -923,7 +930,7 @@ We will consider some aspects shown here to better understand similarities and d
 
 <ul>
   <li><a href="https://scanpy.readthedocs.io/en/stable/api/scanpy.tl.paga.html">PAGA</a> is used to generalise relationships between groups (clusters)</li>
-  <li>Provides an interpretable graph-like map. The graph nodes correspond to cell groups and whose edge weights quantify the connectivity between groups</li>
+  <li>Provides an interpretable graph-like map. The graph nodes correspond to cell groups and the edge weights quantify the connectivity between groups</li>
   <li>Available within <a href="https://scanpy.readthedocs.io/en/stable/generated/scanpy.tl.paga.html">Scanpy</a></li>
 </ul>
 
@@ -981,7 +988,7 @@ We will consider some aspects shown here to better understand similarities and d
 <hr />
 
 <h3 id="trajectory-analysis-methods-used-in-galaxy-raceid">Trajectory analysis methods used in Galaxy: <strong>RaceID</strong></h3>
-<p>.footnote[<a href="https://doi.org/10.1038/nature14966">D. Grün et al., ‘Single-cell messenger RNA sequencing reveals rare intestinal cell types’ (2015)</a>]</p>
+<p>.footnote[<span class="citation"><a href="#Grn2015">Grün <i>et al.</i> 2015</a></span>]</p>
 
 <p>–
 .pull-left[</p>
@@ -1011,7 +1018,7 @@ We will consider some aspects shown here to better understand similarities and d
 <hr />
 
 <h3 id="trajectory-analysis-methods-used-in-galaxy-raceid-1">Trajectory analysis methods used in Galaxy: <strong>RaceID</strong></h3>
-<p>.footnote[<a href="https://doi.org/10.1038/nature14966">D. Grün et al., ‘Single-cell messenger RNA sequencing reveals rare intestinal cell types’ (2015)</a>]</p>
+<p>.footnote[<span class="citation"><a href="#Grn2015">Grün <i>et al.</i> 2015</a></span>]</p>
 
 <p>.pull-left[</p>
 
@@ -1045,7 +1052,7 @@ From the mentioned tutorial:</p>
 <hr />
 
 <h3 id="trajectory-analysis-methods-used-in-galaxy-monocle3">Trajectory analysis methods used in Galaxy: <strong>Monocle3</strong></h3>
-<p>.footnote[<a href="https://cole-trapnell-lab.github.io/monocle3/">C. Trapnell lab website, with detailed Monocle3 description and publications</a>]</p>
+<p>.footnote[C. Trapnell <span class="citation"><a href="#monocle3">cole-trapnell-lab</a></span>]</p>
 
 <p>–
 .pull-left[</p>
@@ -1085,7 +1092,7 @@ From the mentioned tutorial:</p>
 <hr />
 
 <h3 id="trajectory-analysis-methods-used-in-galaxy-monocle3-1">Trajectory analysis methods used in Galaxy: <strong>Monocle3</strong></h3>
-<p>.footnote[<a href="https://cole-trapnell-lab.github.io/monocle3/">C. Trapnell lab website, with detailed Monocle3 description and publications</a>]</p>
+<p>.footnote[C. Trapnell <span class="citation"><a href="#monocle3">cole-trapnell-lab</a></span>]</p>
 
 <p>.pull-left[</p>
 
@@ -1120,15 +1127,14 @@ From the mentioned tutorial:</p>
 <hr />
 
 <h3 id="trajectory-analysis-methods-used-in-galaxy-scvelo">Trajectory analysis methods used in Galaxy: <strong>scVelo</strong></h3>
-<p>.footnote[<a href="https://doi.org/10.1038/s41587-020-0591-3"> Bergen et al., ‘Generalizing RNA velocity to transient cell states through dynamical modeling’ (2020)</a>]</p>
+<p>.footnote[<span class="citation"><a href="#Bergen2020">Bergen <i>et al.</i> 2020</a></span>]</p>
 
 <p>–</p>
 
 <ul>
   <li>scVelo infers gene-specific rates of transcription, splicing and degradation, and recovers the latent time of the underlying cellular processes</li>
   <li>think of velocities as the deviation of the observed ratio of spliced and unspliced mRNA from an inferred steady state</li>
-  <li>Compatible with <a href="https://scvelo.readthedocs.io/">scanpy</a> and hosts efficient implementations of all RNA velocity models
-The originally proposed framework obtains velocities as the deviation of the observed ratio of spliced and unspliced mRNA from an inferred steady state</li>
+  <li>Compatible with <a href="https://scvelo.readthedocs.io/">scanpy</a> and hosts efficient implementations of all RNA velocity models</li>
 </ul>
 
 <p>.image-25[ <img src="../../images/scrna-casestudy-monocle/scvelo.png" alt="scVelo plot showing arrows going in ordered directions both within the cell types and between them" /> ]</p>
@@ -1168,6 +1174,17 @@ This material is licensed under the <a rel="license" href="https://creativecommo
 </section>
 
 
+<h2 id="bibliography">References</h2>
+<ol class="bibliography"><li id="Grn2015">Grün, D., A. Lyubimova, L. Kester, K. Wiebrands, O. Basak <i>et al.</i>, 2015 <b>Single-cell messenger RNA sequencing reveals rare intestinal cell types</b>. Nature 525: 251–255. <a href="https://doi.org/10.1038/nature14966">10.1038/nature14966</a></li>
+<li id="Cannoodt2016">Cannoodt, R., W. Saelens, and Y. Saeys, 2016 <b>Computational methods for trajectory inference from single-cell transcriptomics</b>. European Journal of Immunology 46: 2496–2506. <a href="https://doi.org/10.1002/eji.201646347">10.1002/eji.201646347</a></li>
+<li id="Haghverdi2016">Haghverdi, L., M. Büttner, F. A. Wolf, F. Buettner, and F. J. Theis, 2016 <b>Diffusion pseudotime robustly reconstructs lineage branching</b>. Nature Methods 13: 845–848. <a href="https://doi.org/10.1038/nmeth.3971">10.1038/nmeth.3971</a></li>
+<li id="Chen2019">Chen, S., Y. Zhou, Y. Chen, and J. Gu, 2018 <b>fastp: an ultra-fast all-in-one FASTQ preprocessor</b>. <a href="https://doi.org/10.1093/bioinformatics/bty560">10.1093/bioinformatics/bty560</a></li>
+<li id="Wolf2019">Wolf, F. A., P. Angerer, and F. J. Theis, 2018 <b>SCANPY: large-scale single-cell gene expression data analysis</b>. Genome Biology 19: <a href="https://doi.org/10.1186/s13059-017-1382-0">10.1186/s13059-017-1382-0</a></li>
+<li id="Bergen2020">Bergen, V., M. Lange, S. Peidli, F. A. Wolf, and F. J. Theis, 2020 <b>Generalizing RNA velocity to transient cell states through dynamical modeling</b>. Nature Biotechnology 38: 1408–1414. <a href="https://doi.org/10.1038/s41587-020-0591-3">10.1038/s41587-020-0591-3</a></li>
+<li id="Sagar2020">Sagar, and D. Grün, 2020 <b>Deciphering Cell Fate Decision by Integrated Single-Cell Sequencing Analysis</b>. Annual Review of Biomedical Data Science 3: 1–22. <a href="https://doi.org/10.1146/annurev-biodatasci-111419-091750">10.1146/annurev-biodatasci-111419-091750</a></li>
+<li id="Deconinck2021">Deconinck, L., R. Cannoodt, W. Saelens, B. Deplancke, and Y. Saeys, 2021 <b>Recent advances in trajectory inference from single-cell omics data</b>. Current Opinion in Systems Biology 27: 100344. <a href="https://doi.org/10.1016/j.coisb.2021.05.005">10.1016/j.coisb.2021.05.005</a></li>
+<li id="monocle3">cole-trapnell-lab <b>monocle3</b>. <a href="https://cole-trapnell-lab.github.io/monocle3/">https://cole-trapnell-lab.github.io/monocle3/</a></li></ol>
+
 
 
 
@@ -1184,7 +1201,7 @@ This material is licensed under the <a rel="license" href="https://creativecommo
         The content of the tutorials is licensed under the <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>. The website and infrastructure is licensed under <a rel="license" href="https://github.com/galaxyproject/training-material/blob/main/LICENSE.md">MIT</a>.
         </p>
 
-        <p>This is revision <a href="https://github.com/galaxyproject/training-material/commit/14953901bc3bfcce5f42acd00bafb3cd7d701a8d">14953901bc3bfcce5f42acd00bafb3cd7d701a8d</a></p>
+        <p>This is revision <a href="https://github.com/galaxyproject/training-material/commit/73f87faedc9ddc6a54cd617fde462500d9688d9b">73f87faedc9ddc6a54cd617fde462500d9688d9b</a></p>
     </div>
 </footer>
 
@@ -1196,8 +1213,6 @@ This material is licensed under the <a rel="license" href="https://creativecommo
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
         <script type="text/javascript" src="/training-material/assets/js/bootstrap-toc.min.js"></script>
         <script type="text/javascript" src="/training-material/assets/js/main.js"></script>
-        <script type="text/javascript" src="/training-material/assets/js/theme.js"></script>
-
         <script type="text/javascript" src="/training-material/assets/js/clipboard.min.js"></script>
         <script type="text/javascript">
         var snippets=document.querySelectorAll('div.highlight');

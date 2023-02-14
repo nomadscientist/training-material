@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="utf-8">
@@ -14,7 +14,6 @@
         <link rel="stylesheet" href="/training-material/assets/css/main.css?v=2">
         <script src="https://kit.fontawesome.com/67b3f98409.js" crossorigin="anonymous"></script>
         <link rel="stylesheet" href="/training-material/assets/css/academicons.css">
-        <link rel="stylesheet" href="/training-material/assets/css/syntax_highlighting.css">
         <link rel="shortcut icon" href="/training-material/favicon.ico" type="image/x-icon" />
         <link rel="alternate" type="application/atom+xml" href="/training-material/feed.xml" />
         <link rel="canonical" href="https://training.galaxyproject.org/training-material/topics/proteomics/tutorials/metaproteomics/tutorial.html" />
@@ -24,7 +23,7 @@
 <meta name="DC.type" content="text" />
 <meta name="DC.title" content="Metaproteomics tutorial" />
 <meta name="DC.publisher" content="Galaxy Training Network" />
-<meta name="DC.date" content="2022-10-18 14:23:35 +0000" />
+<meta name="DC.date" content="2023-01-24 14:22:01 +0000" />
 <meta name="DC.creator" content="Timothy J. Griffin" />
 <meta name="DC.creator" content="Pratik Jagtap" />
 <meta name="DC.creator" content="James Johnson" />
@@ -35,228 +34,15 @@
         
         
         
-        
         <meta name="description" content="Training material for proteomics workflows in Galaxy" />
         <meta property="og:site_name" content="Galaxy Training Network" />
         <meta property="og:title" content="Galaxy Training: Metaproteomics tutorial" />
         <meta property="og:description" content="Training material for proteomics workflows in Galaxy" />
         <meta property="og:image" content="/training-material/assets/images/GTNLogo1000.png" />
 
-    </head>
-    <body data-spy="scroll" data-target="#toc">
-        <header>
-    <nav class="navbar navbar-expand-md navbar-dark" aria-label="Site Navigation">
-        <div class="container">
-            <a class="navbar-brand" href="/training-material/">
-                <img src="/training-material/assets/images/GTN-60px.png" height="30" alt="Galaxy Training Network logo">
-                Galaxy Training!
-            </a>
-
-            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#top-navbar" aria-controls="top-navbar" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="top-navbar">
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        
-                        <a class="nav-link" href="/training-material/topics/proteomics" title="Go back to list of tutorials">
-                            <i class="far fa-folder" aria-hidden="true"></i> Proteomics
-                        </a>
-                        
-                    </li>
-
-                    <li class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false" title="Languages">
-                            <i class="fas fa-language" aria-hidden="true"></i><span class="visually-hidden">language</span> Languages
-                        </a>
-                        <div class="dropdown-menu dropdown-menu-right">
-                            
-                              <strong class="dropdown-header">Automatic Translations</strong>
-            
-            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=fr&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/proteomics/tutorials/metaproteomics/tutorial.html&edit-text=&act=url">
-                            Français
-                            </a>
-                            
-            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=ja&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/proteomics/tutorials/metaproteomics/tutorial.html&edit-text=&act=url">
-                            日本語
-                            </a>
-                            
-            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=es&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/proteomics/tutorials/metaproteomics/tutorial.html&edit-text=&act=url">
-                            Español
-                            </a>
-                            
-            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=pt&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/proteomics/tutorials/metaproteomics/tutorial.html&edit-text=&act=url">
-                            Português
-                            </a>
-                            
-            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=ar&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/proteomics/tutorials/metaproteomics/tutorial.html&edit-text=&act=url">
-                            العربية
-                            </a>
-                            
-                            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/proteomics/tutorials/metaproteomics/tutorial.html&edit-text=&act=url" title="">
-                            And more!
-                            </a>
-                        </div>
-                    </li>
-
-                    <li class="nav-item dropdown">
-    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false" title="Help">
-        <i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden">help</span> Help
-    </a>
-    <div class="dropdown-menu dropdown-menu-right">
-        <!-- disable Tess for now
-        <form method="get" action="https://tess.elixir-europe.org/materials">
-            <input type="text" id="search" name="q" value="" style="margin-left: 0.5em;/*! border-radius: 0px; */">
-            <input type="hidden" value="Galaxy Training" name="content_provider">
-            <input type="submit" value="Search on TeSS" style="width: 92%;border-radius: 0px;margin: 0.5em;background: #f47d20;border: 0px;padding: 0.25em;" class="">
-        </form>
-        -->
-
-        <a class="dropdown-item" href="/training-material/faq" title="Check our FAQs">
-           <i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden">question</span> FAQs
-        </a>
         
-        <a class="dropdown-item" href="/training-material/topics/proteomics/faqs/" title="Check our FAQs for the Proteomics topic">
-           <i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden">question</span> Topic FAQs
-        </a>
-        
-        <a class="dropdown-item" href="https://help.galaxyproject.org/" title="Discuss on Galaxy Help">
-            <i class="far fa-comments" aria-hidden="true"></i><span class="visually-hidden">feedback</span> Galaxy Help Forum
-        </a>
-        <a class="dropdown-item" href="https://gitter.im/Galaxy-Training-Network/Lobby" title="Discuss on gitter">
-           <i class="fab fa-gitter" aria-hidden="true"></i><span class="visually-hidden">gitter</span> Discuss on Gitter
-        </a>
-    </div>
-</li>
-
-
-                    <li class="nav-item dropdown">
-    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false" title="Extras">
-        <i class="far fa-star" aria-hidden="true"></i><span class="visually-hidden">galaxy-star</span> Extras
-    </a>
-    <div class="dropdown-menu dropdown-menu-right">
-
-        
-        <a class="dropdown-item" href="https://github.com/galaxyproject/training-material/edit/main/topics/proteomics/tutorials/metaproteomics/tutorial.md" title="Edit on GitHub">
-          <i class="fab fa-github" aria-hidden="true"></i><span class="visually-hidden">github</span> Edit on GitHub
-        </a>
-
-        <a class="dropdown-item" href="/training-material/stats.html" title="Show view statistics about this repository">
-            <i class="fas fa-chart-bar" aria-hidden="true"></i><span class="visually-hidden">galaxy-barchart</span> GTN statistics
-        </a>
-
-        <a class="dropdown-item" href="https://plausible.galaxyproject.eu/training.galaxyproject.org?period=12mo&page=/training-material/topics/proteomics/tutorials/metaproteomics/tutorial.html" title="Show view statistics of this page">
-            <i class="fas fa-chart-bar" aria-hidden="true"></i><span class="visually-hidden">galaxy-barchart</span> Page Metrics
-        </a>
-
-        <!-- link to feedback -->
-        
+        <script type="application/ld+json">
             
-            
-                <a class="dropdown-item" href="/training-material/feedback.html" title="Show feedback statistics about this repository">
-                    <i class="fas fa-chart-bar" aria-hidden="true"></i><span class="visually-hidden">galaxy-barchart</span> GTN feedback
-                </a>
-            
-        
-
-        <div class="dropdown-item">
-            <div>
-                <i class="fas fa-palette" aria-hidden="true"></i><span class="visually-hidden">gtn-theme</span> Theme
-            </div>
-
-            <div id="theme-selector" data-toggle="buttons">
-                <label data-value="default" class="btn btn-secondary">
-                    <input type="radio" name="options" id="default" autocomplete="off"> Default
-                </label>
-                <label data-value="night" class="btn btn-secondary">
-                    <input type="radio" name="options" id="night" autocomplete="off"> Night
-                </label>
-                <label data-value="midnight" class="btn btn-secondary">
-                    <input type="radio" name="options" id="midnight" autocomplete="off"> Midnight
-                </label>
-                <label data-value="rainbow" class="btn btn-secondary">
-                    <input type="radio" name="options" id="rainbow" autocomplete="off"> Rainbow
-                </label>
-                <label data-value="progress" class="btn btn-secondary">
-                    <input type="radio" name="options" id="progress" autocomplete="off">🏳️‍🌈
-                </label>
-                <label data-value="halloween" class="btn btn-secondary">
-                    <input type="radio" name="options" id="halloween" autocomplete="off"> 🎃
-                </label>
-                <label data-value="straya" class="btn btn-secondary">
-                    <input type="radio" name="options" id="downunder" autocomplete="off"> 🇦🇺
-                </label>
-            </div>
-
-        </div>
-
-        <div class="dropdown-item">
-            <div>
-                <i class="fas fa-history" aria-hidden="true"></i><span class="visually-hidden">galaxy-rulebuilder-history</span> Previous Versions
-            </div>
-
-            <div id="archive-selector">
-            
-                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2020-01-06/topics/proteomics/tutorials/metaproteomics/tutorial.html" title="Version 2020-01-06">2020-01-06</a>
-            
-                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2019-12-01/topics/proteomics/tutorials/metaproteomics/tutorial.html" title="Version 2019-12-01">2019-12-01</a>
-            
-                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2019-11-01/topics/proteomics/tutorials/metaproteomics/tutorial.html" title="Version 2019-11-01">2019-11-01</a>
-            
-                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/" title="Older Versions">Older Versions</a>
-            </div>
-
-        </div>
-
-    </div>
-</li>
-
-
-                    <!-- Search bar-->
-                    <li class="nav-item">
-                      <div id="navbarSupportedContent" role="search">
-                        <!-- Search form -->
-                        <form class="form-inline mr-auto" method="GET" action="/training-material/search">
-                          <i class="fas fa-search nav-link" aria-hidden="true"></i>
-                          <div class="md-form mb-2">
-                            <input name="query" class="form-control nicer" type="text" placeholder="Search Tutorials" aria-label="Search">
-                          </div>
-                        </form>
-                      </div>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-</header>
-
-        <div class="container main-content" role="main">
-        
-
-
-
-
-
-
-
-
-
-
-
-<!-- Gitter -->
-
-
-
-
-<script>
-  ((window.gitter = {}).chat = {}).options = {
-  room: 'Galaxy-Training-Network/Lobby'
-  };
-</script>
-<script src="https://sidecar.gitter.im/dist/sidecar.v1.js" async defer></script>
-
-<script type="application/ld+json">
-    
 
 
 {
@@ -281,7 +67,7 @@
     "name": "Galaxy Training Network",
     "url": "https://galaxyproject.org/teach/gtn/"
   },
-  "dateModified": "2022-10-18 14:23:35 +0000",
+  "dateModified": "2023-01-24 14:22:01 +0000",
   "discussionUrl": "https://gitter.im/Galaxy-Training-Network/Lobby",
   "headline": "Metaproteomics tutorial",
   "interactivityType": "mixed",
@@ -590,7 +376,210 @@
     }
   ]
 }
+        </script>
+        
+    </head>
+    <body data-spy="scroll" data-target="#toc">
+        <script type="text/javascript" src="/training-material/assets/js/theme.js"></script>
+        <header>
+    <nav class="navbar navbar-expand-md navbar-dark" aria-label="Site Navigation">
+        <div class="container">
+            <a class="navbar-brand" href="/training-material/">
+                <img src="/training-material/assets/images/GTN-60px.png" height="30" alt="Galaxy Training Network logo">
+                Galaxy Training!
+            </a>
+
+            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#top-navbar" aria-controls="top-navbar" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="top-navbar">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        
+                        <a class="nav-link" href="/training-material/topics/proteomics" title="Go back to list of tutorials">
+                            <i class="far fa-folder" aria-hidden="true"></i> Proteomics
+                        </a>
+                        
+                    </li>
+
+                    <li class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false" title="Languages">
+                            <i class="fas fa-language" aria-hidden="true"></i><span class="visually-hidden">language</span> Languages
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right">
+                            
+                              <strong class="dropdown-header">Automatic Translations</strong>
+            
+            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=fr&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/proteomics/tutorials/metaproteomics/tutorial.html&edit-text=&act=url">
+                            Français
+                            </a>
+                            
+            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=ja&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/proteomics/tutorials/metaproteomics/tutorial.html&edit-text=&act=url">
+                            日本語
+                            </a>
+                            
+            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=es&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/proteomics/tutorials/metaproteomics/tutorial.html&edit-text=&act=url">
+                            Español
+                            </a>
+                            
+            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=pt&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/proteomics/tutorials/metaproteomics/tutorial.html&edit-text=&act=url">
+                            Português
+                            </a>
+                            
+            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=ar&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/proteomics/tutorials/metaproteomics/tutorial.html&edit-text=&act=url">
+                            العربية
+                            </a>
+                            
+                            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/proteomics/tutorials/metaproteomics/tutorial.html&edit-text=&act=url" title="">
+                            And more!
+                            </a>
+                        </div>
+                    </li>
+
+                    <li class="nav-item dropdown">
+    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false" title="Help">
+        <i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden">help</span> Help
+    </a>
+    <div class="dropdown-menu dropdown-menu-right">
+        <!-- disable Tess for now
+        <form method="get" action="https://tess.elixir-europe.org/materials">
+            <input type="text" id="search" name="q" value="" style="margin-left: 0.5em;/*! border-radius: 0px; */">
+            <input type="hidden" value="Galaxy Training" name="content_provider">
+            <input type="submit" value="Search on TeSS" style="width: 92%;border-radius: 0px;margin: 0.5em;background: #f47d20;border: 0px;padding: 0.25em;" class="">
+        </form>
+        -->
+
+        <a class="dropdown-item" href="/training-material/faq" title="Check our FAQs">
+           <i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden">question</span> FAQs
+        </a>
+        
+        
+        <a class="dropdown-item" href="/training-material/topics/proteomics/faqs/" title="Check our FAQs for the Proteomics topic">
+           <i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden">question</span> Topic FAQs
+        </a>
+        
+        
+        <a class="dropdown-item" href="https://help.galaxyproject.org/" title="Discuss on Galaxy Help">
+            <i class="far fa-comments" aria-hidden="true"></i><span class="visually-hidden">feedback</span> Galaxy Help Forum
+        </a>
+        <a class="dropdown-item" href="https://gitter.im/Galaxy-Training-Network/Lobby" title="Discuss on gitter">
+           <i class="fab fa-gitter" aria-hidden="true"></i><span class="visually-hidden">gitter</span> Discuss on Gitter
+        </a>
+    </div>
+</li>
+
+
+                    <li class="nav-item dropdown">
+    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false" title="Extras">
+        <i class="far fa-star" aria-hidden="true"></i><span class="visually-hidden">galaxy-star</span> Extras
+    </a>
+    <div class="dropdown-menu dropdown-menu-right">
+
+        
+        <a class="dropdown-item" href="https://github.com/galaxyproject/training-material/edit/main/topics/proteomics/tutorials/metaproteomics/tutorial.md" title="Edit on GitHub">
+          <i class="fab fa-github" aria-hidden="true"></i><span class="visually-hidden">github</span> Edit on GitHub
+        </a>
+
+        <a class="dropdown-item" href="/training-material/stats.html" title="Show view statistics about this repository">
+            <i class="fas fa-chart-bar" aria-hidden="true"></i><span class="visually-hidden">galaxy-barchart</span> GTN statistics
+        </a>
+
+        <a class="dropdown-item" href="https://plausible.galaxyproject.eu/training.galaxyproject.org?period=12mo&page=/training-material/topics/proteomics/tutorials/metaproteomics/tutorial.html" title="Show view statistics of this page">
+            <i class="fas fa-chart-bar" aria-hidden="true"></i><span class="visually-hidden">galaxy-barchart</span> Page Metrics
+        </a>
+
+        <!-- link to feedback -->
+        
+            
+            
+                <a class="dropdown-item" href="/training-material/feedback.html" title="Show feedback statistics about this repository">
+                    <i class="fas fa-chart-bar" aria-hidden="true"></i><span class="visually-hidden">galaxy-barchart</span> GTN feedback
+                </a>
+            
+        
+
+        <div class="dropdown-item">
+            <div>
+                <i class="fas fa-palette" aria-hidden="true"></i><span class="visually-hidden">gtn-theme</span> Theme
+            </div>
+
+            <div id="theme-selector" data-toggle="buttons">
+                    <button class="btn" data-theme="default">Default</button>
+                    <button class="btn" data-theme="night">Night</button>
+                    <button class="btn" data-theme="midnight">Midnight</button>
+                    <button class="btn" data-theme="rainbow">Rainbow</button>
+                    <button class="btn" data-theme="blm">✊🏿</button>
+                    <button class="btn" data-theme="progress" >🏳️‍🌈</button>
+                    <button class="btn" data-theme="halloween">🎃</button>
+                    <button class="btn" data-theme="straya">🇦🇺</button>
+            </div>
+
+        </div>
+
+        <div class="dropdown-item">
+            <div>
+                <i class="fas fa-history" aria-hidden="true"></i><span class="visually-hidden">galaxy-rulebuilder-history</span> Previous Versions
+            </div>
+
+            <div id="archive-selector">
+            
+                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2020-01-06/topics/proteomics/tutorials/metaproteomics/tutorial.html" title="Version 2020-01-06">2020-01-06</a>
+            
+                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2019-12-01/topics/proteomics/tutorials/metaproteomics/tutorial.html" title="Version 2019-12-01">2019-12-01</a>
+            
+                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2019-11-01/topics/proteomics/tutorials/metaproteomics/tutorial.html" title="Version 2019-11-01">2019-11-01</a>
+            
+                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/" title="Older Versions">Older Versions</a>
+            </div>
+
+        </div>
+
+    </div>
+</li>
+
+
+                    <!-- Search bar-->
+                    <li class="nav-item">
+                      <div id="navbarSupportedContent" role="search">
+                        <!-- Search form -->
+                        <form class="form-inline mr-auto" method="GET" action="/training-material/search">
+                          <i class="fas fa-search nav-link" aria-hidden="true"></i>
+                          <div class="md-form mb-2">
+                            <input name="query" class="form-control nicer" type="text" placeholder="Search Tutorials" aria-label="Search">
+                          </div>
+                        </form>
+                      </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
+        <div class="container main-content" role="main">
+        
+
+
+
+
+
+
+
+
+
+
+
+<!-- Gitter -->
+
+
+
+
+<script>
+  ((window.gitter = {}).chat = {}).options = {
+  room: 'Galaxy-Training-Network/Lobby'
+  };
 </script>
+<script src="https://sidecar.gitter.im/dist/sidecar.v1.js" async defer></script>
 
 <section class="tutorial topic-proteomics">
     <h1 data-toc-skip>Metaproteomics tutorial</h1>
@@ -662,17 +651,13 @@
         <div id="supporting-materials"><strong><i class="fa fa-external-link" aria-hidden="true"></i> Supporting Materials:</strong></div>
         <ul class="supporting_material">
             
-                <li class="btn btn-default supporting_material"><a href="/training-material/topics/proteomics/slides/introduction.html" title="Topic Overview slides">
-                    <i class="fab fa-slideshare" aria-hidden="true"></i> Topic Overview slides
-                </a></li>
-            
 
             
                 <li class="btn btn-default supporting_material">
 
 
 <a class="btn btn-default topic-icon" title="Zenodo datasets used in this tutorial" href="https://doi.org/10.5281/zenodo.839701">
-    <i class="far fa-copy" aria-hidden="true"></i> Datasets
+    <i class="far fa-copy" aria-hidden="true"></i>&nbsp;Datasets
 </a>
 
 </li>
@@ -683,19 +668,12 @@
 
 
     <a class="btn btn-default topic-icon" href="/training-material/topics/proteomics/tutorials/metaproteomics/workflows/" title="Workflows" alt="Metaproteomics tutorial workflows">
-        <i class="fas fa-share-alt" aria-hidden="true"></i> Workflows
+        <i class="fas fa-share-alt" aria-hidden="true"></i>&nbsp;Workflows
     </a>
 
 </li>
             
 
-            
-                <li class="btn btn-default supporting_material">
-<a class="topic-icon" href="https://github.com/galaxyproject/training-material/tree/main/topics/proteomics/tutorials/metaproteomics/tours/" title="Galaxy interactive tour" >
-    <i class="fas fa-magic" aria-hidden="true"></i> Tours
-</a>
-
-</li>
             
 
             
@@ -886,6 +864,8 @@
         
     
         
+    
+        
         <a class="dropdown-item" href="https://streetscience.usegalaxy.eu/" title="Street Science">
             Street Science
         </a>
@@ -939,7 +919,7 @@
         </ul>
         
 
-        <div><strong><i class="far fa-calendar" aria-hidden="true"></i> Last modification:</strong> Oct 18, 2022 </div>
+        <div><strong><i class="far fa-calendar" aria-hidden="true"></i> Last modification:</strong> Jan 24, 2023 </div>
         <div><strong><i class="fas fa-balance-scale" aria-hidden="true"></i> License:</strong>
             
             <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Tutorial Content is licensed under Creative Commons Attribution 4.0 International License</a>
@@ -967,10 +947,10 @@ at a given point in time. It has the potential to unravel the mechanistic detail
 the host / environment by analyzing the functional dynamics of the microbiome.</p>
 
 <p>In this tutorial, we will analyze a sample of sea water that was collected in August of 2013 from the Bering
-Strait chlorophyll maximum layer (7m depth, 65° 43.44″ N, 168° 57.42″ W). The data were originally published in <a href="https://www.ncbi.nlm.nih.gov/pubmed/27396978">May et al., 2016</a>.</p>
+Strait chlorophyll maximum layer (7m depth, 65° 43.44″ N, 168° 57.42″ W). The data were originally published in <span class="citation"><a href="#May_2016">May <i>et al.</i> 2016</a></span>.</p>
 
 <blockquote class="agenda">
-  <div id="agenda" class="box-title" aria-label="agenda box: ">Agenda</div>
+  <div class="box-title agenda-title" id="agenda" aria-label="agenda box: ">Agenda</div>
 
   <p>In this tutorial, we will deal with:</p>
 
@@ -1006,22 +986,22 @@ Strait chlorophyll maximum layer (7m depth, 65° 43.44″ N, 168° 57.42″ W). 
 <p>In this tutorial, we will get the data from Zenodo: <a href="https://doi.org/10.5281/zenodo.839701"><img src="https://zenodo.org/badge/DOI/10.5281/zenodo.839701.svg" alt="DOI. " loading="lazy" /></a>.</p>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-data-upload-and-organization" class="box-title" aria-label="hands-on box: Data upload and organization"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Data upload and organization</div>
+  <div class="box-title hands-on-title" id="hands-on-data-upload-and-organization" aria-label="hands-on box: Data upload and organization"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Data upload and organization</div>
 
   <ol>
     <li>
       <p>Create a new history and name it something meaningful (e.g. <em>Metaproteomics tutorial</em>)</p>
 
       <!--SNIPPET-->
-      <blockquote class="tip">  <div id="tip-creating-a-new-history" class="box-title"><button type="button" aria-controls="tip-creating-a-new-history-contents" aria-expanded="true" aria-label="Toggle tip box: Creating a new history"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: Creating a new history<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>  <p>Click the <i class="fas fa-plus" aria-hidden="true"></i><span class="visually-hidden">new-history</span> icon at the top of the history panel.</p>  <p>If the <i class="fas fa-plus" aria-hidden="true"></i><span class="visually-hidden">new-history</span> is missing:</p>  <ol>  <li>Click on the <i class="fas fa-cog" aria-hidden="true"></i><span class="visually-hidden"><span class="notranslate">galaxy</span>-gear</span> icon (<strong>History options</strong>) on the top of the history panel</li>  <li>Select the option <strong>Create New</strong> from the menu</li></ol></blockquote>
+      <blockquote class="tip">   <div class="box-title tip-title" id="tip-creating-a-new-history"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-creating-a-new-history-contents" aria-expanded="true" aria-label="Toggle tip box: Creating a new history"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: Creating a new history<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>   <p>Click the <i class="fas fa-plus" aria-hidden="true"></i><span class="visually-hidden">new-history</span> icon at the top of the history panel.</p>   <p>If the <i class="fas fa-plus" aria-hidden="true"></i><span class="visually-hidden">new-history</span> is missing:</p>   <ol>   <li>Click on the <i class="fas fa-cog" aria-hidden="true"></i><span class="visually-hidden"><span class="notranslate">galaxy</span>-gear</span> icon (<strong>History options</strong>) on the top of the history panel</li>   <li>Select the option <strong>Create New</strong> from the menu</li> </ol> </blockquote>
       <!--SNIPPET-->
-      <blockquote class="tip">  <div id="tip-renaming-a-history" class="box-title"><button type="button" aria-controls="tip-renaming-a-history-contents" aria-expanded="true" aria-label="Toggle tip box: Renaming a history"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: Renaming a history<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>  <ol>  <li>Click on <strong>Unnamed history</strong> (or the current name of the history) (<strong>Click to rename history</strong>) at the top of your history panel</li>  <li>Type the new name</li>  <li>Press <kbd>Enter</kbd></li></ol></blockquote>
+      <blockquote class="tip">   <div class="box-title tip-title" id="tip-renaming-a-history"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-renaming-a-history-contents" aria-expanded="true" aria-label="Toggle tip box: Renaming a history"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: Renaming a history<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>   <ol>   <li>Click on <i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"><span class="notranslate">galaxy</span>-pencil</span> (<strong>Edit</strong>) next to the history name (which by default is “Unnamed history”)</li>   <li>Type the new name</li>   <li>Click on <strong>Save</strong></li> </ol>   <p>If you do not have the <i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"><span class="notranslate">galaxy</span>-pencil</span> (<strong>Edit</strong>) next to the history name:</p>   <ol>   <li>Click on <strong>Unnamed history</strong> (or the current name of the history) (<strong>Click to rename history</strong>) at the top of your history panel</li>   <li>Type the new name</li>   <li>Press <kbd>Enter</kbd></li> </ol> </blockquote>
     </li>
     <li>
       <p>Import the three MGF MS/MS files and the FASTA sequence file from Zenodo.</p>
 
       <!--SNIPPET-->
-      <blockquote class="tip">  <div id="tip-importing-via-links" class="box-title"><button type="button" aria-controls="tip-importing-via-links-contents" aria-expanded="true" aria-label="Toggle tip box: Importing via links"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: Importing via links<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>  <ul>  <li>Copy the link location</li>  <li>    <p>Open the <span class="notranslate">Galaxy</span> Upload Manager (<i class="fas fa-upload" aria-hidden="true"></i><span class="visually-hidden"><span class="notranslate">galaxy</span>-upload</span> on the top-right of the tool panel)</p>  </li>  <li>Select <strong>Paste/Fetch Data</strong></li>  <li>    <p>Paste the link into the text field</p>  </li>  <li>    <p>Press <strong>Start</strong></p>  </li>  <li><strong>Close</strong> the window</li></ul></blockquote>
+      <blockquote class="tip">   <div class="box-title tip-title" id="tip-importing-via-links"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-importing-via-links-contents" aria-expanded="true" aria-label="Toggle tip box: Importing via links"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: Importing via links<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>   <ul>   <li>Copy the link location</li>   <li>     <p>Open the <span class="notranslate">Galaxy</span> Upload Manager (<i class="fas fa-upload" aria-hidden="true"></i><span class="visually-hidden"><span class="notranslate">galaxy</span>-upload</span> on the top-right of the tool panel)</p>   </li>   <li>Select <strong>Paste/Fetch Data</strong></li>   <li>     <p>Paste the link into the text field</p>   </li>   <li>     <p>Press <strong>Start</strong></p>   </li>   <li><strong>Close</strong> the window</li> </ul> </blockquote>
       <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>https://zenodo.org/record/839701/files/2016_Jan_12_QE2_45.mgf
 https://zenodo.org/record/839701/files/2016_Jan_12_QE2_46.mgf
 https://zenodo.org/record/839701/files/2016_Jan_12_QE2_47.mgf
@@ -1032,7 +1012,7 @@ https://zenodo.org/record/839701/files/Gene_Ontology_Terms.tabular
       <p>As default, <span class="notranslate">Galaxy</span> takes the link as name.</p>
 
       <blockquote class="comment">
-        <div id="comment" class="box-title" aria-label="comment box: "><i class="far fa-comment-dots" aria-hidden="true"></i><span class="visually-hidden"></span> Comment</div>
+        <div class="box-title comment-title" id="comment" aria-label="comment box: "><i class="far fa-comment-dots" aria-hidden="true"></i><span class="visually-hidden"></span> Comment</div>
         <ul>
           <li>Rename the datasets to a more descriptive name</li>
         </ul>
@@ -1042,7 +1022,7 @@ https://zenodo.org/record/839701/files/Gene_Ontology_Terms.tabular
       <p>Build a <strong>Dataset list</strong> for the three MGF files</p>
 
       <!--SNIPPET-->
-      <blockquote class="tip">  <div id="tip-creating-a-dataset-collection" class="box-title"><button type="button" aria-controls="tip-creating-a-dataset-collection-contents" aria-expanded="true" aria-label="Toggle tip box: Creating a dataset collection"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: Creating a dataset collection<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>  <ul>  <li>Click on <strong>Operations on multiple datasets</strong> (check box icon) at the top of the history panel <img src="/training-material/topics/galaxy-interface/images/historyItemControls.png" alt="Operations on multiple datasets button" /></li>  <li>Check all the datasets in your history you would like to include</li>  <li>    <p>Click <strong>For all selected..</strong> and choose <strong>Build dataset list</strong></p>    <p><img src="/training-material/topics/galaxy-interface/images/buildList.png" alt="build list collection menu item" width="15%" /></p>  </li>  <li>Enter a name for your collection</li>  <li>Click <strong>Create List</strong> to build your collection</li>  <li>Click on the checkmark icon at the top of your history again</li></ul></blockquote>
+      <blockquote class="tip">   <div class="box-title tip-title" id="tip-creating-a-dataset-collection"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-creating-a-dataset-collection-contents" aria-expanded="true" aria-label="Toggle tip box: Creating a dataset collection"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: Creating a dataset collection<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>   <ul>   <li>Click on <strong>Operations on multiple datasets</strong> (check box icon) at the top of the history panel <img src="/training-material/topics/galaxy-interface/images/historyItemControls.png" alt="Operations on multiple datasets button" /></li>   <li>Check all the datasets in your history you would like to include</li>   <li>     <p>Click <strong>For all selected..</strong> and choose <strong>Build dataset list</strong></p>     <p><img src="/training-material/topics/galaxy-interface/images/buildList.png" alt="build list collection menu item" width="15%" /></p>   </li>   <li>Enter a name for your collection</li>   <li>Click <strong>Create List</strong> to build your collection</li>   <li>Click on the checkmark icon at the top of your history again</li> </ul> </blockquote>
     </li>
   </ol>
 
@@ -1051,7 +1031,7 @@ https://zenodo.org/record/839701/files/Gene_Ontology_Terms.tabular
 <p>We have a choice to run all these steps using a single <span class="notranslate">workflow</span>, then discuss each step and the results in more detail.</p>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-pretreatments" class="box-title" aria-label="hands-on box: Pretreatments"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Pretreatments</div>
+  <div class="box-title hands-on-title" id="hands-on-pretreatments" aria-label="hands-on box: Pretreatments"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Pretreatments</div>
 
   <ol>
     <li><strong>Import the <span class="notranslate">workflow</span></strong> into <span class="notranslate">Galaxy</span>
@@ -1061,7 +1041,7 @@ https://zenodo.org/record/839701/files/Gene_Ontology_Terms.tabular
       </ul>
 
       <!--SNIPPET-->
-      <blockquote class="tip">  <div id="tip-importing-a-workflow" class="box-title"><button type="button" aria-controls="tip-importing-a-workflow-contents" aria-expanded="true" aria-label="Toggle tip box: Importing a workflow"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: Importing a <span class="notranslate">workflow</span><span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>  <ul>  <li>Click on <em><span class="notranslate">Workflow</span></em> on the top menu bar of <span class="notranslate">Galaxy</span>. You will see a list of all your workflows.</li>  <li>Click on the upload icon <i class="fas fa-upload" aria-hidden="true"></i><span class="visually-hidden"><span class="notranslate">galaxy</span>-upload</span> at the top-right of the screen</li>  <li>Provide your <span class="notranslate">workflow</span>    <ul>      <li>Option 1: Paste the URL of the <span class="notranslate">workflow</span> into the box labelled <em>“Archived <span class="notranslate">Workflow</span> URL”</em></li>      <li>Option 2: Upload the <span class="notranslate">workflow</span> file in the box labelled <em>“Archived <span class="notranslate">Workflow</span> File”</em></li>    </ul>  </li>  <li>Click the <strong>Import <span class="notranslate">workflow</span></strong> button</li></ul></blockquote>
+      <blockquote class="tip">   <div class="box-title tip-title" id="tip-importing-a-workflow"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-importing-a-workflow-contents" aria-expanded="true" aria-label="Toggle tip box: Importing a workflow"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: Importing a <span class="notranslate">workflow</span><span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>   <ul>   <li>Click on <em><span class="notranslate">Workflow</span></em> on the top menu bar of <span class="notranslate">Galaxy</span>. You will see a list of all your workflows.</li>   <li>Click on the upload icon <i class="fas fa-upload" aria-hidden="true"></i><span class="visually-hidden"><span class="notranslate">galaxy</span>-upload</span> at the top-right of the screen</li>   <li>Provide your <span class="notranslate">workflow</span>     <ul>       <li>Option 1: Paste the URL of the <span class="notranslate">workflow</span> into the box labelled <em>“Archived <span class="notranslate">Workflow</span> URL”</em></li>       <li>Option 2: Upload the <span class="notranslate">workflow</span> file in the box labelled <em>“Archived <span class="notranslate">Workflow</span> File”</em></li>     </ul>   </li>   <li>Click the <strong>Import <span class="notranslate">workflow</span></strong> button</li> </ul> </blockquote>
     </li>
     <li>Run <strong><span class="notranslate">Workflow</span></strong> <i class="fas fa-share-alt" aria-hidden="true"></i><span class="visually-hidden"><span class="notranslate">workflow</span></span> using the following parameters:
       <ul>
@@ -1072,7 +1052,7 @@ https://zenodo.org/record/839701/files/Gene_Ontology_Terms.tabular
       </ul>
 
       <!--SNIPPET-->
-      <blockquote class="tip">  <div id="tip-running-a-workflow" class="box-title"><button type="button" aria-controls="tip-running-a-workflow-contents" aria-expanded="true" aria-label="Toggle tip box: Running a workflow"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: Running a <span class="notranslate">workflow</span><span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>  <ul>  <li>Click on <em><span class="notranslate">Workflow</span></em> on the top menu bar of <span class="notranslate">Galaxy</span>. You will see a list of all your workflows.</li>  <li>Click on the <i class="fas fa-play" aria-hidden="true"></i><span class="visually-hidden"><span class="notranslate">workflow</span>-run</span> (<em>Run <span class="notranslate">workflow</span></em>) button next to your <span class="notranslate">workflow</span></li>  <li>Configure the <span class="notranslate">workflow</span> as needed</li>  <li>Click the <strong>Run <span class="notranslate">Workflow</span></strong> button at the top-right of the screen</li>  <li>You may have to refresh your history to see the queued jobs</li></ul></blockquote>
+      <blockquote class="tip">   <div class="box-title tip-title" id="tip-running-a-workflow"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-running-a-workflow-contents" aria-expanded="true" aria-label="Toggle tip box: Running a workflow"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: Running a <span class="notranslate">workflow</span><span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>   <ul>   <li>Click on <em><span class="notranslate">Workflow</span></em> on the top menu bar of <span class="notranslate">Galaxy</span>. You will see a list of all your workflows.</li>   <li>Click on the <i class="fas fa-play" aria-hidden="true"></i><span class="visually-hidden"><span class="notranslate">workflow</span>-run</span> (<em>Run <span class="notranslate">workflow</span></em>) button next to your <span class="notranslate">workflow</span></li>   <li>Configure the <span class="notranslate">workflow</span> as needed</li>   <li>Click the <strong>Run <span class="notranslate">Workflow</span></strong> button at the top-right of the screen</li>   <li>You may have to refresh your history to see the queued jobs</li> </ul> </blockquote>
     </li>
   </ol>
 
@@ -1083,7 +1063,7 @@ https://zenodo.org/record/839701/files/Gene_Ontology_Terms.tabular
 <h2 id="match-peptide-sequences">Match peptide sequences</h2>
 
 <p>The search database labelled <code class="language-plaintext highlighter-rouge">FASTA_Bering_Strait_Trimmed_metapeptides_cRAP.FASTA</code> is the input database that
-will be used to match MS/MS to peptide sequences via a sequence database search. It is a small excerpt of the original database, which was constructed based on a metagenomic screening of the sea water samples (see <a href="https://www.ncbi.nlm.nih.gov/pubmed/27396978">May et al. (2016)</a>). The full original database can be accessed from <a href="https://noble.gs.washington.edu/proj/metapeptide/data/metapeptides_BSt.fasta">here</a>. The contaminant database (cRAP) was merged with the original database.</p>
+will be used to match MS/MS to peptide sequences via a sequence database search. It is a small excerpt of the original database, which was constructed based on a metagenomic screening of the sea water samples (see <span class="citation"><a href="#May_2016">May <i>et al.</i> 2016</a></span>). The full original database <a href="https://noble.gs.washington.edu/proj/metapeptide/data/metapeptides_BSt.fasta">is available online</a>. The contaminant database (cRAP) was merged with the original database.</p>
 
 <p>For this, the sequence database-searching program called <a href="https://compomics.github.io/projects/searchgui.html">SearchGUI</a> will be used.
 The created dataset collection of the three <em>MGF files</em> in the history is used as the MS/MS input.</p>
@@ -1091,7 +1071,7 @@ The created dataset collection of the three <em>MGF files</em> in the history is
 <h4 id="searchgui">SearchGUI</h4>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-searchgui" class="box-title" aria-label="hands-on box: SearchGUI"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: SearchGUI</div>
+  <div class="box-title hands-on-title" id="hands-on-searchgui" aria-label="hands-on box: SearchGUI"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: SearchGUI</div>
 
   <ol>
     <li><span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/galaxyp/peptideshaker/search_gui/3.3.10.1" title="Tested with toolshed.g2.bx.psu.edu/repos/galaxyp/peptideshaker/search_gui/3.3.10.1"><strong>Search GUI</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: <span class="notranslate">toolshed</span>.g2.bx.psu.edu/repos/<span class="notranslate">galaxy</span>p/peptideshaker/search_gui/3.3.10.1</span></span>  with the following parameters:
@@ -1101,7 +1081,7 @@ The created dataset collection of the three <em>MGF files</em> in the history is
       </ul>
 
       <blockquote class="tip">
-        <div id="tip-select-dataset-collections-as-input" class="box-title"><button type="button" aria-controls="tip-select-dataset-collections-as-input-contents" aria-expanded="true" aria-label="Toggle tip box: Select dataset collections as input"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: Select dataset collections as input<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
+        <div class="box-title tip-title" id="tip-select-dataset-collections-as-input"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-select-dataset-collections-as-input-contents" aria-expanded="true" aria-label="Toggle tip box: Select dataset collections as input"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: Select dataset collections as input<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
 
         <ul>
           <li>
@@ -1122,7 +1102,7 @@ The created dataset collection of the three <em>MGF files</em> in the history is
       </ul>
 
       <blockquote class="comment">
-        <div id="comment-1" class="box-title" aria-label="comment box: "><i class="far fa-comment-dots" aria-hidden="true"></i><span class="visually-hidden"></span> Comment</div>
+        <div class="box-title comment-title" id="comment-1" aria-label="comment box: "><i class="far fa-comment-dots" aria-hidden="true"></i><span class="visually-hidden"></span> Comment</div>
 
         <p>The section <strong>Search Engine Options</strong> contains a selection of sequence database searching
 algorithms that are available in SearchGUI. Any combination of these programs can be used for
@@ -1145,7 +1125,7 @@ generating PSMs from MS/MS data. For the purpose of this tutorial, <strong>X!Tan
       </ul>
 
       <blockquote class="tip">
-        <div id="tip-search-for-options" class="box-title"><button type="button" aria-controls="tip-search-for-options-contents" aria-expanded="true" aria-label="Toggle tip box: Search for options"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: Search for options<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
+        <div class="box-title tip-title" id="tip-search-for-options"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-search-for-options-contents" aria-expanded="true" aria-label="Toggle tip box: Search for options"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: Search for options<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
 
         <ul>
           <li>For selection lists, typing the first few letters in the window will filter the available options.</li>
@@ -1164,7 +1144,7 @@ generating PSMs from MS/MS data. For the purpose of this tutorial, <strong>X!Tan
         <li>leave everything else as default</li>
       </ul>
     </li>
-    <li>Click <strong>Execute</strong>.</li>
+    <li>Click <strong>Run Tool</strong>.</li>
   </ol>
 
 </blockquote>
@@ -1173,7 +1153,7 @@ generating PSMs from MS/MS data. For the purpose of this tutorial, <strong>X!Tan
 SearchGUI archive file) that will serve as an input for the next section, PeptideShaker.</p>
 
 <blockquote class="comment">
-  <div id="comment-2" class="box-title" aria-label="comment box: "><i class="far fa-comment-dots" aria-hidden="true"></i><span class="visually-hidden"></span> Comment</div>
+  <div class="box-title comment-title" id="comment-2" aria-label="comment box: "><i class="far fa-comment-dots" aria-hidden="true"></i><span class="visually-hidden"></span> Comment</div>
   <p>Note that sequence databases used for metaproteomics are usually much larger than the excerpt used in this tutorial. When using large databases, the peptide identification step can take much more time for computation. In metaproteomics, choosing the optimal database is a crucial step of your <span class="notranslate">workflow</span>, for further reading see <a href="https://www.ncbi.nlm.nih.gov/pubmed/27824341">Timmins-Schiffman et al (2017)</a>.</p>
 
   <p>To learn more about database construction in general, like integrating contaminant databases or using a decoy strategy for FDR searching, please consult our tutorial on <a href="/training-material/topics/proteomics/tutorials/database-handling/tutorial.html">Database Handling</a>.</p>
@@ -1191,7 +1171,7 @@ results. PeptideShaker has been wrapped in <span class="notranslate">Galaxy</spa
 outputs.</p>
 
 <blockquote class="comment">
-  <div id="comment-3" class="box-title" aria-label="comment box: "><i class="far fa-comment-dots" aria-hidden="true"></i><span class="visually-hidden"></span> Comment</div>
+  <div class="box-title comment-title" id="comment-3" aria-label="comment box: "><i class="far fa-comment-dots" aria-hidden="true"></i><span class="visually-hidden"></span> Comment</div>
   <p>There are a number of choices for different data files that can be generated using
 PeptideShaker. A compressed file can be made containing all information needed to view the
 results in the standalone PeptideShaker viewer. A <code class="language-plaintext highlighter-rouge">mzidentML</code> file can be created that contains
@@ -1202,7 +1182,7 @@ More detailed information on peptide inference using SearchGUI and PeptideShaker
 </blockquote>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-peptideshaker" class="box-title" aria-label="hands-on box: PeptideShaker"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: PeptideShaker</div>
+  <div class="box-title hands-on-title" id="hands-on-peptideshaker" aria-label="hands-on box: PeptideShaker"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: PeptideShaker</div>
 
   <ol>
     <li><span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/galaxyp/peptideshaker/peptide_shaker/1.16.36.3" title="Tested with toolshed.g2.bx.psu.edu/repos/galaxyp/peptideshaker/peptide_shaker/1.16.36.3"><strong>Peptide Shaker</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: <span class="notranslate">toolshed</span>.g2.bx.psu.edu/repos/<span class="notranslate">galaxy</span>p/peptideshaker/peptide_shaker/1.16.36.3</span></span>  with the following parameters:
@@ -1217,14 +1197,14 @@ More detailed information on peptide inference using SearchGUI and PeptideShaker
       </ul>
 
       <blockquote class="comment">
-        <div id="comment-4" class="box-title" aria-label="comment box: "><i class="far fa-comment-dots" aria-hidden="true"></i><span class="visually-hidden"></span> Comment</div>
+        <div class="box-title comment-title" id="comment-4" aria-label="comment box: "><i class="far fa-comment-dots" aria-hidden="true"></i><span class="visually-hidden"></span> Comment</div>
 
         <p>The <strong>Certificate of Analysis</strong> provides details on all the parameters
 used by both SearchGUI and PeptideShaker in the analysis. This can be downloaded from the
 <span class="notranslate">Galaxy</span> instance to your local computer in a text file if desired.</p>
       </blockquote>
     </li>
-    <li>Click <strong>Execute</strong> and inspect the resulting files after they turned green with the <strong>View data</strong> icon:
+    <li>Click <strong>Run Tool</strong> and inspect the resulting files after they turned green with the <strong>View data</strong> icon:
  <img src="../../images/view_data_icon.png" alt="View data button. " loading="lazy" /></li>
   </ol>
 
@@ -1257,7 +1237,7 @@ by Ghent University will be used to match the sample peptides to proteins. UniPe
 proteins and provides a fast matching algorithm for peptides.</p>
 
 <blockquote class="comment">
-  <div id="comment-unipept" class="box-title" aria-label="comment box: Unipept"><i class="far fa-comment-dots" aria-hidden="true"></i><span class="visually-hidden"></span> Comment: Unipept</div>
+  <div class="box-title comment-title" id="comment-unipept" aria-label="comment box: Unipept"><i class="far fa-comment-dots" aria-hidden="true"></i><span class="visually-hidden"></span> Comment: Unipept</div>
 
   <p>Users can access UniPept via a <a href="https://unipept.ugent.be">web page</a> and paste peptide
 sequences into the search form to retrieve protein information. But we’ll use the <span class="notranslate">Galaxy</span>
@@ -1273,7 +1253,7 @@ The tool <strong>Query Tabular</strong> can load tabular data (the PSM report in
 As a tabular file is being read, line filters may be applied and an SQL query can be performed.</p>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-query-tabular" class="box-title" aria-label="hands-on box: Query Tabular"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Query Tabular</div>
+  <div class="box-title hands-on-title" id="hands-on-query-tabular" aria-label="hands-on box: Query Tabular"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Query Tabular</div>
 
   <ol>
     <li>
@@ -1304,7 +1284,7 @@ As a tabular file is being read, line filters may be applied and an SQL query ca
           <p><strong>Specify Column Names (comma-separated list)</strong>: <code class="language-plaintext highlighter-rouge">id,,sequence,,,,,,,,,,,,,,,,,,,,confidence,validation</code></p>
 
           <blockquote class="comment">
-            <div id="comment-5" class="box-title" aria-label="comment box: "><i class="far fa-comment-dots" aria-hidden="true"></i><span class="visually-hidden"></span> Comment</div>
+            <div class="box-title comment-title" id="comment-5" aria-label="comment box: "><i class="far fa-comment-dots" aria-hidden="true"></i><span class="visually-hidden"></span> Comment</div>
 
             <p>By default, table columns will be named: c1,c2,c3,…,cn (column names for a table must be unique).
 You can override the default names by entering a comma separated list of names, e.g. <code class="language-plaintext highlighter-rouge">,name1,,,name2</code>
@@ -1320,7 +1300,7 @@ would rename the second and fifth columns.</p>
           <p><strong>Save the sqlite database in your history</strong>: <code class="language-plaintext highlighter-rouge">Yes</code></p>
 
           <blockquote class="comment">
-            <div id="comment-querying-sqlite-databases" class="box-title" aria-label="comment box: Querying SQLite Databases"><i class="far fa-comment-dots" aria-hidden="true"></i><span class="visually-hidden"></span> Comment: Querying SQLite Databases</div>
+            <div class="box-title comment-title" id="comment-querying-sqlite-databases" aria-label="comment box: Querying SQLite Databases"><i class="far fa-comment-dots" aria-hidden="true"></i><span class="visually-hidden"></span> Comment: Querying SQLite Databases</div>
 
             <ul>
               <li><strong>Query Tabular</strong> can also use an existing SQLite database. Activating <code class="language-plaintext highlighter-rouge">Save the sqlite database in your history</code>
@@ -1344,7 +1324,7 @@ ORDER BY sequence
       </ul>
 
       <blockquote class="question">
-        <div id="question" class="box-title" aria-label="question box: "><i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden"></span> Question</div>
+        <div class="box-title question-title" id="question" aria-label="question box: "><i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden"></span> Question</div>
 
         <p>The SQL query might look confusing at first, but having a closer look should clarify a lot.</p>
 
@@ -1354,7 +1334,7 @@ ORDER BY sequence
         </ol>
 
         <blockquote class="solution">
-          <div id="solution" class="box-title"><button type="button" aria-controls="solution-contents" aria-expanded="true" aria-label="Toggle solution box: "><i class="far fa-eye" aria-hidden="true"></i><span class="visually-hidden"></span> Solution<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
+          <div class="box-title solution-title" id="solution"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-contents" aria-expanded="true" aria-label="Toggle solution box: "><i class="far fa-eye" aria-hidden="true"></i><span class="visually-hidden"></span> Solution<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
           <ol>
             <li>We want to read from table “psm”. We defined the name before in the “Specify Name for Table” option.</li>
             <li>We need to change the value in line 3: “WHERE validation IS NOT ‘Confident’ AND confidence &gt;= 98”</li>
@@ -1367,7 +1347,7 @@ ORDER BY sequence
       </ul>
     </li>
     <li>
-      <p>Click <strong>Execute</strong> and inspect the query results file after it turned green. If everything went well, it should look similiar:</p>
+      <p>Click <strong>Run Tool</strong> and inspect the query results file after it turned green. If everything went well, it should look similiar:</p>
 
       <figure id="figure-2"><img src="../../images/query_tabular_1.png" alt="Query Tabular output showing the peptides. " loading="lazy" /><figcaption><span class="figcaption-prefix">Figure 2:</span> Query Tabular output</figcaption></figure>
     </li>
@@ -1380,7 +1360,7 @@ We might not only be interested in all the distinct peptides, but also on how ma
 Therefore we can search the database for the peptides and count the occurrence without configuring the tables and columns again:</p>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-sqlite-to-tabular" class="box-title" aria-label="hands-on box: SQLite to tabular"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: SQLite to tabular</div>
+  <div class="box-title hands-on-title" id="hands-on-sqlite-to-tabular" aria-label="hands-on box: SQLite to tabular"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: SQLite to tabular</div>
 
   <ol>
     <li>
@@ -1404,7 +1384,7 @@ ORDER BY sequence
       </ul>
     </li>
     <li>
-      <p>Click <strong>Execute</strong>. The resulting file should have two columns, one with the distinct peptides, the other with the count number of PSMs.</p>
+      <p>Click <strong>Run Tool</strong>. The resulting file should have two columns, one with the distinct peptides, the other with the count number of PSMs.</p>
     </li>
   </ol>
 
@@ -1416,7 +1396,7 @@ ORDER BY sequence
 We do a taxonomy analysis using the UniPept pept2lca function to return the taxonomic lowest common ancestor for each peptide:</p>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-unipept" class="box-title" aria-label="hands-on box: Unipept"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Unipept</div>
+  <div class="box-title hands-on-title" id="hands-on-unipept" aria-label="hands-on box: Unipept"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Unipept</div>
 
   <ol>
     <li>
@@ -1431,10 +1411,10 @@ We do a taxonomy analysis using the UniPept pept2lca function to return the taxo
       </ul>
     </li>
     <li>
-      <p>Click <strong>Execute</strong>. The history should grow by two files. View each to see the difference.</p>
+      <p>Click <strong>Run Tool</strong>. The history should grow by two files. View each to see the difference.</p>
 
       <blockquote class="comment">
-        <div id="comment-6" class="box-title" aria-label="comment box: "><i class="far fa-comment-dots" aria-hidden="true"></i><span class="visually-hidden"></span> Comment</div>
+        <div class="box-title comment-title" id="comment-6" aria-label="comment box: "><i class="far fa-comment-dots" aria-hidden="true"></i><span class="visually-hidden"></span> Comment</div>
 
         <p>The JSON (JavaScript Object Notation) file contains the same information as the tabular file but is not comfortably human readable.
 Instead, we can use it to use JavaScript libraries to visualize this data.</p>
@@ -1466,7 +1446,7 @@ Instead, we can use it to use JavaScript libraries to visualize this data.</p>
 once again used, aggregating the number of peptides and PSMs for each genus level taxonomy assignment:</p>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-query-tabular-1" class="box-title" aria-label="hands-on box: Query Tabular"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Query Tabular</div>
+  <div class="box-title hands-on-title" id="hands-on-query-tabular-1" aria-label="hands-on box: Query Tabular"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Query Tabular</div>
 
   <ol>
     <li>
@@ -1549,7 +1529,7 @@ ORDER BY PSMs desc, 'DISTINCT PEPTIDES' desc
       </ul>
     </li>
     <li>
-      <p>Click <strong>Execute</strong> and inspect the query results file after it turned green:</p>
+      <p>Click <strong>Run Tool</strong> and inspect the query results file after it turned green:</p>
 
       <figure id="figure-4"><img src="../../images/metaproteomics_summary.png" alt="Query Tabular output showing gene, PSMs and distinct peptides. " loading="lazy" /><figcaption><span class="figcaption-prefix">Figure 4:</span> Query Tabular output</figcaption></figure>
     </li>
@@ -1567,7 +1547,7 @@ community based on expressed microbial proteome.</p>
 This allows to get an insight of the <strong>biological process</strong>, the <strong>molecular function</strong> and the <strong>cellular component</strong> related to the sample data.</p>
 
 <blockquote class="comment">
-  <div id="comment-gene-ontology-go-consortium" class="box-title" aria-label="comment box: Gene Ontology (GO) Consortium"><i class="far fa-comment-dots" aria-hidden="true"></i><span class="visually-hidden"></span> Comment: Gene Ontology (GO) Consortium</div>
+  <div class="box-title comment-title" id="comment-gene-ontology-go-consortium" aria-label="comment box: Gene Ontology (GO) Consortium"><i class="far fa-comment-dots" aria-hidden="true"></i><span class="visually-hidden"></span> Comment: Gene Ontology (GO) Consortium</div>
 
   <p>The <a href="http://www.geneontology.org/">Gene Ontology Consortium</a> provides with its Ontology a framework for the model of biology.
 The GO defines concepts/classes used to describe gene function, and relationships between these concepts. It classifies functions along three aspects:</p>
@@ -1606,14 +1586,14 @@ The GO defines concepts/classes used to describe gene function, and relationship
 It is available at Zenodo: <a href="https://doi.org/10.5281/zenodo.839701"><img src="https://zenodo.org/badge/DOI/10.5281/zenodo.839701.svg" alt="DOI. " loading="lazy" /></a>.</p>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-data-upload" class="box-title" aria-label="hands-on box: Data upload"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Data upload</div>
+  <div class="box-title hands-on-title" id="hands-on-data-upload" aria-label="hands-on box: Data upload"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Data upload</div>
 
   <ol>
     <li>
       <p>Import the file <code class="language-plaintext highlighter-rouge">Gene_Ontology_Terms.tabular</code> from Zenodo.</p>
 
       <blockquote class="tip">
-        <div id="tip-setting-file-metadata-on-upload" class="box-title"><button type="button" aria-controls="tip-setting-file-metadata-on-upload-contents" aria-expanded="true" aria-label="Toggle tip box: Setting file metadata on upload"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: Setting file metadata on upload<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
+        <div class="box-title tip-title" id="tip-setting-file-metadata-on-upload"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-setting-file-metadata-on-upload-contents" aria-expanded="true" aria-label="Toggle tip box: Setting file metadata on upload"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: Setting file metadata on upload<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
 
         <p>In the upload window of <span class="notranslate">Galaxy</span> you can set the filetype and related genome of the file you’re uploading in the corresponding columns beforehand.
 This might be handy if the automatic detection of the filetype didn’t work out perfectly or if you want to avoid setting the genome later on, especially for multiple files.</p>
@@ -1623,7 +1603,7 @@ This might be handy if the automatic detection of the filetype didn’t work out
       <p>As default, <span class="notranslate">Galaxy</span> takes the link as name.</p>
 
       <blockquote class="comment">
-        <div id="comment-7" class="box-title" aria-label="comment box: "><i class="far fa-comment-dots" aria-hidden="true"></i><span class="visually-hidden"></span> Comment</div>
+        <div class="box-title comment-title" id="comment-7" aria-label="comment box: "><i class="far fa-comment-dots" aria-hidden="true"></i><span class="visually-hidden"></span> Comment</div>
         <ul>
           <li>Rename the datasets to a more descriptive name, e.g. <code class="language-plaintext highlighter-rouge">Gene Ontology Terms</code></li>
         </ul>
@@ -1634,13 +1614,13 @@ This might be handy if the automatic detection of the filetype didn’t work out
 </blockquote>
 
 <blockquote class="details">
-  <div id="details-creating-your-own-gene-ontology-list" class="box-title"><button type="button" aria-controls="details-creating-your-own-gene-ontology-list-contents" aria-expanded="true" aria-label="Toggle details box: Creating your own Gene Ontology list"><i class="fas fa-info-circle" aria-hidden="true"></i><span class="visually-hidden"></span> Details: Creating your own Gene Ontology list<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
+  <div class="box-title details-title" id="details-creating-your-own-gene-ontology-list"><button class="gtn-boxify-button details" type="button" aria-controls="details-creating-your-own-gene-ontology-list-contents" aria-expanded="true" aria-label="Toggle details box: Creating your own Gene Ontology list"><i class="fas fa-info-circle" aria-hidden="true"></i><span class="visually-hidden"></span> Details: Creating your own Gene Ontology list<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
 
-  <p>The latest Gene Ontology can be downloaded <a href="http://geneontology.org/page/download-ontology">here</a> as a text file in the <code class="language-plaintext highlighter-rouge">OBO</code> format.
+  <p>The latest Gene Ontology can be downloaded <a href="http://geneontology.org/page/download-ontology">the GO website</a> as a text file in the <code class="language-plaintext highlighter-rouge">OBO</code> format.
 <code class="language-plaintext highlighter-rouge">OBO</code> files are human-readable (in addition to machine-readable) and can be opened in any text editor. They contain more information than just the name and aspect.</p>
 
   <p>In order to receive a file like we use in the tutorial for your own analysis, different tools are available to extract information from <code class="language-plaintext highlighter-rouge">OBO</code> files,
-one of them being <a href="https://doi.org/10.1093/bioinformatics/btn042">ONTO-PERL</a>.
+one of them being ONTO-PERL (<span class="citation"><a href="#Antezana_2008">Antezana <i>et al.</i> 2008</a></span>).
 An example file with all GO terms from 08.07.2017 named <code class="language-plaintext highlighter-rouge">Gene_Ontology_Terms_full_07.08.2017.tabular</code> can be found on the <a href="https://doi.org/10.5281/zenodo.839701">Zenodo repository</a> of this tutorial as well.
 You could also upload the Gene Ontology Terms by copying this link on to the Upload Data - Paste/Fetch data <code class="language-plaintext highlighter-rouge">https://zenodo.org/record/839701/files/Gene_Ontology_Terms_full_07.08.2017.tabular</code></p>
 
@@ -1653,7 +1633,7 @@ The option <code class="language-plaintext highlighter-rouge">retrieve extra inf
 for each protein.</p>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-unipept-1" class="box-title" aria-label="hands-on box: Unipept"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Unipept</div>
+  <div class="box-title hands-on-title" id="hands-on-unipept-1" aria-label="hands-on box: Unipept"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Unipept</div>
 
   <ol>
     <li>
@@ -1669,7 +1649,7 @@ for each protein.</p>
       </ul>
     </li>
     <li>
-      <p>Click <strong>Execute</strong>.</p>
+      <p>Click <strong>Run Tool</strong>.</p>
     </li>
     <li>
       <p>inspect the result:</p>
@@ -1709,7 +1689,7 @@ for each protein.</p>
 </ul>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-query-tabular-2" class="box-title" aria-label="hands-on box: Query Tabular"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Query Tabular</div>
+  <div class="box-title hands-on-title" id="hands-on-query-tabular-2" aria-label="hands-on box: Query Tabular"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Query Tabular</div>
 
   <ol>
     <li>
@@ -1813,7 +1793,7 @@ for each protein.</p>
       </ul>
 
       <blockquote class="comment">
-        <div id="comment-8" class="box-title" aria-label="comment box: "><i class="far fa-comment-dots" aria-hidden="true"></i><span class="visually-hidden"></span> Comment</div>
+        <div class="box-title comment-title" id="comment-8" aria-label="comment box: "><i class="far fa-comment-dots" aria-hidden="true"></i><span class="visually-hidden"></span> Comment</div>
         <ul>
           <li>The UniPept result file can contain multiple GO IDs in a single row. In order to create a normalized table of this data, these rows will be split so each record contains only one GO ID.</li>
         </ul>
@@ -1890,7 +1870,7 @@ ORDER BY sequence
       </ul>
     </li>
     <li>
-      <p>Click <strong>Execute</strong>.</p>
+      <p>Click <strong>Run Tool</strong>.</p>
     </li>
   </ol>
 
@@ -1899,7 +1879,7 @@ ORDER BY sequence
 <p>With this we have combined all the data into a single database which we can now query to extract the desired information with <strong>SQLite to tabular</strong>:</p>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-sqlite-to-tabular-1" class="box-title" aria-label="hands-on box: SQLite to tabular"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: SQLite to tabular</div>
+  <div class="box-title hands-on-title" id="hands-on-sqlite-to-tabular-1" aria-label="hands-on box: SQLite to tabular"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: SQLite to tabular</div>
 
   <ol>
     <li>
@@ -1927,7 +1907,7 @@ ORDER BY  bering_peptides desc,bering_psms desc
         </li>
       </ul>
     </li>
-    <li>Click <strong>Execute</strong>.</li>
+    <li>Click <strong>Run Tool</strong>.</li>
     <li>Repeat these steps two times by replacing <code class="language-plaintext highlighter-rouge">molecular_function</code> in the fifth row of the SQL query by <code class="language-plaintext highlighter-rouge">biological_process</code> and <code class="language-plaintext highlighter-rouge">cellular_component</code>.</li>
   </ol>
 
@@ -1936,7 +1916,7 @@ ORDER BY  bering_peptides desc,bering_psms desc
 <p>With these three output files the functional analysis of this tutorial is finished. Each record contains the name of a GO term, the amount of peptides related to it and the amount of PSMs for these peptides.</p>
 
 <blockquote class="comment">
-  <div id="comment-references" class="box-title" aria-label="comment box: References"><i class="far fa-comment-dots" aria-hidden="true"></i><span class="visually-hidden"></span> Comment: References</div>
+  <div class="box-title comment-title" id="comment-references" aria-label="comment box: References"><i class="far fa-comment-dots" aria-hidden="true"></i><span class="visually-hidden"></span> Comment: References</div>
 
   <ul>
     <li>
@@ -1990,6 +1970,10 @@ ORDER BY  bering_peptides desc,bering_psms desc
                 
 
 
+                
+                <h1 id="bibliography">References</h1>
+                <ol class="bibliography"><li id="Antezana_2008">Antezana, E., M. Egana, B. D. Baets, M. Kuiper, and V. Mironov, 2008 <b>ONTO-PERL: An API for supporting the development and analysis of bio-ontologies</b>. Bioinformatics 24: 885–887. <a href="https://doi.org/10.1093/bioinformatics/btn042">10.1093/bioinformatics/btn042</a></li>
+<li id="May_2016">May, D. H., E. Timmins-Schiffman, M. P. Mikan, H. R. Harvey, E. Borenstein <i>et al.</i>, 2016 <b>An Alignment-Free “Metapeptide” Strategy for Metaproteomic Characterization of Microbiome Samples Using Shotgun Metagenomic Sequencing</b>. Journal of Proteome Research 15: 2697–2705. <a href="https://doi.org/10.1021/acs.jproteome.6b00239">10.1021/acs.jproteome.6b00239</a></li></ol>
                 
 
                 
@@ -2062,19 +2046,21 @@ day = ""
 url = "\url{https://training.galaxyproject.org/training-material/topics/proteomics/tutorials/metaproteomics/tutorial.html}",
 note = "[Online; accessed TODAY]"
 }
-@article{Batut_2018,
-    doi = {10.1016/j.cels.2018.05.012},
-    url = {https://doi.org/10.1016%2Fj.cels.2018.05.012},
-    year = 2018,
-    month = {jun},
-    publisher = {Elsevier {BV}},
-    volume = {6},
-    number = {6},
-    pages = {752--758.e1},
-    author = {B{\'{e}}r{\'{e}}nice Batut and Saskia Hiltemann and Andrea Bagnacani and Dannon Baker and Vivek Bhardwaj and Clemens Blank and Anthony Bretaudeau and Loraine Brillet-Gu{\'{e}}guen and Martin {\v{C}}ech and John Chilton and Dave Clements and Olivia Doppelt-Azeroual and Anika Erxleben and Mallory Ann Freeberg and Simon Gladman and Youri Hoogstrate and Hans-Rudolf Hotz and Torsten Houwaart and Pratik Jagtap and Delphine Larivi{\`{e}}re and Gildas Le Corguill{\'{e}} and Thomas Manke and Fabien Mareuil and Fidel Ram{\'{\i}}rez and Devon Ryan and Florian Christoph Sigloch and Nicola Soranzo and Joachim Wolff and Pavankumar Videm and Markus Wolfien and Aisanjiang Wubuli and Dilmurat Yusuf and James Taylor and Rolf Backofen and Anton Nekrutenko and Björn Grüning},
-    title = {Community-Driven Data Analysis Training for Biology},
-    journal = {Cell Systems}
-}</code>
+@article{Hiltemann_2023,
+	doi = {10.1371/journal.pcbi.1010752},
+	url = {https://doi.org/10.1371%2Fjournal.pcbi.1010752},
+	year = 2023,
+	month = {jan},
+	publisher = {Public Library of Science ({PLoS})},
+	volume = {19},
+	number = {1},
+	pages = {e1010752},
+	author = {Saskia Hiltemann and Helena Rasche and Simon Gladman and Hans-Rudolf Hotz and Delphine Larivi{\`{e}}re and Daniel Blankenberg and Pratik D. Jagtap and Thomas Wollmann and Anthony Bretaudeau and Nadia Gou{\'{e}} and Timothy J. Griffin and Coline Royaux and Yvan Le Bras and Subina Mehta and Anna Syme and Frederik Coppens and Bert Droesbeke and Nicola Soranzo and Wendi Bacon and Fotis Psomopoulos and Crist{\'{o}}bal Gallardo-Alba and John Davis and Melanie Christine Föll and Matthias Fahrner and Maria A. Doyle and Beatriz Serrano-Solano and Anne Claire Fouilloux and Peter van Heusden and Wolfgang Maier and Dave Clements and Florian Heyl and Björn Grüning and B{\'{e}}r{\'{e}}nice Batut and},
+	editor = {Francis Ouellette},
+	title = {Galaxy Training: A powerful framework for teaching!},
+	journal = {PLoS Comput Biol} Computational Biology}
+}
+</code>
                    </pre></div></div>
                    </p>
                 </blockquote>
@@ -2112,8 +2098,6 @@ document.getElementById("citation-text").innerHTML = document.getElementById("ci
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
         <script type="text/javascript" src="/training-material/assets/js/bootstrap-toc.min.js"></script>
         <script type="text/javascript" src="/training-material/assets/js/main.js"></script>
-        <script type="text/javascript" src="/training-material/assets/js/theme.js"></script>
-
         <script type="text/javascript" src="/training-material/assets/js/clipboard.min.js"></script>
         <script type="text/javascript">
         var snippets=document.querySelectorAll('div.highlight');

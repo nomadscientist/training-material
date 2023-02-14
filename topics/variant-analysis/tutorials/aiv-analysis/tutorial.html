@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="utf-8">
@@ -14,7 +14,6 @@
         <link rel="stylesheet" href="/training-material/assets/css/main.css?v=2">
         <script src="https://kit.fontawesome.com/67b3f98409.js" crossorigin="anonymous"></script>
         <link rel="stylesheet" href="/training-material/assets/css/academicons.css">
-        <link rel="stylesheet" href="/training-material/assets/css/syntax_highlighting.css">
         <link rel="shortcut icon" href="/training-material/favicon.ico" type="image/x-icon" />
         <link rel="alternate" type="application/atom+xml" href="/training-material/feed.xml" />
         <link rel="canonical" href="https://training.galaxyproject.org/training-material/topics/variant-analysis/tutorials/aiv-analysis/tutorial.html" />
@@ -24,10 +23,9 @@
 <meta name="DC.type" content="text" />
 <meta name="DC.title" content="Avian influenza viral strain analysis from gene segment sequencing data" />
 <meta name="DC.publisher" content="Galaxy Training Network" />
-<meta name="DC.date" content="2022-11-21 14:09:21 +0000" />
+<meta name="DC.date" content="2023-01-23 14:28:11 +0000" />
 <meta name="DC.creator" content="Wolfgang Maier" />
 
-        
         
         
         
@@ -38,221 +36,9 @@
         <meta property="og:description" content="Genetic differences (variants) between healthy and diseas..." />
         <meta property="og:image" content="/training-material/assets/images/GTNLogo1000.png" />
 
-    </head>
-    <body data-spy="scroll" data-target="#toc">
-        <header>
-    <nav class="navbar navbar-expand-md navbar-dark" aria-label="Site Navigation">
-        <div class="container">
-            <a class="navbar-brand" href="/training-material/">
-                <img src="/training-material/assets/images/GTN-60px.png" height="30" alt="Galaxy Training Network logo">
-                Galaxy Training!
-            </a>
-
-            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#top-navbar" aria-controls="top-navbar" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="top-navbar">
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        
-                        <a class="nav-link" href="/training-material/topics/variant-analysis" title="Go back to list of tutorials">
-                            <i class="far fa-folder" aria-hidden="true"></i> Variant Analysis
-                        </a>
-                        
-                    </li>
-
-                    <li class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false" title="Languages">
-                            <i class="fas fa-language" aria-hidden="true"></i><span class="visually-hidden">language</span> Languages
-                        </a>
-                        <div class="dropdown-menu dropdown-menu-right">
-                            
-                              <strong class="dropdown-header">Automatic Translations</strong>
-            
-            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=fr&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/variant-analysis/tutorials/aiv-analysis/tutorial.html&edit-text=&act=url">
-                            Français
-                            </a>
-                            
-            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=ja&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/variant-analysis/tutorials/aiv-analysis/tutorial.html&edit-text=&act=url">
-                            日本語
-                            </a>
-                            
-            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=es&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/variant-analysis/tutorials/aiv-analysis/tutorial.html&edit-text=&act=url">
-                            Español
-                            </a>
-                            
-            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=pt&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/variant-analysis/tutorials/aiv-analysis/tutorial.html&edit-text=&act=url">
-                            Português
-                            </a>
-                            
-            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=ar&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/variant-analysis/tutorials/aiv-analysis/tutorial.html&edit-text=&act=url">
-                            العربية
-                            </a>
-                            
-                            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/variant-analysis/tutorials/aiv-analysis/tutorial.html&edit-text=&act=url" title="">
-                            And more!
-                            </a>
-                        </div>
-                    </li>
-
-                    <li class="nav-item dropdown">
-    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false" title="Help">
-        <i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden">help</span> Help
-    </a>
-    <div class="dropdown-menu dropdown-menu-right">
-        <!-- disable Tess for now
-        <form method="get" action="https://tess.elixir-europe.org/materials">
-            <input type="text" id="search" name="q" value="" style="margin-left: 0.5em;/*! border-radius: 0px; */">
-            <input type="hidden" value="Galaxy Training" name="content_provider">
-            <input type="submit" value="Search on TeSS" style="width: 92%;border-radius: 0px;margin: 0.5em;background: #f47d20;border: 0px;padding: 0.25em;" class="">
-        </form>
-        -->
-
-        <a class="dropdown-item" href="/training-material/faq" title="Check our FAQs">
-           <i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden">question</span> FAQs
-        </a>
         
-        <a class="dropdown-item" href="/training-material/topics/variant-analysis/faqs/" title="Check our FAQs for the Variant Analysis topic">
-           <i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden">question</span> Topic FAQs
-        </a>
-        
-        <a class="dropdown-item" href="https://help.galaxyproject.org/" title="Discuss on Galaxy Help">
-            <i class="far fa-comments" aria-hidden="true"></i><span class="visually-hidden">feedback</span> Galaxy Help Forum
-        </a>
-        <a class="dropdown-item" href="https://gitter.im/Galaxy-Training-Network/Lobby" title="Discuss on gitter">
-           <i class="fab fa-gitter" aria-hidden="true"></i><span class="visually-hidden">gitter</span> Discuss on Gitter
-        </a>
-    </div>
-</li>
-
-
-                    <li class="nav-item dropdown">
-    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false" title="Extras">
-        <i class="far fa-star" aria-hidden="true"></i><span class="visually-hidden">galaxy-star</span> Extras
-    </a>
-    <div class="dropdown-menu dropdown-menu-right">
-
-        
-        <a class="dropdown-item" href="https://github.com/galaxyproject/training-material/edit/main/topics/variant-analysis/tutorials/aiv-analysis/tutorial.md" title="Edit on GitHub">
-          <i class="fab fa-github" aria-hidden="true"></i><span class="visually-hidden">github</span> Edit on GitHub
-        </a>
-
-        <a class="dropdown-item" href="/training-material/stats.html" title="Show view statistics about this repository">
-            <i class="fas fa-chart-bar" aria-hidden="true"></i><span class="visually-hidden">galaxy-barchart</span> GTN statistics
-        </a>
-
-        <a class="dropdown-item" href="https://plausible.galaxyproject.eu/training.galaxyproject.org?period=12mo&page=/training-material/topics/variant-analysis/tutorials/aiv-analysis/tutorial.html" title="Show view statistics of this page">
-            <i class="fas fa-chart-bar" aria-hidden="true"></i><span class="visually-hidden">galaxy-barchart</span> Page Metrics
-        </a>
-
-        <!-- link to feedback -->
-        
+        <script type="application/ld+json">
             
-            
-                <a class="dropdown-item" href="/training-material/feedback.html" title="Show feedback statistics about this repository">
-                    <i class="fas fa-chart-bar" aria-hidden="true"></i><span class="visually-hidden">galaxy-barchart</span> GTN feedback
-                </a>
-            
-        
-
-        <div class="dropdown-item">
-            <div>
-                <i class="fas fa-palette" aria-hidden="true"></i><span class="visually-hidden">gtn-theme</span> Theme
-            </div>
-
-            <div id="theme-selector" data-toggle="buttons">
-                <label data-value="default" class="btn btn-secondary">
-                    <input type="radio" name="options" id="default" autocomplete="off"> Default
-                </label>
-                <label data-value="night" class="btn btn-secondary">
-                    <input type="radio" name="options" id="night" autocomplete="off"> Night
-                </label>
-                <label data-value="midnight" class="btn btn-secondary">
-                    <input type="radio" name="options" id="midnight" autocomplete="off"> Midnight
-                </label>
-                <label data-value="rainbow" class="btn btn-secondary">
-                    <input type="radio" name="options" id="rainbow" autocomplete="off"> Rainbow
-                </label>
-                <label data-value="progress" class="btn btn-secondary">
-                    <input type="radio" name="options" id="progress" autocomplete="off">🏳️‍🌈
-                </label>
-                <label data-value="halloween" class="btn btn-secondary">
-                    <input type="radio" name="options" id="halloween" autocomplete="off"> 🎃
-                </label>
-                <label data-value="straya" class="btn btn-secondary">
-                    <input type="radio" name="options" id="downunder" autocomplete="off"> 🇦🇺
-                </label>
-            </div>
-
-        </div>
-
-        <div class="dropdown-item">
-            <div>
-                <i class="fas fa-history" aria-hidden="true"></i><span class="visually-hidden">galaxy-rulebuilder-history</span> Previous Versions
-            </div>
-
-            <div id="archive-selector">
-            
-                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2020-01-06/topics/variant-analysis/tutorials/aiv-analysis/tutorial.html" title="Version 2020-01-06">2020-01-06</a>
-            
-                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2019-12-01/topics/variant-analysis/tutorials/aiv-analysis/tutorial.html" title="Version 2019-12-01">2019-12-01</a>
-            
-                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2019-11-01/topics/variant-analysis/tutorials/aiv-analysis/tutorial.html" title="Version 2019-11-01">2019-11-01</a>
-            
-                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/" title="Older Versions">Older Versions</a>
-            </div>
-
-        </div>
-
-    </div>
-</li>
-
-
-                    <!-- Search bar-->
-                    <li class="nav-item">
-                      <div id="navbarSupportedContent" role="search">
-                        <!-- Search form -->
-                        <form class="form-inline mr-auto" method="GET" action="/training-material/search">
-                          <i class="fas fa-search nav-link" aria-hidden="true"></i>
-                          <div class="md-form mb-2">
-                            <input name="query" class="form-control nicer" type="text" placeholder="Search Tutorials" aria-label="Search">
-                          </div>
-                        </form>
-                      </div>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-</header>
-
-        <div class="container main-content" role="main">
-        
-
-
-
-
-
-
-
-
-
-
-
-<!-- Gitter -->
-
-
-
-
-<script>
-  ((window.gitter = {}).chat = {}).options = {
-  room: 'Galaxy-Training-Network/Lobby'
-  };
-</script>
-<script src="https://sidecar.gitter.im/dist/sidecar.v1.js" async defer></script>
-
-<script type="application/ld+json">
-    
 
 
 {
@@ -277,7 +63,7 @@
     "name": "Galaxy Training Network",
     "url": "https://galaxyproject.org/teach/gtn/"
   },
-  "dateModified": "2022-11-21 14:09:21 +0000",
+  "dateModified": "2023-01-23 14:28:11 +0000",
   "discussionUrl": "https://gitter.im/Galaxy-Training-Network/Lobby",
   "headline": "Avian influenza viral strain analysis from gene segment sequencing data",
   "interactivityType": "mixed",
@@ -432,7 +218,9 @@
           "name": "Galaxy Training Network",
           "url": "https://galaxyproject.org/teach/gtn/"
         }
-      ]
+      ],
+      "identifier": "https://orcid.org/0000-0002-9464-6640",
+      "orcid": "https://orcid.org/0000-0002-9464-6640"
     }
   ],
   "contributor": [
@@ -455,7 +243,9 @@
           "name": "Galaxy Training Network",
           "url": "https://galaxyproject.org/teach/gtn/"
         }
-      ]
+      ],
+      "identifier": "https://orcid.org/0000-0002-9464-6640",
+      "orcid": "https://orcid.org/0000-0002-9464-6640"
     }
   ],
   "about": [
@@ -475,7 +265,210 @@
   ],
   "educationalLevel": "Intermediate"
 }
+        </script>
+        
+    </head>
+    <body data-spy="scroll" data-target="#toc">
+        <script type="text/javascript" src="/training-material/assets/js/theme.js"></script>
+        <header>
+    <nav class="navbar navbar-expand-md navbar-dark" aria-label="Site Navigation">
+        <div class="container">
+            <a class="navbar-brand" href="/training-material/">
+                <img src="/training-material/assets/images/GTN-60px.png" height="30" alt="Galaxy Training Network logo">
+                Galaxy Training!
+            </a>
+
+            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#top-navbar" aria-controls="top-navbar" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="top-navbar">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        
+                        <a class="nav-link" href="/training-material/topics/variant-analysis" title="Go back to list of tutorials">
+                            <i class="far fa-folder" aria-hidden="true"></i> Variant Analysis
+                        </a>
+                        
+                    </li>
+
+                    <li class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false" title="Languages">
+                            <i class="fas fa-language" aria-hidden="true"></i><span class="visually-hidden">language</span> Languages
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right">
+                            
+                              <strong class="dropdown-header">Automatic Translations</strong>
+            
+            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=fr&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/variant-analysis/tutorials/aiv-analysis/tutorial.html&edit-text=&act=url">
+                            Français
+                            </a>
+                            
+            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=ja&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/variant-analysis/tutorials/aiv-analysis/tutorial.html&edit-text=&act=url">
+                            日本語
+                            </a>
+                            
+            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=es&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/variant-analysis/tutorials/aiv-analysis/tutorial.html&edit-text=&act=url">
+                            Español
+                            </a>
+                            
+            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=pt&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/variant-analysis/tutorials/aiv-analysis/tutorial.html&edit-text=&act=url">
+                            Português
+                            </a>
+                            
+            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=ar&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/variant-analysis/tutorials/aiv-analysis/tutorial.html&edit-text=&act=url">
+                            العربية
+                            </a>
+                            
+                            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/variant-analysis/tutorials/aiv-analysis/tutorial.html&edit-text=&act=url" title="">
+                            And more!
+                            </a>
+                        </div>
+                    </li>
+
+                    <li class="nav-item dropdown">
+    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false" title="Help">
+        <i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden">help</span> Help
+    </a>
+    <div class="dropdown-menu dropdown-menu-right">
+        <!-- disable Tess for now
+        <form method="get" action="https://tess.elixir-europe.org/materials">
+            <input type="text" id="search" name="q" value="" style="margin-left: 0.5em;/*! border-radius: 0px; */">
+            <input type="hidden" value="Galaxy Training" name="content_provider">
+            <input type="submit" value="Search on TeSS" style="width: 92%;border-radius: 0px;margin: 0.5em;background: #f47d20;border: 0px;padding: 0.25em;" class="">
+        </form>
+        -->
+
+        <a class="dropdown-item" href="/training-material/faq" title="Check our FAQs">
+           <i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden">question</span> FAQs
+        </a>
+        
+        
+        <a class="dropdown-item" href="/training-material/topics/variant-analysis/faqs/" title="Check our FAQs for the Variant Analysis topic">
+           <i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden">question</span> Topic FAQs
+        </a>
+        
+        
+        <a class="dropdown-item" href="https://help.galaxyproject.org/" title="Discuss on Galaxy Help">
+            <i class="far fa-comments" aria-hidden="true"></i><span class="visually-hidden">feedback</span> Galaxy Help Forum
+        </a>
+        <a class="dropdown-item" href="https://gitter.im/Galaxy-Training-Network/Lobby" title="Discuss on gitter">
+           <i class="fab fa-gitter" aria-hidden="true"></i><span class="visually-hidden">gitter</span> Discuss on Gitter
+        </a>
+    </div>
+</li>
+
+
+                    <li class="nav-item dropdown">
+    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false" title="Extras">
+        <i class="far fa-star" aria-hidden="true"></i><span class="visually-hidden">galaxy-star</span> Extras
+    </a>
+    <div class="dropdown-menu dropdown-menu-right">
+
+        
+        <a class="dropdown-item" href="https://github.com/galaxyproject/training-material/edit/main/topics/variant-analysis/tutorials/aiv-analysis/tutorial.md" title="Edit on GitHub">
+          <i class="fab fa-github" aria-hidden="true"></i><span class="visually-hidden">github</span> Edit on GitHub
+        </a>
+
+        <a class="dropdown-item" href="/training-material/stats.html" title="Show view statistics about this repository">
+            <i class="fas fa-chart-bar" aria-hidden="true"></i><span class="visually-hidden">galaxy-barchart</span> GTN statistics
+        </a>
+
+        <a class="dropdown-item" href="https://plausible.galaxyproject.eu/training.galaxyproject.org?period=12mo&page=/training-material/topics/variant-analysis/tutorials/aiv-analysis/tutorial.html" title="Show view statistics of this page">
+            <i class="fas fa-chart-bar" aria-hidden="true"></i><span class="visually-hidden">galaxy-barchart</span> Page Metrics
+        </a>
+
+        <!-- link to feedback -->
+        
+            
+            
+                <a class="dropdown-item" href="/training-material/feedback.html" title="Show feedback statistics about this repository">
+                    <i class="fas fa-chart-bar" aria-hidden="true"></i><span class="visually-hidden">galaxy-barchart</span> GTN feedback
+                </a>
+            
+        
+
+        <div class="dropdown-item">
+            <div>
+                <i class="fas fa-palette" aria-hidden="true"></i><span class="visually-hidden">gtn-theme</span> Theme
+            </div>
+
+            <div id="theme-selector" data-toggle="buttons">
+                    <button class="btn" data-theme="default">Default</button>
+                    <button class="btn" data-theme="night">Night</button>
+                    <button class="btn" data-theme="midnight">Midnight</button>
+                    <button class="btn" data-theme="rainbow">Rainbow</button>
+                    <button class="btn" data-theme="blm">✊🏿</button>
+                    <button class="btn" data-theme="progress" >🏳️‍🌈</button>
+                    <button class="btn" data-theme="halloween">🎃</button>
+                    <button class="btn" data-theme="straya">🇦🇺</button>
+            </div>
+
+        </div>
+
+        <div class="dropdown-item">
+            <div>
+                <i class="fas fa-history" aria-hidden="true"></i><span class="visually-hidden">galaxy-rulebuilder-history</span> Previous Versions
+            </div>
+
+            <div id="archive-selector">
+            
+                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2020-01-06/topics/variant-analysis/tutorials/aiv-analysis/tutorial.html" title="Version 2020-01-06">2020-01-06</a>
+            
+                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2019-12-01/topics/variant-analysis/tutorials/aiv-analysis/tutorial.html" title="Version 2019-12-01">2019-12-01</a>
+            
+                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2019-11-01/topics/variant-analysis/tutorials/aiv-analysis/tutorial.html" title="Version 2019-11-01">2019-11-01</a>
+            
+                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/" title="Older Versions">Older Versions</a>
+            </div>
+
+        </div>
+
+    </div>
+</li>
+
+
+                    <!-- Search bar-->
+                    <li class="nav-item">
+                      <div id="navbarSupportedContent" role="search">
+                        <!-- Search form -->
+                        <form class="form-inline mr-auto" method="GET" action="/training-material/search">
+                          <i class="fas fa-search nav-link" aria-hidden="true"></i>
+                          <div class="md-form mb-2">
+                            <input name="query" class="form-control nicer" type="text" placeholder="Search Tutorials" aria-label="Search">
+                          </div>
+                        </form>
+                      </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
+        <div class="container main-content" role="main">
+        
+
+
+
+
+
+
+
+
+
+
+
+<!-- Gitter -->
+
+
+
+
+<script>
+  ((window.gitter = {}).chat = {}).options = {
+  room: 'Galaxy-Training-Network/Lobby'
+  };
 </script>
+<script src="https://sidecar.gitter.im/dist/sidecar.v1.js" async defer></script>
 
 <section class="tutorial topic-variant-analysis">
     <h1 data-toc-skip>Avian influenza viral strain analysis from gene segment sequencing data</h1>
@@ -490,7 +483,7 @@
     <div markdown="0">
 
 	<div class="contributors-line">
-		Authors: <a href="/training-material/hall-of-fame/wm75/" class="contributor-badge contributor-wm75"><img src="https://avatars.githubusercontent.com/wm75?s=27" alt="Avatar">Wolfgang Maier</a>
+		Authors: <a href="/training-material/hall-of-fame/wm75/" class="contributor-badge contributor-wm75"><img src="/training-material/assets/images/orcid.png" alt="orcid logo"/><img src="https://avatars.githubusercontent.com/wm75?s=27" alt="Avatar">Wolfgang Maier</a>
 	</div>
 
 </div>
@@ -555,8 +548,6 @@
                 
                     
                         
-                    
-                        
                             
                             <li> Quality Control:
                             
@@ -573,7 +564,15 @@
                     
                         
                     
+                        
+                    
+                        
+                    
                 
+                    
+                        
+                    
+                        
                     
                         
                             
@@ -588,8 +587,6 @@
                                 
                             
                             </li>
-                        
-                    
                         
                     
                         
@@ -627,10 +624,6 @@
         
         <div id="supporting-materials"><strong><i class="fa fa-external-link" aria-hidden="true"></i> Supporting Materials:</strong></div>
         <ul class="supporting_material">
-            
-                <li class="btn btn-default supporting_material"><a href="/training-material/topics/variant-analysis/slides/introduction.html" title="Topic Overview slides">
-                    <i class="fab fa-slideshare" aria-hidden="true"></i> Topic Overview slides
-                </a></li>
             
 
             
@@ -696,7 +689,7 @@
         </ul>
         
 
-        <div><strong><i class="far fa-calendar" aria-hidden="true"></i> Last modification:</strong> Nov 21, 2022 </div>
+        <div><strong><i class="far fa-calendar" aria-hidden="true"></i> Last modification:</strong> Jan 23, 2023 </div>
         <div><strong><i class="fas fa-balance-scale" aria-hidden="true"></i> License:</strong>
             
             <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Tutorial Content is licensed under Creative Commons Attribution 4.0 International License</a>
@@ -740,7 +733,7 @@
 <p>Importantly, the sequence diversity of HA and (again to a lesser extent) of NA segments is big enough to prevent a naive approach of <span class="notranslate">mapping</span> sequenced <span class="notranslate">reads</span> to one specific agreed-upon <em>Influenza A</em> reference sequence. While this would work for the other six segments, <span class="notranslate">mapping</span> software would regularly fail to find enough plausible <span class="notranslate">mapping</span>s for sequenced <span class="notranslate">reads</span> of HA and NA origin to continue analysis with. This is why, in this tutorial we are going to explore an alte<span class="notranslate">rna</span>tive approach, which is also <span class="notranslate">mapping</span>-based but chooses a suitable reference for each segment dynamically based on the input sequencing data.</p>
 
 <blockquote class="agenda">
-  <div id="agenda" class="box-title" aria-label="agenda box: ">Agenda</div>
+  <div class="box-title agenda-title" id="agenda" aria-label="agenda box: ">Agenda</div>
 
   <p>In this tutorial, we will cover:</p>
 
@@ -766,20 +759,20 @@
 <p>Any analysis should get its own <span class="notranslate">Galaxy</span> history. So let’s start by creating a new one:</p>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-prepare-the-galaxy-history" class="box-title" aria-label="hands-on box: Prepare the Galaxy history"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Prepare the <span class="notranslate">Galaxy</span> history</div>
+  <div class="box-title hands-on-title" id="hands-on-prepare-the-galaxy-history" aria-label="hands-on box: Prepare the Galaxy history"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Prepare the <span class="notranslate">Galaxy</span> history</div>
 
   <ol>
     <li>
       <p>Create a new history for this analysis</p>
 
       <!--SNIPPET-->
-      <blockquote class="tip">  <div id="tip-creating-a-new-history" class="box-title"><button type="button" aria-controls="tip-creating-a-new-history-contents" aria-expanded="true" aria-label="Toggle tip box: Creating a new history"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: Creating a new history<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>  <p>Click the <i class="fas fa-plus" aria-hidden="true"></i><span class="visually-hidden">new-history</span> icon at the top of the history panel.</p>  <p>If the <i class="fas fa-plus" aria-hidden="true"></i><span class="visually-hidden">new-history</span> is missing:</p>  <ol>  <li>Click on the <i class="fas fa-cog" aria-hidden="true"></i><span class="visually-hidden"><span class="notranslate">galaxy</span>-gear</span> icon (<strong>History options</strong>) on the top of the history panel</li>  <li>Select the option <strong>Create New</strong> from the menu</li></ol></blockquote>
+      <blockquote class="tip">   <div class="box-title tip-title" id="tip-creating-a-new-history"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-creating-a-new-history-contents" aria-expanded="true" aria-label="Toggle tip box: Creating a new history"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: Creating a new history<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>   <p>Click the <i class="fas fa-plus" aria-hidden="true"></i><span class="visually-hidden">new-history</span> icon at the top of the history panel.</p>   <p>If the <i class="fas fa-plus" aria-hidden="true"></i><span class="visually-hidden">new-history</span> is missing:</p>   <ol>   <li>Click on the <i class="fas fa-cog" aria-hidden="true"></i><span class="visually-hidden"><span class="notranslate">galaxy</span>-gear</span> icon (<strong>History options</strong>) on the top of the history panel</li>   <li>Select the option <strong>Create New</strong> from the menu</li> </ol> </blockquote>
     </li>
     <li>
       <p>Rename the history</p>
 
       <!--SNIPPET-->
-      <blockquote class="tip">  <div id="tip-renaming-a-history" class="box-title"><button type="button" aria-controls="tip-renaming-a-history-contents" aria-expanded="true" aria-label="Toggle tip box: Renaming a history"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: Renaming a history<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>  <ol>  <li>Click on <strong>Unnamed history</strong> (or the current name of the history) (<strong>Click to rename history</strong>) at the top of your history panel</li>  <li>Type the new name</li>  <li>Press <kbd>Enter</kbd></li></ol></blockquote>
+      <blockquote class="tip">   <div class="box-title tip-title" id="tip-renaming-a-history"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-renaming-a-history-contents" aria-expanded="true" aria-label="Toggle tip box: Renaming a history"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: Renaming a history<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>   <ol>   <li>Click on <i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"><span class="notranslate">galaxy</span>-pencil</span> (<strong>Edit</strong>) next to the history name (which by default is “Unnamed history”)</li>   <li>Type the new name</li>   <li>Click on <strong>Save</strong></li> </ol>   <p>If you do not have the <i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"><span class="notranslate">galaxy</span>-pencil</span> (<strong>Edit</strong>) next to the history name:</p>   <ol>   <li>Click on <strong>Unnamed history</strong> (or the current name of the history) (<strong>Click to rename history</strong>) at the top of your history panel</li>   <li>Type the new name</li>   <li>Press <kbd>Enter</kbd></li> </ol> </blockquote>
     </li>
   </ol>
 
@@ -795,7 +788,7 @@
 If you want to learn how you can create a <span class="notranslate">Galaxy</span> collection from your own references that is structured like the default we are suggesting here, you may want to follow the dedicated tutorial on <a href="/training-material/topics/galaxy-interface/tutorials/collections/tutorial.html">Using dataset collections</a>.</p>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-get-the-data" class="box-title" aria-label="hands-on box: Get the data"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Get the data</div>
+  <div class="box-title hands-on-title" id="hands-on-get-the-data" aria-label="hands-on box: Get the data"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Get the data</div>
 
   <ol>
     <li><span class="tool" data-tool="upload1" title="Tested with upload1"><strong>Upload</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: upload1</span></span>  the forward and reverse <span class="notranslate">reads</span> of your sequenced sample to your history and turn them into a <em>Paired Collection</em>.
@@ -845,7 +838,7 @@ select <code class="language-plaintext highlighter-rouge">Copy Datasets</code>, 
 <h2 id="inspect-the-reference-data">Inspect the reference data</h2>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-what-is-in-the-reference-collection" class="box-title" aria-label="hands-on box: What is in the reference collection?"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: What is in the reference collection?</div>
+  <div class="box-title hands-on-title" id="hands-on-what-is-in-the-reference-collection" aria-label="hands-on box: What is in the reference collection?"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: What is in the reference collection?</div>
 
   <ol>
     <li>Step inside the uploaded reference collection by clicking on it.</li>
@@ -856,7 +849,7 @@ select <code class="language-plaintext highlighter-rouge">Copy Datasets</code>, 
       <p>You can then scroll through the data and use your browser’s search function to look for particular sequences.</p>
 
       <blockquote class="question">
-        <div id="question-questions" class="box-title" aria-label="question box: Questions"><i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden"></span> Question: Questions</div>
+        <div class="box-title question-title" id="question-questions" aria-label="question box: Questions"><i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden"></span> Question: Questions</div>
 
         <ol>
           <li>How many elements are in the collection? What do they represent?</li>
@@ -866,7 +859,7 @@ select <code class="language-plaintext highlighter-rouge">Copy Datasets</code>, 
         </ol>
 
         <blockquote class="solution">
-          <div id="solution-answers" class="box-title"><button type="button" aria-controls="solution-answers-contents" aria-expanded="true" aria-label="Toggle solution box: Answers"><i class="far fa-eye" aria-hidden="true"></i><span class="visually-hidden"></span> Solution: Answers<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
+          <div class="box-title solution-title" id="solution-answers"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-answers-contents" aria-expanded="true" aria-label="Toggle solution box: Answers"><i class="far fa-eye" aria-hidden="true"></i><span class="visually-hidden"></span> Solution: Answers<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
 
           <ol>
             <li>The collection consists of eight elements and each element provides reference sequences for one genome segment.</li>
@@ -893,14 +886,13 @@ select <code class="language-plaintext highlighter-rouge">Copy Datasets</code>, 
 <p>The tool <strong>fastp</strong> lets us perform these tasks and obtain a nice quality report for our <span class="notranslate">reads</span> before and after processing in one go, but many other options exist to perform sequenced <span class="notranslate">reads</span> quality control and trimming/filtering in <span class="notranslate">Galaxy</span> and the dedicated tutorial on <a href="/training-material/topics/sequence-analysis/tutorials/quality-control/tutorial.html">quality control</a> introduces more of them.</p>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-qc-and-read-trimming-filtering-with-fastp" class="box-title" aria-label="hands-on box: QC and read trimming/filtering with fastp"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: QC and read trimming/filtering with fastp</div>
+  <div class="box-title hands-on-title" id="hands-on-qc-and-read-trimming-filtering-with-fastp" aria-label="hands-on box: QC and read trimming/filtering with fastp"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: QC and read trimming/filtering with fastp</div>
 
   <ol>
     <li><span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/iuc/fastp/fastp/0.23.2+galaxy0" title="Tested with toolshed.g2.bx.psu.edu/repos/iuc/fastp/fastp/0.23.2+galaxy0"><strong>fastp</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: <span class="notranslate">toolshed</span>.g2.bx.psu.edu/repos/iuc/fastp/fastp/0.23.2+<span class="notranslate">galaxy</span>0</span></span>
       <ul>
         <li><em>“Single-end or paired <span class="notranslate">reads</span>”</em>: <code class="language-plaintext highlighter-rouge">Paired Collection</code></li>
-        <li><em>“Select paired collection(s)”</em>:</li>
-        <li><i class="far fa-folder" aria-hidden="true"></i><span class="visually-hidden">param-collection</span> <em>“Reference sequences”</em>: <code class="language-plaintext highlighter-rouge">References per segment (INSAFlu)</code></li>
+        <li><em>“Select paired collection(s)”</em>: the uploaded paired collection of sequenced <span class="notranslate">reads</span></li>
         <li>In <em>“Filter Options”</em> under <em>“Length filtering options”</em>:
           <ul>
             <li><em>“Length required”</em>: <code class="language-plaintext highlighter-rouge">30</code></li>
@@ -921,7 +913,7 @@ select <code class="language-plaintext highlighter-rouge">Copy Datasets</code>, 
       <p><i class="far fa-eye" aria-hidden="true"></i><span class="visually-hidden"><span class="notranslate">galaxy</span>-eye</span> <strong>Inspect</strong> the report and try to answer the following questions:</p>
 
       <blockquote class="question">
-        <div id="question-questions-1" class="box-title" aria-label="question box: Questions"><i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden"></span> Question: Questions</div>
+        <div class="box-title question-title" id="question-questions-1" aria-label="question box: Questions"><i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden"></span> Question: Questions</div>
 
         <ol>
           <li>Which set of <span class="notranslate">reads</span> (forward or reverse <span class="notranslate">reads</span>) did profit most quality-wise from our low-quality base trimming?</li>
@@ -930,7 +922,7 @@ select <code class="language-plaintext highlighter-rouge">Copy Datasets</code>, 
         </ol>
 
         <blockquote class="solution">
-          <div id="solution-answers-1" class="box-title"><button type="button" aria-controls="solution-answers-1-contents" aria-expanded="true" aria-label="Toggle solution box: Answers"><i class="far fa-eye" aria-hidden="true"></i><span class="visually-hidden"></span> Solution: Answers<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
+          <div class="box-title solution-title" id="solution-answers-1"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-answers-1-contents" aria-expanded="true" aria-label="Toggle solution box: Answers"><i class="far fa-eye" aria-hidden="true"></i><span class="visually-hidden"></span> Solution: Answers<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
 
           <ol>
             <li>The forward <span class="notranslate">reads</span> were of worse quality in particular near their 3’-ends than the reverse <span class="notranslate">reads</span> and, consequently, were affected more strongly by trimming (see the different “quality” plots in the report).</li>
@@ -958,7 +950,7 @@ select <code class="language-plaintext highlighter-rouge">Copy Datasets</code>, 
 <p>To identify the best matching reference segments, we are going to run the tool <strong>VAPOR</strong> asking it to report the stats for any hits it identifies.</p>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-exploring-best-matching-reference-segment-scores" class="box-title" aria-label="hands-on box: Exploring best-matching reference segment scores"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Exploring best-matching reference segment scores</div>
+  <div class="box-title hands-on-title" id="hands-on-exploring-best-matching-reference-segment-scores" aria-label="hands-on box: Exploring best-matching reference segment scores"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Exploring best-matching reference segment scores</div>
 
   <ol>
     <li><span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/iuc/vapor/vapor/1.0.2+galaxy3" title="Tested with toolshed.g2.bx.psu.edu/repos/iuc/vapor/vapor/1.0.2+galaxy3"><strong>VAPOR</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: <span class="notranslate">toolshed</span>.g2.bx.psu.edu/repos/iuc/vapor/vapor/1.0.2+<span class="notranslate">galaxy</span>3</span></span>
@@ -980,7 +972,7 @@ select <code class="language-plaintext highlighter-rouge">Copy Datasets</code>, 
       <p><i class="far fa-eye" aria-hidden="true"></i><span class="visually-hidden"><span class="notranslate">galaxy</span>-eye</span> Explore the output collection produced by the tool</p>
 
       <blockquote class="question">
-        <div id="question-questions-2" class="box-title" aria-label="question box: Questions"><i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden"></span> Question: Questions</div>
+        <div class="box-title question-title" id="question-questions-2" aria-label="question box: Questions"><i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden"></span> Question: Questions</div>
 
         <ol>
           <li>Is there a difference between the results for segment 4 (encoding HA), segment 6 (encoding NA) and those for the remaining segments?</li>
@@ -988,7 +980,7 @@ select <code class="language-plaintext highlighter-rouge">Copy Datasets</code>, 
         </ol>
 
         <blockquote class="solution">
-          <div id="solution-answers-2" class="box-title"><button type="button" aria-controls="solution-answers-2-contents" aria-expanded="true" aria-label="Toggle solution box: Answers"><i class="far fa-eye" aria-hidden="true"></i><span class="visually-hidden"></span> Solution: Answers<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
+          <div class="box-title solution-title" id="solution-answers-2"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-answers-2-contents" aria-expanded="true" aria-label="Toggle solution box: Answers"><i class="far fa-eye" aria-hidden="true"></i><span class="visually-hidden"></span> Solution: Answers<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
 
           <ol>
             <li>The values for <code class="language-plaintext highlighter-rouge">% of query bases in <span class="notranslate">reads</span></code> and for <code class="language-plaintext highlighter-rouge">Total score</code> are drastically lower for the HA and somewhat lower for the NA segment than for any of the other segments. This could be due to the structure of the collection of references we have used, but also fits very well with the higher selection pressure on NA and, in particular on HA, as the main antigenic proteins of the virus, which leads to higher variability in these segments than in the others.</li>
@@ -1009,7 +1001,7 @@ select <code class="language-plaintext highlighter-rouge">Copy Datasets</code>, 
 <p>Now that we have established that things <em>may</em> make sense, we can use the output of <strong>VAPOR</strong> to extract the actual sequence of the top hit for each reference segment. We then concatenate these best matches into a hybrid reference genome for <span class="notranslate">mapping</span>.</p>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-obtaining-sequences-of-top-hits-identified-by-vapor" class="box-title" aria-label="hands-on box: Obtaining sequences of top hits identified by VAPOR"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Obtaining sequences of top hits identified by VAPOR</div>
+  <div class="box-title hands-on-title" id="hands-on-obtaining-sequences-of-top-hits-identified-by-vapor" aria-label="hands-on box: Obtaining sequences of top hits identified by VAPOR"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Obtaining sequences of top hits identified by VAPOR</div>
 
   <ol>
     <li><span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/bgruening/text_processing/tp_find_and_replace/1.1.4" title="Tested with toolshed.g2.bx.psu.edu/repos/bgruening/text_processing/tp_find_and_replace/1.1.4"><strong>Replace parts of text</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: <span class="notranslate">toolshed</span>.g2.bx.psu.edu/repos/bgruening/text_processing/tp_find_and_replace/1.1.4</span></span>  to extract just the name of the sequence from each line of VAPOR’s output
@@ -1053,12 +1045,12 @@ select <code class="language-plaintext highlighter-rouge">Copy Datasets</code>, 
 <p>If things went well, the hybrid reference we just obtained should be close enough across all segments to our sample to allow successful <span class="notranslate">mapping</span> of <span class="notranslate">reads</span>. Before we start the <span class="notranslate">mapping</span> we may want to truncate the segment names in our hybrid reference genome though because currently these names still reflect the full origin of the segment sequences, but from now on we are fine with just the segment ID. We can use the <strong>Replace</strong> tool from before again to truncate the names.</p>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-shortening-sequence-titles" class="box-title" aria-label="hands-on box: Shortening sequence titles"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Shortening sequence titles</div>
+  <div class="box-title hands-on-title" id="hands-on-shortening-sequence-titles" aria-label="hands-on box: Shortening sequence titles"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Shortening sequence titles</div>
 
   <ol>
     <li><span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/bgruening/text_processing/tp_find_and_replace/1.1.4" title="Tested with toolshed.g2.bx.psu.edu/repos/bgruening/text_processing/tp_find_and_replace/1.1.4"><strong>Replace parts of text</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: <span class="notranslate">toolshed</span>.g2.bx.psu.edu/repos/bgruening/text_processing/tp_find_and_replace/1.1.4</span></span>
       <ul>
-        <li><i class="far fa-folder" aria-hidden="true"></i><span class="visually-hidden">param-collection</span> <em>“File to process”</em>: the hybrid reference genome; output of <strong>Collapse Collection</strong></li>
+        <li><i class="far fa-file" aria-hidden="true"></i><span class="visually-hidden">param-file</span> <em>“File to process”</em>: the hybrid reference genome; output of <strong>Collapse Collection</strong></li>
         <li>In <i class="far fa-plus-square" aria-hidden="true"></i><span class="visually-hidden">param-repeat</span> <em>“1. Find and Replace”</em>:
           <ul>
             <li><em>“Find pattern”</em>: <code class="language-plaintext highlighter-rouge">^&gt;([^|]+).+$</code></li>
@@ -1075,7 +1067,7 @@ select <code class="language-plaintext highlighter-rouge">Copy Datasets</code>, 
 <p>Having polished the titles of the segments in our hybrid reference genome we are finally ready for <span class="notranslate">mapping</span>, which we will carry out with <strong>BWA-MEM</strong>, clean up a bit with <strong>Samtools view</strong> and produce a quality report for with <strong>QualiMap BamQC</strong>.</p>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-read-mapping-and-quality-control" class="box-title" aria-label="hands-on box: Read mapping and quality control"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Read <span class="notranslate">mapping</span> and quality control</div>
+  <div class="box-title hands-on-title" id="hands-on-read-mapping-and-quality-control" aria-label="hands-on box: Read mapping and quality control"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Read <span class="notranslate">mapping</span> and quality control</div>
 
   <ol>
     <li><span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/devteam/bwa/bwa_mem/0.7.17.2" title="Tested with toolshed.g2.bx.psu.edu/repos/devteam/bwa/bwa_mem/0.7.17.2"><strong>Map with BWA-MEM</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: <span class="notranslate">toolshed</span>.g2.bx.psu.edu/repos/devteam/bwa/bwa_mem/0.7.17.2</span></span>
@@ -1113,7 +1105,7 @@ select <code class="language-plaintext highlighter-rouge">Copy Datasets</code>, 
       <p><i class="far fa-eye" aria-hidden="true"></i><span class="visually-hidden"><span class="notranslate">galaxy</span>-eye</span> Study the report generated with QualiMap</p>
 
       <blockquote class="question">
-        <div id="question-questions-3" class="box-title" aria-label="question box: Questions"><i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden"></span> Question: Questions</div>
+        <div class="box-title question-title" id="question-questions-3" aria-label="question box: Questions"><i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden"></span> Question: Questions</div>
 
         <ol>
           <li>What is the coverage of each segment by the sequenced <span class="notranslate">reads</span>, and is it uniform?</li>
@@ -1121,7 +1113,7 @@ select <code class="language-plaintext highlighter-rouge">Copy Datasets</code>, 
         </ol>
 
         <blockquote class="solution">
-          <div id="solution-answers-3" class="box-title"><button type="button" aria-controls="solution-answers-3-contents" aria-expanded="true" aria-label="Toggle solution box: Answers"><i class="far fa-eye" aria-hidden="true"></i><span class="visually-hidden"></span> Solution: Answers<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
+          <div class="box-title solution-title" id="solution-answers-3"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-answers-3-contents" aria-expanded="true" aria-label="Toggle solution box: Answers"><i class="far fa-eye" aria-hidden="true"></i><span class="visually-hidden"></span> Solution: Answers<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
 
           <ol>
             <li>Coverage is rather different for the different segments. Looking at “Mean coverage” and its “Standard deviation” in the “Chromosome stats” table and at the “Coverage across reference” plot, coverage of the HA segment seems to be most critical since it approaches zero in some regions.</li>
@@ -1144,13 +1136,13 @@ select <code class="language-plaintext highlighter-rouge">Copy Datasets</code>, 
 <p>Unfortunately, the tool we are going to use for this, <strong>ivar consensus</strong>, is not capable of working with more than one reference name at a time, but because this is influenza data we have <span class="notranslate">mapping</span>s to 8 different segments described in our data. So we need to take a little detour and split the mapped <span class="notranslate">reads</span> data into a collection of datasets each containing the <span class="notranslate">mapping</span>s for just one segment first again, then perform the consensus construction for all of them in parallel.</p>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-splitting-mapped-reads-by-genome-segment" class="box-title" aria-label="hands-on box: Splitting mapped reads by genome segment"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Splitting mapped <span class="notranslate">reads</span> by genome segment</div>
+  <div class="box-title hands-on-title" id="hands-on-splitting-mapped-reads-by-genome-segment" aria-label="hands-on box: Splitting mapped reads by genome segment"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Splitting mapped <span class="notranslate">reads</span> by genome segment</div>
 
   <ol>
     <li><span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/iuc/bamtools_split_ref/bamtools_split_ref/2.5.1+galaxy0" title="Tested with toolshed.g2.bx.psu.edu/repos/iuc/bamtools_split_ref/bamtools_split_ref/2.5.1+galaxy0"><strong>Split BAM by Reference</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: <span class="notranslate">toolshed</span>.g2.bx.psu.edu/repos/iuc/bamtools_split_ref/bamtools_split_ref/2.5.1+<span class="notranslate">galaxy</span>0</span></span>
       <ul>
         <li><i class="far fa-file" aria-hidden="true"></i><span class="visually-hidden">param-file</span> <em>“BAM dataset to split by reference”</em>: filtered mapped <span class="notranslate">reads</span>; output of <strong>Samtools view</strong></li>
-        <li><em>“Select references (chromosomes and contigs) you would like to restrict bam to”</em>: <code class="language-plaintext highlighter-rouge">Select all</code></li>
+        <li><em>“Select references (chromosomes and contigs) you would like to restrict bam to”</em>: <code class="language-plaintext highlighter-rouge">Unselect all</code></li>
       </ul>
     </li>
   </ol>
@@ -1160,7 +1152,7 @@ select <code class="language-plaintext highlighter-rouge">Copy Datasets</code>, 
 <p>The output from this step has the desired collection structure, but the names of the collection elements are not the nicest. Ideally, we would just reuse the segment names, which are already provided in our <span class="notranslate">mapping</span> reference genome. So lets extract these names again and use them as new element labels</p>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-relabeling-collection-elements" class="box-title" aria-label="hands-on box: Relabeling collection elements"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Relabeling collection elements</div>
+  <div class="box-title hands-on-title" id="hands-on-relabeling-collection-elements" aria-label="hands-on box: Relabeling collection elements"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Relabeling collection elements</div>
 
   <ol>
     <li><span class="tool" data-tool="Grep1" title="Tested with Grep1"><strong>Select lines that match an <span class="notranslate">expression</span></strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: Grep1</span></span>
@@ -1210,7 +1202,7 @@ select <code class="language-plaintext highlighter-rouge">Copy Datasets</code>, 
 <p><i class="fas fa-info-circle" aria-hidden="true"></i><span class="visually-hidden"><span class="notranslate">galaxy</span>-info</span> All of the above limits for consensus base calling are arbitrary to some degree, and depend somewhat on the quality of the sequencing data. With very high overall coverage, for example, it is possible to increase the coverage threshold, but if you increase that threshold too much, you may end up with a consensus sequence consisting mostly of Ns.</p>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-per-segment-consensus-construction" class="box-title" aria-label="hands-on box: Per-segment consensus construction"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Per-segment consensus construction</div>
+  <div class="box-title hands-on-title" id="hands-on-per-segment-consensus-construction" aria-label="hands-on box: Per-segment consensus construction"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Per-segment consensus construction</div>
 
   <ol>
     <li><span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/iuc/ivar_consensus/ivar_consensus/1.3.1+galaxy0" title="Tested with toolshed.g2.bx.psu.edu/repos/iuc/ivar_consensus/ivar_consensus/1.3.1+galaxy0"><strong>ivar consensus</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: <span class="notranslate">toolshed</span>.g2.bx.psu.edu/repos/iuc/ivar_consensus/ivar_consensus/1.3.1+<span class="notranslate">galaxy</span>0</span></span>
@@ -1242,12 +1234,12 @@ the names just providing a bit too much detail for our purpose.</p>
       <p><i class="far fa-eye" aria-hidden="true"></i><span class="visually-hidden"><span class="notranslate">galaxy</span>-eye</span> Inspect each consensus sequence generated for the different segments</p>
 
       <blockquote class="question">
-        <div id="question-question" class="box-title" aria-label="question box: Question"><i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden"></span> Question: Question</div>
+        <div class="box-title question-title" id="question" aria-label="question box: "><i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden"></span> Question</div>
 
         <p>Does everything look ok?</p>
 
         <blockquote class="solution">
-          <div id="solution-answer" class="box-title"><button type="button" aria-controls="solution-answer-contents" aria-expanded="true" aria-label="Toggle solution box: Answer"><i class="far fa-eye" aria-hidden="true"></i><span class="visually-hidden"></span> Solution: Answer<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
+          <div class="box-title solution-title" id="solution-answer"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-answer-contents" aria-expanded="true" aria-label="Toggle solution box: Answer"><i class="far fa-eye" aria-hidden="true"></i><span class="visually-hidden"></span> Solution: Answer<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
 
           <p>As expected from the findings so far, the consensus sequence for the HA segment has stretches of Ns in it, which likely reflect the <span class="notranslate">mapping</span> issues and associated loss of coverage caused by our insufficiently sized collection of references.</p>
 
@@ -1264,7 +1256,7 @@ the names just providing a bit too much detail for our purpose.</p>
 To do so, we are going to build multiple sequence alignments (MSAs) per segment of all reference sequences, add our sample segments to those alignments, and build phylogenetic trees, one per segment. We are going to use two rather standard tools, <strong>MAFFT</strong> and <strong>IQTree</strong>, for generating MSAs and trees, respectively.</p>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-exploring-phylogeny" class="box-title" aria-label="hands-on box: Exploring phylogeny"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Exploring phylogeny</div>
+  <div class="box-title hands-on-title" id="hands-on-exploring-phylogeny" aria-label="hands-on box: Exploring phylogeny"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Exploring phylogeny</div>
 
   <ol>
     <li><span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/rnateam/mafft/rbc_mafft/7.508+galaxy0" title="Tested with toolshed.g2.bx.psu.edu/repos/rnateam/mafft/rbc_mafft/7.508+galaxy0"><strong>MAFFT</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: <span class="notranslate">toolshed</span>.g2.bx.psu.edu/repos/<span class="notranslate">rna</span>team/mafft/rbc_mafft/7.508+<span class="notranslate">galaxy</span>0</span></span>
@@ -1296,12 +1288,12 @@ To do so, we are going to build multiple sequence alignments (MSAs) per segment 
       <p><i class="far fa-eye" aria-hidden="true"></i><span class="visually-hidden"><span class="notranslate">galaxy</span>-eye</span> Explore each of the final trees produced by IQTree for the different segments</p>
 
       <blockquote class="question">
-        <div id="question-question-1" class="box-title" aria-label="question box: Question"><i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden"></span> Question: Question</div>
+        <div class="box-title question-title" id="question-1" aria-label="question box: "><i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden"></span> Question</div>
 
         <p>What are your conclusions about the sample in general and its HA and NA segments in particular?</p>
 
         <blockquote class="solution">
-          <div id="solution-answers-4" class="box-title"><button type="button" aria-controls="solution-answers-4-contents" aria-expanded="true" aria-label="Toggle solution box: Answers"><i class="far fa-eye" aria-hidden="true"></i><span class="visually-hidden"></span> Solution: Answers<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
+          <div class="box-title solution-title" id="solution-answers-4"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-answers-4-contents" aria-expanded="true" aria-label="Toggle solution box: Answers"><i class="far fa-eye" aria-hidden="true"></i><span class="visually-hidden"></span> Solution: Answers<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
 
           <ul>
             <li>For most of its segments the sample resembles relatively recent (from the last decade) Eurasian reference sequences.</li>
@@ -1324,7 +1316,6 @@ To do so, we are going to build multiple sequence alignments (MSAs) per segment 
 <p>Nevertheless, it looks possible, with carefully chosen reference segment sequences and bioinformatic tools, to avoid a computationally expensive de-novo assembly approach and to use <span class="notranslate">mapping</span> against a dynamically compiled reference genome instead.</p>
 
 <p>The rather small reference segment collection suggested for this tutorial consists of 56 different samples, of which only a single one has the H4N6 subtype of the sample analyzed here. Still it allowed us to perform subtyping of the sample, to construct complete consensus sequences for 7 segments including NA, and to draw valuable conclusions about the origin of the sample. It is conceivable that a larger collection of references chosen to capture several strains from each HA subtype could solve the remaining issue of the incomplete HA consensus sequence.</p>
-
 
 
                 
@@ -1433,19 +1424,21 @@ day = ""
 url = "\url{https://training.galaxyproject.org/training-material/topics/variant-analysis/tutorials/aiv-analysis/tutorial.html}",
 note = "[Online; accessed TODAY]"
 }
-@article{Batut_2018,
-    doi = {10.1016/j.cels.2018.05.012},
-    url = {https://doi.org/10.1016%2Fj.cels.2018.05.012},
-    year = 2018,
-    month = {jun},
-    publisher = {Elsevier {BV}},
-    volume = {6},
-    number = {6},
-    pages = {752--758.e1},
-    author = {B{\'{e}}r{\'{e}}nice Batut and Saskia Hiltemann and Andrea Bagnacani and Dannon Baker and Vivek Bhardwaj and Clemens Blank and Anthony Bretaudeau and Loraine Brillet-Gu{\'{e}}guen and Martin {\v{C}}ech and John Chilton and Dave Clements and Olivia Doppelt-Azeroual and Anika Erxleben and Mallory Ann Freeberg and Simon Gladman and Youri Hoogstrate and Hans-Rudolf Hotz and Torsten Houwaart and Pratik Jagtap and Delphine Larivi{\`{e}}re and Gildas Le Corguill{\'{e}} and Thomas Manke and Fabien Mareuil and Fidel Ram{\'{\i}}rez and Devon Ryan and Florian Christoph Sigloch and Nicola Soranzo and Joachim Wolff and Pavankumar Videm and Markus Wolfien and Aisanjiang Wubuli and Dilmurat Yusuf and James Taylor and Rolf Backofen and Anton Nekrutenko and Björn Grüning},
-    title = {Community-Driven Data Analysis Training for Biology},
-    journal = {Cell Systems}
-}</code>
+@article{Hiltemann_2023,
+	doi = {10.1371/journal.pcbi.1010752},
+	url = {https://doi.org/10.1371%2Fjournal.pcbi.1010752},
+	year = 2023,
+	month = {jan},
+	publisher = {Public Library of Science ({PLoS})},
+	volume = {19},
+	number = {1},
+	pages = {e1010752},
+	author = {Saskia Hiltemann and Helena Rasche and Simon Gladman and Hans-Rudolf Hotz and Delphine Larivi{\`{e}}re and Daniel Blankenberg and Pratik D. Jagtap and Thomas Wollmann and Anthony Bretaudeau and Nadia Gou{\'{e}} and Timothy J. Griffin and Coline Royaux and Yvan Le Bras and Subina Mehta and Anna Syme and Frederik Coppens and Bert Droesbeke and Nicola Soranzo and Wendi Bacon and Fotis Psomopoulos and Crist{\'{o}}bal Gallardo-Alba and John Davis and Melanie Christine Föll and Matthias Fahrner and Maria A. Doyle and Beatriz Serrano-Solano and Anne Claire Fouilloux and Peter van Heusden and Wolfgang Maier and Dave Clements and Florian Heyl and Björn Grüning and B{\'{e}}r{\'{e}}nice Batut and},
+	editor = {Francis Ouellette},
+	title = {Galaxy Training: A powerful framework for teaching!},
+	journal = {PLoS Comput Biol} Computational Biology}
+}
+</code>
                    </pre></div></div>
                    </p>
                 </blockquote>
@@ -1483,8 +1476,6 @@ document.getElementById("citation-text").innerHTML = document.getElementById("ci
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
         <script type="text/javascript" src="/training-material/assets/js/bootstrap-toc.min.js"></script>
         <script type="text/javascript" src="/training-material/assets/js/main.js"></script>
-        <script type="text/javascript" src="/training-material/assets/js/theme.js"></script>
-
         <script type="text/javascript" src="/training-material/assets/js/clipboard.min.js"></script>
         <script type="text/javascript">
         var snippets=document.querySelectorAll('div.highlight');

@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="utf-8">
@@ -14,7 +14,6 @@
         <link rel="stylesheet" href="/training-material/assets/css/main.css?v=2">
         <script src="https://kit.fontawesome.com/67b3f98409.js" crossorigin="anonymous"></script>
         <link rel="stylesheet" href="/training-material/assets/css/academicons.css">
-        <link rel="stylesheet" href="/training-material/assets/css/syntax_highlighting.css">
         <link rel="shortcut icon" href="/training-material/favicon.ico" type="image/x-icon" />
         <link rel="alternate" type="application/atom+xml" href="/training-material/feed.xml" />
         <link rel="canonical" href="https://training.galaxyproject.org/training-material/topics/variant-analysis/tutorials/sars-cov-2-variant-discovery/tutorial.html" />
@@ -32,228 +31,15 @@
         
         
         
-        
         <meta name="description" content="Genetic differences (variants) between healthy and diseas..." />
         <meta property="og:site_name" content="Galaxy Training Network" />
         <meta property="og:title" content="Galaxy Training: Mutation calling, viral genome reconstruction and lineage..." />
         <meta property="og:description" content="Genetic differences (variants) between healthy and diseas..." />
         <meta property="og:image" content="/training-material/assets/images/GTNLogo1000.png" />
 
-    </head>
-    <body data-spy="scroll" data-target="#toc">
-        <header>
-    <nav class="navbar navbar-expand-md navbar-dark" aria-label="Site Navigation">
-        <div class="container">
-            <a class="navbar-brand" href="/training-material/">
-                <img src="/training-material/assets/images/GTN-60px.png" height="30" alt="Galaxy Training Network logo">
-                Galaxy Training!
-            </a>
-
-            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#top-navbar" aria-controls="top-navbar" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="top-navbar">
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        
-                        <a class="nav-link" href="/training-material/topics/variant-analysis" title="Go back to list of tutorials">
-                            <i class="far fa-folder" aria-hidden="true"></i> Variant Analysis
-                        </a>
-                        
-                    </li>
-
-                    <li class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false" title="Languages">
-                            <i class="fas fa-language" aria-hidden="true"></i><span class="visually-hidden">language</span> Languages
-                        </a>
-                        <div class="dropdown-menu dropdown-menu-right">
-                            
-                              <strong class="dropdown-header">Automatic Translations</strong>
-            
-            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=fr&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/variant-analysis/tutorials/sars-cov-2-variant-discovery/tutorial.html&edit-text=&act=url">
-                            Français
-                            </a>
-                            
-            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=ja&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/variant-analysis/tutorials/sars-cov-2-variant-discovery/tutorial.html&edit-text=&act=url">
-                            日本語
-                            </a>
-                            
-            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=es&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/variant-analysis/tutorials/sars-cov-2-variant-discovery/tutorial.html&edit-text=&act=url">
-                            Español
-                            </a>
-                            
-            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=pt&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/variant-analysis/tutorials/sars-cov-2-variant-discovery/tutorial.html&edit-text=&act=url">
-                            Português
-                            </a>
-                            
-            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=ar&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/variant-analysis/tutorials/sars-cov-2-variant-discovery/tutorial.html&edit-text=&act=url">
-                            العربية
-                            </a>
-                            
-                            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/variant-analysis/tutorials/sars-cov-2-variant-discovery/tutorial.html&edit-text=&act=url" title="">
-                            And more!
-                            </a>
-                        </div>
-                    </li>
-
-                    <li class="nav-item dropdown">
-    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false" title="Help">
-        <i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden">help</span> Help
-    </a>
-    <div class="dropdown-menu dropdown-menu-right">
-        <!-- disable Tess for now
-        <form method="get" action="https://tess.elixir-europe.org/materials">
-            <input type="text" id="search" name="q" value="" style="margin-left: 0.5em;/*! border-radius: 0px; */">
-            <input type="hidden" value="Galaxy Training" name="content_provider">
-            <input type="submit" value="Search on TeSS" style="width: 92%;border-radius: 0px;margin: 0.5em;background: #f47d20;border: 0px;padding: 0.25em;" class="">
-        </form>
-        -->
-
-        <a class="dropdown-item" href="/training-material/faq" title="Check our FAQs">
-           <i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden">question</span> FAQs
-        </a>
         
-        <a class="dropdown-item" href="/training-material/topics/variant-analysis/faqs/" title="Check our FAQs for the Variant Analysis topic">
-           <i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden">question</span> Topic FAQs
-        </a>
-        
-        <a class="dropdown-item" href="https://help.galaxyproject.org/" title="Discuss on Galaxy Help">
-            <i class="far fa-comments" aria-hidden="true"></i><span class="visually-hidden">feedback</span> Galaxy Help Forum
-        </a>
-        <a class="dropdown-item" href="https://gitter.im/Galaxy-Training-Network/Lobby" title="Discuss on gitter">
-           <i class="fab fa-gitter" aria-hidden="true"></i><span class="visually-hidden">gitter</span> Discuss on Gitter
-        </a>
-    </div>
-</li>
-
-
-                    <li class="nav-item dropdown">
-    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false" title="Extras">
-        <i class="far fa-star" aria-hidden="true"></i><span class="visually-hidden">galaxy-star</span> Extras
-    </a>
-    <div class="dropdown-menu dropdown-menu-right">
-
-        
-        <a class="dropdown-item" href="https://github.com/galaxyproject/training-material/edit/main/topics/variant-analysis/tutorials/sars-cov-2-variant-discovery/tutorial.md" title="Edit on GitHub">
-          <i class="fab fa-github" aria-hidden="true"></i><span class="visually-hidden">github</span> Edit on GitHub
-        </a>
-
-        <a class="dropdown-item" href="/training-material/stats.html" title="Show view statistics about this repository">
-            <i class="fas fa-chart-bar" aria-hidden="true"></i><span class="visually-hidden">galaxy-barchart</span> GTN statistics
-        </a>
-
-        <a class="dropdown-item" href="https://plausible.galaxyproject.eu/training.galaxyproject.org?period=12mo&page=/training-material/topics/variant-analysis/tutorials/sars-cov-2-variant-discovery/tutorial.html" title="Show view statistics of this page">
-            <i class="fas fa-chart-bar" aria-hidden="true"></i><span class="visually-hidden">galaxy-barchart</span> Page Metrics
-        </a>
-
-        <!-- link to feedback -->
-        
+        <script type="application/ld+json">
             
-            
-                <a class="dropdown-item" href="/training-material/feedback.html" title="Show feedback statistics about this repository">
-                    <i class="fas fa-chart-bar" aria-hidden="true"></i><span class="visually-hidden">galaxy-barchart</span> GTN feedback
-                </a>
-            
-        
-
-        <div class="dropdown-item">
-            <div>
-                <i class="fas fa-palette" aria-hidden="true"></i><span class="visually-hidden">gtn-theme</span> Theme
-            </div>
-
-            <div id="theme-selector" data-toggle="buttons">
-                <label data-value="default" class="btn btn-secondary">
-                    <input type="radio" name="options" id="default" autocomplete="off"> Default
-                </label>
-                <label data-value="night" class="btn btn-secondary">
-                    <input type="radio" name="options" id="night" autocomplete="off"> Night
-                </label>
-                <label data-value="midnight" class="btn btn-secondary">
-                    <input type="radio" name="options" id="midnight" autocomplete="off"> Midnight
-                </label>
-                <label data-value="rainbow" class="btn btn-secondary">
-                    <input type="radio" name="options" id="rainbow" autocomplete="off"> Rainbow
-                </label>
-                <label data-value="progress" class="btn btn-secondary">
-                    <input type="radio" name="options" id="progress" autocomplete="off">🏳️‍🌈
-                </label>
-                <label data-value="halloween" class="btn btn-secondary">
-                    <input type="radio" name="options" id="halloween" autocomplete="off"> 🎃
-                </label>
-                <label data-value="straya" class="btn btn-secondary">
-                    <input type="radio" name="options" id="downunder" autocomplete="off"> 🇦🇺
-                </label>
-            </div>
-
-        </div>
-
-        <div class="dropdown-item">
-            <div>
-                <i class="fas fa-history" aria-hidden="true"></i><span class="visually-hidden">galaxy-rulebuilder-history</span> Previous Versions
-            </div>
-
-            <div id="archive-selector">
-            
-                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2020-01-06/topics/variant-analysis/tutorials/sars-cov-2-variant-discovery/tutorial.html" title="Version 2020-01-06">2020-01-06</a>
-            
-                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2019-12-01/topics/variant-analysis/tutorials/sars-cov-2-variant-discovery/tutorial.html" title="Version 2019-12-01">2019-12-01</a>
-            
-                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2019-11-01/topics/variant-analysis/tutorials/sars-cov-2-variant-discovery/tutorial.html" title="Version 2019-11-01">2019-11-01</a>
-            
-                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/" title="Older Versions">Older Versions</a>
-            </div>
-
-        </div>
-
-    </div>
-</li>
-
-
-                    <!-- Search bar-->
-                    <li class="nav-item">
-                      <div id="navbarSupportedContent" role="search">
-                        <!-- Search form -->
-                        <form class="form-inline mr-auto" method="GET" action="/training-material/search">
-                          <i class="fas fa-search nav-link" aria-hidden="true"></i>
-                          <div class="md-form mb-2">
-                            <input name="query" class="form-control nicer" type="text" placeholder="Search Tutorials" aria-label="Search">
-                          </div>
-                        </form>
-                      </div>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-</header>
-
-        <div class="container main-content" role="main">
-        
-
-
-
-
-
-
-
-
-
-
-
-<!-- Gitter -->
-
-
-
-
-<script>
-  ((window.gitter = {}).chat = {}).options = {
-  room: 'Galaxy-Training-Network/Lobby'
-  };
-</script>
-<script src="https://sidecar.gitter.im/dist/sidecar.v1.js" async defer></script>
-
-<script type="application/ld+json">
-    
 
 
 {
@@ -433,7 +219,9 @@
           "name": "Galaxy Training Network",
           "url": "https://galaxyproject.org/teach/gtn/"
         }
-      ]
+      ],
+      "identifier": "https://orcid.org/0000-0002-9464-6640",
+      "orcid": "https://orcid.org/0000-0002-9464-6640"
     },
     {
       "@context": "https://schema.org",
@@ -479,7 +267,9 @@
           "name": "Galaxy Training Network",
           "url": "https://galaxyproject.org/teach/gtn/"
         }
-      ]
+      ],
+      "identifier": "https://orcid.org/0000-0002-9464-6640",
+      "orcid": "https://orcid.org/0000-0002-9464-6640"
     },
     {
       "@context": "https://schema.org",
@@ -522,7 +312,210 @@
   ],
   "educationalLevel": "Intermediate"
 }
+        </script>
+        
+    </head>
+    <body data-spy="scroll" data-target="#toc">
+        <script type="text/javascript" src="/training-material/assets/js/theme.js"></script>
+        <header>
+    <nav class="navbar navbar-expand-md navbar-dark" aria-label="Site Navigation">
+        <div class="container">
+            <a class="navbar-brand" href="/training-material/">
+                <img src="/training-material/assets/images/GTN-60px.png" height="30" alt="Galaxy Training Network logo">
+                Galaxy Training!
+            </a>
+
+            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#top-navbar" aria-controls="top-navbar" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="top-navbar">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        
+                        <a class="nav-link" href="/training-material/topics/variant-analysis" title="Go back to list of tutorials">
+                            <i class="far fa-folder" aria-hidden="true"></i> Variant Analysis
+                        </a>
+                        
+                    </li>
+
+                    <li class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false" title="Languages">
+                            <i class="fas fa-language" aria-hidden="true"></i><span class="visually-hidden">language</span> Languages
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right">
+                            
+                              <strong class="dropdown-header">Automatic Translations</strong>
+            
+            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=fr&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/variant-analysis/tutorials/sars-cov-2-variant-discovery/tutorial.html&edit-text=&act=url">
+                            Français
+                            </a>
+                            
+            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=ja&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/variant-analysis/tutorials/sars-cov-2-variant-discovery/tutorial.html&edit-text=&act=url">
+                            日本語
+                            </a>
+                            
+            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=es&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/variant-analysis/tutorials/sars-cov-2-variant-discovery/tutorial.html&edit-text=&act=url">
+                            Español
+                            </a>
+                            
+            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=pt&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/variant-analysis/tutorials/sars-cov-2-variant-discovery/tutorial.html&edit-text=&act=url">
+                            Português
+                            </a>
+                            
+            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=ar&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/variant-analysis/tutorials/sars-cov-2-variant-discovery/tutorial.html&edit-text=&act=url">
+                            العربية
+                            </a>
+                            
+                            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/variant-analysis/tutorials/sars-cov-2-variant-discovery/tutorial.html&edit-text=&act=url" title="">
+                            And more!
+                            </a>
+                        </div>
+                    </li>
+
+                    <li class="nav-item dropdown">
+    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false" title="Help">
+        <i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden">help</span> Help
+    </a>
+    <div class="dropdown-menu dropdown-menu-right">
+        <!-- disable Tess for now
+        <form method="get" action="https://tess.elixir-europe.org/materials">
+            <input type="text" id="search" name="q" value="" style="margin-left: 0.5em;/*! border-radius: 0px; */">
+            <input type="hidden" value="Galaxy Training" name="content_provider">
+            <input type="submit" value="Search on TeSS" style="width: 92%;border-radius: 0px;margin: 0.5em;background: #f47d20;border: 0px;padding: 0.25em;" class="">
+        </form>
+        -->
+
+        <a class="dropdown-item" href="/training-material/faq" title="Check our FAQs">
+           <i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden">question</span> FAQs
+        </a>
+        
+        
+        <a class="dropdown-item" href="/training-material/topics/variant-analysis/faqs/" title="Check our FAQs for the Variant Analysis topic">
+           <i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden">question</span> Topic FAQs
+        </a>
+        
+        
+        <a class="dropdown-item" href="https://help.galaxyproject.org/" title="Discuss on Galaxy Help">
+            <i class="far fa-comments" aria-hidden="true"></i><span class="visually-hidden">feedback</span> Galaxy Help Forum
+        </a>
+        <a class="dropdown-item" href="https://gitter.im/Galaxy-Training-Network/Lobby" title="Discuss on gitter">
+           <i class="fab fa-gitter" aria-hidden="true"></i><span class="visually-hidden">gitter</span> Discuss on Gitter
+        </a>
+    </div>
+</li>
+
+
+                    <li class="nav-item dropdown">
+    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false" title="Extras">
+        <i class="far fa-star" aria-hidden="true"></i><span class="visually-hidden">galaxy-star</span> Extras
+    </a>
+    <div class="dropdown-menu dropdown-menu-right">
+
+        
+        <a class="dropdown-item" href="https://github.com/galaxyproject/training-material/edit/main/topics/variant-analysis/tutorials/sars-cov-2-variant-discovery/tutorial.md" title="Edit on GitHub">
+          <i class="fab fa-github" aria-hidden="true"></i><span class="visually-hidden">github</span> Edit on GitHub
+        </a>
+
+        <a class="dropdown-item" href="/training-material/stats.html" title="Show view statistics about this repository">
+            <i class="fas fa-chart-bar" aria-hidden="true"></i><span class="visually-hidden">galaxy-barchart</span> GTN statistics
+        </a>
+
+        <a class="dropdown-item" href="https://plausible.galaxyproject.eu/training.galaxyproject.org?period=12mo&page=/training-material/topics/variant-analysis/tutorials/sars-cov-2-variant-discovery/tutorial.html" title="Show view statistics of this page">
+            <i class="fas fa-chart-bar" aria-hidden="true"></i><span class="visually-hidden">galaxy-barchart</span> Page Metrics
+        </a>
+
+        <!-- link to feedback -->
+        
+            
+            
+                <a class="dropdown-item" href="/training-material/feedback.html" title="Show feedback statistics about this repository">
+                    <i class="fas fa-chart-bar" aria-hidden="true"></i><span class="visually-hidden">galaxy-barchart</span> GTN feedback
+                </a>
+            
+        
+
+        <div class="dropdown-item">
+            <div>
+                <i class="fas fa-palette" aria-hidden="true"></i><span class="visually-hidden">gtn-theme</span> Theme
+            </div>
+
+            <div id="theme-selector" data-toggle="buttons">
+                    <button class="btn" data-theme="default">Default</button>
+                    <button class="btn" data-theme="night">Night</button>
+                    <button class="btn" data-theme="midnight">Midnight</button>
+                    <button class="btn" data-theme="rainbow">Rainbow</button>
+                    <button class="btn" data-theme="blm">✊🏿</button>
+                    <button class="btn" data-theme="progress" >🏳️‍🌈</button>
+                    <button class="btn" data-theme="halloween">🎃</button>
+                    <button class="btn" data-theme="straya">🇦🇺</button>
+            </div>
+
+        </div>
+
+        <div class="dropdown-item">
+            <div>
+                <i class="fas fa-history" aria-hidden="true"></i><span class="visually-hidden">galaxy-rulebuilder-history</span> Previous Versions
+            </div>
+
+            <div id="archive-selector">
+            
+                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2020-01-06/topics/variant-analysis/tutorials/sars-cov-2-variant-discovery/tutorial.html" title="Version 2020-01-06">2020-01-06</a>
+            
+                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2019-12-01/topics/variant-analysis/tutorials/sars-cov-2-variant-discovery/tutorial.html" title="Version 2019-12-01">2019-12-01</a>
+            
+                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2019-11-01/topics/variant-analysis/tutorials/sars-cov-2-variant-discovery/tutorial.html" title="Version 2019-11-01">2019-11-01</a>
+            
+                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/" title="Older Versions">Older Versions</a>
+            </div>
+
+        </div>
+
+    </div>
+</li>
+
+
+                    <!-- Search bar-->
+                    <li class="nav-item">
+                      <div id="navbarSupportedContent" role="search">
+                        <!-- Search form -->
+                        <form class="form-inline mr-auto" method="GET" action="/training-material/search">
+                          <i class="fas fa-search nav-link" aria-hidden="true"></i>
+                          <div class="md-form mb-2">
+                            <input name="query" class="form-control nicer" type="text" placeholder="Search Tutorials" aria-label="Search">
+                          </div>
+                        </form>
+                      </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
+        <div class="container main-content" role="main">
+        
+
+
+
+
+
+
+
+
+
+
+
+<!-- Gitter -->
+
+
+
+
+<script>
+  ((window.gitter = {}).chat = {}).options = {
+  room: 'Galaxy-Training-Network/Lobby'
+  };
 </script>
+<script src="https://sidecar.gitter.im/dist/sidecar.v1.js" async defer></script>
 
 <section class="tutorial topic-variant-analysis">
     <h1 data-toc-skip>Mutation calling, viral genome reconstruction and lineage/clade assignment from SARS-CoV-2 sequencing data</h1>
@@ -531,7 +524,7 @@
     <div markdown="0">
 
 	<div class="contributors-line">
-		Authors: <a href="/training-material/hall-of-fame/wm75/" class="contributor-badge contributor-wm75"><img src="https://avatars.githubusercontent.com/wm75?s=27" alt="Avatar">Wolfgang Maier</a><a href="/training-material/hall-of-fame/bebatut/" class="contributor-badge contributor-bebatut"><img src="/training-material/assets/images/orcid.png" alt="orcid logo"/><img src="https://avatars.githubusercontent.com/bebatut?s=27" alt="Avatar">Bérénice Batut</a>
+		Authors: <a href="/training-material/hall-of-fame/wm75/" class="contributor-badge contributor-wm75"><img src="/training-material/assets/images/orcid.png" alt="orcid logo"/><img src="https://avatars.githubusercontent.com/wm75?s=27" alt="Avatar">Wolfgang Maier</a><a href="/training-material/hall-of-fame/bebatut/" class="contributor-badge contributor-bebatut"><img src="/training-material/assets/images/orcid.png" alt="orcid logo"/><img src="https://avatars.githubusercontent.com/bebatut?s=27" alt="Avatar">Bérénice Batut</a>
 	</div>
 
 </div>
@@ -599,8 +592,6 @@
                 
                     
                         
-                    
-                        
                             
                             <li> Quality Control:
                             
@@ -617,7 +608,15 @@
                     
                         
                     
+                        
+                    
+                        
+                    
                 
+                    
+                        
+                    
+                        
                     
                         
                             
@@ -632,8 +631,6 @@
                                 
                             
                             </li>
-                        
-                    
                         
                     
                         
@@ -672,31 +669,18 @@
         <div id="supporting-materials"><strong><i class="fa fa-external-link" aria-hidden="true"></i> Supporting Materials:</strong></div>
         <ul class="supporting_material">
             
-                <li class="btn btn-default supporting_material"><a href="/training-material/topics/variant-analysis/slides/introduction.html" title="Topic Overview slides">
-                    <i class="fab fa-slideshare" aria-hidden="true"></i> Topic Overview slides
-                </a></li>
-            
 
             
                 <li class="btn btn-default supporting_material">
 
 
 <a class="btn btn-default topic-icon" title="Zenodo datasets used in this tutorial" href="https://zenodo.org/record/5036687">
-    <i class="far fa-copy" aria-hidden="true"></i> Datasets
+    <i class="far fa-copy" aria-hidden="true"></i>&nbsp;Datasets
 </a>
 
 </li>
             
 
-            
-                <li class="btn btn-default supporting_material">
-
-
-    <a class="btn btn-default topic-icon" href="/training-material/topics/variant-analysis/tutorials/sars-cov-2-variant-discovery/workflows/" title="Workflows" alt="Mutation calling, viral genome reconstruction and lineage/clade assignment from SARS-CoV-2 sequencing data workflows">
-        <i class="fas fa-share-alt" aria-hidden="true"></i> Workflows
-    </a>
-
-</li>
             
 
             
@@ -813,7 +797,7 @@
 </ul>
 
 <blockquote class="details">
-  <div id="details-further-reading" class="box-title"><button type="button" aria-controls="details-further-reading-contents" aria-expanded="true" aria-label="Toggle details box: Further reading"><i class="fas fa-info-circle" aria-hidden="true"></i><span class="visually-hidden"></span> Details: Further reading<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
+  <div class="box-title details-title" id="details-further-reading"><button class="gtn-boxify-button details" type="button" aria-controls="details-further-reading-contents" aria-expanded="true" aria-label="Toggle details box: Further reading"><i class="fas fa-info-circle" aria-hidden="true"></i><span class="visually-hidden"></span> Details: Further reading<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
   <p>More information about the workflows, including benchmarking, can be found</p>
   <ul>
     <li>on the <span class="notranslate">Galaxy</span> Covid-19 effort website: <a href="https://covid19.galaxyproject.org/">covid19.<span class="notranslate">galaxy</span>project.org</a></li>
@@ -831,7 +815,7 @@
 </ul>
 
 <blockquote class="agenda">
-  <div id="agenda" class="box-title" aria-label="agenda box: ">Agenda</div>
+  <div class="box-title agenda-title" id="agenda" aria-label="agenda box: ">Agenda</div>
 
   <p>In this tutorial, we will cover:</p>
 
@@ -861,20 +845,20 @@
 <p>Any analysis should get its own <span class="notranslate">Galaxy</span> history. So let’s start by creating a new one:</p>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-prepare-the-galaxy-history" class="box-title" aria-label="hands-on box: Prepare the Galaxy history"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Prepare the <span class="notranslate">Galaxy</span> history</div>
+  <div class="box-title hands-on-title" id="hands-on-prepare-the-galaxy-history" aria-label="hands-on box: Prepare the Galaxy history"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Prepare the <span class="notranslate">Galaxy</span> history</div>
 
   <ol>
     <li>
       <p>Create a new history for this analysis</p>
 
       <!--SNIPPET-->
-      <blockquote class="tip">  <div id="tip-creating-a-new-history" class="box-title"><button type="button" aria-controls="tip-creating-a-new-history-contents" aria-expanded="true" aria-label="Toggle tip box: Creating a new history"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: Creating a new history<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>  <p>Click the <i class="fas fa-plus" aria-hidden="true"></i><span class="visually-hidden">new-history</span> icon at the top of the history panel.</p>  <p>If the <i class="fas fa-plus" aria-hidden="true"></i><span class="visually-hidden">new-history</span> is missing:</p>  <ol>  <li>Click on the <i class="fas fa-cog" aria-hidden="true"></i><span class="visually-hidden"><span class="notranslate">galaxy</span>-gear</span> icon (<strong>History options</strong>) on the top of the history panel</li>  <li>Select the option <strong>Create New</strong> from the menu</li></ol></blockquote>
+      <blockquote class="tip">   <div class="box-title tip-title" id="tip-creating-a-new-history"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-creating-a-new-history-contents" aria-expanded="true" aria-label="Toggle tip box: Creating a new history"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: Creating a new history<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>   <p>Click the <i class="fas fa-plus" aria-hidden="true"></i><span class="visually-hidden">new-history</span> icon at the top of the history panel.</p>   <p>If the <i class="fas fa-plus" aria-hidden="true"></i><span class="visually-hidden">new-history</span> is missing:</p>   <ol>   <li>Click on the <i class="fas fa-cog" aria-hidden="true"></i><span class="visually-hidden"><span class="notranslate">galaxy</span>-gear</span> icon (<strong>History options</strong>) on the top of the history panel</li>   <li>Select the option <strong>Create New</strong> from the menu</li> </ol> </blockquote>
     </li>
     <li>
       <p>Rename the history</p>
 
       <!--SNIPPET-->
-      <blockquote class="tip">  <div id="tip-renaming-a-history" class="box-title"><button type="button" aria-controls="tip-renaming-a-history-contents" aria-expanded="true" aria-label="Toggle tip box: Renaming a history"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: Renaming a history<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>  <ol>  <li>Click on <strong>Unnamed history</strong> (or the current name of the history) (<strong>Click to rename history</strong>) at the top of your history panel</li>  <li>Type the new name</li>  <li>Press <kbd>Enter</kbd></li></ol></blockquote>
+      <blockquote class="tip">   <div class="box-title tip-title" id="tip-renaming-a-history"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-renaming-a-history-contents" aria-expanded="true" aria-label="Toggle tip box: Renaming a history"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: Renaming a history<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>   <ol>   <li>Click on <i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"><span class="notranslate">galaxy</span>-pencil</span> (<strong>Edit</strong>) next to the history name (which by default is “Unnamed history”)</li>   <li>Type the new name</li>   <li>Click on <strong>Save</strong></li> </ol>   <p>If you do not have the <i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"><span class="notranslate">galaxy</span>-pencil</span> (<strong>Edit</strong>) next to the history name:</p>   <ol>   <li>Click on <strong>Unnamed history</strong> (or the current name of the history) (<strong>Click to rename history</strong>) at the top of your history panel</li>   <li>Type the new name</li>   <li>Press <kbd>Enter</kbd></li> </ol> </blockquote>
     </li>
   </ol>
 
@@ -908,7 +892,7 @@
     <p>and organize the imported data as a dataset collection.</p>
 
     <blockquote class="comment">
-      <div id="comment-collections" class="box-title" aria-label="comment box: Collections"><i class="far fa-comment-dots" aria-hidden="true"></i><span class="visually-hidden"></span> Comment: Collections</div>
+      <div class="box-title comment-title" id="comment-collections" aria-label="comment box: Collections"><i class="far fa-comment-dots" aria-hidden="true"></i><span class="visually-hidden"></span> Comment: Collections</div>
 
       <p>A dataset collection is a way to represent an arbitrarily large collection of samples as a singular entity within a user’s workspace. For an in-depth introduction to the concept you can follow this <a href="/training-material/topics/galaxy-interface/tutorials/collections/tutorial.html">dedicated tutorial</a>.</p>
 
@@ -918,7 +902,7 @@
     <p>Import from <a href="https://www.ncbi.nlm.nih.gov/sra">NCBI’s Sequence Read Archive (SRA) at NCBI</a> with the help of a dedicated tool, which will organize the data into collections for you.</p>
 
     <blockquote class="comment">
-      <div id="comment-getting-data-from-sra" class="box-title" aria-label="comment box: Getting data from SRA"><i class="far fa-comment-dots" aria-hidden="true"></i><span class="visually-hidden"></span> Comment: Getting data from SRA</div>
+      <div class="box-title comment-title" id="comment-getting-data-from-sra" aria-label="comment box: Getting data from SRA"><i class="far fa-comment-dots" aria-hidden="true"></i><span class="visually-hidden"></span> Comment: Getting data from SRA</div>
 
       <p><a href="/training-material/topics/variant-analysis/tutorials/sars-cov-2/tutorial.html">A dedicated tutorial is available to explain how to find and import SARS-CoV-2 data from SRA</a>.</p>
 
@@ -927,7 +911,7 @@
 </ul>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-import-datasets" class="box-title" aria-label="hands-on box: Import datasets"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Import datasets</div>
+  <div class="box-title hands-on-title" id="hands-on-import-datasets" aria-label="hands-on box: Import datasets"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Import datasets</div>
 
   <ol>
     <li>
@@ -938,25 +922,25 @@
           <p>Option 1 <a href="https://youtu.be/FFCDx1rMGAQ"><i class="fas fa-video" aria-hidden="true"></i><span class="visually-hidden">video</span></a>: Your own local data using <strong>Upload Data</strong> (recommended for 1-10 datasets).</p>
 
           <!--SNIPPET-->
-          <blockquote class="tip">  <div id="tip-upload-few-files-1-10" class="box-title"><button type="button" aria-controls="tip-upload-few-files-1-10-contents" aria-expanded="true" aria-label="Toggle tip box: Upload few files (1-10)"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: Upload few files (1-10)<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>  <ol>  <li>Click on <strong>Upload Data</strong> on the top of the left panel</li>  <li>Click on <strong>Choose local file</strong> and select the files or drop the files in the <strong>Drop files here</strong> part</li>  <li>Click on <strong>Start</strong></li>  <li>Click on <strong>Close</strong></li></ol></blockquote>
+          <blockquote class="tip">   <div class="box-title tip-title" id="tip-upload-few-files-1-10"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-upload-few-files-1-10-contents" aria-expanded="true" aria-label="Toggle tip box: Upload few files (1-10)"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: Upload few files (1-10)<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>   <ol>   <li>Click on <strong>Upload Data</strong> on the top of the left panel</li>   <li>Click on <strong>Choose local file</strong> and select the files or drop the files in the <strong>Drop files here</strong> part</li>   <li>Click on <strong>Start</strong></li>   <li>Click on <strong>Close</strong></li> </ol> </blockquote>
         </li>
         <li>
           <p>Option 2 <a href="https://youtu.be/hC8KSuT_OP8"><i class="fas fa-video" aria-hidden="true"></i><span class="visually-hidden">video</span></a>: Your own local data using <strong>FTP</strong> (recommended for &gt;10 datasets)</p>
 
           <!--SNIPPET-->
-          <blockquote class="tip">  <div id="tip-upload-many-files-10-via-ftp" class="box-title"><button type="button" aria-controls="tip-upload-many-files-10-via-ftp-contents" aria-expanded="true" aria-label="Toggle tip box: Upload many files (&gt;10) via FTP"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: Upload many files (&gt;10) via FTP<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>  <ol>  <li>    <p>Make sure to have an FTP client installed</p>    <p>There are many options. We can recommend <a href="https://filezilla-project.org/">FileZilla</a>, a free FTP client that is available on Windows, MacOS, and Linux.</p>  </li>  <li>Establish FTP connection to the <span class="notranslate">Galaxy</span> server    <ol>      <li>Provide the <span class="notranslate">Galaxy</span> server’s FTP server name (e.g. <code class="language-plaintext highlighter-rouge">use<span class="notranslate">galaxy</span>.org</code>, <code class="language-plaintext highlighter-rouge">ftp.use<span class="notranslate">galaxy</span>.eu</code>)</li>      <li>Provide the <strong>use<span class="notranslate">rna</span>me</strong> (usually the email address) and the <strong>password</strong> on the <span class="notranslate">Galaxy</span> server</li>      <li>Connect</li>    </ol>  </li>  <li>    <p>Add the files to the FTP server by dragging/dropping them or right clicking on them and uploading them</p>    <p>The FTP transfer will start. We need to wait until they are done.</p>  </li>  <li>Open the Upload menu on the <span class="notranslate">Galaxy</span> server</li>  <li>Click on <strong>Choose FTP file</strong> on the bottom</li>  <li>Select files to import into the history</li>  <li>Click on <strong>Start</strong></li></ol></blockquote>
+          <blockquote class="tip">   <div class="box-title tip-title" id="tip-upload-many-files-10-via-ftp"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-upload-many-files-10-via-ftp-contents" aria-expanded="true" aria-label="Toggle tip box: Upload many files (&gt;10) via FTP"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: Upload many files (&gt;10) via FTP<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>   <ol>   <li>     <p>Make sure to have an FTP client installed</p>     <p>There are many options. We can recommend <a href="https://filezilla-project.org/">FileZilla</a>, a free FTP client that is available on Windows, MacOS, and Linux.</p>   </li>   <li>Establish FTP connection to the <span class="notranslate">Galaxy</span> server     <ol>       <li>Provide the <span class="notranslate">Galaxy</span> server’s FTP server name (e.g. <code class="language-plaintext highlighter-rouge">use<span class="notranslate">galaxy</span>.org</code>, <code class="language-plaintext highlighter-rouge">ftp.use<span class="notranslate">galaxy</span>.eu</code>)</li>       <li>Provide the <strong>use<span class="notranslate">rna</span>me</strong> (usually the email address) and the <strong>password</strong> on the <span class="notranslate">Galaxy</span> server</li>       <li>Connect</li>     </ol>   </li>   <li>     <p>Add the files to the FTP server by dragging/dropping them or right clicking on them and uploading them</p>     <p>The FTP transfer will start. We need to wait until they are done.</p>   </li>   <li>Open the Upload menu on the <span class="notranslate">Galaxy</span> server</li>   <li>Click on <strong>Choose FTP file</strong> on the bottom</li>   <li>Select files to import into the history</li>   <li>Click on <strong>Start</strong></li> </ol> </blockquote>
         </li>
         <li>
           <p>Option 3: From the shared data library</p>
 
           <!--SNIPPET-->
-          <blockquote class="tip">  <div id="tip-importing-data-from-a-data-library" class="box-title"><button type="button" aria-controls="tip-importing-data-from-a-data-library-contents" aria-expanded="true" aria-label="Toggle tip box: Importing data from a data library"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: Importing data from a data library<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>  <p>As an alte<span class="notranslate">rna</span>tive to uploading the data from a URL or your computer, the files may also have been made available from a <em>shared data library</em>:</p>  <ul>  <li>Go into <strong>Shared data</strong> (top panel) then <strong>Data libraries</strong></li>  <li>    <p>Navigate to</p>    <p><em>GTN - Material / Variant analysis / Mutation calling, viral genome reconstruction and lineage/clade assignment from SARS-CoV-2 sequencing data / DOI: 10.5281/zenodo.5036686</em> or  the correct folder as indicated by your instructor</p>  </li>  <li>Select the desired files</li>  <li>Click on the <strong>To History</strong> button near the top and select <strong>as Datasets</strong> from the dropdown menu</li>  <li>In the pop-up window, select the history you want to import the files to (or create a new one)</li>  <li>Click on <strong>Import</strong></li></ul></blockquote>
+          <blockquote class="tip">   <div class="box-title tip-title" id="tip-importing-data-from-a-data-library"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-importing-data-from-a-data-library-contents" aria-expanded="true" aria-label="Toggle tip box: Importing data from a data library"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: Importing data from a data library<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>   <p>As an alte<span class="notranslate">rna</span>tive to uploading the data from a URL or your computer, the files may also have been made available from a <em>shared data library</em>:</p>   <ul>   <li>Go into <strong>Shared data</strong> (top panel) then <strong>Data libraries</strong></li>   <li>     <p>Navigate to</p>     <p><em>GTN - Material / Variant analysis / Mutation calling, viral genome reconstruction and lineage/clade assignment from SARS-CoV-2 sequencing data / DOI: 10.5281/zenodo.5036686</em> or  the correct folder as indicated by your instructor</p>   </li>   <li>Select the desired files</li>   <li>Click on the <strong>To History</strong> button near the top and select <strong>as Datasets</strong> from the dropdown menu</li>   <li>In the pop-up window, select the history you want to import the files to (or create a new one)</li>   <li>Click on <strong>Import</strong></li> </ul> </blockquote>
         </li>
         <li>
           <p>Option 4: From an exte<span class="notranslate">rna</span>l server via URL</p>
 
           <!--SNIPPET-->
-          <blockquote class="tip">  <div id="tip-importing-via-links" class="box-title"><button type="button" aria-controls="tip-importing-via-links-contents" aria-expanded="true" aria-label="Toggle tip box: Importing via links"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: Importing via links<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>  <ul>  <li>Copy the link location</li>  <li>    <p>Open the <span class="notranslate">Galaxy</span> Upload Manager (<i class="fas fa-upload" aria-hidden="true"></i><span class="visually-hidden"><span class="notranslate">galaxy</span>-upload</span> on the top-right of the tool panel)</p>  </li>  <li>Select <strong>Paste/Fetch Data</strong></li>  <li>    <p>Paste the link into the text field</p>  </li>  <li>    <p>Press <strong>Start</strong></p>  </li>  <li><strong>Close</strong> the window</li></ul></blockquote>
+          <blockquote class="tip">   <div class="box-title tip-title" id="tip-importing-via-links"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-importing-via-links-contents" aria-expanded="true" aria-label="Toggle tip box: Importing via links"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: Importing via links<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>   <ul>   <li>Copy the link location</li>   <li>     <p>Open the <span class="notranslate">Galaxy</span> Upload Manager (<i class="fas fa-upload" aria-hidden="true"></i><span class="visually-hidden"><span class="notranslate">galaxy</span>-upload</span> on the top-right of the tool panel)</p>   </li>   <li>Select <strong>Paste/Fetch Data</strong></li>   <li>     <p>Paste the link into the text field</p>   </li>   <li>     <p>Press <strong>Start</strong></p>   </li>   <li><strong>Close</strong> the window</li> </ul> </blockquote>
 
           <p>For our example datasets, the datasets are stored on <a href="https://zenodo.org/record/5036687">Zenodo</a> and can be retrieved using the following URLs:</p>
 
@@ -1008,13 +992,13 @@ https://zenodo.org/record/5036687/files/ERR5949469_2.fastqsanger.gz
           <p>Option 1 <a href="https://youtu.be/6ZU9hFjnRDo"><i class="fas fa-video" aria-hidden="true"></i><span class="visually-hidden">video</span></a>: Single-end data (Illumina or ONT data)</p>
 
           <!--SNIPPET-->
-          <blockquote class="tip">  <div id="tip-creating-a-dataset-collection" class="box-title"><button type="button" aria-controls="tip-creating-a-dataset-collection-contents" aria-expanded="true" aria-label="Toggle tip box: Creating a dataset collection"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: Creating a dataset collection<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>  <ul>  <li>Click on <strong>Operations on multiple datasets</strong> (check box icon) at the top of the history panel <img src="/training-material/topics/galaxy-interface/images/historyItemControls.png" alt="Operations on multiple datasets button" /></li>  <li>Check all the datasets in your history you would like to include</li>  <li>    <p>Click <strong>For all selected..</strong> and choose <strong>Build dataset list</strong></p>    <p><img src="/training-material/topics/galaxy-interface/images/buildList.png" alt="build list collection menu item" width="15%" /></p>  </li>  <li>Enter a name for your collection</li>  <li>Click <strong>Create List</strong> to build your collection</li>  <li>Click on the checkmark icon at the top of your history again</li></ul></blockquote>
+          <blockquote class="tip">   <div class="box-title tip-title" id="tip-creating-a-dataset-collection"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-creating-a-dataset-collection-contents" aria-expanded="true" aria-label="Toggle tip box: Creating a dataset collection"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: Creating a dataset collection<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>   <ul>   <li>Click on <strong>Operations on multiple datasets</strong> (check box icon) at the top of the history panel <img src="/training-material/topics/galaxy-interface/images/historyItemControls.png" alt="Operations on multiple datasets button" /></li>   <li>Check all the datasets in your history you would like to include</li>   <li>     <p>Click <strong>For all selected..</strong> and choose <strong>Build dataset list</strong></p>     <p><img src="/training-material/topics/galaxy-interface/images/buildList.png" alt="build list collection menu item" width="15%" /></p>   </li>   <li>Enter a name for your collection</li>   <li>Click <strong>Create List</strong> to build your collection</li>   <li>Click on the checkmark icon at the top of your history again</li> </ul> </blockquote>
         </li>
         <li>
           <p>Option 2 <a href="https://youtu.be/6toVj35q1r0"><i class="fas fa-video" aria-hidden="true"></i><span class="visually-hidden">video</span></a>: Paired-end data (Illumina data)</p>
 
           <!--SNIPPET-->
-          <blockquote class="tip">  <div id="tip-creating-a-paired-collection" class="box-title"><button type="button" aria-controls="tip-creating-a-paired-collection-contents" aria-expanded="true" aria-label="Toggle tip box: Creating a paired collection"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: Creating a paired collection<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>  <ul>  <li>Click on <strong>Operations on multiple datasets</strong> (check box icon) at the top of the history panel <img src="/training-material/topics/galaxy-interface/images/historyItemControls.png" alt="Operations on multiple datasets button" /></li>  <li>Check all the datasets in your history you would like to include</li>  <li>    <p>Click <strong>For all selected..</strong> and choose <strong>Build List of Dataset Pairs</strong></p>  </li>  <li>Change the text of <em>unpaired forward</em> to a common selector for the forward <span class="notranslate">reads</span></li>  <li>Change the text of <em>unpaired reverse</em> to a common selector for the reverse <span class="notranslate">reads</span></li>  <li>Click <strong>Pair these datasets</strong> for each valid <em>forward</em> and <em>reverse</em> pair.</li>  <li>Enter a name for your collection</li>  <li>Click <strong>Create List</strong> to build your collection</li>  <li>Click on the checkmark icon at the top of your history again</li></ul></blockquote>
+          <blockquote class="tip">   <div class="box-title tip-title" id="tip-creating-a-paired-collection"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-creating-a-paired-collection-contents" aria-expanded="true" aria-label="Toggle tip box: Creating a paired collection"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: Creating a paired collection<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>   <ul>   <li>Click on <strong>Operations on multiple datasets</strong> (check box icon) at the top of the history panel <img src="/training-material/topics/galaxy-interface/images/historyItemControls.png" alt="Operations on multiple datasets button" /></li>   <li>Check all the datasets in your history you would like to include</li>   <li>     <p>Click <strong>For all selected..</strong> and choose <strong>Build List of Dataset Pairs</strong></p>   </li>   <li>Change the text of <em>unpaired forward</em> to a common selector for the forward <span class="notranslate">reads</span></li>   <li>Change the text of <em>unpaired reverse</em> to a common selector for the reverse <span class="notranslate">reads</span></li>   <li>Click <strong>Pair these datasets</strong> for each valid <em>forward</em> and <em>reverse</em> pair.</li>   <li>Enter a name for your collection</li>   <li>Click <strong>Create List</strong> to build your collection</li>   <li>Click on the checkmark icon at the top of your history again</li> </ul> </blockquote>
 
           <p>For the example datasets:</p>
           <ul>
@@ -1048,7 +1032,7 @@ https://zenodo.org/record/5036687/files/ERR5949469_2.fastqsanger.gz
 </blockquote>
 
 <blockquote class="comment">
-  <div id="comment-learning-to-build-collections-automatically" class="box-title" aria-label="comment box: Learning to build collections automatically"><i class="far fa-comment-dots" aria-hidden="true"></i><span class="visually-hidden"></span> Comment: Learning to build collections automatically</div>
+  <div class="box-title comment-title" id="comment-learning-to-build-collections-automatically" aria-label="comment box: Learning to build collections automatically"><i class="far fa-comment-dots" aria-hidden="true"></i><span class="visually-hidden"></span> Comment: Learning to build collections automatically</div>
 
   <p>It is possible to build collections from tabular data containing URLs, sample sheets, list of accessions or identifiers, etc., directly during upload of the data. <a href="/training-material/topics/galaxy-interface/tutorials/upload-rules/tutorial.html">A dedicated tutorial is available to explain the different possibilities</a>.</p>
 
@@ -1075,7 +1059,7 @@ https://zenodo.org/record/5036687/files/ERR5949469_2.fastqsanger.gz
 </ul>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-import-auxiliary-datasets" class="box-title" aria-label="hands-on box: Import auxiliary datasets"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Import auxiliary datasets</div>
+  <div class="box-title hands-on-title" id="hands-on-import-auxiliary-datasets" aria-label="hands-on box: Import auxiliary datasets"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Import auxiliary datasets</div>
 
   <ol>
     <li>Import the auxiliary datasets:
@@ -1087,7 +1071,7 @@ https://zenodo.org/record/5036687/files/ERR5949469_2.fastqsanger.gz
       </ul>
 
       <blockquote class="details">
-        <div id="details-not-using-artic-v3-amplified-sequencing-data" class="box-title"><button type="button" aria-controls="details-not-using-artic-v3-amplified-sequencing-data-contents" aria-expanded="true" aria-label="Toggle details box: Not using ARTIC v3 amplified sequencing data?"><i class="fas fa-info-circle" aria-hidden="true"></i><span class="visually-hidden"></span> Details: Not using ARTIC v3 amplified sequencing data?<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
+        <div class="box-title details-title" id="details-not-using-artic-v3-amplified-sequencing-data"><button class="gtn-boxify-button details" type="button" aria-controls="details-not-using-artic-v3-amplified-sequencing-data-contents" aria-expanded="true" aria-label="Toggle details box: Not using ARTIC v3 amplified sequencing data?"><i class="fas fa-info-circle" aria-hidden="true"></i><span class="visually-hidden"></span> Details: Not using ARTIC v3 amplified sequencing data?<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
 
         <p>The instructions here assume you will be analyzing the example samples
 suggested above, which have been amplified using version 3 of the ARTIC
@@ -1112,7 +1096,7 @@ suggest to upload.</p>
           <p>Option 1: From the shared data library</p>
 
           <!--SNIPPET-->
-          <blockquote class="tip">  <div id="tip-importing-data-from-a-data-library-1" class="box-title"><button type="button" aria-controls="tip-importing-data-from-a-data-library-1-contents" aria-expanded="true" aria-label="Toggle tip box: Importing data from a data library"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: Importing data from a data library<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>  <p>As an alte<span class="notranslate">rna</span>tive to uploading the data from a URL or your computer, the files may also have been made available from a <em>shared data library</em>:</p>  <ul>  <li>Go into <strong>Shared data</strong> (top panel) then <strong>Data libraries</strong></li>  <li>    <p>Navigate to</p>    <p><em>GTN - Material / Variant analysis / Mutation calling, viral genome reconstruction and lineage/clade assignment from SARS-CoV-2 sequencing data / DOI: 10.5281/zenodo.5036686</em> or  the correct folder as indicated by your instructor</p>  </li>  <li>Select the desired files</li>  <li>Click on the <strong>To History</strong> button near the top and select <strong>as Datasets</strong> from the dropdown menu</li>  <li>In the pop-up window, select the history you want to import the files to (or create a new one)</li>  <li>Click on <strong>Import</strong></li></ul></blockquote>
+          <blockquote class="tip">   <div class="box-title tip-title" id="tip-importing-data-from-a-data-library-1"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-importing-data-from-a-data-library-1-contents" aria-expanded="true" aria-label="Toggle tip box: Importing data from a data library"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: Importing data from a data library<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>   <p>As an alte<span class="notranslate">rna</span>tive to uploading the data from a URL or your computer, the files may also have been made available from a <em>shared data library</em>:</p>   <ul>   <li>Go into <strong>Shared data</strong> (top panel) then <strong>Data libraries</strong></li>   <li>     <p>Navigate to</p>     <p><em>GTN - Material / Variant analysis / Mutation calling, viral genome reconstruction and lineage/clade assignment from SARS-CoV-2 sequencing data / DOI: 10.5281/zenodo.5036686</em> or  the correct folder as indicated by your instructor</p>   </li>   <li>Select the desired files</li>   <li>Click on the <strong>To History</strong> button near the top and select <strong>as Datasets</strong> from the dropdown menu</li>   <li>In the pop-up window, select the history you want to import the files to (or create a new one)</li>   <li>Click on <strong>Import</strong></li> </ul> </blockquote>
         </li>
         <li>
           <p>Option 2: From <a href="https://zenodo.org/record/4555735">Zenodo</a></p>
@@ -1124,7 +1108,7 @@ https://zenodo.org/record/4555735/files/ARTIC_amplicon_info_v3.tsv
 </code></pre></div>          </div>
 
           <!--SNIPPET-->
-          <blockquote class="tip">  <div id="tip-importing-via-links-1" class="box-title"><button type="button" aria-controls="tip-importing-via-links-1-contents" aria-expanded="true" aria-label="Toggle tip box: Importing via links"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: Importing via links<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>  <ul>  <li>Copy the link location</li>  <li>    <p>Open the <span class="notranslate">Galaxy</span> Upload Manager (<i class="fas fa-upload" aria-hidden="true"></i><span class="visually-hidden"><span class="notranslate">galaxy</span>-upload</span> on the top-right of the tool panel)</p>  </li>  <li>Select <strong>Paste/Fetch Data</strong></li>  <li>    <p>Paste the link into the text field</p>  </li>  <li>    <p>Press <strong>Start</strong></p>  </li>  <li><strong>Close</strong> the window</li></ul></blockquote>
+          <blockquote class="tip">   <div class="box-title tip-title" id="tip-importing-via-links-1"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-importing-via-links-1-contents" aria-expanded="true" aria-label="Toggle tip box: Importing via links"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: Importing via links<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>   <ul>   <li>Copy the link location</li>   <li>     <p>Open the <span class="notranslate">Galaxy</span> Upload Manager (<i class="fas fa-upload" aria-hidden="true"></i><span class="visually-hidden"><span class="notranslate">galaxy</span>-upload</span> on the top-right of the tool panel)</p>   </li>   <li>Select <strong>Paste/Fetch Data</strong></li>   <li>     <p>Paste the link into the text field</p>   </li>   <li>     <p>Press <strong>Start</strong></p>   </li>   <li><strong>Close</strong> the window</li> </ul> </blockquote>
         </li>
         <li>
           <p>Option 3: From a shared history:</p>
@@ -1135,7 +1119,7 @@ https://zenodo.org/record/4555735/files/ARTIC_amplicon_info_v3.tsv
           </ul>
 
           <!--SNIPPET-->
-          <blockquote class="tip">  <div id="tip-importing-a-history" class="box-title"><button type="button" aria-controls="tip-importing-a-history-contents" aria-expanded="true" aria-label="Toggle tip box: Importing a history"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: Importing a history<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>  <ol>  <li>Open the link to the shared history</li>  <li>Click on the <i class="fas fa-plus" aria-hidden="true"></i><span class="visually-hidden">new-history</span> <em>Import history</em> button on the top right</li>  <li>Enter a title for the new history</li>  <li>Click on <strong>Import</strong></li></ol></blockquote>
+          <blockquote class="tip">   <div class="box-title tip-title" id="tip-importing-a-history"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-importing-a-history-contents" aria-expanded="true" aria-label="Toggle tip box: Importing a history"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: Importing a history<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>   <ol>   <li>Open the link to the shared history</li>   <li>Click on the <i class="fas fa-plus" aria-hidden="true"></i><span class="visually-hidden">new-history</span> <em>Import history</em> button on the top right</li>   <li>Enter a title for the new history</li>   <li>Click on <strong>Import</strong></li> </ol> </blockquote>
         </li>
       </ul>
 
@@ -1164,7 +1148,7 @@ possibly correct the format assignments for each of the datasets!</p>
 the datatype of the corresponding dataset now to the intended format.</p>
 
           <!--SNIPPET-->
-          <blockquote class="tip">  <div id="tip-changing-the-datatype" class="box-title"><button type="button" aria-controls="tip-changing-the-datatype-contents" aria-expanded="true" aria-label="Toggle tip box: Changing the datatype"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: Changing the datatype<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>  <ul>  <li>Click on the <i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"><span class="notranslate">galaxy</span>-pencil</span> <strong>pencil icon</strong> for the dataset to edit its attributes</li>  <li>In the central panel, click on the <i class="fas fa-database" aria-hidden="true"></i><span class="visually-hidden"><span class="notranslate">galaxy</span>-chart-select-data</span> <strong>Datatypes</strong> tab on the top</li>  <li>Select  your desired datatype    <ul>      <li>tip: you can start typing the datatype into the field to filter the dropdown menu</li>    </ul>  </li>  <li>Click the <strong>Save</strong> button</li></ul></blockquote>
+          <blockquote class="tip">   <div class="box-title tip-title" id="tip-changing-the-datatype"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-changing-the-datatype-contents" aria-expanded="true" aria-label="Toggle tip box: Changing the datatype"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: Changing the datatype<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>   <ul>   <li>Click on the <i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"><span class="notranslate">galaxy</span>-pencil</span> <strong>pencil icon</strong> for the dataset to edit its attributes</li>   <li>In the central panel, click on the <i class="fas fa-database" aria-hidden="true"></i><span class="visually-hidden"><span class="notranslate">galaxy</span>-chart-select-data</span> <strong>Datatypes</strong> tab on the top</li>   <li>Select  your desired datatype     <ul>       <li>tip: you can start typing the datatype into the field to filter the dropdown menu</li>     </ul>   </li>   <li>Click the <strong>Save</strong> button</li> </ul> </blockquote>
         </li>
       </ul>
 
@@ -1222,7 +1206,7 @@ correctly already.</p>
 </table>
 
 <blockquote class="details">
-  <div id="details-about-the-workflows" class="box-title"><button type="button" aria-controls="details-about-the-workflows-contents" aria-expanded="true" aria-label="Toggle details box: About the workflows"><i class="fas fa-info-circle" aria-hidden="true"></i><span class="visually-hidden"></span> Details: About the workflows<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
+  <div class="box-title details-title" id="details-about-the-workflows"><button class="gtn-boxify-button details" type="button" aria-controls="details-about-the-workflows-contents" aria-expanded="true" aria-label="Toggle details box: About the workflows"><i class="fas fa-info-circle" aria-hidden="true"></i><span class="visually-hidden"></span> Details: About the workflows<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
 
   <ul>
     <li>The two Illumina <span class="notranslate">RNA</span>Seq workflows (Illumina <span class="notranslate">RNA</span>seq SE and Illumina <span class="notranslate">RNA</span>seq PE) perform read <span class="notranslate">mapping</span> with <strong>bwa-mem</strong> and <strong>bowtie2</strong>, respectively, followed by sensitive allelic-variant (AV) calling across a wide range of AFs with <strong>lofreq</strong>.</li>
@@ -1238,7 +1222,7 @@ correctly already.</p>
 </blockquote>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-from-fastq-to-annotated-avs" class="box-title" aria-label="hands-on box: From FASTQ to annotated AVs"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: From FASTQ to annotated AVs</div>
+  <div class="box-title hands-on-title" id="hands-on-from-fastq-to-annotated-avs" aria-label="hands-on box: From FASTQ to annotated AVs"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: From FASTQ to annotated AVs</div>
 
   <ol>
     <li>
@@ -1270,7 +1254,7 @@ correctly already.</p>
           <p>Option 2: Import the <span class="notranslate">workflow</span> from <a href="https://dockstore.org/">Dockstore</a> using <span class="notranslate">Galaxy</span>’s <span class="notranslate">workflow</span> search</p>
 
           <!--SNIPPET-->
-          <blockquote class="tip">  <div id="tip-importing-a-workflow-using-the-search" class="box-title"><button type="button" aria-controls="tip-importing-a-workflow-using-the-search-contents" aria-expanded="true" aria-label="Toggle tip box: Importing a workflow using the search"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: Importing a <span class="notranslate">workflow</span> using the search<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>  <ul>  <li>Click on <em><span class="notranslate">Workflow</span></em> on the top menu bar of <span class="notranslate">Galaxy</span>. You will see a list of all your workflows.</li>  <li>Click on the <i class="fas fa-upload" aria-hidden="true"></i><span class="visually-hidden"><span class="notranslate">galaxy</span>-upload</span> <strong>Import</strong> icon at the top-right of the screen</li>  <li>    <p>Click on <strong>search form</strong> in <strong>Import a <span class="notranslate">Workflow</span> from Configured GA4GH Tool Registry Servers (e.g. Dockstore)</strong></p>  </li>  <li>    <p>Select <em>“TRS Server”</em>: <code class="language-plaintext highlighter-rouge">Dockstore</code></p>  </li>  <li>    <p>Type <code class="language-plaintext highlighter-rouge">organization:"iwc-workflows"</code> in the search query</p>  </li>  <li>    <p>Expand the correct <span class="notranslate">workflow</span></p>  </li>  <li>    <p>Click on the wanted version</p>    <p>The <span class="notranslate">workflow</span> will be imported in your workflows</p>  </li></ul></blockquote>
+          <blockquote class="tip">   <div class="box-title tip-title" id="tip-importing-a-workflow-using-the-search"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-importing-a-workflow-using-the-search-contents" aria-expanded="true" aria-label="Toggle tip box: Importing a workflow using the search"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: Importing a <span class="notranslate">workflow</span> using the search<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>   <ul>   <li>Click on <em><span class="notranslate">Workflow</span></em> on the top menu bar of <span class="notranslate">Galaxy</span>. You will see a list of all your workflows.</li>   <li>Click on the <i class="fas fa-upload" aria-hidden="true"></i><span class="visually-hidden"><span class="notranslate">galaxy</span>-upload</span> <strong>Import</strong> icon at the top-right of the screen</li>   <li>     <p>Click on <strong>search form</strong> in <strong>Import a <span class="notranslate">Workflow</span> from Configured GA4GH Tool Registry Servers (e.g. Dockstore)</strong></p>   </li>   <li>     <p>Select <em>“TRS Server”</em>: <code class="language-plaintext highlighter-rouge">Dockstore</code></p>   </li>   <li>     <p>Type <code class="language-plaintext highlighter-rouge">organization:"iwc-workflows"</code> in the search query</p>   </li>   <li>     <p>Expand the correct <span class="notranslate">workflow</span></p>   </li>   <li>     <p>Click on the wanted version</p>     <p>The <span class="notranslate">workflow</span> will be imported in your workflows</p>   </li> </ul> </blockquote>
 
           <p>For the example dataset: <code class="language-plaintext highlighter-rouge">sars-cov-2-pe-illumina-artic-variant-calling/COVID-19-PE-ARTIC-ILLUMINA</code></p>
         </li>
@@ -1293,7 +1277,7 @@ correctly already.</p>
               <p>Import the <span class="notranslate">workflow</span> to <span class="notranslate">Galaxy</span></p>
 
               <!--SNIPPET-->
-              <blockquote class="tip">  <div id="tip-importing-a-workflow" class="box-title"><button type="button" aria-controls="tip-importing-a-workflow-contents" aria-expanded="true" aria-label="Toggle tip box: Importing a workflow"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: Importing a <span class="notranslate">workflow</span><span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>  <ul>  <li>Click on <em><span class="notranslate">Workflow</span></em> on the top menu bar of <span class="notranslate">Galaxy</span>. You will see a list of all your workflows.</li>  <li>Click on the upload icon <i class="fas fa-upload" aria-hidden="true"></i><span class="visually-hidden"><span class="notranslate">galaxy</span>-upload</span> at the top-right of the screen</li>  <li>Provide your <span class="notranslate">workflow</span>    <ul>      <li>Option 1: Paste the URL of the <span class="notranslate">workflow</span> into the box labelled <em>“Archived <span class="notranslate">Workflow</span> URL”</em></li>      <li>Option 2: Upload the <span class="notranslate">workflow</span> file in the box labelled <em>“Archived <span class="notranslate">Workflow</span> File”</em></li>    </ul>  </li>  <li>Click the <strong>Import <span class="notranslate">workflow</span></strong> button</li></ul></blockquote>
+              <blockquote class="tip">   <div class="box-title tip-title" id="tip-importing-a-workflow"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-importing-a-workflow-contents" aria-expanded="true" aria-label="Toggle tip box: Importing a workflow"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: Importing a <span class="notranslate">workflow</span><span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>   <ul>   <li>Click on <em><span class="notranslate">Workflow</span></em> on the top menu bar of <span class="notranslate">Galaxy</span>. You will see a list of all your workflows.</li>   <li>Click on the upload icon <i class="fas fa-upload" aria-hidden="true"></i><span class="visually-hidden"><span class="notranslate">galaxy</span>-upload</span> at the top-right of the screen</li>   <li>Provide your <span class="notranslate">workflow</span>     <ul>       <li>Option 1: Paste the URL of the <span class="notranslate">workflow</span> into the box labelled <em>“Archived <span class="notranslate">Workflow</span> URL”</em></li>       <li>Option 2: Upload the <span class="notranslate">workflow</span> file in the box labelled <em>“Archived <span class="notranslate">Workflow</span> File”</em></li>     </ul>   </li>   <li>Click the <strong>Import <span class="notranslate">workflow</span></strong> button</li> </ul> </blockquote>
             </li>
           </ul>
         </li>
@@ -1303,7 +1287,7 @@ correctly already.</p>
       <p>Run <strong>COVID-19: variation analysis on …</strong> <i class="fas fa-share-alt" aria-hidden="true"></i><span class="visually-hidden"><span class="notranslate">workflow</span></span> using the following parameters:</p>
 
       <!--SNIPPET-->
-      <blockquote class="tip">  <div id="tip-running-a-workflow" class="box-title"><button type="button" aria-controls="tip-running-a-workflow-contents" aria-expanded="true" aria-label="Toggle tip box: Running a workflow"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: Running a <span class="notranslate">workflow</span><span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>  <ul>  <li>Click on <em><span class="notranslate">Workflow</span></em> on the top menu bar of <span class="notranslate">Galaxy</span>. You will see a list of all your workflows.</li>  <li>Click on the <i class="fas fa-play" aria-hidden="true"></i><span class="visually-hidden"><span class="notranslate">workflow</span>-run</span> (<em>Run <span class="notranslate">workflow</span></em>) button next to your <span class="notranslate">workflow</span></li>  <li>Configure the <span class="notranslate">workflow</span> as needed</li>  <li>Click the <strong>Run <span class="notranslate">Workflow</span></strong> button at the top-right of the screen</li>  <li>You may have to refresh your history to see the queued jobs</li></ul></blockquote>
+      <blockquote class="tip">   <div class="box-title tip-title" id="tip-running-a-workflow"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-running-a-workflow-contents" aria-expanded="true" aria-label="Toggle tip box: Running a workflow"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: Running a <span class="notranslate">workflow</span><span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>   <ul>   <li>Click on <em><span class="notranslate">Workflow</span></em> on the top menu bar of <span class="notranslate">Galaxy</span>. You will see a list of all your workflows.</li>   <li>Click on the <i class="fas fa-play" aria-hidden="true"></i><span class="visually-hidden"><span class="notranslate">workflow</span>-run</span> (<em>Run <span class="notranslate">workflow</span></em>) button next to your <span class="notranslate">workflow</span></li>   <li>Configure the <span class="notranslate">workflow</span> as needed</li>   <li>Click the <strong>Run <span class="notranslate">Workflow</span></strong> button at the top-right of the screen</li>   <li>You may have to refresh your history to see the queued jobs</li> </ul> </blockquote>
 
       <ul>
         <li>
@@ -1350,7 +1334,7 @@ correctly already.</p>
 <p>This <span class="notranslate">workflow</span> takes the collection of called (with lofreq) and annotated (with SnpEff) variants (one VCF dataset per input sample) that got generated as one of the outputs of any of the four variation analysis workflows above, and generates two tabular reports and an overview plot summarizing all the variant information for your batch of samples.</p>
 
 <blockquote class="warning">
-  <div id="warning-use-the-right-collection-of-annotated-variants" class="box-title" aria-label="warning box: Use the right collection of annotated variants!"><i class="fas fa-exclamation-triangle" aria-hidden="true"></i><span class="visually-hidden"></span> Warning: Use the right collection of annotated variants!</div>
+  <div class="box-title warning-title" id="warning-use-the-right-collection-of-annotated-variants" aria-label="warning box: Use the right collection of annotated variants!"><i class="fas fa-exclamation-triangle" aria-hidden="true"></i><span class="visually-hidden"></span> Warning: Use the right collection of annotated variants!</div>
   <p>The variation analysis <span class="notranslate">workflow</span> should have generated <em>two</em> collections of annotated variants - one called <code class="language-plaintext highlighter-rouge">Final (SnpEff-) annotated variants</code>, the other one called <code class="language-plaintext highlighter-rouge">Final (SnpEff-) annotated variants with strand-bias soft filter applied</code>.</p>
 
   <p>If you have analyzed ampliconic data with any of the <strong>variation analysis of ARTIC</strong> data workflows, then please consider the strand-bias soft-filtered collection experimental and proceed with the <code class="language-plaintext highlighter-rouge">Final (SnpEff-) annotated variants</code> collection as input to the next <span class="notranslate">workflow</span>.</p>
@@ -1360,7 +1344,7 @@ correctly already.</p>
 </blockquote>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-from-annotated-avs-per-sample-to-av-summary" class="box-title" aria-label="hands-on box: From annotated AVs per sample to AV summary"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: From annotated AVs per sample to AV summary</div>
+  <div class="box-title hands-on-title" id="hands-on-from-annotated-avs-per-sample-to-av-summary" aria-label="hands-on box: From annotated AVs per sample to AV summary"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: From annotated AVs per sample to AV summary</div>
 
   <ol>
     <li>
@@ -1385,7 +1369,7 @@ correctly already.</p>
           <p>Option 2: Import the <span class="notranslate">workflow</span> from <a href="https://dockstore.org/">Dockstore</a> using <span class="notranslate">Galaxy</span>’s <span class="notranslate">workflow</span> search</p>
 
           <!--SNIPPET-->
-          <blockquote class="tip">  <div id="tip-importing-a-workflow-using-the-search-1" class="box-title"><button type="button" aria-controls="tip-importing-a-workflow-using-the-search-1-contents" aria-expanded="true" aria-label="Toggle tip box: Importing a workflow using the search"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: Importing a <span class="notranslate">workflow</span> using the search<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>  <ul>  <li>Click on <em><span class="notranslate">Workflow</span></em> on the top menu bar of <span class="notranslate">Galaxy</span>. You will see a list of all your workflows.</li>  <li>Click on the <i class="fas fa-upload" aria-hidden="true"></i><span class="visually-hidden"><span class="notranslate">galaxy</span>-upload</span> <strong>Import</strong> icon at the top-right of the screen</li>  <li>    <p>Click on <strong>search form</strong> in <strong>Import a <span class="notranslate">Workflow</span> from Configured GA4GH Tool Registry Servers (e.g. Dockstore)</strong></p>  </li>  <li>    <p>Select <em>“TRS Server”</em>: <code class="language-plaintext highlighter-rouge">Dockstore</code></p>  </li>  <li>    <p>Type <code class="language-plaintext highlighter-rouge">organization:"iwc-workflows"</code> in the search query</p>  </li>  <li>    <p>Expand the <span class="notranslate">workflow</span> named <code class="language-plaintext highlighter-rouge">sars-cov-2-variation-reporting/COVID-19-VARIATION-REPORTING</code></p>  </li>  <li>    <p>Click on the wanted version</p>    <p>The <span class="notranslate">workflow</span> will be imported in your workflows</p>  </li></ul></blockquote>
+          <blockquote class="tip">   <div class="box-title tip-title" id="tip-importing-a-workflow-using-the-search-1"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-importing-a-workflow-using-the-search-1-contents" aria-expanded="true" aria-label="Toggle tip box: Importing a workflow using the search"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: Importing a <span class="notranslate">workflow</span> using the search<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>   <ul>   <li>Click on <em><span class="notranslate">Workflow</span></em> on the top menu bar of <span class="notranslate">Galaxy</span>. You will see a list of all your workflows.</li>   <li>Click on the <i class="fas fa-upload" aria-hidden="true"></i><span class="visually-hidden"><span class="notranslate">galaxy</span>-upload</span> <strong>Import</strong> icon at the top-right of the screen</li>   <li>     <p>Click on <strong>search form</strong> in <strong>Import a <span class="notranslate">Workflow</span> from Configured GA4GH Tool Registry Servers (e.g. Dockstore)</strong></p>   </li>   <li>     <p>Select <em>“TRS Server”</em>: <code class="language-plaintext highlighter-rouge">Dockstore</code></p>   </li>   <li>     <p>Type <code class="language-plaintext highlighter-rouge">organization:"iwc-workflows"</code> in the search query</p>   </li>   <li>     <p>Expand the <span class="notranslate">workflow</span> named <code class="language-plaintext highlighter-rouge">sars-cov-2-variation-reporting/COVID-19-VARIATION-REPORTING</code></p>   </li>   <li>     <p>Click on the wanted version</p>     <p>The <span class="notranslate">workflow</span> will be imported in your workflows</p>   </li> </ul> </blockquote>
         </li>
         <li>
           <p>Option 3: Import the <span class="notranslate">workflow</span> via its github repo link</p>
@@ -1399,7 +1383,7 @@ correctly already.</p>
               <p>Import the <span class="notranslate">workflow</span> to <span class="notranslate">Galaxy</span></p>
 
               <!--SNIPPET-->
-              <blockquote class="tip">  <div id="tip-importing-a-workflow-1" class="box-title"><button type="button" aria-controls="tip-importing-a-workflow-1-contents" aria-expanded="true" aria-label="Toggle tip box: Importing a workflow"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: Importing a <span class="notranslate">workflow</span><span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>  <ul>  <li>Click on <em><span class="notranslate">Workflow</span></em> on the top menu bar of <span class="notranslate">Galaxy</span>. You will see a list of all your workflows.</li>  <li>Click on the upload icon <i class="fas fa-upload" aria-hidden="true"></i><span class="visually-hidden"><span class="notranslate">galaxy</span>-upload</span> at the top-right of the screen</li>  <li>Provide your <span class="notranslate">workflow</span>    <ul>      <li>Option 1: Paste the URL of the <span class="notranslate">workflow</span> into the box labelled <em>“Archived <span class="notranslate">Workflow</span> URL”</em></li>      <li>Option 2: Upload the <span class="notranslate">workflow</span> file in the box labelled <em>“Archived <span class="notranslate">Workflow</span> File”</em></li>    </ul>  </li>  <li>Click the <strong>Import <span class="notranslate">workflow</span></strong> button</li></ul></blockquote>
+              <blockquote class="tip">   <div class="box-title tip-title" id="tip-importing-a-workflow-1"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-importing-a-workflow-1-contents" aria-expanded="true" aria-label="Toggle tip box: Importing a workflow"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: Importing a <span class="notranslate">workflow</span><span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>   <ul>   <li>Click on <em><span class="notranslate">Workflow</span></em> on the top menu bar of <span class="notranslate">Galaxy</span>. You will see a list of all your workflows.</li>   <li>Click on the upload icon <i class="fas fa-upload" aria-hidden="true"></i><span class="visually-hidden"><span class="notranslate">galaxy</span>-upload</span> at the top-right of the screen</li>   <li>Provide your <span class="notranslate">workflow</span>     <ul>       <li>Option 1: Paste the URL of the <span class="notranslate">workflow</span> into the box labelled <em>“Archived <span class="notranslate">Workflow</span> URL”</em></li>       <li>Option 2: Upload the <span class="notranslate">workflow</span> file in the box labelled <em>“Archived <span class="notranslate">Workflow</span> File”</em></li>     </ul>   </li>   <li>Click the <strong>Import <span class="notranslate">workflow</span></strong> button</li> </ul> </blockquote>
             </li>
           </ul>
         </li>
@@ -1409,7 +1393,7 @@ correctly already.</p>
       <p>Run <strong>COVID-19: variation analysis reporting</strong> <i class="fas fa-share-alt" aria-hidden="true"></i><span class="visually-hidden"><span class="notranslate">workflow</span></span> using the following parameters:</p>
 
       <!--SNIPPET-->
-      <blockquote class="tip">  <div id="tip-running-a-workflow-1" class="box-title"><button type="button" aria-controls="tip-running-a-workflow-1-contents" aria-expanded="true" aria-label="Toggle tip box: Running a workflow"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: Running a <span class="notranslate">workflow</span><span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>  <ul>  <li>Click on <em><span class="notranslate">Workflow</span></em> on the top menu bar of <span class="notranslate">Galaxy</span>. You will see a list of all your workflows.</li>  <li>Click on the <i class="fas fa-play" aria-hidden="true"></i><span class="visually-hidden"><span class="notranslate">workflow</span>-run</span> (<em>Run <span class="notranslate">workflow</span></em>) button next to your <span class="notranslate">workflow</span></li>  <li>Configure the <span class="notranslate">workflow</span> as needed</li>  <li>Click the <strong>Run <span class="notranslate">Workflow</span></strong> button at the top-right of the screen</li>  <li>You may have to refresh your history to see the queued jobs</li></ul></blockquote>
+      <blockquote class="tip">   <div class="box-title tip-title" id="tip-running-a-workflow-1"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-running-a-workflow-1-contents" aria-expanded="true" aria-label="Toggle tip box: Running a workflow"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: Running a <span class="notranslate">workflow</span><span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>   <ul>   <li>Click on <em><span class="notranslate">Workflow</span></em> on the top menu bar of <span class="notranslate">Galaxy</span>. You will see a list of all your workflows.</li>   <li>Click on the <i class="fas fa-play" aria-hidden="true"></i><span class="visually-hidden"><span class="notranslate">workflow</span>-run</span> (<em>Run <span class="notranslate">workflow</span></em>) button next to your <span class="notranslate">workflow</span></li>   <li>Configure the <span class="notranslate">workflow</span> as needed</li>   <li>Click the <strong>Run <span class="notranslate">Workflow</span></strong> button at the top-right of the screen</li>   <li>You may have to refresh your history to see the queued jobs</li> </ul> </blockquote>
 
       <ul>
         <li><em>“Send results to a new history”</em>: <code class="language-plaintext highlighter-rouge">No</code></li>
@@ -1574,7 +1558,7 @@ correctly already.</p>
     </table>
 
     <blockquote class="question">
-      <div id="question" class="box-title" aria-label="question box: "><i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden"></span> Question</div>
+      <div class="box-title question-title" id="question" aria-label="question box: "><i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden"></span> Question</div>
 
       <ol>
         <li>How many AVs are found for all samples?</li>
@@ -1583,7 +1567,7 @@ correctly already.</p>
       </ol>
 
       <blockquote class="solution">
-        <div id="solution" class="box-title"><button type="button" aria-controls="solution-contents" aria-expanded="true" aria-label="Toggle solution box: "><i class="far fa-eye" aria-hidden="true"></i><span class="visually-hidden"></span> Solution<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
+        <div class="box-title solution-title" id="solution"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-contents" aria-expanded="true" aria-label="Toggle solution box: "><i class="far fa-eye" aria-hidden="true"></i><span class="visually-hidden"></span> Solution<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
 
         <ol>
           <li>
@@ -1721,7 +1705,7 @@ correctly already.</p>
     </table>
 
     <blockquote class="question">
-      <div id="question-1" class="box-title" aria-label="question box: "><i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden"></span> Question</div>
+      <div class="box-title question-title" id="question-1" aria-label="question box: "><i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden"></span> Question</div>
 
       <ol>
         <li>How many AVs are found?</li>
@@ -1732,7 +1716,7 @@ correctly already.</p>
       </ol>
 
       <blockquote class="solution">
-        <div id="solution-1" class="box-title"><button type="button" aria-controls="solution-1-contents" aria-expanded="true" aria-label="Toggle solution box: "><i class="far fa-eye" aria-hidden="true"></i><span class="visually-hidden"></span> Solution<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
+        <div class="box-title solution-title" id="solution-1"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-1-contents" aria-expanded="true" aria-label="Toggle solution box: "><i class="far fa-eye" aria-hidden="true"></i><span class="visually-hidden"></span> Solution<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
 
         <ol>
           <li>
@@ -1812,7 +1796,7 @@ correctly already.</p>
 <p>The <span class="notranslate">workflow</span> takes a collection of VCFs and a collection of the corresponding aligned <span class="notranslate">reads</span> (for the purpose of calculating genome-wide coverage) such as produced by the first <span class="notranslate">workflow</span> we ran.</p>
 
 <blockquote class="warning">
-  <div id="warning-use-the-right-collections-as-input" class="box-title" aria-label="warning box: Use the right collections as input!"><i class="fas fa-exclamation-triangle" aria-hidden="true"></i><span class="visually-hidden"></span> Warning: Use the right collections as input!</div>
+  <div class="box-title warning-title" id="warning-use-the-right-collections-as-input" aria-label="warning box: Use the right collections as input!"><i class="fas fa-exclamation-triangle" aria-hidden="true"></i><span class="visually-hidden"></span> Warning: Use the right collections as input!</div>
   <p>The variation analysis <span class="notranslate">workflow</span> should have generated <em>two</em> collections of annotated variants - one called <code class="language-plaintext highlighter-rouge">Final (SnpEff-) annotated variants</code>, the other one called <code class="language-plaintext highlighter-rouge">Final (SnpEff-) annotated variants with strand-bias soft filter applied</code>.</p>
 
   <p>If you have analyzed ampliconic data with any of the <strong>variation analysis of ARTIC</strong> data workflows, then please consider the strand-bias soft-filtered collection experimental and proceed with the <code class="language-plaintext highlighter-rouge">Final (SnpEff-) annotated variants</code> collection as input to the next <span class="notranslate">workflow</span>.</p>
@@ -1824,7 +1808,7 @@ correctly already.</p>
 </blockquote>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-from-avs-to-consensus-sequences" class="box-title" aria-label="hands-on box: From AVs to consensus sequences"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: From AVs to consensus sequences</div>
+  <div class="box-title hands-on-title" id="hands-on-from-avs-to-consensus-sequences" aria-label="hands-on box: From AVs to consensus sequences"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: From AVs to consensus sequences</div>
 
   <ol>
     <li>
@@ -1849,7 +1833,7 @@ correctly already.</p>
           <p>Option 2: Import the <span class="notranslate">workflow</span> from <a href="https://dockstore.org/">Dockstore</a> using <span class="notranslate">Galaxy</span>’s <span class="notranslate">workflow</span> search</p>
 
           <!--SNIPPET-->
-          <blockquote class="tip">  <div id="tip-importing-a-workflow-using-the-search-2" class="box-title"><button type="button" aria-controls="tip-importing-a-workflow-using-the-search-2-contents" aria-expanded="true" aria-label="Toggle tip box: Importing a workflow using the search"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: Importing a <span class="notranslate">workflow</span> using the search<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>  <ul>  <li>Click on <em><span class="notranslate">Workflow</span></em> on the top menu bar of <span class="notranslate">Galaxy</span>. You will see a list of all your workflows.</li>  <li>Click on the <i class="fas fa-upload" aria-hidden="true"></i><span class="visually-hidden"><span class="notranslate">galaxy</span>-upload</span> <strong>Import</strong> icon at the top-right of the screen</li>  <li>    <p>Click on <strong>search form</strong> in <strong>Import a <span class="notranslate">Workflow</span> from Configured GA4GH Tool Registry Servers (e.g. Dockstore)</strong></p>  </li>  <li>    <p>Select <em>“TRS Server”</em>: <code class="language-plaintext highlighter-rouge">Dockstore</code></p>  </li>  <li>    <p>Type <code class="language-plaintext highlighter-rouge">organization:"iwc-workflows"</code> in the search query</p>  </li>  <li>    <p>Expand the <span class="notranslate">workflow</span> named <code class="language-plaintext highlighter-rouge">sars-cov-2-consensus-from-variation/COVID-19-CONSENSUS-CONSTRUCTION</code></p>  </li>  <li>    <p>Click on the wanted version</p>    <p>The <span class="notranslate">workflow</span> will be imported in your workflows</p>  </li></ul></blockquote>
+          <blockquote class="tip">   <div class="box-title tip-title" id="tip-importing-a-workflow-using-the-search-2"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-importing-a-workflow-using-the-search-2-contents" aria-expanded="true" aria-label="Toggle tip box: Importing a workflow using the search"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: Importing a <span class="notranslate">workflow</span> using the search<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>   <ul>   <li>Click on <em><span class="notranslate">Workflow</span></em> on the top menu bar of <span class="notranslate">Galaxy</span>. You will see a list of all your workflows.</li>   <li>Click on the <i class="fas fa-upload" aria-hidden="true"></i><span class="visually-hidden"><span class="notranslate">galaxy</span>-upload</span> <strong>Import</strong> icon at the top-right of the screen</li>   <li>     <p>Click on <strong>search form</strong> in <strong>Import a <span class="notranslate">Workflow</span> from Configured GA4GH Tool Registry Servers (e.g. Dockstore)</strong></p>   </li>   <li>     <p>Select <em>“TRS Server”</em>: <code class="language-plaintext highlighter-rouge">Dockstore</code></p>   </li>   <li>     <p>Type <code class="language-plaintext highlighter-rouge">organization:"iwc-workflows"</code> in the search query</p>   </li>   <li>     <p>Expand the <span class="notranslate">workflow</span> named <code class="language-plaintext highlighter-rouge">sars-cov-2-consensus-from-variation/COVID-19-CONSENSUS-CONSTRUCTION</code></p>   </li>   <li>     <p>Click on the wanted version</p>     <p>The <span class="notranslate">workflow</span> will be imported in your workflows</p>   </li> </ul> </blockquote>
         </li>
         <li>
           <p>Option 2: Import the <span class="notranslate">workflow</span> via its github repo link</p>
@@ -1863,7 +1847,7 @@ correctly already.</p>
               <p>Import the <span class="notranslate">workflow</span> to <span class="notranslate">Galaxy</span></p>
 
               <!--SNIPPET-->
-              <blockquote class="tip">  <div id="tip-importing-a-workflow-2" class="box-title"><button type="button" aria-controls="tip-importing-a-workflow-2-contents" aria-expanded="true" aria-label="Toggle tip box: Importing a workflow"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: Importing a <span class="notranslate">workflow</span><span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>  <ul>  <li>Click on <em><span class="notranslate">Workflow</span></em> on the top menu bar of <span class="notranslate">Galaxy</span>. You will see a list of all your workflows.</li>  <li>Click on the upload icon <i class="fas fa-upload" aria-hidden="true"></i><span class="visually-hidden"><span class="notranslate">galaxy</span>-upload</span> at the top-right of the screen</li>  <li>Provide your <span class="notranslate">workflow</span>    <ul>      <li>Option 1: Paste the URL of the <span class="notranslate">workflow</span> into the box labelled <em>“Archived <span class="notranslate">Workflow</span> URL”</em></li>      <li>Option 2: Upload the <span class="notranslate">workflow</span> file in the box labelled <em>“Archived <span class="notranslate">Workflow</span> File”</em></li>    </ul>  </li>  <li>Click the <strong>Import <span class="notranslate">workflow</span></strong> button</li></ul></blockquote>
+              <blockquote class="tip">   <div class="box-title tip-title" id="tip-importing-a-workflow-2"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-importing-a-workflow-2-contents" aria-expanded="true" aria-label="Toggle tip box: Importing a workflow"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: Importing a <span class="notranslate">workflow</span><span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>   <ul>   <li>Click on <em><span class="notranslate">Workflow</span></em> on the top menu bar of <span class="notranslate">Galaxy</span>. You will see a list of all your workflows.</li>   <li>Click on the upload icon <i class="fas fa-upload" aria-hidden="true"></i><span class="visually-hidden"><span class="notranslate">galaxy</span>-upload</span> at the top-right of the screen</li>   <li>Provide your <span class="notranslate">workflow</span>     <ul>       <li>Option 1: Paste the URL of the <span class="notranslate">workflow</span> into the box labelled <em>“Archived <span class="notranslate">Workflow</span> URL”</em></li>       <li>Option 2: Upload the <span class="notranslate">workflow</span> file in the box labelled <em>“Archived <span class="notranslate">Workflow</span> File”</em></li>     </ul>   </li>   <li>Click the <strong>Import <span class="notranslate">workflow</span></strong> button</li> </ul> </blockquote>
             </li>
           </ul>
         </li>
@@ -1873,7 +1857,7 @@ correctly already.</p>
       <p>Run <strong>COVID-19: consensus construction</strong> <i class="fas fa-share-alt" aria-hidden="true"></i><span class="visually-hidden"><span class="notranslate">workflow</span></span> using the following parameters:</p>
 
       <!--SNIPPET-->
-      <blockquote class="tip">  <div id="tip-running-a-workflow-2" class="box-title"><button type="button" aria-controls="tip-running-a-workflow-2-contents" aria-expanded="true" aria-label="Toggle tip box: Running a workflow"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: Running a <span class="notranslate">workflow</span><span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>  <ul>  <li>Click on <em><span class="notranslate">Workflow</span></em> on the top menu bar of <span class="notranslate">Galaxy</span>. You will see a list of all your workflows.</li>  <li>Click on the <i class="fas fa-play" aria-hidden="true"></i><span class="visually-hidden"><span class="notranslate">workflow</span>-run</span> (<em>Run <span class="notranslate">workflow</span></em>) button next to your <span class="notranslate">workflow</span></li>  <li>Configure the <span class="notranslate">workflow</span> as needed</li>  <li>Click the <strong>Run <span class="notranslate">Workflow</span></strong> button at the top-right of the screen</li>  <li>You may have to refresh your history to see the queued jobs</li></ul></blockquote>
+      <blockquote class="tip">   <div class="box-title tip-title" id="tip-running-a-workflow-2"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-running-a-workflow-2-contents" aria-expanded="true" aria-label="Toggle tip box: Running a workflow"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: Running a <span class="notranslate">workflow</span><span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>   <ul>   <li>Click on <em><span class="notranslate">Workflow</span></em> on the top menu bar of <span class="notranslate">Galaxy</span>. You will see a list of all your workflows.</li>   <li>Click on the <i class="fas fa-play" aria-hidden="true"></i><span class="visually-hidden"><span class="notranslate">workflow</span>-run</span> (<em>Run <span class="notranslate">workflow</span></em>) button next to your <span class="notranslate">workflow</span></li>   <li>Configure the <span class="notranslate">workflow</span> as needed</li>   <li>Click the <strong>Run <span class="notranslate">Workflow</span></strong> button at the top-right of the screen</li>   <li>You may have to refresh your history to see the queued jobs</li> </ul> </blockquote>
 
       <ul>
         <li><em>“Send results to a new history”</em>: <code class="language-plaintext highlighter-rouge">No</code></li>
@@ -1932,7 +1916,7 @@ correctly already.</p>
 <p>Pangolin (Phylogenetic Assignment of Named Global Outbreak LINeages) can be used to assign a SARS-CoV-2 genome sequence the most likely lineage based on the PANGO nomenclature system.</p>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-from-consensus-sequences-to-clade-assignations-using-pangolin" class="box-title" aria-label="hands-on box: From consensus sequences to clade assignations using Pangolin"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: From consensus sequences to clade assignations using Pangolin</div>
+  <div class="box-title hands-on-title" id="hands-on-from-consensus-sequences-to-clade-assignations-using-pangolin" aria-label="hands-on box: From consensus sequences to clade assignations using Pangolin"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: From consensus sequences to clade assignations using Pangolin</div>
 
   <ol>
     <li><span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/iuc/pangolin/pangolin/3.1.4+galaxy0" title="Tested with toolshed.g2.bx.psu.edu/repos/iuc/pangolin/pangolin/3.1.4+galaxy0"><strong>Pangolin</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: <span class="notranslate">toolshed</span>.g2.bx.psu.edu/repos/iuc/pangolin/pangolin/3.1.4+<span class="notranslate">galaxy</span>0</span></span>  with the following parameters:
@@ -2024,12 +2008,12 @@ correctly already.</p>
 </table>
 
 <blockquote class="question">
-  <div id="question-2" class="box-title" aria-label="question box: "><i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden"></span> Question</div>
+  <div class="box-title question-title" id="question-2" aria-label="question box: "><i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden"></span> Question</div>
 
   <p>How many different lineages have been found? How many samples for each lineage?</p>
 
   <blockquote class="solution">
-    <div id="solution-2" class="box-title"><button type="button" aria-controls="solution-2-contents" aria-expanded="true" aria-label="Toggle solution box: "><i class="far fa-eye" aria-hidden="true"></i><span class="visually-hidden"></span> Solution<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
+    <div class="box-title solution-title" id="solution-2"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-2-contents" aria-expanded="true" aria-label="Toggle solution box: "><i class="far fa-eye" aria-hidden="true"></i><span class="visually-hidden"></span> Solution<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
 
     <p>To summarize the number of lineages and number of samples for  each lineage, we can run <span class="tool" data-tool="Grouping1" title="Tested with Grouping1"><strong>Group data</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: Grouping1</span></span>  with the following parameters:</p>
     <ul>
@@ -2063,7 +2047,7 @@ correctly already.</p>
 <p>Nextclade assigns clades, calls mutations and performs sequence quality checks on SARS-CoV-2 genomes.</p>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-from-consensus-sequences-to-clade-assignations-using-nextclade" class="box-title" aria-label="hands-on box: From consensus sequences to clade assignations using Nextclade"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: From consensus sequences to clade assignations using Nextclade</div>
+  <div class="box-title hands-on-title" id="hands-on-from-consensus-sequences-to-clade-assignations-using-nextclade" aria-label="hands-on box: From consensus sequences to clade assignations using Nextclade"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: From consensus sequences to clade assignations using Nextclade</div>
 
   <ol>
     <li><span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/iuc/nextclade/nextclade/0.14.4+galaxy0" title="Tested with toolshed.g2.bx.psu.edu/repos/iuc/nextclade/nextclade/0.14.4+galaxy0"><strong>Nextclade</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: <span class="notranslate">toolshed</span>.g2.bx.psu.edu/repos/iuc/nextclade/nextclade/0.14.4+<span class="notranslate">galaxy</span>0</span></span>  with the following parameters:
@@ -2294,14 +2278,14 @@ correctly already.</p>
 </table>
 
 <blockquote class="question">
-  <div id="question-3" class="box-title" aria-label="question box: "><i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden"></span> Question</div>
+  <div class="box-title question-title" id="question-3" aria-label="question box: "><i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden"></span> Question</div>
 
   <p>How many different lineages have been found? How many samples for each lineage?</p>
 
   <figure id="figure-1"><img src="../../images/sars-cov-2-variant-discovery/ncov_clades.png" alt="Illustration of phylogenetic relationship of clades, as used in Nextclade. " loading="lazy" /><figcaption><span class="figcaption-prefix">Figure 1:</span> Illustration of phylogenetic relationship of clades, as used in Nextclade (Source: <a href="https://clades.nextstrain.org/">Nextclade</a>)</figcaption></figure>
 
   <blockquote class="solution">
-    <div id="solution-3" class="box-title"><button type="button" aria-controls="solution-3-contents" aria-expanded="true" aria-label="Toggle solution box: "><i class="far fa-eye" aria-hidden="true"></i><span class="visually-hidden"></span> Solution<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
+    <div class="box-title solution-title" id="solution-3"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-3-contents" aria-expanded="true" aria-label="Toggle solution box: "><i class="far fa-eye" aria-hidden="true"></i><span class="visually-hidden"></span> Solution<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
 
     <p>To summarize the number of lineages and number of samples for  each lineage, we can run <span class="tool" data-tool="Grouping1" title="Tested with Grouping1"><strong>Group data</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: Grouping1</span></span>  with the following parameters:</p>
     <ul>
@@ -2335,7 +2319,7 @@ correctly already.</p>
 <p>We can compare <strong>Pangolin</strong> and <strong>Nextclade</strong> clade assignments by extracting interesting columns and joining them into a single dataset using sample ids.</p>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-comparison-clade-assignations" class="box-title" aria-label="hands-on box: Comparison clade assignations"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Comparison clade assignations</div>
+  <div class="box-title hands-on-title" id="hands-on-comparison-clade-assignations" aria-label="hands-on box: Comparison clade assignations"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Comparison clade assignations</div>
 
   <ol>
     <li><span class="tool" data-tool="Cut1" title="Tested with Cut1"><strong>Cut columns from a table</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: Cut1</span></span>  with the following parameters:
@@ -2486,19 +2470,21 @@ day = ""
 url = "\url{https://training.galaxyproject.org/training-material/topics/variant-analysis/tutorials/sars-cov-2-variant-discovery/tutorial.html}",
 note = "[Online; accessed TODAY]"
 }
-@article{Batut_2018,
-    doi = {10.1016/j.cels.2018.05.012},
-    url = {https://doi.org/10.1016%2Fj.cels.2018.05.012},
-    year = 2018,
-    month = {jun},
-    publisher = {Elsevier {BV}},
-    volume = {6},
-    number = {6},
-    pages = {752--758.e1},
-    author = {B{\'{e}}r{\'{e}}nice Batut and Saskia Hiltemann and Andrea Bagnacani and Dannon Baker and Vivek Bhardwaj and Clemens Blank and Anthony Bretaudeau and Loraine Brillet-Gu{\'{e}}guen and Martin {\v{C}}ech and John Chilton and Dave Clements and Olivia Doppelt-Azeroual and Anika Erxleben and Mallory Ann Freeberg and Simon Gladman and Youri Hoogstrate and Hans-Rudolf Hotz and Torsten Houwaart and Pratik Jagtap and Delphine Larivi{\`{e}}re and Gildas Le Corguill{\'{e}} and Thomas Manke and Fabien Mareuil and Fidel Ram{\'{\i}}rez and Devon Ryan and Florian Christoph Sigloch and Nicola Soranzo and Joachim Wolff and Pavankumar Videm and Markus Wolfien and Aisanjiang Wubuli and Dilmurat Yusuf and James Taylor and Rolf Backofen and Anton Nekrutenko and Björn Grüning},
-    title = {Community-Driven Data Analysis Training for Biology},
-    journal = {Cell Systems}
-}</code>
+@article{Hiltemann_2023,
+	doi = {10.1371/journal.pcbi.1010752},
+	url = {https://doi.org/10.1371%2Fjournal.pcbi.1010752},
+	year = 2023,
+	month = {jan},
+	publisher = {Public Library of Science ({PLoS})},
+	volume = {19},
+	number = {1},
+	pages = {e1010752},
+	author = {Saskia Hiltemann and Helena Rasche and Simon Gladman and Hans-Rudolf Hotz and Delphine Larivi{\`{e}}re and Daniel Blankenberg and Pratik D. Jagtap and Thomas Wollmann and Anthony Bretaudeau and Nadia Gou{\'{e}} and Timothy J. Griffin and Coline Royaux and Yvan Le Bras and Subina Mehta and Anna Syme and Frederik Coppens and Bert Droesbeke and Nicola Soranzo and Wendi Bacon and Fotis Psomopoulos and Crist{\'{o}}bal Gallardo-Alba and John Davis and Melanie Christine Föll and Matthias Fahrner and Maria A. Doyle and Beatriz Serrano-Solano and Anne Claire Fouilloux and Peter van Heusden and Wolfgang Maier and Dave Clements and Florian Heyl and Björn Grüning and B{\'{e}}r{\'{e}}nice Batut and},
+	editor = {Francis Ouellette},
+	title = {Galaxy Training: A powerful framework for teaching!},
+	journal = {PLoS Comput Biol} Computational Biology}
+}
+</code>
                    </pre></div></div>
                    </p>
                 </blockquote>
@@ -2536,8 +2522,6 @@ document.getElementById("citation-text").innerHTML = document.getElementById("ci
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
         <script type="text/javascript" src="/training-material/assets/js/bootstrap-toc.min.js"></script>
         <script type="text/javascript" src="/training-material/assets/js/main.js"></script>
-        <script type="text/javascript" src="/training-material/assets/js/theme.js"></script>
-
         <script type="text/javascript" src="/training-material/assets/js/clipboard.min.js"></script>
         <script type="text/javascript">
         var snippets=document.querySelectorAll('div.highlight');

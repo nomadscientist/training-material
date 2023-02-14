@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="utf-8">
@@ -14,7 +14,6 @@
         <link rel="stylesheet" href="/training-material/assets/css/main.css?v=2">
         <script src="https://kit.fontawesome.com/67b3f98409.js" crossorigin="anonymous"></script>
         <link rel="stylesheet" href="/training-material/assets/css/academicons.css">
-        <link rel="stylesheet" href="/training-material/assets/css/syntax_highlighting.css">
         <link rel="shortcut icon" href="/training-material/favicon.ico" type="image/x-icon" />
         <link rel="alternate" type="application/atom+xml" href="/training-material/feed.xml" />
         <link rel="canonical" href="https://training.galaxyproject.org/training-material/topics/assembly/tutorials/assembly-with-preprocessing/tutorial.html" />
@@ -24,10 +23,9 @@
 <meta name="DC.type" content="text" />
 <meta name="DC.title" content="Unicycler assembly of SARS-CoV-2 genome with preprocessing to remove human genome reads" />
 <meta name="DC.publisher" content="Galaxy Training Network" />
-<meta name="DC.date" content="2022-10-18 14:23:35 +0000" />
+<meta name="DC.date" content="2022-11-28 09:55:50 +0000" />
 <meta name="DC.creator" content="Wolfgang Maier" />
 
-        
         
         
         
@@ -38,221 +36,9 @@
         <meta property="og:description" content="DNA sequence data has become an indispensable tool for Mo..." />
         <meta property="og:image" content="/training-material/assets/images/GTNLogo1000.png" />
 
-    </head>
-    <body data-spy="scroll" data-target="#toc">
-        <header>
-    <nav class="navbar navbar-expand-md navbar-dark" aria-label="Site Navigation">
-        <div class="container">
-            <a class="navbar-brand" href="/training-material/">
-                <img src="/training-material/assets/images/GTN-60px.png" height="30" alt="Galaxy Training Network logo">
-                Galaxy Training!
-            </a>
-
-            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#top-navbar" aria-controls="top-navbar" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="top-navbar">
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        
-                        <a class="nav-link" href="/training-material/topics/assembly" title="Go back to list of tutorials">
-                            <i class="far fa-folder" aria-hidden="true"></i> Assembly
-                        </a>
-                        
-                    </li>
-
-                    <li class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false" title="Languages">
-                            <i class="fas fa-language" aria-hidden="true"></i><span class="visually-hidden">language</span> Languages
-                        </a>
-                        <div class="dropdown-menu dropdown-menu-right">
-                            
-                              <strong class="dropdown-header">Automatic Translations</strong>
-            
-            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=fr&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/assembly/tutorials/assembly-with-preprocessing/tutorial.html&edit-text=&act=url">
-                            Français
-                            </a>
-                            
-            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=ja&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/assembly/tutorials/assembly-with-preprocessing/tutorial.html&edit-text=&act=url">
-                            日本語
-                            </a>
-                            
-            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=es&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/assembly/tutorials/assembly-with-preprocessing/tutorial.html&edit-text=&act=url">
-                            Español
-                            </a>
-                            
-            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=pt&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/assembly/tutorials/assembly-with-preprocessing/tutorial.html&edit-text=&act=url">
-                            Português
-                            </a>
-                            
-            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=ar&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/assembly/tutorials/assembly-with-preprocessing/tutorial.html&edit-text=&act=url">
-                            العربية
-                            </a>
-                            
-                            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/assembly/tutorials/assembly-with-preprocessing/tutorial.html&edit-text=&act=url" title="">
-                            And more!
-                            </a>
-                        </div>
-                    </li>
-
-                    <li class="nav-item dropdown">
-    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false" title="Help">
-        <i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden">help</span> Help
-    </a>
-    <div class="dropdown-menu dropdown-menu-right">
-        <!-- disable Tess for now
-        <form method="get" action="https://tess.elixir-europe.org/materials">
-            <input type="text" id="search" name="q" value="" style="margin-left: 0.5em;/*! border-radius: 0px; */">
-            <input type="hidden" value="Galaxy Training" name="content_provider">
-            <input type="submit" value="Search on TeSS" style="width: 92%;border-radius: 0px;margin: 0.5em;background: #f47d20;border: 0px;padding: 0.25em;" class="">
-        </form>
-        -->
-
-        <a class="dropdown-item" href="/training-material/faq" title="Check our FAQs">
-           <i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden">question</span> FAQs
-        </a>
         
-        <a class="dropdown-item" href="/training-material/topics/assembly/faqs/" title="Check our FAQs for the Assembly topic">
-           <i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden">question</span> Topic FAQs
-        </a>
-        
-        <a class="dropdown-item" href="https://help.galaxyproject.org/" title="Discuss on Galaxy Help">
-            <i class="far fa-comments" aria-hidden="true"></i><span class="visually-hidden">feedback</span> Galaxy Help Forum
-        </a>
-        <a class="dropdown-item" href="https://gitter.im/Galaxy-Training-Network/Lobby" title="Discuss on gitter">
-           <i class="fab fa-gitter" aria-hidden="true"></i><span class="visually-hidden">gitter</span> Discuss on Gitter
-        </a>
-    </div>
-</li>
-
-
-                    <li class="nav-item dropdown">
-    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false" title="Extras">
-        <i class="far fa-star" aria-hidden="true"></i><span class="visually-hidden">galaxy-star</span> Extras
-    </a>
-    <div class="dropdown-menu dropdown-menu-right">
-
-        
-        <a class="dropdown-item" href="https://github.com/galaxyproject/training-material/edit/main/topics/assembly/tutorials/assembly-with-preprocessing/tutorial.md" title="Edit on GitHub">
-          <i class="fab fa-github" aria-hidden="true"></i><span class="visually-hidden">github</span> Edit on GitHub
-        </a>
-
-        <a class="dropdown-item" href="/training-material/stats.html" title="Show view statistics about this repository">
-            <i class="fas fa-chart-bar" aria-hidden="true"></i><span class="visually-hidden">galaxy-barchart</span> GTN statistics
-        </a>
-
-        <a class="dropdown-item" href="https://plausible.galaxyproject.eu/training.galaxyproject.org?period=12mo&page=/training-material/topics/assembly/tutorials/assembly-with-preprocessing/tutorial.html" title="Show view statistics of this page">
-            <i class="fas fa-chart-bar" aria-hidden="true"></i><span class="visually-hidden">galaxy-barchart</span> Page Metrics
-        </a>
-
-        <!-- link to feedback -->
-        
+        <script type="application/ld+json">
             
-            
-                <a class="dropdown-item" href="/training-material/feedback.html" title="Show feedback statistics about this repository">
-                    <i class="fas fa-chart-bar" aria-hidden="true"></i><span class="visually-hidden">galaxy-barchart</span> GTN feedback
-                </a>
-            
-        
-
-        <div class="dropdown-item">
-            <div>
-                <i class="fas fa-palette" aria-hidden="true"></i><span class="visually-hidden">gtn-theme</span> Theme
-            </div>
-
-            <div id="theme-selector" data-toggle="buttons">
-                <label data-value="default" class="btn btn-secondary">
-                    <input type="radio" name="options" id="default" autocomplete="off"> Default
-                </label>
-                <label data-value="night" class="btn btn-secondary">
-                    <input type="radio" name="options" id="night" autocomplete="off"> Night
-                </label>
-                <label data-value="midnight" class="btn btn-secondary">
-                    <input type="radio" name="options" id="midnight" autocomplete="off"> Midnight
-                </label>
-                <label data-value="rainbow" class="btn btn-secondary">
-                    <input type="radio" name="options" id="rainbow" autocomplete="off"> Rainbow
-                </label>
-                <label data-value="progress" class="btn btn-secondary">
-                    <input type="radio" name="options" id="progress" autocomplete="off">🏳️‍🌈
-                </label>
-                <label data-value="halloween" class="btn btn-secondary">
-                    <input type="radio" name="options" id="halloween" autocomplete="off"> 🎃
-                </label>
-                <label data-value="straya" class="btn btn-secondary">
-                    <input type="radio" name="options" id="downunder" autocomplete="off"> 🇦🇺
-                </label>
-            </div>
-
-        </div>
-
-        <div class="dropdown-item">
-            <div>
-                <i class="fas fa-history" aria-hidden="true"></i><span class="visually-hidden">galaxy-rulebuilder-history</span> Previous Versions
-            </div>
-
-            <div id="archive-selector">
-            
-                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2020-01-06/topics/assembly/tutorials/assembly-with-preprocessing/tutorial.html" title="Version 2020-01-06">2020-01-06</a>
-            
-                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2019-12-01/topics/assembly/tutorials/assembly-with-preprocessing/tutorial.html" title="Version 2019-12-01">2019-12-01</a>
-            
-                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2019-11-01/topics/assembly/tutorials/assembly-with-preprocessing/tutorial.html" title="Version 2019-11-01">2019-11-01</a>
-            
-                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/" title="Older Versions">Older Versions</a>
-            </div>
-
-        </div>
-
-    </div>
-</li>
-
-
-                    <!-- Search bar-->
-                    <li class="nav-item">
-                      <div id="navbarSupportedContent" role="search">
-                        <!-- Search form -->
-                        <form class="form-inline mr-auto" method="GET" action="/training-material/search">
-                          <i class="fas fa-search nav-link" aria-hidden="true"></i>
-                          <div class="md-form mb-2">
-                            <input name="query" class="form-control nicer" type="text" placeholder="Search Tutorials" aria-label="Search">
-                          </div>
-                        </form>
-                      </div>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-</header>
-
-        <div class="container main-content" role="main">
-        
-
-
-
-
-
-
-
-
-
-
-
-<!-- Gitter -->
-
-
-
-
-<script>
-  ((window.gitter = {}).chat = {}).options = {
-  room: 'Galaxy-Training-Network/Lobby'
-  };
-</script>
-<script src="https://sidecar.gitter.im/dist/sidecar.v1.js" async defer></script>
-
-<script type="application/ld+json">
-    
 
 
 {
@@ -277,7 +63,7 @@
     "name": "Galaxy Training Network",
     "url": "https://galaxyproject.org/teach/gtn/"
   },
-  "dateModified": "2022-10-18 14:23:35 +0000",
+  "dateModified": "2022-11-28 09:55:50 +0000",
   "discussionUrl": "https://gitter.im/Galaxy-Training-Network/Lobby",
   "headline": "Unicycler assembly of SARS-CoV-2 genome with preprocessing to remove human genome reads",
   "interactivityType": "mixed",
@@ -477,7 +263,9 @@
           "name": "Galaxy Training Network",
           "url": "https://galaxyproject.org/teach/gtn/"
         }
-      ]
+      ],
+      "identifier": "https://orcid.org/0000-0002-9464-6640",
+      "orcid": "https://orcid.org/0000-0002-9464-6640"
     }
   ],
   "contributor": [
@@ -500,7 +288,9 @@
           "name": "Galaxy Training Network",
           "url": "https://galaxyproject.org/teach/gtn/"
         }
-      ]
+      ],
+      "identifier": "https://orcid.org/0000-0002-9464-6640",
+      "orcid": "https://orcid.org/0000-0002-9464-6640"
     }
   ],
   "about": [
@@ -513,7 +303,210 @@
   ],
   "educationalLevel": "Intermediate"
 }
+        </script>
+        
+    </head>
+    <body data-spy="scroll" data-target="#toc">
+        <script type="text/javascript" src="/training-material/assets/js/theme.js"></script>
+        <header>
+    <nav class="navbar navbar-expand-md navbar-dark" aria-label="Site Navigation">
+        <div class="container">
+            <a class="navbar-brand" href="/training-material/">
+                <img src="/training-material/assets/images/GTN-60px.png" height="30" alt="Galaxy Training Network logo">
+                Galaxy Training!
+            </a>
+
+            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#top-navbar" aria-controls="top-navbar" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="top-navbar">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        
+                        <a class="nav-link" href="/training-material/topics/assembly" title="Go back to list of tutorials">
+                            <i class="far fa-folder" aria-hidden="true"></i> Assembly
+                        </a>
+                        
+                    </li>
+
+                    <li class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false" title="Languages">
+                            <i class="fas fa-language" aria-hidden="true"></i><span class="visually-hidden">language</span> Languages
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right">
+                            
+                              <strong class="dropdown-header">Automatic Translations</strong>
+            
+            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=fr&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/assembly/tutorials/assembly-with-preprocessing/tutorial.html&edit-text=&act=url">
+                            Français
+                            </a>
+                            
+            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=ja&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/assembly/tutorials/assembly-with-preprocessing/tutorial.html&edit-text=&act=url">
+                            日本語
+                            </a>
+                            
+            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=es&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/assembly/tutorials/assembly-with-preprocessing/tutorial.html&edit-text=&act=url">
+                            Español
+                            </a>
+                            
+            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=pt&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/assembly/tutorials/assembly-with-preprocessing/tutorial.html&edit-text=&act=url">
+                            Português
+                            </a>
+                            
+            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=ar&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/assembly/tutorials/assembly-with-preprocessing/tutorial.html&edit-text=&act=url">
+                            العربية
+                            </a>
+                            
+                            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/assembly/tutorials/assembly-with-preprocessing/tutorial.html&edit-text=&act=url" title="">
+                            And more!
+                            </a>
+                        </div>
+                    </li>
+
+                    <li class="nav-item dropdown">
+    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false" title="Help">
+        <i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden">help</span> Help
+    </a>
+    <div class="dropdown-menu dropdown-menu-right">
+        <!-- disable Tess for now
+        <form method="get" action="https://tess.elixir-europe.org/materials">
+            <input type="text" id="search" name="q" value="" style="margin-left: 0.5em;/*! border-radius: 0px; */">
+            <input type="hidden" value="Galaxy Training" name="content_provider">
+            <input type="submit" value="Search on TeSS" style="width: 92%;border-radius: 0px;margin: 0.5em;background: #f47d20;border: 0px;padding: 0.25em;" class="">
+        </form>
+        -->
+
+        <a class="dropdown-item" href="/training-material/faq" title="Check our FAQs">
+           <i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden">question</span> FAQs
+        </a>
+        
+        
+        <a class="dropdown-item" href="/training-material/topics/assembly/faqs/" title="Check our FAQs for the Assembly topic">
+           <i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden">question</span> Topic FAQs
+        </a>
+        
+        
+        <a class="dropdown-item" href="https://help.galaxyproject.org/" title="Discuss on Galaxy Help">
+            <i class="far fa-comments" aria-hidden="true"></i><span class="visually-hidden">feedback</span> Galaxy Help Forum
+        </a>
+        <a class="dropdown-item" href="https://gitter.im/Galaxy-Training-Network/Lobby" title="Discuss on gitter">
+           <i class="fab fa-gitter" aria-hidden="true"></i><span class="visually-hidden">gitter</span> Discuss on Gitter
+        </a>
+    </div>
+</li>
+
+
+                    <li class="nav-item dropdown">
+    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false" title="Extras">
+        <i class="far fa-star" aria-hidden="true"></i><span class="visually-hidden">galaxy-star</span> Extras
+    </a>
+    <div class="dropdown-menu dropdown-menu-right">
+
+        
+        <a class="dropdown-item" href="https://github.com/galaxyproject/training-material/edit/main/topics/assembly/tutorials/assembly-with-preprocessing/tutorial.md" title="Edit on GitHub">
+          <i class="fab fa-github" aria-hidden="true"></i><span class="visually-hidden">github</span> Edit on GitHub
+        </a>
+
+        <a class="dropdown-item" href="/training-material/stats.html" title="Show view statistics about this repository">
+            <i class="fas fa-chart-bar" aria-hidden="true"></i><span class="visually-hidden">galaxy-barchart</span> GTN statistics
+        </a>
+
+        <a class="dropdown-item" href="https://plausible.galaxyproject.eu/training.galaxyproject.org?period=12mo&page=/training-material/topics/assembly/tutorials/assembly-with-preprocessing/tutorial.html" title="Show view statistics of this page">
+            <i class="fas fa-chart-bar" aria-hidden="true"></i><span class="visually-hidden">galaxy-barchart</span> Page Metrics
+        </a>
+
+        <!-- link to feedback -->
+        
+            
+            
+                <a class="dropdown-item" href="/training-material/feedback.html" title="Show feedback statistics about this repository">
+                    <i class="fas fa-chart-bar" aria-hidden="true"></i><span class="visually-hidden">galaxy-barchart</span> GTN feedback
+                </a>
+            
+        
+
+        <div class="dropdown-item">
+            <div>
+                <i class="fas fa-palette" aria-hidden="true"></i><span class="visually-hidden">gtn-theme</span> Theme
+            </div>
+
+            <div id="theme-selector" data-toggle="buttons">
+                    <button class="btn" data-theme="default">Default</button>
+                    <button class="btn" data-theme="night">Night</button>
+                    <button class="btn" data-theme="midnight">Midnight</button>
+                    <button class="btn" data-theme="rainbow">Rainbow</button>
+                    <button class="btn" data-theme="blm">✊🏿</button>
+                    <button class="btn" data-theme="progress" >🏳️‍🌈</button>
+                    <button class="btn" data-theme="halloween">🎃</button>
+                    <button class="btn" data-theme="straya">🇦🇺</button>
+            </div>
+
+        </div>
+
+        <div class="dropdown-item">
+            <div>
+                <i class="fas fa-history" aria-hidden="true"></i><span class="visually-hidden">galaxy-rulebuilder-history</span> Previous Versions
+            </div>
+
+            <div id="archive-selector">
+            
+                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2020-01-06/topics/assembly/tutorials/assembly-with-preprocessing/tutorial.html" title="Version 2020-01-06">2020-01-06</a>
+            
+                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2019-12-01/topics/assembly/tutorials/assembly-with-preprocessing/tutorial.html" title="Version 2019-12-01">2019-12-01</a>
+            
+                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2019-11-01/topics/assembly/tutorials/assembly-with-preprocessing/tutorial.html" title="Version 2019-11-01">2019-11-01</a>
+            
+                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/" title="Older Versions">Older Versions</a>
+            </div>
+
+        </div>
+
+    </div>
+</li>
+
+
+                    <!-- Search bar-->
+                    <li class="nav-item">
+                      <div id="navbarSupportedContent" role="search">
+                        <!-- Search form -->
+                        <form class="form-inline mr-auto" method="GET" action="/training-material/search">
+                          <i class="fas fa-search nav-link" aria-hidden="true"></i>
+                          <div class="md-form mb-2">
+                            <input name="query" class="form-control nicer" type="text" placeholder="Search Tutorials" aria-label="Search">
+                          </div>
+                        </form>
+                      </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
+        <div class="container main-content" role="main">
+        
+
+
+
+
+
+
+
+
+
+
+
+<!-- Gitter -->
+
+
+
+
+<script>
+  ((window.gitter = {}).chat = {}).options = {
+  room: 'Galaxy-Training-Network/Lobby'
+  };
 </script>
+<script src="https://sidecar.gitter.im/dist/sidecar.v1.js" async defer></script>
 
 <section class="tutorial topic-assembly">
     <h1 data-toc-skip>Unicycler assembly of SARS-CoV-2 genome with preprocessing to remove human genome reads</h1>
@@ -522,7 +515,7 @@
     <div markdown="0">
 
 	<div class="contributors-line">
-		Authors: <a href="/training-material/hall-of-fame/wm75/" class="contributor-badge contributor-wm75"><img src="https://avatars.githubusercontent.com/wm75?s=27" alt="Avatar">Wolfgang Maier</a>
+		Authors: <a href="/training-material/hall-of-fame/wm75/" class="contributor-badge contributor-wm75"><img src="/training-material/assets/images/orcid.png" alt="orcid logo"/><img src="https://avatars.githubusercontent.com/wm75?s=27" alt="Avatar">Wolfgang Maier</a>
 	</div>
 
 </div>
@@ -584,8 +577,6 @@
                 
                     
                         
-                    
-                        
                             
                             <li> Quality Control:
                             
@@ -598,6 +589,10 @@
                                 
                             
                             </li>
+                        
+                    
+                        
+                    
                         
                     
                         
@@ -617,14 +612,6 @@
         
             <ul>
                 
-                    
-                        
-                    
-                        
-                    
-                        
-                    
-                        
                     
                         
                     
@@ -659,6 +646,16 @@
                     
                         
                     
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
                 
             </ul>
         
@@ -675,6 +672,10 @@
                 
                     
                         
+                    
+                        
+                    
+                        
                             
                             <li> Mapping:
                             
@@ -687,8 +688,6 @@
                                 
                             
                             </li>
-                        
-                    
                         
                     
                         
@@ -731,22 +730,6 @@
                         
                     
                         
-                    
-                        
-                    
-                        
-                    
-                        
-                    
-                        
-                    
-                        
-                    
-                        
-                    
-                        
-                    
-                        
                             
                             <li> Using dataset collections:
                             
@@ -756,6 +739,22 @@
                                 
                             
                             </li>
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
                         
                     
                         
@@ -805,7 +804,7 @@
 
 
 <a class="btn btn-default topic-icon" title="Zenodo datasets used in this tutorial" href="https://doi.org/10.5281/zenodo.3732358">
-    <i class="far fa-copy" aria-hidden="true"></i> Datasets
+    <i class="far fa-copy" aria-hidden="true"></i>&nbsp;Datasets
 </a>
 
 </li>
@@ -816,7 +815,7 @@
 
 
     <a class="btn btn-default topic-icon" href="/training-material/topics/assembly/tutorials/assembly-with-preprocessing/workflows/" title="Workflows" alt="Unicycler assembly of SARS-CoV-2 genome with preprocessing to remove human genome reads workflows">
-        <i class="fas fa-share-alt" aria-hidden="true"></i> Workflows
+        <i class="fas fa-share-alt" aria-hidden="true"></i>&nbsp;Workflows
     </a>
 
 </li>
@@ -1016,6 +1015,8 @@
         
     
         
+    
+        
         <a class="dropdown-item" href="https://streetscience.usegalaxy.eu/" title="Street Science">
             Street Science
         </a>
@@ -1073,7 +1074,7 @@
         </ul>
         
 
-        <div><strong><i class="far fa-calendar" aria-hidden="true"></i> Last modification:</strong> Oct 18, 2022 </div>
+        <div><strong><i class="far fa-calendar" aria-hidden="true"></i> Last modification:</strong> Nov 28, 2022 </div>
         <div><strong><i class="fas fa-balance-scale" aria-hidden="true"></i> License:</strong>
             
             <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Tutorial Content is licensed under Creative Commons Attribution 4.0 International License</a>
@@ -1110,7 +1111,7 @@ SARS-CoV-2 <span class="notranslate">reads</span> by identifying and discarding 
 trying to assemble the viral genome sequence.</p>
 
 <blockquote class="comment">
-  <div id="comment-the-usegalaxy-covid-19-analysis-project" class="box-title" aria-label="comment box: The usegalaxy.* COVID-19 analysis project"><i class="far fa-comment-dots" aria-hidden="true"></i><span class="visually-hidden"></span> Comment: The use<span class="notranslate">galaxy</span>.* COVID-19 analysis project</div>
+  <div class="box-title comment-title" id="comment-the-usegalaxy-covid-19-analysis-project" aria-label="comment box: The usegalaxy.* COVID-19 analysis project"><i class="far fa-comment-dots" aria-hidden="true"></i><span class="visually-hidden"></span> Comment: The use<span class="notranslate">galaxy</span>.* COVID-19 analysis project</div>
   <p>This tutorial uses the same data as, and recapitulates to a large extent, the
 <a href="https://covid19.galaxyproject.org/genomics/1-PreProcessing/">Pre-processing</a>
 and <a href="https://covid19.galaxyproject.org/genomics/2-Assembly/">Assembly</a> steps
@@ -1120,7 +1121,7 @@ of the <a href="https://covid19.galaxyproject.org/genomics/">Genomics</a> sectio
 </blockquote>
 
 <blockquote class="agenda">
-  <div id="agenda" class="box-title" aria-label="agenda box: ">Agenda</div>
+  <div class="box-title agenda-title" id="agenda" aria-label="agenda box: ">Agenda</div>
 
   <p>In this tutorial, we will deal with:</p>
 
@@ -1188,7 +1189,7 @@ used to download several datasets and to arrange them into easy to handle
 data structures at the same time.</p>
 
     <blockquote class="details">
-      <div id="details-rule-based-uploads" class="box-title"><button type="button" aria-controls="details-rule-based-uploads-contents" aria-expanded="true" aria-label="Toggle details box: Rule-based uploads"><i class="fas fa-info-circle" aria-hidden="true"></i><span class="visually-hidden"></span> Details: Rule-based uploads<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
+      <div class="box-title details-title" id="details-rule-based-uploads"><button class="gtn-boxify-button details" type="button" aria-controls="details-rule-based-uploads-contents" aria-expanded="true" aria-label="Toggle details box: Rule-based uploads"><i class="fas fa-info-circle" aria-hidden="true"></i><span class="visually-hidden"></span> Details: Rule-based uploads<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
       <p>In this tutorial you will only use the features of <span class="notranslate">Galaxy</span>’s rule-based
 uploader that are required to get the input data ready for our analysis,
 and we will not explain those features in much detail.</p>
@@ -1211,16 +1212,16 @@ steps are independent of the data source you choose.</p>
 <h2 id="get-data-from-ncbi-sra">Get data from NCBI SRA</h2>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-data-upload-to-galaxy-from-ncbi-sra" class="box-title" aria-label="hands-on box: Data upload to Galaxy from NCBI SRA"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Data upload to <span class="notranslate">Galaxy</span> from NCBI SRA</div>
+  <div class="box-title hands-on-title" id="hands-on-data-upload-to-galaxy-from-ncbi-sra" aria-label="hands-on box: Data upload to Galaxy from NCBI SRA"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Data upload to <span class="notranslate">Galaxy</span> from NCBI SRA</div>
 
   <ol>
     <li>
       <p>Create a new history for this tutorial and give it a proper name</p>
 
       <!--SNIPPET-->
-      <blockquote class="tip">  <div id="tip-creating-a-new-history" class="box-title"><button type="button" aria-controls="tip-creating-a-new-history-contents" aria-expanded="true" aria-label="Toggle tip box: Creating a new history"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: Creating a new history<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>  <p>Click the <i class="fas fa-plus" aria-hidden="true"></i><span class="visually-hidden">new-history</span> icon at the top of the history panel.</p>  <p>If the <i class="fas fa-plus" aria-hidden="true"></i><span class="visually-hidden">new-history</span> is missing:</p>  <ol>  <li>Click on the <i class="fas fa-cog" aria-hidden="true"></i><span class="visually-hidden"><span class="notranslate">galaxy</span>-gear</span> icon (<strong>History options</strong>) on the top of the history panel</li>  <li>Select the option <strong>Create New</strong> from the menu</li></ol></blockquote>
+      <blockquote class="tip">   <div class="box-title tip-title" id="tip-creating-a-new-history"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-creating-a-new-history-contents" aria-expanded="true" aria-label="Toggle tip box: Creating a new history"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: Creating a new history<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>   <p>Click the <i class="fas fa-plus" aria-hidden="true"></i><span class="visually-hidden">new-history</span> icon at the top of the history panel.</p>   <p>If the <i class="fas fa-plus" aria-hidden="true"></i><span class="visually-hidden">new-history</span> is missing:</p>   <ol>   <li>Click on the <i class="fas fa-cog" aria-hidden="true"></i><span class="visually-hidden"><span class="notranslate">galaxy</span>-gear</span> icon (<strong>History options</strong>) on the top of the history panel</li>   <li>Select the option <strong>Create New</strong> from the menu</li> </ol> </blockquote>
       <!--SNIPPET-->
-      <blockquote class="tip">  <div id="tip-renaming-a-history" class="box-title"><button type="button" aria-controls="tip-renaming-a-history-contents" aria-expanded="true" aria-label="Toggle tip box: Renaming a history"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: Renaming a history<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>  <ol>  <li>Click on <strong>Unnamed history</strong> (or the current name of the history) (<strong>Click to rename history</strong>) at the top of your history panel</li>  <li>Type the new name</li>  <li>Press <kbd>Enter</kbd></li></ol></blockquote>
+      <blockquote class="tip">   <div class="box-title tip-title" id="tip-renaming-a-history"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-renaming-a-history-contents" aria-expanded="true" aria-label="Toggle tip box: Renaming a history"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: Renaming a history<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>   <ol>   <li>Click on <i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"><span class="notranslate">galaxy</span>-pencil</span> (<strong>Edit</strong>) next to the history name (which by default is “Unnamed history”)</li>   <li>Type the new name</li>   <li>Click on <strong>Save</strong></li> </ol>   <p>If you do not have the <i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"><span class="notranslate">galaxy</span>-pencil</span> (<strong>Edit</strong>) next to the history name:</p>   <ol>   <li>Click on <strong>Unnamed history</strong> (or the current name of the history) (<strong>Click to rename history</strong>) at the top of your history panel</li>   <li>Type the new name</li>   <li>Press <kbd>Enter</kbd></li> </ol> </blockquote>
     </li>
     <li>
       <p>Create a new dataset listing the SRA accession numbers of the Illumina paired-end input data for this tutorial:</p>
@@ -1233,7 +1234,7 @@ SRR10971381
       <p>call it, <em>e.g.</em>, <code class="language-plaintext highlighter-rouge">Illumina accessions</code> and set its datatype to <code class="language-plaintext highlighter-rouge">tabular</code>.</p>
 
       <!--SNIPPET-->
-      <blockquote class="tip">  <div id="tip-creating-a-new-file" class="box-title"><button type="button" aria-controls="tip-creating-a-new-file-contents" aria-expanded="true" aria-label="Toggle tip box: Creating a new file"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: Creating a new file<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>  <ul>  <li>Open the <span class="notranslate">Galaxy</span> Upload Manager</li>  <li>Select <strong>Paste/Fetch Data</strong></li>  <li>    <p>Paste the file contents into the text field</p>  </li>  <li>    <p>Change <strong>Type</strong> from “Auto-detect” to <code class="language-plaintext highlighter-rouge">tabular</code></p>  </li>  <li>Press <strong>Start</strong> and <strong>Close</strong> the window</li></ul></blockquote>
+      <blockquote class="tip">   <div class="box-title tip-title" id="tip-creating-a-new-file"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-creating-a-new-file-contents" aria-expanded="true" aria-label="Toggle tip box: Creating a new file"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: Creating a new file<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>   <ul>   <li>Open the <span class="notranslate">Galaxy</span> Upload Manager</li>   <li>Select <strong>Paste/Fetch Data</strong></li>   <li>     <p>Paste the file contents into the text field</p>   </li>   <li>     <p>Change <strong>Type</strong> from “Auto-detect” to <code class="language-plaintext highlighter-rouge">tabular</code></p>   </li>   <li>Press <strong>Start</strong> and <strong>Close</strong> the window</li> </ul> </blockquote>
     </li>
     <li>
       <p>Create another new dataset listing the SRA accession numbers of the Nanopore input data for this tutorial:</p>
@@ -1249,7 +1250,7 @@ SRR10902284
       <p>Add <code class="language-plaintext highlighter-rouge">#illumina</code>/<code class="language-plaintext highlighter-rouge">#nanopore</code> tags to the datasets</p>
 
       <blockquote class="comment">
-        <div id="comment-name-tags-in-the-analysis" class="box-title" aria-label="comment box: Name tags in the analysis"><i class="far fa-comment-dots" aria-hidden="true"></i><span class="visually-hidden"></span> Comment: Name tags in the analysis</div>
+        <div class="box-title comment-title" id="comment-name-tags-in-the-analysis" aria-label="comment box: Name tags in the analysis"><i class="far fa-comment-dots" aria-hidden="true"></i><span class="visually-hidden"></span> Comment: Name tags in the analysis</div>
         <p>We are going to treat the Illumina- and the Nanopore-sequenced data
 separately in this tutorial up to the actual genome assembly step.</p>
 
@@ -1266,7 +1267,7 @@ dataset.</p>
 Feel free to either use the suggested names above or choose ones you like.</p>
 
       <!--SNIPPET-->
-      <blockquote class="tip">  <div id="tip-adding-a-tag" class="box-title"><button type="button" aria-controls="tip-adding-a-tag-contents" aria-expanded="true" aria-label="Toggle tip box: Adding a tag"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: Adding a tag<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>  <ul>  <li>Click on the dataset</li>  <li>Click on <i class="fas fa-tags" aria-hidden="true"></i><span class="visually-hidden"><span class="notranslate">galaxy</span>-tags</span> <strong>Edit dataset tags</strong></li>  <li>    <p>Add a tag starting with <code class="language-plaintext highlighter-rouge">#</code></p>    <p>Tags starting with <code class="language-plaintext highlighter-rouge">#</code> will be automatically propagated to the outputs of tools using this dataset.</p>  </li>  <li>Check that the tag is appearing below the dataset name</li></ul></blockquote>
+      <blockquote class="tip">   <div class="box-title tip-title" id="tip-adding-a-tag"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-adding-a-tag-contents" aria-expanded="true" aria-label="Toggle tip box: Adding a tag"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: Adding a tag<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>   <ul>   <li>Click on the dataset</li>   <li>Click on <i class="fas fa-tags" aria-hidden="true"></i><span class="visually-hidden"><span class="notranslate">galaxy</span>-tags</span> <strong>Add Tags</strong></li>   <li>     <p>Add a tag starting with <code class="language-plaintext highlighter-rouge">#</code></p>     <p>Tags starting with <code class="language-plaintext highlighter-rouge">#</code> will be automatically propagated to the outputs of tools using this dataset.</p>   </li>   <li>Check that the tag is appearing below the dataset name</li> </ul> </blockquote>
     </li>
     <li>
       <p>Retrieve the Illumina <span class="notranslate">reads</span> data from NCBI:</p>
@@ -1332,16 +1333,16 @@ verify that they are empty, then delete them from your history.</p>
 <h2 id="get-data-from-zenodo">Get data from Zenodo</h2>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-data-upload-to-galaxy-from-zenodo" class="box-title" aria-label="hands-on box: Data upload to Galaxy from Zenodo"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Data upload to <span class="notranslate">Galaxy</span> from Zenodo</div>
+  <div class="box-title hands-on-title" id="hands-on-data-upload-to-galaxy-from-zenodo" aria-label="hands-on box: Data upload to Galaxy from Zenodo"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Data upload to <span class="notranslate">Galaxy</span> from Zenodo</div>
 
   <ol>
     <li>
       <p>Create a new history for this tutorial and give it a proper name</p>
 
       <!--SNIPPET-->
-      <blockquote class="tip">  <div id="tip-creating-a-new-history-1" class="box-title"><button type="button" aria-controls="tip-creating-a-new-history-1-contents" aria-expanded="true" aria-label="Toggle tip box: Creating a new history"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: Creating a new history<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>  <p>Click the <i class="fas fa-plus" aria-hidden="true"></i><span class="visually-hidden">new-history</span> icon at the top of the history panel.</p>  <p>If the <i class="fas fa-plus" aria-hidden="true"></i><span class="visually-hidden">new-history</span> is missing:</p>  <ol>  <li>Click on the <i class="fas fa-cog" aria-hidden="true"></i><span class="visually-hidden"><span class="notranslate">galaxy</span>-gear</span> icon (<strong>History options</strong>) on the top of the history panel</li>  <li>Select the option <strong>Create New</strong> from the menu</li></ol></blockquote>
+      <blockquote class="tip">   <div class="box-title tip-title" id="tip-creating-a-new-history-1"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-creating-a-new-history-1-contents" aria-expanded="true" aria-label="Toggle tip box: Creating a new history"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: Creating a new history<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>   <p>Click the <i class="fas fa-plus" aria-hidden="true"></i><span class="visually-hidden">new-history</span> icon at the top of the history panel.</p>   <p>If the <i class="fas fa-plus" aria-hidden="true"></i><span class="visually-hidden">new-history</span> is missing:</p>   <ol>   <li>Click on the <i class="fas fa-cog" aria-hidden="true"></i><span class="visually-hidden"><span class="notranslate">galaxy</span>-gear</span> icon (<strong>History options</strong>) on the top of the history panel</li>   <li>Select the option <strong>Create New</strong> from the menu</li> </ol> </blockquote>
       <!--SNIPPET-->
-      <blockquote class="tip">  <div id="tip-renaming-a-history-1" class="box-title"><button type="button" aria-controls="tip-renaming-a-history-1-contents" aria-expanded="true" aria-label="Toggle tip box: Renaming a history"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: Renaming a history<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>  <ol>  <li>Click on <strong>Unnamed history</strong> (or the current name of the history) (<strong>Click to rename history</strong>) at the top of your history panel</li>  <li>Type the new name</li>  <li>Press <kbd>Enter</kbd></li></ol></blockquote>
+      <blockquote class="tip">   <div class="box-title tip-title" id="tip-renaming-a-history-1"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-renaming-a-history-1-contents" aria-expanded="true" aria-label="Toggle tip box: Renaming a history"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: Renaming a history<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>   <ol>   <li>Click on <i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"><span class="notranslate">galaxy</span>-pencil</span> (<strong>Edit</strong>) next to the history name (which by default is “Unnamed history”)</li>   <li>Type the new name</li>   <li>Click on <strong>Save</strong></li> </ol>   <p>If you do not have the <i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"><span class="notranslate">galaxy</span>-pencil</span> (<strong>Edit</strong>) next to the history name:</p>   <ol>   <li>Click on <strong>Unnamed history</strong> (or the current name of the history) (<strong>Click to rename history</strong>) at the top of your history panel</li>   <li>Type the new name</li>   <li>Press <kbd>Enter</kbd></li> </ol> </blockquote>
     </li>
     <li>
       <p>Import Illumina-sequenced <span class="notranslate">reads</span> data from <a href="https://zenodo.org/record/3732359">Zenodo</a></p>
@@ -1406,7 +1407,7 @@ https://zenodo.org/record/3732359/files/SRR10971381_r2.fq.gz
               <p><em>“Add nametag for name:”</em> <i class="far fa-check-square" aria-hidden="true"></i><span class="visually-hidden">param-check</span></p>
 
               <blockquote class="comment">
-                <div id="comment-name-tags-in-the-analysis-1" class="box-title" aria-label="comment box: Name tags in the analysis"><i class="far fa-comment-dots" aria-hidden="true"></i><span class="visually-hidden"></span> Comment: Name tags in the analysis</div>
+                <div class="box-title comment-title" id="comment-name-tags-in-the-analysis-1" aria-label="comment box: Name tags in the analysis"><i class="far fa-comment-dots" aria-hidden="true"></i><span class="visually-hidden"></span> Comment: Name tags in the analysis</div>
                 <p>We are going to treat the Illumina- and the Nanopore-sequenced data
 separately in this tutorial up to the actual genome assembly step.</p>
 
@@ -1515,7 +1516,7 @@ trimming of adapter sequences (which the tool auto-detects for us) is at least
 metrics for all samples before and after preprocessing.</p>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-reads-preprocessing-and-quality-reporting" class="box-title" aria-label="hands-on box: Reads preprocessing and quality reporting"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: <span class="notranslate">Reads</span> preprocessing and quality reporting</div>
+  <div class="box-title hands-on-title" id="hands-on-reads-preprocessing-and-quality-reporting" aria-label="hands-on box: Reads preprocessing and quality reporting"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: <span class="notranslate">Reads</span> preprocessing and quality reporting</div>
   <ol>
     <li><strong>fastp</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> with the following parameters
       <ul>
@@ -1587,7 +1588,7 @@ the same reasons. Here we restrict ourselves to a simple quality check with
 <strong>NanoPlot</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span>, a dedicated QC tool for Nanopore-sequenced <span class="notranslate">reads</span>.</p>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-checking-the-quality-of-nanopore-reads-with-nanoplot" class="box-title" aria-label="hands-on box: Checking the quality of Nanopore reads with NanoPlot"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Checking the quality of Nanopore <span class="notranslate">reads</span> with NanoPlot</div>
+  <div class="box-title hands-on-title" id="hands-on-checking-the-quality-of-nanopore-reads-with-nanoplot" aria-label="hands-on box: Checking the quality of Nanopore reads with NanoPlot"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Checking the quality of Nanopore <span class="notranslate">reads</span> with NanoPlot</div>
   <ol>
     <li><strong>NanoPlot</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> with the following parameters
       <ul>
@@ -1609,7 +1610,7 @@ Nanopore-sequenced <span class="notranslate">reads</span> as produced in the <em
       </ul>
 
       <blockquote class="question">
-        <div id="question" class="box-title" aria-label="question box: "><i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden"></span> Question</div>
+        <div class="box-title question-title" id="question" aria-label="question box: "><i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden"></span> Question</div>
 
         <ol>
           <li>Looking at the three generated quality reports, which of the three
@@ -1618,7 +1619,7 @@ and what are some criteria that support this conclusion?</li>
         </ol>
 
         <blockquote class="solution">
-          <div id="solution" class="box-title"><button type="button" aria-controls="solution-contents" aria-expanded="true" aria-label="Toggle solution box: "><i class="far fa-eye" aria-hidden="true"></i><span class="visually-hidden"></span> Solution<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
+          <div class="box-title solution-title" id="solution"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-contents" aria-expanded="true" aria-label="Toggle solution box: "><i class="far fa-eye" aria-hidden="true"></i><span class="visually-hidden"></span> Solution<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
           <ol>
             <li>
               <p>Sample <code class="language-plaintext highlighter-rouge">SRR10948474</code> has the best overall quality.</p>
@@ -1654,7 +1655,7 @@ of length &gt; 100 nts, but we opt for the conservative approach of using a
 widely-used, well-tested tool here.</p>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-mapping-with-bowtie2" class="box-title" aria-label="hands-on box: Mapping with Bowtie2"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: <span class="notranslate">Mapping</span> with Bowtie2</div>
+  <div class="box-title hands-on-title" id="hands-on-mapping-with-bowtie2" aria-label="hands-on box: Mapping with Bowtie2"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: <span class="notranslate">Mapping</span> with Bowtie2</div>
   <ol>
     <li><strong>Bowtie2</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> with the following parameters
       <ul>
@@ -1675,7 +1676,7 @@ properties of the read pairs instead of those of individual <span class="notrans
           </ul>
         </li>
         <li><em>“Will you select a reference genome from your history or use a built-in index?”</em>:
-  <code class="language-plaintext highlighter-rouge">Use a built-in genome index</code>
+<code class="language-plaintext highlighter-rouge">Use a built-in genome index</code>
           <ul>
             <li><em>“Select reference genome”</em>: <code class="language-plaintext highlighter-rouge">Human (Homo sapiens): hg38 Full</code></li>
           </ul>
@@ -1695,7 +1696,7 @@ next.</p>
       <p>Inspect the <code class="language-plaintext highlighter-rouge"><span class="notranslate">mapping</span> stats</code> of each sample by clicking on the corresponding collection, then on the <i class="far fa-eye" aria-hidden="true"></i><span class="visually-hidden"><span class="notranslate">galaxy</span>-eye</span> (eye) icon of each individual sample data</p>
 
       <blockquote class="question">
-        <div id="question-1" class="box-title" aria-label="question box: "><i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden"></span> Question</div>
+        <div class="box-title question-title" id="question-1" aria-label="question box: "><i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden"></span> Question</div>
 
         <ol>
           <li>What percentage of <span class="notranslate">reads</span> of each sample has been aligned to the <code class="language-plaintext highlighter-rouge">hg38</code> reference genome?</li>
@@ -1704,7 +1705,7 @@ next.</p>
         </ol>
 
         <blockquote class="solution">
-          <div id="solution-1" class="box-title"><button type="button" aria-controls="solution-1-contents" aria-expanded="true" aria-label="Toggle solution box: "><i class="far fa-eye" aria-hidden="true"></i><span class="visually-hidden"></span> Solution<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
+          <div class="box-title solution-title" id="solution-1"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-1-contents" aria-expanded="true" aria-label="Toggle solution box: "><i class="far fa-eye" aria-hidden="true"></i><span class="visually-hidden"></span> Solution<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
           <ol>
             <li>The samples have between 13% and 21% of <span class="notranslate">reads</span> aligned to <code class="language-plaintext highlighter-rouge">hg38</code>.
 The information can be found on the last line of output for each
@@ -1730,7 +1731,7 @@ contained in this BALF sample.</li>
 aligner, which is particularly efficient for <span class="notranslate">mapping</span> long <span class="notranslate">reads</span>.</p>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-nanopore-reads-mapping" class="box-title" aria-label="hands-on box: Nanopore reads mapping"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Nanopore <span class="notranslate">reads</span> <span class="notranslate">mapping</span></div>
+  <div class="box-title hands-on-title" id="hands-on-nanopore-reads-mapping" aria-label="hands-on box: Nanopore reads mapping"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Nanopore <span class="notranslate">reads</span> <span class="notranslate">mapping</span></div>
 
   <ol>
     <li><strong>Map with minimap2</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> with the following parameters
@@ -1776,7 +1777,7 @@ statistics generated by <strong>Bowtie2</strong> and are enough for our purpose.
       </ul>
 
       <blockquote class="comment">
-        <div id="comment-mapping-stats-for-nanopore-sequenced-long-reads" class="box-title" aria-label="comment box: Mapping stats for Nanopore-sequenced long reads"><i class="far fa-comment-dots" aria-hidden="true"></i><span class="visually-hidden"></span> Comment: <span class="notranslate">Mapping</span> stats for Nanopore-sequenced long <span class="notranslate">reads</span></div>
+        <div class="box-title comment-title" id="comment-mapping-stats-for-nanopore-sequenced-long-reads" aria-label="comment box: Mapping stats for Nanopore-sequenced long reads"><i class="far fa-comment-dots" aria-hidden="true"></i><span class="visually-hidden"></span> Comment: <span class="notranslate">Mapping</span> stats for Nanopore-sequenced long <span class="notranslate">reads</span></div>
 
         <p>Since, unlike Illumina-generated <span class="notranslate">reads</span>, Nanopore-sequenced <span class="notranslate">reads</span> can
 have very different lengths, it makes limited sense to calculate a
@@ -1804,7 +1805,7 @@ those <span class="notranslate">reads</span> that were <em>not</em> mapped to th
 potential viral origin.</p>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-mapped-reads-filtering" class="box-title" aria-label="hands-on box: Mapped reads filtering"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Mapped <span class="notranslate">reads</span> filtering</div>
+  <div class="box-title hands-on-title" id="hands-on-mapped-reads-filtering" aria-label="hands-on box: Mapped reads filtering"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Mapped <span class="notranslate">reads</span> filtering</div>
 
   <ol>
     <li><strong>Samtools view</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> to filter the Illumina-sequenced <span class="notranslate">reads</span> mapped with Bowtie2:
@@ -1854,7 +1855,7 @@ mapped Nanopore-sequenced <span class="notranslate">reads</span>, output of <str
       <p>(Optional) Remove the database <code class="language-plaintext highlighter-rouge">hg38</code> attribute from the output files</p>
 
       <blockquote class="details">
-        <div id="details-why-do-this" class="box-title"><button type="button" aria-controls="details-why-do-this-contents" aria-expanded="true" aria-label="Toggle details box: Why do this?"><i class="fas fa-info-circle" aria-hidden="true"></i><span class="visually-hidden"></span> Details: Why do this?<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
+        <div class="box-title details-title" id="details-why-do-this"><button class="gtn-boxify-button details" type="button" aria-controls="details-why-do-this-contents" aria-expanded="true" aria-label="Toggle details box: Why do this?"><i class="fas fa-info-circle" aria-hidden="true"></i><span class="visually-hidden"></span> Details: Why do this?<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
         <p>When we ran the <strong>Bowtie2</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> and <strong>minimap2</strong>
 <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> mappers before, these tools set the <em>database</em> attribute
 on their outputs to <code class="language-plaintext highlighter-rouge">hg38</code> to indicate that the mapped <span class="notranslate">reads</span> in these
@@ -1872,7 +1873,7 @@ metadata now.</p>
 (dbkey) to <code class="language-plaintext highlighter-rouge">unspecified (?)</code>.</p>
 
       <!--SNIPPET-->
-      <blockquote class="tip">  <div id="tip-changing-database-build-dbkey" class="box-title"><button type="button" aria-controls="tip-changing-database-build-dbkey-contents" aria-expanded="true" aria-label="Toggle tip box: Changing database/build (dbkey)"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: Changing database/build (dbkey)<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>  <ul>  <li>Click on the <i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"><span class="notranslate">galaxy</span>-pencil</span> <strong>pencil icon</strong> for the dataset to edit its attributes</li>  <li>In the central panel, change the <strong>Database/Build</strong> field</li>  <li>Select your desired database key from the dropdown list: <code class="language-plaintext highlighter-rouge">unspecified (?)</code></li>  <li>Click the <strong>Save</strong> button</li></ul></blockquote>
+      <blockquote class="tip">   <div class="box-title tip-title" id="tip-changing-database-build-dbkey"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-changing-database-build-dbkey-contents" aria-expanded="true" aria-label="Toggle tip box: Changing database/build (dbkey)"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: Changing database/build (dbkey)<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>   <ul>   <li>Click on the <i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"><span class="notranslate">galaxy</span>-pencil</span> <strong>pencil icon</strong> for the dataset to edit its attributes</li>   <li>In the central panel, change the <strong>Database/Build</strong> field</li>   <li>Select your desired database key from the dropdown list: <code class="language-plaintext highlighter-rouge">unspecified (?)</code></li>   <li>Click the <strong>Save</strong> button</li> </ul> </blockquote>
     </li>
   </ol>
 
@@ -1888,7 +1889,7 @@ to convert the retained Illumina- and Nanopore-sequenced <span class="notranslat
 original format before proceeding to assembly.</p>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-bam-to-fastq-format-conversion" class="box-title" aria-label="hands-on box: BAM to fastq format conversion"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: BAM to fastq format conversion</div>
+  <div class="box-title hands-on-title" id="hands-on-bam-to-fastq-format-conversion" aria-label="hands-on box: BAM to fastq format conversion"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: BAM to fastq format conversion</div>
 
   <ol>
     <li><strong>Samtools fastx</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> to convert the filtered Illumina-sequenced <span class="notranslate">reads</span> to fastq format
@@ -1926,7 +1927,7 @@ for assembling the <span class="notranslate">reads</span> would not be able to h
 <p>Thus, the following just serves as an illustration and is entirely optional.</p>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-arrange-two-list-collections-into-a-list-of-pairs" class="box-title" aria-label="hands-on box: Arrange two list collections into a list of pairs"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Arrange two list collections into a list of pairs</div>
+  <div class="box-title hands-on-title" id="hands-on-arrange-two-list-collections-into-a-list-of-pairs" aria-label="hands-on box: Arrange two list collections into a list of pairs"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Arrange two list collections into a list of pairs</div>
 
   <ol>
     <li><strong>Zip Collection</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> with the following parameters
@@ -1955,7 +1956,7 @@ the earlier <strong>Samtools fastx</strong> <i class="fas fa-wrench" aria-hidden
 data structured into three corresponding collections for us.</p>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-collapsing-each-collection-into-a-single-dataset" class="box-title" aria-label="hands-on box: Collapsing each collection into a single dataset"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Collapsing each collection into a single dataset</div>
+  <div class="box-title hands-on-title" id="hands-on-collapsing-each-collection-into-a-single-dataset" aria-label="hands-on box: Collapsing each collection into a single dataset"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Collapsing each collection into a single dataset</div>
 
   <ol>
     <li><strong>Collapse Collection</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> of Illumina-sequenced <em>forward</em> <span class="notranslate">reads</span>
@@ -2002,14 +2003,14 @@ combined <span class="notranslate">reads</span> now. Which will reduce the time 
 subsequent assembly step to approximately 1-2 hours.</p>
 
 <blockquote class="comment">
-  <div id="comment-if-you-are-in-a-hurry" class="box-title" aria-label="comment box: If you are in a hurry"><i class="far fa-comment-dots" aria-hidden="true"></i><span class="visually-hidden"></span> Comment: If you are in a hurry</div>
+  <div class="box-title comment-title" id="comment-if-you-are-in-a-hurry" aria-label="comment box: If you are in a hurry"><i class="far fa-comment-dots" aria-hidden="true"></i><span class="visually-hidden"></span> Comment: If you are in a hurry</div>
   <p>The downsampling parameters below have been chosen to have minimal impact on
 the assembly results. Further speed-ups are certainly possible, but will
 likely lead to poor assembly outcomes.</p>
 </blockquote>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-subsampling-of-paired-end-short-reads-data" class="box-title" aria-label="hands-on box: Subsampling of paired-end short-reads data"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Subsampling of paired-end short-<span class="notranslate">reads</span> data</div>
+  <div class="box-title hands-on-title" id="hands-on-subsampling-of-paired-end-short-reads-data" aria-label="hands-on box: Subsampling of paired-end short-reads data"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Subsampling of paired-end short-<span class="notranslate">reads</span> data</div>
 
   <ol>
     <li><strong>seqtk_sample</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> with the following parameters
@@ -2028,7 +2029,7 @@ first and the second run of <strong>Collapse Collection</strong></li>
 <h2 id="create-assembly">Create assembly</h2>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-assembly-of-sars-cov2-genome" class="box-title" aria-label="hands-on box: Assembly of SARS-CoV2 genome"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Assembly of SARS-CoV2 genome</div>
+  <div class="box-title hands-on-title" id="hands-on-assembly-of-sars-cov2-genome" aria-label="hands-on box: Assembly of SARS-CoV2 genome"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Assembly of SARS-CoV2 genome</div>
 
   <ol>
     <li><strong>Create assemblies with Unicycler</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> with the following parameters
@@ -2085,7 +2086,7 @@ exploring assembly graphs through summary reports and visualizations of their
 contents.</p>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-assembly-stats-and-visualization-with-bandage" class="box-title" aria-label="hands-on box: Assembly stats and visualization with Bandage"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Assembly stats and visualization with Bandage</div>
+  <div class="box-title hands-on-title" id="hands-on-assembly-stats-and-visualization-with-bandage" aria-label="hands-on box: Assembly stats and visualization with Bandage"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Assembly stats and visualization with Bandage</div>
 
   <ol>
     <li><strong>Bandage Info</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> with the following parameters
@@ -2151,7 +2152,7 @@ sequences based on the length threshold in <span class="notranslate">Galaxy</spa
 sequences in one go.</p>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-filter-fasta-sequences-by-their-length" class="box-title" aria-label="hands-on box: Filter FASTA sequences by their length"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Filter FASTA sequences by their length</div>
+  <div class="box-title hands-on-title" id="hands-on-filter-fasta-sequences-by-their-length" aria-label="hands-on box: Filter FASTA sequences by their length"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Filter FASTA sequences by their length</div>
 
   <ol>
     <li><strong>Filter sequences by length</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> with the following parameters
@@ -2167,7 +2168,7 @@ length threshold.</p>
   </ol>
 
   <blockquote class="tip">
-    <div id="tip-apply-length-filters-after-instead-of-during-assembly" class="box-title"><button type="button" aria-controls="tip-apply-length-filters-after-instead-of-during-assembly-contents" aria-expanded="true" aria-label="Toggle tip box: Apply length filters after instead of during assembly"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: Apply length filters after instead of during assembly<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
+    <div class="box-title tip-title" id="tip-apply-length-filters-after-instead-of-during-assembly"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-apply-length-filters-after-instead-of-during-assembly-contents" aria-expanded="true" aria-label="Toggle tip box: Apply length filters after instead of during assembly"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: Apply length filters after instead of during assembly<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
     <p>You may have noted that in the <strong>Unicycler</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> run we kept
 the tool’s <em>“Exclude contigs from the FASTA file which are shorter than
 this length (bp)”</em> option at its default value of <code class="language-plaintext highlighter-rouge">100</code> instead of using
@@ -2185,7 +2186,7 @@ from the output.</p>
 </blockquote>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-ncbi-blast-of-multiple-contigs" class="box-title" aria-label="hands-on box: NCBI BLAST of multiple contigs"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: NCBI BLAST of multiple contigs</div>
+  <div class="box-title hands-on-title" id="hands-on-ncbi-blast-of-multiple-contigs" aria-label="hands-on box: NCBI BLAST of multiple contigs"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: NCBI BLAST of multiple contigs</div>
 
   <ol>
     <li>View the output of <strong>Filter sequences by length</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> by
@@ -2211,7 +2212,7 @@ sequence (node #1) and the circular node #2, but also investigate the results
 for a few others.</p>
 
 <blockquote class="question">
-  <div id="question-2" class="box-title" aria-label="question box: "><i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden"></span> Question</div>
+  <div class="box-title question-title" id="question-2" aria-label="question box: "><i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden"></span> Question</div>
 
   <ol>
     <li>Which genome is represented by node #1?</li>
@@ -2222,7 +2223,7 @@ findings make sense?</li>
   </ol>
 
   <blockquote class="solution">
-    <div id="solution-2" class="box-title"><button type="button" aria-controls="solution-2-contents" aria-expanded="true" aria-label="Toggle solution box: "><i class="far fa-eye" aria-hidden="true"></i><span class="visually-hidden"></span> Solution<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
+    <div class="box-title solution-title" id="solution-2"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-2-contents" aria-expanded="true" aria-label="Toggle solution box: "><i class="far fa-eye" aria-hidden="true"></i><span class="visually-hidden"></span> Solution<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
     <ol>
       <li>The sequence of node #1 is the assembled SARS-CoV-2 sequence we are
 looking for. It is a perfect match to various SARS-CoV-2 genome
@@ -2371,19 +2372,21 @@ day = ""
 url = "\url{https://training.galaxyproject.org/training-material/topics/assembly/tutorials/assembly-with-preprocessing/tutorial.html}",
 note = "[Online; accessed TODAY]"
 }
-@article{Batut_2018,
-    doi = {10.1016/j.cels.2018.05.012},
-    url = {https://doi.org/10.1016%2Fj.cels.2018.05.012},
-    year = 2018,
-    month = {jun},
-    publisher = {Elsevier {BV}},
-    volume = {6},
-    number = {6},
-    pages = {752--758.e1},
-    author = {B{\'{e}}r{\'{e}}nice Batut and Saskia Hiltemann and Andrea Bagnacani and Dannon Baker and Vivek Bhardwaj and Clemens Blank and Anthony Bretaudeau and Loraine Brillet-Gu{\'{e}}guen and Martin {\v{C}}ech and John Chilton and Dave Clements and Olivia Doppelt-Azeroual and Anika Erxleben and Mallory Ann Freeberg and Simon Gladman and Youri Hoogstrate and Hans-Rudolf Hotz and Torsten Houwaart and Pratik Jagtap and Delphine Larivi{\`{e}}re and Gildas Le Corguill{\'{e}} and Thomas Manke and Fabien Mareuil and Fidel Ram{\'{\i}}rez and Devon Ryan and Florian Christoph Sigloch and Nicola Soranzo and Joachim Wolff and Pavankumar Videm and Markus Wolfien and Aisanjiang Wubuli and Dilmurat Yusuf and James Taylor and Rolf Backofen and Anton Nekrutenko and Björn Grüning},
-    title = {Community-Driven Data Analysis Training for Biology},
-    journal = {Cell Systems}
-}</code>
+@article{Hiltemann_2023,
+	doi = {10.1371/journal.pcbi.1010752},
+	url = {https://doi.org/10.1371%2Fjournal.pcbi.1010752},
+	year = 2023,
+	month = {jan},
+	publisher = {Public Library of Science ({PLoS})},
+	volume = {19},
+	number = {1},
+	pages = {e1010752},
+	author = {Saskia Hiltemann and Helena Rasche and Simon Gladman and Hans-Rudolf Hotz and Delphine Larivi{\`{e}}re and Daniel Blankenberg and Pratik D. Jagtap and Thomas Wollmann and Anthony Bretaudeau and Nadia Gou{\'{e}} and Timothy J. Griffin and Coline Royaux and Yvan Le Bras and Subina Mehta and Anna Syme and Frederik Coppens and Bert Droesbeke and Nicola Soranzo and Wendi Bacon and Fotis Psomopoulos and Crist{\'{o}}bal Gallardo-Alba and John Davis and Melanie Christine Föll and Matthias Fahrner and Maria A. Doyle and Beatriz Serrano-Solano and Anne Claire Fouilloux and Peter van Heusden and Wolfgang Maier and Dave Clements and Florian Heyl and Björn Grüning and B{\'{e}}r{\'{e}}nice Batut and},
+	editor = {Francis Ouellette},
+	title = {Galaxy Training: A powerful framework for teaching!},
+	journal = {PLoS Comput Biol} Computational Biology}
+}
+</code>
                    </pre></div></div>
                    </p>
                 </blockquote>
@@ -2421,8 +2424,6 @@ document.getElementById("citation-text").innerHTML = document.getElementById("ci
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
         <script type="text/javascript" src="/training-material/assets/js/bootstrap-toc.min.js"></script>
         <script type="text/javascript" src="/training-material/assets/js/main.js"></script>
-        <script type="text/javascript" src="/training-material/assets/js/theme.js"></script>
-
         <script type="text/javascript" src="/training-material/assets/js/clipboard.min.js"></script>
         <script type="text/javascript">
         var snippets=document.querySelectorAll('div.highlight');

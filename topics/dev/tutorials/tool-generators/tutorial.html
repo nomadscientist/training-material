@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="utf-8">
@@ -14,7 +14,6 @@
         <link rel="stylesheet" href="/training-material/assets/css/main.css?v=2">
         <script src="https://kit.fontawesome.com/67b3f98409.js" crossorigin="anonymous"></script>
         <link rel="stylesheet" href="/training-material/assets/css/academicons.css">
-        <link rel="stylesheet" href="/training-material/assets/css/syntax_highlighting.css">
         <link rel="shortcut icon" href="/training-material/favicon.ico" type="image/x-icon" />
         <link rel="alternate" type="application/atom+xml" href="/training-material/feed.xml" />
         <link rel="canonical" href="https://training.galaxyproject.org/training-material/topics/dev/tutorials/tool-generators/tutorial.html" />
@@ -24,11 +23,10 @@
 <meta name="DC.type" content="text" />
 <meta name="DC.title" content="ToolFactory: Generating Tools From Simple Scripts" />
 <meta name="DC.publisher" content="Galaxy Training Network" />
-<meta name="DC.date" content="2022-09-28 13:13:58 +0000" />
+<meta name="DC.date" content="2022-11-28 09:55:50 +0000" />
 <meta name="DC.creator" content="Ross Lazarus" />
 <meta name="DC.creator" content="Helena Rasche" />
 
-        
         
         
         
@@ -39,221 +37,9 @@
         <meta property="og:description" content="Galaxy is an open-source project. Everyone can contribute..." />
         <meta property="og:image" content="/training-material/assets/images/GTNLogo1000.png" />
 
-    </head>
-    <body data-spy="scroll" data-target="#toc">
-        <header>
-    <nav class="navbar navbar-expand-md navbar-dark" aria-label="Site Navigation">
-        <div class="container">
-            <a class="navbar-brand" href="/training-material/">
-                <img src="/training-material/assets/images/GTN-60px.png" height="30" alt="Galaxy Training Network logo">
-                Galaxy Training!
-            </a>
-
-            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#top-navbar" aria-controls="top-navbar" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="top-navbar">
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        
-                        <a class="nav-link" href="/training-material/topics/dev" title="Go back to list of tutorials">
-                            <i class="far fa-folder" aria-hidden="true"></i> Development in Galaxy
-                        </a>
-                        
-                    </li>
-
-                    <li class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false" title="Languages">
-                            <i class="fas fa-language" aria-hidden="true"></i><span class="visually-hidden">language</span> Languages
-                        </a>
-                        <div class="dropdown-menu dropdown-menu-right">
-                            
-                              <strong class="dropdown-header">Automatic Translations</strong>
-            
-            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=fr&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/dev/tutorials/tool-generators/tutorial.html&edit-text=&act=url">
-                            Français
-                            </a>
-                            
-            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=ja&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/dev/tutorials/tool-generators/tutorial.html&edit-text=&act=url">
-                            日本語
-                            </a>
-                            
-            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=es&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/dev/tutorials/tool-generators/tutorial.html&edit-text=&act=url">
-                            Español
-                            </a>
-                            
-            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=pt&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/dev/tutorials/tool-generators/tutorial.html&edit-text=&act=url">
-                            Português
-                            </a>
-                            
-            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=ar&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/dev/tutorials/tool-generators/tutorial.html&edit-text=&act=url">
-                            العربية
-                            </a>
-                            
-                            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/dev/tutorials/tool-generators/tutorial.html&edit-text=&act=url" title="">
-                            And more!
-                            </a>
-                        </div>
-                    </li>
-
-                    <li class="nav-item dropdown">
-    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false" title="Help">
-        <i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden">help</span> Help
-    </a>
-    <div class="dropdown-menu dropdown-menu-right">
-        <!-- disable Tess for now
-        <form method="get" action="https://tess.elixir-europe.org/materials">
-            <input type="text" id="search" name="q" value="" style="margin-left: 0.5em;/*! border-radius: 0px; */">
-            <input type="hidden" value="Galaxy Training" name="content_provider">
-            <input type="submit" value="Search on TeSS" style="width: 92%;border-radius: 0px;margin: 0.5em;background: #f47d20;border: 0px;padding: 0.25em;" class="">
-        </form>
-        -->
-
-        <a class="dropdown-item" href="/training-material/faq" title="Check our FAQs">
-           <i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden">question</span> FAQs
-        </a>
         
-        <a class="dropdown-item" href="/training-material/topics/dev/faqs/" title="Check our FAQs for the Development in Galaxy topic">
-           <i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden">question</span> Topic FAQs
-        </a>
-        
-        <a class="dropdown-item" href="https://help.galaxyproject.org/" title="Discuss on Galaxy Help">
-            <i class="far fa-comments" aria-hidden="true"></i><span class="visually-hidden">feedback</span> Galaxy Help Forum
-        </a>
-        <a class="dropdown-item" href="https://gitter.im/Galaxy-Training-Network/Lobby" title="Discuss on gitter">
-           <i class="fab fa-gitter" aria-hidden="true"></i><span class="visually-hidden">gitter</span> Discuss on Gitter
-        </a>
-    </div>
-</li>
-
-
-                    <li class="nav-item dropdown">
-    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false" title="Extras">
-        <i class="far fa-star" aria-hidden="true"></i><span class="visually-hidden">galaxy-star</span> Extras
-    </a>
-    <div class="dropdown-menu dropdown-menu-right">
-
-        
-        <a class="dropdown-item" href="https://github.com/galaxyproject/training-material/edit/main/topics/dev/tutorials/tool-generators/tutorial.md" title="Edit on GitHub">
-          <i class="fab fa-github" aria-hidden="true"></i><span class="visually-hidden">github</span> Edit on GitHub
-        </a>
-
-        <a class="dropdown-item" href="/training-material/stats.html" title="Show view statistics about this repository">
-            <i class="fas fa-chart-bar" aria-hidden="true"></i><span class="visually-hidden">galaxy-barchart</span> GTN statistics
-        </a>
-
-        <a class="dropdown-item" href="https://plausible.galaxyproject.eu/training.galaxyproject.org?period=12mo&page=/training-material/topics/dev/tutorials/tool-generators/tutorial.html" title="Show view statistics of this page">
-            <i class="fas fa-chart-bar" aria-hidden="true"></i><span class="visually-hidden">galaxy-barchart</span> Page Metrics
-        </a>
-
-        <!-- link to feedback -->
-        
+        <script type="application/ld+json">
             
-            
-                <a class="dropdown-item" href="/training-material/feedback.html" title="Show feedback statistics about this repository">
-                    <i class="fas fa-chart-bar" aria-hidden="true"></i><span class="visually-hidden">galaxy-barchart</span> GTN feedback
-                </a>
-            
-        
-
-        <div class="dropdown-item">
-            <div>
-                <i class="fas fa-palette" aria-hidden="true"></i><span class="visually-hidden">gtn-theme</span> Theme
-            </div>
-
-            <div id="theme-selector" data-toggle="buttons">
-                <label data-value="default" class="btn btn-secondary">
-                    <input type="radio" name="options" id="default" autocomplete="off"> Default
-                </label>
-                <label data-value="night" class="btn btn-secondary">
-                    <input type="radio" name="options" id="night" autocomplete="off"> Night
-                </label>
-                <label data-value="midnight" class="btn btn-secondary">
-                    <input type="radio" name="options" id="midnight" autocomplete="off"> Midnight
-                </label>
-                <label data-value="rainbow" class="btn btn-secondary">
-                    <input type="radio" name="options" id="rainbow" autocomplete="off"> Rainbow
-                </label>
-                <label data-value="progress" class="btn btn-secondary">
-                    <input type="radio" name="options" id="progress" autocomplete="off">🏳️‍🌈
-                </label>
-                <label data-value="halloween" class="btn btn-secondary">
-                    <input type="radio" name="options" id="halloween" autocomplete="off"> 🎃
-                </label>
-                <label data-value="straya" class="btn btn-secondary">
-                    <input type="radio" name="options" id="downunder" autocomplete="off"> 🇦🇺
-                </label>
-            </div>
-
-        </div>
-
-        <div class="dropdown-item">
-            <div>
-                <i class="fas fa-history" aria-hidden="true"></i><span class="visually-hidden">galaxy-rulebuilder-history</span> Previous Versions
-            </div>
-
-            <div id="archive-selector">
-            
-                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2020-01-06/topics/dev/tutorials/tool-generators/tutorial.html" title="Version 2020-01-06">2020-01-06</a>
-            
-                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2019-12-01/topics/dev/tutorials/tool-generators/tutorial.html" title="Version 2019-12-01">2019-12-01</a>
-            
-                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2019-11-01/topics/dev/tutorials/tool-generators/tutorial.html" title="Version 2019-11-01">2019-11-01</a>
-            
-                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/" title="Older Versions">Older Versions</a>
-            </div>
-
-        </div>
-
-    </div>
-</li>
-
-
-                    <!-- Search bar-->
-                    <li class="nav-item">
-                      <div id="navbarSupportedContent" role="search">
-                        <!-- Search form -->
-                        <form class="form-inline mr-auto" method="GET" action="/training-material/search">
-                          <i class="fas fa-search nav-link" aria-hidden="true"></i>
-                          <div class="md-form mb-2">
-                            <input name="query" class="form-control nicer" type="text" placeholder="Search Tutorials" aria-label="Search">
-                          </div>
-                        </form>
-                      </div>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-</header>
-
-        <div class="container main-content" role="main">
-        
-
-
-
-
-
-
-
-
-
-
-
-<!-- Gitter -->
-
-
-
-
-<script>
-  ((window.gitter = {}).chat = {}).options = {
-  room: 'galaxyproject/dev'
-  };
-</script>
-<script src="https://sidecar.gitter.im/dist/sidecar.v1.js" async defer></script>
-
-<script type="application/ld+json">
-    
 
 
 {
@@ -278,7 +64,7 @@
     "name": "Galaxy Training Network",
     "url": "https://galaxyproject.org/teach/gtn/"
   },
-  "dateModified": "2022-09-28 13:13:58 +0000",
+  "dateModified": "2022-11-28 09:55:50 +0000",
   "discussionUrl": "https://gitter.im/Galaxy-Training-Network/Lobby",
   "headline": "ToolFactory: Generating Tools From Simple Scripts",
   "interactivityType": "mixed",
@@ -523,7 +309,210 @@
     }
   ]
 }
+        </script>
+        
+    </head>
+    <body data-spy="scroll" data-target="#toc">
+        <script type="text/javascript" src="/training-material/assets/js/theme.js"></script>
+        <header>
+    <nav class="navbar navbar-expand-md navbar-dark" aria-label="Site Navigation">
+        <div class="container">
+            <a class="navbar-brand" href="/training-material/">
+                <img src="/training-material/assets/images/GTN-60px.png" height="30" alt="Galaxy Training Network logo">
+                Galaxy Training!
+            </a>
+
+            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#top-navbar" aria-controls="top-navbar" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="top-navbar">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        
+                        <a class="nav-link" href="/training-material/topics/dev" title="Go back to list of tutorials">
+                            <i class="far fa-folder" aria-hidden="true"></i> Development in Galaxy
+                        </a>
+                        
+                    </li>
+
+                    <li class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false" title="Languages">
+                            <i class="fas fa-language" aria-hidden="true"></i><span class="visually-hidden">language</span> Languages
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right">
+                            
+                              <strong class="dropdown-header">Automatic Translations</strong>
+            
+            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=fr&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/dev/tutorials/tool-generators/tutorial.html&edit-text=&act=url">
+                            Français
+                            </a>
+                            
+            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=ja&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/dev/tutorials/tool-generators/tutorial.html&edit-text=&act=url">
+                            日本語
+                            </a>
+                            
+            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=es&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/dev/tutorials/tool-generators/tutorial.html&edit-text=&act=url">
+                            Español
+                            </a>
+                            
+            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=pt&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/dev/tutorials/tool-generators/tutorial.html&edit-text=&act=url">
+                            Português
+                            </a>
+                            
+            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=ar&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/dev/tutorials/tool-generators/tutorial.html&edit-text=&act=url">
+                            العربية
+                            </a>
+                            
+                            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/dev/tutorials/tool-generators/tutorial.html&edit-text=&act=url" title="">
+                            And more!
+                            </a>
+                        </div>
+                    </li>
+
+                    <li class="nav-item dropdown">
+    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false" title="Help">
+        <i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden">help</span> Help
+    </a>
+    <div class="dropdown-menu dropdown-menu-right">
+        <!-- disable Tess for now
+        <form method="get" action="https://tess.elixir-europe.org/materials">
+            <input type="text" id="search" name="q" value="" style="margin-left: 0.5em;/*! border-radius: 0px; */">
+            <input type="hidden" value="Galaxy Training" name="content_provider">
+            <input type="submit" value="Search on TeSS" style="width: 92%;border-radius: 0px;margin: 0.5em;background: #f47d20;border: 0px;padding: 0.25em;" class="">
+        </form>
+        -->
+
+        <a class="dropdown-item" href="/training-material/faq" title="Check our FAQs">
+           <i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden">question</span> FAQs
+        </a>
+        
+        
+        <a class="dropdown-item" href="/training-material/topics/dev/faqs/" title="Check our FAQs for the Development in Galaxy topic">
+           <i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden">question</span> Topic FAQs
+        </a>
+        
+        
+        <a class="dropdown-item" href="https://help.galaxyproject.org/" title="Discuss on Galaxy Help">
+            <i class="far fa-comments" aria-hidden="true"></i><span class="visually-hidden">feedback</span> Galaxy Help Forum
+        </a>
+        <a class="dropdown-item" href="https://gitter.im/Galaxy-Training-Network/Lobby" title="Discuss on gitter">
+           <i class="fab fa-gitter" aria-hidden="true"></i><span class="visually-hidden">gitter</span> Discuss on Gitter
+        </a>
+    </div>
+</li>
+
+
+                    <li class="nav-item dropdown">
+    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false" title="Extras">
+        <i class="far fa-star" aria-hidden="true"></i><span class="visually-hidden">galaxy-star</span> Extras
+    </a>
+    <div class="dropdown-menu dropdown-menu-right">
+
+        
+        <a class="dropdown-item" href="https://github.com/galaxyproject/training-material/edit/main/topics/dev/tutorials/tool-generators/tutorial.md" title="Edit on GitHub">
+          <i class="fab fa-github" aria-hidden="true"></i><span class="visually-hidden">github</span> Edit on GitHub
+        </a>
+
+        <a class="dropdown-item" href="/training-material/stats.html" title="Show view statistics about this repository">
+            <i class="fas fa-chart-bar" aria-hidden="true"></i><span class="visually-hidden">galaxy-barchart</span> GTN statistics
+        </a>
+
+        <a class="dropdown-item" href="https://plausible.galaxyproject.eu/training.galaxyproject.org?period=12mo&page=/training-material/topics/dev/tutorials/tool-generators/tutorial.html" title="Show view statistics of this page">
+            <i class="fas fa-chart-bar" aria-hidden="true"></i><span class="visually-hidden">galaxy-barchart</span> Page Metrics
+        </a>
+
+        <!-- link to feedback -->
+        
+            
+            
+                <a class="dropdown-item" href="/training-material/feedback.html" title="Show feedback statistics about this repository">
+                    <i class="fas fa-chart-bar" aria-hidden="true"></i><span class="visually-hidden">galaxy-barchart</span> GTN feedback
+                </a>
+            
+        
+
+        <div class="dropdown-item">
+            <div>
+                <i class="fas fa-palette" aria-hidden="true"></i><span class="visually-hidden">gtn-theme</span> Theme
+            </div>
+
+            <div id="theme-selector" data-toggle="buttons">
+                    <button class="btn" data-theme="default">Default</button>
+                    <button class="btn" data-theme="night">Night</button>
+                    <button class="btn" data-theme="midnight">Midnight</button>
+                    <button class="btn" data-theme="rainbow">Rainbow</button>
+                    <button class="btn" data-theme="blm">✊🏿</button>
+                    <button class="btn" data-theme="progress" >🏳️‍🌈</button>
+                    <button class="btn" data-theme="halloween">🎃</button>
+                    <button class="btn" data-theme="straya">🇦🇺</button>
+            </div>
+
+        </div>
+
+        <div class="dropdown-item">
+            <div>
+                <i class="fas fa-history" aria-hidden="true"></i><span class="visually-hidden">galaxy-rulebuilder-history</span> Previous Versions
+            </div>
+
+            <div id="archive-selector">
+            
+                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2020-01-06/topics/dev/tutorials/tool-generators/tutorial.html" title="Version 2020-01-06">2020-01-06</a>
+            
+                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2019-12-01/topics/dev/tutorials/tool-generators/tutorial.html" title="Version 2019-12-01">2019-12-01</a>
+            
+                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2019-11-01/topics/dev/tutorials/tool-generators/tutorial.html" title="Version 2019-11-01">2019-11-01</a>
+            
+                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/" title="Older Versions">Older Versions</a>
+            </div>
+
+        </div>
+
+    </div>
+</li>
+
+
+                    <!-- Search bar-->
+                    <li class="nav-item">
+                      <div id="navbarSupportedContent" role="search">
+                        <!-- Search form -->
+                        <form class="form-inline mr-auto" method="GET" action="/training-material/search">
+                          <i class="fas fa-search nav-link" aria-hidden="true"></i>
+                          <div class="md-form mb-2">
+                            <input name="query" class="form-control nicer" type="text" placeholder="Search Tutorials" aria-label="Search">
+                          </div>
+                        </form>
+                      </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
+        <div class="container main-content" role="main">
+        
+
+
+
+
+
+
+
+
+
+
+
+<!-- Gitter -->
+
+
+
+
+<script>
+  ((window.gitter = {}).chat = {}).options = {
+  room: 'galaxyproject/dev'
+  };
 </script>
+<script src="https://sidecar.gitter.im/dist/sidecar.v1.js" async defer></script>
 
 <section class="tutorial topic-dev">
     <h1 data-toc-skip>ToolFactory: Generating Tools From Simple Scripts</h1>
@@ -650,6 +639,8 @@
                         
                     
                         
+                    
+                        
                             
                             <li> Galaxy 101 for everyone:
                             
@@ -659,8 +650,6 @@
                                 
                             
                             </li>
-                        
-                    
                         
                     
                         
@@ -693,36 +682,6 @@
                         
                     
                         
-                    
-                        
-                    
-                        
-                    
-                        
-                    
-                        
-                    
-                        
-                    
-                        
-                    
-                        
-                    
-                        
-                    
-                        
-                    
-                        
-                    
-                        
-                    
-                        
-                    
-                        
-                    
-                        
-                    
-                        
                             
                             <li> Tool development and integration into Galaxy:
                             
@@ -745,9 +704,35 @@
                     
                         
                     
-                
+                        
                     
                         
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                
                     
                         
                     
@@ -914,7 +899,7 @@
         </ul>
         
 
-        <div><strong><i class="far fa-calendar" aria-hidden="true"></i> Last modification:</strong> Sep 28, 2022 </div>
+        <div><strong><i class="far fa-calendar" aria-hidden="true"></i> Last modification:</strong> Nov 28, 2022 </div>
         <div><strong><i class="fas fa-balance-scale" aria-hidden="true"></i> License:</strong>
             
             <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Tutorial Content is licensed under Creative Commons Attribution 4.0 International License</a>
@@ -955,7 +940,7 @@ Users new to <span class="notranslate">Galaxy</span> from other scientific disci
 may find the ToolFactory appliance useful for familiarising themselves with tool development in <span class="notranslate">Galaxy</span>.</p>
 
 <blockquote class="agenda">
-  <div id="agenda" class="box-title" aria-label="agenda box: ">Agenda</div>
+  <div class="box-title agenda-title" id="agenda" aria-label="agenda box: ">Agenda</div>
 
 <ol id="markdown-toc">
   <li><a href="#tools-tool-wrappers-and-the-toolfactory-in-galaxy" id="markdown-toc-tools-tool-wrappers-and-the-toolfactory-in-galaxy">Tools, tool wrappers and the ToolFactory in <span class="notranslate">Galaxy</span>.</a>    <ol>
@@ -1030,10 +1015,9 @@ specialised <span class="notranslate">Galaxy</span> tool for developers that gen
 in <span class="notranslate">Galaxy</span>. The ToolFactory is distributed as a Docker appliance and can be “popped up” and ready to run in a few minutes - well, 5 or 10 perhaps.</p>
 
 <blockquote class="tip">
-  <div id="tip-the-toolfactory-appliance-provides-a-fully-featured-galaxy-server" class="box-title"><button type="button" aria-controls="tip-the-toolfactory-appliance-provides-a-fully-featured-galaxy-server-contents" aria-expanded="true" aria-label="Toggle tip box: The ToolFactory appliance provides a fully featured Galaxy server."><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: The ToolFactory appliance provides a fully featured <span class="notranslate">Galaxy</span> server.<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
+  <div class="box-title tip-title" id="tip-the-toolfactory-appliance-provides-a-fully-featured-galaxy-server"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-the-toolfactory-appliance-provides-a-fully-featured-galaxy-server-contents" aria-expanded="true" aria-label="Toggle tip box: The ToolFactory appliance provides a fully featured Galaxy server."><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: The ToolFactory appliance provides a fully featured <span class="notranslate">Galaxy</span> server.<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
   <ul>
-    <li>It is a private local desktop <span class="notranslate">Galaxy</span> server, ideal for tinkering and experimentation, learning how the <span class="notranslate">Galaxy</span> server works
-and for developing new tools for new kinds of scientists using <span class="notranslate">Galaxy</span>.</li>
+    <li>It is a private local desktop <span class="notranslate">Galaxy</span> server, ideal for tinkering and experimentation, learning how the <span class="notranslate">Galaxy</span> server works and for developing new tools for new kinds of scientists using <span class="notranslate">Galaxy</span>.</li>
     <li>Any <span class="notranslate">Galaxy</span> tool from the <span class="notranslate">toolshed</span> can be installed and used.</li>
     <li>Any simple script can have a tool wrapper generated and installed as a new tool in the Appliance.</li>
     <li>Newly generated tools appear in the tool menu after a refresh, and can be viewed and used as the user will see them.</li>
@@ -1070,7 +1054,7 @@ and user supplied parameters as needed by that script.</p>
 It introduces an automated way to convert any useful script into a <span class="notranslate">toolshed</span> ready tool, quickly <em>inside</em> <span class="notranslate">Galaxy</span>.</p>
 
 <blockquote class="tip">
-  <div id="tip-alternative-ways-to-generate-and-see-tools" class="box-title"><button type="button" aria-controls="tip-alternative-ways-to-generate-and-see-tools-contents" aria-expanded="true" aria-label="Toggle tip box: Alternative ways to generate and see tools:"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: Alte<span class="notranslate">rna</span>tive ways to generate and see tools:<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
+  <div class="box-title tip-title" id="tip-alternative-ways-to-generate-and-see-tools"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-alternative-ways-to-generate-and-see-tools-contents" aria-expanded="true" aria-label="Toggle tip box: Alternative ways to generate and see tools:"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: Alte<span class="notranslate">rna</span>tive ways to generate and see tools:<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
   <ul>
     <li>The <a href="https://github.com/galaxyproject/galaxy-language-server"><span class="notranslate">Galaxy</span> Language Server</a>
       <ul>
@@ -1122,7 +1106,7 @@ such as “Hello, <span class="notranslate">Galaxy</span> Training Network”.</
 <p>Save the following sample as <code class="language-plaintext highlighter-rouge">hello.sh</code>:</p>
 
 <blockquote class="code-in">
-  <div id="code-in-starting-bash-script-hello-world" class="box-title" aria-label="code-in box: Starting bash script: Hello World"><i class="far fa-keyboard" aria-hidden="true"></i><span class="visually-hidden"></span> Input: Starting bash script: Hello World</div>
+  <div class="box-title code-in-title" id="code-in-starting-bash-script-hello-world" aria-label="code-in box: Starting bash script: Hello World"><i class="far fa-keyboard" aria-hidden="true"></i><span class="visually-hidden"></span> Input: Starting bash script: Hello World</div>
   <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">#!/bin/bash</span>
 <span class="nb">echo</span> <span class="s2">"Hello </span><span class="nv">$1</span><span class="s2">!"</span>
 </code></pre></div>  </div>
@@ -1182,7 +1166,7 @@ Other information such as the name and dependencies are needed to construct the 
 sections of the generated XML file in the <span class="notranslate">toolshed</span> archive. The ToolFactory form configured to generate the <code class="language-plaintext highlighter-rouge">Hello</code> example can be viewed below.</p>
 
 <blockquote class="details">
-  <div id="details-detail-to-explore-annotated-toolfactory-form-for-the-hello-world-example" class="box-title"><button type="button" aria-controls="details-detail-to-explore-annotated-toolfactory-form-for-the-hello-world-example-contents" aria-expanded="true" aria-label="Toggle details box: Detail to explore: Annotated ToolFactory form for the `Hello World` example"><i class="fas fa-info-circle" aria-hidden="true"></i><span class="visually-hidden"></span> Details: Detail to explore: Annotated ToolFactory form for the `Hello World` example<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
+  <div class="box-title details-title" id="details-detail-to-explore-annotated-toolfactory-form-for-the-hello-world-example"><button class="gtn-boxify-button details" type="button" aria-controls="details-detail-to-explore-annotated-toolfactory-form-for-the-hello-world-example-contents" aria-expanded="true" aria-label="Toggle details box: Detail to explore: Annotated ToolFactory form for the `Hello World` example"><i class="fas fa-info-circle" aria-hidden="true"></i><span class="visually-hidden"></span> Details: Detail to explore: Annotated ToolFactory form for the `Hello World` example<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
   <figure id="figure-1"><img src="../../images/ToolFactory_hello1form.png" alt="First part of the form. " loading="lazy" /><figcaption><span class="figcaption-prefix">Figure 1:</span> The first part of the form collects the new tool name and dependencies to be installed. In this case, no Conda dependency is used. bash can be specified as a conda dependency, but it is not very version dependent and usually available. Reproducibility is not an issue for this trivial example. When it is, specify the dependencies and their versions here and the generated tool will always use them. If run in a shell, the bash script <code>echo "Hello $1"</code> in the text box will emit a string that includes the first command line parameter - such as "Hello <span class="notranslate">Galaxy</span> Training Network" This will be collected from STDOUT (configured below) into a new history output file (named and configured below). Positional parameters are chosen so the first parameter on the command line will be emitted when the script runs.</figcaption></figure>
 
   <figure id="figure-2"><img src="../../images/ToolFactory_hello2form.png" alt="Second part of the form. " loading="lazy" /><figcaption><span class="figcaption-prefix">Figure 2:</span> The second section shows the new generated history output. It uses the special name <code>STDOUT</code> so the tool will take whatever the bash script writes and create a new text file called <code>Hello_output</code>. When the test is generated, the pass criterion is that the default value <code><span class="notranslate">Galaxy</span> Training Network</code> should appear as the message in <code>hello_output</code>. no difference. Other criteria including <code>sim_size</code> are available for the test applied to each output file. There is no limit (other than your patience) to the number of new generated history outputs. Note that this example has no history input files. Again, any number of these can be specified on the form using the repeat.</figcaption></figure>
@@ -1195,7 +1179,7 @@ sections of the generated XML file in the <span class="notranslate">toolshed</sp
 Text on the form is specified in the XML and it all comes from the ToolFactory form.</p>
 
 <blockquote class="details">
-  <div id="details-detail-to-explore-generated-xml-and-tool-form" class="box-title"><button type="button" aria-controls="details-detail-to-explore-generated-xml-and-tool-form-contents" aria-expanded="true" aria-label="Toggle details box: Detail to explore: Generated XML and tool form"><i class="fas fa-info-circle" aria-hidden="true"></i><span class="visually-hidden"></span> Details: Detail to explore: Generated XML and tool form<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
+  <div class="box-title details-title" id="details-detail-to-explore-generated-xml-and-tool-form"><button class="gtn-boxify-button details" type="button" aria-controls="details-detail-to-explore-generated-xml-and-tool-form-contents" aria-expanded="true" aria-label="Toggle details box: Detail to explore: Generated XML and tool form"><i class="fas fa-info-circle" aria-hidden="true"></i><span class="visually-hidden"></span> Details: Detail to explore: Generated XML and tool form<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
 
   <p><a href="https://docs.galaxyproject.org/en/latest/dev/schema.html"><span class="notranslate">Galaxy</span> XML documentation is here</a></p>
 
@@ -1261,7 +1245,7 @@ The script could do something far more interesting and could take unlimited inpu
 </blockquote>
 
 <blockquote class="tip">
-  <div id="tip-if-this-is-confusing" class="box-title"><button type="button" aria-controls="tip-if-this-is-confusing-contents" aria-expanded="true" aria-label="Toggle tip box: If this is confusing"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: If this is confusing<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
+  <div class="box-title tip-title" id="tip-if-this-is-confusing"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-if-this-is-confusing-contents" aria-expanded="true" aria-label="Toggle tip box: If this is confusing"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: If this is confusing<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
 
   <p>If you are not yet familiar with the basics of <span class="notranslate">Galaxy</span> tools covered in the
 <a href="/training-material/topics/dev/tutorials/tool-integration/slides.html">tool integration training material</a>, the example form and XML
@@ -1272,7 +1256,7 @@ the user must supply valid inputs for the code to be useful.</p>
 </blockquote>
 
 <blockquote class="comment">
-  <div id="comment-limits-and-scope" class="box-title" aria-label="comment box: Limits and scope"><i class="far fa-comment-dots" aria-hidden="true"></i><span class="visually-hidden"></span> Comment: Limits and scope</div>
+  <div class="box-title comment-title" id="comment-limits-and-scope" aria-label="comment box: Limits and scope"><i class="far fa-comment-dots" aria-hidden="true"></i><span class="visually-hidden"></span> Comment: Limits and scope</div>
 
   <ul>
     <li>It works best wrapping simple R/Bash/Python and other interpreted scripts, with few user supplied parameters and a few input and output files.</li>
@@ -1306,7 +1290,7 @@ the user must supply valid inputs for the code to be useful.</p>
 <h1 id="installation">Installation</h1>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-launching-the-appliance" class="box-title" aria-label="hands-on box: Launching the Appliance"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Launching the Appliance</div>
+  <div class="box-title hands-on-title" id="hands-on-launching-the-appliance" aria-label="hands-on box: Launching the Appliance"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Launching the Appliance</div>
 
   <ol>
     <li>
@@ -1327,14 +1311,14 @@ the user must supply valid inputs for the code to be useful.</p>
   </ol>
 
   <blockquote class="warning">
-    <div id="warning-pull-the-images-first-as-shown-below-to-save-time" class="box-title" aria-label="warning box: `Pull` the images first as shown below to save time."><i class="fas fa-exclamation-triangle" aria-hidden="true"></i><span class="visually-hidden"></span> Warning: `Pull` the images first as shown below to save time.</div>
+    <div class="box-title warning-title" id="warning-pull-the-images-first-as-shown-below-to-save-time" aria-label="warning box: `Pull` the images first as shown below to save time."><i class="fas fa-exclamation-triangle" aria-hidden="true"></i><span class="visually-hidden"></span> Warning: `Pull` the images first as shown below to save time.</div>
 
     <p>If they are not found locally (<code class="language-plaintext highlighter-rouge">docker images</code>), the first time you run <code class="language-plaintext highlighter-rouge">docker-compose up</code>, docker will build them, taking much, much, much longer.</p>
 
   </blockquote>
 
   <blockquote class="code-in">
-    <div id="code-in-bash-installing-the-docker-files-pulling-and-launching-the-appliance" class="box-title" aria-label="code-in box: Bash: Installing the docker files, pulling and launching the Appliance"><i class="far fa-keyboard" aria-hidden="true"></i><span class="visually-hidden"></span> Input: Bash: Installing the docker files, pulling and launching the Appliance</div>
+    <div class="box-title code-in-title" id="code-in-bash-installing-the-docker-files-pulling-and-launching-the-appliance" aria-label="code-in box: Bash: Installing the docker files, pulling and launching the Appliance"><i class="far fa-keyboard" aria-hidden="true"></i><span class="visually-hidden"></span> Input: Bash: Installing the docker files, pulling and launching the Appliance</div>
     <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git clone https://github.com/fubar2/toolfactory-<span class="notranslate">galaxy</span>-server
 <span class="nb">cd </span>toolfactory-<span class="notranslate">galaxy</span>-server/compose
 <span class="nb">mkdir export
@@ -1344,7 +1328,7 @@ docker-compose up
   </blockquote>
 
   <blockquote class="tip">
-    <div id="tip-appliance-tips" class="box-title"><button type="button" aria-controls="tip-appliance-tips-contents" aria-expanded="true" aria-label="Toggle tip box: Appliance tips"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: Appliance tips<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
+    <div class="box-title tip-title" id="tip-appliance-tips"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-appliance-tips-contents" aria-expanded="true" aria-label="Toggle tip box: Appliance tips"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: Appliance tips<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
 
     <ul>
       <li>First time start takes 5-10 minutes after the pull completes.
@@ -1376,7 +1360,7 @@ docker-compose up
   </blockquote>
 
   <blockquote class="tip">
-    <div id="tip-appliance-disposal-to-free-up-desktop-resources-when-no-longer-needed" class="box-title"><button type="button" aria-controls="tip-appliance-disposal-to-free-up-desktop-resources-when-no-longer-needed-contents" aria-expanded="true" aria-label="Toggle tip box: Appliance disposal to free up desktop resources when no longer needed"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: Appliance disposal to free up desktop resources when no longer needed<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
+    <div class="box-title tip-title" id="tip-appliance-disposal-to-free-up-desktop-resources-when-no-longer-needed"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-appliance-disposal-to-free-up-desktop-resources-when-no-longer-needed-contents" aria-expanded="true" aria-label="Toggle tip box: Appliance disposal to free up desktop resources when no longer needed"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: Appliance disposal to free up desktop resources when no longer needed<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
     <ul>
       <li>Save any useful generated material from the <code class="language-plaintext highlighter-rouge">export</code> directory or from the running Appliance.</li>
       <li>Delete the <code class="language-plaintext highlighter-rouge">...compose/export</code> directory - you will need <code class="language-plaintext highlighter-rouge">sudo rm -rf export/*</code> and perhaps <code class="language-plaintext highlighter-rouge">sudo rm -rf export/.d*</code>
@@ -1401,7 +1385,7 @@ docker-compose up
       </ul>
 
       <blockquote class="tip">
-        <div id="tip-demonstration-tools-are-the-best-functional-documentation" class="box-title"><button type="button" aria-controls="tip-demonstration-tools-are-the-best-functional-documentation-contents" aria-expanded="true" aria-label="Toggle tip box: Demonstration tools are the best functional documentation."><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: Demonstration tools are the best functional documentation.<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
+        <div class="box-title tip-title" id="tip-demonstration-tools-are-the-best-functional-documentation"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-demonstration-tools-are-the-best-functional-documentation-contents" aria-expanded="true" aria-label="Toggle tip box: Demonstration tools are the best functional documentation."><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: Demonstration tools are the best functional documentation.<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
 
         <ul>
           <li>At first login you will find the demonstration history ready to explore if you waited for all the Conda activity to die down</li>
@@ -1418,7 +1402,7 @@ docker-compose up
       </blockquote>
 
       <blockquote class="tip">
-        <div id="tip-patience" class="box-title"><button type="button" aria-controls="tip-patience-contents" aria-expanded="true" aria-label="Toggle tip box: Patience!"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: Patience!<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
+        <div class="box-title tip-title" id="tip-patience"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-patience-contents" aria-expanded="true" aria-label="Toggle tip box: Patience!"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: Patience!<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
         <p>When you run the ToolFactory for the first time inside the container and whenever you run a new tool with new dependencies, it will require some time to build the conda environment.
 Check for Conda or other processes if things seem stuck.</p>
       </blockquote>
@@ -1447,7 +1431,7 @@ Check for Conda or other processes if things seem stuck.</p>
 <h1 id="hello-world">Hello World!</h1>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-building-the-hello-world-example" class="box-title" aria-label="hands-on box: Building the Hello World example"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Building the Hello World example</div>
+  <div class="box-title hands-on-title" id="hands-on-building-the-hello-world-example" aria-label="hands-on box: Building the Hello World example"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Building the Hello World example</div>
 
   <ol>
     <li>Run <span><strong>ToolFactory</strong> <i class="fas fa-wrench" aria-hidden="true"></i></span>  with the following parameters:
@@ -1488,7 +1472,7 @@ Check for Conda or other processes if things seem stuck.</p>
       </ul>
 
       <blockquote class="comment">
-        <div id="comment-first-time-use-involves-a-long-pause-in-some-installations" class="box-title" aria-label="comment box: First time use involves a long pause in some installations"><i class="far fa-comment-dots" aria-hidden="true"></i><span class="visually-hidden"></span> Comment: First time use involves a long pause in some installations</div>
+        <div class="box-title comment-title" id="comment-first-time-use-involves-a-long-pause-in-some-installations" aria-label="comment box: First time use involves a long pause in some installations"><i class="far fa-comment-dots" aria-hidden="true"></i><span class="visually-hidden"></span> Comment: First time use involves a long pause in some installations</div>
         <p>The first job takes longer in some installation scenarios because the ToolFactory dependencies are installed before the tool can run.</p>
       </blockquote>
     </li>
@@ -1554,7 +1538,7 @@ recreate the ToolFactory form as it was when you last ran it. Adjust as needed a
 <h2 id="hello-world-continued">Hello World: Continued</h2>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-modifying-the-hello-world-example" class="box-title" aria-label="hands-on box: Modifying the Hello World example"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Modifying the Hello World example</div>
+  <div class="box-title hands-on-title" id="hands-on-modifying-the-hello-world-example" aria-label="hands-on box: Modifying the Hello World example"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Modifying the Hello World example</div>
 
   <ol>
     <li>
@@ -1590,7 +1574,7 @@ recreate the ToolFactory form as it was when you last ran it. Adjust as needed a
 <h2 id="hello-collections">Hello Collections!</h2>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-building-a-file-splitter" class="box-title" aria-label="hands-on box: Building a File Splitter"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Building a File Splitter</div>
+  <div class="box-title hands-on-title" id="hands-on-building-a-file-splitter" aria-label="hands-on box: Building a File Splitter"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Building a File Splitter</div>
 
   <ol>
     <li>Run <span><strong>ToolFactory</strong> <i class="fas fa-wrench" aria-hidden="true"></i></span>  with the following parameters:
@@ -1668,7 +1652,7 @@ They are also a convenient way to keep outputs together that are unlikely to be 
 that a user might want to be able to easily view if they want without cluttering up the history.</p>
 
 <blockquote class="warning">
-  <div id="warning-collection-testing" class="box-title" aria-label="warning box: Collection Testing"><i class="fas fa-exclamation-triangle" aria-hidden="true"></i><span class="visually-hidden"></span> Warning: Collection Testing</div>
+  <div class="box-title warning-title" id="warning-collection-testing" aria-label="warning box: Collection Testing"><i class="fas fa-exclamation-triangle" aria-hidden="true"></i><span class="visually-hidden"></span> Warning: Collection Testing</div>
   <p>The default generated test for output collections always passes because it doesn’t test anything.
 Supplying a test over-ride is recommended for collections.
 For a real test, one or more expected <element...></element...> tags must be provided so the test really does test something.</p>
@@ -1677,7 +1661,7 @@ For a real test, one or more expected <element...></element...> tags must be pro
 <h2 id="done">Done!</h2>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-to-safely-shut-the-appliance-down" class="box-title" aria-label="hands-on box: To safely shut the appliance down"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: To safely shut the appliance down</div>
+  <div class="box-title hands-on-title" id="hands-on-to-safely-shut-the-appliance-down" aria-label="hands-on box: To safely shut the appliance down"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: To safely shut the appliance down</div>
 
   <ol>
     <li>
@@ -1842,19 +1826,21 @@ day = ""
 url = "\url{https://training.galaxyproject.org/training-material/topics/dev/tutorials/tool-generators/tutorial.html}",
 note = "[Online; accessed TODAY]"
 }
-@article{Batut_2018,
-    doi = {10.1016/j.cels.2018.05.012},
-    url = {https://doi.org/10.1016%2Fj.cels.2018.05.012},
-    year = 2018,
-    month = {jun},
-    publisher = {Elsevier {BV}},
-    volume = {6},
-    number = {6},
-    pages = {752--758.e1},
-    author = {B{\'{e}}r{\'{e}}nice Batut and Saskia Hiltemann and Andrea Bagnacani and Dannon Baker and Vivek Bhardwaj and Clemens Blank and Anthony Bretaudeau and Loraine Brillet-Gu{\'{e}}guen and Martin {\v{C}}ech and John Chilton and Dave Clements and Olivia Doppelt-Azeroual and Anika Erxleben and Mallory Ann Freeberg and Simon Gladman and Youri Hoogstrate and Hans-Rudolf Hotz and Torsten Houwaart and Pratik Jagtap and Delphine Larivi{\`{e}}re and Gildas Le Corguill{\'{e}} and Thomas Manke and Fabien Mareuil and Fidel Ram{\'{\i}}rez and Devon Ryan and Florian Christoph Sigloch and Nicola Soranzo and Joachim Wolff and Pavankumar Videm and Markus Wolfien and Aisanjiang Wubuli and Dilmurat Yusuf and James Taylor and Rolf Backofen and Anton Nekrutenko and Björn Grüning},
-    title = {Community-Driven Data Analysis Training for Biology},
-    journal = {Cell Systems}
-}</code>
+@article{Hiltemann_2023,
+	doi = {10.1371/journal.pcbi.1010752},
+	url = {https://doi.org/10.1371%2Fjournal.pcbi.1010752},
+	year = 2023,
+	month = {jan},
+	publisher = {Public Library of Science ({PLoS})},
+	volume = {19},
+	number = {1},
+	pages = {e1010752},
+	author = {Saskia Hiltemann and Helena Rasche and Simon Gladman and Hans-Rudolf Hotz and Delphine Larivi{\`{e}}re and Daniel Blankenberg and Pratik D. Jagtap and Thomas Wollmann and Anthony Bretaudeau and Nadia Gou{\'{e}} and Timothy J. Griffin and Coline Royaux and Yvan Le Bras and Subina Mehta and Anna Syme and Frederik Coppens and Bert Droesbeke and Nicola Soranzo and Wendi Bacon and Fotis Psomopoulos and Crist{\'{o}}bal Gallardo-Alba and John Davis and Melanie Christine Föll and Matthias Fahrner and Maria A. Doyle and Beatriz Serrano-Solano and Anne Claire Fouilloux and Peter van Heusden and Wolfgang Maier and Dave Clements and Florian Heyl and Björn Grüning and B{\'{e}}r{\'{e}}nice Batut and},
+	editor = {Francis Ouellette},
+	title = {Galaxy Training: A powerful framework for teaching!},
+	journal = {PLoS Comput Biol} Computational Biology}
+}
+</code>
                    </pre></div></div>
                    </p>
                 </blockquote>
@@ -1914,18 +1900,6 @@ document.getElementById("citation-text").innerHTML = document.getElementById("ci
                         
                     
                         
-                    
-                        
-                    
-                        
-                    
-                        
-                    
-                        
-                    
-                        
-                    
-                        
                             
                             <li> ToolFactory: Generating Tools From More Complex Scripts:
                             
@@ -1935,6 +1909,16 @@ document.getElementById("citation-text").innerHTML = document.getElementById("ci
                                 
                             
                             </li>
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
                         
                     
                         
@@ -1968,8 +1952,6 @@ document.getElementById("citation-text").innerHTML = document.getElementById("ci
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
         <script type="text/javascript" src="/training-material/assets/js/bootstrap-toc.min.js"></script>
         <script type="text/javascript" src="/training-material/assets/js/main.js"></script>
-        <script type="text/javascript" src="/training-material/assets/js/theme.js"></script>
-
         <script type="text/javascript" src="/training-material/assets/js/clipboard.min.js"></script>
         <script type="text/javascript">
         var snippets=document.querySelectorAll('div.highlight');

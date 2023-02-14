@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="utf-8">
@@ -14,7 +14,6 @@
         <link rel="stylesheet" href="/training-material/assets/css/main.css?v=2">
         <script src="https://kit.fontawesome.com/67b3f98409.js" crossorigin="anonymous"></script>
         <link rel="stylesheet" href="/training-material/assets/css/academicons.css">
-        <link rel="stylesheet" href="/training-material/assets/css/syntax_highlighting.css">
         <link rel="shortcut icon" href="/training-material/favicon.ico" type="image/x-icon" />
         <link rel="alternate" type="application/atom+xml" href="/training-material/feed.xml" />
         <link rel="canonical" href="https://training.galaxyproject.org/training-material/topics/admin/tutorials/cvmfs/tutorial.html" />
@@ -24,11 +23,10 @@
 <meta name="DC.type" content="text" />
 <meta name="DC.title" content="Reference Data with CVMFS" />
 <meta name="DC.publisher" content="Galaxy Training Network" />
-<meta name="DC.date" content="2022-10-18 14:23:35 +0000" />
+<meta name="DC.date" content="2023-02-02 12:21:01 +0000" />
 <meta name="DC.creator" content="Simon Gladman" />
 <meta name="DC.creator" content="Helena Rasche" />
 
-        
         
         
         
@@ -39,221 +37,9 @@
         <meta property="og:description" content="Resources related to configuration and maintenance of Gal..." />
         <meta property="og:image" content="/training-material/assets/images/GTNLogo1000.png" />
 
-    </head>
-    <body data-spy="scroll" data-target="#toc">
-        <header>
-    <nav class="navbar navbar-expand-md navbar-dark" aria-label="Site Navigation">
-        <div class="container">
-            <a class="navbar-brand" href="/training-material/">
-                <img src="/training-material/assets/images/GTN-60px.png" height="30" alt="Galaxy Training Network logo">
-                Galaxy Training!
-            </a>
-
-            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#top-navbar" aria-controls="top-navbar" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="top-navbar">
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        
-                        <a class="nav-link" href="/training-material/topics/admin" title="Go back to list of tutorials">
-                            <i class="far fa-folder" aria-hidden="true"></i> Galaxy Server administration
-                        </a>
-                        
-                    </li>
-
-                    <li class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false" title="Languages">
-                            <i class="fas fa-language" aria-hidden="true"></i><span class="visually-hidden">language</span> Languages
-                        </a>
-                        <div class="dropdown-menu dropdown-menu-right">
-                            
-                              <strong class="dropdown-header">Automatic Translations</strong>
-            
-            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=fr&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/admin/tutorials/cvmfs/tutorial.html&edit-text=&act=url">
-                            Français
-                            </a>
-                            
-            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=ja&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/admin/tutorials/cvmfs/tutorial.html&edit-text=&act=url">
-                            日本語
-                            </a>
-                            
-            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=es&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/admin/tutorials/cvmfs/tutorial.html&edit-text=&act=url">
-                            Español
-                            </a>
-                            
-            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=pt&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/admin/tutorials/cvmfs/tutorial.html&edit-text=&act=url">
-                            Português
-                            </a>
-                            
-            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=ar&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/admin/tutorials/cvmfs/tutorial.html&edit-text=&act=url">
-                            العربية
-                            </a>
-                            
-                            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/admin/tutorials/cvmfs/tutorial.html&edit-text=&act=url" title="">
-                            And more!
-                            </a>
-                        </div>
-                    </li>
-
-                    <li class="nav-item dropdown">
-    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false" title="Help">
-        <i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden">help</span> Help
-    </a>
-    <div class="dropdown-menu dropdown-menu-right">
-        <!-- disable Tess for now
-        <form method="get" action="https://tess.elixir-europe.org/materials">
-            <input type="text" id="search" name="q" value="" style="margin-left: 0.5em;/*! border-radius: 0px; */">
-            <input type="hidden" value="Galaxy Training" name="content_provider">
-            <input type="submit" value="Search on TeSS" style="width: 92%;border-radius: 0px;margin: 0.5em;background: #f47d20;border: 0px;padding: 0.25em;" class="">
-        </form>
-        -->
-
-        <a class="dropdown-item" href="/training-material/faq" title="Check our FAQs">
-           <i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden">question</span> FAQs
-        </a>
         
-        <a class="dropdown-item" href="/training-material/topics/admin/faqs/" title="Check our FAQs for the Galaxy Server administration topic">
-           <i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden">question</span> Topic FAQs
-        </a>
-        
-        <a class="dropdown-item" href="https://help.galaxyproject.org/" title="Discuss on Galaxy Help">
-            <i class="far fa-comments" aria-hidden="true"></i><span class="visually-hidden">feedback</span> Galaxy Help Forum
-        </a>
-        <a class="dropdown-item" href="https://gitter.im/Galaxy-Training-Network/Lobby" title="Discuss on gitter">
-           <i class="fab fa-gitter" aria-hidden="true"></i><span class="visually-hidden">gitter</span> Discuss on Gitter
-        </a>
-    </div>
-</li>
-
-
-                    <li class="nav-item dropdown">
-    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false" title="Extras">
-        <i class="far fa-star" aria-hidden="true"></i><span class="visually-hidden">galaxy-star</span> Extras
-    </a>
-    <div class="dropdown-menu dropdown-menu-right">
-
-        
-        <a class="dropdown-item" href="https://github.com/galaxyproject/training-material/edit/main/topics/admin/tutorials/cvmfs/tutorial.md" title="Edit on GitHub">
-          <i class="fab fa-github" aria-hidden="true"></i><span class="visually-hidden">github</span> Edit on GitHub
-        </a>
-
-        <a class="dropdown-item" href="/training-material/stats.html" title="Show view statistics about this repository">
-            <i class="fas fa-chart-bar" aria-hidden="true"></i><span class="visually-hidden">galaxy-barchart</span> GTN statistics
-        </a>
-
-        <a class="dropdown-item" href="https://plausible.galaxyproject.eu/training.galaxyproject.org?period=12mo&page=/training-material/topics/admin/tutorials/cvmfs/tutorial.html" title="Show view statistics of this page">
-            <i class="fas fa-chart-bar" aria-hidden="true"></i><span class="visually-hidden">galaxy-barchart</span> Page Metrics
-        </a>
-
-        <!-- link to feedback -->
-        
+        <script type="application/ld+json">
             
-            
-                <a class="dropdown-item" href="/training-material/feedback.html" title="Show feedback statistics about this repository">
-                    <i class="fas fa-chart-bar" aria-hidden="true"></i><span class="visually-hidden">galaxy-barchart</span> GTN feedback
-                </a>
-            
-        
-
-        <div class="dropdown-item">
-            <div>
-                <i class="fas fa-palette" aria-hidden="true"></i><span class="visually-hidden">gtn-theme</span> Theme
-            </div>
-
-            <div id="theme-selector" data-toggle="buttons">
-                <label data-value="default" class="btn btn-secondary">
-                    <input type="radio" name="options" id="default" autocomplete="off"> Default
-                </label>
-                <label data-value="night" class="btn btn-secondary">
-                    <input type="radio" name="options" id="night" autocomplete="off"> Night
-                </label>
-                <label data-value="midnight" class="btn btn-secondary">
-                    <input type="radio" name="options" id="midnight" autocomplete="off"> Midnight
-                </label>
-                <label data-value="rainbow" class="btn btn-secondary">
-                    <input type="radio" name="options" id="rainbow" autocomplete="off"> Rainbow
-                </label>
-                <label data-value="progress" class="btn btn-secondary">
-                    <input type="radio" name="options" id="progress" autocomplete="off">🏳️‍🌈
-                </label>
-                <label data-value="halloween" class="btn btn-secondary">
-                    <input type="radio" name="options" id="halloween" autocomplete="off"> 🎃
-                </label>
-                <label data-value="straya" class="btn btn-secondary">
-                    <input type="radio" name="options" id="downunder" autocomplete="off"> 🇦🇺
-                </label>
-            </div>
-
-        </div>
-
-        <div class="dropdown-item">
-            <div>
-                <i class="fas fa-history" aria-hidden="true"></i><span class="visually-hidden">galaxy-rulebuilder-history</span> Previous Versions
-            </div>
-
-            <div id="archive-selector">
-            
-                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2020-01-06/topics/admin/tutorials/cvmfs/tutorial.html" title="Version 2020-01-06">2020-01-06</a>
-            
-                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2019-12-01/topics/admin/tutorials/cvmfs/tutorial.html" title="Version 2019-12-01">2019-12-01</a>
-            
-                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2019-11-01/topics/admin/tutorials/cvmfs/tutorial.html" title="Version 2019-11-01">2019-11-01</a>
-            
-                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/" title="Older Versions">Older Versions</a>
-            </div>
-
-        </div>
-
-    </div>
-</li>
-
-
-                    <!-- Search bar-->
-                    <li class="nav-item">
-                      <div id="navbarSupportedContent" role="search">
-                        <!-- Search form -->
-                        <form class="form-inline mr-auto" method="GET" action="/training-material/search">
-                          <i class="fas fa-search nav-link" aria-hidden="true"></i>
-                          <div class="md-form mb-2">
-                            <input name="query" class="form-control nicer" type="text" placeholder="Search Tutorials" aria-label="Search">
-                          </div>
-                        </form>
-                      </div>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-</header>
-
-        <div class="container main-content" role="main">
-        
-
-
-
-
-
-
-
-
-
-
-
-<!-- Gitter -->
-
-
-
-
-<script>
-  ((window.gitter = {}).chat = {}).options = {
-  room: 'galaxyproject/admins'
-  };
-</script>
-<script src="https://sidecar.gitter.im/dist/sidecar.v1.js" async defer></script>
-
-<script type="application/ld+json">
-    
 
 
 {
@@ -278,7 +64,7 @@
     "name": "Galaxy Training Network",
     "url": "https://galaxyproject.org/teach/gtn/"
   },
-  "dateModified": "2022-10-18 14:23:35 +0000",
+  "dateModified": "2023-02-02 12:21:01 +0000",
   "discussionUrl": "https://gitter.im/Galaxy-Training-Network/Lobby",
   "headline": "Reference Data with CVMFS",
   "interactivityType": "mixed",
@@ -505,7 +291,210 @@
     }
   ]
 }
+        </script>
+        
+    </head>
+    <body data-spy="scroll" data-target="#toc">
+        <script type="text/javascript" src="/training-material/assets/js/theme.js"></script>
+        <header>
+    <nav class="navbar navbar-expand-md navbar-dark" aria-label="Site Navigation">
+        <div class="container">
+            <a class="navbar-brand" href="/training-material/">
+                <img src="/training-material/assets/images/GTN-60px.png" height="30" alt="Galaxy Training Network logo">
+                Galaxy Training!
+            </a>
+
+            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#top-navbar" aria-controls="top-navbar" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="top-navbar">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        
+                        <a class="nav-link" href="/training-material/topics/admin" title="Go back to list of tutorials">
+                            <i class="far fa-folder" aria-hidden="true"></i> Galaxy Server administration
+                        </a>
+                        
+                    </li>
+
+                    <li class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false" title="Languages">
+                            <i class="fas fa-language" aria-hidden="true"></i><span class="visually-hidden">language</span> Languages
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right">
+                            
+                              <strong class="dropdown-header">Automatic Translations</strong>
+            
+            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=fr&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/admin/tutorials/cvmfs/tutorial.html&edit-text=&act=url">
+                            Français
+                            </a>
+                            
+            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=ja&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/admin/tutorials/cvmfs/tutorial.html&edit-text=&act=url">
+                            日本語
+                            </a>
+                            
+            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=es&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/admin/tutorials/cvmfs/tutorial.html&edit-text=&act=url">
+                            Español
+                            </a>
+                            
+            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=pt&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/admin/tutorials/cvmfs/tutorial.html&edit-text=&act=url">
+                            Português
+                            </a>
+                            
+            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=ar&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/admin/tutorials/cvmfs/tutorial.html&edit-text=&act=url">
+                            العربية
+                            </a>
+                            
+                            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/admin/tutorials/cvmfs/tutorial.html&edit-text=&act=url" title="">
+                            And more!
+                            </a>
+                        </div>
+                    </li>
+
+                    <li class="nav-item dropdown">
+    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false" title="Help">
+        <i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden">help</span> Help
+    </a>
+    <div class="dropdown-menu dropdown-menu-right">
+        <!-- disable Tess for now
+        <form method="get" action="https://tess.elixir-europe.org/materials">
+            <input type="text" id="search" name="q" value="" style="margin-left: 0.5em;/*! border-radius: 0px; */">
+            <input type="hidden" value="Galaxy Training" name="content_provider">
+            <input type="submit" value="Search on TeSS" style="width: 92%;border-radius: 0px;margin: 0.5em;background: #f47d20;border: 0px;padding: 0.25em;" class="">
+        </form>
+        -->
+
+        <a class="dropdown-item" href="/training-material/faq" title="Check our FAQs">
+           <i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden">question</span> FAQs
+        </a>
+        
+        
+        <a class="dropdown-item" href="/training-material/topics/admin/faqs/" title="Check our FAQs for the Galaxy Server administration topic">
+           <i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden">question</span> Topic FAQs
+        </a>
+        
+        
+        <a class="dropdown-item" href="https://help.galaxyproject.org/" title="Discuss on Galaxy Help">
+            <i class="far fa-comments" aria-hidden="true"></i><span class="visually-hidden">feedback</span> Galaxy Help Forum
+        </a>
+        <a class="dropdown-item" href="https://gitter.im/Galaxy-Training-Network/Lobby" title="Discuss on gitter">
+           <i class="fab fa-gitter" aria-hidden="true"></i><span class="visually-hidden">gitter</span> Discuss on Gitter
+        </a>
+    </div>
+</li>
+
+
+                    <li class="nav-item dropdown">
+    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false" title="Extras">
+        <i class="far fa-star" aria-hidden="true"></i><span class="visually-hidden">galaxy-star</span> Extras
+    </a>
+    <div class="dropdown-menu dropdown-menu-right">
+
+        
+        <a class="dropdown-item" href="https://github.com/galaxyproject/training-material/edit/main/topics/admin/tutorials/cvmfs/tutorial.md" title="Edit on GitHub">
+          <i class="fab fa-github" aria-hidden="true"></i><span class="visually-hidden">github</span> Edit on GitHub
+        </a>
+
+        <a class="dropdown-item" href="/training-material/stats.html" title="Show view statistics about this repository">
+            <i class="fas fa-chart-bar" aria-hidden="true"></i><span class="visually-hidden">galaxy-barchart</span> GTN statistics
+        </a>
+
+        <a class="dropdown-item" href="https://plausible.galaxyproject.eu/training.galaxyproject.org?period=12mo&page=/training-material/topics/admin/tutorials/cvmfs/tutorial.html" title="Show view statistics of this page">
+            <i class="fas fa-chart-bar" aria-hidden="true"></i><span class="visually-hidden">galaxy-barchart</span> Page Metrics
+        </a>
+
+        <!-- link to feedback -->
+        
+            
+            
+                <a class="dropdown-item" href="/training-material/feedback.html" title="Show feedback statistics about this repository">
+                    <i class="fas fa-chart-bar" aria-hidden="true"></i><span class="visually-hidden">galaxy-barchart</span> GTN feedback
+                </a>
+            
+        
+
+        <div class="dropdown-item">
+            <div>
+                <i class="fas fa-palette" aria-hidden="true"></i><span class="visually-hidden">gtn-theme</span> Theme
+            </div>
+
+            <div id="theme-selector" data-toggle="buttons">
+                    <button class="btn" data-theme="default">Default</button>
+                    <button class="btn" data-theme="night">Night</button>
+                    <button class="btn" data-theme="midnight">Midnight</button>
+                    <button class="btn" data-theme="rainbow">Rainbow</button>
+                    <button class="btn" data-theme="blm">✊🏿</button>
+                    <button class="btn" data-theme="progress" >🏳️‍🌈</button>
+                    <button class="btn" data-theme="halloween">🎃</button>
+                    <button class="btn" data-theme="straya">🇦🇺</button>
+            </div>
+
+        </div>
+
+        <div class="dropdown-item">
+            <div>
+                <i class="fas fa-history" aria-hidden="true"></i><span class="visually-hidden">galaxy-rulebuilder-history</span> Previous Versions
+            </div>
+
+            <div id="archive-selector">
+            
+                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2020-01-06/topics/admin/tutorials/cvmfs/tutorial.html" title="Version 2020-01-06">2020-01-06</a>
+            
+                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2019-12-01/topics/admin/tutorials/cvmfs/tutorial.html" title="Version 2019-12-01">2019-12-01</a>
+            
+                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2019-11-01/topics/admin/tutorials/cvmfs/tutorial.html" title="Version 2019-11-01">2019-11-01</a>
+            
+                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/" title="Older Versions">Older Versions</a>
+            </div>
+
+        </div>
+
+    </div>
+</li>
+
+
+                    <!-- Search bar-->
+                    <li class="nav-item">
+                      <div id="navbarSupportedContent" role="search">
+                        <!-- Search form -->
+                        <form class="form-inline mr-auto" method="GET" action="/training-material/search">
+                          <i class="fas fa-search nav-link" aria-hidden="true"></i>
+                          <div class="md-form mb-2">
+                            <input name="query" class="form-control nicer" type="text" placeholder="Search Tutorials" aria-label="Search">
+                          </div>
+                        </form>
+                      </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
+        <div class="container main-content" role="main">
+        
+
+
+
+
+
+
+
+
+
+
+
+<!-- Gitter -->
+
+
+
+
+<script>
+  ((window.gitter = {}).chat = {}).options = {
+  room: 'galaxyproject/admins'
+  };
 </script>
+<script src="https://sidecar.gitter.im/dist/sidecar.v1.js" async defer></script>
 
 <section class="tutorial topic-admin">
     <h1 data-toc-skip>Reference Data with CVMFS</h1>
@@ -566,6 +555,50 @@
                         
                     
                         
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
                             
                             <li> Ansible:
                             
@@ -618,85 +651,7 @@
                     
                         
                     
-                        
-                    
-                        
-                    
-                        
-                    
-                        
-                    
-                        
-                    
-                        
-                    
-                        
-                    
-                        
-                    
-                        
-                    
-                        
-                    
-                        
-                    
-                        
-                    
-                        
-                    
-                        
-                    
-                        
-                    
-                        
-                    
-                        
-                    
-                        
-                    
-                        
-                    
-                        
-                    
-                        
-                    
-                        
-                    
                 
-                    
-                        
-                    
-                        
-                    
-                        
-                    
-                        
-                    
-                        
-                    
-                        
-                    
-                        
-                    
-                        
-                    
-                        
-                    
-                        
-                    
-                        
-                    
-                        
-                    
-                        
-                    
-                        
-                    
-                        
-                    
-                        
-                    
-                        
                     
                         
                     
@@ -715,6 +670,40 @@
                                 
                             
                             </li>
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
                         
                     
                         
@@ -869,7 +858,7 @@
         </ul>
         
 
-        <div><strong><i class="far fa-calendar" aria-hidden="true"></i> Last modification:</strong> Oct 18, 2022 </div>
+        <div><strong><i class="far fa-calendar" aria-hidden="true"></i> Last modification:</strong> Feb 2, 2023 </div>
         <div><strong><i class="fas fa-balance-scale" aria-hidden="true"></i> License:</strong>
             
             <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Tutorial Content is licensed under Creative Commons Attribution 4.0 International License</a>
@@ -911,7 +900,7 @@ it’s used.</p>
 
 <h1 id="overview">Overview</h1>
 
-<p>The CernVM-FS is a distributed filesystem perfectly designed for sharing readonly data across the globe. We use it in the <a href="https://galaxyproject.org"><span class="notranslate">Galaxy</span> Project</a> for sharing things that a lot of <span class="notranslate">Galaxy</span> servers need. Namely:</p>
+<p>The CernVM-FS <span class="citation"><a href="#Blomer_2011">Blomer <i>et al.</i> 2011</a></span> is a distributed filesystem perfectly designed for sharing readonly data across the globe. We use it in the <a href="https://galaxyproject.org"><span class="notranslate">Galaxy</span> Project</a> for sharing things that a lot of <span class="notranslate">Galaxy</span> servers need. Namely:</p>
 <ul>
   <li><strong>Reference Data</strong>
     <ul>
@@ -959,10 +948,10 @@ use those singularity containers within <span class="notranslate">Galaxy</span> 
 well. So we’re just going to get on with things.</p>
 </blockquote>
 
-<p>A slideshow presentation on this subject can be found <a href="slides.html">here</a>. More details on the use<span class="notranslate">galaxy</span>.org (<span class="notranslate">Galaxy</span> Main’s) reference data setup and CVMFS system can be found <a href="https://galaxyproject.org/admin/reference-data-repo/#usegalaxyorg-reference-data">here</a></p>
+<p><a href="slides.html">A slideshow presentation on this subject is available</a>. More details on the use<span class="notranslate">galaxy</span>.org (<span class="notranslate">Galaxy</span> Main’s) <a href="https://galaxyproject.org/admin/reference-data-repo/#usegalaxyorg-reference-data">reference data setup and CVMFS system</a>.</p>
 
 <blockquote class="agenda">
-  <div id="agenda" class="box-title" aria-label="agenda box: ">Agenda</div>
+  <div class="box-title agenda-title" id="agenda" aria-label="agenda box: ">Agenda</div>
 
 <ol id="markdown-toc">
   <li><a href="#overview" id="markdown-toc-overview">Overview</a></li>
@@ -986,7 +975,7 @@ well. So we’re just going to get on with things.</p>
 </blockquote>
 
 <!--SNIPPET-->
-<blockquote class="comment">  <div id="comment-galaxy-admin-training-path" class="box-title" aria-label="comment box: Galaxy Admin Training Path"><i class="far fa-comment-dots" aria-hidden="true"></i><span class="visually-hidden"></span> Comment: <span class="notranslate">Galaxy</span> Admin Training Path</div>  <p>The yearly <span class="notranslate">Galaxy</span> Admin Training follows a specific ordering of tutorials. Use this timeline to help keep track of where you are in <span class="notranslate">Galaxy</span> Admin Training.</p>  <ol id="git-gat-timeline">    <a href="/training-material/topics/admin/tutorials/ansible-galaxy/tutorial.html">    <li class="disabled">        <span>Step 1</span>        <span>ansible-<span class="notranslate">galaxy</span></span>    </li>        </a>        <span aria-hidden="true">        <i class="fas fa-arrow-right" aria-hidden="true"></i>    </span>        <a href="/training-material/topics/admin/tutorials/tus/tutorial.html">    <li class="disabled">        <span>Step 2</span>        <span>tus</span>    </li>        </a>        <span aria-hidden="true">        <i class="fas fa-arrow-right" aria-hidden="true"></i>    </span>        <a href="/training-material/topics/admin/tutorials/cvmfs/tutorial.html">    <li class="active">        <span>Step 3</span>        <span>cvmfs</span>    </li>        </a>        <span aria-hidden="true">        <i class="fas fa-arrow-right" aria-hidden="true"></i>    </span>        <a href="/training-material/topics/admin/tutorials/singularity/tutorial.html">    <li class="">        <span>Step 4</span>        <span>singularity</span>    </li>        </a>        <span aria-hidden="true">        <i class="fas fa-arrow-right" aria-hidden="true"></i>    </span>        <a href="/training-material/topics/admin/tutorials/tool-management/tutorial.html">    <li class="">        <span>Step 5</span>        <span>tool-management</span>    </li>        </a>        <span aria-hidden="true">        <i class="fas fa-arrow-right" aria-hidden="true"></i>    </span>        <a href="/training-material/topics/admin/tutorials/data-library/tutorial.html">    <li class="">        <span>Step 6</span>        <span>data-library</span>    </li>        </a>        <span aria-hidden="true">        <i class="fas fa-arrow-right" aria-hidden="true"></i>    </span>        <a href="/training-material/topics/admin/tutorials/connect-to-compute-cluster/tutorial.html">    <li class="">        <span>Step 7</span>        <span>connect-to-compute-cluster</span>    </li>        </a>        <span aria-hidden="true">        <i class="fas fa-arrow-right" aria-hidden="true"></i>    </span>        <a href="/training-material/topics/admin/tutorials/job-destinations/tutorial.html">    <li class="">        <span>Step 8</span>        <span>job-destinations</span>    </li>        </a>        <span aria-hidden="true">        <i class="fas fa-arrow-right" aria-hidden="true"></i>    </span>        <a href="/training-material/topics/admin/tutorials/pulsar/tutorial.html">    <li class="">        <span>Step 9</span>        <span>pulsar</span>    </li>        </a>        <span aria-hidden="true">        <i class="fas fa-arrow-right" aria-hidden="true"></i>    </span>        <a href="/training-material/topics/admin/tutorials/gxadmin/tutorial.html">    <li class="">        <span>Step 10</span>        <span>gxadmin</span>    </li>        </a>        <span aria-hidden="true">        <i class="fas fa-arrow-right" aria-hidden="true"></i>    </span>        <a href="/training-material/topics/admin/tutorials/monitoring/tutorial.html">    <li class="">        <span>Step 11</span>        <span>monitoring</span>    </li>        </a>        <span aria-hidden="true">        <i class="fas fa-arrow-right" aria-hidden="true"></i>    </span>        <a href="/training-material/topics/admin/tutorials/tiaas/tutorial.html">    <li class="">        <span>Step 12</span>        <span>tiaas</span>    </li>        </a>        <span aria-hidden="true">        <i class="fas fa-arrow-right" aria-hidden="true"></i>    </span>        <a href="/training-material/topics/admin/tutorials/reports/tutorial.html">    <li class="">        <span>Step 13</span>        <span>reports</span>    </li>        </a>        <span aria-hidden="true">        <i class="fas fa-arrow-right" aria-hidden="true"></i>    </span>        <a href="/training-material/topics/admin/tutorials/ftp/tutorial.html">    <li class="">        <span>Step 14</span>        <span>ftp</span>    </li>        </a>    </ol>  <style type="text/css">#git-gat-timeline {    display: flex;    flex-direction: row;    flex-wrap: wrap;}#git-gat-timeline li  {    display: flex;    flex-direction: column;    border: 1px solid black;    border-radius: 5px;    padding: 0.5em;    margin: 0.5em;}#git-gat-timeline li.active {    background: #86d486;    color: black;}#git-gat-timeline li.disabled {    background: #eee;}#git-gat-timeline span {    align-self: center;}</style></blockquote>
+<blockquote class="comment">   <div class="box-title comment-title" id="comment-galaxy-admin-training-path" aria-label="comment box: Galaxy Admin Training Path"><i class="far fa-comment-dots" aria-hidden="true"></i><span class="visually-hidden"></span> Comment: <span class="notranslate">Galaxy</span> Admin Training Path</div>   <p>The yearly <span class="notranslate">Galaxy</span> Admin Training follows a specific ordering of tutorials. Use this timeline to help keep track of where you are in <span class="notranslate">Galaxy</span> Admin Training.</p>   <ol id="git-gat-timeline">     <a href="/training-material/topics/admin/tutorials/ansible-galaxy/tutorial.html">     <li class="disabled">         <span>Step 1</span>         <span>ansible-<span class="notranslate">galaxy</span></span>     </li>          </a>          <span aria-hidden="true">         <i class="fas fa-arrow-right" aria-hidden="true"></i>     </span>          <a href="/training-material/topics/admin/tutorials/tus/tutorial.html">     <li class="disabled">         <span>Step 2</span>         <span>tus</span>     </li>          </a>          <span aria-hidden="true">         <i class="fas fa-arrow-right" aria-hidden="true"></i>     </span>          <a href="/training-material/topics/admin/tutorials/cvmfs/tutorial.html">     <li class="active">         <span>Step 3</span>         <span>cvmfs</span>     </li>          </a>          <span aria-hidden="true">         <i class="fas fa-arrow-right" aria-hidden="true"></i>     </span>          <a href="/training-material/topics/admin/tutorials/singularity/tutorial.html">     <li class="">         <span>Step 4</span>         <span>singularity</span>     </li>          </a>          <span aria-hidden="true">         <i class="fas fa-arrow-right" aria-hidden="true"></i>     </span>          <a href="/training-material/topics/admin/tutorials/tool-management/tutorial.html">     <li class="">         <span>Step 5</span>         <span>tool-management</span>     </li>          </a>          <span aria-hidden="true">         <i class="fas fa-arrow-right" aria-hidden="true"></i>     </span>          <a href="/training-material/topics/admin/tutorials/data-library/tutorial.html">     <li class="">         <span>Step 6</span>         <span>data-library</span>     </li>          </a>          <span aria-hidden="true">         <i class="fas fa-arrow-right" aria-hidden="true"></i>     </span>          <a href="/training-material/topics/admin/tutorials/connect-to-compute-cluster/tutorial.html">     <li class="">         <span>Step 7</span>         <span>connect-to-compute-cluster</span>     </li>          </a>          <span aria-hidden="true">         <i class="fas fa-arrow-right" aria-hidden="true"></i>     </span>          <a href="/training-material/topics/admin/tutorials/job-destinations/tutorial.html">     <li class="">         <span>Step 8</span>         <span>job-destinations</span>     </li>          </a>          <span aria-hidden="true">         <i class="fas fa-arrow-right" aria-hidden="true"></i>     </span>          <a href="/training-material/topics/admin/tutorials/pulsar/tutorial.html">     <li class="">         <span>Step 9</span>         <span>pulsar</span>     </li>          </a>          <span aria-hidden="true">         <i class="fas fa-arrow-right" aria-hidden="true"></i>     </span>          <a href="/training-material/topics/admin/tutorials/gxadmin/tutorial.html">     <li class="">         <span>Step 10</span>         <span>gxadmin</span>     </li>          </a>          <span aria-hidden="true">         <i class="fas fa-arrow-right" aria-hidden="true"></i>     </span>          <a href="/training-material/topics/admin/tutorials/monitoring/tutorial.html">     <li class="">         <span>Step 11</span>         <span>monitoring</span>     </li>          </a>          <span aria-hidden="true">         <i class="fas fa-arrow-right" aria-hidden="true"></i>     </span>          <a href="/training-material/topics/admin/tutorials/tiaas/tutorial.html">     <li class="">         <span>Step 12</span>         <span>tiaas</span>     </li>          </a>          <span aria-hidden="true">         <i class="fas fa-arrow-right" aria-hidden="true"></i>     </span>          <a href="/training-material/topics/admin/tutorials/reports/tutorial.html">     <li class="">         <span>Step 13</span>         <span>reports</span>     </li>          </a>          <span aria-hidden="true">         <i class="fas fa-arrow-right" aria-hidden="true"></i>     </span>          <a href="/training-material/topics/admin/tutorials/ftp/tutorial.html">     <li class="">         <span>Step 14</span>         <span>ftp</span>     </li>          </a>      </ol>   <style type="text/css"> #git-gat-timeline {     display: flex;     flex-direction: row;     flex-wrap: wrap; } #git-gat-timeline li  {     display: flex;     flex-direction: column;     border: 1px solid black;     border-radius: 5px;     padding: 0.5em;     margin: 0.5em; } #git-gat-timeline li.active {     background: #86d486;     color: black; } #git-gat-timeline li.disabled {     background: #eee; } #git-gat-timeline span {     align-self: center; } </style> </blockquote>
 
 <blockquote class="spoken" data-visual="gtn" data-target="#agenda">
   <p>The agenda we’re going to follow today is: We’re going to install and
@@ -1045,7 +1034,7 @@ data.<span class="notranslate">galaxy</span>project.org</p>
 <p>If the terms “Ansible”, “role” and “playbook” mean nothing to you, please checkout <a href="/training-material/topics/admin/tutorials/ansible/slides.html">the Ansible introduction slides</a> and <a href="/training-material/topics/admin/tutorials/ansible/tutorial.html">the Ansible introduction tutorial</a></p>
 
 <!--SNIPPET-->
-<blockquote class="tip">  <div id="tip-running-ansible-on-your-remote-machine" class="box-title"><button type="button" aria-controls="tip-running-ansible-on-your-remote-machine-contents" aria-expanded="true" aria-label="Toggle tip box: Running Ansible on your remote machine"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: Running Ansible on your remote machine<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>  <p>It is possible to have ansible installed on the remote machine and run it there, not just from your local machine connecting to the remote machine.</p>  <p>Your hosts file will need to use <code class="language-plaintext highlighter-rouge">localhost</code>,  and whenever you run playbooks with <code class="language-plaintext highlighter-rouge">ansible-playbook -i hosts playbook.yml</code>, you will need to add <code class="language-plaintext highlighter-rouge">-c local</code> to your command.</p>  <p>Be <strong>certain</strong> that the playbook that you’re writing on the remote machine is stored somewhere safe, like your user home directory, or backed up on your local machine. The cloud can be unreliable and things can disappear at any time.</p></blockquote>
+<blockquote class="tip">   <div class="box-title tip-title" id="tip-running-ansible-on-your-remote-machine"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-running-ansible-on-your-remote-machine-contents" aria-expanded="true" aria-label="Toggle tip box: Running Ansible on your remote machine"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: Running Ansible on your remote machine<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>   <p>It is possible to have ansible installed on the remote machine and run it there, not just from your local machine connecting to the remote machine.</p>   <p>Your hosts file will need to use <code class="language-plaintext highlighter-rouge">localhost</code>,  and whenever you run playbooks with <code class="language-plaintext highlighter-rouge">ansible-playbook -i hosts playbook.yml</code>, you will need to add <code class="language-plaintext highlighter-rouge">-c local</code> to your command.</p>   <p>Be <strong>certain</strong> that the playbook that you’re writing on the remote machine is stored somewhere safe, like your user home directory, or backed up on your local machine. The cloud can be unreliable and things can disappear at any time.</p> </blockquote>
 
 <blockquote class="spoken" data-visual="gtn" data-target="#installing-and-configuring">
   <p>Okay, so now we’re going to move on to installing and configuring <span class="notranslate">Galaxy</span>’s
@@ -1080,7 +1069,7 @@ requirements.yml and then add it to our Ansible.</p>
 </blockquote>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-installing-cvmfs-with-ansible" class="box-title" aria-label="hands-on box: Installing CVMFS with Ansible"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Installing CVMFS with Ansible</div>
+  <div class="box-title hands-on-title" id="hands-on-installing-cvmfs-with-ansible" aria-label="hands-on box: Installing CVMFS with Ansible"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Installing CVMFS with Ansible</div>
 
   <ol>
     <li>
@@ -1107,7 +1096,7 @@ terminal.</p>
 </code></pre></div>      </div>
 
       <!--SNIPPET-->
-      <blockquote class="tip">  <div id="tip-how-to-read-a-diff" class="box-title"><button type="button" aria-controls="tip-how-to-read-a-diff-contents" aria-expanded="true" aria-label="Toggle tip box: How to read a Diff"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: How to read a Diff<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>  <p>If you haven’t worked with diffs before, this can be something quite new or different.</p>  <p>If we have two files, let’s say a grocery list, in two files. We’ll call them ‘a’ and ‘b’.</p>  <blockquote class="code-2col">  <blockquote class="code-in">    <code-in-title>Old</code-in-title>    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ cat old<br />🍎<br />🍐<br />🍊<br />🍋<br />🍒<br />🥑<br /></code></pre></div>    </div>  </blockquote>  <blockquote class="code-out">    <code-out-title>New</code-out-title>    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ cat new<br />🍎<br />🍐<br />🍊<br />🍋<br />🍍<br />🥑<br /></code></pre></div>    </div>  </blockquote></blockquote>  <p>We can see that they have some different entries. We’ve removed 🍒 because they’re awful, and replaced them with an 🍍</p>  <p>Diff lets us compare these files</p>  <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>diff old new<br />5c5<br />&lt; 🍒<br /><span class="nt">---</span><br /><span class="o">&gt;</span> 🍍<br /></code></pre></div></div>  <p>Here we see that 🍒 is only in a, and 🍍 is only in b. But otherwise the files are identical.</p>  <p>There are a couple different formats to diffs, one is the ‘unified diff’</p>  <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>diff <span class="nt">-U2</span> old new<br /><span class="nt">---</span> old	2022-02-16 14:06:19.697132568 +0100<br />+++ new	2022-02-16 14:06:36.340962616 +0100<br />@@ <span class="nt">-3</span>,4 +3,4 @@<br /> 🍊<br /> 🍋<br />-🍒<br />+🍍<br /> 🥑<br /></code></pre></div></div>  <p>This is basically what you see in the training materials which gives you a lot of context about the changes:</p>  <ul>  <li><code class="language-plaintext highlighter-rouge">--- old</code> is the ‘old’ file in our view</li>  <li><code class="language-plaintext highlighter-rouge">+++ new</code> is the ‘new’ file</li>  <li>@@ these lines tell us where the change occurs and how many lines are added or removed.</li>  <li>Lines starting with a - are removed from our ‘new’ file</li>  <li>Lines with a + have been added.</li></ul>  <p>So when you go to apply these diffs to your files in the training:</p>  <ol>  <li>Ignore the header</li>  <li>Remove lines starting with - from your file</li>  <li>Add lines starting with + to your file</li></ol>  <p>The other lines (🍊/🍋 and 🥑) above just provide “context”, they help you know where a change belongs in a file, but <strong>should not be edited</strong> when you’re making the above change. Given the above diff, you would find a line with a 🍒, and replace it with a 🍍</p>  <h4 id="added--removed-lines">Added &amp; Removed Lines</h4>  <p>Removals are very easy to spot, we just have removed lines</p>  <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">---</span> old	2022-02-16 14:06:19.697132568 +0100<br />+++ new	2022-02-16 14:10:14.370722802 +0100<br />@@ <span class="nt">-4</span>,3 +4,2 @@<br /> 🍋<br /> 🍒<br />-🥑<br /></code></pre></div></div>  <p>And additions likewise are very easy, just add a new line, between the other lines in your file.</p>  <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">---</span> old	2022-02-16 14:06:19.697132568 +0100<br />+++ new	2022-02-16 14:11:11.422135393 +0100<br />@@ <span class="nt">-1</span>,3 +1,4 @@<br /> 🍎<br />+🍍<br /> 🍐<br /> 🍊<br /></code></pre></div></div>  <h4 id="completely-new-files">Completely new files</h4>  <p>Completely new files look a bit different, there the “old” file is <code class="language-plaintext highlighter-rouge">/dev/null</code>, the empty file in a Linux machine.</p>  <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>diff <span class="nt">-U2</span> /dev/null old<br /><span class="nt">---</span> /dev/null	2022-02-15 11:47:16.100000270 +0100<br />+++ old	2022-02-16 14:06:19.697132568 +0100<br />@@ <span class="nt">-0</span>,0 +1,6 @@<br />+🍎<br />+🍐<br />+🍊<br />+🍋<br />+🍒<br />+🥑<br /></code></pre></div></div>  <p>And removed files are similar, except with the new file being /dev/null</p>  <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">---</span> old	2022-02-16 14:06:19.697132568 +0100<br />+++ /dev/null	2022-02-15 11:47:16.100000270 +0100<br />@@ <span class="nt">-1</span>,6 +0,0 @@<br />-🍎<br />-🍐<br />-🍊<br />-🍋<br />-🍒<br />-🥑<br /></code></pre></div></div></blockquote>
+      <blockquote class="tip">   <div class="box-title tip-title" id="tip-how-to-read-a-diff"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-how-to-read-a-diff-contents" aria-expanded="true" aria-label="Toggle tip box: How to read a Diff"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: How to read a Diff<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>   <p>If you haven’t worked with diffs before, this can be something quite new or different.</p>   <p>If we have two files, let’s say a grocery list, in two files. We’ll call them ‘a’ and ‘b’.</p>   <blockquote class="code-2col">   <blockquote class="code-in">     <div class="box-title code-in-title" id="code-in-old" aria-label="code-in box: Old"><i class="far fa-keyboard" aria-hidden="true"></i><span class="visually-hidden"></span> Input: Old</div>     <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ cat old<br />🍎<br />🍐<br />🍊<br />🍋<br />🍒<br />🥑<br /></code></pre></div>    </div>   </blockquote>   <blockquote class="code-out">     <div class="box-title code-out-title" id="code-out-new" aria-label="code-out box: New"><i class="fas fa-laptop-code" aria-hidden="true"></i><span class="visually-hidden"></span> Output: New</div>     <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ cat new<br />🍎<br />🍐<br />🍊<br />🍋<br />🍍<br />🥑<br /></code></pre></div>    </div>   </blockquote> </blockquote>   <p>We can see that they have some different entries. We’ve removed 🍒 because they’re awful, and replaced them with an 🍍</p>   <p>Diff lets us compare these files</p>   <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>diff old new<br />5c5<br />&lt; 🍒<br /><span class="nt">---</span><br /><span class="o">&gt;</span> 🍍<br /></code></pre></div></div>   <p>Here we see that 🍒 is only in a, and 🍍 is only in b. But otherwise the files are identical.</p>   <p>There are a couple different formats to diffs, one is the ‘unified diff’</p>   <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>diff <span class="nt">-U2</span> old new<br /><span class="nt">---</span> old	2022-02-16 14:06:19.697132568 +0100<br />+++ new	2022-02-16 14:06:36.340962616 +0100<br />@@ <span class="nt">-3</span>,4 +3,4 @@<br /> 🍊<br /> 🍋<br />-🍒<br />+🍍<br /> 🥑<br /></code></pre></div></div>   <p>This is basically what you see in the training materials which gives you a lot of context about the changes:</p>   <ul>   <li><code class="language-plaintext highlighter-rouge">--- old</code> is the ‘old’ file in our view</li>   <li><code class="language-plaintext highlighter-rouge">+++ new</code> is the ‘new’ file</li>   <li>@@ these lines tell us where the change occurs and how many lines are added or removed.</li>   <li>Lines starting with a - are removed from our ‘new’ file</li>   <li>Lines with a + have been added.</li> </ul>   <p>So when you go to apply these diffs to your files in the training:</p>   <ol>   <li>Ignore the header</li>   <li>Remove lines starting with - from your file</li>   <li>Add lines starting with + to your file</li> </ol>   <p>The other lines (🍊/🍋 and 🥑) above just provide “context”, they help you know where a change belongs in a file, but <strong>should not be edited</strong> when you’re making the above change. Given the above diff, you would find a line with a 🍒, and replace it with a 🍍</p>   <h4 id="added--removed-lines">Added &amp; Removed Lines</h4>   <p>Removals are very easy to spot, we just have removed lines</p>   <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">---</span> old	2022-02-16 14:06:19.697132568 +0100<br />+++ new	2022-02-16 14:10:14.370722802 +0100<br />@@ <span class="nt">-4</span>,3 +4,2 @@<br /> 🍋<br /> 🍒<br />-🥑<br /></code></pre></div></div>   <p>And additions likewise are very easy, just add a new line, between the other lines in your file.</p>   <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">---</span> old	2022-02-16 14:06:19.697132568 +0100<br />+++ new	2022-02-16 14:11:11.422135393 +0100<br />@@ <span class="nt">-1</span>,3 +1,4 @@<br /> 🍎<br />+🍍<br /> 🍐<br /> 🍊<br /></code></pre></div></div>   <h4 id="completely-new-files">Completely new files</h4>   <p>Completely new files look a bit different, there the “old” file is <code class="language-plaintext highlighter-rouge">/dev/null</code>, the empty file in a Linux machine.</p>   <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>diff <span class="nt">-U2</span> /dev/null old<br /><span class="nt">---</span> /dev/null	2022-02-15 11:47:16.100000270 +0100<br />+++ old	2022-02-16 14:06:19.697132568 +0100<br />@@ <span class="nt">-0</span>,0 +1,6 @@<br />+🍎<br />+🍐<br />+🍊<br />+🍋<br />+🍒<br />+🥑<br /></code></pre></div></div>   <p>And removed files are similar, except with the new file being /dev/null</p>   <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">---</span> old	2022-02-16 14:06:19.697132568 +0100<br />+++ /dev/null	2022-02-15 11:47:16.100000270 +0100<br />@@ <span class="nt">-1</span>,6 +0,0 @@<br />-🍎<br />-🍐<br />-🍊<br />-🍋<br />-🍒<br />-🥑<br /></code></pre></div></div> </blockquote>
 
       <blockquote class="spoken" data-visual="terminal" data-ref="add-req">
         <p>Okay, so the first thing I’m going to do is I’m going to add the CVMFS
@@ -1119,7 +1108,7 @@ Edit requirements.yml and we need to add this to the bottom of that file. Copy. 
       <p>Install the role with:</p>
 
       <blockquote class="code-in">
-        <div id="code-in-bash" class="box-title" aria-label="code-in box: Bash"><i class="far fa-keyboard" aria-hidden="true"></i><span class="visually-hidden"></span> Input: Bash</div>
+        <div class="box-title code-in-title" id="code-in-bash" aria-label="code-in box: Bash"><i class="far fa-keyboard" aria-hidden="true"></i><span class="visually-hidden"></span> Input: Bash</div>
         <div data-cmd="true" data-ref="req-install" class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ansible-<span class="notranslate">galaxy</span> <span class="nb">install</span> <span class="nt">-p</span> roles <span class="nt">-r</span> requirements.yml
 </code></pre></div>        </div>
       </blockquote>
@@ -1194,7 +1183,7 @@ local machine and the quota limit is the maximum size of that cache.</p>
       <p>But, luckily for us, the <span class="notranslate">Galaxy</span> Project CVMFS role has a lot of defaults for these variables which we can use by just setting <code class="language-plaintext highlighter-rouge"><span class="notranslate">galaxy</span>_cvmfs_repos_enabled</code> to <code class="language-plaintext highlighter-rouge">config-repo</code>. We will also set the <code class="language-plaintext highlighter-rouge">cvmfs_quota_limit</code> to something sensible (500MB) as we have relatively small disks on our instances. In a production setup, you should size this appropriately for the client.</p>
 
       <blockquote class="tip">
-        <div id="tip-what-is-a-good-size-for-this" class="box-title"><button type="button" aria-controls="tip-what-is-a-good-size-for-this-contents" aria-expanded="true" aria-label="Toggle tip box: What is a good size for this?"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: What is a good size for this?<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
+        <div class="box-title tip-title" id="tip-what-is-a-good-size-for-this"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-what-is-a-good-size-for-this-contents" aria-expanded="true" aria-label="Toggle tip box: What is a good size for this?"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: What is a good size for this?<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
         <p>In production Use<span class="notranslate">Galaxy</span>.org.au uses 100GB, different sites have different needs and you can make your cache smaller depending on your usage. E.g. if your users only use one dataset from the reference data (e.g. just hg38) then perhaps you don’t need such a large cache.</p>
       </blockquote>
 
@@ -1244,7 +1233,7 @@ disk of these machines. So I’ll save that.</p>
       </blockquote>
 
       <blockquote class="tip">
-        <div id="tip-why-all-yml" class="box-title"><button type="button" aria-controls="tip-why-all-yml-contents" aria-expanded="true" aria-label="Toggle tip box: Why all.yml?"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: Why all.yml?<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
+        <div class="box-title tip-title" id="tip-why-all-yml"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-why-all-yml-contents" aria-expanded="true" aria-label="Toggle tip box: Why all.yml?"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: Why all.yml?<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
         <p>We’ve integrated the cvmfs and pulsar tutorials better, such that CVMFS will be used for Pulsar as well, this configuration will be needed on all of our machines. This mirrors real life where you want CVMFS on every node that does computation.</p>
       </blockquote>
     </li>
@@ -1272,7 +1261,7 @@ And that’s pretty much it.</p>
       <p>Run the playbook</p>
 
       <blockquote class="code-in">
-        <div id="code-in-bash-1" class="box-title" aria-label="code-in box: Bash"><i class="far fa-keyboard" aria-hidden="true"></i><span class="visually-hidden"></span> Input: Bash</div>
+        <div class="box-title code-in-title" id="code-in-bash-1" aria-label="code-in box: Bash"><i class="far fa-keyboard" aria-hidden="true"></i><span class="visually-hidden"></span> Input: Bash</div>
         <div data-cmd="true" data-ref="run-pb1" class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ansible-playbook <span class="notranslate">galaxy</span>.yml
 </code></pre></div>        </div>
       </blockquote>
@@ -1345,7 +1334,7 @@ tell <span class="notranslate">Galaxy</span> to look at all of this data and use
 </blockquote>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-exploring-cvmfs" class="box-title" aria-label="hands-on box: Exploring CVMFS"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Exploring CVMFS</div>
+  <div class="box-title hands-on-title" id="hands-on-exploring-cvmfs" aria-label="hands-on box: Exploring CVMFS"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Exploring CVMFS</div>
 
   <ol>
     <li>
@@ -1355,12 +1344,12 @@ tell <span class="notranslate">Galaxy</span> to look at all of this data and use
       <p>Change directory into <code class="language-plaintext highlighter-rouge">/cvmfs/</code> and list the files in that folder</p>
 
       <blockquote class="question">
-        <div id="question" class="box-title" aria-label="question box: "><i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden"></span> Question</div>
+        <div class="box-title question-title" id="question" aria-label="question box: "><i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden"></span> Question</div>
 
         <p>What do you see?</p>
 
         <blockquote class="solution">
-          <div id="solution" class="box-title"><button type="button" aria-controls="solution-contents" aria-expanded="true" aria-label="Toggle solution box: "><i class="far fa-eye" aria-hidden="true"></i><span class="visually-hidden"></span> Solution<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
+          <div class="box-title solution-title" id="solution"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-contents" aria-expanded="true" aria-label="Toggle solution box: "><i class="far fa-eye" aria-hidden="true"></i><span class="visually-hidden"></span> Solution<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
           <p>You should see nothing, as CVMFS uses <code class="language-plaintext highlighter-rouge">autofs</code> in order to mount paths only upon request.</p>
 
         </blockquote>
@@ -1371,7 +1360,7 @@ tell <span class="notranslate">Galaxy</span> to look at all of this data and use
       <p>Change directory into <code class="language-plaintext highlighter-rouge">/cvmfs/data.<span class="notranslate">galaxy</span>project.org/</code>.</p>
 
       <blockquote class="code-in">
-        <div id="code-in-bash-2" class="box-title" aria-label="code-in box: Bash"><i class="far fa-keyboard" aria-hidden="true"></i><span class="visually-hidden"></span> Input: Bash</div>
+        <div class="box-title code-in-title" id="code-in-bash-2" aria-label="code-in box: Bash"><i class="far fa-keyboard" aria-hidden="true"></i><span class="visually-hidden"></span> Input: Bash</div>
         <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>cd /cvmfs/data.<span class="notranslate">galaxy</span>project.org/
 ls
 ls byhand
@@ -1380,12 +1369,12 @@ ls managed
       </blockquote>
 
       <blockquote class="question">
-        <div id="question-1" class="box-title" aria-label="question box: "><i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden"></span> Question</div>
+        <div class="box-title question-title" id="question-1" aria-label="question box: "><i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden"></span> Question</div>
 
         <p>What do you see now?</p>
 
         <blockquote class="solution">
-          <div id="solution-1" class="box-title"><button type="button" aria-controls="solution-1-contents" aria-expanded="true" aria-label="Toggle solution box: "><i class="far fa-eye" aria-hidden="true"></i><span class="visually-hidden"></span> Solution<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
+          <div class="box-title solution-title" id="solution-1"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-1-contents" aria-expanded="true" aria-label="Toggle solution box: "><i class="far fa-eye" aria-hidden="true"></i><span class="visually-hidden"></span> Solution<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
           <p>You’ll see <code class="language-plaintext highlighter-rouge">.loc</code> files, genomes and indices.
 AutoFS only mounts the files when they’re accessed, so it appears like there is no folder there.</p>
         </blockquote>
@@ -1482,7 +1471,7 @@ able to use all of the data contained within this repository.</p>
 </blockquote>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-configuring-galaxy-to-use-cvmfs" class="box-title" aria-label="hands-on box: Configuring Galaxy to use CVMFS"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Configuring <span class="notranslate">Galaxy</span> to use CVMFS</div>
+  <div class="box-title hands-on-title" id="hands-on-configuring-galaxy-to-use-cvmfs" aria-label="hands-on box: Configuring Galaxy to use CVMFS"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Configuring <span class="notranslate">Galaxy</span> to use CVMFS</div>
 
   <ol>
     <li>
@@ -1518,7 +1507,7 @@ one. Right, so we save this file.</p>
       <p>Re-run the playbook</p>
 
       <blockquote class="code-in">
-        <div id="code-in-bash-3" class="box-title" aria-label="code-in box: Bash"><i class="far fa-keyboard" aria-hidden="true"></i><span class="visually-hidden"></span> Input: Bash</div>
+        <div class="box-title code-in-title" id="code-in-bash-3" aria-label="code-in box: Bash"><i class="far fa-keyboard" aria-hidden="true"></i><span class="visually-hidden"></span> Input: Bash</div>
         <div data-cmd="true" data-ref="pb-run2" class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ansible-playbook <span class="notranslate">galaxy</span>.yml
 </code></pre></div>        </div>
       </blockquote>
@@ -1535,7 +1524,7 @@ configuration file. And then <span class="notranslate">Galaxy</span> is now rest
       <p>Install the BWA-MEM tool, if needed.</p>
 
       <!--SNIPPET-->
-      <blockquote class="tip">  <div id="tip-install-tools-via-the-admin-ui" class="box-title"><button type="button" aria-controls="tip-install-tools-via-the-admin-ui-contents" aria-expanded="true" aria-label="Toggle tip box: Install tools via the Admin UI"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: Install tools via the Admin UI<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>  <ol>  <li>Open <span class="notranslate">Galaxy</span> in your browser and type <code class="language-plaintext highlighter-rouge">bwa</code> in the tool search box on the left. If “Map with BWA-MEM” is among the search results, you can skip the following steps.</li>  <li>Access the Admin menu from the top bar (you need to be logged-in with an email specified in the <code class="language-plaintext highlighter-rouge">admin_users</code> setting)</li>  <li>Click “Install and Uninstall”, which can be found on the left, under “Tool Management”</li>  <li>Enter <code class="language-plaintext highlighter-rouge">bwa</code> in the search interface</li>  <li>Click on the first hit, having <code class="language-plaintext highlighter-rouge">devteam</code> as owner</li>  <li>Click the “Install” button for the latest revision</li>  <li>Enter “<span class="notranslate">Mapping</span>” as the target section and click “OK”.</li></ol></blockquote>
+      <blockquote class="tip">   <div class="box-title tip-title" id="tip-install-tools-via-the-admin-ui"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-install-tools-via-the-admin-ui-contents" aria-expanded="true" aria-label="Toggle tip box: Install tools via the Admin UI"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: Install tools via the Admin UI<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>   <ol>   <li>Open <span class="notranslate">Galaxy</span> in your browser and type <code class="language-plaintext highlighter-rouge">bwa</code> in the tool search box on the left. If “Map with BWA-MEM” is among the search results, you can skip the following steps.</li>   <li>Access the Admin menu from the top bar (you need to be logged-in with an email specified in the <code class="language-plaintext highlighter-rouge">admin_users</code> setting)</li>   <li>Click “Install and Uninstall”, which can be found on the left, under “Tool Management”</li>   <li>Enter <code class="language-plaintext highlighter-rouge">bwa</code> in the search interface</li>   <li>Click on the first hit, having <code class="language-plaintext highlighter-rouge">devteam</code> as owner</li>   <li>Click the “Install” button for the latest revision</li>   <li>Enter “<span class="notranslate">Mapping</span>” as the target section and click “OK”.</li> </ol> </blockquote>
     </li>
     <li>
       <p>In your <span class="notranslate">Galaxy</span> server, open the <strong>Map with BWA-MEM</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> tool. Now check that there are a lot more reference genomes available for use!</p>
@@ -1596,17 +1585,17 @@ having no options available, you can see here we’ve got the Bee genome.</p>
 </blockquote>
 
 <!--SNIPPET-->
-<blockquote class="comment">  <div id="comment-got-lost-along-the-way" class="box-title" aria-label="comment box: Got lost along the way?"><i class="far fa-comment-dots" aria-hidden="true"></i><span class="visually-hidden"></span> Comment: Got lost along the way?</div>  <p>If you missed any steps, you can compare against the <a href="https://github.com/hexylena/git-gat/tree/step-5">reference files</a>, or see what changed since <a href="https://github.com/hexylena/git-gat/compare/step-4...step-5#files_bucket">the previous tutorial</a>.</p>  <p>If you’re using <code class="language-plaintext highlighter-rouge">git</code> to track your progress, remember to add your changes and commit with a good commit message!</p></blockquote>
+<blockquote class="comment">   <div class="box-title comment-title" id="comment-got-lost-along-the-way" aria-label="comment box: Got lost along the way?"><i class="far fa-comment-dots" aria-hidden="true"></i><span class="visually-hidden"></span> Comment: Got lost along the way?</div>   <p>If you missed any steps, you can compare against the <a href="https://github.com/hexylena/git-gat/tree/step-5">reference files</a>, or see what changed since <a href="https://github.com/hexylena/git-gat/compare/step-4...step-5#files_bucket">the previous tutorial</a>.</p>   <p>If you’re using <code class="language-plaintext highlighter-rouge">git</code> to track your progress, remember to add your changes and commit with a good commit message!</p> </blockquote>
 
 <h1 id="common-production-questions">Common Production Questions</h1>
 
 <blockquote class="question">
-  <div id="question-for-the-most-used-datasets-for-ex-hg38-could-we-have-a-local-copy-or-would-that-be-irrelevant" class="box-title" aria-label="question box: For the most used datasets (for ex. hg38) could we have a local copy, or would that be irrelevant?"><i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden"></span> Question: For the most used datasets (for ex. hg38) could we have a local copy, or would that be irrelevant?</div>
+  <div class="box-title question-title" id="question-for-the-most-used-datasets-for-ex-hg38-could-we-have-a-local-copy-or-would-that-be-irrelevant" aria-label="question box: For the most used datasets (for ex. hg38) could we have a local copy, or would that be irrelevant?"><i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden"></span> Question: For the most used datasets (for ex. hg38) could we have a local copy, or would that be irrelevant?</div>
   <p>This would be irrelevant, the most used datasets will stay in the cache. CVMFS uses a Least Recently Used (LRU) cache (see their <a href="https://cvmfs.readthedocs.io/en/latest/cpt-details.html#disk-cache">docs</a>), so whenever it runs out of space, it will remove the least recently used file. If you have a file that is very commonly used, it will remain in the cache.</p>
 </blockquote>
 
 <blockquote class="question">
-  <div id="question-could-you-explain-how-to-calculate-a-good-cache-space" class="box-title" aria-label="question box: Could you explain how to calculate a good cache space?"><i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden"></span> Question: Could you explain how to calculate a good cache space?</div>
+  <div class="box-title question-title" id="question-could-you-explain-how-to-calculate-a-good-cache-space" aria-label="question box: Could you explain how to calculate a good cache space?"><i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden"></span> Question: Could you explain how to calculate a good cache space?</div>
   <p>Here are two approaches, there are others:</p>
   <ol>
     <li>Allocate some cache, see how it is, make it larger if it is fully used + users complain of speed.</li>
@@ -1617,25 +1606,25 @@ having no options available, you can see here we’ve got the Bee genome.</p>
 </blockquote>
 
 <blockquote class="question">
-  <div id="question-if-i-use-a-cluster-will-i-need-to-configure-this-fs-in-each-node-given-that-the-folder-is-at-directly" class="box-title" aria-label="question box: If I use a cluster, will I need to configure this FS in each node (given that the folder is at / directly)?"><i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden"></span> Question: If I use a cluster, will I need to configure this FS in each node (given that the folder is at / directly)?</div>
+  <div class="box-title question-title" id="question-if-i-use-a-cluster-will-i-need-to-configure-this-fs-in-each-node-given-that-the-folder-is-at-directly" aria-label="question box: If I use a cluster, will I need to configure this FS in each node (given that the folder is at / directly)?"><i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden"></span> Question: If I use a cluster, will I need to configure this FS in each node (given that the folder is at / directly)?</div>
   <p>Yes. Often admins with a cluster keep a smaller cache local to each compute node, and then setup a Squid proxy to hold the most commonly accessed data on a machine with more storage. E.g. each compute node could have 10-50GB of CVMFS storage while you might setup a Squid proxy with 200-300 GB of storage that will store everything your site uses.</p>
 </blockquote>
 
 <blockquote class="tip">
-  <div id="tip-debugging-failed-mounting" class="box-title"><button type="button" aria-controls="tip-debugging-failed-mounting-contents" aria-expanded="true" aria-label="Toggle tip box: Debugging failed mounting"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: Debugging failed mounting<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
+  <div class="box-title tip-title" id="tip-debugging-failed-mounting"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-debugging-failed-mounting-contents" aria-expanded="true" aria-label="Toggle tip box: Debugging failed mounting"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: Debugging failed mounting<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
 
   <p>Are you having issues mounting your CVMFS mount? Is it giving strange errors like “Endpoint not connected”
 Try running this command as root:</p>
 
   <blockquote class="code-2col">
     <blockquote class="code-in">
-      <div id="code-in-bash-4" class="box-title" aria-label="code-in box: Bash"><i class="far fa-keyboard" aria-hidden="true"></i><span class="visually-hidden"></span> Input: Bash</div>
+      <div class="box-title code-in-title" id="code-in-bash-4" aria-label="code-in box: Bash"><i class="far fa-keyboard" aria-hidden="true"></i><span class="visually-hidden"></span> Input: Bash</div>
       <div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="go">/usr/bin/cvmfs2 -d -o rw,system_mount,fsname=cvmfs2,allow_other,grab_mountpoint singularity.<span class="notranslate">galaxy</span>project.org /mnt
 </span></code></pre></div>      </div>
     </blockquote>
 
     <blockquote class="code-out">
-      <div id="code-out-consolue" class="box-title" aria-label="code-out box: Consolue"><i class="fas fa-laptop-code" aria-hidden="true"></i><span class="visually-hidden"></span> Output: Consolue</div>
+      <div class="box-title code-out-title" id="code-out-consolue" aria-label="code-out box: Consolue"><i class="fas fa-laptop-code" aria-hidden="true"></i><span class="visually-hidden"></span> Output: Consolue</div>
       <div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="go">Debug: using library /usr/lib/libcvmfs_fuse3_stub.so
 CernVM-FS: running in debug mode
 CernVM-FS: loading Fuse module... (cvmfs) Parsing config file /etc/cvmfs/default.conf    [07-21-2022 11:11:20 UTC]
@@ -1740,6 +1729,9 @@ day soon at a <span class="notranslate">Galaxy</span> conference. Thank you and 
 
 
                 
+                <h1 id="bibliography">References</h1>
+                <ol class="bibliography"><li id="Blomer_2011">Blomer, J., P. Buncic, and T. Fuhrmann, 2011 <b>CernVM-FS</b>, <span style="font-style: normal">in</span> <i>Proceedings of the first international workshop on Network-aware data management</i>, <i>ACM</i>. <a href="https://doi.org/10.1145/2110217.2110225">10.1145/2110217.2110225</a></li></ol>
+                
 
                 
 
@@ -1811,19 +1803,21 @@ day = ""
 url = "\url{https://training.galaxyproject.org/training-material/topics/admin/tutorials/cvmfs/tutorial.html}",
 note = "[Online; accessed TODAY]"
 }
-@article{Batut_2018,
-    doi = {10.1016/j.cels.2018.05.012},
-    url = {https://doi.org/10.1016%2Fj.cels.2018.05.012},
-    year = 2018,
-    month = {jun},
-    publisher = {Elsevier {BV}},
-    volume = {6},
-    number = {6},
-    pages = {752--758.e1},
-    author = {B{\'{e}}r{\'{e}}nice Batut and Saskia Hiltemann and Andrea Bagnacani and Dannon Baker and Vivek Bhardwaj and Clemens Blank and Anthony Bretaudeau and Loraine Brillet-Gu{\'{e}}guen and Martin {\v{C}}ech and John Chilton and Dave Clements and Olivia Doppelt-Azeroual and Anika Erxleben and Mallory Ann Freeberg and Simon Gladman and Youri Hoogstrate and Hans-Rudolf Hotz and Torsten Houwaart and Pratik Jagtap and Delphine Larivi{\`{e}}re and Gildas Le Corguill{\'{e}} and Thomas Manke and Fabien Mareuil and Fidel Ram{\'{\i}}rez and Devon Ryan and Florian Christoph Sigloch and Nicola Soranzo and Joachim Wolff and Pavankumar Videm and Markus Wolfien and Aisanjiang Wubuli and Dilmurat Yusuf and James Taylor and Rolf Backofen and Anton Nekrutenko and Björn Grüning},
-    title = {Community-Driven Data Analysis Training for Biology},
-    journal = {Cell Systems}
-}</code>
+@article{Hiltemann_2023,
+	doi = {10.1371/journal.pcbi.1010752},
+	url = {https://doi.org/10.1371%2Fjournal.pcbi.1010752},
+	year = 2023,
+	month = {jan},
+	publisher = {Public Library of Science ({PLoS})},
+	volume = {19},
+	number = {1},
+	pages = {e1010752},
+	author = {Saskia Hiltemann and Helena Rasche and Simon Gladman and Hans-Rudolf Hotz and Delphine Larivi{\`{e}}re and Daniel Blankenberg and Pratik D. Jagtap and Thomas Wollmann and Anthony Bretaudeau and Nadia Gou{\'{e}} and Timothy J. Griffin and Coline Royaux and Yvan Le Bras and Subina Mehta and Anna Syme and Frederik Coppens and Bert Droesbeke and Nicola Soranzo and Wendi Bacon and Fotis Psomopoulos and Crist{\'{o}}bal Gallardo-Alba and John Davis and Melanie Christine Föll and Matthias Fahrner and Maria A. Doyle and Beatriz Serrano-Solano and Anne Claire Fouilloux and Peter van Heusden and Wolfgang Maier and Dave Clements and Florian Heyl and Björn Grüning and B{\'{e}}r{\'{e}}nice Batut and},
+	editor = {Francis Ouellette},
+	title = {Galaxy Training: A powerful framework for teaching!},
+	journal = {PLoS Comput Biol} Computational Biology}
+}
+</code>
                    </pre></div></div>
                    </p>
                 </blockquote>
@@ -1861,8 +1855,6 @@ document.getElementById("citation-text").innerHTML = document.getElementById("ci
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
         <script type="text/javascript" src="/training-material/assets/js/bootstrap-toc.min.js"></script>
         <script type="text/javascript" src="/training-material/assets/js/main.js"></script>
-        <script type="text/javascript" src="/training-material/assets/js/theme.js"></script>
-
         <script type="text/javascript" src="/training-material/assets/js/clipboard.min.js"></script>
         <script type="text/javascript">
         var snippets=document.querySelectorAll('div.highlight');

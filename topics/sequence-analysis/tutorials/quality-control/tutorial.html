@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="utf-8">
@@ -14,7 +14,6 @@
         <link rel="stylesheet" href="/training-material/assets/css/main.css?v=2">
         <script src="https://kit.fontawesome.com/67b3f98409.js" crossorigin="anonymous"></script>
         <link rel="stylesheet" href="/training-material/assets/css/academicons.css">
-        <link rel="stylesheet" href="/training-material/assets/css/syntax_highlighting.css">
         <link rel="shortcut icon" href="/training-material/favicon.ico" type="image/x-icon" />
         <link rel="alternate" type="application/atom+xml" href="/training-material/feed.xml" />
         <link rel="canonical" href="https://training.galaxyproject.org/training-material/topics/sequence-analysis/tutorials/quality-control/tutorial.html" />
@@ -24,7 +23,7 @@
 <meta name="DC.type" content="text" />
 <meta name="DC.title" content="Quality Control" />
 <meta name="DC.publisher" content="Galaxy Training Network" />
-<meta name="DC.date" content="2022-10-18 14:23:35 +0000" />
+<meta name="DC.date" content="2022-11-28 09:55:50 +0000" />
 <meta name="DC.creator" content="Bérénice Batut" />
 <meta name="DC.creator" content="Maria Doyle" />
 <meta name="DC.creator" content="Alexandre Cormier" />
@@ -38,228 +37,15 @@
         
         
         
-        
         <meta name="description" content="Analyses of sequences" />
         <meta property="og:site_name" content="Galaxy Training Network" />
         <meta property="og:title" content="Galaxy Training: Quality Control" />
         <meta property="og:description" content="Analyses of sequences" />
         <meta property="og:image" content="/training-material/assets/images/GTNLogo1000.png" />
 
-    </head>
-    <body data-spy="scroll" data-target="#toc">
-        <header>
-    <nav class="navbar navbar-expand-md navbar-dark" aria-label="Site Navigation">
-        <div class="container">
-            <a class="navbar-brand" href="/training-material/">
-                <img src="/training-material/assets/images/GTN-60px.png" height="30" alt="Galaxy Training Network logo">
-                Galaxy Training!
-            </a>
-
-            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#top-navbar" aria-controls="top-navbar" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="top-navbar">
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        
-                        <a class="nav-link" href="/training-material/topics/sequence-analysis" title="Go back to list of tutorials">
-                            <i class="far fa-folder" aria-hidden="true"></i> Sequence analysis
-                        </a>
-                        
-                    </li>
-
-                    <li class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false" title="Languages">
-                            <i class="fas fa-language" aria-hidden="true"></i><span class="visually-hidden">language</span> Languages
-                        </a>
-                        <div class="dropdown-menu dropdown-menu-right">
-                            
-                              <strong class="dropdown-header">Automatic Translations</strong>
-            
-            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=fr&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/sequence-analysis/tutorials/quality-control/tutorial.html&edit-text=&act=url">
-                            Français
-                            </a>
-                            
-            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=ja&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/sequence-analysis/tutorials/quality-control/tutorial.html&edit-text=&act=url">
-                            日本語
-                            </a>
-                            
-            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=es&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/sequence-analysis/tutorials/quality-control/tutorial.html&edit-text=&act=url">
-                            Español
-                            </a>
-                            
-            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=pt&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/sequence-analysis/tutorials/quality-control/tutorial.html&edit-text=&act=url">
-                            Português
-                            </a>
-                            
-            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=ar&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/sequence-analysis/tutorials/quality-control/tutorial.html&edit-text=&act=url">
-                            العربية
-                            </a>
-                            
-                            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/sequence-analysis/tutorials/quality-control/tutorial.html&edit-text=&act=url" title="">
-                            And more!
-                            </a>
-                        </div>
-                    </li>
-
-                    <li class="nav-item dropdown">
-    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false" title="Help">
-        <i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden">help</span> Help
-    </a>
-    <div class="dropdown-menu dropdown-menu-right">
-        <!-- disable Tess for now
-        <form method="get" action="https://tess.elixir-europe.org/materials">
-            <input type="text" id="search" name="q" value="" style="margin-left: 0.5em;/*! border-radius: 0px; */">
-            <input type="hidden" value="Galaxy Training" name="content_provider">
-            <input type="submit" value="Search on TeSS" style="width: 92%;border-radius: 0px;margin: 0.5em;background: #f47d20;border: 0px;padding: 0.25em;" class="">
-        </form>
-        -->
-
-        <a class="dropdown-item" href="/training-material/faq" title="Check our FAQs">
-           <i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden">question</span> FAQs
-        </a>
         
-        <a class="dropdown-item" href="/training-material/topics/sequence-analysis/faqs/" title="Check our FAQs for the Sequence analysis topic">
-           <i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden">question</span> Topic FAQs
-        </a>
-        
-        <a class="dropdown-item" href="https://help.galaxyproject.org/" title="Discuss on Galaxy Help">
-            <i class="far fa-comments" aria-hidden="true"></i><span class="visually-hidden">feedback</span> Galaxy Help Forum
-        </a>
-        <a class="dropdown-item" href="https://gitter.im/Galaxy-Training-Network/Lobby" title="Discuss on gitter">
-           <i class="fab fa-gitter" aria-hidden="true"></i><span class="visually-hidden">gitter</span> Discuss on Gitter
-        </a>
-    </div>
-</li>
-
-
-                    <li class="nav-item dropdown">
-    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false" title="Extras">
-        <i class="far fa-star" aria-hidden="true"></i><span class="visually-hidden">galaxy-star</span> Extras
-    </a>
-    <div class="dropdown-menu dropdown-menu-right">
-
-        
-        <a class="dropdown-item" href="https://github.com/galaxyproject/training-material/edit/main/topics/sequence-analysis/tutorials/quality-control/tutorial.md" title="Edit on GitHub">
-          <i class="fab fa-github" aria-hidden="true"></i><span class="visually-hidden">github</span> Edit on GitHub
-        </a>
-
-        <a class="dropdown-item" href="/training-material/stats.html" title="Show view statistics about this repository">
-            <i class="fas fa-chart-bar" aria-hidden="true"></i><span class="visually-hidden">galaxy-barchart</span> GTN statistics
-        </a>
-
-        <a class="dropdown-item" href="https://plausible.galaxyproject.eu/training.galaxyproject.org?period=12mo&page=/training-material/topics/sequence-analysis/tutorials/quality-control/tutorial.html" title="Show view statistics of this page">
-            <i class="fas fa-chart-bar" aria-hidden="true"></i><span class="visually-hidden">galaxy-barchart</span> Page Metrics
-        </a>
-
-        <!-- link to feedback -->
-        
+        <script type="application/ld+json">
             
-            
-                <a class="dropdown-item" href="/training-material/feedback.html" title="Show feedback statistics about this repository">
-                    <i class="fas fa-chart-bar" aria-hidden="true"></i><span class="visually-hidden">galaxy-barchart</span> GTN feedback
-                </a>
-            
-        
-
-        <div class="dropdown-item">
-            <div>
-                <i class="fas fa-palette" aria-hidden="true"></i><span class="visually-hidden">gtn-theme</span> Theme
-            </div>
-
-            <div id="theme-selector" data-toggle="buttons">
-                <label data-value="default" class="btn btn-secondary">
-                    <input type="radio" name="options" id="default" autocomplete="off"> Default
-                </label>
-                <label data-value="night" class="btn btn-secondary">
-                    <input type="radio" name="options" id="night" autocomplete="off"> Night
-                </label>
-                <label data-value="midnight" class="btn btn-secondary">
-                    <input type="radio" name="options" id="midnight" autocomplete="off"> Midnight
-                </label>
-                <label data-value="rainbow" class="btn btn-secondary">
-                    <input type="radio" name="options" id="rainbow" autocomplete="off"> Rainbow
-                </label>
-                <label data-value="progress" class="btn btn-secondary">
-                    <input type="radio" name="options" id="progress" autocomplete="off">🏳️‍🌈
-                </label>
-                <label data-value="halloween" class="btn btn-secondary">
-                    <input type="radio" name="options" id="halloween" autocomplete="off"> 🎃
-                </label>
-                <label data-value="straya" class="btn btn-secondary">
-                    <input type="radio" name="options" id="downunder" autocomplete="off"> 🇦🇺
-                </label>
-            </div>
-
-        </div>
-
-        <div class="dropdown-item">
-            <div>
-                <i class="fas fa-history" aria-hidden="true"></i><span class="visually-hidden">galaxy-rulebuilder-history</span> Previous Versions
-            </div>
-
-            <div id="archive-selector">
-            
-                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2020-01-06/topics/sequence-analysis/tutorials/quality-control/tutorial.html" title="Version 2020-01-06">2020-01-06</a>
-            
-                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2019-12-01/topics/sequence-analysis/tutorials/quality-control/tutorial.html" title="Version 2019-12-01">2019-12-01</a>
-            
-                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2019-11-01/topics/sequence-analysis/tutorials/quality-control/tutorial.html" title="Version 2019-11-01">2019-11-01</a>
-            
-                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/" title="Older Versions">Older Versions</a>
-            </div>
-
-        </div>
-
-    </div>
-</li>
-
-
-                    <!-- Search bar-->
-                    <li class="nav-item">
-                      <div id="navbarSupportedContent" role="search">
-                        <!-- Search form -->
-                        <form class="form-inline mr-auto" method="GET" action="/training-material/search">
-                          <i class="fas fa-search nav-link" aria-hidden="true"></i>
-                          <div class="md-form mb-2">
-                            <input name="query" class="form-control nicer" type="text" placeholder="Search Tutorials" aria-label="Search">
-                          </div>
-                        </form>
-                      </div>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-</header>
-
-        <div class="container main-content" role="main">
-        
-
-
-
-
-
-
-
-
-
-
-
-<!-- Gitter -->
-
-
-
-
-<script>
-  ((window.gitter = {}).chat = {}).options = {
-  room: 'Galaxy-Training-Network/Lobby'
-  };
-</script>
-<script src="https://sidecar.gitter.im/dist/sidecar.v1.js" async defer></script>
-
-<script type="application/ld+json">
-    
 
 
 {
@@ -284,7 +70,7 @@
     "name": "Galaxy Training Network",
     "url": "https://galaxyproject.org/teach/gtn/"
   },
-  "dateModified": "2022-10-18 14:23:35 +0000",
+  "dateModified": "2022-11-28 09:55:50 +0000",
   "discussionUrl": "https://gitter.im/Galaxy-Training-Network/Lobby",
   "headline": "Quality Control",
   "interactivityType": "mixed",
@@ -733,7 +519,210 @@
   ],
   "educationalLevel": "Beginner"
 }
+        </script>
+        
+    </head>
+    <body data-spy="scroll" data-target="#toc">
+        <script type="text/javascript" src="/training-material/assets/js/theme.js"></script>
+        <header>
+    <nav class="navbar navbar-expand-md navbar-dark" aria-label="Site Navigation">
+        <div class="container">
+            <a class="navbar-brand" href="/training-material/">
+                <img src="/training-material/assets/images/GTN-60px.png" height="30" alt="Galaxy Training Network logo">
+                Galaxy Training!
+            </a>
+
+            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#top-navbar" aria-controls="top-navbar" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="top-navbar">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        
+                        <a class="nav-link" href="/training-material/topics/sequence-analysis" title="Go back to list of tutorials">
+                            <i class="far fa-folder" aria-hidden="true"></i> Sequence analysis
+                        </a>
+                        
+                    </li>
+
+                    <li class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false" title="Languages">
+                            <i class="fas fa-language" aria-hidden="true"></i><span class="visually-hidden">language</span> Languages
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right">
+                            
+                              <strong class="dropdown-header">Automatic Translations</strong>
+            
+            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=fr&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/sequence-analysis/tutorials/quality-control/tutorial.html&edit-text=&act=url">
+                            Français
+                            </a>
+                            
+            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=ja&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/sequence-analysis/tutorials/quality-control/tutorial.html&edit-text=&act=url">
+                            日本語
+                            </a>
+                            
+            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=es&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/sequence-analysis/tutorials/quality-control/tutorial.html&edit-text=&act=url">
+                            Español
+                            </a>
+                            
+            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=pt&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/sequence-analysis/tutorials/quality-control/tutorial.html&edit-text=&act=url">
+                            Português
+                            </a>
+                            
+            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=ar&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/sequence-analysis/tutorials/quality-control/tutorial.html&edit-text=&act=url">
+                            العربية
+                            </a>
+                            
+                            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/sequence-analysis/tutorials/quality-control/tutorial.html&edit-text=&act=url" title="">
+                            And more!
+                            </a>
+                        </div>
+                    </li>
+
+                    <li class="nav-item dropdown">
+    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false" title="Help">
+        <i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden">help</span> Help
+    </a>
+    <div class="dropdown-menu dropdown-menu-right">
+        <!-- disable Tess for now
+        <form method="get" action="https://tess.elixir-europe.org/materials">
+            <input type="text" id="search" name="q" value="" style="margin-left: 0.5em;/*! border-radius: 0px; */">
+            <input type="hidden" value="Galaxy Training" name="content_provider">
+            <input type="submit" value="Search on TeSS" style="width: 92%;border-radius: 0px;margin: 0.5em;background: #f47d20;border: 0px;padding: 0.25em;" class="">
+        </form>
+        -->
+
+        <a class="dropdown-item" href="/training-material/faq" title="Check our FAQs">
+           <i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden">question</span> FAQs
+        </a>
+        
+        
+        <a class="dropdown-item" href="/training-material/topics/sequence-analysis/faqs/" title="Check our FAQs for the Sequence analysis topic">
+           <i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden">question</span> Topic FAQs
+        </a>
+        
+        
+        <a class="dropdown-item" href="https://help.galaxyproject.org/" title="Discuss on Galaxy Help">
+            <i class="far fa-comments" aria-hidden="true"></i><span class="visually-hidden">feedback</span> Galaxy Help Forum
+        </a>
+        <a class="dropdown-item" href="https://gitter.im/Galaxy-Training-Network/Lobby" title="Discuss on gitter">
+           <i class="fab fa-gitter" aria-hidden="true"></i><span class="visually-hidden">gitter</span> Discuss on Gitter
+        </a>
+    </div>
+</li>
+
+
+                    <li class="nav-item dropdown">
+    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false" title="Extras">
+        <i class="far fa-star" aria-hidden="true"></i><span class="visually-hidden">galaxy-star</span> Extras
+    </a>
+    <div class="dropdown-menu dropdown-menu-right">
+
+        
+        <a class="dropdown-item" href="https://github.com/galaxyproject/training-material/edit/main/topics/sequence-analysis/tutorials/quality-control/tutorial.md" title="Edit on GitHub">
+          <i class="fab fa-github" aria-hidden="true"></i><span class="visually-hidden">github</span> Edit on GitHub
+        </a>
+
+        <a class="dropdown-item" href="/training-material/stats.html" title="Show view statistics about this repository">
+            <i class="fas fa-chart-bar" aria-hidden="true"></i><span class="visually-hidden">galaxy-barchart</span> GTN statistics
+        </a>
+
+        <a class="dropdown-item" href="https://plausible.galaxyproject.eu/training.galaxyproject.org?period=12mo&page=/training-material/topics/sequence-analysis/tutorials/quality-control/tutorial.html" title="Show view statistics of this page">
+            <i class="fas fa-chart-bar" aria-hidden="true"></i><span class="visually-hidden">galaxy-barchart</span> Page Metrics
+        </a>
+
+        <!-- link to feedback -->
+        
+            
+            
+                <a class="dropdown-item" href="/training-material/feedback.html" title="Show feedback statistics about this repository">
+                    <i class="fas fa-chart-bar" aria-hidden="true"></i><span class="visually-hidden">galaxy-barchart</span> GTN feedback
+                </a>
+            
+        
+
+        <div class="dropdown-item">
+            <div>
+                <i class="fas fa-palette" aria-hidden="true"></i><span class="visually-hidden">gtn-theme</span> Theme
+            </div>
+
+            <div id="theme-selector" data-toggle="buttons">
+                    <button class="btn" data-theme="default">Default</button>
+                    <button class="btn" data-theme="night">Night</button>
+                    <button class="btn" data-theme="midnight">Midnight</button>
+                    <button class="btn" data-theme="rainbow">Rainbow</button>
+                    <button class="btn" data-theme="blm">✊🏿</button>
+                    <button class="btn" data-theme="progress" >🏳️‍🌈</button>
+                    <button class="btn" data-theme="halloween">🎃</button>
+                    <button class="btn" data-theme="straya">🇦🇺</button>
+            </div>
+
+        </div>
+
+        <div class="dropdown-item">
+            <div>
+                <i class="fas fa-history" aria-hidden="true"></i><span class="visually-hidden">galaxy-rulebuilder-history</span> Previous Versions
+            </div>
+
+            <div id="archive-selector">
+            
+                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2020-01-06/topics/sequence-analysis/tutorials/quality-control/tutorial.html" title="Version 2020-01-06">2020-01-06</a>
+            
+                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2019-12-01/topics/sequence-analysis/tutorials/quality-control/tutorial.html" title="Version 2019-12-01">2019-12-01</a>
+            
+                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2019-11-01/topics/sequence-analysis/tutorials/quality-control/tutorial.html" title="Version 2019-11-01">2019-11-01</a>
+            
+                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/" title="Older Versions">Older Versions</a>
+            </div>
+
+        </div>
+
+    </div>
+</li>
+
+
+                    <!-- Search bar-->
+                    <li class="nav-item">
+                      <div id="navbarSupportedContent" role="search">
+                        <!-- Search form -->
+                        <form class="form-inline mr-auto" method="GET" action="/training-material/search">
+                          <i class="fas fa-search nav-link" aria-hidden="true"></i>
+                          <div class="md-form mb-2">
+                            <input name="query" class="form-control nicer" type="text" placeholder="Search Tutorials" aria-label="Search">
+                          </div>
+                        </form>
+                      </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
+        <div class="container main-content" role="main">
+        
+
+
+
+
+
+
+
+
+
+
+
+<!-- Gitter -->
+
+
+
+
+<script>
+  ((window.gitter = {}).chat = {}).options = {
+  room: 'Galaxy-Training-Network/Lobby'
+  };
 </script>
+<script src="https://sidecar.gitter.im/dist/sidecar.v1.js" async defer></script>
 
 <section class="tutorial topic-sequence-analysis">
     <h1 data-toc-skip>Quality Control</h1>
@@ -838,7 +827,7 @@
 
 
 <a class="btn btn-default topic-icon" title="Zenodo datasets used in this tutorial" href="https://doi.org/10.5281/zenodo.61771">
-    <i class="far fa-copy" aria-hidden="true"></i> Datasets
+    <i class="far fa-copy" aria-hidden="true"></i>&nbsp;Datasets
 </a>
 
 </li>
@@ -849,19 +838,12 @@
 
 
     <a class="btn btn-default topic-icon" href="/training-material/topics/sequence-analysis/tutorials/quality-control/workflows/" title="Workflows" alt="Quality Control workflows">
-        <i class="fas fa-share-alt" aria-hidden="true"></i> Workflows
+        <i class="fas fa-share-alt" aria-hidden="true"></i>&nbsp;Workflows
     </a>
 
 </li>
             
 
-            
-                <li class="btn btn-default supporting_material">
-<a class="topic-icon" href="https://github.com/galaxyproject/training-material/tree/main/topics/sequence-analysis/tutorials/quality-control/tours/" title="Galaxy interactive tour" >
-    <i class="fas fa-magic" aria-hidden="true"></i> Tours
-</a>
-
-</li>
             
 
             
@@ -1024,6 +1006,8 @@
         
     
         
+    
+        
         <a class="dropdown-item" href="https://galaxytrakr.org/" title="GalaxyTrakr">
             GalaxyTrakr
         </a>
@@ -1139,7 +1123,7 @@
         </ul>
         
 
-        <div><strong><i class="far fa-calendar" aria-hidden="true"></i> Last modification:</strong> Oct 18, 2022 </div>
+        <div><strong><i class="far fa-calendar" aria-hidden="true"></i> Last modification:</strong> Nov 28, 2022 </div>
         <div><strong><i class="fas fa-balance-scale" aria-hidden="true"></i> License:</strong>
             
             <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Tutorial Content is licensed under Creative Commons Attribution 4.0 International License</a>
@@ -1167,7 +1151,7 @@
 Sequence quality control is therefore an essential first step in your analysis. Catching errors early saves time later on.</p>
 
 <blockquote class="agenda">
-  <div id="agenda" class="box-title" aria-label="agenda box: ">Agenda</div>
+  <div class="box-title agenda-title" id="agenda" aria-label="agenda box: ">Agenda</div>
 
   <p>In this tutorial, we will deal with:</p>
 
@@ -1209,16 +1193,16 @@ Sequence quality control is therefore an essential first step in your analysis. 
 <h1 id="inspect-a-raw-sequence-file">Inspect a raw sequence file</h1>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-data-upload" class="box-title" aria-label="hands-on box: Data upload"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Data upload</div>
+  <div class="box-title hands-on-title" id="hands-on-data-upload" aria-label="hands-on box: Data upload"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Data upload</div>
 
   <ol>
     <li>
       <p>Create a new history for this tutorial and give it a proper name</p>
 
       <!--SNIPPET-->
-      <blockquote class="tip">  <div id="tip-creating-a-new-history" class="box-title"><button type="button" aria-controls="tip-creating-a-new-history-contents" aria-expanded="true" aria-label="Toggle tip box: Creating a new history"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: Creating a new history<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>  <p>Click the <i class="fas fa-plus" aria-hidden="true"></i><span class="visually-hidden">new-history</span> icon at the top of the history panel.</p>  <p>If the <i class="fas fa-plus" aria-hidden="true"></i><span class="visually-hidden">new-history</span> is missing:</p>  <ol>  <li>Click on the <i class="fas fa-cog" aria-hidden="true"></i><span class="visually-hidden"><span class="notranslate">galaxy</span>-gear</span> icon (<strong>History options</strong>) on the top of the history panel</li>  <li>Select the option <strong>Create New</strong> from the menu</li></ol></blockquote>
+      <blockquote class="tip">   <div class="box-title tip-title" id="tip-creating-a-new-history"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-creating-a-new-history-contents" aria-expanded="true" aria-label="Toggle tip box: Creating a new history"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: Creating a new history<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>   <p>Click the <i class="fas fa-plus" aria-hidden="true"></i><span class="visually-hidden">new-history</span> icon at the top of the history panel.</p>   <p>If the <i class="fas fa-plus" aria-hidden="true"></i><span class="visually-hidden">new-history</span> is missing:</p>   <ol>   <li>Click on the <i class="fas fa-cog" aria-hidden="true"></i><span class="visually-hidden"><span class="notranslate">galaxy</span>-gear</span> icon (<strong>History options</strong>) on the top of the history panel</li>   <li>Select the option <strong>Create New</strong> from the menu</li> </ol> </blockquote>
       <!--SNIPPET-->
-      <blockquote class="tip">  <div id="tip-renaming-a-history" class="box-title"><button type="button" aria-controls="tip-renaming-a-history-contents" aria-expanded="true" aria-label="Toggle tip box: Renaming a history"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: Renaming a history<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>  <ol>  <li>Click on <strong>Unnamed history</strong> (or the current name of the history) (<strong>Click to rename history</strong>) at the top of your history panel</li>  <li>Type the new name</li>  <li>Press <kbd>Enter</kbd></li></ol></blockquote>
+      <blockquote class="tip">   <div class="box-title tip-title" id="tip-renaming-a-history"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-renaming-a-history-contents" aria-expanded="true" aria-label="Toggle tip box: Renaming a history"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: Renaming a history<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>   <ol>   <li>Click on <i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"><span class="notranslate">galaxy</span>-pencil</span> (<strong>Edit</strong>) next to the history name (which by default is “Unnamed history”)</li>   <li>Type the new name</li>   <li>Click on <strong>Save</strong></li> </ol>   <p>If you do not have the <i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"><span class="notranslate">galaxy</span>-pencil</span> (<strong>Edit</strong>) next to the history name:</p>   <ol>   <li>Click on <strong>Unnamed history</strong> (or the current name of the history) (<strong>Click to rename history</strong>) at the top of your history panel</li>   <li>Type the new name</li>   <li>Press <kbd>Enter</kbd></li> </ol> </blockquote>
     </li>
     <li>
       <p>Import the file <code class="language-plaintext highlighter-rouge">female_oral2.fastq-4143.gz</code> from <a href="https://zenodo.org/record/3977236">Zenodo</a> or from the data library (ask your instructor)
@@ -1228,9 +1212,9 @@ This is a microbiome sample from a snake <span class="citation"><a href="#StJacq
 </code></pre></div>      </div>
 
       <!--SNIPPET-->
-      <blockquote class="tip">  <div id="tip-importing-via-links" class="box-title"><button type="button" aria-controls="tip-importing-via-links-contents" aria-expanded="true" aria-label="Toggle tip box: Importing via links"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: Importing via links<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>  <ul>  <li>Copy the link location</li>  <li>    <p>Open the <span class="notranslate">Galaxy</span> Upload Manager (<i class="fas fa-upload" aria-hidden="true"></i><span class="visually-hidden"><span class="notranslate">galaxy</span>-upload</span> on the top-right of the tool panel)</p>  </li>  <li>Select <strong>Paste/Fetch Data</strong></li>  <li>    <p>Paste the link into the text field</p>  </li>  <li>    <p>Press <strong>Start</strong></p>  </li>  <li><strong>Close</strong> the window</li></ul></blockquote>
+      <blockquote class="tip">   <div class="box-title tip-title" id="tip-importing-via-links"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-importing-via-links-contents" aria-expanded="true" aria-label="Toggle tip box: Importing via links"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: Importing via links<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>   <ul>   <li>Copy the link location</li>   <li>     <p>Open the <span class="notranslate">Galaxy</span> Upload Manager (<i class="fas fa-upload" aria-hidden="true"></i><span class="visually-hidden"><span class="notranslate">galaxy</span>-upload</span> on the top-right of the tool panel)</p>   </li>   <li>Select <strong>Paste/Fetch Data</strong></li>   <li>     <p>Paste the link into the text field</p>   </li>   <li>     <p>Press <strong>Start</strong></p>   </li>   <li><strong>Close</strong> the window</li> </ul> </blockquote>
       <!--SNIPPET-->
-      <blockquote class="tip">  <div id="tip-importing-data-from-a-data-library" class="box-title"><button type="button" aria-controls="tip-importing-data-from-a-data-library-contents" aria-expanded="true" aria-label="Toggle tip box: Importing data from a data library"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: Importing data from a data library<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>  <p>As an alte<span class="notranslate">rna</span>tive to uploading the data from a URL or your computer, the files may also have been made available from a <em>shared data library</em>:</p>  <ul>  <li>Go into <strong>Shared data</strong> (top panel) then <strong>Data libraries</strong></li>  <li>Navigate to the correct folder as indicated by your instructor</li>  <li>Select the desired files</li>  <li>Click on the <strong>To History</strong> button near the top and select <strong>as Datasets</strong> from the dropdown menu</li>  <li>In the pop-up window, select the history you want to import the files to (or create a new one)</li>  <li>Click on <strong>Import</strong></li></ul></blockquote>
+      <blockquote class="tip">   <div class="box-title tip-title" id="tip-importing-data-from-a-data-library"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-importing-data-from-a-data-library-contents" aria-expanded="true" aria-label="Toggle tip box: Importing data from a data library"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: Importing data from a data library<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>   <p>As an alte<span class="notranslate">rna</span>tive to uploading the data from a URL or your computer, the files may also have been made available from a <em>shared data library</em>:</p>   <ul>   <li>Go into <strong>Shared data</strong> (top panel) then <strong>Data libraries</strong></li>   <li>Navigate to  the correct folder as indicated by your instructor</li>   <li>Select the desired files</li>   <li>Click on the <strong>To History</strong> button near the top and select <strong>as Datasets</strong> from the dropdown menu</li>   <li>In the pop-up window, select the history you want to import the files to (or create a new one)</li>   <li>Click on <strong>Import</strong></li> </ul> </blockquote>
     </li>
     <li>
       <p>Rename the imported dataset to <code class="language-plaintext highlighter-rouge"><span class="notranslate">Reads</span></code>.</p>
@@ -1241,7 +1225,7 @@ This is a microbiome sample from a snake <span class="citation"><a href="#StJacq
 <p>We just imported a file into <span class="notranslate">Galaxy</span>. This file is similar to the data we could get directly from a sequencing facility: a <a href="https://en.wikipedia.org/wiki/FASTQ_format">FASTQ file</a>.</p>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-inspect-the-fastq-file" class="box-title" aria-label="hands-on box: Inspect the FASTQ file"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Inspect the FASTQ file</div>
+  <div class="box-title hands-on-title" id="hands-on-inspect-the-fastq-file" aria-label="hands-on box: Inspect the FASTQ file"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Inspect the FASTQ file</div>
 
   <ol>
     <li>Inspect the file by clicking on the <i class="far fa-eye" aria-hidden="true"></i><span class="visually-hidden"><span class="notranslate">galaxy</span>-eye</span> (eye) icon</li>
@@ -1341,7 +1325,7 @@ GGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGFGGGFGGGGGGAFFGGFGG
 </table>
 
 <blockquote class="question">
-  <div id="question" class="box-title" aria-label="question box: "><i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden"></span> Question</div>
+  <div class="box-title question-title" id="question" aria-label="question box: "><i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden"></span> Question</div>
 
   <ol>
     <li>Which ASCII character corresponds to the worst Phred score for Illumina 1.8+?</li>
@@ -1350,7 +1334,7 @@ GGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGFGGGFGGGGGGAFFGGFGG
   </ol>
 
   <blockquote class="solution">
-    <div id="solution" class="box-title"><button type="button" aria-controls="solution-contents" aria-expanded="true" aria-label="Toggle solution box: "><i class="far fa-eye" aria-hidden="true"></i><span class="visually-hidden"></span> Solution<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
+    <div class="box-title solution-title" id="solution"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-contents" aria-expanded="true" aria-label="Toggle solution box: "><i class="far fa-eye" aria-hidden="true"></i><span class="visually-hidden"></span> Solution<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
     <ol>
       <li>The worst Phred score is the smallest one, so 0. For Illumina 1.8+, it corresponds to the <code class="language-plaintext highlighter-rouge">!</code> character.</li>
       <li>The 3rd nucleotide of the 1st sequence has a ASCII character <code class="language-plaintext highlighter-rouge">G</code>, which correspond to a score of 38.</li>
@@ -1361,7 +1345,7 @@ GGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGFGGGFGGGGGGAFFGGFGG
 </blockquote>
 
 <blockquote class="comment">
-  <div id="comment" class="box-title" aria-label="comment box: "><i class="far fa-comment-dots" aria-hidden="true"></i><span class="visually-hidden"></span> Comment</div>
+  <div class="box-title comment-title" id="comment" aria-label="comment box: "><i class="far fa-comment-dots" aria-hidden="true"></i><span class="visually-hidden"></span> Comment</div>
   <p>The current lllumina (1.8+) uses Sanger format (Phred+33). If you are working with older datasets you may encounter the older scoring schemes. <strong>FastQC</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span>, a tool we will use later in this tutorial, can be used to try to determine what type of quality encoding is used (through assessing the range of Phred values seen in the FASTQ).</p>
 </blockquote>
 
@@ -1372,7 +1356,7 @@ GGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGFGGGFGGGGGGAFFGGFGG
 <p>To take a look at sequence quality along all sequences, we can use <a href="https://fastqe.com/">FASTQE</a>. It is an open-source tool that provides a simple and fun way to quality control raw sequence data and print them as emoji. You can use it to give a quick impression of whether your data has any problems of which you should be aware before doing any further analysis.</p>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-quality-check" class="box-title" aria-label="hands-on box: Quality check"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Quality check</div>
+  <div class="box-title hands-on-title" id="hands-on-quality-check" aria-label="hands-on box: Quality check"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Quality check</div>
 
   <ol>
     <li><span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/iuc/fastqe/fastqe/0.2.6+galaxy2" title="Tested with toolshed.g2.bx.psu.edu/repos/iuc/fastqe/fastqe/0.2.6+galaxy2"><strong>FASTQE</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: <span class="notranslate">toolshed</span>.g2.bx.psu.edu/repos/iuc/fastqe/fastqe/0.2.6+<span class="notranslate">galaxy</span>2</span></span>  with the following parameters
@@ -1505,12 +1489,12 @@ GGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGFGGGFGGGGGGAFFGGFGG
 </table>
 
 <blockquote class="question">
-  <div id="question-1" class="box-title" aria-label="question box: "><i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden"></span> Question</div>
+  <div class="box-title question-title" id="question-1" aria-label="question box: "><i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden"></span> Question</div>
 
   <p>What is the lowest mean score in this dataset?</p>
 
   <blockquote class="solution">
-    <div id="solution-1" class="box-title"><button type="button" aria-controls="solution-1-contents" aria-expanded="true" aria-label="Toggle solution box: "><i class="far fa-eye" aria-hidden="true"></i><span class="visually-hidden"></span> Solution<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
+    <div class="box-title solution-title" id="solution-1"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-1-contents" aria-expanded="true" aria-label="Toggle solution box: "><i class="far fa-eye" aria-hidden="true"></i><span class="visually-hidden"></span> Solution<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
     <p>The lowest score in this dataset is 😿 13.</p>
   </blockquote>
 </blockquote>
@@ -1520,7 +1504,7 @@ GGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGFGGGFGGGGGGAFFGGFGG
 <p>An additional or alte<span class="notranslate">rna</span>tive way we can check sequence quality is with <a href="https://www.bioinformatics.babraham.ac.uk/projects/fastqc/">FastQC</a>. It provides a modular set of analyses which you can use to check whether your data has any problems of which you should be aware before doing any further analysis.  We can use it, for example, to assess whether there are known adapters present in the data. We’ll run it on the FASTQ file.</p>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-quality-check-1" class="box-title" aria-label="hands-on box: Quality check"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Quality check</div>
+  <div class="box-title hands-on-title" id="hands-on-quality-check-1" aria-label="hands-on box: Quality check"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Quality check</div>
 
   <ol>
     <li><span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/devteam/fastqc/fastqc/0.73+galaxy0" title="Tested with toolshed.g2.bx.psu.edu/repos/devteam/fastqc/fastqc/0.73+galaxy0"><strong>FASTQC</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: <span class="notranslate">toolshed</span>.g2.bx.psu.edu/repos/devteam/fastqc/fastqc/0.73+<span class="notranslate">galaxy</span>0</span></span>  with the following parameters
@@ -1534,12 +1518,12 @@ GGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGFGGGFGGGGGGAFFGGFGG
 </blockquote>
 
 <blockquote class="question">
-  <div id="question-2" class="box-title" aria-label="question box: "><i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden"></span> Question</div>
+  <div class="box-title question-title" id="question-2" aria-label="question box: "><i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden"></span> Question</div>
 
   <p>Which Phred encoding is used in the FASTQ file for these sequences?</p>
 
   <blockquote class="solution">
-    <div id="solution-2" class="box-title"><button type="button" aria-controls="solution-2-contents" aria-expanded="true" aria-label="Toggle solution box: "><i class="far fa-eye" aria-hidden="true"></i><span class="visually-hidden"></span> Solution<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
+    <div class="box-title solution-title" id="solution-2"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-2-contents" aria-expanded="true" aria-label="Toggle solution box: "><i class="far fa-eye" aria-hidden="true"></i><span class="visually-hidden"></span> Solution<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
     <p>The Phred scores are encoded using <code class="language-plaintext highlighter-rouge">Sanger / Illumina 1.9</code> (<code class="language-plaintext highlighter-rouge">Encoding</code> in the top table).</p>
   </blockquote>
 </blockquote>
@@ -1553,7 +1537,7 @@ GGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGFGGGFGGGGGGAFFGGFGG
 <p>On the x-axis are the base position in the read. In this example, the sample contains <span class="notranslate">reads</span> that are up to 296 bp long.</p>
 
 <blockquote class="details">
-  <div id="details-non-uniform-x-axis" class="box-title"><button type="button" aria-controls="details-non-uniform-x-axis-contents" aria-expanded="true" aria-label="Toggle details box: Non uniform x-axis"><i class="fas fa-info-circle" aria-hidden="true"></i><span class="visually-hidden"></span> Details: Non uniform x-axis<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
+  <div class="box-title details-title" id="details-non-uniform-x-axis"><button class="gtn-boxify-button details" type="button" aria-controls="details-non-uniform-x-axis-contents" aria-expanded="true" aria-label="Toggle details box: Non uniform x-axis"><i class="fas fa-info-circle" aria-hidden="true"></i><span class="visually-hidden"></span> Details: Non uniform x-axis<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
 
   <p>The x-axis is not always uniform. When you have long <span class="notranslate">reads</span>, some binning is applied to keep things compact. We can see that in our sample. It starts out with individual 1-10 bases. After that, bases are binned across a window a certain number of bases wide. Data binning means grouping and is a data pre-processing technique used to reduce the effects of minor observation errors. The number of base positions binned together depends on the length of the read. With <span class="notranslate">reads</span> &gt;50bp, the latter part of the plot will report aggregate statistics for 5bp windows. Shorter <span class="notranslate">reads</span> will have smaller windows and longer <span class="notranslate">reads</span> larger windows. Binning can be removed when running FastQC by setting the paramter “Disable grouping of bases for <span class="notranslate">reads</span> &gt;50bp” to Yes.</p>
 </blockquote>
@@ -1572,7 +1556,7 @@ GGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGFGGGFGGGGGGAFFGGFGG
 <p>It is normal with all Illumina sequencers for the median quality score to start out lower over the first 5-7 bases and to then rise. The quality of <span class="notranslate">reads</span> on most platforms will drop at the end of the read. This is often due to signal decay or phasing during the sequencing run. The recent developments in chemistry applied to sequencing has improved this somewhat, but <span class="notranslate">reads</span> are now longer than ever.</p>
 
 <blockquote class="details">
-  <div id="details-signal-decay-and-phasing" class="box-title"><button type="button" aria-controls="details-signal-decay-and-phasing-contents" aria-expanded="true" aria-label="Toggle details box: Signal decay and phasing"><i class="fas fa-info-circle" aria-hidden="true"></i><span class="visually-hidden"></span> Details: Signal decay and phasing<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
+  <div class="box-title details-title" id="details-signal-decay-and-phasing"><button class="gtn-boxify-button details" type="button" aria-controls="details-signal-decay-and-phasing-contents" aria-expanded="true" aria-label="Toggle details box: Signal decay and phasing"><i class="fas fa-info-circle" aria-hidden="true"></i><span class="visually-hidden"></span> Details: Signal decay and phasing<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
 
   <ul>
     <li>Signal decay</li>
@@ -1595,7 +1579,7 @@ GGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGFGGGFGGGGGGAFFGGFGG
 </blockquote>
 
 <blockquote class="details">
-  <div id="details-other-sequence-quality-profiles" class="box-title"><button type="button" aria-controls="details-other-sequence-quality-profiles-contents" aria-expanded="true" aria-label="Toggle details box: Other sequence quality profiles"><i class="fas fa-info-circle" aria-hidden="true"></i><span class="visually-hidden"></span> Details: Other sequence quality profiles<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
+  <div class="box-title details-title" id="details-other-sequence-quality-profiles"><button class="gtn-boxify-button details" type="button" aria-controls="details-other-sequence-quality-profiles-contents" aria-expanded="true" aria-label="Toggle details box: Other sequence quality profiles"><i class="fas fa-info-circle" aria-hidden="true"></i><span class="visually-hidden"></span> Details: Other sequence quality profiles<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
 
   <p>These are some per base sequence quality profiles that can indicate issues with the sequencing.</p>
 
@@ -1635,7 +1619,7 @@ GGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGFGGGFGGGGGGAFFGGFGG
 </blockquote>
 
 <blockquote class="question">
-  <div id="question-3" class="box-title" aria-label="question box: "><i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden"></span> Question</div>
+  <div class="box-title question-title" id="question-3" aria-label="question box: "><i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden"></span> Question</div>
 
   <ol>
     <li>How does the mean quality score change along the sequence?</li>
@@ -1643,7 +1627,7 @@ GGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGFGGGFGGGGGGAFFGGFGG
   </ol>
 
   <blockquote class="solution">
-    <div id="solution-3" class="box-title"><button type="button" aria-controls="solution-3-contents" aria-expanded="true" aria-label="Toggle solution box: "><i class="far fa-eye" aria-hidden="true"></i><span class="visually-hidden"></span> Solution<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
+    <div class="box-title solution-title" id="solution-3"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-3-contents" aria-expanded="true" aria-label="Toggle solution box: "><i class="far fa-eye" aria-hidden="true"></i><span class="visually-hidden"></span> Solution<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
     <ol>
       <li>The mean quality score (blue line) drops about midway though these sequences. It is common for the mean quality to drop towards the end of the sequences, as the sequencers are incorporating more incorrect nucleotides at the end. However, in this sample there is a very large drop in quality from the middle onwards.</li>
       <li>The box plots are getting wider from position ~100.  It means a lot of sequences have their score dropping from the middle of the sequence. After 100 nucleotides, more than 10% of the sequences have scores below 20.</li>
@@ -1663,7 +1647,7 @@ GGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGFGGGFGGGGGGAFFGGFGG
 <p>Ideally Illumina sequence data should not have any adapter sequence present. But with long <span class="notranslate">reads</span>, some of the library inserts are shorter than the read length resulting in read-through to the adapter at the 3’ end of the read. This microbiome sample has relatively long <span class="notranslate">reads</span> and we can see Nextera dapater has been detected.</p>
 
 <blockquote class="details">
-  <div id="details-other-adapter-content-profiles" class="box-title"><button type="button" aria-controls="details-other-adapter-content-profiles-contents" aria-expanded="true" aria-label="Toggle details box: Other adapter content profiles"><i class="fas fa-info-circle" aria-hidden="true"></i><span class="visually-hidden"></span> Details: Other adapter content profiles<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
+  <div class="box-title details-title" id="details-other-adapter-content-profiles"><button class="gtn-boxify-button details" type="button" aria-controls="details-other-adapter-content-profiles-contents" aria-expanded="true" aria-label="Toggle details box: Other adapter content profiles"><i class="fas fa-info-circle" aria-hidden="true"></i><span class="visually-hidden"></span> Details: Other adapter content profiles<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
 
   <p>Adapter content may also be detected with <span class="notranslate">RNA</span>-Seq libraries where the distribution of library insert sizes is varied and likely to include some short inserts.</p>
 
@@ -1673,8 +1657,8 @@ GGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGFGGGFGGGGGGAFFGGFGG
 
 <p>We can run an trimming tool such as Cutadapt to remove this adapter. We will explain that process in the filter and trim section.</p>
 
-<blockquote class="comment">
-  <div id="tip-take-a-shortcut" class="box-title"><button type="button" aria-controls="tip-take-a-shortcut-contents" aria-expanded="true" aria-label="Toggle tip box: Take a shortcut"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: Take a shortcut<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
+<blockquote class="tip">
+  <div class="box-title tip-title" id="tip-take-a-shortcut"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-take-a-shortcut-contents" aria-expanded="true" aria-label="Toggle tip box: Take a shortcut"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: Take a shortcut<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
 
   <p>The following sections go into detail about some of the other plots generated by FastQC. Note that some plots/modules may give warnings but be normal
 for the type of data you’re working with, as discussed below and <a href="https://rtsf.natsci.msu.edu/genomics/tech-notes/fastqc-tutorial-and-faq/">here</a>.
@@ -1694,7 +1678,7 @@ These sections are <strong>optional</strong>, and if you would like to skip thes
 <p>This plot will only appear for Illumina library which retains its original sequence identifiers. Encoded in these is the flowcell tile from which each read came.</p>
 
 <blockquote class="details">
-  <div id="details-other-tile-quality-profiles" class="box-title"><button type="button" aria-controls="details-other-tile-quality-profiles-contents" aria-expanded="true" aria-label="Toggle details box: Other tile quality profiles"><i class="fas fa-info-circle" aria-hidden="true"></i><span class="visually-hidden"></span> Details: Other tile quality profiles<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
+  <div class="box-title details-title" id="details-other-tile-quality-profiles"><button class="gtn-boxify-button details" type="button" aria-controls="details-other-tile-quality-profiles-contents" aria-expanded="true" aria-label="Toggle details box: Other tile quality profiles"><i class="fas fa-info-circle" aria-hidden="true"></i><span class="visually-hidden"></span> Details: Other tile quality profiles<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
 
   <p>In some cases, the chemicals used during sequencing becoming a bit exhausted over the time and the last tiles got worst chemicals which makes the sequencing reactions a bit error-prone. The “Per tile sequence quality” graph will then have some horizontal lines like this:</p>
 
@@ -1719,7 +1703,7 @@ These sections are <strong>optional</strong>, and if you would like to skip thes
 <p>In a random library we would expect that there would be little to no difference between the four bases. The proportion of each of the four bases should remain relatively constant over the length of the read with <code class="language-plaintext highlighter-rouge">%A=%T</code> and <code class="language-plaintext highlighter-rouge">%G=%C</code>, and the lines in this plot should run parallel with each other. This is amplicon data, where 16S <span class="notranslate">DNA</span> is PCR amplified and sequenced, so we’d expect this plot to have some bias and not show a random distribution.</p>
 
 <blockquote class="details">
-  <div id="details-biases-by-library-type" class="box-title"><button type="button" aria-controls="details-biases-by-library-type-contents" aria-expanded="true" aria-label="Toggle details box: Biases by library type"><i class="fas fa-info-circle" aria-hidden="true"></i><span class="visually-hidden"></span> Details: Biases by library type<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
+  <div class="box-title details-title" id="details-biases-by-library-type"><button class="gtn-boxify-button details" type="button" aria-controls="details-biases-by-library-type-contents" aria-expanded="true" aria-label="Toggle details box: Biases by library type"><i class="fas fa-info-circle" aria-hidden="true"></i><span class="visually-hidden"></span> Details: Biases by library type<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
 
   <p>It’s worth noting that some library types will always produce biased sequence composition, normally at the start of the read. Libraries produced by priming using random hexamers (including nearly all <span class="notranslate">RNA</span>-Seq libraries), and those which were fragmented using transposases, will contain an intrinsic bias in the positions at which <span class="notranslate">reads</span> start (the first 10-12 bases). This bias does not involve a specific sequence, but instead provides enrichment of a number of different K-mers at the 5’ end of the <span class="notranslate">reads</span>. Whilst this is a true technical bias, it isn’t something which can be corrected by trimming and in most cases doesn’t seem to adversely affect the <span class="notranslate">downstream</span> analysis. It will, however, produce a warning or error in this module.</p>
 
@@ -1733,12 +1717,12 @@ These sections are <strong>optional</strong>, and if you would like to skip thes
 </blockquote>
 
 <blockquote class="question">
-  <div id="question-4" class="box-title" aria-label="question box: "><i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden"></span> Question</div>
+  <div class="box-title question-title" id="question-4" aria-label="question box: "><i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden"></span> Question</div>
 
   <p>Why is there a warning for the per-base sequence content graphs?</p>
 
   <blockquote class="solution">
-    <div id="solution-4" class="box-title"><button type="button" aria-controls="solution-4-contents" aria-expanded="true" aria-label="Toggle solution box: "><i class="far fa-eye" aria-hidden="true"></i><span class="visually-hidden"></span> Solution<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
+    <div class="box-title solution-title" id="solution-4"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-4-contents" aria-expanded="true" aria-label="Toggle solution box: "><i class="far fa-eye" aria-hidden="true"></i><span class="visually-hidden"></span> Solution<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
     <p>In the beginning of sequences, the sequence content per base is not really good and the percentages are not equal, as expected for 16S amplicon data.</p>
 
   </blockquote>
@@ -1755,12 +1739,12 @@ These sections are <strong>optional</strong>, and if you would like to skip thes
 <p>But there are also other situations in which an unusually-shaped distribution may occur. For example, with <span class="notranslate">RNA</span> sequencing there may be a greater or lesser distribution of mean GC content among transcripts causing the observed plot to be wider or narrower than an ideal normal distribution.</p>
 
 <blockquote class="question">
-  <div id="question-5" class="box-title" aria-label="question box: "><i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden"></span> Question</div>
+  <div class="box-title question-title" id="question-5" aria-label="question box: "><i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden"></span> Question</div>
 
   <p>Why is there a fail for the per sequence GC content graphs?</p>
 
   <blockquote class="solution">
-    <div id="solution-5" class="box-title"><button type="button" aria-controls="solution-5-contents" aria-expanded="true" aria-label="Toggle solution box: "><i class="far fa-eye" aria-hidden="true"></i><span class="visually-hidden"></span> Solution<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
+    <div class="box-title solution-title" id="solution-5"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-5-contents" aria-expanded="true" aria-label="Toggle solution box: "><i class="far fa-eye" aria-hidden="true"></i><span class="visually-hidden"></span> Solution<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
     <p>There are multiple peaks. This can be indicative of unexpected contamination, such as adapter, r<span class="notranslate">RNA</span> or overrepresented sequences. Or it may be normal if it is amplicon data or you have highly abundant <span class="notranslate">RNA</span>-seq transcripts.</p>
   </blockquote>
 </blockquote>
@@ -1796,7 +1780,7 @@ These sections are <strong>optional</strong>, and if you would like to skip thes
 </ul>
 
 <blockquote class="details">
-  <div id="details-more-details-about-duplication" class="box-title"><button type="button" aria-controls="details-more-details-about-duplication-contents" aria-expanded="true" aria-label="Toggle details box: More details about duplication"><i class="fas fa-info-circle" aria-hidden="true"></i><span class="visually-hidden"></span> Details: More details about duplication<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
+  <div class="box-title details-title" id="details-more-details-about-duplication"><button class="gtn-boxify-button details" type="button" aria-controls="details-more-details-about-duplication-contents" aria-expanded="true" aria-label="Toggle details box: More details about duplication"><i class="fas fa-info-circle" aria-hidden="true"></i><span class="visually-hidden"></span> Details: More details about duplication<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
 
   <p>FastQC counts the degree of duplication for every sequence in a library and creates a plot showing the relative number of sequences with different degrees of duplication. There are two lines on the plot:</p>
   <ul>
@@ -1823,12 +1807,12 @@ These sections are <strong>optional</strong>, and if you would like to skip thes
 <p><span class="notranslate">RNA</span> sequencing data may have some transcripts that are so abundant that they register as over-represented sequence. With <span class="notranslate">DNA</span> sequencing data no single sequence should be present at a high enough frequency to be listed, but we can sometimes see a small percentage of adapter <span class="notranslate">reads</span>.</p>
 
 <blockquote class="question">
-  <div id="question-6" class="box-title" aria-label="question box: "><i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden"></span> Question</div>
+  <div class="box-title question-title" id="question-6" aria-label="question box: "><i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden"></span> Question</div>
 
   <p>How could we find out what the overrepreseented sequences are?</p>
 
   <blockquote class="solution">
-    <div id="solution-6" class="box-title"><button type="button" aria-controls="solution-6-contents" aria-expanded="true" aria-label="Toggle solution box: "><i class="far fa-eye" aria-hidden="true"></i><span class="visually-hidden"></span> Solution<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
+    <div class="box-title solution-title" id="solution-6"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-6-contents" aria-expanded="true" aria-label="Toggle solution box: "><i class="far fa-eye" aria-hidden="true"></i><span class="visually-hidden"></span> Solution<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
     <p>We can BLAST overrepresented sequences to see what they are. In this case, if we take the top overrepresented sequence</p>
     <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&gt;overrep_seq1
 GTGTCAGCCGCCGCGGTAGTCCGACGTGGCTGTCTCTTATACACATCTCC
@@ -1839,7 +1823,7 @@ GTGTCAGCCGCCGCGGTAGTCCGACGTGGCTGTCTCTTATACACATCTCC
 </blockquote>
 
 <blockquote class="details">
-  <div id="details-more-details-about-other-fastqc-plots" class="box-title"><button type="button" aria-controls="details-more-details-about-other-fastqc-plots-contents" aria-expanded="true" aria-label="Toggle details box: More details about other FastQC plots"><i class="fas fa-info-circle" aria-hidden="true"></i><span class="visually-hidden"></span> Details: More details about other FastQC plots<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
+  <div class="box-title details-title" id="details-more-details-about-other-fastqc-plots"><button class="gtn-boxify-button details" type="button" aria-controls="details-more-details-about-other-fastqc-plots-contents" aria-expanded="true" aria-label="Toggle details box: More details about other FastQC plots"><i class="fas fa-info-circle" aria-hidden="true"></i><span class="visually-hidden"></span> Details: More details about other FastQC plots<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
 
   <h4 id="per-base-n-content">Per base N content</h4>
 
@@ -1868,7 +1852,7 @@ GTGTCAGCCGCCGCGGTAGTCCGACGTGGCTGTCTCTTATACACATCTCC
 <p>We tried to explain here there different FastQC reports and some use cases. More about this and also some common next-generation sequencing problems can be found on <a href="https://sequencing.qcfail.com/">QCFAIL.com</a></p>
 
 <blockquote class="details">
-  <div id="details-specific-problem-for-alternate-library-types" class="box-title"><button type="button" aria-controls="details-specific-problem-for-alternate-library-types-contents" aria-expanded="true" aria-label="Toggle details box: Specific problem for alternate library types"><i class="fas fa-info-circle" aria-hidden="true"></i><span class="visually-hidden"></span> Details: Specific problem for alte<span class="notranslate">rna</span>te library types<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
+  <div class="box-title details-title" id="details-specific-problem-for-alternate-library-types"><button class="gtn-boxify-button details" type="button" aria-controls="details-specific-problem-for-alternate-library-types-contents" aria-expanded="true" aria-label="Toggle details box: Specific problem for alternate library types"><i class="fas fa-info-circle" aria-hidden="true"></i><span class="visually-hidden"></span> Details: Specific problem for alte<span class="notranslate">rna</span>te library types<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
 
   <h4 id="smallmicro-rna">Small/micro <span class="notranslate">RNA</span></h4>
 
@@ -1918,7 +1902,7 @@ GTGTCAGCCGCCGCGGTAGTCCGACGTGGCTGTCTCTTATACACATCTCC
 </blockquote>
 
 <blockquote class="comment">
-  <div id="comment-bad-quality-sequences" class="box-title" aria-label="comment box: Bad quality sequences"><i class="far fa-comment-dots" aria-hidden="true"></i><span class="visually-hidden"></span> Comment: Bad quality sequences</div>
+  <div class="box-title comment-title" id="comment-bad-quality-sequences" aria-label="comment box: Bad quality sequences"><i class="far fa-comment-dots" aria-hidden="true"></i><span class="visually-hidden"></span> Comment: Bad quality sequences</div>
   <p>If the quality of the <span class="notranslate">reads</span> is not good, we should always first check what is wrong and think about it: it may come from the type of sequencing or what we sequenced (high quantity of overrepresented sequences in transcriptomics data, biased percentage of bases in HiC data).</p>
 
   <p>You can also ask the sequencing facility about it, especially if the quality is really bad: the quality treatments can not solve everything. If too many bad quality bases are cut away, the corresponding <span class="notranslate">reads</span> then will be filtered out and you lose them.</p>
@@ -1954,7 +1938,7 @@ GTGTCAGCCGCCGCGGTAGTCCGACGTGGCTGTCTCTTATACACATCTCC
 </ul>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-improvement-of-sequence-quality" class="box-title" aria-label="hands-on box: Improvement of sequence quality"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Improvement of sequence quality</div>
+  <div class="box-title hands-on-title" id="hands-on-improvement-of-sequence-quality" aria-label="hands-on box: Improvement of sequence quality"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Improvement of sequence quality</div>
 
   <ol>
     <li><span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/lparsons/cutadapt/cutadapt/3.4+galaxy2" title="Tested with toolshed.g2.bx.psu.edu/repos/lparsons/cutadapt/cutadapt/3.4+galaxy2"><strong>Cutadapt</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: <span class="notranslate">toolshed</span>.g2.bx.psu.edu/repos/lparsons/cutadapt/cutadapt/3.4+<span class="notranslate">galaxy</span>2</span></span>  with the following parameters
@@ -1965,7 +1949,7 @@ GTGTCAGCCGCCGCGGTAGTCCGACGTGGCTGTCTCTTATACACATCTCC
               <p><i class="far fa-file" aria-hidden="true"></i><span class="visually-hidden">param-file</span> <em>“<span class="notranslate">Reads</span> in FASTQ format”</em>: <code class="language-plaintext highlighter-rouge"><span class="notranslate">Reads</span></code> (Input dataset)</p>
 
               <blockquote class="tip">
-                <div id="tip-files-not-selectable" class="box-title"><button type="button" aria-controls="tip-files-not-selectable-contents" aria-expanded="true" aria-label="Toggle tip box: Files not selectable?"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: Files not selectable?<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
+                <div class="box-title tip-title" id="tip-files-not-selectable"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-files-not-selectable-contents" aria-expanded="true" aria-label="Toggle tip box: Files not selectable?"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: Files not selectable?<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
                 <p>If your FASTQ file cannot be selected, you might check whether the format is FASTQ with Sanger-scaled quality values (<code class="language-plaintext highlighter-rouge">fastqsanger.gz</code>). You can edit the data type by clicking on the pencil symbol.</p>
               </blockquote>
             </li>
@@ -1998,7 +1982,7 @@ GTGTCAGCCGCCGCGGTAGTCCGACGTGGCTGTCTCTTATACACATCTCC
       <p>Inspect the generated txt file (<code class="language-plaintext highlighter-rouge">Report</code>)</p>
 
       <blockquote class="question">
-        <div id="question-7" class="box-title" aria-label="question box: "><i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden"></span> Question</div>
+        <div class="box-title question-title" id="question-7" aria-label="question box: "><i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden"></span> Question</div>
 
         <ol>
           <li>What % <span class="notranslate">reads</span> contain adapter?</li>
@@ -2007,7 +1991,7 @@ GTGTCAGCCGCCGCGGTAGTCCGACGTGGCTGTCTCTTATACACATCTCC
         </ol>
 
         <blockquote class="solution">
-          <div id="solution-7" class="box-title"><button type="button" aria-controls="solution-7-contents" aria-expanded="true" aria-label="Toggle solution box: "><i class="far fa-eye" aria-hidden="true"></i><span class="visually-hidden"></span> Solution<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
+          <div class="box-title solution-title" id="solution-7"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-7-contents" aria-expanded="true" aria-label="Toggle solution box: "><i class="far fa-eye" aria-hidden="true"></i><span class="visually-hidden"></span> Solution<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
           <ol>
             <li>56.8% <span class="notranslate">reads</span> contain adapter (<code class="language-plaintext highlighter-rouge"><span class="notranslate">Reads</span> with adapters:</code>)</li>
             <li>35.1% <span class="notranslate">reads</span> have been trimmed because of bad quality (<code class="language-plaintext highlighter-rouge">Quality-trimmed:</code>)</li>
@@ -2020,7 +2004,7 @@ GTGTCAGCCGCCGCGGTAGTCCGACGTGGCTGTCTCTTATACACATCTCC
 </blockquote>
 
 <blockquote class="details">
-  <div id="details-trimming-with-cutadapt" class="box-title"><button type="button" aria-controls="details-trimming-with-cutadapt-contents" aria-expanded="true" aria-label="Toggle details box: Trimming with Cutadapt"><i class="fas fa-info-circle" aria-hidden="true"></i><span class="visually-hidden"></span> Details: Trimming with Cutadapt<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
+  <div class="box-title details-title" id="details-trimming-with-cutadapt"><button class="gtn-boxify-button details" type="button" aria-controls="details-trimming-with-cutadapt-contents" aria-expanded="true" aria-label="Toggle details box: Trimming with Cutadapt"><i class="fas fa-info-circle" aria-hidden="true"></i><span class="visually-hidden"></span> Details: Trimming with Cutadapt<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
 
   <p>One of the biggest advantage of Cutadapt compared to other trimming tools (e.g. TrimGalore!) is that it has a good <a href="https://cutadapt.readthedocs.io">documentation</a> explaining how the tool works in detail.</p>
 
@@ -2080,7 +2064,7 @@ GTGTCAGCCGCCGCGGTAGTCCGACGTGGCTGTCTCTTATACACATCTCC
 <p>We can examine our trimmed data with FASTQE and/or FastQC.</p>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-checking-quality-after-trimming" class="box-title" aria-label="hands-on box: Checking quality after trimming"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Checking quality after trimming</div>
+  <div class="box-title hands-on-title" id="hands-on-checking-quality-after-trimming" aria-label="hands-on box: Checking quality after trimming"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Checking quality after trimming</div>
 
   <ol>
     <li><span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/iuc/fastqe/fastqe/0.2.6+galaxy2" title="Tested with toolshed.g2.bx.psu.edu/repos/iuc/fastqe/fastqe/0.2.6+galaxy2"><strong>FASTQE</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: <span class="notranslate">toolshed</span>.g2.bx.psu.edu/repos/iuc/fastqe/fastqe/0.2.6+<span class="notranslate">galaxy</span>2</span></span> : Re-run <strong>FASTQE</strong> with the following parameters
@@ -2093,15 +2077,15 @@ GTGTCAGCCGCCGCGGTAGTCCGACGTGGCTGTCTCTTATACACATCTCC
       <p>Inspect the new FASTQE report</p>
 
       <blockquote class="question">
-        <div id="question-8" class="box-title" aria-label="question box: "><i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden"></span> Question</div>
+        <div class="box-title question-title" id="question-8" aria-label="question box: "><i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden"></span> Question</div>
 
         <p>Compare the FASTQE output to the previous one before trimming above. Has sequence quality been improved?</p>
 
         <!--SNIPPET-->
-        <blockquote class="tip">  <div id="tip-using-the-scratchbook-to-view-multiple-datasets" class="box-title"><button type="button" aria-controls="tip-using-the-scratchbook-to-view-multiple-datasets-contents" aria-expanded="true" aria-label="Toggle tip box: Using the Scratchbook to view multiple datasets"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: Using the Scratchbook to view multiple datasets<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>  <p>If you would like to view two or more datasets at once, you can use the <strong>Scratchbook</strong> feature in <span class="notranslate">Galaxy</span>:</p>  <ol>  <li><strong>Click</strong> on the <em>Scratchbook</em> icon <i class="fas fa-th" aria-hidden="true"></i><span class="visually-hidden"><span class="notranslate">galaxy</span>-scratchbook</span> on the top menu bar.    <ul>      <li>You should see a little checkmark on the icon now</li>    </ul>  </li>  <li><strong>View</strong> <i class="far fa-eye" aria-hidden="true"></i><span class="visually-hidden"><span class="notranslate">galaxy</span>-eye</span> a dataset by clicking on the eye icon <i class="far fa-eye" aria-hidden="true"></i><span class="visually-hidden"><span class="notranslate">galaxy</span>-eye</span> to view the output    <ul>      <li>You should see the output in a window overlayed over <span class="notranslate">Galaxy</span></li>      <li>You can resize this window by dragging the bottom-right corner</li>    </ul>  </li>  <li><strong>Click</strong> outside the file to exit the Scratchbook</li>  <li><strong>View</strong> <i class="far fa-eye" aria-hidden="true"></i><span class="visually-hidden"><span class="notranslate">galaxy</span>-eye</span> a second dataset from your history    <ul>      <li>You should now see a second window with the new dataset</li>      <li>This makes it easier to compare the two outputs</li>    </ul>  </li>  <li>Repeat this for as many files as you would like to compare</li>  <li>You can turn off the <strong>Scratchbook</strong> <i class="fas fa-th" aria-hidden="true"></i><span class="visually-hidden"><span class="notranslate">galaxy</span>-scratchbook</span> by clicking on the icon again</li></ol></blockquote>
+        <blockquote class="tip">   <div class="box-title tip-title" id="tip-using-the-scratchbook-to-view-multiple-datasets"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-using-the-scratchbook-to-view-multiple-datasets-contents" aria-expanded="true" aria-label="Toggle tip box: Using the Scratchbook to view multiple datasets"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: Using the Scratchbook to view multiple datasets<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>   <p>If you would like to view two or more datasets at once, you can use the <strong>Scratchbook</strong> feature in <span class="notranslate">Galaxy</span>:</p>   <ol>   <li><strong>Click</strong> on the <em>Scratchbook</em> icon <i class="fas fa-th" aria-hidden="true"></i><span class="visually-hidden"><span class="notranslate">galaxy</span>-scratchbook</span> on the top menu bar.     <ul>       <li>You should see a little checkmark on the icon now</li>     </ul>   </li>   <li><strong>View</strong> <i class="far fa-eye" aria-hidden="true"></i><span class="visually-hidden"><span class="notranslate">galaxy</span>-eye</span> a dataset by clicking on the eye icon <i class="far fa-eye" aria-hidden="true"></i><span class="visually-hidden"><span class="notranslate">galaxy</span>-eye</span> to view the output     <ul>       <li>You should see the output in a window overlayed over <span class="notranslate">Galaxy</span></li>       <li>You can resize this window by dragging the bottom-right corner</li>     </ul>   </li>   <li><strong>Click</strong> outside the file to exit the Scratchbook</li>   <li><strong>View</strong> <i class="far fa-eye" aria-hidden="true"></i><span class="visually-hidden"><span class="notranslate">galaxy</span>-eye</span> a second dataset from your history     <ul>       <li>You should now see a second window with the new dataset</li>       <li>This makes it easier to compare the two outputs</li>     </ul>   </li>   <li>Repeat this for as many files as you would like to compare</li>   <li>You can turn off the <strong>Scratchbook</strong> <i class="fas fa-th" aria-hidden="true"></i><span class="visually-hidden"><span class="notranslate">galaxy</span>-scratchbook</span> by clicking on the icon again</li> </ol> </blockquote>
 
         <blockquote class="solution">
-          <div id="solution-8" class="box-title"><button type="button" aria-controls="solution-8-contents" aria-expanded="true" aria-label="Toggle solution box: "><i class="far fa-eye" aria-hidden="true"></i><span class="visually-hidden"></span> Solution<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
+          <div class="box-title solution-title" id="solution-8"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-8-contents" aria-expanded="true" aria-label="Toggle solution box: "><i class="far fa-eye" aria-hidden="true"></i><span class="visually-hidden"></span> Solution<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
           <p>Yes, the quality score emojis look better (happier) now.</p>
 
           <figure id="figure-13"><img src="../../images/quality-control/fastqe-mean-before.png" alt="FASTQE before. " loading="lazy" /><figcaption><span class="figcaption-prefix">Figure 13:</span> Before trimming</figcaption></figure>
@@ -2119,7 +2103,7 @@ GTGTCAGCCGCCGCGGTAGTCCGACGTGGCTGTCTCTTATACACATCTCC
 <p>We can also, or instead, check the quality-controlled data with FastQC.</p>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-checking-quality-after-trimming-1" class="box-title" aria-label="hands-on box: Checking quality after trimming"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Checking quality after trimming</div>
+  <div class="box-title hands-on-title" id="hands-on-checking-quality-after-trimming-1" aria-label="hands-on box: Checking quality after trimming"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Checking quality after trimming</div>
 
   <ol>
     <li><span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/devteam/fastqc/fastqc/0.73+galaxy0" title="Tested with toolshed.g2.bx.psu.edu/repos/devteam/fastqc/fastqc/0.73+galaxy0"><strong>FASTQC</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: <span class="notranslate">toolshed</span>.g2.bx.psu.edu/repos/devteam/fastqc/fastqc/0.73+<span class="notranslate">galaxy</span>0</span></span>  with the following parameters
@@ -2133,14 +2117,14 @@ GTGTCAGCCGCCGCGGTAGTCCGACGTGGCTGTCTCTTATACACATCTCC
 </blockquote>
 
 <blockquote class="question">
-  <div id="question-9" class="box-title" aria-label="question box: "><i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden"></span> Question</div>
+  <div class="box-title question-title" id="question-9" aria-label="question box: "><i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden"></span> Question</div>
   <ol>
     <li>Does the per base sequence quality look better?</li>
     <li>Is the adapter gone?</li>
   </ol>
 
   <blockquote class="solution">
-    <div id="solution-9" class="box-title"><button type="button" aria-controls="solution-9-contents" aria-expanded="true" aria-label="Toggle solution box: "><i class="far fa-eye" aria-hidden="true"></i><span class="visually-hidden"></span> Solution<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
+    <div class="box-title solution-title" id="solution-9"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-9-contents" aria-expanded="true" aria-label="Toggle solution box: "><i class="far fa-eye" aria-hidden="true"></i><span class="visually-hidden"></span> Solution<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
     <ol>
       <li>Yes. The vast majority of the bases have a quality score above 20 now.</li>
     </ol>
@@ -2157,7 +2141,7 @@ GTGTCAGCCGCCGCGGTAGTCCGACGTGGCTGTCTCTTATACACATCTCC
 <p>With FastQC we can see we improved the quality of the bases in the dataset and removed the adapter.</p>
 
 <blockquote class="details">
-  <div id="details-other-fastqc-plots-after-trimming" class="box-title"><button type="button" aria-controls="details-other-fastqc-plots-after-trimming-contents" aria-expanded="true" aria-label="Toggle details box: Other FastQC plots after trimming"><i class="fas fa-info-circle" aria-hidden="true"></i><span class="visually-hidden"></span> Details: Other FastQC plots after trimming<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
+  <div class="box-title details-title" id="details-other-fastqc-plots-after-trimming"><button class="gtn-boxify-button details" type="button" aria-controls="details-other-fastqc-plots-after-trimming-contents" aria-expanded="true" aria-label="Toggle details box: Other FastQC plots after trimming"><i class="fas fa-info-circle" aria-hidden="true"></i><span class="visually-hidden"></span> Details: Other FastQC plots after trimming<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
 
   <p><img src="../../images/quality-control/per_tile_sequence_quality-after.png" alt="Per tile sequence quality. " loading="lazy" />
 We have some red stripes as we’ve trimmed those regions from the <span class="notranslate">reads</span>.</p>
@@ -2179,12 +2163,12 @@ We now have multiple peaks and a range of lengths, instead of the single peak wi
 
   <p><img src="../../images/quality-control/sequence_duplication_levels-after.png" alt="Sequence Duplication Levels. " loading="lazy" /></p>
   <blockquote class="question">
-    <div id="question-10" class="box-title" aria-label="question box: "><i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden"></span> Question</div>
+    <div class="box-title question-title" id="question-10" aria-label="question box: "><i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden"></span> Question</div>
 
     <p>What does the top overrepresented sequence <code class="language-plaintext highlighter-rouge">GTGTCAGCCGCCGCGGTAGTCCGACGTGG</code> correspond to?</p>
 
     <blockquote class="solution">
-      <div id="solution-10" class="box-title"><button type="button" aria-controls="solution-10-contents" aria-expanded="true" aria-label="Toggle solution box: "><i class="far fa-eye" aria-hidden="true"></i><span class="visually-hidden"></span> Solution<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
+      <div class="box-title solution-title" id="solution-10"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-10-contents" aria-expanded="true" aria-label="Toggle solution box: "><i class="far fa-eye" aria-hidden="true"></i><span class="visually-hidden"></span> Solution<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
       <p>If we take the top overrepresented sequence</p>
       <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&gt;overrep_seq1_after
 GTGTCAGCCGCCGCGGTAGTCCGACGTGG
@@ -2219,7 +2203,7 @@ GTGTCAGCCGCCGCGGTAGTCCGACGTGG
 <p>The data we analyzed in the previous step was single-end data so we will import a paired-end <span class="notranslate">RNA</span>-seq dataset to use. We will run FastQC and aggregate the two reports with MultiQC <span class="citation"><a href="#ewels2016multiqc">Ewels <i>et al.</i> 2016</a></span>.</p>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-assessing-the-quality-of-paired-end-reads" class="box-title" aria-label="hands-on box: Assessing the quality of paired-end reads"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Assessing the quality of paired-end <span class="notranslate">reads</span></div>
+  <div class="box-title hands-on-title" id="hands-on-assessing-the-quality-of-paired-end-reads" aria-label="hands-on box: Assessing the quality of paired-end reads"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Assessing the quality of paired-end <span class="notranslate">reads</span></div>
 
   <ol>
     <li>
@@ -2235,7 +2219,7 @@ https://zenodo.org/record/61771/files/GSM461178_untreat_paired_subset_2.fastq
       </ul>
 
       <!--SNIPPET-->
-      <blockquote class="tip">  <div id="tip-select-multiple-datasets" class="box-title"><button type="button" aria-controls="tip-select-multiple-datasets-contents" aria-expanded="true" aria-label="Toggle tip box: Select multiple datasets"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: Select multiple datasets<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>  <ol>  <li>Click on <i class="far fa-copy" aria-hidden="true"></i><span class="visually-hidden">param-files</span> <strong>Multiple datasets</strong></li>  <li>Select several files by keeping the <kbd>Ctrl</kbd> (or<kbd>COMMAND</kbd>) key pressed and clicking on the files of interest</li></ol></blockquote>
+      <blockquote class="tip">   <div class="box-title tip-title" id="tip-select-multiple-datasets"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-select-multiple-datasets-contents" aria-expanded="true" aria-label="Toggle tip box: Select multiple datasets"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: Select multiple datasets<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>   <ol>   <li>Click on <i class="far fa-copy" aria-hidden="true"></i><span class="visually-hidden">param-files</span> <strong>Multiple datasets</strong></li>   <li>Select several files by keeping the <kbd>Ctrl</kbd> (or <kbd>COMMAND</kbd>) key pressed and clicking on the files of interest</li> </ol> </blockquote>
     </li>
     <li><span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/iuc/multiqc/multiqc/1.9+galaxy1" title="Tested with toolshed.g2.bx.psu.edu/repos/iuc/multiqc/multiqc/1.9+galaxy1"><strong>MultiQC</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: <span class="notranslate">toolshed</span>.g2.bx.psu.edu/repos/iuc/multiqc/multiqc/1.9+<span class="notranslate">galaxy</span>1</span></span>  with the following parameters to aggregate the FastQC reports of both forward and reverse <span class="notranslate">reads</span>
       <ul>
@@ -2258,7 +2242,7 @@ https://zenodo.org/record/61771/files/GSM461178_untreat_paired_subset_2.fastq
 </blockquote>
 
 <blockquote class="question">
-  <div id="question-11" class="box-title" aria-label="question box: "><i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden"></span> Question</div>
+  <div class="box-title question-title" id="question-11" aria-label="question box: "><i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden"></span> Question</div>
 
   <ol>
     <li>What do you think about the quality of the sequences?</li>
@@ -2266,7 +2250,7 @@ https://zenodo.org/record/61771/files/GSM461178_untreat_paired_subset_2.fastq
   </ol>
 
   <blockquote class="solution">
-    <div id="solution-11" class="box-title"><button type="button" aria-controls="solution-11-contents" aria-expanded="true" aria-label="Toggle solution box: "><i class="far fa-eye" aria-hidden="true"></i><span class="visually-hidden"></span> Solution<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
+    <div class="box-title solution-title" id="solution-11"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-11-contents" aria-expanded="true" aria-label="Toggle solution box: "><i class="far fa-eye" aria-hidden="true"></i><span class="visually-hidden"></span> Solution<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
 
     <ol>
       <li>The quality of the sequences seems worse for the reverse <span class="notranslate">reads</span> than for the forward <span class="notranslate">reads</span>:
@@ -2289,7 +2273,7 @@ https://zenodo.org/record/61771/files/GSM461178_untreat_paired_subset_2.fastq
 <p>After trimming, reverse <span class="notranslate">reads</span> will be shorter because of their quality and then will be eliminated during the filtering step. If one of the reverse <span class="notranslate">reads</span> is removed, its corresponding forward read should be removed too. Otherwise we will get different number of <span class="notranslate">reads</span> in both files and in different order, and order is important for the next steps. Therefore <strong>it is important to treat the forward and reverse <span class="notranslate">reads</span> together for trimming and filtering</strong>.</p>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-improving-the-quality-of-paired-end-data" class="box-title" aria-label="hands-on box: Improving the quality of paired-end data"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Improving the quality of paired-end data</div>
+  <div class="box-title hands-on-title" id="hands-on-improving-the-quality-of-paired-end-data" aria-label="hands-on box: Improving the quality of paired-end data"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Improving the quality of paired-end data</div>
   <ol>
     <li><span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/lparsons/cutadapt/cutadapt/3.4+galaxy2" title="Tested with toolshed.g2.bx.psu.edu/repos/lparsons/cutadapt/cutadapt/3.4+galaxy2"><strong>Cutadapt</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: <span class="notranslate">toolshed</span>.g2.bx.psu.edu/repos/lparsons/cutadapt/cutadapt/3.4+<span class="notranslate">galaxy</span>2</span></span>  with the following parameters
       <ul>
@@ -2329,7 +2313,7 @@ https://zenodo.org/record/61771/files/GSM461178_untreat_paired_subset_2.fastq
       <p>Inspect the generated txt file (<code class="language-plaintext highlighter-rouge">Report</code>)</p>
 
       <blockquote class="question">
-        <div id="question-12" class="box-title" aria-label="question box: "><i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden"></span> Question</div>
+        <div class="box-title question-title" id="question-12" aria-label="question box: "><i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden"></span> Question</div>
 
         <ol>
           <li>How many basepairs has been removed from the <span class="notranslate">reads</span> because of bad quality?</li>
@@ -2337,7 +2321,7 @@ https://zenodo.org/record/61771/files/GSM461178_untreat_paired_subset_2.fastq
         </ol>
 
         <blockquote class="solution">
-          <div id="solution-12" class="box-title"><button type="button" aria-controls="solution-12-contents" aria-expanded="true" aria-label="Toggle solution box: "><i class="far fa-eye" aria-hidden="true"></i><span class="visually-hidden"></span> Solution<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
+          <div class="box-title solution-title" id="solution-12"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-12-contents" aria-expanded="true" aria-label="Toggle solution box: "><i class="far fa-eye" aria-hidden="true"></i><span class="visually-hidden"></span> Solution<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
           <ol>
             <li>44,164 bp (<code class="language-plaintext highlighter-rouge">Quality-trimmed:</code>) for the forward <span class="notranslate">reads</span> and 138,638 bp for the reverse <span class="notranslate">reads</span>.</li>
             <li>1,376 sequences have been removed because at least one read was shorter than the length cutoff (322 when only the forward <span class="notranslate">reads</span> were analyzed).</li>
@@ -2358,7 +2342,7 @@ https://zenodo.org/record/61771/files/GSM461178_untreat_paired_subset_2.fastq
 <p>These datasets can be used for the <span class="notranslate">downstream</span> analysis, e.g. <span class="notranslate">mapping</span>.</p>
 
 <blockquote class="question">
-  <div id="question-13" class="box-title" aria-label="question box: "><i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden"></span> Question</div>
+  <div class="box-title question-title" id="question-13" aria-label="question box: "><i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden"></span> Question</div>
 
   <ol>
     <li>What kind of alignment is used for finding adapters in <span class="notranslate">reads</span>?</li>
@@ -2366,7 +2350,7 @@ https://zenodo.org/record/61771/files/GSM461178_untreat_paired_subset_2.fastq
   </ol>
 
   <blockquote class="solution">
-    <div id="solution-13" class="box-title"><button type="button" aria-controls="solution-13-contents" aria-expanded="true" aria-label="Toggle solution box: "><i class="far fa-eye" aria-hidden="true"></i><span class="visually-hidden"></span> Solution<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
+    <div class="box-title solution-title" id="solution-13"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-13-contents" aria-expanded="true" aria-label="Toggle solution box: "><i class="far fa-eye" aria-hidden="true"></i><span class="visually-hidden"></span> Solution<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
 
     <ol>
       <li>Semi-global alignment, i.e., only the overlapping part of the read and the adapter sequence is used for scoring.</li>
@@ -2381,7 +2365,7 @@ https://zenodo.org/record/61771/files/GSM461178_untreat_paired_subset_2.fastq
 <p>In case of long <span class="notranslate">reads</span>, we can check sequence quality with <a href="https://github.com/wdecoster/NanoPlot/">Nanoplot</a> (<span class="citation"><a href="#10.1093/bioinformatics/bty149">De Coster <i>et al.</i> 2018</a></span>). It provides basic statistics with nice plots for a fast quality control overview.</p>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-quality-check-of-long-reads" class="box-title" aria-label="hands-on box: Quality check of long reads"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Quality check of long <span class="notranslate">reads</span></div>
+  <div class="box-title hands-on-title" id="hands-on-quality-check-of-long-reads" aria-label="hands-on box: Quality check of long reads"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Quality check of long <span class="notranslate">reads</span></div>
   <ol>
     <li>
       <p>Create a new history for this part and give it a proper name</p>
@@ -2409,12 +2393,12 @@ https://zenodo.org/record/61771/files/GSM461178_untreat_paired_subset_2.fastq
 </blockquote>
 
 <blockquote class="question">
-  <div id="question-14" class="box-title" aria-label="question box: "><i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden"></span> Question</div>
+  <div class="box-title question-title" id="question-14" aria-label="question box: "><i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden"></span> Question</div>
 
   <p>What is the mean Qscore ?</p>
 
   <blockquote class="solution">
-    <div id="solution-14" class="box-title"><button type="button" aria-controls="solution-14-contents" aria-expanded="true" aria-label="Toggle solution box: "><i class="far fa-eye" aria-hidden="true"></i><span class="visually-hidden"></span> Solution<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
+    <div class="box-title solution-title" id="solution-14"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-14-contents" aria-expanded="true" aria-label="Toggle solution box: "><i class="far fa-eye" aria-hidden="true"></i><span class="visually-hidden"></span> Solution<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
     <p>The Qscore is around Q32.
 In case of PacBio CLR and Nanopore, it’s around Q12 and close to Q31 for Illumina (NovaSeq 6000).</p>
     <figure id="figure-16"><img src="../../images/quality-control/qscore-illumina-pacbio-nanopore.png" alt="Plot of Qscore between Illumina, PacBio and Nanopore. " loading="lazy" /><figcaption><span class="figcaption-prefix">Figure 16:</span> Comparison of Qscore between Illumina, PacBio and Nanopore</figcaption></figure>
@@ -2424,7 +2408,7 @@ In case of PacBio CLR and Nanopore, it’s around Q12 and close to Q31 for Illum
 
   <p>What is the median, mean and N50?</p>
   <blockquote class="solution">
-    <div id="solution-15" class="box-title"><button type="button" aria-controls="solution-15-contents" aria-expanded="true" aria-label="Toggle solution box: "><i class="far fa-eye" aria-hidden="true"></i><span class="visually-hidden"></span> Solution<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
+    <div class="box-title solution-title" id="solution-15"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-15-contents" aria-expanded="true" aria-label="Toggle solution box: "><i class="far fa-eye" aria-hidden="true"></i><span class="visually-hidden"></span> Solution<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
     <p>The median, the mean read length and the N50 as well are close to 18,000bp.
 For PacBio HiFi <span class="notranslate">reads</span>, the majority of the <span class="notranslate">reads</span> are generally near this value as the library preparation includes a size selection step.
 For other technologies like PacBio CLR and Nanopore, it is larger and mostly depends on the quality of your <span class="notranslate">DNA</span> extraction.</p>
@@ -2448,10 +2432,10 @@ In runs with a lot of short <span class="notranslate">reads</span> the shorter <
 <figure id="figure-18"><img src="../../images/quality-control/LengthvsQualityScatterPlot_dot.png" alt="Read lengths vs Average read quality plot using dots. " loading="lazy" /><figcaption><span class="figcaption-prefix">Figure 18:</span> Histogram of read length</figcaption></figure>
 
 <blockquote class="question">
-  <div id="question-15" class="box-title" aria-label="question box: "><i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden"></span> Question</div>
+  <div class="box-title question-title" id="question-15" aria-label="question box: "><i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden"></span> Question</div>
   <p>Looking at “Read lengths vs Average read quality plot using dots plot”. Did you notice something unusual with the Qscore? Can you explain it?</p>
   <blockquote class="solution">
-    <div id="solution-16" class="box-title"><button type="button" aria-controls="solution-16-contents" aria-expanded="true" aria-label="Toggle solution box: "><i class="far fa-eye" aria-hidden="true"></i><span class="visually-hidden"></span> Solution<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
+    <div class="box-title solution-title" id="solution-16"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-16-contents" aria-expanded="true" aria-label="Toggle solution box: "><i class="far fa-eye" aria-hidden="true"></i><span class="visually-hidden"></span> Solution<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
     <p>There is no <span class="notranslate">reads</span> under Q20.
 The qualification for HiFi <span class="notranslate">reads</span> is:</p>
     <ul>
@@ -2463,7 +2447,7 @@ The qualification for HiFi <span class="notranslate">reads</span> is:</p>
 </blockquote>
 
 <blockquote class="comment">
-  <div id="comment-try-it-on" class="box-title" aria-label="comment box: Try it on!"><i class="far fa-comment-dots" aria-hidden="true"></i><span class="visually-hidden"></span> Comment: Try it on!</div>
+  <div class="box-title comment-title" id="comment-try-it-on" aria-label="comment box: Try it on!"><i class="far fa-comment-dots" aria-hidden="true"></i><span class="visually-hidden"></span> Comment: Try it on!</div>
   <p>Do the quality control with <strong>FastQC</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> on <code class="language-plaintext highlighter-rouge">m64011_190830_220126.Q20.subsample.fastq.gz</code> and compare the results!</p>
 </blockquote>
 
@@ -2474,7 +2458,7 @@ The qualification for HiFi <span class="notranslate">reads</span> is:</p>
 <p>One of the strengths of PycoQC is that it is interactive and highly customizable, e.g., plots can be cropped, you can zoom in and out, sub-select areas and export figures.</p>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-quality-check-of-nanopore-reads" class="box-title" aria-label="hands-on box: Quality check of Nanopore reads"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Quality check of Nanopore <span class="notranslate">reads</span></div>
+  <div class="box-title hands-on-title" id="hands-on-quality-check-of-nanopore-reads" aria-label="hands-on box: Quality check of Nanopore reads"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Quality check of Nanopore <span class="notranslate">reads</span></div>
   <ol>
     <li>
       <p>Create a new history for this part and give it a proper name</p>
@@ -2501,18 +2485,18 @@ https://zenodo.org/api/files/ff9aa6e3-3d69-451f-9798-7ea69b475989/sequencing_sum
 </blockquote>
 
 <blockquote class="question">
-  <div id="question-16" class="box-title" aria-label="question box: "><i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden"></span> Question</div>
+  <div class="box-title question-title" id="question-16" aria-label="question box: "><i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden"></span> Question</div>
 
   <p>How many <span class="notranslate">reads</span> do you have in total?</p>
   <blockquote class="solution">
-    <div id="solution-17" class="box-title"><button type="button" aria-controls="solution-17-contents" aria-expanded="true" aria-label="Toggle solution box: "><i class="far fa-eye" aria-hidden="true"></i><span class="visually-hidden"></span> Solution<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
+    <div class="box-title solution-title" id="solution-17"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-17-contents" aria-expanded="true" aria-label="Toggle solution box: "><i class="far fa-eye" aria-hidden="true"></i><span class="visually-hidden"></span> Solution<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
     <p>~270k <span class="notranslate">reads</span> in total (see the Basecall summary table, “All <span class="notranslate">reads</span>”)
 For most of basecalling profiles, Guppy will assign <span class="notranslate">reads</span> as “Pass” if the read Qscore is at least equal to 7.</p>
   </blockquote>
 
   <p>What is the median, minimum and maximum read length, what is the N50?</p>
   <blockquote class="solution">
-    <div id="solution-18" class="box-title"><button type="button" aria-controls="solution-18-contents" aria-expanded="true" aria-label="Toggle solution box: "><i class="far fa-eye" aria-hidden="true"></i><span class="visually-hidden"></span> Solution<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
+    <div class="box-title solution-title" id="solution-18"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-18-contents" aria-expanded="true" aria-label="Toggle solution box: "><i class="far fa-eye" aria-hidden="true"></i><span class="visually-hidden"></span> Solution<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
     <p>The median read length and the N50 can be found for all as well as for all passed <span class="notranslate">reads</span>, i.e., <span class="notranslate">reads</span> that passed Guppy quality settings (Qscore &gt;= 7), in the basecall summary table.
 For the minimum (195bp) and maximum (256kbp) read lengths, it can be found with the read lengths plot.</p>
   </blockquote>
@@ -2538,10 +2522,10 @@ For old runs, the distribution can be lower, as basecalling models are less prec
 <h2 id="basecalled-reads-length-vs-reads-phred-quality">Basecalled <span class="notranslate">reads</span> length vs <span class="notranslate">reads</span> PHRED quality</h2>
 
 <blockquote class="question">
-  <div id="question-17" class="box-title" aria-label="question box: "><i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden"></span> Question</div>
+  <div class="box-title question-title" id="question-17" aria-label="question box: "><i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden"></span> Question</div>
   <p>What do the mean quality and the quality distribution of the run look like?</p>
   <blockquote class="solution">
-    <div id="solution-19" class="box-title"><button type="button" aria-controls="solution-19-contents" aria-expanded="true" aria-label="Toggle solution box: "><i class="far fa-eye" aria-hidden="true"></i><span class="visually-hidden"></span> Solution<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
+    <div class="box-title solution-title" id="solution-19"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-19-contents" aria-expanded="true" aria-label="Toggle solution box: "><i class="far fa-eye" aria-hidden="true"></i><span class="visually-hidden"></span> Solution<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
     <p>The majority of the <span class="notranslate">reads</span> have a Qscore between 8 and 11 which is standard for Nanopore data.
 Beware that for the same data, the basecaller used (Albacor, Guppy, Bonito), the model (fast, hac, sup) and the tool version can give different results.</p>
   </blockquote>
@@ -2575,7 +2559,7 @@ Although it is normal that yield decreases over time a decrease like this is not
 <figure id="figure-23"><img src="../../images/quality-control/output_over_experiment_time-pycoqc.png" alt="Output over experiment time. " loading="lazy" /><figcaption><span class="figcaption-prefix">Figure 23:</span> Output over experiment time</figcaption></figure>
 
 <blockquote class="details">
-  <div id="details-other-quot-output-over-experiment-time-quot-profile" class="box-title"><button type="button" aria-controls="details-other-quot-output-over-experiment-time-quot-profile-contents" aria-expanded="true" aria-label="Toggle details box: Other &quot;Output over experiment time&quot; profile"><i class="fas fa-info-circle" aria-hidden="true"></i><span class="visually-hidden"></span> Details: Other &quot;Output over experiment time&quot; profile<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
+  <div class="box-title details-title" id="details-other-quot-output-over-experiment-time-quot-profile"><button class="gtn-boxify-button details" type="button" aria-controls="details-other-quot-output-over-experiment-time-quot-profile-contents" aria-expanded="true" aria-label="Toggle details box: Other &quot;Output over experiment time&quot; profile"><i class="fas fa-info-circle" aria-hidden="true"></i><span class="visually-hidden"></span> Details: Other &quot;Output over experiment time&quot; profile<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
 
   <p>In this example, the data production over the time only slightly decreased over the 12h with a continuous increasing of cumulative data.
 This absence of a decreasing curve at the end of the run indicate that there is still biological material on the flow cell. The run was ended before all was sequenced.
@@ -2588,10 +2572,10 @@ It’s an excellent run, even can be considered as exceptional.</p>
 <h3 id="read-length-over-experiment-time">Read length over experiment time</h3>
 
 <blockquote class="question">
-  <div id="question-18" class="box-title" aria-label="question box: "><i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden"></span> Question</div>
+  <div class="box-title question-title" id="question-18" aria-label="question box: "><i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden"></span> Question</div>
   <p>Did the read length change over time? What could the reason be?</p>
   <blockquote class="solution">
-    <div id="solution-20" class="box-title"><button type="button" aria-controls="solution-20-contents" aria-expanded="true" aria-label="Toggle solution box: "><i class="far fa-eye" aria-hidden="true"></i><span class="visually-hidden"></span> Solution<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
+    <div class="box-title solution-title" id="solution-20"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-20-contents" aria-expanded="true" aria-label="Toggle solution box: "><i class="far fa-eye" aria-hidden="true"></i><span class="visually-hidden"></span> Solution<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
     <p>In the current example the read length increases over the time of the sequencing run.
 One explanation is that the adapter density is higher for lots of short fragments and therefore the chance of a shorter fragment to attach to a pore is higher. Also, shorter molecules may move faster over the chip.
 Over time, however, the shorter fragments are becoming rarer and thus more long fragments attach to pores and are sequenced.</p>
@@ -2614,7 +2598,7 @@ Depending if you chose “<span class="notranslate">Reads</span>” or “Bases�
 <figure id="figure-25"><img src="../../images/quality-control/channel_activity_over_time-pycoqc.png" alt="Channel activity over time. " loading="lazy" /><figcaption><span class="figcaption-prefix">Figure 25:</span> Channel activity over time</figcaption></figure>
 
 <blockquote class="details">
-  <div id="details-other-quot-channel-activity-over-time-quot-profile" class="box-title"><button type="button" aria-controls="details-other-quot-channel-activity-over-time-quot-profile-contents" aria-expanded="true" aria-label="Toggle details box: Other &quot;Channel activity over time&quot; profile"><i class="fas fa-info-circle" aria-hidden="true"></i><span class="visually-hidden"></span> Details: Other &quot;Channel activity over time&quot; profile<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
+  <div class="box-title details-title" id="details-other-quot-channel-activity-over-time-quot-profile"><button class="gtn-boxify-button details" type="button" aria-controls="details-other-quot-channel-activity-over-time-quot-profile-contents" aria-expanded="true" aria-label="Toggle details box: Other &quot;Channel activity over time&quot; profile"><i class="fas fa-info-circle" aria-hidden="true"></i><span class="visually-hidden"></span> Details: Other &quot;Channel activity over time&quot; profile<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
 
   <p>In this example, almost all pores are active all along the run (yellow/red profile) which indicate an excellent run.</p>
 
@@ -2623,7 +2607,7 @@ Depending if you chose “<span class="notranslate">Reads</span>” or “Bases�
 </blockquote>
 
 <blockquote class="comment">
-  <div id="comment-try-it-out" class="box-title" aria-label="comment box: Try it out!"><i class="far fa-comment-dots" aria-hidden="true"></i><span class="visually-hidden"></span> Comment: Try it out!</div>
+  <div class="box-title comment-title" id="comment-try-it-out" aria-label="comment box: Try it out!"><i class="far fa-comment-dots" aria-hidden="true"></i><span class="visually-hidden"></span> Comment: Try it out!</div>
   <p>Do the quality control with <strong>FastQC</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> and/or <strong>Nanoplot</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> on <code class="language-plaintext highlighter-rouge">nanopore_basecalled-guppy.fastq.gz</code> and compare the results!</p>
 </blockquote>
 
@@ -2762,19 +2746,21 @@ day = ""
 url = "\url{https://training.galaxyproject.org/training-material/topics/sequence-analysis/tutorials/quality-control/tutorial.html}",
 note = "[Online; accessed TODAY]"
 }
-@article{Batut_2018,
-    doi = {10.1016/j.cels.2018.05.012},
-    url = {https://doi.org/10.1016%2Fj.cels.2018.05.012},
-    year = 2018,
-    month = {jun},
-    publisher = {Elsevier {BV}},
-    volume = {6},
-    number = {6},
-    pages = {752--758.e1},
-    author = {B{\'{e}}r{\'{e}}nice Batut and Saskia Hiltemann and Andrea Bagnacani and Dannon Baker and Vivek Bhardwaj and Clemens Blank and Anthony Bretaudeau and Loraine Brillet-Gu{\'{e}}guen and Martin {\v{C}}ech and John Chilton and Dave Clements and Olivia Doppelt-Azeroual and Anika Erxleben and Mallory Ann Freeberg and Simon Gladman and Youri Hoogstrate and Hans-Rudolf Hotz and Torsten Houwaart and Pratik Jagtap and Delphine Larivi{\`{e}}re and Gildas Le Corguill{\'{e}} and Thomas Manke and Fabien Mareuil and Fidel Ram{\'{\i}}rez and Devon Ryan and Florian Christoph Sigloch and Nicola Soranzo and Joachim Wolff and Pavankumar Videm and Markus Wolfien and Aisanjiang Wubuli and Dilmurat Yusuf and James Taylor and Rolf Backofen and Anton Nekrutenko and Björn Grüning},
-    title = {Community-Driven Data Analysis Training for Biology},
-    journal = {Cell Systems}
-}</code>
+@article{Hiltemann_2023,
+	doi = {10.1371/journal.pcbi.1010752},
+	url = {https://doi.org/10.1371%2Fjournal.pcbi.1010752},
+	year = 2023,
+	month = {jan},
+	publisher = {Public Library of Science ({PLoS})},
+	volume = {19},
+	number = {1},
+	pages = {e1010752},
+	author = {Saskia Hiltemann and Helena Rasche and Simon Gladman and Hans-Rudolf Hotz and Delphine Larivi{\`{e}}re and Daniel Blankenberg and Pratik D. Jagtap and Thomas Wollmann and Anthony Bretaudeau and Nadia Gou{\'{e}} and Timothy J. Griffin and Coline Royaux and Yvan Le Bras and Subina Mehta and Anna Syme and Frederik Coppens and Bert Droesbeke and Nicola Soranzo and Wendi Bacon and Fotis Psomopoulos and Crist{\'{o}}bal Gallardo-Alba and John Davis and Melanie Christine Föll and Matthias Fahrner and Maria A. Doyle and Beatriz Serrano-Solano and Anne Claire Fouilloux and Peter van Heusden and Wolfgang Maier and Dave Clements and Florian Heyl and Björn Grüning and B{\'{e}}r{\'{e}}nice Batut and},
+	editor = {Francis Ouellette},
+	title = {Galaxy Training: A powerful framework for teaching!},
+	journal = {PLoS Comput Biol} Computational Biology}
+}
+</code>
                    </pre></div></div>
                    </p>
                 </blockquote>
@@ -2808,6 +2794,10 @@ document.getElementById("citation-text").innerHTML = document.getElementById("ci
                 
                     
                         
+                    
+                        
+                    
+                        
                             
                             <li> Mapping:
                             
@@ -2820,8 +2810,6 @@ document.getElementById("citation-text").innerHTML = document.getElementById("ci
                                 
                             
                             </li>
-                        
-                    
                         
                     
                         
@@ -2853,8 +2841,6 @@ document.getElementById("citation-text").innerHTML = document.getElementById("ci
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
         <script type="text/javascript" src="/training-material/assets/js/bootstrap-toc.min.js"></script>
         <script type="text/javascript" src="/training-material/assets/js/main.js"></script>
-        <script type="text/javascript" src="/training-material/assets/js/theme.js"></script>
-
         <script type="text/javascript" src="/training-material/assets/js/clipboard.min.js"></script>
         <script type="text/javascript">
         var snippets=document.querySelectorAll('div.highlight');

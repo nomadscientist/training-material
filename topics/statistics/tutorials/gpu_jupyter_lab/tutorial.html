@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="utf-8">
@@ -14,7 +14,6 @@
         <link rel="stylesheet" href="/training-material/assets/css/main.css?v=2">
         <script src="https://kit.fontawesome.com/67b3f98409.js" crossorigin="anonymous"></script>
         <link rel="stylesheet" href="/training-material/assets/css/academicons.css">
-        <link rel="stylesheet" href="/training-material/assets/css/syntax_highlighting.css">
         <link rel="shortcut icon" href="/training-material/favicon.ico" type="image/x-icon" />
         <link rel="alternate" type="application/atom+xml" href="/training-material/feed.xml" />
         <link rel="canonical" href="https://training.galaxyproject.org/training-material/topics/statistics/tutorials/gpu_jupyter_lab/tutorial.html" />
@@ -24,10 +23,9 @@
 <meta name="DC.type" content="text" />
 <meta name="DC.title" content="A Docker-based interactive Jupyterlab powered by GPU for artificial intelligence in Galaxy" />
 <meta name="DC.publisher" content="Galaxy Training Network" />
-<meta name="DC.date" content="2022-09-28 13:13:58 +0000" />
+<meta name="DC.date" content="2023-01-24 14:21:57 +0000" />
 <meta name="DC.creator" content="Anup Kumar" />
 
-        
         
         
         
@@ -38,221 +36,9 @@
         <meta property="og:description" content="Statistical Analyses for omics data and machine learning ..." />
         <meta property="og:image" content="/training-material/assets/images/GTNLogo1000.png" />
 
-    </head>
-    <body data-spy="scroll" data-target="#toc">
-        <header>
-    <nav class="navbar navbar-expand-md navbar-dark" aria-label="Site Navigation">
-        <div class="container">
-            <a class="navbar-brand" href="/training-material/">
-                <img src="/training-material/assets/images/GTN-60px.png" height="30" alt="Galaxy Training Network logo">
-                Galaxy Training!
-            </a>
-
-            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#top-navbar" aria-controls="top-navbar" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="top-navbar">
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        
-                        <a class="nav-link" href="/training-material/topics/statistics" title="Go back to list of tutorials">
-                            <i class="far fa-folder" aria-hidden="true"></i> Statistics and machine learning
-                        </a>
-                        
-                    </li>
-
-                    <li class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false" title="Languages">
-                            <i class="fas fa-language" aria-hidden="true"></i><span class="visually-hidden">language</span> Languages
-                        </a>
-                        <div class="dropdown-menu dropdown-menu-right">
-                            
-                              <strong class="dropdown-header">Automatic Translations</strong>
-            
-            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=fr&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/statistics/tutorials/gpu_jupyter_lab/tutorial.html&edit-text=&act=url">
-                            Français
-                            </a>
-                            
-            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=ja&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/statistics/tutorials/gpu_jupyter_lab/tutorial.html&edit-text=&act=url">
-                            日本語
-                            </a>
-                            
-            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=es&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/statistics/tutorials/gpu_jupyter_lab/tutorial.html&edit-text=&act=url">
-                            Español
-                            </a>
-                            
-            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=pt&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/statistics/tutorials/gpu_jupyter_lab/tutorial.html&edit-text=&act=url">
-                            Português
-                            </a>
-                            
-            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=ar&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/statistics/tutorials/gpu_jupyter_lab/tutorial.html&edit-text=&act=url">
-                            العربية
-                            </a>
-                            
-                            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/statistics/tutorials/gpu_jupyter_lab/tutorial.html&edit-text=&act=url" title="">
-                            And more!
-                            </a>
-                        </div>
-                    </li>
-
-                    <li class="nav-item dropdown">
-    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false" title="Help">
-        <i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden">help</span> Help
-    </a>
-    <div class="dropdown-menu dropdown-menu-right">
-        <!-- disable Tess for now
-        <form method="get" action="https://tess.elixir-europe.org/materials">
-            <input type="text" id="search" name="q" value="" style="margin-left: 0.5em;/*! border-radius: 0px; */">
-            <input type="hidden" value="Galaxy Training" name="content_provider">
-            <input type="submit" value="Search on TeSS" style="width: 92%;border-radius: 0px;margin: 0.5em;background: #f47d20;border: 0px;padding: 0.25em;" class="">
-        </form>
-        -->
-
-        <a class="dropdown-item" href="/training-material/faq" title="Check our FAQs">
-           <i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden">question</span> FAQs
-        </a>
         
-        <a class="dropdown-item" href="/training-material/topics/statistics/faqs/" title="Check our FAQs for the Statistics and machine learning topic">
-           <i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden">question</span> Topic FAQs
-        </a>
-        
-        <a class="dropdown-item" href="https://help.galaxyproject.org/" title="Discuss on Galaxy Help">
-            <i class="far fa-comments" aria-hidden="true"></i><span class="visually-hidden">feedback</span> Galaxy Help Forum
-        </a>
-        <a class="dropdown-item" href="https://gitter.im/Galaxy-Training-Network/Lobby" title="Discuss on gitter">
-           <i class="fab fa-gitter" aria-hidden="true"></i><span class="visually-hidden">gitter</span> Discuss on Gitter
-        </a>
-    </div>
-</li>
-
-
-                    <li class="nav-item dropdown">
-    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false" title="Extras">
-        <i class="far fa-star" aria-hidden="true"></i><span class="visually-hidden">galaxy-star</span> Extras
-    </a>
-    <div class="dropdown-menu dropdown-menu-right">
-
-        
-        <a class="dropdown-item" href="https://github.com/galaxyproject/training-material/edit/main/topics/statistics/tutorials/gpu_jupyter_lab/tutorial.md" title="Edit on GitHub">
-          <i class="fab fa-github" aria-hidden="true"></i><span class="visually-hidden">github</span> Edit on GitHub
-        </a>
-
-        <a class="dropdown-item" href="/training-material/stats.html" title="Show view statistics about this repository">
-            <i class="fas fa-chart-bar" aria-hidden="true"></i><span class="visually-hidden">galaxy-barchart</span> GTN statistics
-        </a>
-
-        <a class="dropdown-item" href="https://plausible.galaxyproject.eu/training.galaxyproject.org?period=12mo&page=/training-material/topics/statistics/tutorials/gpu_jupyter_lab/tutorial.html" title="Show view statistics of this page">
-            <i class="fas fa-chart-bar" aria-hidden="true"></i><span class="visually-hidden">galaxy-barchart</span> Page Metrics
-        </a>
-
-        <!-- link to feedback -->
-        
+        <script type="application/ld+json">
             
-            
-                <a class="dropdown-item" href="/training-material/feedback.html" title="Show feedback statistics about this repository">
-                    <i class="fas fa-chart-bar" aria-hidden="true"></i><span class="visually-hidden">galaxy-barchart</span> GTN feedback
-                </a>
-            
-        
-
-        <div class="dropdown-item">
-            <div>
-                <i class="fas fa-palette" aria-hidden="true"></i><span class="visually-hidden">gtn-theme</span> Theme
-            </div>
-
-            <div id="theme-selector" data-toggle="buttons">
-                <label data-value="default" class="btn btn-secondary">
-                    <input type="radio" name="options" id="default" autocomplete="off"> Default
-                </label>
-                <label data-value="night" class="btn btn-secondary">
-                    <input type="radio" name="options" id="night" autocomplete="off"> Night
-                </label>
-                <label data-value="midnight" class="btn btn-secondary">
-                    <input type="radio" name="options" id="midnight" autocomplete="off"> Midnight
-                </label>
-                <label data-value="rainbow" class="btn btn-secondary">
-                    <input type="radio" name="options" id="rainbow" autocomplete="off"> Rainbow
-                </label>
-                <label data-value="progress" class="btn btn-secondary">
-                    <input type="radio" name="options" id="progress" autocomplete="off">🏳️‍🌈
-                </label>
-                <label data-value="halloween" class="btn btn-secondary">
-                    <input type="radio" name="options" id="halloween" autocomplete="off"> 🎃
-                </label>
-                <label data-value="straya" class="btn btn-secondary">
-                    <input type="radio" name="options" id="downunder" autocomplete="off"> 🇦🇺
-                </label>
-            </div>
-
-        </div>
-
-        <div class="dropdown-item">
-            <div>
-                <i class="fas fa-history" aria-hidden="true"></i><span class="visually-hidden">galaxy-rulebuilder-history</span> Previous Versions
-            </div>
-
-            <div id="archive-selector">
-            
-                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2020-01-06/topics/statistics/tutorials/gpu_jupyter_lab/tutorial.html" title="Version 2020-01-06">2020-01-06</a>
-            
-                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2019-12-01/topics/statistics/tutorials/gpu_jupyter_lab/tutorial.html" title="Version 2019-12-01">2019-12-01</a>
-            
-                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2019-11-01/topics/statistics/tutorials/gpu_jupyter_lab/tutorial.html" title="Version 2019-11-01">2019-11-01</a>
-            
-                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/" title="Older Versions">Older Versions</a>
-            </div>
-
-        </div>
-
-    </div>
-</li>
-
-
-                    <!-- Search bar-->
-                    <li class="nav-item">
-                      <div id="navbarSupportedContent" role="search">
-                        <!-- Search form -->
-                        <form class="form-inline mr-auto" method="GET" action="/training-material/search">
-                          <i class="fas fa-search nav-link" aria-hidden="true"></i>
-                          <div class="md-form mb-2">
-                            <input name="query" class="form-control nicer" type="text" placeholder="Search Tutorials" aria-label="Search">
-                          </div>
-                        </form>
-                      </div>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-</header>
-
-        <div class="container main-content" role="main">
-        
-
-
-
-
-
-
-
-
-
-
-
-<!-- Gitter -->
-
-
-
-
-<script>
-  ((window.gitter = {}).chat = {}).options = {
-  room: 'Galaxy-Training-Network/Lobby'
-  };
-</script>
-<script src="https://sidecar.gitter.im/dist/sidecar.v1.js" async defer></script>
-
-<script type="application/ld+json">
-    
 
 
 {
@@ -277,7 +63,7 @@
     "name": "Galaxy Training Network",
     "url": "https://galaxyproject.org/teach/gtn/"
   },
-  "dateModified": "2022-09-28 13:13:58 +0000",
+  "dateModified": "2023-01-24 14:21:57 +0000",
   "discussionUrl": "https://gitter.im/Galaxy-Training-Network/Lobby",
   "headline": "A Docker-based interactive Jupyterlab powered by GPU for artificial intelligence in Galaxy",
   "interactivityType": "mixed",
@@ -444,7 +230,210 @@
     }
   ]
 }
+        </script>
+        
+    </head>
+    <body data-spy="scroll" data-target="#toc">
+        <script type="text/javascript" src="/training-material/assets/js/theme.js"></script>
+        <header>
+    <nav class="navbar navbar-expand-md navbar-dark" aria-label="Site Navigation">
+        <div class="container">
+            <a class="navbar-brand" href="/training-material/">
+                <img src="/training-material/assets/images/GTN-60px.png" height="30" alt="Galaxy Training Network logo">
+                Galaxy Training!
+            </a>
+
+            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#top-navbar" aria-controls="top-navbar" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="top-navbar">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        
+                        <a class="nav-link" href="/training-material/topics/statistics" title="Go back to list of tutorials">
+                            <i class="far fa-folder" aria-hidden="true"></i> Statistics and machine learning
+                        </a>
+                        
+                    </li>
+
+                    <li class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false" title="Languages">
+                            <i class="fas fa-language" aria-hidden="true"></i><span class="visually-hidden">language</span> Languages
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right">
+                            
+                              <strong class="dropdown-header">Automatic Translations</strong>
+            
+            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=fr&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/statistics/tutorials/gpu_jupyter_lab/tutorial.html&edit-text=&act=url">
+                            Français
+                            </a>
+                            
+            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=ja&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/statistics/tutorials/gpu_jupyter_lab/tutorial.html&edit-text=&act=url">
+                            日本語
+                            </a>
+                            
+            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=es&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/statistics/tutorials/gpu_jupyter_lab/tutorial.html&edit-text=&act=url">
+                            Español
+                            </a>
+                            
+            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=pt&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/statistics/tutorials/gpu_jupyter_lab/tutorial.html&edit-text=&act=url">
+                            Português
+                            </a>
+                            
+            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=ar&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/statistics/tutorials/gpu_jupyter_lab/tutorial.html&edit-text=&act=url">
+                            العربية
+                            </a>
+                            
+                            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/statistics/tutorials/gpu_jupyter_lab/tutorial.html&edit-text=&act=url" title="">
+                            And more!
+                            </a>
+                        </div>
+                    </li>
+
+                    <li class="nav-item dropdown">
+    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false" title="Help">
+        <i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden">help</span> Help
+    </a>
+    <div class="dropdown-menu dropdown-menu-right">
+        <!-- disable Tess for now
+        <form method="get" action="https://tess.elixir-europe.org/materials">
+            <input type="text" id="search" name="q" value="" style="margin-left: 0.5em;/*! border-radius: 0px; */">
+            <input type="hidden" value="Galaxy Training" name="content_provider">
+            <input type="submit" value="Search on TeSS" style="width: 92%;border-radius: 0px;margin: 0.5em;background: #f47d20;border: 0px;padding: 0.25em;" class="">
+        </form>
+        -->
+
+        <a class="dropdown-item" href="/training-material/faq" title="Check our FAQs">
+           <i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden">question</span> FAQs
+        </a>
+        
+        
+        <a class="dropdown-item" href="/training-material/topics/statistics/faqs/" title="Check our FAQs for the Statistics and machine learning topic">
+           <i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden">question</span> Topic FAQs
+        </a>
+        
+        
+        <a class="dropdown-item" href="https://help.galaxyproject.org/" title="Discuss on Galaxy Help">
+            <i class="far fa-comments" aria-hidden="true"></i><span class="visually-hidden">feedback</span> Galaxy Help Forum
+        </a>
+        <a class="dropdown-item" href="https://gitter.im/Galaxy-Training-Network/Lobby" title="Discuss on gitter">
+           <i class="fab fa-gitter" aria-hidden="true"></i><span class="visually-hidden">gitter</span> Discuss on Gitter
+        </a>
+    </div>
+</li>
+
+
+                    <li class="nav-item dropdown">
+    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false" title="Extras">
+        <i class="far fa-star" aria-hidden="true"></i><span class="visually-hidden">galaxy-star</span> Extras
+    </a>
+    <div class="dropdown-menu dropdown-menu-right">
+
+        
+        <a class="dropdown-item" href="https://github.com/galaxyproject/training-material/edit/main/topics/statistics/tutorials/gpu_jupyter_lab/tutorial.md" title="Edit on GitHub">
+          <i class="fab fa-github" aria-hidden="true"></i><span class="visually-hidden">github</span> Edit on GitHub
+        </a>
+
+        <a class="dropdown-item" href="/training-material/stats.html" title="Show view statistics about this repository">
+            <i class="fas fa-chart-bar" aria-hidden="true"></i><span class="visually-hidden">galaxy-barchart</span> GTN statistics
+        </a>
+
+        <a class="dropdown-item" href="https://plausible.galaxyproject.eu/training.galaxyproject.org?period=12mo&page=/training-material/topics/statistics/tutorials/gpu_jupyter_lab/tutorial.html" title="Show view statistics of this page">
+            <i class="fas fa-chart-bar" aria-hidden="true"></i><span class="visually-hidden">galaxy-barchart</span> Page Metrics
+        </a>
+
+        <!-- link to feedback -->
+        
+            
+            
+                <a class="dropdown-item" href="/training-material/feedback.html" title="Show feedback statistics about this repository">
+                    <i class="fas fa-chart-bar" aria-hidden="true"></i><span class="visually-hidden">galaxy-barchart</span> GTN feedback
+                </a>
+            
+        
+
+        <div class="dropdown-item">
+            <div>
+                <i class="fas fa-palette" aria-hidden="true"></i><span class="visually-hidden">gtn-theme</span> Theme
+            </div>
+
+            <div id="theme-selector" data-toggle="buttons">
+                    <button class="btn" data-theme="default">Default</button>
+                    <button class="btn" data-theme="night">Night</button>
+                    <button class="btn" data-theme="midnight">Midnight</button>
+                    <button class="btn" data-theme="rainbow">Rainbow</button>
+                    <button class="btn" data-theme="blm">✊🏿</button>
+                    <button class="btn" data-theme="progress" >🏳️‍🌈</button>
+                    <button class="btn" data-theme="halloween">🎃</button>
+                    <button class="btn" data-theme="straya">🇦🇺</button>
+            </div>
+
+        </div>
+
+        <div class="dropdown-item">
+            <div>
+                <i class="fas fa-history" aria-hidden="true"></i><span class="visually-hidden">galaxy-rulebuilder-history</span> Previous Versions
+            </div>
+
+            <div id="archive-selector">
+            
+                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2020-01-06/topics/statistics/tutorials/gpu_jupyter_lab/tutorial.html" title="Version 2020-01-06">2020-01-06</a>
+            
+                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2019-12-01/topics/statistics/tutorials/gpu_jupyter_lab/tutorial.html" title="Version 2019-12-01">2019-12-01</a>
+            
+                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2019-11-01/topics/statistics/tutorials/gpu_jupyter_lab/tutorial.html" title="Version 2019-11-01">2019-11-01</a>
+            
+                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/" title="Older Versions">Older Versions</a>
+            </div>
+
+        </div>
+
+    </div>
+</li>
+
+
+                    <!-- Search bar-->
+                    <li class="nav-item">
+                      <div id="navbarSupportedContent" role="search">
+                        <!-- Search form -->
+                        <form class="form-inline mr-auto" method="GET" action="/training-material/search">
+                          <i class="fas fa-search nav-link" aria-hidden="true"></i>
+                          <div class="md-form mb-2">
+                            <input name="query" class="form-control nicer" type="text" placeholder="Search Tutorials" aria-label="Search">
+                          </div>
+                        </form>
+                      </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
+        <div class="container main-content" role="main">
+        
+
+
+
+
+
+
+
+
+
+
+
+<!-- Gitter -->
+
+
+
+
+<script>
+  ((window.gitter = {}).chat = {}).options = {
+  room: 'Galaxy-Training-Network/Lobby'
+  };
 </script>
+<script src="https://sidecar.gitter.im/dist/sidecar.v1.js" async defer></script>
 
 <section class="tutorial topic-statistics">
     <h1 data-toc-skip>A Docker-based interactive Jupyterlab powered by GPU for artificial intelligence in Galaxy</h1>
@@ -535,6 +524,8 @@
                         
                     
                         
+                    
+                        
                             
                             <li> JupyterLab in Galaxy:
                             
@@ -544,8 +535,6 @@
                                 
                             
                             </li>
-                        
-                    
                         
                     
                         
@@ -608,6 +597,10 @@
                         
                     
                         
+                    
+                        
+                    
+                        
                             
                             <li> Introduction to deep learning:
                             
@@ -617,10 +610,6 @@
                                 
                             
                             </li>
-                        
-                    
-                        
-                    
                         
                     
                         
@@ -657,12 +646,21 @@
 
 
 <a class="btn btn-default topic-icon" title="Zenodo datasets used in this tutorial" href="https://zenodo.org/record/6091361">
-    <i class="far fa-copy" aria-hidden="true"></i> Datasets
+    <i class="far fa-copy" aria-hidden="true"></i>&nbsp;Datasets
 </a>
 
 </li>
             
 
+            
+                <li class="btn btn-default supporting_material">
+
+
+    <a class="btn btn-default topic-icon" href="/training-material/topics/statistics/tutorials/gpu_jupyter_lab/workflows/" title="Workflows" alt="A Docker-based interactive Jupyterlab powered by GPU for artificial intelligence in Galaxy workflows">
+        <i class="fas fa-share-alt" aria-hidden="true"></i>&nbsp;Workflows
+    </a>
+
+</li>
             
 
             
@@ -708,6 +706,384 @@
         </li>
     
     
+        
+        <a class="dropdown-item" href="http://aspendb.uga.edu:8085/" title="AGEseq @ AspenDB">
+            AGEseq @ AspenDB
+        </a>
+        
+    
+        
+        <a class="dropdown-item" href="http://motherbox.chemeng.ntua.gr/anastasia_dev/" title="ANASTASIA">
+            ANASTASIA
+        </a>
+        
+    
+        
+        <a class="dropdown-item" href="http://apostl.moffitt.org/" title="APOSTL">
+            APOSTL
+        </a>
+        
+    
+        
+        <a class="dropdown-item" href="http://mem.rcees.ac.cn:8083/" title="ARGA">
+            ARGA
+        </a>
+        
+    
+        
+        <a class="dropdown-item" href="http://bf2i-galaxy.insa-lyon.fr:8080/" title="BF2I-MAP">
+            BF2I-MAP
+        </a>
+        
+    
+        
+        <a class="dropdown-item" href="http://galaxy.ugent.be/" title="BioBix">
+            BioBix
+        </a>
+        
+    
+        
+        <a class="dropdown-item" href="http://143.169.238.104/galaxy/" title="Biomina">
+            Biomina
+        </a>
+        
+    
+        
+        <a class="dropdown-item" href="https://iris.angers.inra.fr/galaxypub-cfbp" title="CIRM-CFBP">
+            CIRM-CFBP
+        </a>
+        
+    
+        
+        <a class="dropdown-item" href="https://clipseq.usegalaxy.eu/" title="CLIP-Explorer">
+            CLIP-Explorer
+        </a>
+        
+    
+        
+        <a class="dropdown-item" href="https://cpt.tamu.edu/galaxy-public/" title="Center for Phage Technology (CPT)">
+            Center for Phage Technology (CPT)
+        </a>
+        
+    
+        
+        <a class="dropdown-item" href="https://vm-chemflow-francegrille.eu/" title="ChemFlow">
+            ChemFlow
+        </a>
+        
+    
+        
+        <a class="dropdown-item" href="https://cheminformatics.usegalaxy.eu/" title="ChemicalToolbox">
+            ChemicalToolbox
+        </a>
+        
+    
+        
+        <a class="dropdown-item" href="https://climate.usegalaxy.eu/" title="Climate Science Workbench">
+            Climate Science Workbench
+        </a>
+        
+    
+        
+        <a class="dropdown-item" href="http://corgat.cloud.ba.infn.it/galaxy" title="CorGAT">
+            CorGAT
+        </a>
+        
+    
+        
+        <a class="dropdown-item" href="https://coralsnp.science.psu.edu/galaxy/" title="CoralSNP">
+            CoralSNP
+        </a>
+        
+    
+        
+        <a class="dropdown-item" href="http://cropgalaxy.excellenceinbreeding.org/" title="CropGalaxy">
+            CropGalaxy
+        </a>
+        
+    
+        
+        <a class="dropdown-item" href="http://dintor.eurac.edu/" title="Dintor">
+            Dintor
+        </a>
+        
+    
+        
+        <a class="dropdown-item" href="http://www.freebioinfo.org/" title="FreeBioinfo">
+            FreeBioinfo
+        </a>
+        
+    
+        
+        <a class="dropdown-item" href="http://igg.cloud.ba.infn.it/galaxy" title="GASLINI">
+            GASLINI
+        </a>
+        
+    
+        
+        <a class="dropdown-item" href="https://africa.usegalaxy.eu/" title="Galaxy Africa">
+            Galaxy Africa
+        </a>
+        
+    
+        
+        <a class="dropdown-item" href="https://india.usegalaxy.eu/" title="Galaxy India">
+            Galaxy India
+        </a>
+        
+    
+        
+        <a class="dropdown-item" href="http://gio.sbcs.qmul.ac.uk/" title="Galaxy Integrated Omics (GIO)">
+            Galaxy Integrated Omics (GIO)
+        </a>
+        
+    
+        
+        <a class="dropdown-item" href="https://test.galaxyproject.org/" title="Galaxy Test">
+            Galaxy Test
+        </a>
+        
+    
+        
+        <a class="dropdown-item" href="https://ecology.usegalaxy.eu/" title="Galaxy for Ecology">
+            Galaxy for Ecology
+        </a>
+        
+    
+        
+        <a class="dropdown-item" href="https://galaxy.mesocentre.uca.fr" title="Galaxy@AuBi">
+            Galaxy@AuBi
+        </a>
+        
+    
+        
+        <a class="dropdown-item" href="https://galaxy.genouest.org" title="Galaxy@GenOuest">
+            Galaxy@GenOuest
+        </a>
+        
+    
+        
+        <a class="dropdown-item" href="https://galaxy.pasteur.fr/" title="Galaxy@Pasteur">
+            Galaxy@Pasteur
+        </a>
+        
+    
+        
+        <a class="dropdown-item" href="https://galaxytrakr.org/" title="GalaxyTrakr">
+            GalaxyTrakr
+        </a>
+        
+    
+        
+        <a class="dropdown-item" href="http://hyperbrowser.uio.no/hb/" title="Genomic Hyperbrowser">
+            Genomic Hyperbrowser
+        </a>
+        
+    
+        
+        <a class="dropdown-item" href="http://gigagalaxy.net/" title="GigaGalaxy">
+            GigaGalaxy
+        </a>
+        
+    
+        
+        <a class="dropdown-item" href="https://hicexplorer.usegalaxy.eu" title="HiCExplorer">
+            HiCExplorer
+        </a>
+        
+    
+        
+        <a class="dropdown-item" href="https://humancellatlas.usegalaxy.eu/" title="Human Cell Atlas">
+            Human Cell Atlas
+        </a>
+        
+    
+        
+        <a class="dropdown-item" href="http://huttenhower.sph.harvard.edu/galaxy/" title="Huttenhower Lab">
+            Huttenhower Lab
+        </a>
+        
+    
+        
+        <a class="dropdown-item" href="https://galaxy.hyphy.org/" title="HyPhy HIV NGS Tools">
+            HyPhy HIV NGS Tools
+        </a>
+        
+    
+        
+        <a class="dropdown-item" href="http://mem.rcees.ac.cn:8081/" title="IDENAP">
+            IDENAP
+        </a>
+        
+    
+        
+        <a class="dropdown-item" href="https://galaxy-web.ipk-gatersleben.de" title="IPK Galaxy Blast Suite">
+            IPK Galaxy Blast Suite
+        </a>
+        
+    
+        
+        <a class="dropdown-item" href="https://www.immportgalaxy.org/" title="ImmPort Galaxy">
+            ImmPort Galaxy
+        </a>
+        
+    
+        
+        <a class="dropdown-item" href="http://galaxy.interactomix.com/" title="InteractoMIX">
+            InteractoMIX
+        </a>
+        
+    
+        
+        <a class="dropdown-item" href="https://ml.usegalaxy.eu/" title="Machine Learning Workbench">
+            Machine Learning Workbench
+        </a>
+        
+    
+        
+        <a class="dropdown-item" href="https://neo.engr.uconn.edu/" title="Mandoiu Lab">
+            Mandoiu Lab
+        </a>
+        
+    
+        
+        <a class="dropdown-item" href="https://metabolomics.usegalaxy.eu/" title="Metabolomics">
+            Metabolomics
+        </a>
+        
+    
+        
+        <a class="dropdown-item" href="https://metagenomics.usegalaxy.eu/" title="Metagenomics">
+            Metagenomics
+        </a>
+        
+    
+        
+        <a class="dropdown-item" href="http://mapping-by-sequencing.vm.uni-freiburg.de:8080/" title="MiModD NacreousMap">
+            MiModD NacreousMap
+        </a>
+        
+    
+        
+        <a class="dropdown-item" href="https://nanopore.usegalaxy.eu/" title="NanoGalaxy">
+            NanoGalaxy
+        </a>
+        
+    
+        
+        <a class="dropdown-item" href="http://galaxy.inf.ethz.ch" title="Oqtans">
+            Oqtans
+        </a>
+        
+    
+        
+        <a class="dropdown-item" href="https://palfinder.ls.manchester.ac.uk/" title="Palfinder">
+            Palfinder
+        </a>
+        
+    
+        
+        <a class="dropdown-item" href="http://pepsimili.e-nios.com:8080/" title="PepSimili">
+            PepSimili
+        </a>
+        
+    
+        
+        <a class="dropdown-item" href="https://galaxy.bio.di.uminho.pt/" title="PhagePromotor">
+            PhagePromotor
+        </a>
+        
+    
+        
+        <a class="dropdown-item" href="https://plants.usegalaxy.eu/" title="Plant Anaylsis Workbench">
+            Plant Anaylsis Workbench
+        </a>
+        
+    
+        
+        <a class="dropdown-item" href="http://protologger.de/" title="Protologger">
+            Protologger
+        </a>
+        
+    
+        
+        <a class="dropdown-item" href="http://ribogalaxy.ucc.ie/" title="RiboGalaxy">
+            RiboGalaxy
+        </a>
+        
+    
+        
+        <a class="dropdown-item" href="https://singlecell.usegalaxy.eu/" title="Single Cell Omics workbench">
+            Single Cell Omics workbench
+        </a>
+        
+    
+        
+        <a class="dropdown-item" href="https://streetscience.usegalaxy.eu/" title="Street Science">
+            Street Science
+        </a>
+        
+    
+        
+        <a class="dropdown-item" href="https://usegalaxy.be/" title="UseGalaxy.be">
+            UseGalaxy.be
+        </a>
+        
+    
+        
+        <a class="dropdown-item" href="https://usegalaxy.eu" title="UseGalaxy.eu">
+            UseGalaxy.eu
+        </a>
+        
+    
+        
+        <a class="dropdown-item" href="https://usegalaxy.fr/" title="UseGalaxy.fr">
+            UseGalaxy.fr
+        </a>
+        
+    
+        
+        <a class="dropdown-item" href="https://usegalaxy.no/" title="UseGalaxy.no">
+            UseGalaxy.no
+        </a>
+        
+    
+        
+        <a class="dropdown-item" href="https://usegalaxy.org" title="UseGalaxy.org (Main)">
+            UseGalaxy.org (Main)
+        </a>
+        
+    
+        
+        <a class="dropdown-item" href="https://usegalaxy.org.au" title="UseGalaxy.org.au">
+            UseGalaxy.org.au
+        </a>
+        
+    
+        
+        <a class="dropdown-item" href="http://galaxy.bio.ku.dk/" title="Vinther Lab">
+            Vinther Lab
+        </a>
+        
+    
+        
+        <a class="dropdown-item" href="https://viralvariant.anses.fr/" title="Viral Variant Visualizer (VVV)">
+            Viral Variant Visualizer (VVV)
+        </a>
+        
+    
+        
+        <a class="dropdown-item" href="https://virology.usegalaxy.eu/" title="Virology">
+            Virology
+        </a>
+        
+    
+        
+        <a class="dropdown-item" href="https://covid19.usegalaxy.fr/" title="covid19.UseGalaxy.fr">
+            covid19.UseGalaxy.fr
+        </a>
+        
+    
     </ul>
 
 
@@ -716,7 +1092,7 @@
         </ul>
         
 
-        <div><strong><i class="far fa-calendar" aria-hidden="true"></i> Last modification:</strong> Sep 28, 2022 </div>
+        <div><strong><i class="far fa-calendar" aria-hidden="true"></i> Last modification:</strong> Jan 24, 2023 </div>
         <div><strong><i class="fas fa-balance-scale" aria-hidden="true"></i> License:</strong>
             
             <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Tutorial Content is licensed under Creative Commons Attribution 4.0 International License</a>
@@ -735,7 +1111,7 @@
                  
 
                 <blockquote class="agenda">
-  <div id="agenda" class="box-title" aria-label="agenda box: ">Agenda</div>
+  <div class="box-title agenda-title" id="agenda" aria-label="agenda box: ">Agenda</div>
 
   <p>In this tutorial, we will cover:</p>
 
@@ -756,13 +1132,18 @@
       <li><a href="#dockers-security" id="markdown-toc-dockers-security">Docker’s security</a></li>
     </ol>
   </li>
+  <li><a href="#gpu-juyterlab-tool-in-a-galaxy-workflow" id="markdown-toc-gpu-juyterlab-tool-in-a-galaxy-workflow">GPU Juyterlab tool in a <span class="notranslate">Galaxy</span> <span class="notranslate">workflow</span></a>    <ol>
+      <li><a href="#introduction-1" id="markdown-toc-introduction-1">Introduction</a></li>
+      <li><a href="#run-as-a-tool-in-workflow" id="markdown-toc-run-as-a-tool-in-workflow">Run as a tool in <span class="notranslate">workflow</span></a></li>
+    </ol>
+  </li>
   <li><a href="#conclusion" id="markdown-toc-conclusion">Conclusion</a></li>
 </ol>
 
 </blockquote>
 
 <h1 id="introduction">Introduction</h1>
-<p><a href="https://jupyterlab.readthedocs.io/en/stable/">Jupyterlab</a> is a popular integrated development environment (IDE) for a variety of tasks in data science such as prototyping analyses, creating meaningful plots, data manipulation and preprocessing. Python is one of the most used languages in such an environment. Given the usefulness of Jupyterlab, more importantly in online platforms, a robust Jupyterlab notebook application has been developed that is powered by GPU acceleration and contains numerous packages such as Pandas, Numpy, Scipy, <a href="https://scikit-learn.org/">Scikit-learn</a>, <a href="https://www.tensorflow.org/">Tensorflow</a>, <a href="https://onnx.ai/">ONNX</a> to support modern data science projects. It has been developed as an interactive <span class="notranslate">Galaxy</span> tool that runs on an isolated <a href="https://github.com/anuprulez/ml-jupyter-notebook">docker container</a>. The docker container has been built using <a href="https://hub.docker.com/layers/jupyter/tensorflow-notebook/tensorflow-2.6.0/images/sha256-23ac04200f8f6ee4a224f7f8cb48c810e24bc18cdd20a3614d1914e01f950969?context=explore">jupyter/tensorflow-notebook:tensorflow-2.6.0</a> as the base container. Moreover, a <span class="notranslate">Galaxy</span> <a href="https://github.com/bgruening/galaxytools/pull/1157">tool</a> ( <code class="language-plaintext highlighter-rouge">run_jupyter_job</code>) can be executed using <a href="https://bioblend.readthedocs.io/">Bioblend</a> which uses <span class="notranslate">Galaxy</span>’s remote job handling for long-running machine learning and deep learning training. The training happens remotely on a <span class="notranslate">Galaxy</span> cluster and the outcome datasets such as the trained models, tabular files and so on are saved in a <span class="notranslate">Galaxy</span> history for further use.</p>
+<p><a href="https://jupyterlab.readthedocs.io/en/stable/">Jupyterlab</a> is a popular integrated development environment (IDE) for a variety of tasks in data science such as prototyping analyses, creating meaningful plots, data manipulation and preprocessing. Python is one of the most used languages in such an environment. Given the usefulness of Jupyterlab, more importantly in online platforms, a robust <a href="https://usegalaxy.eu/root?tool_id=interactive_tool_ml_jupyter_notebook">Jupyterlab notebook application</a> has been developed that is powered by GPU acceleration and contains numerous packages such as Pandas, Numpy, Scipy, <a href="https://scikit-learn.org/">Scikit-learn</a>, <a href="https://www.tensorflow.org/">Tensorflow</a>, <a href="https://onnx.ai/">ONNX</a> to support modern data science projects. It has been developed as an interactive <span class="notranslate">Galaxy</span> tool that runs on an isolated <a href="https://github.com/anuprulez/ml-jupyter-notebook">docker container</a>. The docker container has been built using <a href="https://hub.docker.com/layers/anupkumar/docker-ml-jupyterlab/galaxy-integration-0.2/images/sha256-e2d7e28a2f975523db0f5ac29c2e2ce3c7a35b061072098ad388d5b42ee86fba?context=repo">nvidia/cuda:11.8.0-cudnn8-runtime-ubuntu20.04</a> as the base container. Moreover, a <span class="notranslate">Galaxy</span> <a href="https://github.com/bgruening/galaxytools/pull/1157">tool</a> ( <code class="language-plaintext highlighter-rouge">run_jupyter_job</code>) can be executed using <a href="https://bioblend.readthedocs.io/">Bioblend</a> which uses <span class="notranslate">Galaxy</span>’s remote job handling for long-running machine learning and deep learning training. The training happens remotely on a <span class="notranslate">Galaxy</span> cluster and the outcome datasets such as the trained models, tabular files and so on are saved in a <span class="notranslate">Galaxy</span> history for further use.</p>
 
 <h2 id="features-of-jupyterlab">Features of Jupyterlab</h2>
 <p><a href="https://jupyterlab.readthedocs.io/en/stable/">Jupyterlab</a> notebook has been augmented with several useful features and together they make it ready-to-use for quick prototyping and end-to-end artificial intelligence (AI) projects. Being able to <strong>serve online</strong> makes it convenient to share it with other researchers and users. Its features can be broadly classified into two categories - features that have been added solely as Python packages and those that have been added also as Python packages but have their respective user interfaces. We will briefly discuss these features and later, we will use some of those for building and using AI models.</p>
@@ -808,13 +1189,13 @@
 <h2 id="open-jupyterlab">Open Jupyterlab</h2>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-gpu-enabled-interactive-jupyter-notebook-for-machine-learning" class="box-title" aria-label="hands-on box: GPU enabled Interactive Jupyter Notebook for Machine Learning"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: GPU enabled Interactive Jupyter Notebook for Machine Learning</div>
+  <div class="box-title hands-on-title" id="hands-on-gpu-enabled-interactive-jupyter-notebook-for-machine-learning" aria-label="hands-on box: GPU enabled Interactive Jupyter Notebook for Machine Learning"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: GPU enabled Interactive Jupyter Notebook for Machine Learning</div>
 
   <ul>
     <li><span class="tool" data-tool="interactive_tool_ml_jupyter_notebook" title="Tested with interactive_tool_ml_jupyter_notebook"><strong>GPU enabled Interactive Jupyter Notebook for Machine Learning</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: interactive_tool_ml_jupyter_notebook</span></span>
       <ul>
-        <li><em>“Do you already have a notebook?”</em>: <code class="language-plaintext highlighter-rouge">Start with a fresh notebook</code></li>
-        <li>Click <em>“Execute”</em></li>
+        <li><em>“Do you already have a notebook?”</em>: <code class="language-plaintext highlighter-rouge">Start with default notebooks</code></li>
+        <li>Click <em>“Run Tool”</em></li>
       </ul>
     </li>
   </ul>
@@ -824,10 +1205,10 @@
 <p>Now, we should wait for a few minutes until <span class="notranslate">Galaxy</span> creates the required compute environment for opening a new Jupyterlab. Usually, this task takes around 10-15 minutes. The progress can be checked by clicking on the “User&gt;Active Interactive tools”. On “Active Interactive Tools” page, there is a list of all open interactive tools. When the job info shows “running” on the “Active Interactive Tools” page, then the name of the interactive tool gets associated with a URL to the running Jupyterlab. On clicking this URL, the running Jupyterlab can be opened. Several features of Jupyterlab running in <span class="notranslate">Galaxy</span> can be learned by going through the “home_page.ipynb” notebook. The folder “notebooks” contain several notebooks that show multiple use-cases of features and packages. Now, let’s download the necessary notebooks from Github for performing image segmentation and predicting 3D structure of protein sequences.</p>
 
 <h2 id="clone-github-repository">Clone Github repository</h2>
-<p>To use Git version control for cloning any codebase from GitHub, the following steps should be performed.</p>
+<p>To use Git version control for cloning any codebase from GitHub, the following steps should be performed. Alte<span class="notranslate">rna</span>tively, the notebooks that showcase different usecases are also available by default at <code class="language-plaintext highlighter-rouge">&lt;&lt;root&gt;&gt;/usecases/</code>.</p>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-pull-code" class="box-title" aria-label="hands-on box: Pull code"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Pull code</div>
+  <div class="box-title hands-on-title" id="hands-on-pull-code" aria-label="hands-on box: Pull code"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Pull code</div>
 
   <ol>
     <li>Create a new folder named <code class="language-plaintext highlighter-rouge">covid_ct_segmentation</code> alongside other folders such as “data”, “outputs”, “elyra” or you can use your favourite folder name.</li>
@@ -853,14 +1234,14 @@
 <h3 id="run-notebooks-in-jupyterlab">Run notebooks in Jupyterlab</h3>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-run-notebooks-in-jupyterlab" class="box-title" aria-label="hands-on box: Run notebooks in Jupyterlab"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Run notebooks in Jupyterlab</div>
+  <div class="box-title hands-on-title" id="hands-on-run-notebooks-in-jupyterlab" aria-label="hands-on box: Run notebooks in Jupyterlab"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Run notebooks in Jupyterlab</div>
 
   <ol>
     <li>
       <p>Download and save datasets in the notebook using <strong>“1_fetch_datasets.ipynb”</strong> notebook. It creates all the necessary folders and then, downloads two datasets - one “h5” file containing many matrices as sub-datasets belonging to training data, training labels, validation data, validation labels, test data and test labels.</p>
 
       <blockquote class="comment">
-        <div id="comment" class="box-title" aria-label="comment box: "><i class="far fa-comment-dots" aria-hidden="true"></i><span class="visually-hidden"></span> Comment</div>
+        <div class="box-title comment-title" id="comment" aria-label="comment box: "><i class="far fa-comment-dots" aria-hidden="true"></i><span class="visually-hidden"></span> Comment</div>
         <p>Sub-datasets are stored as different variables after reading the original <code class="language-plaintext highlighter-rouge">h5</code> file once. For training, we only need these datasets/matrices - training data, training labels, validation data and validation labels. The matrices, test data and test labels, are used only for prediction. We use <code class="language-plaintext highlighter-rouge">h5</code> format for storing and retrieving datasets as all AI algorithms need input datasets in the form of matrices. Since, in the field of AI, there are many different types of datasets such as images, sequences, real numbers and so on, therefore, to converge all these different forms of datasets into one format, we use <code class="language-plaintext highlighter-rouge">h5</code> to store matrices. In any AI analysis, different forms of datasets can be stored as <code class="language-plaintext highlighter-rouge">h5</code> files. Therefore, for the image segmentation task, all the input datasets/matrices to the deep learning model are saved as sub-datasets in one <code class="language-plaintext highlighter-rouge">h5</code> file so that they can be easily created, stored, downloaded and used. This step may take a few minutes as it downloads around 450 MB of data from Zenodo (<span class="citation"><a href="#anupkumar20226091361">Kumar 2022</a></span>). Once these datasets are downloaded to the notebook, we can move to the next step to create a deep learning model and start training it.</p>
 
       </blockquote>
@@ -869,7 +1250,7 @@
       <p>Create and train a deep learning Unet model using <strong>“2_create_model_and_train.ipynb”</strong> notebook. This will read the input <code class="language-plaintext highlighter-rouge">h5</code> dataset containing all images and train the model after creating deep learning model architecture.</p>
 
       <blockquote class="comment">
-        <div id="comment-1" class="box-title" aria-label="comment box: "><i class="far fa-comment-dots" aria-hidden="true"></i><span class="visually-hidden"></span> Comment</div>
+        <div class="box-title comment-title" id="comment-1" aria-label="comment box: "><i class="far fa-comment-dots" aria-hidden="true"></i><span class="visually-hidden"></span> Comment</div>
         <p>This notebook first creates a deep learning architecture based on Unet including custom loss functions such as total variation and binary cross-entropy losses. After creating the deep learning architecture, all training datasets such as training data, training labels, validation data, validation labels are loaded from the combined <code class="language-plaintext highlighter-rouge">h5</code> file. In the next step, all the datasets and deep learning architecture are compiled together and training starts for 10 epochs (10 iterations over the entire training dataset). The training is fast as it runs on GPU and finishes in a few minutes and creates a trained model. In the last step, the trained model containing several files is converted to one <code class="language-plaintext highlighter-rouge">onnx</code> file. Once a trained model is ready, we can move to the next step to make predictions on unseen CT scan masks.</p>
 
       </blockquote>
@@ -878,7 +1259,7 @@
       <p>Predict unseen masks using the trained model in <strong>“3_predict_masks.ipynb”</strong> notebook.</p>
 
       <blockquote class="comment">
-        <div id="comment-2" class="box-title" aria-label="comment box: "><i class="far fa-comment-dots" aria-hidden="true"></i><span class="visually-hidden"></span> Comment</div>
+        <div class="box-title comment-title" id="comment-2" aria-label="comment box: "><i class="far fa-comment-dots" aria-hidden="true"></i><span class="visually-hidden"></span> Comment</div>
         <p>First, it <span class="notranslate">reads</span> test datasets from the combined “h5” file and then, loads the <code class="language-plaintext highlighter-rouge">onnx</code> model. Using this model, it predicts masks of unseen CT scans and then plots the ground truth and predicted masks in one plot (see Figure 7)</p>
 
       </blockquote>
@@ -896,7 +1277,7 @@
 <p>The training task completed in the notebook above can also be sent to a <span class="notranslate">Galaxy</span> cluster by executing a <span class="notranslate">Galaxy</span> tool in the notebook itself. Using <a href="https://bioblend.readthedocs.io/">Bioblend</a> APIs, datasets in the form of <code class="language-plaintext highlighter-rouge">h5</code> files and notebook are uploaded to a <span class="notranslate">Galaxy</span> history and then a <span class="notranslate">Galaxy</span> tool <code class="language-plaintext highlighter-rouge">run_jupyter_job</code> executes the notebook using the uploaded dataset on a <span class="notranslate">Galaxy</span> cluster and creates a trained model in the <span class="notranslate">Galaxy</span> history. Let’s look at how to execute a notebook remotely on a <span class="notranslate">Galaxy</span> cluster.</p>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-run-jupyterlab-notebooks-remotely-on-a-galaxy-cluster" class="box-title" aria-label="hands-on box: Run Jupyterlab notebooks remotely on a Galaxy cluster"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Run Jupyterlab notebooks remotely on a <span class="notranslate">Galaxy</span> cluster</div>
+  <div class="box-title hands-on-title" id="hands-on-run-jupyterlab-notebooks-remotely-on-a-galaxy-cluster" aria-label="hands-on box: Run Jupyterlab notebooks remotely on a Galaxy cluster"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Run Jupyterlab notebooks remotely on a <span class="notranslate">Galaxy</span> cluster</div>
 
   <ol>
     <li>Download and save datasets in the notebook using <strong>“1_fetch_datasets.ipynb”</strong> notebook in the same way as before. Ignore this step if this notebook has already been executed.</li>
@@ -904,7 +1285,7 @@
       <p>Execute <strong>“5_run_remote_training.ipynb”</strong> notebook to dynamically execute code inside <strong>“4_create_model_and_train_remote.ipynb”</strong> notebook on a remote cluster using a different <span class="notranslate">Galaxy</span> tool (<code class="language-plaintext highlighter-rouge">run_jupyter_job</code>). The notebook <strong>“5_run_remote_training.ipynb”</strong> provides the path of a notebook to be executed remotely along with the datasets to the <span class="notranslate">Galaxy</span> tool by calling a custom function <code class="language-plaintext highlighter-rouge">run_script_job</code> which is part of the Jupyterlab notebook.</p>
 
       <blockquote class="comment">
-        <div id="comment-3" class="box-title" aria-label="comment box: "><i class="far fa-comment-dots" aria-hidden="true"></i><span class="visually-hidden"></span> Comment</div>
+        <div class="box-title comment-title" id="comment-3" aria-label="comment box: "><i class="far fa-comment-dots" aria-hidden="true"></i><span class="visually-hidden"></span> Comment</div>
         <p>Executing <strong>“5_run_remote_training.ipynb”</strong> uploads datasets and dynamic Python script, extracted from the <strong>“4_create_model_and_train_remote.ipynb”</strong> notebook, to a newly created <span class="notranslate">Galaxy</span> history (Figure 8). When the task of uploading dataset and dynamic code is finished, the <span class="notranslate">Galaxy</span> tool (<code class="language-plaintext highlighter-rouge">run_jupyter_job</code>) executes the dynamically uploaded script with the uploaded dataset on a remote <span class="notranslate">Galaxy</span> cluster which is similar to running any other <span class="notranslate">Galaxy</span> tool. When the <span class="notranslate">Galaxy</span> tool (<code class="language-plaintext highlighter-rouge">run_jupyter_job</code>) finishes its execution, the resulting models and other datasets appear in the created <span class="notranslate">Galaxy</span> history. While the job is running on the <span class="notranslate">Galaxy</span> cluster, the Jupyter notebook can be closed as the model training task gets decoupled from the notebook and is entirely transferred to the <span class="notranslate">Galaxy</span> cluster. Specific history used for this job can be accessed in <span class="notranslate">Galaxy</span>. The Jupyterlab method <code class="language-plaintext highlighter-rouge">run_script_job</code> has multiple input parameters - <code class="language-plaintext highlighter-rouge">script_path</code>: relative path to the script that is to be executed remotely, <code class="language-plaintext highlighter-rouge">data_dict</code>: list of input datasets as <code class="language-plaintext highlighter-rouge">h5</code> files, <code class="language-plaintext highlighter-rouge">server</code>: <span class="notranslate">Galaxy</span> server URL, <code class="language-plaintext highlighter-rouge">key</code>: <span class="notranslate">Galaxy</span> API key and <code class="language-plaintext highlighter-rouge">new_history_name</code>: the name of the <span class="notranslate">Galaxy</span> history that is created).</p>
 
       </blockquote>
@@ -919,14 +1300,14 @@
 
 </blockquote>
 
-<p>When the <span class="notranslate">Galaxy</span> job finishes, it creates a history having a few datasets such as input <code class="language-plaintext highlighter-rouge">h5</code> dataset, dynamic Python script extracted from the notebook, a trained model saved as <code class="language-plaintext highlighter-rouge">onnx</code> file, all saved lists and NumPy arrays and a zipped file containing all the intermediate files created and saved in the dynamic script. One such example of a <span class="notranslate">Galaxy</span> history is available <a href="https://usegalaxy.eu/u/kumara/h/ctsegmentationmarch18">here</a>. Datasets from this history can be downloaded into the Jupyterlab notebook and further analyses can be performed. Using the notebook <strong>“6_predict_masks_remote_model.ipynb”</strong>, the trained model can be downloaded from the newly created <span class="notranslate">Galaxy</span> history to Jupyterlab notebook and then, it can be used to make predictions of unseen CT scan masks in the same way as shown in <strong>“3_predict_masks.ipynb”</strong> notebook.</p>
+<p>When the <span class="notranslate">Galaxy</span> job finishes, it creates a history having a few datasets such as input <code class="language-plaintext highlighter-rouge">h5</code> dataset, dynamic Python script extracted from the notebook, a trained model saved as <code class="language-plaintext highlighter-rouge">onnx</code> file, all saved lists and NumPy arrays and a zipped file containing all the intermediate files created and saved in the dynamic script. One such example of a <span class="notranslate">Galaxy</span> history is <a href="https://usegalaxy.eu/u/kumara/h/ctsegmentationmarch18">available</a>. Datasets from this history can be downloaded into the Jupyterlab notebook and further analyses can be performed. Using the notebook <strong>“6_predict_masks_remote_model.ipynb”</strong>, the trained model can be downloaded from the newly created <span class="notranslate">Galaxy</span> history to Jupyterlab notebook and then, it can be used to make predictions of unseen CT scan masks in the same way as shown in <strong>“3_predict_masks.ipynb”</strong> notebook.</p>
 
 <h2 id="use-case-2-run-colabfold-to-predict-3d-structure-of-protein">Use-case 2: Run ColabFold to predict 3D structure of protein</h2>
 
 <p>Google Deepmind’s AlphaFold2 has made a breakthrough in predicting the 3D structure of proteins with outstanding accuracy. However, due to their large database size (a few TB), it is not easily accessible to researchers. Therefore, a few approaches have been developed that replace the time-consuming steps of AlphaFold2 with slightly different steps to create input features and predict the 3D structure with comparable accuracy as AlphaFold2. One such approach is ColabFold which replaces the large database search in AlphaFold2 for finding homologous sequences by a significantly faster <a href="https://github.com/soedinglab/MMseqs2">MMseqs2 API</a> call to generate input features based on the query protein sequence. ColabFold is approximately 16 times faster than AlphaFold2 in predicting 3D structures of protein sequences. To make it accessible in this Jupyterlab, it has been integrated into the Docker container by having two additional packages - ColabFold and the GPU enabled <a href="https://github.com/google/jax">JAX</a> which is just-in-time compiler from Google used for mathematical transformations. In the following hands-on section, we will run a notebook and predict a 3D structure of a protein sequence.</p>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-predict-3d-structure-of-protein-using-colabfold" class="box-title" aria-label="hands-on box: Predict 3D structure of protein using ColabFold"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Predict 3D structure of protein using ColabFold</div>
+  <div class="box-title hands-on-title" id="hands-on-predict-3d-structure-of-protein-using-colabfold" aria-label="hands-on box: Predict 3D structure of protein using ColabFold"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Predict 3D structure of protein using ColabFold</div>
 
   <ol>
     <li>Clone a Github repository by following the steps described in the previous hands-on section <code class="language-plaintext highlighter-rouge">Clone Github repository</code>. Ignore this step if already done.</li>
@@ -940,10 +1321,175 @@
 <h2 id="dockers-security">Docker’s security</h2>
 <p>For remote training, a dynamic Python script is sent to a <span class="notranslate">Galaxy</span> tool for execution on a <span class="notranslate">Galaxy</span> cluster that may pose security risks of containing malicious code. To minimize the security risks that come along with executing dynamic Python scripts, the <span class="notranslate">Galaxy</span> tool <code class="language-plaintext highlighter-rouge">run_jupyter_job</code> is executed inside a <a href="https://github.com/anuprulez/ml-jupyter-notebook">Docker container</a>. It is the same container inside which the Jupyterlab notebook runs. All the packages available inside the notebook are also available for the <span class="notranslate">Galaxy</span> tool. Programs run in isolated environments inside Docker containers and have their connections limited to necessary libraries, and network connections. Due to these restrictions, they have a reduced number of interactions with the host operating system.</p>
 
+<h1 id="gpu-juyterlab-tool-in-a-galaxy-workflow">GPU Juyterlab tool in a <span class="notranslate">Galaxy</span> <span class="notranslate">workflow</span></h1>
+
+<h2 id="introduction-1">Introduction</h2>
+
+<p>In addition to an interactive mode that opens a Jupyterlab in <span class="notranslate">Galaxy</span>, the GPU Jupyterlab tool can also be used as a tool in a <span class="notranslate">Galaxy</span> <span class="notranslate">workflow</span>. In this mode, it takes input datasets from a different tool along with an <code class="language-plaintext highlighter-rouge">ipynb</code> notebook file. It executes the <code class="language-plaintext highlighter-rouge">ipynb</code> file along with the input datasets and produces output datasets inside a dataset collection. This output dataset collection can then be used with other <span class="notranslate">Galaxy</span> tools. This feature enables it to be used in a <span class="notranslate">Galaxy</span> <span class="notranslate">workflow</span> like other <span class="notranslate">Galaxy</span> tools.</p>
+
+<h3 id="execute-an-existing-notebook">Execute an existing notebook</h3>
+<p>In this mode, the GPU Jupyterlab tool executes the input <code class="language-plaintext highlighter-rouge">ipynb</code> file and produces output datasets (in a collection) if created in the notebook file. Input datasets can also be attached to the notebook which become available at <code class="language-plaintext highlighter-rouge">/<span class="notranslate">galaxy</span>_inputs/&lt;&lt;Name for parameter&gt;&gt;</code> folder. The parameter <code class="language-plaintext highlighter-rouge">Name for parameter</code> is set for each input dataset that is used as the folder name inside <code class="language-plaintext highlighter-rouge">/<span class="notranslate">galaxy</span>_inputs/</code>. More than one input datasets can be attached to the notebook. Another feature <code class="language-plaintext highlighter-rouge">Execute notebook and return a new one</code> controls whether webfrontend becomes available showing Jupyterlab or a notebook is just executed. When this parameter is set to <code class="language-plaintext highlighter-rouge">yes</code>, then the attached notebook is executed and output datasets if any become available in an output dataset collection. When this parameter is set to <code class="language-plaintext highlighter-rouge">no</code> (by default), then Jupyterlab infrastructure as a webfrontend is opened along with the attached notebook and input datasets if attached.</p>
+
+<h2 id="run-as-a-tool-in-workflow">Run as a tool in <span class="notranslate">workflow</span></h2>
+<p>When the parameter <code class="language-plaintext highlighter-rouge">Execute notebook and return a new one</code> is set to <code class="language-plaintext highlighter-rouge">yes</code>, the GPU Jupyterlab tool can be used as a part of any <span class="notranslate">workflow</span>. In this mode, it requires an <code class="language-plaintext highlighter-rouge">ipynb</code> file/notebook that gets executed in <span class="notranslate">Galaxy</span> and output datasets if any become available in the <span class="notranslate">Galaxy</span> history. Along with a notebook, multiple input datasets can also be attached that become automatically available inside the notebook. They can be accessed inside the notebook and processed to produce desired output datasets. These output datasets can further be used with other <span class="notranslate">Galaxy</span> tools. The following image shows a sample <span class="notranslate">workflow</span> for illustration purposes. Similarly, high-quality workflows to analyse scientific datasets can be created.</p>
+
+<blockquote>
+  <figure id="figure-10"><img src="../../images/workflow_gpu_jupyterlab.png" alt="&quot;A sample Galaxy workflow that uses GPU Jupyterlab as a tool&quot;. " loading="lazy" /><figcaption><span class="figcaption-prefix">Figure 10:</span> A sample <span class="notranslate">Galaxy</span> <span class="notranslate">workflow</span> that uses GPU Jupyterlab as a tool which takes input datasets from one tool, trains a machine learning model to predict classes and then the predicted datasets is used as input to another <span class="notranslate">Galaxy</span> tool.</figcaption></figure>
+</blockquote>
+
+<p>Let’s look at how can this <span class="notranslate">workflow</span> be created in a step-wise manner. There are 3 steps - first, the training dataset is filtered using the <code class="language-plaintext highlighter-rouge">Filter</code> tool. The output of this tool along with 2 other datasets (<code class="language-plaintext highlighter-rouge">test_rows</code> and <code class="language-plaintext highlighter-rouge">test_rows_labels</code>), a sample IPython notebook is executed by the GPU Jupyterlab tool. The sample IPython notebook trains a simple machine learning model using the train dataset and creates a classification model using <code class="language-plaintext highlighter-rouge">RandomForestClassifier</code>. The trained model is then used to predict classes using the test dataset. The predicted classes is produced as a file in an output collection by the GPU Jupyterlab tool. As a last step, <code class="language-plaintext highlighter-rouge">Cut</code> tool is used to extract the first column of the output collection. Together, these steps showcase how the GPU Jupyterlab tool is used with other <span class="notranslate">Galaxy</span> tools in a <span class="notranslate">workflow</span>.</p>
+
+<h3 id="get-data">Get data</h3>
+
+<p>Datasets such as train, test and sample IPython (<code class="language-plaintext highlighter-rouge">ipynb</code>) notebook files are downloaded from <a href="https://zenodo.org/record/7534061">Zenodo</a> to import them into a <span class="notranslate">Galaxy</span> history.</p>
+
+<blockquote class="notranslate hands_on">
+  <div class="box-title hands-on-title" id="hands-on-data-upload" aria-label="hands-on box: Data upload"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Data upload</div>
+
+  <ol>
+    <li>
+      <p>Make sure you have an empty analysis history.</p>
+
+      <!--SNIPPET-->
+      <blockquote class="tip">   <div class="box-title tip-title" id="tip-creating-a-new-history"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-creating-a-new-history-contents" aria-expanded="true" aria-label="Toggle tip box: Creating a new history"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: Creating a new history<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>   <p>Click the <i class="fas fa-plus" aria-hidden="true"></i><span class="visually-hidden">new-history</span> icon at the top of the history panel.</p>   <p>If the <i class="fas fa-plus" aria-hidden="true"></i><span class="visually-hidden">new-history</span> is missing:</p>   <ol>   <li>Click on the <i class="fas fa-cog" aria-hidden="true"></i><span class="visually-hidden"><span class="notranslate">galaxy</span>-gear</span> icon (<strong>History options</strong>) on the top of the history panel</li>   <li>Select the option <strong>Create New</strong> from the menu</li> </ol> </blockquote>
+    </li>
+    <li>
+      <p><strong>Rename your history</strong> to make it easy to recognize</p>
+
+      <blockquote class="tip">
+        <div class="box-title tip-title" id="tip-rename-a-history"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-rename-a-history-contents" aria-expanded="true" aria-label="Toggle tip box: Rename a history"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: Rename a history<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
+
+        <ul>
+          <li>
+            <p>Click on the title of the history (by default the title is <code class="language-plaintext highlighter-rouge">Unnamed history</code>)</p>
+
+            <p><img src="../../../../shared/images/rename_history.png" alt="Renaming history. " loading="lazy" /></p>
+          </li>
+          <li>Type <code class="language-plaintext highlighter-rouge"><span class="notranslate">Galaxy</span> Introduction</code> as the name</li>
+          <li>Press <kbd>Enter</kbd></li>
+        </ul>
+
+      </blockquote>
+    </li>
+    <li>
+      <p>Import the files from <a href="https://zenodo.org/record/7534061">Zenodo</a></p>
+
+      <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>https://zenodo.org/record/7534061/files/sample_notebook.ipynb
+https://zenodo.org/record/7534061/files/test_rows.csv
+https://zenodo.org/record/7534061/files/train_rows.csv
+https://zenodo.org/record/7534061/files/test_rows_labels.csv
+</code></pre></div>      </div>
+
+      <!--SNIPPET-->
+      <blockquote class="tip">   <div class="box-title tip-title" id="tip-importing-via-links"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-importing-via-links-contents" aria-expanded="true" aria-label="Toggle tip box: Importing via links"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: Importing via links<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>   <ul>   <li>Copy the link location</li>   <li>     <p>Open the <span class="notranslate">Galaxy</span> Upload Manager (<i class="fas fa-upload" aria-hidden="true"></i><span class="visually-hidden"><span class="notranslate">galaxy</span>-upload</span> on the top-right of the tool panel)</p>   </li>   <li>Select <strong>Paste/Fetch Data</strong></li>   <li>     <p>Paste the link into the text field</p>   </li>   <li>     <p>Press <strong>Start</strong></p>   </li>   <li><strong>Close</strong> the window</li> </ul> </blockquote>
+    </li>
+    <li>
+      <p>Rename the datasets as <code class="language-plaintext highlighter-rouge">test_rows</code>, <code class="language-plaintext highlighter-rouge">train_rows</code> and <code class="language-plaintext highlighter-rouge">test_rows_labels</code> respectively.</p>
+
+      <!--SNIPPET-->
+      <blockquote class="tip">   <div class="box-title tip-title" id="tip-renaming-a-dataset"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-renaming-a-dataset-contents" aria-expanded="true" aria-label="Toggle tip box: Renaming a dataset"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: Renaming a dataset<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>   <ul>   <li>Click on the <i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"><span class="notranslate">galaxy</span>-pencil</span> <strong>pencil icon</strong> for the dataset to edit its attributes</li>   <li>In the central panel, change the <strong>Name</strong> field</li>   <li>Click the <strong>Save</strong> button</li> </ul> </blockquote>
+    </li>
+    <li>
+      <p>Check that the datatype of all three tabular datasets is <code class="language-plaintext highlighter-rouge">csv</code>.</p>
+
+      <!--SNIPPET-->
+      <blockquote class="tip">   <div class="box-title tip-title" id="tip-changing-the-datatype"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-changing-the-datatype-contents" aria-expanded="true" aria-label="Toggle tip box: Changing the datatype"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: Changing the datatype<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>   <ul>   <li>Click on the <i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"><span class="notranslate">galaxy</span>-pencil</span> <strong>pencil icon</strong> for the dataset to edit its attributes</li>   <li>In the central panel, click on the <i class="fas fa-database" aria-hidden="true"></i><span class="visually-hidden"><span class="notranslate">galaxy</span>-chart-select-data</span> <strong>Datatypes</strong> tab on the top</li>   <li>Select <code class="language-plaintext highlighter-rouge">datatypes</code>     <ul>       <li>tip: you can start typing the datatype into the field to filter the dropdown menu</li>     </ul>   </li>   <li>Click the <strong>Save</strong> button</li> </ul> </blockquote>
+    </li>
+  </ol>
+
+</blockquote>
+
+<h3 id="filter-training-dataset">Filter training dataset</h3>
+<p>This tool showcases how a tool prior to using the GPU Jupyterlab tool (in a <span class="notranslate">workflow</span>) can be used and how its output can be used as input to the GPU Jupyterlab tool.</p>
+
+<blockquote class="notranslate hands_on">
+  <div class="box-title hands-on-title" id="hands-on-filter" aria-label="hands-on box: Filter"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Filter</div>
+
+  <ul>
+    <li><span class="tool" data-tool="Filter1" title="Tested with Filter1"><strong>Filter</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: Filter1</span></span>
+      <ul>
+        <li><em>“Filter *”</em> : Select <code class="language-plaintext highlighter-rouge">train_rows</code></li>
+        <li><em>“With following condition”</em> :<code class="language-plaintext highlighter-rouge">c3==0</code></li>
+        <li><em>“Number of header lines to skip”</em>: <code class="language-plaintext highlighter-rouge">1</code></li>
+        <li>Click <em>“Run Tool”</em></li>
+      </ul>
+    </li>
+  </ul>
+
+</blockquote>
+
+<p>Rename the filtered dataset as <code class="language-plaintext highlighter-rouge">new_train_rows</code> which will be used as one of the inputs to the GPU Jupyterlab tool in the next step. The datatype should be <code class="language-plaintext highlighter-rouge">tabular</code>.</p>
+
+<h3 id="execute-ipython-notebook-using-gpu-jupyterlab-tool">Execute IPython notebook using GPU Jupyterlab tool</h3>
+<p>This tool showcases GPU Jupyterlab tool that executes a notebook using input datasets produced by different tools. <span class="notranslate">Galaxy</span> tool like features for this interactive tool has been adapted from another interactive <span class="notranslate">Galaxy</span> tool <strong>Interactive JupyTool and notebook</strong>.</p>
+
+<blockquote class="notranslate hands_on">
+  <div class="box-title hands-on-title" id="hands-on-gpu-jupyterlab-tool" aria-label="hands-on box: GPU Jupyterlab tool"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: GPU Jupyterlab tool</div>
+
+  <ul>
+    <li><span class="tool" data-tool="interactive_tool_ml_jupyter_notebook" title="Tested with interactive_tool_ml_jupyter_notebook"><strong>GPU Jupyterlab tool</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: interactive_tool_ml_jupyter_notebook</span></span>
+      <ul>
+        <li><em>“Do you already have a notebook?”</em> : Select <code class="language-plaintext highlighter-rouge">Load an existing notebook</code></li>
+        <li><em>“IPython Notebook”</em> : Select <code class="language-plaintext highlighter-rouge">sample_notebook.ipynb</code></li>
+        <li><em>“Execute notebook and return a new one”</em>: <code class="language-plaintext highlighter-rouge">Yes</code></li>
+        <li>In <em>“User inputs”</em>:
+          <ul>
+            <li><i class="far fa-plus-square" aria-hidden="true"></i><span class="visually-hidden">param-repeat</span> <em>“1: User inputs”</em>
+              <ul>
+                <li><em>“Name for parameter”</em>: <code class="language-plaintext highlighter-rouge">train</code></li>
+                <li><em>“Choose the input type”</em>: <code class="language-plaintext highlighter-rouge">Dataset</code></li>
+                <li><em>“Select value”</em>: Select <code class="language-plaintext highlighter-rouge">new_train_rows</code></li>
+              </ul>
+            </li>
+            <li><i class="far fa-plus-square" aria-hidden="true"></i><span class="visually-hidden">param-repeat</span> <em>“2: User inputs”</em>
+              <ul>
+                <li><em>“Name for parameter”</em>: <code class="language-plaintext highlighter-rouge">test</code></li>
+                <li><em>“Choose the input type”</em>: <code class="language-plaintext highlighter-rouge">Dataset</code></li>
+                <li><em>“Select value”</em>: Select <code class="language-plaintext highlighter-rouge">test_rows</code></li>
+              </ul>
+            </li>
+            <li><i class="far fa-plus-square" aria-hidden="true"></i><span class="visually-hidden">param-repeat</span> <em>“3: User inputs”</em>
+              <ul>
+                <li><em>“Name for parameter”</em>: <code class="language-plaintext highlighter-rouge">testlabels</code></li>
+                <li><em>“Choose the input type”</em>: <code class="language-plaintext highlighter-rouge">Dataset</code></li>
+                <li><em>“Select value”</em>: Select <code class="language-plaintext highlighter-rouge">test_rows_labels</code></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+
+</blockquote>
+
+<h3 id="cut-a-column-from-the-output-collection">Cut a column from the output collection</h3>
+<p>This tool showcases how the output dataset collection produced by the GPU Jupyterlab tool can be used by a different <span class="notranslate">Galaxy</span> tool.</p>
+
+<blockquote class="notranslate hands_on">
+  <div class="box-title hands-on-title" id="hands-on-cut" aria-label="hands-on box: Cut"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Cut</div>
+
+  <ul>
+    <li><span class="tool" data-tool="Cut1" title="Tested with Cut1"><strong>Cut</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: Cut1</span></span>
+      <ul>
+        <li><em>“Cut columns”</em> : <code class="language-plaintext highlighter-rouge">c1</code></li>
+        <li><em>“Delimited by”</em> : <code class="language-plaintext highlighter-rouge">Comma</code></li>
+        <li><em>“From”</em>: Choose dataset collection <code class="language-plaintext highlighter-rouge">GPU JupyterLab notebook output collection</code></li>
+        <li>Click <em>“Run Tool”</em></li>
+      </ul>
+    </li>
+  </ul>
+
+</blockquote>
+
+<p>The above tool extracts the first column from dataset residing in the output dataset collection. All three steps explained above show how the GPU Jupyterlab tool can be used with other <span class="notranslate">Galaxy</span> tools to create a <span class="notranslate">workflow</span>.</p>
+
 <h1 id="conclusion">Conclusion</h1>
 <p>In this tutorial, we have discussed several features of the Jupyterlab notebook in <span class="notranslate">Galaxy</span> and used a few of them to perform an image segmentation task on COVID CT scans by training Unet, a deep learning model. In addition, we have used it for predicting 3D structure of a protein sequence which is a memory-intensive and time-consuming task. The ready-to-use infrastructure that we employed here for developing an AI algorithm and training a model shows that it is convenient for creating quick prototypes and end-to-end projects, accelerated by GPU, in the data science field without caring much about the storage and compute resources.</p>
 
 <p>The possibility of remote execution of long-running training tasks obviates keeping the notebook or computer open till the training finishes and at the same time, the datasets and models stay safe in <span class="notranslate">Galaxy</span> history. The usage of <code class="language-plaintext highlighter-rouge">h5</code> files for input datasets to AI algorithms solves the problem of varying data formats across multiple fields that are used extensively for predictive tasks. Using <code class="language-plaintext highlighter-rouge">onnx</code> for creating, storing and sharing an AI model makes it easier to handle such it as one compact file. Git integration makes it easy to maintain an entire code repository directly in the notebook. The entire environment can be shared with other researchers only via sharing the URL of the Jupyterlab. Bioblend connects this infrastructure to <span class="notranslate">Galaxy</span> which makes its histories, workflows and tools accessible directly via the notebook. Overall, this infrastructure would prove useful for researchers having little access to large compute resources to develop and manage quick prototypes and end-to-end data science projects.</p>
+
+<p>Feature to use GPU Jupyterlab as a regular <span class="notranslate">Galaxy</span> tool provides an ability to execute IPython notebooks in a <span class="notranslate">workflow</span>. The executed notebook is also available in the <span class="notranslate">Galaxy</span> history with the associated cell outputs.</p>
 
 
                 
@@ -1039,19 +1585,21 @@ day = ""
 url = "\url{https://training.galaxyproject.org/training-material/topics/statistics/tutorials/gpu_jupyter_lab/tutorial.html}",
 note = "[Online; accessed TODAY]"
 }
-@article{Batut_2018,
-    doi = {10.1016/j.cels.2018.05.012},
-    url = {https://doi.org/10.1016%2Fj.cels.2018.05.012},
-    year = 2018,
-    month = {jun},
-    publisher = {Elsevier {BV}},
-    volume = {6},
-    number = {6},
-    pages = {752--758.e1},
-    author = {B{\'{e}}r{\'{e}}nice Batut and Saskia Hiltemann and Andrea Bagnacani and Dannon Baker and Vivek Bhardwaj and Clemens Blank and Anthony Bretaudeau and Loraine Brillet-Gu{\'{e}}guen and Martin {\v{C}}ech and John Chilton and Dave Clements and Olivia Doppelt-Azeroual and Anika Erxleben and Mallory Ann Freeberg and Simon Gladman and Youri Hoogstrate and Hans-Rudolf Hotz and Torsten Houwaart and Pratik Jagtap and Delphine Larivi{\`{e}}re and Gildas Le Corguill{\'{e}} and Thomas Manke and Fabien Mareuil and Fidel Ram{\'{\i}}rez and Devon Ryan and Florian Christoph Sigloch and Nicola Soranzo and Joachim Wolff and Pavankumar Videm and Markus Wolfien and Aisanjiang Wubuli and Dilmurat Yusuf and James Taylor and Rolf Backofen and Anton Nekrutenko and Björn Grüning},
-    title = {Community-Driven Data Analysis Training for Biology},
-    journal = {Cell Systems}
-}</code>
+@article{Hiltemann_2023,
+	doi = {10.1371/journal.pcbi.1010752},
+	url = {https://doi.org/10.1371%2Fjournal.pcbi.1010752},
+	year = 2023,
+	month = {jan},
+	publisher = {Public Library of Science ({PLoS})},
+	volume = {19},
+	number = {1},
+	pages = {e1010752},
+	author = {Saskia Hiltemann and Helena Rasche and Simon Gladman and Hans-Rudolf Hotz and Delphine Larivi{\`{e}}re and Daniel Blankenberg and Pratik D. Jagtap and Thomas Wollmann and Anthony Bretaudeau and Nadia Gou{\'{e}} and Timothy J. Griffin and Coline Royaux and Yvan Le Bras and Subina Mehta and Anna Syme and Frederik Coppens and Bert Droesbeke and Nicola Soranzo and Wendi Bacon and Fotis Psomopoulos and Crist{\'{o}}bal Gallardo-Alba and John Davis and Melanie Christine Föll and Matthias Fahrner and Maria A. Doyle and Beatriz Serrano-Solano and Anne Claire Fouilloux and Peter van Heusden and Wolfgang Maier and Dave Clements and Florian Heyl and Björn Grüning and B{\'{e}}r{\'{e}}nice Batut and},
+	editor = {Francis Ouellette},
+	title = {Galaxy Training: A powerful framework for teaching!},
+	journal = {PLoS Comput Biol} Computational Biology}
+}
+</code>
                    </pre></div></div>
                    </p>
                 </blockquote>
@@ -1089,8 +1637,6 @@ document.getElementById("citation-text").innerHTML = document.getElementById("ci
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
         <script type="text/javascript" src="/training-material/assets/js/bootstrap-toc.min.js"></script>
         <script type="text/javascript" src="/training-material/assets/js/main.js"></script>
-        <script type="text/javascript" src="/training-material/assets/js/theme.js"></script>
-
         <script type="text/javascript" src="/training-material/assets/js/clipboard.min.js"></script>
         <script type="text/javascript">
         var snippets=document.querySelectorAll('div.highlight');
