@@ -40,7 +40,8 @@
         <meta property="og:site_name" content="Galaxy Training Network" />
         <meta property="og:title" content="Galaxy Training: Masking repeats with RepeatMasker" />
         <meta property="og:description" content="Genome annotation is a multi-level process that includes ..." />
-        <meta property="og:image" content="/training-material/assets/images/GTNLogo1000.png" />
+        
+        <meta property="og:image" content="/training-material/assets/images/gga.png" />
 
         
         <script type="application/ld+json">
@@ -472,6 +473,13 @@
       "name": "Genome Annotation",
       "description": "Genome annotation is a multi-level process that includes prediction of protein-coding\ngenes, as well as other functional genome units such as structural RNAs, tRNAs,\nsmall RNAs, pseudogenes, control regions, direct and inverted repeats, insertion\nsequences, transposons and other mobile elements.\n",
       "url": "https://training.galaxyproject.org/training-material/topics/genome-annotation/"
+    },
+    {
+      "@type": "DefinedTerm",
+      "@id": "http://edamontology.org/topic_0362",
+      "inDefinedTermSet": "http://edamontology.org",
+      "termCode": "topic_0362",
+      "url": "https://bioportal.bioontology.org/ontologies/EDAM/?p=classes&conceptid=http%3A%2F%2Fedamontology.org%2Ftopic_0362"
     }
   ],
   "educationalLevel": "Beginner"
@@ -486,7 +494,9 @@
         <div class="container">
             <a class="navbar-brand" href="/training-material/">
                 <img src="/training-material/assets/images/GTN-60px.png" height="30" alt="Galaxy Training Network logo">
-                Galaxy Training!
+                
+                    Galaxy Training!
+                
             </a>
 
             <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#top-navbar" aria-controls="top-navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -656,6 +666,7 @@
     </nav>
 </header>
 
+        
         <div class="container main-content" role="main">
         
 
@@ -679,6 +690,8 @@
   room: 'galaxy-genome-annotation/Lobby'
   };
 </script>
+
+
 <script src="https://sidecar.gitter.im/dist/sidecar.v1.js" async defer></script>
 
 <section class="tutorial topic-genome-annotation">
@@ -1084,7 +1097,7 @@
   <li>Interspersed repeats: sequences repeated in distant positions, including transposons, Short Interspersed Nuclear Elements (SINEs) or Long Interspersed Nuclear Elements (LINEs)</li>
 </ul>
 
-<p>These repeats are interesting on their own: they can originate from transposons or viral insertions, and they can have direct effects on the <span class="notranslate">expression</span> of genes. But they are also the source of a lot of trouble when you work on genomics data. First when sequencing a genome, assembly tools often have problems reconstructing the genome sequence in regions containing repeats (in particular when repeats are longer than the read size). Then, when you have a good assembly, you want to annotate it to find the location of genes. Unfortunately annotation tools have trouble identifying gene locations in regions rich in repeats.</p>
+<p>These repeats are interesting on their own: they can originate from transposons or viral insertions, and they can have direct effects on the expression of genes. But they are also the source of a lot of trouble when you work on genomics data. First when sequencing a genome, assembly tools often have problems reconstructing the genome sequence in regions containing repeats (in particular when repeats are longer than the read size). Then, when you have a good assembly, you want to annotate it to find the location of genes. Unfortunately annotation tools have trouble identifying gene locations in regions rich in repeats.</p>
 
 <p>The aim of repeat masking is to identify the location of all repeated elements along a genome sequence. Other tools (like annotation pipelines) can then take this information into account when producing their results.</p>
 
@@ -1138,10 +1151,10 @@ the shared data library (<code class="language-plaintext highlighter-rouge">GTN 
 </code></pre></div>      </div>
 
       <!--SNIPPET-->
-      <blockquote class="tip">   <div class="box-title tip-title" id="tip-importing-via-links"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-importing-via-links-contents" aria-expanded="true" aria-label="Toggle tip box: Importing via links"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: Importing via links<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>   <ul>   <li>Copy the link location</li>   <li>     <p>Open the <span class="notranslate">Galaxy</span> Upload Manager (<i class="fas fa-upload" aria-hidden="true"></i><span class="visually-hidden"><span class="notranslate">galaxy</span>-upload</span> on the top-right of the tool panel)</p>   </li>   <li>Select <strong>Paste/Fetch Data</strong></li>   <li>     <p>Paste the link into the text field</p>   </li>   <li>     <p>Press <strong>Start</strong></p>   </li>   <li><strong>Close</strong> the window</li> </ul> </blockquote>
+      <blockquote class="tip">   <div class="box-title tip-title" id="tip-importing-via-links"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-importing-via-links-contents" aria-expanded="true" aria-label="Toggle tip box: Importing via links"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: Importing via links<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>   <ul>   <li>Copy the link location</li>   <li>     <p>Open the Galaxy Upload Manager (<i class="fas fa-upload" aria-hidden="true"></i><span class="visually-hidden">galaxy-upload</span> on the top-right of the tool panel)</p>   </li>   <li>Select <strong>Paste/Fetch Data</strong></li>   <li>     <p>Paste the link into the text field</p>   </li>   <li>     <p>Press <strong>Start</strong></p>   </li>   <li><strong>Close</strong> the window</li> </ul> </blockquote>
 
       <!--SNIPPET-->
-      <blockquote class="tip">   <div class="box-title tip-title" id="tip-importing-data-from-a-data-library"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-importing-data-from-a-data-library-contents" aria-expanded="true" aria-label="Toggle tip box: Importing data from a data library"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: Importing data from a data library<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>   <p>As an alte<span class="notranslate">rna</span>tive to uploading the data from a URL or your computer, the files may also have been made available from a <em>shared data library</em>:</p>   <ul>   <li>Go into <strong>Shared data</strong> (top panel) then <strong>Data libraries</strong></li>   <li>Navigate to  the correct folder as indicated by your instructor</li>   <li>Select the desired files</li>   <li>Click on the <strong>To History</strong> button near the top and select <strong>as Datasets</strong> from the dropdown menu</li>   <li>In the pop-up window, select the history you want to import the files to (or create a new one)</li>   <li>Click on <strong>Import</strong></li> </ul> </blockquote>
+      <blockquote class="tip">   <div class="box-title tip-title" id="tip-importing-data-from-a-data-library"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-importing-data-from-a-data-library-contents" aria-expanded="true" aria-label="Toggle tip box: Importing data from a data library"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: Importing data from a data library<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>   <p>As an alternative to uploading the data from a URL or your computer, the files may also have been made available from a <em>shared data library</em>:</p>   <ul>   <li>Go into <strong>Shared data</strong> (top panel) then <strong>Data libraries</strong></li>   <li>Navigate to  the correct folder as indicated by your instructor</li>   <li>Select the desired files</li>   <li>Click on the <strong>To History</strong> button near the top and select <strong>as Datasets</strong> from the dropdown menu</li>   <li>In the pop-up window, select the history you want to import the files to (or create a new one)</li>   <li>Click on <strong>Import</strong></li> </ul> </blockquote>
     </li>
   </ol>
 
@@ -1162,7 +1175,7 @@ the shared data library (<code class="language-plaintext highlighter-rouge">GTN 
   <div class="box-title hands-on-title" id="hands-on" aria-label="hands-on box: "><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on</div>
 
   <ol>
-    <li><span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/iuc/red/red/2018.09.10+galaxy1" title="Tested with toolshed.g2.bx.psu.edu/repos/iuc/red/red/2018.09.10+galaxy1"><strong>Red</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: <span class="notranslate">toolshed</span>.g2.bx.psu.edu/repos/iuc/red/red/2018.09.10+<span class="notranslate">galaxy</span>1</span></span>  with the following parameters:
+    <li><span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/iuc/red/red/2018.09.10+galaxy1" title="Tested with toolshed.g2.bx.psu.edu/repos/iuc/red/red/2018.09.10+galaxy1"><strong>Red</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: toolshed.g2.bx.psu.edu/repos/iuc/red/red/2018.09.10+galaxy1</span></span>  with the following parameters:
       <ul>
         <li><i class="far fa-file" aria-hidden="true"></i><span class="visually-hidden">param-file</span> <em>“Genome sequence to mask”</em>: <code class="language-plaintext highlighter-rouge">genome_raw.fasta</code> (Input dataset)</li>
       </ul>
@@ -1175,7 +1188,7 @@ the shared data library (<code class="language-plaintext highlighter-rouge">GTN 
 
 <ul>
   <li>A <em>fasta</em> file: this is the soft-masked genome that you can use for future analysis. If you display it, you will notice that some portions of the sequence are in lowercase: these are the regions that were identified as repeats</li>
-  <li>A <em><span class="notranslate">bed</span></em> file: this one contains the coordinates on the genome of each repeated loci</li>
+  <li>A <em>bed</em> file: this one contains the coordinates on the genome of each repeated loci</li>
 </ul>
 
 <blockquote class="question">
@@ -1186,7 +1199,7 @@ the shared data library (<code class="language-plaintext highlighter-rouge">GTN 
   <blockquote class="solution">
     <div class="box-title solution-title" id="solution"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-contents" aria-expanded="true" aria-label="Toggle solution box: "><i class="far fa-eye" aria-hidden="true"></i><span class="visually-hidden"></span> Solution<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
 
-    <p>You need to click on the <i class="fas fa-info-circle" aria-hidden="true"></i><span class="visually-hidden"><span class="notranslate">galaxy</span>-info</span> on one of the output. You should find it at the end of the extended <code class="language-plaintext highlighter-rouge">Tool Standard Output</code> in <strong>Job Information</strong>. It should be ~ 30.62%</p>
+    <p>You need to click on the <i class="fas fa-info-circle" aria-hidden="true"></i><span class="visually-hidden">galaxy-info</span> on one of the output. You should find it at the end of the extended <code class="language-plaintext highlighter-rouge">Tool Standard Output</code> in <strong>Job Information</strong>. It should be ~ 30.62%</p>
 
   </blockquote>
 
@@ -1200,15 +1213,15 @@ the shared data library (<code class="language-plaintext highlighter-rouge">GTN 
   <blockquote class="solution">
     <div class="box-title solution-title" id="solution-1"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-1-contents" aria-expanded="true" aria-label="Toggle solution box: "><i class="far fa-eye" aria-hidden="true"></i><span class="visually-hidden"></span> Solution<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
 
-    <p>As you can see <strong>Red</strong> has no option to hard-mask your genome. However, one of the output is a <code class="language-plaintext highlighter-rouge"><span class="notranslate">bed</span></code> file, so you can use <span><strong><span class="notranslate">bed</span>tools MaskFastaBed</strong> <i class="fas fa-wrench" aria-hidden="true"></i></span>  to replace repeated regions with stretches of N:</p>
+    <p>As you can see <strong>Red</strong> has no option to hard-mask your genome. However, one of the output is a <code class="language-plaintext highlighter-rouge">bed</code> file, so you can use <span><strong>bedtools MaskFastaBed</strong> <i class="fas fa-wrench" aria-hidden="true"></i></span>  to replace repeated regions with stretches of N:</p>
 
     <blockquote class="notranslate hands_on">
       <div class="box-title hands-on-title" id="hands-on-1" aria-label="hands-on box: "><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on</div>
 
       <ol>
-        <li><span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/iuc/bedtools/bedtools_maskfastabed/2.30.0" title="Tested with toolshed.g2.bx.psu.edu/repos/iuc/bedtools/bedtools_maskfastabed/2.30.0"><strong><span class="notranslate">bed</span>tools MaskFastaBed</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: <span class="notranslate">toolshed</span>.g2.bx.psu.edu/repos/iuc/<span class="notranslate">bed</span>tools/<span class="notranslate">bed</span>tools_maskfastabed/2.30.0</span></span>  with the following parameters:
+        <li><span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/iuc/bedtools/bedtools_maskfastabed/2.30.0" title="Tested with toolshed.g2.bx.psu.edu/repos/iuc/bedtools/bedtools_maskfastabed/2.30.0"><strong>bedtools MaskFastaBed</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: toolshed.g2.bx.psu.edu/repos/iuc/bedtools/bedtools_maskfastabed/2.30.0</span></span>  with the following parameters:
           <ul>
-            <li><i class="far fa-file" aria-hidden="true"></i><span class="visually-hidden">param-file</span> <em>“<span class="notranslate">BED</span>/<span class="notranslate">bed</span>Graph/GFF/VCF/EncodePeak file”</em>: <code class="language-plaintext highlighter-rouge">Red on data</code> (<code class="language-plaintext highlighter-rouge"><span class="notranslate">bed</span></code> file produced by red)</li>
+            <li><i class="far fa-file" aria-hidden="true"></i><span class="visually-hidden">param-file</span> <em>“BED/bedGraph/GFF/VCF/EncodePeak file”</em>: <code class="language-plaintext highlighter-rouge">Red on data</code> (<code class="language-plaintext highlighter-rouge">bed</code> file produced by red)</li>
             <li><i class="far fa-file" aria-hidden="true"></i><span class="visually-hidden">param-file</span> <em>“FASTA file”</em>: <code class="language-plaintext highlighter-rouge">genome_raw.fasta</code></li>
           </ul>
         </li>
@@ -1237,9 +1250,9 @@ the shared data library (<code class="language-plaintext highlighter-rouge">GTN 
   <div class="box-title hands-on-title" id="hands-on-2" aria-label="hands-on box: "><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on</div>
 
   <ol>
-    <li><span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/bgruening/repeat_masker/repeatmasker_wrapper/4.1.2-p1+galaxy1" title="Tested with toolshed.g2.bx.psu.edu/repos/bgruening/repeat_masker/repeatmasker_wrapper/4.1.2-p1+galaxy1"><strong>RepeatMasker</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: <span class="notranslate">toolshed</span>.g2.bx.psu.edu/repos/bgruening/repeat_masker/repeatmasker_wrapper/4.1.2-p1+<span class="notranslate">galaxy</span>1</span></span>  with the following parameters:
+    <li><span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/bgruening/repeat_masker/repeatmasker_wrapper/4.1.2-p1+galaxy1" title="Tested with toolshed.g2.bx.psu.edu/repos/bgruening/repeat_masker/repeatmasker_wrapper/4.1.2-p1+galaxy1"><strong>RepeatMasker</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: toolshed.g2.bx.psu.edu/repos/bgruening/repeat_masker/repeatmasker_wrapper/4.1.2-p1+galaxy1</span></span>  with the following parameters:
       <ul>
-        <li><i class="far fa-file" aria-hidden="true"></i><span class="visually-hidden">param-file</span> <em>“Genomic <span class="notranslate">DNA</span>”</em>: <code class="language-plaintext highlighter-rouge">genome_raw.fasta</code> (Input dataset)</li>
+        <li><i class="far fa-file" aria-hidden="true"></i><span class="visually-hidden">param-file</span> <em>“Genomic DNA”</em>: <code class="language-plaintext highlighter-rouge">genome_raw.fasta</code> (Input dataset)</li>
         <li><em>“Repeat library source”</em>: <code class="language-plaintext highlighter-rouge">DFam (curated only, bundled with RepeatMasker)</code></li>
       </ul>
       <ul>
@@ -1292,9 +1305,9 @@ the shared data library (<code class="language-plaintext highlighter-rouge">GTN 
   <div class="box-title hands-on-title" id="hands-on-3" aria-label="hands-on box: "><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on</div>
 
   <ol>
-    <li><span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/bgruening/repeat_masker/repeatmasker_wrapper/4.1.2-p1+galaxy1" title="Tested with toolshed.g2.bx.psu.edu/repos/bgruening/repeat_masker/repeatmasker_wrapper/4.1.2-p1+galaxy1"><strong>RepeatMasker</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: <span class="notranslate">toolshed</span>.g2.bx.psu.edu/repos/bgruening/repeat_masker/repeatmasker_wrapper/4.1.2-p1+<span class="notranslate">galaxy</span>1</span></span>  with the following parameters:
+    <li><span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/bgruening/repeat_masker/repeatmasker_wrapper/4.1.2-p1+galaxy1" title="Tested with toolshed.g2.bx.psu.edu/repos/bgruening/repeat_masker/repeatmasker_wrapper/4.1.2-p1+galaxy1"><strong>RepeatMasker</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: toolshed.g2.bx.psu.edu/repos/bgruening/repeat_masker/repeatmasker_wrapper/4.1.2-p1+galaxy1</span></span>  with the following parameters:
       <ul>
-        <li><i class="far fa-file" aria-hidden="true"></i><span class="visually-hidden">param-file</span> <em>“Genomic <span class="notranslate">DNA</span>”</em>: <code class="language-plaintext highlighter-rouge">genome_raw.fasta</code> (Input dataset)</li>
+        <li><i class="far fa-file" aria-hidden="true"></i><span class="visually-hidden">param-file</span> <em>“Genomic DNA”</em>: <code class="language-plaintext highlighter-rouge">genome_raw.fasta</code> (Input dataset)</li>
         <li><em>“Repeat library source”</em>: <code class="language-plaintext highlighter-rouge">Custom library of repeats</code></li>
       </ul>
       <ul>
@@ -1323,7 +1336,7 @@ the shared data library (<code class="language-plaintext highlighter-rouge">GTN 
 
 </blockquote>
 
-<p>Other tools might mask a greater proportion of the genome, at the cost of a more complex <span class="notranslate">workflow</span> with training steps. But masking more isn’t always a positive results! In fact, large family of genes could be considered as a repeat by some tools or certain library. Only a manual curation can correct those mistakes, but this result is sufficient to perform an annotation by following the <a href="/training-material/topics/genome-annotation/tutorials/funannotate/tutorial.html">Funannotate annotation tutorial</a>.</p>
+<p>Other tools might mask a greater proportion of the genome, at the cost of a more complex workflow with training steps. But masking more isn’t always a positive results! In fact, large family of genes could be considered as a repeat by some tools or certain library. Only a manual curation can correct those mistakes, but this result is sufficient to perform an annotation by following the <a href="/training-material/topics/genome-annotation/tutorials/funannotate/tutorial.html">Funannotate annotation tutorial</a>.</p>
 
 <h1 id="conclusion">Conclusion</h1>
 
