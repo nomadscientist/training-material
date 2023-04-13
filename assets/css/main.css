@@ -35,7 +35,7 @@
   --code-foreground: #fff;
   --code-background: #000;
   --border-light: #ddd;
-  --hyperlink: #0067d6;
+  --hyperlink: #0056b3;
   --hyperlink-hover: #004590;
   --brand-color: #2c3143;
   --brand-color-contrast: #fff;
@@ -662,68 +662,66 @@ body.theme-progress nav.navbar, body.theme-progress .remark-slide .my-header {
   background: linear-gradient(120deg, #2c3143 0px 130px, #fdda0f 131px 139px, #fff 140px 148px, #f4b0c9 149px 157px, #7ccee6 158px 166px, #93540c 167px 175px, #000 176px 184px, transparent 185px), linear-gradient(45deg, #2c3143 0px 110px, rgba(44, 49, 67, 0) 110px), linear-gradient(180deg, #FE0000 16.66%, #FD8C00 16.66% 33.32%, #FFE500 33.32% 49.98%, #119F0B 49.98% 66.64%, #0644B3 66.64% 83.3%, #C22EDC 83.3%);
 }
 body.theme-progress p:nth-child(8n+7)::selection {
-  background: hsl(285deg, 76%, 57%);
+  background: hsl(285, 76%, 57%);
 }
 body.theme-progress p:nth-child(8n+0)::selection {
-  background: hsl(330deg, 76%, 57%);
+  background: hsl(330, 76%, 57%);
 }
 body.theme-progress p:nth-child(8n+1)::selection {
-  background: hsl(15deg, 76%, 57%);
+  background: hsl(15, 76%, 57%);
 }
 body.theme-progress p:nth-child(8n+2)::selection {
-  background: hsl(60deg, 76%, 57%);
+  background: hsl(60, 76%, 57%);
 }
 body.theme-progress p:nth-child(8n+3)::selection {
-  background: hsl(105deg, 76%, 57%);
+  background: hsl(105, 76%, 57%);
 }
 body.theme-progress p:nth-child(8n+4)::selection {
-  background: hsl(150deg, 76%, 57%);
+  background: hsl(150, 76%, 57%);
 }
 body.theme-progress p:nth-child(8n+5)::selection {
-  background: hsl(195deg, 76%, 57%);
+  background: hsl(195, 76%, 57%);
 }
 body.theme-progress p:nth-child(9n+6)::selection {
-  background: hsl(240deg, 76%, 57%);
+  background: hsl(240, 76%, 57%);
 }
 body.theme-progress li:nth-child(8n+7)::selection {
-  background: hsl(285deg, 76%, 57%);
+  background: hsl(285, 76%, 57%);
 }
 body.theme-progress li:nth-child(8n+0)::selection {
-  background: hsl(330deg, 76%, 57%);
+  background: hsl(330, 76%, 57%);
 }
 body.theme-progress li:nth-child(8n+1)::selection {
-  background: hsl(15deg, 76%, 57%);
+  background: hsl(15, 76%, 57%);
 }
 body.theme-progress li:nth-child(8n+2)::selection {
-  background: hsl(60deg, 76%, 57%);
+  background: hsl(60, 76%, 57%);
 }
 body.theme-progress li:nth-child(8n+3)::selection {
-  background: hsl(105deg, 76%, 57%);
+  background: hsl(105, 76%, 57%);
 }
 body.theme-progress li:nth-child(8n+4)::selection {
-  background: hsl(150deg, 76%, 57%);
+  background: hsl(150, 76%, 57%);
 }
 body.theme-progress li:nth-child(8n+5)::selection {
-  background: hsl(195deg, 76%, 57%);
+  background: hsl(195, 76%, 57%);
 }
 body.theme-progress li:nth-child(9n+6)::selection {
-  background: hsl(240deg, 76%, 57%);
+  background: hsl(240, 76%, 57%);
 }
 
 body.downunder {
   transform: rotate(180deg);
 }
 
-body.theme-straya h1::before, body.theme-straya h1::after {
-  content: " 🇳🇿 ";
-}
-body.theme-straya h2::before {
-  content: "🦘 ";
+body.theme-straya h1::after {
+  content: " 🦘";
 }
 body.theme-straya h2::after {
   content: " 🐨";
-  display: inline-block;
-  transform: scale(-1, 1) translateX(-1rem);
+}
+body.theme-straya h3::after {
+  content: " 🦈";
 }
 
 .color-overview {
@@ -1038,9 +1036,7 @@ figure {
 }
 figure > img {
   margin-bottom: 1rem;
-}
-figure .figcaption-prefix {
-  font-weight: bold;
+  height: auto;
 }
 figure figcaption {
   text-align: justify;
@@ -1068,6 +1064,9 @@ nav.navbar {
 nav.navbar.navbar-dark .navbar-brand, nav.navbar.navbar-dark .navbar-nav .nav-link {
   color: var(--brand-color-contrast);
 }
+nav.navbar a {
+  border: none;
+}
 nav.navbar .navbar-brand, nav.navbar .navbar-nav li {
   padding: 0.5em;
   background: var(--navbar-item-background);
@@ -1077,6 +1076,9 @@ nav.navbar .navbar-brand:hover, nav.navbar .navbar-nav li:hover {
 }
 nav.navbar a.navbar-brand {
   padding-right: 2.5em;
+}
+nav.navbar a {
+  text-decoration: none;
 }
 nav.navbar .navbar-collapse {
   justify-content: flex-end;
@@ -1904,13 +1906,18 @@ blockquote.feedback > .box-title button {
   width: 1px;
 }
 
-/* WCAG Contrast. These aim to pass AA level for normal sized text. */
+/* WCAG Contrast. These aim to pass AAA level for normal sized text. */
 a {
   color: var(--hyperlink);
+  border-bottom: 1px dotted var(--hyperlink);
 }
-a:hover, a:focus, a:active {
+a:hover, a:focus, a:focus-visible, a:active {
   color: var(--hyperlink-hover);
-  text-decoration: underline;
+  border-bottom: 1px solid var(--hyperlink-hover);
+  text-decoration: none;
+}
+a.logo {
+  border: none;
 }
 
 .text-muted {
@@ -1951,7 +1958,6 @@ nav[data-toggle=toc] .nav li a:hover, nav[data-toggle=toc] .nav li a:focus, nav[
   padding-left: 0px;
   color: var(--hyperlink);
   border-left: none;
-  text-decoration: underline;
 }
 
 .col-sm-2 {
@@ -1993,7 +1999,7 @@ nav[data-toggle=toc] .nav li a:hover, nav[data-toggle=toc] .nav li a:focus, nav[
   flex-direction: row;
   align-items: center;
   border-radius: 1em;
-  border: 1px solid var(--hyperlink);
+  border: 1px dotted var(--hyperlink);
   padding-right: 0.5em;
   margin: 0.2em;
   line-height: 1em;
@@ -2005,6 +2011,8 @@ nav[data-toggle=toc] .nav li a:hover, nav[data-toggle=toc] .nav li a:focus, nav[
   margin: 0 0.25em 0 0;
 }
 .contributor-badge:hover {
+  background: var(--brand-color);
+  color: var(--brand-color-contrast);
   border: 1px solid var(--hyperlink-hover);
 }
 
@@ -2043,9 +2051,6 @@ div.highlight:hover .btn, div.highlight .btn:focus {
 }
 #tutorial_list #clear_search {
   cursor: pointer;
-}
-#tutorial_list .topic-icon {
-  padding: 0.5rem 0.75rem;
 }
 
 ul.supporting_material .btn {
@@ -2265,6 +2270,16 @@ a.btn div {
   padding: 5px;
   font-size: 1.5rem;
   margin: 5px;
+}
+
+.btn-primary {
+  background-color: var(--brand-color);
+  border-color: var(--brand-color);
+}
+
+.btn-success {
+  background-color: #1d7531;
+  border-color: #1d7531;
 }
 
 /* CYOA */
