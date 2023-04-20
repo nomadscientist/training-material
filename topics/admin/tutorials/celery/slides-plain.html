@@ -23,7 +23,7 @@
 <meta name="DC.type" content="text">
 <meta name="DC.title" content="Galaxy and Celery">
 <meta name="DC.publisher" content="Galaxy Training Network">
-<meta name="DC.date" content="2023-04-19 01:22:41 +0000">
+<meta name="DC.date" content="2023-04-20 01:19:40 +0000">
 <meta name="DC.creator" content="Mira Kuntz">
 
         
@@ -197,7 +197,7 @@
 	<tr>
 		<td><abbr title="These people wrote the bulk of the tutorial, they may have done the analysis, built the workflow, and wrote the text themselves.">Author(s)</abbr></td>
 		<td>
-			<a href="/training-material/hall-of-fame/mira-miracoli/" class="contributor-badge contributor-mira-miracoli"><img src="https://avatars.githubusercontent.com/mira-miracoli?s=27" alt="Avatar">Mira Kuntz</a>
+			<a href="/training-material/hall-of-fame/mira-miracoli/" class="contributor-badge contributor-mira-miracoli"><img src="/training-material/assets/images/orcid.png" alt="orcid logo"/><img src="https://avatars.githubusercontent.com/mira-miracoli?s=27" alt="Avatar">Mira Kuntz</a>
 		</td>
 	</tr>
 	
@@ -232,12 +232,12 @@
 
 		
 
-		<div><strong> <i class="far fa-calendar" aria-hidden="true"></i><span class="visually-hidden">last_modification</span> Last modification:</strong> Apr 19, 2023 </div>
+		<div><strong> <i class="far fa-calendar" aria-hidden="true"></i><span class="visually-hidden">last_modification</span> Last modification:</strong> Apr 20, 2023 </div>
 
 	<hr />
 
 
-	<h2 id="can-you-eat-it">Can you eat it</h2>
+	<h2 id="can-you-eat-it">Can you eat it?</h2>
 
 <p>.pull-left[
 Celery is an asynchronous distributed task queue.</p>
@@ -245,13 +245,13 @@ Celery is an asynchronous distributed task queue.</p>
 <p>It consists of:</p>
 
 <ul>
-  <li>Application that sends tasks</li>
-  <li>to a broker with queues</li>
-  <li>Worker(s) that execute the tasks</li>
-  <li>A Result backend to store the task results</li>
+  <li>Your Application that sends tasks</li>
+  <li>To a broker with queues</li>
+  <li>Celery workers that execute the tasks</li>
+  <li>A result backend to store the task results</li>
 </ul>
 
-<p>It’s written in Python but supports multiple other languages via webhooks.
+<p>It’s written in Python, multiple other languages are supported.
 ]</p>
 
 <p>.pull-right[
@@ -264,12 +264,12 @@ Celery is an asynchronous distributed task queue.</p>
 
 <p>.pull-left[</p>
 <ul>
-  <li>Celeryd – the daemonized version of Celery</li>
+  <li>Different worker/process <a href="https://distributedpython.com/posts/celery-execution-pools-what-is-it-all-about/">pool options</a>, depending on your needs – I/O or CPU bound</li>
   <li>CeleryBeat a scheduler for repeated tasks</li>
   <li>Flower, a monitoring interface for
     <ul>
       <li>Showing tasks, queues and workers</li>
-      <li>Prometheus + Grafana Integration
+      <li>Prometheus + Grafana integration
 ]</li>
     </ul>
   </li>
@@ -281,24 +281,28 @@ Celery is an asynchronous distributed task queue.</p>
 
 <hr />
 
-<h1 id="how-celery-can-improve-galaxy">How Celery Can Improve Galaxy</h1>
+<h1 id="how-does-celery-improve-galaxy">How does Celery improve Galaxy?</h1>
 
 <hr />
 
+<p><strong>The Problem</strong></p>
+
+<p>The Galaxy Server should respond quickly to every request.<br />
+While this is easily possible for small instances with few users,<br />
+when scaling to thousands of users and millions of jobs,<br />
+without Celery, Gunicorn and the job handlers spend much of their time on I/O bound side tasks,<br />
+for example packing a zip for history export.</p>
+
+<p>This leads to slow responses and scheduling.</p>
+
+<hr />
 <p>.pull-left[
-<strong>The Problem</strong></p>
+<strong>The Solution</strong></p>
 
-<p>The Galaxy Server should respond quickly to every request. Gunicorn Workers should not do everything.</p>
+<p>Queue asynchronous tasks with Celery<br />
+on a different node or even a whole cluster…</p>
 
-<p><strong>The Solution</strong></p>
-
-<p>Queue asynchronous tasks with Celery
-(happens currently internal on the same node)</p>
-
-<p><strong>The Improvement</strong></p>
-
-<p>Send the tasks to an external Celery-Cluster
-]</p>
+<p>]</p>
 
 <p>.pull-right[
 	<img src="images/galaxy+celery.png" alt="galaxy logo next to celery logo, with two purple hearts" />
@@ -310,26 +314,43 @@ Celery is an asynchronous distributed task queue.</p>
 
 <hr />
 
-<h2 id="what-is-celery-used-for">What is Celery Used For</h2>
+<h2 id="how-does-the-magic-work">How does the magic work?</h2>
 
 <ul>
-  <li>Recalculating Disk Usage</li>
-  <li>Purging Datasets</li>
-  <li>Changing Datatypes</li>
-  <li>Preparing compressed downloads (histories, etc.)</li>
-  <li>Creating PDFs for Galaxy workflow reports</li>
-  <li>Cleaning up short term storage</li>
+  <li>Celery loads the Galaxy code from NFS when you start the workers</li>
+  <li>Workers connect to the broker and fetch tasks from the queue</li>
+  <li>Since all the python modules are already loaded, it can execute the task directly, with almost no delay</li>
+  <li>Now it runs the code according to the task, for example a SQL update, or a file deletion on the NFS</li>
+  <li>Results are either sent directly back to the broker or stored e.g. in a Redis DB</li>
 </ul>
 
 <hr />
 
-<p>.pull-left [</p>
-<h2 id="what-we-need">What we need</h2>
+<h2 id="what-is-celery-used-for">What is Celery used for</h2>
 
 <ul>
-  <li>A Galaxy Server, configured to use an external MQ and external Celery Workers</li>
-  <li>A properly set up broker (for example the <a href="https://github.com/usegalaxy-eu/ansible-rabbitmq">UseGalaxy.eu RabbitMQ Ansible Role</a>)</li>
-  <li>A Celery-Cluster on external node with the full Galaxy repo, branch -&gt; dev, which has run an initialisation (run.sh) and run the Celery Worker above <a href="https://github.com/galaxyproject/galaxy/tree/dev/lib/galaxy/celery">task definition folder</a>
+  <li>Processing upload jobs</li>
+  <li>Processing metadata</li>
+  <li>Recalculating disk usage</li>
+  <li>Purging datasets</li>
+  <li>Changing datatypes</li>
+  <li>Preparing compressed downloads (histories, etc.)</li>
+  <li>Creating PDFs for Galaxy workflow reports</li>
+  <li>Cleaning up short term storage</li>
+  <li>Preparing history exports
+. . .</li>
+</ul>
+
+<hr />
+
+<p>.pull-left[</p>
+<h2 id="what-do-you-need-to-enable-celery">What do you need to enable Celery?</h2>
+
+<ul>
+  <li>A properly set up broker, for example with <a href="https://github.com/usegalaxy-eu/ansible-rabbitmq">UseGalaxy.eu RabbitMQ Ansible Role</a></li>
+  <li>A result backend, e.g. a Redis server, for example with <a href="https://github.com/geerlingguy/ansible-role-redis">geerlingguy’s Ansible Role</a></li>
+  <li>A shared filesystem (e.g. NFS) to which you export Galaxy’s root dir and which is mounted on the Celery nodes</li>
+  <li>Optional: Flower, the Celery UI, for example with <a href="https://github.com/usegalaxy-eu/flower-ansible-role">UseGalaxy.eu Flower Ansible Role</a> 
 ]</li>
 </ul>
 
@@ -340,44 +361,69 @@ Celery is an asynchronous distributed task queue.</p>
 <hr />
 
 <p>.pull-left[
-	<img src="images/docs.png" alt="screenshot of galaxy documentation page, linked in next section" />
-]
-.pull-right[</p>
-<ul>
-  <li><a href="https://docs.galaxyproject.org/en/latest/admin/options.html#amqp-internal-connection">Configuration in <code class="language-plaintext highlighter-rouge">galaxy.yml</code> file</a></li>
-  <li>Documentation primarily within codebase and developer, not admin-focused</li>
-  <li><code class="language-plaintext highlighter-rouge">celery_broker</code> can be set, but defaults to <code class="language-plaintext highlighter-rouge">amqp_internal_connection</code></li>
-  <li>Contributions are very welcome ;)</li>
-  <li>But: Celery, Flower and RabbitMQ are well documented
-]</li>
-</ul>
-
-<hr />
-
-<p>.pull-left[
-<img src="images/have.png" alt="Screenshots of Galaxy, RabbitMQ, and Flower" />
+<img src="images/celery.png" alt="" />
 ]</p>
 
 <p>.pull-right[</p>
 
-<h2 id="whats-currently-easy">What’s currently easy</h2>
+<h2 id="where-to-get-celery">Where to get Celery?</h2>
 
 <ul>
-  <li>A Galaxy instance</li>
-  <li>A RabbitMQ instance</li>
-  <li>Running Celery via Gravity
+  <li>It is in your Galaxy virtual environment (<code class="language-plaintext highlighter-rouge">venv</code>) already!</li>
+  <li>Mount the Galaxy root with <code class="language-plaintext highlighter-rouge">venv</code> and config dirs on your Celery node</li>
+  <li>Create an Ansible Playbook e.g. with <a href="https://github.com/usegalaxy-eu/ansible-galaxy-systemd">UseGalaxy.eu’s Systemd Role</a></li>
+  <li>For inspiration, you can check out GalaxyEU’s vars <a href="https://github.com/usegalaxy-eu/infrastructure-playbook/blob/master/group_vars/celerycluster.yml">file</a>
+]</li>
+</ul>
+
+<hr />
+<p>.pull-left[
+	<img src="images/docs.png" alt="screenshot of galaxy documentation page, linked in next section" />
+]
+.pull-right[</p>
+<h2 id="how-to-set-the-galaxy-config">How to set the Galaxy Config</h2>
+<ul>
+  <li><a href="https://docs.galaxyproject.org/en/latest/admin/options.html#amqp-internal-connection">Configuration in <code class="language-plaintext highlighter-rouge">galaxy.yml</code> file</a></li>
+  <li>Documentation still WIP</li>
+  <li>To connect to your broker, <code class="language-plaintext highlighter-rouge">celery_broker</code> can be set. Defaults to <code class="language-plaintext highlighter-rouge">amqp_internal_connection</code> otherwise</li>
+  <li><code class="language-plaintext highlighter-rouge">celery_conf</code> takes basically all <a href="https://docs.celeryq.dev/en/stable/getting-started/first-steps-with-celery.html">documented options</a></li>
+  <li>Set your <a href="https://docs.celeryq.dev/en/stable/getting-started/first-steps-with-celery.html#keeping-results"><code class="language-plaintext highlighter-rouge">result_backend</code></a> / Redis connection here</li>
+  <li>Celery, Flower and RabbitMQ are all well documented
 ]</li>
 </ul>
 
 <hr />
 
-<h2 id="to-be-completed">To Be Completed</h2>
+<p>.pull-top[</p>
+<h2 id="how-to-monitor-celery">How to monitor Celery</h2>
+<p>In the Flower dashboard you can monitor your workers live.<br />
+The screenshot below shows all registered workers and their status.
+]</p>
 
+<p>.pull-bottom[
+	<img src="images/flower-screenshot.png" alt="screenshot of the flower dashboard showing a bunch of workers" />
+]</p>
+
+<hr />
+
+<p>.pull-top[</p>
+<h2 id="how-to-monitor-celery-tasks">How to monitor Celery Tasks</h2>
+<p>In the ‘Tasks’ tab, you can click on each individual task and see all its details, like  <br />
+args, timestamp, worker, result and stack trace if it errored.
+]</p>
+
+<p>.pull-bottom[
+	<img src="images/flower-screenshot-task.png" alt="screenshot of a simple flower task" />
+]</p>
+
+<hr />
+
+<h2 id="take-home-message">Take Home Message</h2>
 <ul>
-  <li>Securing Celery documentation for Galaxy Admins</li>
-  <li>Running Celery on another node, outside of Gravity (maybe.)</li>
-  <li>The correct Telegraf configuration for monitoring</li>
-  <li>Dashboards</li>
+  <li>Celery is a nice way to load off computation from your head-node</li>
+  <li>On the other hand you have to maintain a broker and monitor your Celery node/cluster</li>
+  <li>If you have strong load fluctuations, you might need to find a way to scale your Celery cluster flexibly</li>
+  <li>Not necessarily needed for smaller instances, but can be considered, if your head node has too high load or I/O</li>
 </ul>
 
 
@@ -423,7 +469,7 @@ This material is licensed under the <a rel="license" href="https://creativecommo
         The content of the tutorials is licensed under the <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>. The website and infrastructure is licensed under <a rel="license" href="https://github.com/galaxyproject/training-material/blob/main/LICENSE.md">MIT</a>.
         </p>
 
-        <p>This is revision <a href="https://github.com/galaxyproject/training-material/commit/ac7e2dceb93a37d951bbe14d6ddced9c3b7d31e5">ac7e2dceb93a37d951bbe14d6ddced9c3b7d31e5</a></p>
+        <p>This is revision <a href="https://github.com/galaxyproject/training-material/commit/d2363a7f000372ba7ba120b26fdcda9a274266e8">d2363a7f000372ba7ba120b26fdcda9a274266e8</a>. </p>
     </div>
 </footer>
 
