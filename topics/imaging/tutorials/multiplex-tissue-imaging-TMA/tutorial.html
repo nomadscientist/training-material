@@ -8,22 +8,51 @@
         
             <script async defer data-domain="training.galaxyproject.org" src="https://plausible.galaxyproject.eu/js/plausible.js"></script>
 
+<!-- JavaScript Error Monitoring, and performance tracking. -->
+<script
+  src="https://browser.sentry-cdn.com/7.52.1/bundle.tracing.min.js"
+  integrity="sha384-muuFXKS3752PNA4rPm9Uq6BLvOfV4CXyr9MHDBPvozOJJUWLKkogEFWOIRoVps43"
+  crossorigin="anonymous"
+></script>
+<script type="text/javascript">
+Sentry.init({
+  dsn: "https://45e0ec6e4373462b92969505df37cf40@sentry.galaxyproject.org/10",
+  release: "galaxy-training-network@476574d2b382dd1db6c2c408d8fb6ec4393a6904",
+  integrations: [new Sentry.BrowserTracing(), new Sentry.Replay()],
+  sampleRate: 0.1,
+  tracesSampleRate: 0.1,
+  // Capture Replay for no sessions by default
+  replaysSessionSampleRate: 0.01,
+  // plus for 1% of sessions with an error
+  replaysOnErrorSampleRate: 0.01,
+  // PII OFF
+  sendDefaultPii: false, // Off by default but just in case.
+  environment: "production",
+});
+</script>
+
         
-        <link rel="stylesheet" href="/training-material/assets/css/bootstrap.min.css?v=3">
-        <link rel="stylesheet" href="/training-material/assets/css/bootstrap-toc.min.css">
-        <link rel="stylesheet" href="/training-material/assets/css/main.css?v=2">
-        <link rel="stylesheet" href="/training-material/assets/fontawesome/css/all.css">
-        <link rel="stylesheet" href="/training-material/assets/css/academicons.css">
         <link rel="shortcut icon" href="/training-material/favicon.ico" type="image/x-icon">
         <link rel="alternate" type="application/atom+xml" href="/training-material/feed.xml">
         <link rel="canonical" href="https://training.galaxyproject.org/training-material/topics/imaging/tutorials/multiplex-tissue-imaging-TMA/tutorial.html">
-        <link rel="license" href="https://creativecommons.org/licenses/by/4.0/">
+        <link rel="license" href="https://spdx.org/licenses/CC-BY-4.0">
+        <link rel="preload" href="/training-material/assets/fonts/AtkinsonHyperlegible/Atkinson-Hyperlegible-Regular-102a.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="preload" href="/training-material/assets/fonts/AtkinsonHyperlegible/Atkinson-Hyperlegible-Bold-102a.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="preload" href="/training-material/assets/fonts/AtkinsonHyperlegible/Atkinson-Hyperlegible-Italic-102a.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML" as="script" crossorigin>
+        <link rel="preload" href="/training-material/assets/css/main.css?v=3" as="style">
+        <link rel='preload' href='/training-material/assets/js/bundle.theme.js?v=1687830693' as='script'>
+<link rel='preload' href='/training-material/assets/js/bundle.main.js?v=1687830693' as='script'>
+        <link rel="stylesheet" href="/training-material/assets/css/main.css?v=3">
+        <link rel="manifest" href="/training-material/manifest.json">
+        <meta name="theme-color" content="#2c3143"/>
+
 
         <meta name="DC.identifier" content="https://github.com/galaxyproject/training-material">
 <meta name="DC.type" content="text">
 <meta name="DC.title" content="End-to-End Tissue Microarray Image Analysis with Galaxy-ME">
 <meta name="DC.publisher" content="Galaxy Training Network">
-<meta name="DC.date" content="2023-02-14 08:03:20 +0000">
+<meta name="DC.date" content="2023-05-17 17:21:19 +0000">
 <meta name="DC.creator" content="Cameron Watson">
 <meta name="DC.creator" content="Allison Creason">
 
@@ -65,7 +94,7 @@
     "name": "Galaxy Training Network",
     "url": "https://galaxyproject.org/teach/gtn/"
   },
-  "dateModified": "2023-02-14 08:03:20 +0000",
+  "dateModified": "2023-05-17 17:21:19 +0000",
   "discussionUrl": "https://gitter.im/Galaxy-Training-Network/Lobby",
   "headline": "End-to-End Tissue Microarray Image Analysis with Galaxy-ME",
   "interactivityType": "mixed",
@@ -91,6 +120,10 @@
     "url": "https://galaxyproject.org/teach/gtn/"
   },
   "identifier": "https://github.com/galaxyproject/training-material",
+  "workTranslation": [
+
+  ],
+  "creativeWorkStatus": "Active",
   "accessMode": [
     "textual",
     "visual"
@@ -118,6 +151,7 @@
   "name": "Hands-on for 'End-to-End Tissue Microarray Image Analysis with Galaxy-ME' tutorial",
   "url": "https://training.galaxyproject.org/training-material/topics/imaging/tutorials/multiplex-tissue-imaging-TMA/tutorial.html",
   "timeRequired": "PT3H",
+  "teaches": "Understand the tools available in Galaxy for multiplex tissue imaging analysis\n - Analyze and visualize publicly available TMA data using Galaxy",
   "keywords": "imaging",
   "description": "The questions this  addresses are:\n - What tools are available for pre-processing multiplex tissue images in Galaxy?\n - What tools are available for downstream analysis of multiplex tissue images in Galaxy?\n - How do I pre-process and analyze Tissue Microarray data?\n - How can I visualize multiplex tissue images and associated data?\n - How can I assign phenotypes to cells in an MTI dataset?\n\n\nThe objectives are:\n - Understand the tools available in Galaxy for multiplex tissue imaging analysis\n - Analyze and visualize publicly available TMA data using Galaxy\n\n",
   "inLanguage": {
@@ -145,8 +179,8 @@
       "@context": "https://schema.org",
       "@type": "Person",
       "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
+        "@id": "https://bioschemas.org/profiles/Person/0.3-DRAFT",
+        "@type": "CreativeWork"
       },
       "url": "https://training.galaxyproject.org/training-material/hall-of-fame/CameronFRWatson/",
       "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/CameronFRWatson/",
@@ -168,56 +202,8 @@
       "@context": "https://schema.org",
       "@type": "Person",
       "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
-      },
-      "url": "https://training.galaxyproject.org/training-material/hall-of-fame/alliecreason/",
-      "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/alliecreason/",
-      "name": "Allison Creason",
-      "image": "https://avatars.githubusercontent.com/alliecreason",
-      "description": "A contributor to the GTN project.",
-      "memberOf": [
-        {
-          "@type": "Organization",
-          "email": "galaxytrainingnetwork@gmail.com",
-          "name": "Galaxy Training Network",
-          "url": "https://galaxyproject.org/teach/gtn/"
-        }
-      ],
-      "identifier": "https://orcid.org/0000-0001-5724-1276",
-      "orcid": "https://orcid.org/0000-0001-5724-1276"
-    }
-  ],
-  "contributor": [
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
-      },
-      "url": "https://training.galaxyproject.org/training-material/hall-of-fame/CameronFRWatson/",
-      "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/CameronFRWatson/",
-      "name": "Cameron Watson",
-      "image": "https://avatars.githubusercontent.com/CameronFRWatson",
-      "description": "A contributor to the GTN project.",
-      "memberOf": [
-        {
-          "@type": "Organization",
-          "email": "galaxytrainingnetwork@gmail.com",
-          "name": "Galaxy Training Network",
-          "url": "https://galaxyproject.org/teach/gtn/"
-        }
-      ],
-      "identifier": "https://orcid.org/0000-0002-6942-2469",
-      "orcid": "https://orcid.org/0000-0002-6942-2469"
-    },
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
+        "@id": "https://bioschemas.org/profiles/Person/0.3-DRAFT",
+        "@type": "CreativeWork"
       },
       "url": "https://training.galaxyproject.org/training-material/hall-of-fame/alliecreason/",
       "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/alliecreason/",
@@ -250,13 +236,18 @@
       "termCode": "topic_3382",
       "url": "https://bioportal.bioontology.org/ontologies/EDAM/?p=classes&conceptid=http%3A%2F%2Fedamontology.org%2Ftopic_3382"
     }
-  ]
+  ],
+  "educationalLevel": "Introductory",
+  "mentions": [
+
+  ],
+  "abstract": "# Introduction"
 }
         </script>
         
     </head>
     <body data-spy="scroll" data-target="#toc">
-        <script type="text/javascript" src="/training-material/assets/js/theme.js"></script>
+        <script src='/training-material/assets/js/bundle.theme.js?v=1687830693'></script>
         <header>
     <nav class="navbar navbar-expand-md navbar-dark" aria-label="Site Navigation">
         <div class="container">
@@ -325,7 +316,6 @@
     </a>
     <div class="dropdown-menu dropdown-menu-right">
 
-        
         <a class="dropdown-item" href="https://github.com/galaxyproject/training-material/edit/main/topics/imaging/tutorials/multiplex-tissue-imaging-TMA/tutorial.md" title="Edit on GitHub">
           <i class="fab fa-github" aria-hidden="true"></i><span class="visually-hidden">github</span> Edit on GitHub
         </a>
@@ -373,13 +363,13 @@
 
             <div id="archive-selector">
             
-                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2020-01-06/topics/imaging/tutorials/multiplex-tissue-imaging-TMA/tutorial.html" title="Version 2020-01-06">2020-01-06</a>
+                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2020-01-06/topics/imaging/tutorials/multiplex-tissue-imaging-TMA/tutorial.html">2020-01-06</a>
             
-                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2019-12-01/topics/imaging/tutorials/multiplex-tissue-imaging-TMA/tutorial.html" title="Version 2019-12-01">2019-12-01</a>
+                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2019-12-01/topics/imaging/tutorials/multiplex-tissue-imaging-TMA/tutorial.html">2019-12-01</a>
             
-                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2019-11-01/topics/imaging/tutorials/multiplex-tissue-imaging-TMA/tutorial.html" title="Version 2019-11-01">2019-11-01</a>
+                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2019-11-01/topics/imaging/tutorials/multiplex-tissue-imaging-TMA/tutorial.html">2019-11-01</a>
             
-                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/" title="Older Versions">Older Versions</a>
+                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/">Older Versions</a>
             </div>
 
         </div>
@@ -392,7 +382,7 @@
                     <li class="nav-item">
                       <div id="navbarSupportedContent" role="search">
                         <!-- Search form -->
-                        <form class="form-inline mr-auto" method="GET" action="/training-material/search">
+                        <form class="form-inline mr-auto" method="GET" action="/training-material/search2">
                           <i class="fas fa-search nav-link" aria-hidden="true"></i>
                           <div class="md-form mb-2">
                             <input name="query" class="form-control nicer" type="text" placeholder="Search Tutorials" aria-label="Search">
@@ -429,229 +419,7 @@
 
 
 
-<script>
-  ((window.gitter = {}).chat = {}).options = {
-  room: 'Galaxy-Training-Network/Lobby'
-  };
-</script>
 
-
-<script src="https://sidecar.gitter.im/dist/sidecar.v1.js" async defer></script>
-
-<script type="application/ld+json">
-    
-
-
-{
-  "@context": "http://schema.org",
-  "@type": "LearningResource",
-  "http://purl.org/dc/terms/conformsTo": {
-    "@id": "https://bioschemas.org/profiles/TrainingMaterial/1.0-RELEASE",
-    "@type": "CreativeWork"
-  },
-  "audience": {
-    "@type": "EducationalAudience",
-    "educationalRole": "Students"
-  },
-  "citation": {
-    "@type": "CreativeWork",
-    "name": "Community-Driven Data Analysis Training for Biology",
-    "url": "https://doi.org/10.1016/j.cels.2018.05.012"
-  },
-  "copyrightHolder": {
-    "@type": "Organization",
-    "email": "galaxytrainingnetwork@gmail.com",
-    "name": "Galaxy Training Network",
-    "url": "https://galaxyproject.org/teach/gtn/"
-  },
-  "dateModified": "2023-02-14 08:03:20 +0000",
-  "discussionUrl": "https://gitter.im/Galaxy-Training-Network/Lobby",
-  "headline": "End-to-End Tissue Microarray Image Analysis with Galaxy-ME",
-  "interactivityType": "mixed",
-  "isAccessibleForFree": true,
-  "isFamilyFriendly": true,
-  "license": "https://spdx.org/licenses/CC-BY-4.0.html",
-  "producer": {
-    "@type": "Organization",
-    "email": "galaxytrainingnetwork@gmail.com",
-    "name": "Galaxy Training Network",
-    "url": "https://galaxyproject.org/teach/gtn/"
-  },
-  "provider": {
-    "@type": "Organization",
-    "email": "galaxytrainingnetwork@gmail.com",
-    "name": "Galaxy Training Network",
-    "url": "https://galaxyproject.org/teach/gtn/"
-  },
-  "sourceOrganization": {
-    "@type": "Organization",
-    "email": "galaxytrainingnetwork@gmail.com",
-    "name": "Galaxy Training Network",
-    "url": "https://galaxyproject.org/teach/gtn/"
-  },
-  "identifier": "https://github.com/galaxyproject/training-material",
-  "accessMode": [
-    "textual",
-    "visual"
-  ],
-  "accessModeSufficient": [
-    "textual",
-    "visual"
-  ],
-  "accessibilityControl": [
-    "fullKeyboardControl",
-    "fullMouseControl"
-  ],
-  "accessibilityFeature": [
-    "alternativeText",
-    "tableOfContents"
-  ],
-  "accessibilitySummary": "The text aims to be as accessible as possible. Image descriptions will vary per tutorial, from images being completely inaccessible, to images with good descriptions for non-visual users.",
-  "isPartOf": {
-    "@type": "CreativeWork",
-    "name": "Imaging",
-    "description": "Image analysis using Galaxy",
-    "url": "https://training.galaxyproject.org/training-material/topics/imaging/"
-  },
-  "learningResourceType": "hands-on tutorial",
-  "name": "Hands-on for 'End-to-End Tissue Microarray Image Analysis with Galaxy-ME' tutorial",
-  "url": "https://training.galaxyproject.org/training-material/topics/imaging/tutorials/multiplex-tissue-imaging-TMA/tutorial.html",
-  "timeRequired": "PT3H",
-  "keywords": "imaging",
-  "description": "The questions this  addresses are:\n - What tools are available for pre-processing multiplex tissue images in Galaxy?\n - What tools are available for downstream analysis of multiplex tissue images in Galaxy?\n - How do I pre-process and analyze Tissue Microarray data?\n - How can I visualize multiplex tissue images and associated data?\n - How can I assign phenotypes to cells in an MTI dataset?\n\n\nThe objectives are:\n - Understand the tools available in Galaxy for multiplex tissue imaging analysis\n - Analyze and visualize publicly available TMA data using Galaxy\n\n",
-  "inLanguage": {
-    "@type": "Language",
-    "name": "English",
-    "alternateName": "en"
-  },
-  "competencyRequired": [
-    {
-      "@context": "http://schema.org",
-      "@type": "LearningResource",
-      "url": "https://training.galaxyproject.org/training-material/topics/introduction/",
-      "name": "Introduction to Galaxy Analyses",
-      "description": "Introduction to Galaxy Analyses",
-      "provider": {
-        "@type": "Organization",
-        "email": "galaxytrainingnetwork@gmail.com",
-        "name": "Galaxy Training Network",
-        "url": "https://galaxyproject.org/teach/gtn/"
-      }
-    }
-  ],
-  "author": [
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
-      },
-      "url": "https://training.galaxyproject.org/training-material/hall-of-fame/CameronFRWatson/",
-      "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/CameronFRWatson/",
-      "name": "Cameron Watson",
-      "image": "https://avatars.githubusercontent.com/CameronFRWatson",
-      "description": "A contributor to the GTN project.",
-      "memberOf": [
-        {
-          "@type": "Organization",
-          "email": "galaxytrainingnetwork@gmail.com",
-          "name": "Galaxy Training Network",
-          "url": "https://galaxyproject.org/teach/gtn/"
-        }
-      ],
-      "identifier": "https://orcid.org/0000-0002-6942-2469",
-      "orcid": "https://orcid.org/0000-0002-6942-2469"
-    },
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
-      },
-      "url": "https://training.galaxyproject.org/training-material/hall-of-fame/alliecreason/",
-      "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/alliecreason/",
-      "name": "Allison Creason",
-      "image": "https://avatars.githubusercontent.com/alliecreason",
-      "description": "A contributor to the GTN project.",
-      "memberOf": [
-        {
-          "@type": "Organization",
-          "email": "galaxytrainingnetwork@gmail.com",
-          "name": "Galaxy Training Network",
-          "url": "https://galaxyproject.org/teach/gtn/"
-        }
-      ],
-      "identifier": "https://orcid.org/0000-0001-5724-1276",
-      "orcid": "https://orcid.org/0000-0001-5724-1276"
-    }
-  ],
-  "contributor": [
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
-      },
-      "url": "https://training.galaxyproject.org/training-material/hall-of-fame/CameronFRWatson/",
-      "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/CameronFRWatson/",
-      "name": "Cameron Watson",
-      "image": "https://avatars.githubusercontent.com/CameronFRWatson",
-      "description": "A contributor to the GTN project.",
-      "memberOf": [
-        {
-          "@type": "Organization",
-          "email": "galaxytrainingnetwork@gmail.com",
-          "name": "Galaxy Training Network",
-          "url": "https://galaxyproject.org/teach/gtn/"
-        }
-      ],
-      "identifier": "https://orcid.org/0000-0002-6942-2469",
-      "orcid": "https://orcid.org/0000-0002-6942-2469"
-    },
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
-      },
-      "url": "https://training.galaxyproject.org/training-material/hall-of-fame/alliecreason/",
-      "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/alliecreason/",
-      "name": "Allison Creason",
-      "image": "https://avatars.githubusercontent.com/alliecreason",
-      "description": "A contributor to the GTN project.",
-      "memberOf": [
-        {
-          "@type": "Organization",
-          "email": "galaxytrainingnetwork@gmail.com",
-          "name": "Galaxy Training Network",
-          "url": "https://galaxyproject.org/teach/gtn/"
-        }
-      ],
-      "identifier": "https://orcid.org/0000-0001-5724-1276",
-      "orcid": "https://orcid.org/0000-0001-5724-1276"
-    }
-  ],
-  "about": [
-    {
-      "@type": "CreativeWork",
-      "name": "Imaging",
-      "description": "Image analysis using Galaxy",
-      "url": "https://training.galaxyproject.org/training-material/topics/imaging/"
-    },
-    {
-      "@type": "DefinedTerm",
-      "@id": "http://edamontology.org/topic_3382",
-      "inDefinedTermSet": "http://edamontology.org",
-      "termCode": "topic_3382",
-      "url": "https://bioportal.bioontology.org/ontologies/EDAM/?p=classes&conceptid=http%3A%2F%2Fedamontology.org%2Ftopic_3382"
-    }
-  ]
-}
-</script>
 
 <article class="tutorial topic-imaging">
     <h1 data-toc-skip>End-to-End Tissue Microarray Image Analysis with Galaxy-ME</h1>
@@ -661,7 +429,7 @@
     <div markdown="0">
 
 	<div class="contributors-line">
-		Authors: <a href="/training-material/hall-of-fame/CameronFRWatson/" class="contributor-badge contributor-CameronFRWatson"><img src="/training-material/assets/images/orcid.png" alt="orcid logo"/><img src="https://avatars.githubusercontent.com/CameronFRWatson?s=27" alt="Avatar">Cameron Watson</a><a href="/training-material/hall-of-fame/alliecreason/" class="contributor-badge contributor-alliecreason"><img src="/training-material/assets/images/orcid.png" alt="orcid logo"/><img src="https://avatars.githubusercontent.com/alliecreason?s=27" alt="Avatar">Allison Creason</a>
+		Authors: <a href="/training-material/hall-of-fame/CameronFRWatson/" class="contributor-badge contributor-CameronFRWatson"><img src="/training-material/assets/images/orcid.png" alt="orcid logo" width="36" height="36"/><img src="https://avatars.githubusercontent.com/CameronFRWatson?s=36" alt="Avatar" width="36" height="36">Cameron Watson</a><a href="/training-material/hall-of-fame/alliecreason/" class="contributor-badge contributor-alliecreason"><img src="/training-material/assets/images/orcid.png" alt="orcid logo" width="36" height="36"/><img src="https://avatars.githubusercontent.com/alliecreason?s=36" alt="Avatar" width="36" height="36">Allison Creason</a>
 	</div>
 
 </div>
@@ -787,153 +555,58 @@
                 <li class="btn btn-default supporting_material">
 
 
+
+
+
     <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false" title="Where to run the tutorial">
         <i class="fas fa-globe" aria-hidden="true"></i><span class="visually-hidden">instances</span>&nbsp;Available on these Galaxies 
     </a>
     <ul class="dropdown-menu">
+	<li class="dropdown-header">
+		<b>Known Working</b>
+	</li>
+	
+	
+
     
+    
+	<li class="dropdown-header">
+		<b>Possibly Working</b>
+	</li>
+    
+	<li>
+		<a class="dropdown-item" href="https://usegalaxy.no/" title="">
+			UseGalaxy.no
+		</a>
+	</li>
+    
+
+    
+	<li class="dropdown-header">
+		Containers
+	</li>
         <li>
-            <a class="dropdown-item" href="https://github.com/galaxyproject/training-material/tree/main/topics/imaging/docker" title="Docker image for this tutorial">
+            <a class="dropdown-item" href="https://github.com/galaxyproject/training-material/tree/main/topics//docker" title="Docker image for this tutorial">
                 <i class="fab fa-docker" aria-hidden="true"></i><span class="visually-hidden">docker_image</span> Docker image
             </a>
         </li>
     
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-        <a class="dropdown-item" href="https://usegalaxy.no/" title="UseGalaxy.no">
-            UseGalaxy.no
-        </a>
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
     </ul>
-
 
 </li>
             
         </ul>
         
 
-        <div><strong><i class="far fa-calendar" aria-hidden="true"></i> Last modification:</strong> Feb 14, 2023 </div>
+        <div><strong><i class="far fa-calendar" aria-hidden="true"></i> Last modification:</strong> May 17, 2023 </div>
         <div><strong><i class="fas fa-balance-scale" aria-hidden="true"></i> License:</strong>
+		
             
-            <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Tutorial Content is licensed under Creative Commons Attribution 4.0 International License</a>
-            
-            <a rel="license" href="https://github.com/galaxyproject/training-material/blob/main/LICENSE.md">The GTN Framework is licensed under MIT</a>
+            <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Tutorial Content is licensed under Creative Commons Attribution 4.0 International License</a>.
+             The GTN Framework is licensed under <a rel="license" href="https://github.com/galaxyproject/training-material/blob/main/LICENSE.md">MIT</a>
         </div>
         
-        <div><strong>Short Link:</strong> <a href="https://gxy.io/GTN:T00334">https://gxy.io/GTN:T00334</a> </div>
+        <div><strong><i class="fas fa-fingerprint" aria-hidden="true"></i><span class="visually-hidden">purl</span><abbr title="Persistent URL">PURL</abbr>:</strong> <a href="https://gxy.io/GTN:T00334">https://gxy.io/GTN:T00334</a> </div>
         
     </blockquote>
     </section>
@@ -954,7 +627,7 @@
 
 <p>Find a full <a href="https://cancer.usegalaxy.org/u/watsocam/h/gtnexemplar002tma">example history</a></p>
 
-<figure id="figure-1"><img src="../../images/multiplex-tissue-imaging-TMA/ex2_combined_avivator.png" alt="Aviator screenshot, described in figure caption. " width="1152" height="986" loading="lazy" /><figcaption><span class="figcaption-prefix"><strong>Figure 1</strong>:</span> Fully registered image of the MCMICRO Exemplar-002 Tissue microarray. Exemplar-002 consists of four cores, each with a distinct tissue organization and expression of biomarkers. In the image, there are six biomarkers shown: DNA (white), CD163 (yellow), CD3D (blue), CD31 (red), VDAC1 (green), and Keratin (orange). This image is being viewed using Avivator, an interactive tool that allows the user to selectively view channels and adjust channel intensities.</figcaption></figure>
+<figure id="figure-1" style="max-width: 90%; margin:auto;"><img src="../../images/multiplex-tissue-imaging-TMA/ex2_combined_avivator.png" alt="Aviator screenshot, described in figure caption. " width="1152" height="986" loading="lazy" /><figcaption><span class="figcaption-prefix"><strong>Figure 1</strong>:</span> Fully registered image of the MCMICRO Exemplar-002 Tissue microarray. Exemplar-002 consists of four cores, each with a distinct tissue organization and expression of biomarkers. In the image, there are six biomarkers shown: DNA (white), CD163 (yellow), CD3D (blue), CD31 (red), VDAC1 (green), and Keratin (orange). This image is being viewed using Avivator, an interactive tool that allows the user to selectively view channels and adjust channel intensities.</figcaption></figure>
 
 <blockquote class="agenda">
   <h3 id="agenda">Agenda</h3>
@@ -989,7 +662,7 @@
 <p>Multiplex tissue images come in a variety of forms and file-types depending on the modality or platform used. For this tutorial, the Exemplar-002 data was imaged using Cyclic Immunofluorescence (CycIF) with a RareCyte slide scanner. Many of the steps in this workflow have platform-specific parameters, and the hands-on sections will show the best parameters for CycIF RareCyte images; however, notes will be made where critical differences may occur depending on the modality or platform throughout the tutorial.</p>
 
 <blockquote class="notranslate hands_on">
-  <div class="box-title hands-on-title" id="hands-on-data-import-to-history"><i class="fas fa-pencil-alt" aria-hidden="true"></i> Hands-on:  Data import to history</div>
+  <div class="box-title hands-on-title" id="hands-on-data-import-to-history"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on:  Data import to history</div>
 
   <ol>
     <li>
@@ -997,6 +670,7 @@
 
       <!--SNIPPET-->
       <blockquote class="tip">   <div class="box-title tip-title" id="tip-creating-a-new-history"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-creating-a-new-history" aria-expanded="true"><i class="far fa-lightbulb" aria-hidden="true"></i> Tip: Creating a new history<span class="fold-unfold fa fa-minus-square"></span></button></div>   <p>Click the <i class="fas fa-plus" aria-hidden="true"></i><span class="visually-hidden">new-history</span> icon at the top of the history panel.</p>   <p>If the <i class="fas fa-plus" aria-hidden="true"></i><span class="visually-hidden">new-history</span> is missing:</p>   <ol>   <li>Click on the <i class="fas fa-cog" aria-hidden="true"></i><span class="visually-hidden">galaxy-gear</span> icon (<strong>History options</strong>) on the top of the history panel</li>   <li>Select the option <strong>Create New</strong> from the menu</li> </ol> </blockquote>
+      <p><!--END_SNIPPET--></p>
     </li>
     <li>Import the files from <a href="https://doi.org/10.5281/zenodo.7622545">Zenodo</a> or from
 the shared data library (<code class="language-plaintext highlighter-rouge">GTN - Material</code> -&gt; <code class="language-plaintext highlighter-rouge">imaging</code>
@@ -1015,7 +689,8 @@ https://zenodo.org/record/7622545/files/exemplar-002-cycle-09.ome.tiff
 https://zenodo.org/record/7622545/files/exemplar-002-cycle-10.ome.tiff
 </code></pre></div>      </div>
       <!--SNIPPET-->
-      <blockquote class="tip">   <div class="box-title tip-title" id="tip-importing-via-links"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-importing-via-links" aria-expanded="true"><i class="far fa-lightbulb" aria-hidden="true"></i> Tip: Importing via links<span class="fold-unfold fa fa-minus-square"></span></button></div>   <ul>   <li>Copy the link location</li>   <li>     <p>Open the Galaxy Upload Manager (<i class="fas fa-upload" aria-hidden="true"></i><span class="visually-hidden">galaxy-upload</span> on the top-right of the tool panel)</p>   </li>   <li>Select <strong>Paste/Fetch Data</strong></li>   <li>     <p>Paste the link(s) into the text field</p>   </li>   <li>     <p>Press <strong>Start</strong></p>   </li>   <li><strong>Close</strong> the window</li> </ul> </blockquote>
+      <blockquote class="tip">   <div class="box-title tip-title" id="tip-importing-via-links"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-importing-via-links" aria-expanded="true"><i class="far fa-lightbulb" aria-hidden="true"></i> Tip: Importing via links<span class="fold-unfold fa fa-minus-square"></span></button></div>   <ul>   <li>Copy the link location</li>   <li>     <p>Click <i class="fas fa-upload" aria-hidden="true"></i><span class="visually-hidden">galaxy-upload</span> <strong>Upload Data</strong> at the top of the tool panel</p>   </li>   <li>Select <i class="fa fa-edit" aria-hidden="true"></i><span class="visually-hidden">galaxy-wf-edit</span> <strong>Paste/Fetch Data</strong></li>   <li>     <p>Paste the link(s) into the text field</p>   </li>   <li>     <p>Press <strong>Start</strong></p>   </li>   <li><strong>Close</strong> the window</li> </ul> </blockquote>
+      <p><!--END_SNIPPET--></p>
     </li>
     <li>Group the datasets into <a href="/training-material/topics/galaxy-interface/tutorials/collections/tutorial.html">collections</a>. Make a collection of the OME-TIFF, ordering the files by cycle number.</li>
   </ol>
@@ -1023,7 +698,7 @@ https://zenodo.org/record/7622545/files/exemplar-002-cycle-10.ome.tiff
 </blockquote>
 
 <blockquote class="warning">
-  <div class="box-title warning-title" id="warning-imaging-platform-differences"><i class="fas fa-exclamation-triangle" aria-hidden="true"></i> Warning: **Imaging platform differences**</div>
+  <div class="box-title warning-title" id="warning-imaging-platform-differences"><i class="fas fa-exclamation-triangle" aria-hidden="true" ></i> Warning: **Imaging platform differences**</div>
 
   <p>The Exemplar-002 raw images are in <em>ome.tiff</em> format; however, commonly seen raw file-types are <em>ome.tiff</em>, <em>tiff</em>, <em>czi</em>, and <em>svs</em>. If your input images are not <em>ome.tiff</em> or <em>tiff</em>, you may have to edit the dataset attributes in Galaxy to allow tools to recognize them as viable inputs.</p>
 
@@ -1031,7 +706,7 @@ https://zenodo.org/record/7622545/files/exemplar-002-cycle-10.ome.tiff
 
 <p>The raw files for each round (10 in total) of the exemplar-002 data are available on <a href="https://cancer.usegalaxy.org">cancer.usegalaxy.org</a> under <strong>Data Libraries</strong> (Figure 2.). Import the raw files into a new history as a <strong>list collection</strong>.</p>
 
-<figure id="figure-2"><img src="../../images/multiplex-tissue-imaging-TMA/ex2_getData.png" alt="Screenshot of the Galaxy data libraries on cancer.usegalaxy.org, highlighting the path to the dataset, Libraries, Exemplar 002, raw. The UI shows all datasets in that folder selected before using the Export to History button to import them as a Collection." width="1296" height="665" loading="lazy" /><figcaption><span class="figcaption-prefix"><strong>Figure 2</strong>:</span> Finding the Exemplar-002 data on cancer.usegalaxy.org Data Libraries.</figcaption></figure>
+<figure id="figure-2" style="max-width: 90%; margin:auto;"><img src="../../images/multiplex-tissue-imaging-TMA/ex2_getData.png" alt="Screenshot of the Galaxy data libraries on cancer.usegalaxy.org, highlighting the path to the dataset, Libraries, Exemplar 002, raw. The UI shows all datasets in that folder selected before using the Export to History button to import them as a Collection." width="1296" height="665" loading="lazy" /><figcaption><span class="figcaption-prefix"><strong>Figure 2</strong>:</span> Finding the Exemplar-002 data on cancer.usegalaxy.org Data Libraries.</figcaption></figure>
 
 <h1 id="tile-illumination-correction-with-basic-illumination">Tile illumination correction with <strong>BaSiC Illumination</strong></h1>
 
@@ -1045,11 +720,11 @@ https://zenodo.org/record/7622545/files/exemplar-002-cycle-10.ome.tiff
 </ul>
 
 <blockquote class="notranslate hands_on">
-  <div class="box-title hands-on-title" id="hands-on-illumination-correction"><i class="fas fa-pencil-alt" aria-hidden="true"></i> Hands-on:  Illumination correction</div>
+  <div class="box-title hands-on-title" id="hands-on-illumination-correction"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on:  Illumination correction</div>
 
   <ol>
     <li>
-      <p><span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/perssond/basic_illumination/basic_illumination/1.0.3+galaxy1" title="BaSiC Illumination tool"><strong>BaSiC Illumination</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: toolshed.g2.bx.psu.edu/repos/perssond/basic_illumination/basic_illumination/1.0.3+galaxy1</span></span>  with the following parameters:</p>
+      <p><span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/perssond/basic_illumination/basic_illumination/1.0.3+galaxy1" title="BaSiC Illumination tool" aria-role="link"><strong>BaSiC Illumination</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: toolshed.g2.bx.psu.edu/repos/perssond/basic_illumination/basic_illumination/1.0.3+galaxy1</span></span> with the following parameters:</p>
 
       <ul>
         <li><i class="far fa-folder" aria-hidden="true"></i><span class="visually-hidden">param-collection</span> <em>“Raw Cycle Images: “</em>: List collection of raw images</li>
@@ -1064,20 +739,20 @@ https://zenodo.org/record/7622545/files/exemplar-002-cycle-10.ome.tiff
 <p>After illumination is corrected across round tiles, the tiles must be stitched together, and subsequently, each round mosaic must be registered together into a single pyramidal OME-TIFF file. <strong>ASHLAR</strong> (<span class="citation"><a href="#Muhlich2022">Muhlich <i>et al.</i> 2022</a></span>) from MCMICRO provides both of these functions.</p>
 
 <blockquote class="comment">
-  <div class="box-title comment-title" id="comment-important-detail-marker-file"><i class="far fa-comment-dots" aria-hidden="true"></i> Comment: Important detail: Marker File</div>
+  <div class="box-title comment-title" id="comment-important-detail-marker-file"><i class="far fa-comment-dots" aria-hidden="true" ></i> Comment: Important detail: Marker File</div>
 
   <p><strong>ASHLAR</strong> optionally reads a marker metadata file to name the channels in the output OME-TIFF image. This marker file will also be used in later steps. Make sure that the marker file is comma-separated and has the <code class="language-plaintext highlighter-rouge">marker_names</code> as the third column (Figure 3.).</p>
 
-  <figure id="figure-3"><img src="../../images/multiplex-tissue-imaging-TMA/ex2_markersFile.png" alt="screenshot of the markers table. " width="1008" height="582" loading="lazy" /><figcaption><span class="figcaption-prefix"><strong>Figure 3</strong>:</span> Markers file, used both in ASHLAR and downstream steps. Critically, the marker_names are in the third column.</figcaption></figure>
+  <figure id="figure-3" style="max-width: 90%; margin:auto;"><img src="../../images/multiplex-tissue-imaging-TMA/ex2_markersFile.png" alt="screenshot of the markers table. " width="1008" height="582" loading="lazy" /><figcaption><span class="figcaption-prefix"><strong>Figure 3</strong>:</span> Markers file, used both in ASHLAR and downstream steps. Critically, the marker_names are in the third column.</figcaption></figure>
 
 </blockquote>
 
 <blockquote class="notranslate hands_on">
-  <div class="box-title hands-on-title" id="hands-on-image-stitching-and-registration"><i class="fas fa-pencil-alt" aria-hidden="true"></i> Hands-on: : Image stitching and registration</div>
+  <div class="box-title hands-on-title" id="hands-on-image-stitching-and-registration"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: : Image stitching and registration</div>
 
   <ol>
     <li>
-      <p><span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/perssond/ashlar/ashlar/1.14.0+galaxy1" title="ASHLAR tool"><strong>ASHLAR</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: toolshed.g2.bx.psu.edu/repos/perssond/ashlar/ashlar/1.14.0+galaxy1</span></span>  with the following parameters:</p>
+      <p><span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/perssond/ashlar/ashlar/1.14.0+galaxy1" title="ASHLAR tool" aria-role="link"><strong>ASHLAR</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: toolshed.g2.bx.psu.edu/repos/perssond/ashlar/ashlar/1.14.0+galaxy1</span></span> with the following parameters:</p>
 
       <ul>
         <li><i class="far fa-folder" aria-hidden="true"></i><span class="visually-hidden">param-collection</span> <em>“Raw Images”</em>: List collection of raw images</li>
@@ -1098,7 +773,7 @@ https://zenodo.org/record/7622545/files/exemplar-002-cycle-10.ome.tiff
 </blockquote>
 
 <blockquote class="warning">
-  <div class="box-title warning-title" id="warning-imaging-platform-differences-1"><i class="fas fa-exclamation-triangle" aria-hidden="true"></i> Warning: **Imaging platform differences**</div>
+  <div class="box-title warning-title" id="warning-imaging-platform-differences-1"><i class="fas fa-exclamation-triangle" aria-hidden="true" ></i> Warning: **Imaging platform differences**</div>
 
   <p>ASHLAR, among other tools in the MCMICRO and Galaxy-ME pre-processing tools have some parameters that are specific to the 
 imaging patform used. By default, ASHLAR is oriented to work with images from RareCyte scanners. AxioScan scanners render images
@@ -1107,7 +782,7 @@ parameter to <em>Yes</em></p>
 
   <p>ASHLAR will work for most imaging modalities; however, certain modalities require different tools to be registered. For example,
 multiplex immunohistochemistry (mIHC) images must use an aligner that registers each moving image to a reference Hematoxylin image. 
-For this, Galaxy-ME includes the alternative registration tool <span><strong><strong>PALOM</strong></strong> <i class="fas fa-wrench" aria-hidden="true"></i></span> .</p>
+For this, Galaxy-ME includes the alternative registration tool <span><strong><strong>PALOM</strong></strong> <i class="fas fa-wrench" aria-hidden="true"></i></span>.</p>
 
 </blockquote>
 
@@ -1117,21 +792,21 @@ For this, Galaxy-ME includes the alternative registration tool <span><strong><st
 
 <p>UNetCoreograph will output images (used for downstream steps), masks, and a preview image (Figure 4.).</p>
 
-<figure id="figure-4"><img src="../../images/multiplex-tissue-imaging-TMA/ex2_dearray.png" alt="Image of four cores (numbered 1-4) on a slide." width="193" height="194" loading="lazy" /><figcaption><span class="figcaption-prefix"><strong>Figure 4</strong>:</span> Preview image from UNetCoreograph, outlines show detection of each individual core in the TMA.</figcaption></figure>
+<figure id="figure-4" style="max-width: 90%; margin:auto;"><img src="../../images/multiplex-tissue-imaging-TMA/ex2_dearray.png" alt="Image of four cores (numbered 1-4) on a slide." width="193" height="194" loading="lazy" /><figcaption><span class="figcaption-prefix"><strong>Figure 4</strong>:</span> Preview image from UNetCoreograph, outlines show detection of each individual core in the TMA.</figcaption></figure>
 
 <blockquote class="notranslate hands_on">
-  <div class="box-title hands-on-title" id="hands-on-tma-dearray"><i class="fas fa-pencil-alt" aria-hidden="true"></i> Hands-on:  TMA dearray</div>
+  <div class="box-title hands-on-title" id="hands-on-tma-dearray"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on:  TMA dearray</div>
 
   <ol>
     <li>
-      <p><span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/perssond/coreograph/unet_coreograph/2.2.8+galaxy1" title="UNetCoreograph tool"><strong>UNetCoreograph</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: toolshed.g2.bx.psu.edu/repos/perssond/coreograph/unet_coreograph/2.2.8+galaxy1</span></span>  with the following parameters:</p>
+      <p><span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/perssond/coreograph/unet_coreograph/2.2.8+galaxy1" title="UNetCoreograph tool" aria-role="link"><strong>UNetCoreograph</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: toolshed.g2.bx.psu.edu/repos/perssond/coreograph/unet_coreograph/2.2.8+galaxy1</span></span> with the following parameters:</p>
 
       <ul>
         <li><i class="far fa-file" aria-hidden="true"></i><span class="visually-hidden">param-file</span> <em>“Registered TIFF”</em>: The output of <strong>ASHLAR</strong> (registered, pyramidal OME-TIFF file)</li>
       </ul>
 
       <blockquote class="comment">
-        <div class="box-title comment-title" id="comment-what-about-whole-slide-images"><i class="far fa-comment-dots" aria-hidden="true"></i> Comment: What about Whole Slide Images?</div>
+        <div class="box-title comment-title" id="comment-what-about-whole-slide-images"><i class="far fa-comment-dots" aria-hidden="true" ></i> Comment: What about Whole Slide Images?</div>
 
         <p>Whole slide images do not need to be dearrayed, so in most cases, this step can be skipped; however, UNetCoreograph has the <em>“Tissue”</em> option, which when selected, can act to separate the whole tissue from the background in a whole slide image which can be useful. In this case, it is important to toggle the <em>“Downsample factor”</em> as this often needs to be higher when extracting whole tissues.</p>
       </blockquote>
@@ -1156,17 +831,17 @@ For this, Galaxy-ME includes the alternative registration tool <span><strong><st
 <p>In this tutorial, we use <strong>Mesmer</strong> because it tends to perform generally well on a diverse range of image types, and has a limited number of parameters to understand.</p>
 
 <blockquote class="comment">
-  <div class="box-title comment-title" id="comment-important-detail-running-images-in-batches"><i class="far fa-comment-dots" aria-hidden="true"></i> Comment: Important detail: Running images in batches</div>
+  <div class="box-title comment-title" id="comment-important-detail-running-images-in-batches"><i class="far fa-comment-dots" aria-hidden="true" ></i> Comment: Important detail: Running images in batches</div>
 
   <p>Now that each image has been split into individual core images, downstream tools must be run on the images separately. Luckily, Galaxy makes this easy by including the option to run each tool in batch across a collection of inputs. Next to the input for the tool, select <i class="far fa-folder" aria-hidden="true"></i><span class="visually-hidden">param-collection</span> (<strong>Dataset collection</strong>) as the input type, and pass the collection output by UNetCoreograph as input.</p>
 
 </blockquote>
 
 <blockquote class="notranslate hands_on">
-  <div class="box-title hands-on-title" id="hands-on-nuclear-segmentation"><i class="fas fa-pencil-alt" aria-hidden="true"></i> Hands-on:  Nuclear segmentation</div>
+  <div class="box-title hands-on-title" id="hands-on-nuclear-segmentation"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on:  Nuclear segmentation</div>
 
   <ol>
-    <li><span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/goeckslab/mesmer/mesmer/0.12.3+galaxy2" title="Mesmer tool"><strong>Mesmer</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: toolshed.g2.bx.psu.edu/repos/goeckslab/mesmer/mesmer/0.12.3+galaxy2</span></span>  with the following parameters:
+    <li><span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/goeckslab/mesmer/mesmer/0.12.3+galaxy2" title="Mesmer tool" aria-role="link"><strong>Mesmer</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: toolshed.g2.bx.psu.edu/repos/goeckslab/mesmer/mesmer/0.12.3+galaxy2</span></span> with the following parameters:
       <ul>
         <li><i class="far fa-folder" aria-hidden="true"></i><span class="visually-hidden">param-collection</span> <em>“Image containing the nuclear marker(s) “</em>: Collection output of UNetCoreograph (images)</li>
         <li><em>“Resolution of the image in microns-per-pixel”</em>: <code class="language-plaintext highlighter-rouge">0.65</code></li>
@@ -1174,7 +849,7 @@ For this, Galaxy-ME includes the alternative registration tool <span><strong><st
       </ul>
 
       <blockquote class="comment">
-        <div class="box-title comment-title" id="comment-np-squeeze"><i class="far fa-comment-dots" aria-hidden="true"></i> Comment: np.squeeze</div>
+        <div class="box-title comment-title" id="comment-np-squeeze"><i class="far fa-comment-dots" aria-hidden="true" ></i> Comment: np.squeeze</div>
 
         <p>The <strong>np.squeeze</strong> parameter is very important to select as <code class="language-plaintext highlighter-rouge">Yes</code> to make the output compatible with next steps</p>
       </blockquote>
@@ -1184,7 +859,7 @@ For this, Galaxy-ME includes the alternative registration tool <span><strong><st
 </blockquote>
 
 <blockquote class="warning">
-  <div class="box-title warning-title" id="warning-imaging-platform-differences-image-resolution"><i class="fas fa-exclamation-triangle" aria-hidden="true"></i> Warning: Imaging platform differences: Image resolution**</div>
+  <div class="box-title warning-title" id="warning-imaging-platform-differences-image-resolution"><i class="fas fa-exclamation-triangle" aria-hidden="true" ></i> Warning: Imaging platform differences: Image resolution**</div>
 
   <p>A crucial parameter for Mesmer and other segmentation tools is the <strong>Image resolution</strong>. This is reported in microns/pixel, and can vary depending on the imaging platform used and the settings at image acquisition. Mesmer accepts the resolution in microns/pixel; however, if using UnMICST, the resolution must be reported as a ratio of the resolution of UnMICST’s training images (0.65). For example, when using UnMICST, if your images were captured at a resolution of 0.65, then the UnMICST value would be 1, but if your images were captured at 0.325 microns/pixel, then the value you would enter for UnMICST would be 0.5.</p>
 
@@ -1199,11 +874,11 @@ For this, Galaxy-ME includes the alternative registration tool <span><strong><st
 <p>The quantification step will produce a CSV cell feature table for every image in the batch.</p>
 
 <blockquote class="notranslate hands_on">
-  <div class="box-title hands-on-title" id="hands-on-quantification"><i class="fas fa-pencil-alt" aria-hidden="true"></i> Hands-on:  Quantification</div>
+  <div class="box-title hands-on-title" id="hands-on-quantification"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on:  Quantification</div>
 
   <ol>
     <li>
-      <p><span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/perssond/quantification/quantification/1.5.3+galaxy1" title="Quantification tool"><strong>Quantification</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: toolshed.g2.bx.psu.edu/repos/perssond/quantification/quantification/1.5.3+galaxy1</span></span>  with the following parameters:</p>
+      <p><span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/perssond/quantification/quantification/1.5.3+galaxy1" title="Quantification tool" aria-role="link"><strong>Quantification</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: toolshed.g2.bx.psu.edu/repos/perssond/quantification/quantification/1.5.3+galaxy1</span></span> with the following parameters:</p>
 
       <ul>
         <li><i class="far fa-folder" aria-hidden="true"></i><span class="visually-hidden">param-collection</span> <em>“Registered TIFF “</em>: Collection output of UNetCoreograph (images)</li>
@@ -1213,7 +888,7 @@ For this, Galaxy-ME includes the alternative registration tool <span><strong><st
       </ul>
 
       <blockquote class="comment">
-        <div class="box-title comment-title" id="comment-mask-metrics-and-intensity-metrics"><i class="far fa-comment-dots" aria-hidden="true"></i> Comment: Mask metrics and Intensity metrics</div>
+        <div class="box-title comment-title" id="comment-mask-metrics-and-intensity-metrics"><i class="far fa-comment-dots" aria-hidden="true" ></i> Comment: Mask metrics and Intensity metrics</div>
 
         <p>Leaving the <em>“mask metrics”</em> and <em>“intensity metrics”</em> blank will by default run all available metrics</p>
 
@@ -1230,11 +905,11 @@ For this, Galaxy-ME includes the alternative registration tool <span><strong><st
 <p>Learn more about this file format at the <a href="https://anndata.readthedocs.io/en/latest/index.html">anndata documentation</a>.</p>
 
 <blockquote class="notranslate hands_on">
-  <div class="box-title hands-on-title" id="hands-on-conver-to-anndata"><i class="fas fa-pencil-alt" aria-hidden="true"></i> Hands-on:  Conver to Anndata</div>
+  <div class="box-title hands-on-title" id="hands-on-conver-to-anndata"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on:  Conver to Anndata</div>
 
   <ol>
     <li>
-      <p><span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/goeckslab/scimap_mcmicro_to_anndata/scimap_mcmicro_to_anndata/0.17.7+galaxy0" title="Convert McMicro Output to Anndata tool"><strong>Convert McMicro Output to Anndata</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: toolshed.g2.bx.psu.edu/repos/goeckslab/scimap_mcmicro_to_anndata/scimap_mcmicro_to_anndata/0.17.7+galaxy0</span></span>  with the following parameters:</p>
+      <p><span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/goeckslab/scimap_mcmicro_to_anndata/scimap_mcmicro_to_anndata/0.17.7+galaxy0" title="Convert McMicro Output to Anndata tool" aria-role="link"><strong>Convert McMicro Output to Anndata</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: toolshed.g2.bx.psu.edu/repos/goeckslab/scimap_mcmicro_to_anndata/scimap_mcmicro_to_anndata/0.17.7+galaxy0</span></span> with the following parameters:</p>
 
       <ul>
         <li><i class="far fa-folder" aria-hidden="true"></i><span class="visually-hidden">param-collection</span> <em>“Select the input image or images”</em>: Collection output of Quantification (cellMaskQuant)</li>
@@ -1246,8 +921,8 @@ For this, Galaxy-ME includes the alternative registration tool <span><strong><st
         </li>
       </ul>
 
-      <blockquote class="comment">
-        <div class="box-title warning-title" id="warning-important-parameter-unique-names-for-cells-rows"><i class="fas fa-exclamation-triangle" aria-hidden="true"></i> Warning: Important parameter: Unique names for cells/rows</div>
+      <blockquote class="warning">
+        <div class="box-title warning-title" id="warning-important-parameter-unique-names-for-cells-rows"><i class="fas fa-exclamation-triangle" aria-hidden="true" ></i> Warning: Important parameter: Unique names for cells/rows</div>
 
         <p>Setting <em>“Whether to use unique name for cells/rows”</em> to <code class="language-plaintext highlighter-rouge">No</code> to ensures that downstream interactive visualizations will be able to map observational features to the mask CellIDs.</p>
       </blockquote>
@@ -1260,14 +935,14 @@ For this, Galaxy-ME includes the alternative registration tool <span><strong><st
 
 <p>There are several ways to classify cells available in Galaxy-ME. Unsupervised approaches, such as Leiden clustering, can be performed on all cells and phenotypes can be manually annotated based on marker expression patterns observed by the user. This approach is time consuming, so here we will demonstrate automated phenotyping based on thresholds of specific lineage markers using MCMICRO’s Scimap. Scimap phenotyping can either be provided a table of manual gate values for each marker of interest (which can be determined using the <strong>GateFinder</strong> tool in Galaxy-ME), or by default, Scimap will fit a Gaussian Mixture Model (GMM) to the <code class="language-plaintext highlighter-rouge">log(intensity)</code> data for each marker to determine positive and negative populations for that marker. The marker intensity values are rescaled between (0,1) with 0.5 being the cut-off between negative and positive populations. Scimap uses a ‘Phenotype workflow’ to guide the classification of cells (Figure 5.). For more on how to construct a Scimap workflow, see the <a href="https://scimap-doc.readthedocs.io/en/latest/tutorials/scimap-tutorial-cell-phenotyping/">Scimap documentation</a>.</p>
 
-<figure id="figure-5"><img src="../../images/multiplex-tissue-imaging-TMA/ex2_phenotypeWF.png" alt="Screenshot of the phenotypes table. " width="1008" height="316" loading="lazy" /><figcaption><span class="figcaption-prefix"><strong>Figure 5</strong>:</span> Example of a phenotype workflow compatible with Scimap. 'Pos' means that the marker must be positive to be classified as the respective phenotype. 'Anypos' means any, but not necessarily all, of the listed markers can be positive to call the respective phenotype.</figcaption></figure>
+<figure id="figure-5" style="max-width: 90%; margin:auto;"><img src="../../images/multiplex-tissue-imaging-TMA/ex2_phenotypeWF.png" alt="Screenshot of the phenotypes table. " width="1008" height="316" loading="lazy" /><figcaption><span class="figcaption-prefix"><strong>Figure 5</strong>:</span> Example of a phenotype workflow compatible with Scimap. 'Pos' means that the marker must be positive to be classified as the respective phenotype. 'Anypos' means any, but not necessarily all, of the listed markers can be positive to call the respective phenotype.</figcaption></figure>
 
 <blockquote class="notranslate hands_on">
-  <div class="box-title hands-on-title" id="hands-on-single-cell-phenotyping-with-scimap"><i class="fas fa-pencil-alt" aria-hidden="true"></i> Hands-on:  Single Cell Phenotyping with Scimap</div>
+  <div class="box-title hands-on-title" id="hands-on-single-cell-phenotyping-with-scimap"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on:  Single Cell Phenotyping with Scimap</div>
 
   <ol>
     <li>
-      <p><span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/goeckslab/scimap_phenotyping/scimap_phenotyping/0.17.7+galaxy0" title="Single Cell Phenotyping tool"><strong>Single Cell Phenotyping</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: toolshed.g2.bx.psu.edu/repos/goeckslab/scimap_phenotyping/scimap_phenotyping/0.17.7+galaxy0</span></span>  with the following parameters:</p>
+      <p><span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/goeckslab/scimap_phenotyping/scimap_phenotyping/0.17.7+galaxy0" title="Single Cell Phenotyping tool" aria-role="link"><strong>Single Cell Phenotyping</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: toolshed.g2.bx.psu.edu/repos/goeckslab/scimap_phenotyping/scimap_phenotyping/0.17.7+galaxy0</span></span> with the following parameters:</p>
 
       <ul>
         <li><i class="far fa-folder" aria-hidden="true"></i><span class="visually-hidden">param-collection</span> <em>“Select the input anndata”</em>: Output of <strong>Convert MCMICRO output to Anndata</strong></li>
@@ -1277,11 +952,11 @@ For this, Galaxy-ME includes the alternative registration tool <span><strong><st
       </ul>
 
       <blockquote class="comment">
-        <div class="box-title comment-title" id="comment-limitations-of-gmm-automated-phenotyping"><i class="far fa-comment-dots" aria-hidden="true"></i> Comment: Limitations of GMM automated phenotyping</div>
+        <div class="box-title comment-title" id="comment-limitations-of-gmm-automated-phenotyping"><i class="far fa-comment-dots" aria-hidden="true" ></i> Comment: Limitations of GMM automated phenotyping</div>
 
         <p>When manual gates are not provided, Scimap fits a GMM to determine a threshold between positive and negative cells. This automated gating works well when markers are highly abundant within the tissue, and the data shows a bimodal distribution (Figure 6A.). GMM gating can lead to spurious thresholds, however, when the data does not appear to be bimodal (Figure 6B.). This tends to happen when the marker is not highly abundant in the tissue, so there isn’t a large positive population. Markers that have a highly continuous range of intensity, like certain functional markers, can also be problematic with GMM gating. It is recommended to always look at the GMM plots output by Scimap, and validate any potentially spurious gates manually.</p>
 
-        <figure id="figure-6"><img src="../../images/multiplex-tissue-imaging-TMA/ex2_example_GMMs.png" alt="Two bar plots with overlain curves. Left in A shows a bimodal distribution of CD3D, right in B shows a unimodal distribution in CD11B." width="1152" height="445" loading="lazy" /><figcaption><span class="figcaption-prefix"><strong>Figure 6</strong>:</span> Scimap automatic gating GMMs for two markers. (A) An example of a marker with a bimodal distribution and a reasonable looking gate. (B) An example of a marker with a unimodal distribution that is not ideal for fitting with a GMM, and would be a candidate for manual validation and gating.</figcaption></figure>
+        <figure id="figure-6" style="max-width: 90%; margin:auto;"><img src="../../images/multiplex-tissue-imaging-TMA/ex2_example_GMMs.png" alt="Two bar plots with overlain curves. Left in A shows a bimodal distribution of CD3D, right in B shows a unimodal distribution in CD11B." width="1152" height="445" loading="lazy" /><figcaption><span class="figcaption-prefix"><strong>Figure 6</strong>:</span> Scimap automatic gating GMMs for two markers. (A) An example of a marker with a bimodal distribution and a reasonable looking gate. (B) An example of a marker with a unimodal distribution that is not ideal for fitting with a GMM, and would be a candidate for manual validation and gating.</figcaption></figure>
 
       </blockquote>
     </li>
@@ -1298,10 +973,10 @@ For this, Galaxy-ME includes the alternative registration tool <span><strong><st
 <p>UNetCoreograph outputs each individual core image in <code class="language-plaintext highlighter-rouge">tiff</code> format. Interactive visualization tools, such as <strong>Vitessce</strong> and <strong>Avivator</strong> require the images to be in <code class="language-plaintext highlighter-rouge">OME-TIFF</code> format to be viewed. Galaxy-ME includes a conversion tool that can accomodate this, along with many other useful conversion functions.</p>
 
 <blockquote class="notranslate hands_on">
-  <div class="box-title hands-on-title" id="hands-on-convert-image"><i class="fas fa-pencil-alt" aria-hidden="true"></i> Hands-on:  Convert image</div>
+  <div class="box-title hands-on-title" id="hands-on-convert-image"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on:  Convert image</div>
 
   <ol>
-    <li><span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/imgteam/bfconvert/ip_convertimage/6.7.0+galaxy0" title="Convert image tool"><strong>Convert image</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: toolshed.g2.bx.psu.edu/repos/imgteam/bfconvert/ip_convertimage/6.7.0+galaxy0</span></span>  with the following parameters:
+    <li><span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/imgteam/bfconvert/ip_convertimage/6.7.0+galaxy0" title="Convert image tool" aria-role="link"><strong>Convert image</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: toolshed.g2.bx.psu.edu/repos/imgteam/bfconvert/ip_convertimage/6.7.0+galaxy0</span></span> with the following parameters:
       <ul>
         <li><i class="far fa-folder" aria-hidden="true"></i><span class="visually-hidden">param-collection</span> <em>“Input Image”</em>: <code class="language-plaintext highlighter-rouge">UNetCoreograph Images</code></li>
         <li><em>“Output data type”</em>: <code class="language-plaintext highlighter-rouge">OME TIFF</code></li>
@@ -1318,11 +993,11 @@ For this, Galaxy-ME includes the alternative registration tool <span><strong><st
 <p>Some tools can cause the channel names in an OME-TIFF image to be lost. To fix this, or to change the channel names to whatever the user prefers, the <strong>Rename OME-TIFF Channels</strong> tool can be invoked using a markers file similar to the one used in previous steps.</p>
 
 <blockquote class="notranslate hands_on">
-  <div class="box-title hands-on-title" id="hands-on-rename-channels"><i class="fas fa-pencil-alt" aria-hidden="true"></i> Hands-on:  Rename channels</div>
+  <div class="box-title hands-on-title" id="hands-on-rename-channels"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on:  Rename channels</div>
 
   <ol>
     <li>
-      <p><span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/goeckslab/rename_tiff_channels/rename_tiff_channels/0.0.1+galaxy1" title="Rename OME-TIFF Channels tool"><strong>Rename OME-TIFF Channels</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: toolshed.g2.bx.psu.edu/repos/goeckslab/rename_tiff_channels/rename_tiff_channels/0.0.1+galaxy1</span></span>  with the following parameters:</p>
+      <p><span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/goeckslab/rename_tiff_channels/rename_tiff_channels/0.0.1+galaxy1" title="Rename OME-TIFF Channels tool" aria-role="link"><strong>Rename OME-TIFF Channels</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: toolshed.g2.bx.psu.edu/repos/goeckslab/rename_tiff_channels/rename_tiff_channels/0.0.1+galaxy1</span></span> with the following parameters:</p>
 
       <ul>
         <li><i class="far fa-file" aria-hidden="true"></i><span class="visually-hidden">param-file</span> <em>“Input image in OME-tiff format”</em>: <code class="language-plaintext highlighter-rouge">Convert image</code></li>
@@ -1338,10 +1013,10 @@ For this, Galaxy-ME includes the alternative registration tool <span><strong><st
 
 <p>For any <code class="language-plaintext highlighter-rouge">OME-TIFF</code> image in a Galaxy-ME history, there will be an option to view the image using <strong>Avivator</strong>. This is a great way to perform an initial inspection of an image for QC purposes before continuing with downstream steps. The <strong>Avivator</strong> window can be launched by expanding the dataset information in the history panel and clicking the link (Figure 7.).</p>
 
-<figure id="figure-7"><img src="../../images/multiplex-tissue-imaging-TMA/ex2_avivatorHistory.png" alt="Screenshot shows a galaxy dataset expanded, and then the 'display at aviator' link expanded into a screenshot of Aviator showing a multicoloured histology slide." width="1152" height="566" loading="lazy" /><figcaption><span class="figcaption-prefix"><strong>Figure 7</strong>:</span> The highlighted link automatically appears for any OME-TIFF image (left) and, when clicked, launches an Avivator window to explore the image (right).</figcaption></figure>
+<figure id="figure-7" style="max-width: 90%; margin:auto;"><img src="../../images/multiplex-tissue-imaging-TMA/ex2_avivatorHistory.png" alt="Screenshot shows a galaxy dataset expanded, and then the 'display at aviator' link expanded into a screenshot of Aviator showing a multicoloured histology slide." width="1152" height="566" loading="lazy" /><figcaption><span class="figcaption-prefix"><strong>Figure 7</strong>:</span> The highlighted link automatically appears for any OME-TIFF image (left) and, when clicked, launches an Avivator window to explore the image (right).</figcaption></figure>
 
 <blockquote class="notranslate hands_on">
-  <div class="box-title hands-on-title" id="hands-on-view-images-with-avivator"><i class="fas fa-pencil-alt" aria-hidden="true"></i> Hands-on:  View Images with Avivator</div>
+  <div class="box-title hands-on-title" id="hands-on-view-images-with-avivator"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on:  View Images with Avivator</div>
   <ol>
     <li>Expand the dataset <code class="language-plaintext highlighter-rouge">ASHLAR</code>: OME-TIFF image to be viewed</li>
     <li>Click on <em>“display at Avivator”</em></li>
@@ -1353,16 +1028,16 @@ For this, Galaxy-ME includes the alternative registration tool <span><strong><st
 
 <p><strong>Vitessce</strong> is a powerful visualization tool that creates interactive dashboards (Figure 8.) to look at a multiplex <code class="language-plaintext highlighter-rouge">OME-TIFF</code> images in conjunction with data generated during analysis and stored in an anndata file. The segmentation mask can be overlaid onto the image to qualitatively assess the segmentation performance. The mask can then be colored with associated observational data (Figure 9A.), such as <code class="language-plaintext highlighter-rouge">phenotype</code>, with the same colors appearing in barplots (Figure 9B.), UMAP representations, heatmaps, and marker intensity violin plots for comrehensive data exploration.</p>
 
-<figure id="figure-8"><img src="../../images/multiplex-tissue-imaging-TMA/ex2_fullVitessce.png" alt="Screenshot of the vitessce dashboard." width="1728" height="959" loading="lazy" /><figcaption><span class="figcaption-prefix"><strong>Figure 8</strong>:</span> A Full view of a vitesse dashboard for one core from Exemplar-002.</figcaption></figure>
+<figure id="figure-8" style="max-width: 90%; margin:auto;"><img src="../../images/multiplex-tissue-imaging-TMA/ex2_fullVitessce.png" alt="Screenshot of the vitessce dashboard." width="1728" height="959" loading="lazy" /><figcaption><span class="figcaption-prefix"><strong>Figure 8</strong>:</span> A Full view of a vitesse dashboard for one core from Exemplar-002.</figcaption></figure>
 
-<figure id="figure-9"><img src="../../images/multiplex-tissue-imaging-TMA/ex2_vitessce_zoomed.png" alt="screenshot of vitessce interface, on the left in A is a picture of a cell highlighted. On the right in B is a bar chart comparing cell size vs lineages." width="1728" height="706" loading="lazy" /><figcaption><span class="figcaption-prefix"><strong>Figure 9</strong>:</span> Each window in the dashboard can be resized to view the components in more detail. A closer look at the phenotype-labeled mask overlaid on the actual image (A), and the phenotype barplot (B).</figcaption></figure>
+<figure id="figure-9" style="max-width: 90%; margin:auto;"><img src="../../images/multiplex-tissue-imaging-TMA/ex2_vitessce_zoomed.png" alt="screenshot of vitessce interface, on the left in A is a picture of a cell highlighted. On the right in B is a bar chart comparing cell size vs lineages." width="1728" height="706" loading="lazy" /><figcaption><span class="figcaption-prefix"><strong>Figure 9</strong>:</span> Each window in the dashboard can be resized to view the components in more detail. A closer look at the phenotype-labeled mask overlaid on the actual image (A), and the phenotype barplot (B).</figcaption></figure>
 
 <blockquote class="notranslate hands_on">
-  <div class="box-title hands-on-title" id="hands-on-vitessce-visualization"><i class="fas fa-pencil-alt" aria-hidden="true"></i> Hands-on:  Vitessce visualization</div>
+  <div class="box-title hands-on-title" id="hands-on-vitessce-visualization"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on:  Vitessce visualization</div>
 
   <ol>
     <li>
-      <p><span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/goeckslab/vitessce_spatial/vitessce_spatial/1.0.4+galaxy0" title="Vitessce Visualization tool"><strong>Vitessce Visualization</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: toolshed.g2.bx.psu.edu/repos/goeckslab/vitessce_spatial/vitessce_spatial/1.0.4+galaxy0</span></span>  with the following parameters:</p>
+      <p><span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/goeckslab/vitessce_spatial/vitessce_spatial/1.0.4+galaxy0" title="Vitessce Visualization tool" aria-role="link"><strong>Vitessce Visualization</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: toolshed.g2.bx.psu.edu/repos/goeckslab/vitessce_spatial/vitessce_spatial/1.0.4+galaxy0</span></span> with the following parameters:</p>
 
       <ul>
         <li><i class="far fa-folder" aria-hidden="true"></i><span class="visually-hidden">param-collection</span> <em>“Select the OME Tiff image”</em>: OME-TIFF image to be viewed (or collection of files to run in batch)</li>
@@ -1389,11 +1064,11 @@ For this, Galaxy-ME includes the alternative registration tool <span><strong><st
 <p>Galaxy-ME includes additional tools from <strong>Scimap</strong> and tools from the <strong>Squidpy</strong> package (<span class="citation"><a href="#Palla2022">Palla <i>et al.</i> 2022</a></span>) that can be used to perform a variety of downstream analyses. For example, once phenotypes have been assigned to individual cells, <strong>Squidpy</strong> has several methods for understanding the spatial organization of the tissue. Using <strong>Squidpy</strong>, a spatial neighborhood graph is first generated, from which the organization of specific phenotype groups and their interactions can be quantified.</p>
 
 <blockquote class="notranslate hands_on">
-  <div class="box-title hands-on-title" id="hands-on-spatial-analysis-with-squidpy"><i class="fas fa-pencil-alt" aria-hidden="true"></i> Hands-on:  Spatial analysis with Squidpy</div>
+  <div class="box-title hands-on-title" id="hands-on-spatial-analysis-with-squidpy"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on:  Spatial analysis with Squidpy</div>
 
   <ol>
     <li>
-      <p><span><strong><strong>Squidpy Graph and Plotting</strong></strong> <i class="fas fa-wrench" aria-hidden="true"></i></span>  generate a spatial neighborhood graph with the following parameters:</p>
+      <p><span><strong><strong>Squidpy Graph and Plotting</strong></strong> <i class="fas fa-wrench" aria-hidden="true"></i></span> generate a spatial neighborhood graph with the following parameters:</p>
 
       <ul>
         <li><i class="far fa-folder" aria-hidden="true"></i><span class="visually-hidden">param-collection</span> <em>“Select the input anndata”</em>: Anndata file containing phenotype information (or other variable of interest)</li>
@@ -1401,7 +1076,7 @@ For this, Galaxy-ME includes the alternative registration tool <span><strong><st
       </ul>
     </li>
     <li>
-      <p><span><strong><strong>Squidpy Graph and Plotting</strong></strong> <i class="fas fa-wrench" aria-hidden="true"></i></span>  compute and plot a neighborhood enrichment analysis with the following parameters:</p>
+      <p><span><strong><strong>Squidpy Graph and Plotting</strong></strong> <i class="fas fa-wrench" aria-hidden="true"></i></span> compute and plot a neighborhood enrichment analysis with the following parameters:</p>
 
       <ul>
         <li><i class="far fa-folder" aria-hidden="true"></i><span class="visually-hidden">param-collection</span> <em>“Select the input anndata”</em>: Output of step 1 (anndata file with spatial neighborhood graph)</li>
@@ -1410,16 +1085,16 @@ For this, Galaxy-ME includes the alternative registration tool <span><strong><st
       </ul>
 
       <blockquote class="comment">
-        <div class="box-title comment-title" id="comment-neighborhood-enrichment-plot"><i class="far fa-comment-dots" aria-hidden="true"></i> Comment: Neighborhood enrichment plot</div>
+        <div class="box-title comment-title" id="comment-neighborhood-enrichment-plot"><i class="far fa-comment-dots" aria-hidden="true" ></i> Comment: Neighborhood enrichment plot</div>
 
         <p><strong>Squidpy</strong> was used to calculate neighborhood enrichments for each phenotype in core 2 of exemplar 2 (Figure 10.). This shows which phenotypes co-locate most frequently within the tissue.</p>
 
-        <figure id="figure-10"><img src="../../images/multiplex-tissue-imaging-TMA/ex2_squidpy_enrichment.png" alt="Heatmap showing phenotype vs neighbourhood enrichment. Most of the heatmap is blue/green (low) but one cell under epithelial is bright yellow (high). " width="4040" height="3126" loading="lazy" /><figcaption><span class="figcaption-prefix"><strong>Figure 10</strong>:</span> The output of Squidpy's neighborhood enrichment on core 2 from Exemplar-002.</figcaption></figure>
+        <figure id="figure-10" style="max-width: 90%; margin:auto;"><img src="../../images/multiplex-tissue-imaging-TMA/ex2_squidpy_enrichment.png" alt="Heatmap showing phenotype vs neighbourhood enrichment. Most of the heatmap is blue/green (low) but one cell under epithelial is bright yellow (high). " width="4040" height="3126" loading="lazy" /><figcaption><span class="figcaption-prefix"><strong>Figure 10</strong>:</span> The output of Squidpy's neighborhood enrichment on core 2 from Exemplar-002.</figcaption></figure>
 
       </blockquote>
     </li>
     <li>
-      <p><span><strong><strong>Squidpy Graph and Plotting</strong></strong> <i class="fas fa-wrench" aria-hidden="true"></i></span>  calculate Ripley’s L curves for each phenotype with the following parameters:</p>
+      <p><span><strong><strong>Squidpy Graph and Plotting</strong></strong> <i class="fas fa-wrench" aria-hidden="true"></i></span> calculate Ripley’s L curves for each phenotype with the following parameters:</p>
 
       <ul>
         <li><i class="far fa-folder" aria-hidden="true"></i><span class="visually-hidden">param-collection</span> <em>“Select the input anndata”</em>: Output of step 1 (anndata file with spatial neighborhood graph)</li>
@@ -1438,11 +1113,11 @@ For this, Galaxy-ME includes the alternative registration tool <span><strong><st
       </ul>
 
       <blockquote class="comment">
-        <div class="box-title comment-title" id="comment-ripley-s-l-plot"><i class="far fa-comment-dots" aria-hidden="true"></i> Comment: Ripley's L plot</div>
+        <div class="box-title comment-title" id="comment-ripley-s-l-plot"><i class="far fa-comment-dots" aria-hidden="true" ></i> Comment: Ripley's L plot</div>
 
         <p><strong>Squidpy</strong> was used to calculate Ripley’s L curves for each phenotype in core 2 of exemplar 2 (Figure 11.). This shows the overall organization of each phenotype in the tissue. If the curve for a given phenotype lies above the light grey null line (Example: Epithelial cells in Figure 11.), the phenotype is statistically significantly clustered. If the curve lies on the null line (Example: Myeloid lineage in Figure 11.), it’s spatial distribution within the tissue is random. If the curve is underneath the null line (Example: T cells in Figure 11.), it’s spatial distribution is statistically significantly dispersed.</p>
 
-        <figure id="figure-11"><img src="../../images/multiplex-tissue-imaging-TMA/ex2_squidpy_ripleys.png" alt="Graph of Ripley's L. Value is plotted against bins, all of which show cursves starting at 0 and increasing as bins increase. Epithelial is the highest curve." width="3706" height="2264" loading="lazy" /><figcaption><span class="figcaption-prefix"><strong>Figure 11</strong>:</span> The output of Squidpy's Ripley's L curve on core 2 from Exemplar-002.</figcaption></figure>
+        <figure id="figure-11" style="max-width: 90%; margin:auto;"><img src="../../images/multiplex-tissue-imaging-TMA/ex2_squidpy_ripleys.png" alt="Graph of Ripley's L. Value is plotted against bins, all of which show cursves starting at 0 and increasing as bins increase. Epithelial is the highest curve." width="3706" height="2264" loading="lazy" /><figcaption><span class="figcaption-prefix"><strong>Figure 11</strong>:</span> The output of Squidpy's Ripley's L curve on core 2 from Exemplar-002.</figcaption></figure>
 
       </blockquote>
     </li>
@@ -1465,7 +1140,7 @@ For this, Galaxy-ME includes the alternative registration tool <span><strong><st
   <li>Prepared the dearrayed images and viewed them interactively in a dashboard combined with observational data</li>
 </ul>
 
-<figure id="figure-12"><img src="../../images/multiplex-tissue-imaging-TMA/ex2_galaxyWF.png" alt="Image of a galaxy workflow with all of the tools from this tutorial." width="2561" height="834" loading="lazy" /><figcaption><span class="figcaption-prefix"><strong>Figure 12</strong>:</span> The entire workflow used in this tutorial.</figcaption></figure>
+<figure id="figure-12" style="max-width: 90%; margin:auto;"><img src="../../images/multiplex-tissue-imaging-TMA/ex2_galaxyWF.png" alt="Image of a galaxy workflow with all of the tools from this tutorial." width="2561" height="834" loading="lazy" /><figcaption><span class="figcaption-prefix"><strong>Figure 12</strong>:</span> The entire workflow used in this tutorial.</figcaption></figure>
 
                 </section>
 
@@ -1539,6 +1214,9 @@ For this, Galaxy-ME includes the alternative registration tool <span><strong><st
                             Cameron Watson, Allison Creason,  <b>End-to-End Tissue Microarray Image Analysis with Galaxy-ME (Galaxy Training Materials)</b>. <a href="https://training.galaxyproject.org/training-material/topics/imaging/tutorials/multiplex-tissue-imaging-TMA/tutorial.html">https://training.galaxyproject.org/training-material/topics/imaging/tutorials/multiplex-tissue-imaging-TMA/tutorial.html</a> Online; accessed TODAY
                         </li>
                         <li>
+                        Hiltemann, Saskia, Rasche, Helena et al., 2023 <b>Galaxy Training: A Powerful Framework for Teaching!</b> PLOS Computational Biology <a href="https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1010752">10.1371/journal.pcbi.1010752</a>
+                        </li>
+                        <li>
                         Batut et al., 2018 <b>Community-Driven Data Analysis Training for Biology</b> Cell Systems <a href="https://doi.org/10.1016%2Fj.cels.2018.05.012">10.1016/j.cels.2018.05.012</a>
                         </li>
                     </ol>
@@ -1560,12 +1238,12 @@ For this, Galaxy-ME includes the alternative registration tool <span><strong><st
 
 <code id="citation-code">@misc{imaging-multiplex-tissue-imaging-TMA,
 author = "Cameron Watson and Allison Creason",
-title = "End-to-End Tissue Microarray Image Analysis with Galaxy-ME (Galaxy Training Materials)",
-year = "",
-month = "",
-day = ""
-url = "\url{https://training.galaxyproject.org/training-material/topics/imaging/tutorials/multiplex-tissue-imaging-TMA/tutorial.html}",
-note = "[Online; accessed TODAY]"
+	title = "End-to-End Tissue Microarray Image Analysis with Galaxy-ME (Galaxy Training Materials)",
+	year = "",
+	month = "",
+	day = ""
+	url = "\url{https://training.galaxyproject.org/training-material/topics/imaging/tutorials/multiplex-tissue-imaging-TMA/tutorial.html}",
+	note = "[Online; accessed TODAY]"
 }
 @article{Hiltemann_2023,
 	doi = {10.1371/journal.pcbi.1010752},
@@ -1591,9 +1269,9 @@ note = "[Online; accessed TODAY]"
 
 <script>
 // update the date on load, or leave fallback of 'today'
-var d = new Date();
-document.getElementById("citation-code").innerHTML = document.getElementById("citation-code").innerHTML.replace("TODAY", d.toDateString());
-document.getElementById("citation-text").innerHTML = document.getElementById("citation-text").innerHTML.replace("TODAY", d.toDateString());
+const citationTodaysDate = new Date();
+document.getElementById("citation-code").innerHTML = document.getElementById("citation-code").innerHTML.replace("TODAY", citationTodaysDate.toDateString());
+document.getElementById("citation-text").innerHTML = document.getElementById("citation-text").innerHTML.replace("TODAY", citationTodaysDate.toDateString());
 </script>
 
                 <i class="far fa-thumbs-up" aria-hidden="true"></i> Congratulations on successfully completing this tutorial!
@@ -1601,6 +1279,73 @@ document.getElementById("citation-text").innerHTML = document.getElementById("ci
                 
 
                 
+
+		
+                <blockquote class="agenda follow-up" id="admins-install-missing-tools">
+                    <div class="box-title">Galaxy Administrators: Install the missing tools</div>
+			<p>You can use Ephemeris's <code>shed-tools install</code> command to install the tools used in this tutorial.</p>
+<div class="highlight"><pre class="highlight"><code>shed-tools install [-g GALAXY] [-a API_KEY] -t &lt;(curl https://training.galaxyproject.org/training-material/api/topics/imaging/tutorials/multiplex-tissue-imaging-TMA/tutorial.json | jq .admin_install_yaml -r)</code></pre></div>
+<p>Alternatively you can copy and paste the following YAML</p>
+<div class="highlight"><pre class="highlight"><code>---
+install_tool_dependencies: true
+install_repository_dependencies: true
+install_resolver_dependencies: true
+tools:
+- name: mesmer
+  owner: goeckslab
+  revisions: 187918c47051
+  tool_panel_section_label: Imaging
+  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+- name: rename_tiff_channels
+  owner: goeckslab
+  revisions: '09e240a12897'
+  tool_panel_section_label: Imaging
+  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+- name: scimap_mcmicro_to_anndata
+  owner: goeckslab
+  revisions: 8ca435ec19be
+  tool_panel_section_label: Imaging
+  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+- name: scimap_phenotyping
+  owner: goeckslab
+  revisions: dcfcad35e847
+  tool_panel_section_label: Imaging
+  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+- name: vitessce_spatial
+  owner: goeckslab
+  revisions: 9f60ef2d586e
+  tool_panel_section_label: Imaging
+  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+- name: bfconvert
+  owner: imgteam
+  revisions: f3360fbeda64
+  tool_panel_section_label: Imaging
+  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+- name: ashlar
+  owner: perssond
+  revisions: 33ab2058c6d9
+  tool_panel_section_label: Imaging
+  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+- name: basic_illumination
+  owner: perssond
+  revisions: acc6f509968c
+  tool_panel_section_label: Imaging
+  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+- name: coreograph
+  owner: perssond
+  revisions: ee92746d141a
+  tool_panel_section_label: Imaging
+  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+- name: quantification
+  owner: perssond
+  revisions: 3a916c4e9f5f
+  tool_panel_section_label: Imaging
+  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+</code></pre></div>
+                </blockquote>
+		
+
+
                 </section>
 
             </div>
@@ -1612,38 +1357,52 @@ document.getElementById("citation-text").innerHTML = document.getElementById("ci
 <br/>
 
         </div>
-        
-        <script src="/training-material/assets/js/jquery.slim.min.js"></script>
-        <script src="/training-material/assets/js/popper.min.js"></script>
-        <script src="/training-material/assets/js/bootstrap.min.js?v=3"></script>
-        <script src="/training-material/assets/js/details-element-polyfill.js"></script>
+        <footer>
+	<hr />
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-6" style="text-align: left">
+				<p>
+					The <a href="https://galaxyproject.org/teach/gtn/">Galaxy Training Network</a>
+					provides researchers with online training materials, connects them with local trainers, and helps promoting FAIR and Open Science practices worldwide. All contributions are subject to the <a rel="code-of-conduct" href="https://galaxyproject.org/community/coc/">Galaxy Project Code of Conduct</a>.
+				</p>
+				<p>
+				The GTN infrastructure is licensed under <a rel="license" href="https://github.com/galaxyproject/training-material/blob/main/LICENSE.md">MIT</a>
+				</p>
+				<p>
+				Revision <a href="https://github.com/galaxyproject/training-material/commit/476574d2b382dd1db6c2c408d8fb6ec4393a6904">476574d</a>, built with Jekyll (4.3.2 | production)
+				</p>
+			</div>
+			<div class="col-sm-6" style="text-align: right">
+				
+				<p>
+					Resource <i class="fas fa-fingerprint" aria-hidden="true"></i><span class="visually-hidden">purl</span><abbr title="Persistent URL">PURL</abbr>: <a href="https://gxy.io/GTN:T00334">https://gxy.io/GTN:T00334</a>
+				</p>
+				
+				<p>
+					<i>This Material</i>:
+					
+					is licensed under
+					<a rel="license" href="https://spdx.org/licenses/CC-BY-4.0">
+						Creative Commons Attribution 4.0 International License
+					</a>
+				</p>
+				<p>
+					<a href="https://github.com/galaxyproject/training-material/edit/main/topics/imaging/tutorials/multiplex-tissue-imaging-TMA/tutorial.md" title="Edit on GitHub">
+					<i class="fab fa-github" aria-hidden="true"></i><span class="visually-hidden">github</span> Edit on GitHub
+					</a>
+				</p>
+			</div>
+		</div>
+	</div>
+</footer>
+
+
+    </div>
+</footer>
+
+
+        <script src='/training-material/assets/js/bundle.main.js?v=1687830693'></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-        <script src="/training-material/assets/js/bootstrap-toc.min.js"></script>
-        <script src="/training-material/assets/js/main.js"></script>
-        <script src="/training-material/assets/js/clipboard.min.js"></script>
-        <script>
-        var snippets=document.querySelectorAll('div.highlight');
-        [].forEach.call(snippets,function(snippet){
-            snippet.firstChild.insertAdjacentHTML('beforebegin','<button class="btn btn-light" data-clipboard-snippet tabindex="0"><i class="fa fa-copy"></i>&nbsp;Copy</button>');
-        });
-
-        var clipboardSnippets=new ClipboardJS('[data-clipboard-snippet]',{
-            target:function(trigger){return trigger.nextElementSibling;
-        }});
-        </script>
-        
-
-        <script type="text/javascript">
-            if(window.location.hostname === "galaxyproject.github.io") {
-                // Redirect
-                var redirect = "https://training.galaxyproject.org" + window.location.pathname + window.location.search;
-                $('div.container.main-content').prepend("<div class='alert alert-warning'><strong>Note: </strong>This content has a new home at <a href=\"" + redirect + "\">" + redirect + "</a>, which you will be redirected to in 5 seconds.</div>");
-
-                window.setTimeout(function(){
-                    window.location.href = redirect;
-                }, 5000)
-
-            }
-        </script>
     </body>
 </html>

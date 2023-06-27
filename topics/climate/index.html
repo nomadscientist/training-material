@@ -8,16 +8,45 @@
         
             <script async defer data-domain="training.galaxyproject.org" src="https://plausible.galaxyproject.eu/js/plausible.js"></script>
 
+<!-- JavaScript Error Monitoring, and performance tracking. -->
+<script
+  src="https://browser.sentry-cdn.com/7.52.1/bundle.tracing.min.js"
+  integrity="sha384-muuFXKS3752PNA4rPm9Uq6BLvOfV4CXyr9MHDBPvozOJJUWLKkogEFWOIRoVps43"
+  crossorigin="anonymous"
+></script>
+<script type="text/javascript">
+Sentry.init({
+  dsn: "https://45e0ec6e4373462b92969505df37cf40@sentry.galaxyproject.org/10",
+  release: "galaxy-training-network@476574d2b382dd1db6c2c408d8fb6ec4393a6904",
+  integrations: [new Sentry.BrowserTracing(), new Sentry.Replay()],
+  sampleRate: 0.1,
+  tracesSampleRate: 0.1,
+  // Capture Replay for no sessions by default
+  replaysSessionSampleRate: 0.01,
+  // plus for 1% of sessions with an error
+  replaysOnErrorSampleRate: 0.01,
+  // PII OFF
+  sendDefaultPii: false, // Off by default but just in case.
+  environment: "production",
+});
+</script>
+
         
-        <link rel="stylesheet" href="/training-material/assets/css/bootstrap.min.css?v=3">
-        <link rel="stylesheet" href="/training-material/assets/css/bootstrap-toc.min.css">
-        <link rel="stylesheet" href="/training-material/assets/css/main.css?v=2">
-        <link rel="stylesheet" href="/training-material/assets/fontawesome/css/all.css">
-        <link rel="stylesheet" href="/training-material/assets/css/academicons.css">
         <link rel="shortcut icon" href="/training-material/favicon.ico" type="image/x-icon">
         <link rel="alternate" type="application/atom+xml" href="/training-material/feed.xml">
         <link rel="canonical" href="https://training.galaxyproject.org/training-material/topics/climate/">
-        <link rel="license" href="https://creativecommons.org/licenses/by/4.0/">
+        <link rel="license" href="https://spdx.org/licenses/CC-BY-4.0">
+        <link rel="preload" href="/training-material/assets/fonts/AtkinsonHyperlegible/Atkinson-Hyperlegible-Regular-102a.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="preload" href="/training-material/assets/fonts/AtkinsonHyperlegible/Atkinson-Hyperlegible-Bold-102a.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="preload" href="/training-material/assets/fonts/AtkinsonHyperlegible/Atkinson-Hyperlegible-Italic-102a.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML" as="script" crossorigin>
+        <link rel="preload" href="/training-material/assets/css/main.css?v=3" as="style">
+        <link rel='preload' href='/training-material/assets/js/bundle.theme.js?v=1687830693' as='script'>
+<link rel='preload' href='/training-material/assets/js/bundle.main.js?v=1687830693' as='script'>
+        <link rel="stylesheet" href="/training-material/assets/css/main.css?v=3">
+        <link rel="manifest" href="/training-material/manifest.json">
+        <meta name="theme-color" content="#2c3143"/>
+
 
         <meta name="DC.identifier" content="https://github.com/galaxyproject/training-material">
 <meta name="DC.type" content="text">
@@ -39,7 +68,7 @@
         
     </head>
     <body data-spy="scroll" data-target="#toc">
-        <script type="text/javascript" src="/training-material/assets/js/theme.js"></script>
+        <script src='/training-material/assets/js/bundle.theme.js?v=1687830693'></script>
         <header>
     <nav class="navbar navbar-expand-md navbar-dark" aria-label="Site Navigation">
         <div class="container">
@@ -109,8 +138,7 @@
     </a>
     <div class="dropdown-menu dropdown-menu-right">
 
-        
-        <a class="dropdown-item" href="https://github.com/galaxyproject/training-material/edit/main/topics/climate/" title="Edit on GitHub">
+        <a class="dropdown-item" href="https://github.com/galaxyproject/training-material/edit/main/topics/climate/index.md" title="Edit on GitHub">
           <i class="fab fa-github" aria-hidden="true"></i><span class="visually-hidden">github</span> Edit on GitHub
         </a>
 
@@ -157,13 +185,13 @@
 
             <div id="archive-selector">
             
-                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2020-01-06/topics/climate/" title="Version 2020-01-06">2020-01-06</a>
+                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2020-01-06/topics/climate/">2020-01-06</a>
             
-                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2019-12-01/topics/climate/" title="Version 2019-12-01">2019-12-01</a>
+                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2019-12-01/topics/climate/">2019-12-01</a>
             
-                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2019-11-01/topics/climate/" title="Version 2019-11-01">2019-11-01</a>
+                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2019-11-01/topics/climate/">2019-11-01</a>
             
-                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/" title="Older Versions">Older Versions</a>
+                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/">Older Versions</a>
             </div>
 
         </div>
@@ -176,7 +204,7 @@
                     <li class="nav-item">
                       <div id="navbarSupportedContent" role="search">
                         <!-- Search form -->
-                        <form class="form-inline mr-auto" method="GET" action="/training-material/search">
+                        <form class="form-inline mr-auto" method="GET" action="/training-material/search2">
                           <i class="fas fa-search nav-link" aria-hidden="true"></i>
                           <div class="md-form mb-2">
                             <input name="query" class="form-control nicer" type="text" placeholder="Search Tutorials" aria-label="Search">
@@ -200,13 +228,6 @@
 
 <!-- Gitter -->
 
-
-<script>
-  ((window.gitter = {}).chat = {}).options = {
-  room: 'Galaxy-Training-Network/Lobby'
-  };
-</script>
-<script src="https://sidecar.gitter.im/dist/sidecar.v1.js" async defer></script>
 
 <section class="tutorials-list climate topic-type-use">
     <h1>Climate</h1>
@@ -242,18 +263,16 @@
         <table class="table table-responsive table-striped">
   <thead>
     <tr>
-      <th>Lesson</th>
-      <th title="Lecture for this training. May include a video version using automated text-to-speech.">Slides</th>
-      <th title="Practical tutorial guiding you through an analysis step by step.">Hands-on</th>
-      <th title="Recordings of various instructors teaching this tutorial. May use an outdated version of the tutorial.">Recordings</th>
+      <th scope="col">Lesson</th>
+      <th scope="col" title="Lecture for this training. May include a video version using automated text-to-speech.">Slides</th>
+      <th scope="col" title="Practical tutorial guiding you through an analysis step by step.">Hands-on</th>
+      <th scope="col" title="Recordings of various instructors teaching this tutorial. May use an outdated version of the tutorial.">Recordings</th>
 
       
-      <th title="Datasets used in this tutorial, available from Zenodo.">Input dataset</th>
-      <th title="Galaxy workflows used in this tutorial.">Workflows</th>
+      <th scope="col" title="Datasets used in this tutorial, available from Zenodo.">Input dataset</th>
+      <th scope="col" title="Galaxy workflows used in this tutorial.">Workflows</th>
       
 
-      
-      <th title="List of public Galaxies on which this tutorial can be performed. ">Galaxy servers</th>
       
     </tr>
   </thead>
@@ -278,7 +297,7 @@
             
             
               
-              <a href="/training-material/search?query=interactive-tools" class="label label-default tutorial_tag" style="--color-primary: #ffb9a0; --color-darker: #ff996a; --color-dimmed: #ffa987;" title="Click to show all tutorials tagged interactive-tools">interactive-tools</a>
+              <a href="/training-material/search?query=interactive-tools" class="label label-default tutorial_tag" style="--color-primary: #ffa988; --color-darker: #ff8a46; --color-dimmed: #ff9a6c;" title="Click to show all tutorials tagged interactive-tools">interactive-tools</a>
               
             
             </div>
@@ -490,174 +509,6 @@
               
 
               
-                  
-
-
-    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false" title="Where to run the tutorial">
-        <i class="fas fa-globe" aria-hidden="true"></i><span class="visually-hidden">instances</span>
-    </a>
-    <ul class="dropdown-menu">
-    
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-        <a class="dropdown-item" href="https://climate.usegalaxy.eu/" title="Climate Science Workbench">
-            Climate Science Workbench
-        </a>
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-        <a class="dropdown-item" href="https://africa.usegalaxy.eu/" title="Galaxy Africa">
-            Galaxy Africa
-        </a>
-        
-    
-        
-        <a class="dropdown-item" href="https://india.usegalaxy.eu/" title="Galaxy India">
-            Galaxy India
-        </a>
-        
-    
-        
-        <a class="dropdown-item" href="https://test.galaxyproject.org/" title="Galaxy Test">
-            Galaxy Test
-        </a>
-        
-    
-        
-        <a class="dropdown-item" href="https://ecology.usegalaxy.eu/" title="Galaxy for Ecology">
-            Galaxy for Ecology
-        </a>
-        
-    
-        
-    
-        
-        <a class="dropdown-item" href="https://galaxy.genouest.org" title="Galaxy@GenOuest">
-            Galaxy@GenOuest
-        </a>
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-        <a class="dropdown-item" href="https://streetscience.usegalaxy.eu/" title="Street Science">
-            Street Science
-        </a>
-        
-    
-        
-    
-        
-        <a class="dropdown-item" href="https://usegalaxy.eu" title="UseGalaxy.eu">
-            UseGalaxy.eu
-        </a>
-        
-    
-        
-    
-        
-    
-        
-        <a class="dropdown-item" href="https://usegalaxy.org" title="UseGalaxy.org (Main)">
-            UseGalaxy.org (Main)
-        </a>
-        
-    
-        
-        <a class="dropdown-item" href="https://usegalaxy.org.au" title="UseGalaxy.org.au">
-            UseGalaxy.org.au
-        </a>
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-    </ul>
-
-
-
-              
               </div>
             </div>
           </td>
@@ -866,174 +717,6 @@
  </td>
           
 
-          
-          <td> 
-
-
-    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false" title="Where to run the tutorial">
-        <i class="fas fa-globe" aria-hidden="true"></i><span class="visually-hidden">instances</span>
-    </a>
-    <ul class="dropdown-menu">
-    
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-        <a class="dropdown-item" href="https://climate.usegalaxy.eu/" title="Climate Science Workbench">
-            Climate Science Workbench
-        </a>
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-        <a class="dropdown-item" href="https://africa.usegalaxy.eu/" title="Galaxy Africa">
-            Galaxy Africa
-        </a>
-        
-    
-        
-        <a class="dropdown-item" href="https://india.usegalaxy.eu/" title="Galaxy India">
-            Galaxy India
-        </a>
-        
-    
-        
-        <a class="dropdown-item" href="https://test.galaxyproject.org/" title="Galaxy Test">
-            Galaxy Test
-        </a>
-        
-    
-        
-        <a class="dropdown-item" href="https://ecology.usegalaxy.eu/" title="Galaxy for Ecology">
-            Galaxy for Ecology
-        </a>
-        
-    
-        
-    
-        
-        <a class="dropdown-item" href="https://galaxy.genouest.org" title="Galaxy@GenOuest">
-            Galaxy@GenOuest
-        </a>
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-        <a class="dropdown-item" href="https://streetscience.usegalaxy.eu/" title="Street Science">
-            Street Science
-        </a>
-        
-    
-        
-    
-        
-        <a class="dropdown-item" href="https://usegalaxy.eu" title="UseGalaxy.eu">
-            UseGalaxy.eu
-        </a>
-        
-    
-        
-    
-        
-    
-        
-        <a class="dropdown-item" href="https://usegalaxy.org" title="UseGalaxy.org (Main)">
-            UseGalaxy.org (Main)
-        </a>
-        
-    
-        
-        <a class="dropdown-item" href="https://usegalaxy.org.au" title="UseGalaxy.org.au">
-            UseGalaxy.org.au
-        </a>
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-    </ul>
-
-
- </td>
           
          </tr>
        
@@ -1055,7 +738,7 @@
             
             
               
-              <a href="/training-material/search?query=interactive-tools" class="label label-default tutorial_tag" style="--color-primary: #ffb9a0; --color-darker: #ff996a; --color-dimmed: #ffa987;" title="Click to show all tutorials tagged interactive-tools">interactive-tools</a>
+              <a href="/training-material/search?query=interactive-tools" class="label label-default tutorial_tag" style="--color-primary: #ffa988; --color-darker: #ff8a46; --color-dimmed: #ff9a6c;" title="Click to show all tutorials tagged interactive-tools">interactive-tools</a>
               
             
             </div>
@@ -1154,12 +837,6 @@
               
 
               
-                  
-
-
-
-
-              
               </div>
             </div>
           </td>
@@ -1255,12 +932,6 @@
  </td>
           
 
-          
-          <td> 
-
-
-
- </td>
           
          </tr>
        
@@ -1365,7 +1036,7 @@
                   
 
 
-<a class="btn btn-default topic-icon" title="Zenodo datasets used in this tutorial" href="https://doi.org/10.5281/zenodo.3776499">
+<a class="btn btn-default topic-icon" title="Zenodo datasets used in this tutorial" href="https://zenodo.org/record/3776500">
     <i class="far fa-copy" aria-hidden="true"></i>
 </a>
 
@@ -1379,166 +1050,6 @@
 
 
               
-
-              
-                  
-
-
-    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false" title="Where to run the tutorial">
-        <i class="fas fa-globe" aria-hidden="true"></i><span class="visually-hidden">instances</span>
-    </a>
-    <ul class="dropdown-menu">
-    
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-        <a class="dropdown-item" href="https://climate.usegalaxy.eu/" title="Climate Science Workbench">
-            Climate Science Workbench
-        </a>
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-        <a class="dropdown-item" href="https://africa.usegalaxy.eu/" title="Galaxy Africa">
-            Galaxy Africa
-        </a>
-        
-    
-        
-        <a class="dropdown-item" href="https://india.usegalaxy.eu/" title="Galaxy India">
-            Galaxy India
-        </a>
-        
-    
-        
-    
-        
-        <a class="dropdown-item" href="https://ecology.usegalaxy.eu/" title="Galaxy for Ecology">
-            Galaxy for Ecology
-        </a>
-        
-    
-        
-    
-        
-        <a class="dropdown-item" href="https://galaxy.genouest.org" title="Galaxy@GenOuest">
-            Galaxy@GenOuest
-        </a>
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-        <a class="dropdown-item" href="https://streetscience.usegalaxy.eu/" title="Street Science">
-            Street Science
-        </a>
-        
-    
-        
-    
-        
-        <a class="dropdown-item" href="https://usegalaxy.eu" title="UseGalaxy.eu">
-            UseGalaxy.eu
-        </a>
-        
-    
-        
-    
-        
-        <a class="dropdown-item" href="https://usegalaxy.no/" title="UseGalaxy.no">
-            UseGalaxy.no
-        </a>
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-    </ul>
-
-
 
               
               </div>
@@ -1625,7 +1136,7 @@
           <td> 
 
 
-<a class="btn btn-default topic-icon" title="Zenodo datasets used in this tutorial" href="https://doi.org/10.5281/zenodo.3776499">
+<a class="btn btn-default topic-icon" title="Zenodo datasets used in this tutorial" href="https://zenodo.org/record/3776500">
     <i class="far fa-copy" aria-hidden="true"></i>
 </a>
 
@@ -1640,166 +1151,6 @@
  </td>
           
 
-          
-          <td> 
-
-
-    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false" title="Where to run the tutorial">
-        <i class="fas fa-globe" aria-hidden="true"></i><span class="visually-hidden">instances</span>
-    </a>
-    <ul class="dropdown-menu">
-    
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-        <a class="dropdown-item" href="https://climate.usegalaxy.eu/" title="Climate Science Workbench">
-            Climate Science Workbench
-        </a>
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-        <a class="dropdown-item" href="https://africa.usegalaxy.eu/" title="Galaxy Africa">
-            Galaxy Africa
-        </a>
-        
-    
-        
-        <a class="dropdown-item" href="https://india.usegalaxy.eu/" title="Galaxy India">
-            Galaxy India
-        </a>
-        
-    
-        
-    
-        
-        <a class="dropdown-item" href="https://ecology.usegalaxy.eu/" title="Galaxy for Ecology">
-            Galaxy for Ecology
-        </a>
-        
-    
-        
-    
-        
-        <a class="dropdown-item" href="https://galaxy.genouest.org" title="Galaxy@GenOuest">
-            Galaxy@GenOuest
-        </a>
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-        <a class="dropdown-item" href="https://streetscience.usegalaxy.eu/" title="Street Science">
-            Street Science
-        </a>
-        
-    
-        
-    
-        
-        <a class="dropdown-item" href="https://usegalaxy.eu" title="UseGalaxy.eu">
-            UseGalaxy.eu
-        </a>
-        
-    
-        
-    
-        
-        <a class="dropdown-item" href="https://usegalaxy.no/" title="UseGalaxy.no">
-            UseGalaxy.no
-        </a>
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-    </ul>
-
-
- </td>
           
          </tr>
        
@@ -1932,12 +1283,6 @@
               
 
               
-                  
-
-
-
-
-              
               </div>
             </div>
           </td>
@@ -2050,12 +1395,6 @@
           
 
           
-          <td> 
-
-
-
- </td>
-          
          </tr>
        
     
@@ -2076,11 +1415,11 @@
             
             
               
-              <a href="/training-material/search?query=pangeo" class="label label-default tutorial_tag" style="--color-primary: #00e59d; --color-darker: #00cc8c; --color-dimmed: #00d894;" title="Click to show all tutorials tagged pangeo">pangeo</a>
+              <a href="/training-material/search?query=pangeo" class="label label-default tutorial_tag" style="--color-primary: #00d895; --color-darker: #00c184; --color-dimmed: #00cd8c;" title="Click to show all tutorials tagged pangeo">pangeo</a>
               
-              <a href="/training-material/search?query=interactive-tools" class="label label-default tutorial_tag" style="--color-primary: #ffb9a0; --color-darker: #ff996a; --color-dimmed: #ffa987;" title="Click to show all tutorials tagged interactive-tools">interactive-tools</a>
+              <a href="/training-material/search?query=interactive-tools" class="label label-default tutorial_tag" style="--color-primary: #ffa988; --color-darker: #ff8a46; --color-dimmed: #ff9a6c;" title="Click to show all tutorials tagged interactive-tools">interactive-tools</a>
               
-              <a href="/training-material/search?query=jupyter-notebook" class="label label-default tutorial_tag" style="--color-primary: #00deef; --color-darker: #00c6d5; --color-dimmed: #00d2e2;" title="Click to show all tutorials tagged jupyter-notebook">jupyter-notebook</a>
+              <a href="/training-material/search?query=jupyter-notebook" class="label label-default tutorial_tag" style="--color-primary: #00d2e2; --color-darker: #00bbca; --color-dimmed: #00c6d6;" title="Click to show all tutorials tagged jupyter-notebook">jupyter-notebook</a>
               
             
             </div>
@@ -2282,362 +1621,6 @@
               
 
               
-                  
-
-
-    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false" title="Where to run the tutorial">
-        <i class="fas fa-globe" aria-hidden="true"></i><span class="visually-hidden">instances</span>
-    </a>
-    <ul class="dropdown-menu">
-    
-    
-        
-        <a class="dropdown-item" href="http://aspendb.uga.edu:8085/" title="AGEseq @ AspenDB">
-            AGEseq @ AspenDB
-        </a>
-        
-    
-        
-        <a class="dropdown-item" href="http://motherbox.chemeng.ntua.gr/anastasia_dev/" title="ANASTASIA">
-            ANASTASIA
-        </a>
-        
-    
-        
-        <a class="dropdown-item" href="http://apostl.moffitt.org/" title="APOSTL">
-            APOSTL
-        </a>
-        
-    
-        
-        <a class="dropdown-item" href="http://mem.rcees.ac.cn:8083/" title="ARGA">
-            ARGA
-        </a>
-        
-    
-        
-        <a class="dropdown-item" href="http://smile.hku.hk/SARGs" title="ARGs-OAP">
-            ARGs-OAP
-        </a>
-        
-    
-        
-        <a class="dropdown-item" href="http://bf2i-galaxy.insa-lyon.fr:8080/" title="BF2I-MAP">
-            BF2I-MAP
-        </a>
-        
-    
-        
-        <a class="dropdown-item" href="http://143.169.238.104/galaxy/" title="Biomina">
-            Biomina
-        </a>
-        
-    
-        
-        <a class="dropdown-item" href="https://iris.angers.inra.fr/galaxypub-cfbp" title="CIRM-CFBP">
-            CIRM-CFBP
-        </a>
-        
-    
-        
-        <a class="dropdown-item" href="https://clipseq.usegalaxy.eu/" title="CLIP-Explorer">
-            CLIP-Explorer
-        </a>
-        
-    
-        
-        <a class="dropdown-item" href="https://cpt.tamu.edu/galaxy-public/" title="Center for Phage Technology (CPT)">
-            Center for Phage Technology (CPT)
-        </a>
-        
-    
-        
-        <a class="dropdown-item" href="https://vm-chemflow-francegrille.eu/" title="ChemFlow">
-            ChemFlow
-        </a>
-        
-    
-        
-        <a class="dropdown-item" href="https://cheminformatics.usegalaxy.eu/" title="ChemicalToolbox">
-            ChemicalToolbox
-        </a>
-        
-    
-        
-        <a class="dropdown-item" href="https://climate.usegalaxy.eu/" title="Climate Science Workbench">
-            Climate Science Workbench
-        </a>
-        
-    
-        
-        <a class="dropdown-item" href="https://hyperbrowser.uio.no/coloc-stats" title="Coloc-stats">
-            Coloc-stats
-        </a>
-        
-    
-        
-        <a class="dropdown-item" href="http://cropgalaxy.excellenceinbreeding.org/" title="CropGalaxy">
-            CropGalaxy
-        </a>
-        
-    
-        
-        <a class="dropdown-item" href="http://dintor.eurac.edu/" title="Dintor">
-            Dintor
-        </a>
-        
-    
-        
-        <a class="dropdown-item" href="http://www.freebioinfo.org/" title="FreeBioinfo">
-            FreeBioinfo
-        </a>
-        
-    
-        
-        <a class="dropdown-item" href="http://igg.cloud.ba.infn.it/galaxy" title="GASLINI">
-            GASLINI
-        </a>
-        
-    
-        
-        <a class="dropdown-item" href="https://africa.usegalaxy.eu/" title="Galaxy Africa">
-            Galaxy Africa
-        </a>
-        
-    
-        
-        <a class="dropdown-item" href="https://india.usegalaxy.eu/" title="Galaxy India">
-            Galaxy India
-        </a>
-        
-    
-        
-        <a class="dropdown-item" href="https://test.galaxyproject.org/" title="Galaxy Test">
-            Galaxy Test
-        </a>
-        
-    
-        
-        <a class="dropdown-item" href="https://ecology.usegalaxy.eu/" title="Galaxy for Ecology">
-            Galaxy for Ecology
-        </a>
-        
-    
-        
-        <a class="dropdown-item" href="https://galaxy.mesocentre.uca.fr" title="Galaxy@AuBi">
-            Galaxy@AuBi
-        </a>
-        
-    
-        
-        <a class="dropdown-item" href="https://galaxy.genouest.org" title="Galaxy@GenOuest">
-            Galaxy@GenOuest
-        </a>
-        
-    
-        
-        <a class="dropdown-item" href="https://galaxy.pasteur.fr/" title="Galaxy@Pasteur">
-            Galaxy@Pasteur
-        </a>
-        
-    
-        
-        <a class="dropdown-item" href="https://galaxytrakr.org/" title="GalaxyTrakr">
-            GalaxyTrakr
-        </a>
-        
-    
-        
-        <a class="dropdown-item" href="http://hyperbrowser.uio.no/hb/" title="Genomic Hyperbrowser">
-            Genomic Hyperbrowser
-        </a>
-        
-    
-        
-        <a class="dropdown-item" href="http://gigagalaxy.net/" title="GigaGalaxy">
-            GigaGalaxy
-        </a>
-        
-    
-        
-        <a class="dropdown-item" href="https://hicexplorer.usegalaxy.eu" title="HiCExplorer">
-            HiCExplorer
-        </a>
-        
-    
-        
-        <a class="dropdown-item" href="https://humancellatlas.usegalaxy.eu/" title="Human Cell Atlas">
-            Human Cell Atlas
-        </a>
-        
-    
-        
-        <a class="dropdown-item" href="https://galaxy.hyphy.org/" title="HyPhy HIV NGS Tools">
-            HyPhy HIV NGS Tools
-        </a>
-        
-    
-        
-        <a class="dropdown-item" href="http://mem.rcees.ac.cn:8081/" title="IDENAP">
-            IDENAP
-        </a>
-        
-    
-        
-        <a class="dropdown-item" href="https://www.immportgalaxy.org/" title="ImmPort Galaxy">
-            ImmPort Galaxy
-        </a>
-        
-    
-        
-        <a class="dropdown-item" href="http://galaxy.interactomix.com/" title="InteractoMIX">
-            InteractoMIX
-        </a>
-        
-    
-        
-        <a class="dropdown-item" href="https://ml.usegalaxy.eu/" title="Machine Learning Workbench">
-            Machine Learning Workbench
-        </a>
-        
-    
-        
-        <a class="dropdown-item" href="https://neo.engr.uconn.edu/" title="Mandoiu Lab">
-            Mandoiu Lab
-        </a>
-        
-    
-        
-        <a class="dropdown-item" href="https://metabolomics.usegalaxy.eu/" title="Metabolomics">
-            Metabolomics
-        </a>
-        
-    
-        
-        <a class="dropdown-item" href="https://metagenomics.usegalaxy.eu/" title="Metagenomics">
-            Metagenomics
-        </a>
-        
-    
-        
-        <a class="dropdown-item" href="http://mapping-by-sequencing.vm.uni-freiburg.de:8080/" title="MiModD NacreousMap">
-            MiModD NacreousMap
-        </a>
-        
-    
-        
-        <a class="dropdown-item" href="https://nanopore.usegalaxy.eu/" title="NanoGalaxy">
-            NanoGalaxy
-        </a>
-        
-    
-        
-        <a class="dropdown-item" href="https://palfinder.ls.manchester.ac.uk/" title="Palfinder">
-            Palfinder
-        </a>
-        
-    
-        
-        <a class="dropdown-item" href="http://pepsimili.e-nios.com:8080/" title="PepSimili">
-            PepSimili
-        </a>
-        
-    
-        
-        <a class="dropdown-item" href="https://galaxy.bio.di.uminho.pt/" title="PhagePromotor">
-            PhagePromotor
-        </a>
-        
-    
-        
-        <a class="dropdown-item" href="https://plants.usegalaxy.eu/" title="Plant Anaylsis Workbench">
-            Plant Anaylsis Workbench
-        </a>
-        
-    
-        
-        <a class="dropdown-item" href="http://protologger.de/" title="Protologger">
-            Protologger
-        </a>
-        
-    
-        
-        <a class="dropdown-item" href="https://singlecell.usegalaxy.eu/" title="Single Cell Omics workbench">
-            Single Cell Omics workbench
-        </a>
-        
-    
-        
-        <a class="dropdown-item" href="https://streetscience.usegalaxy.eu/" title="Street Science">
-            Street Science
-        </a>
-        
-    
-        
-        <a class="dropdown-item" href="https://usegalaxy.be/" title="UseGalaxy.be">
-            UseGalaxy.be
-        </a>
-        
-    
-        
-        <a class="dropdown-item" href="https://usegalaxy.eu" title="UseGalaxy.eu">
-            UseGalaxy.eu
-        </a>
-        
-    
-        
-        <a class="dropdown-item" href="https://usegalaxy.fr/" title="UseGalaxy.fr">
-            UseGalaxy.fr
-        </a>
-        
-    
-        
-        <a class="dropdown-item" href="https://usegalaxy.no/" title="UseGalaxy.no">
-            UseGalaxy.no
-        </a>
-        
-    
-        
-        <a class="dropdown-item" href="https://usegalaxy.org" title="UseGalaxy.org (Main)">
-            UseGalaxy.org (Main)
-        </a>
-        
-    
-        
-        <a class="dropdown-item" href="https://usegalaxy.org.au" title="UseGalaxy.org.au">
-            UseGalaxy.org.au
-        </a>
-        
-    
-        
-        <a class="dropdown-item" href="http://galaxy.bio.ku.dk/" title="Vinther Lab">
-            Vinther Lab
-        </a>
-        
-    
-        
-        <a class="dropdown-item" href="https://viralvariant.anses.fr/" title="Viral Variant Visualizer (VVV)">
-            Viral Variant Visualizer (VVV)
-        </a>
-        
-    
-        
-        <a class="dropdown-item" href="https://virology.usegalaxy.eu/" title="Virology">
-            Virology
-        </a>
-        
-    
-        
-        <a class="dropdown-item" href="https://covid19.usegalaxy.fr/" title="covid19.UseGalaxy.fr">
-            covid19.UseGalaxy.fr
-        </a>
-        
-    
-    </ul>
-
-
-
-              
               </div>
             </div>
           </td>
@@ -2836,362 +1819,6 @@
  </td>
           
 
-          
-          <td> 
-
-
-    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false" title="Where to run the tutorial">
-        <i class="fas fa-globe" aria-hidden="true"></i><span class="visually-hidden">instances</span>
-    </a>
-    <ul class="dropdown-menu">
-    
-    
-        
-        <a class="dropdown-item" href="http://aspendb.uga.edu:8085/" title="AGEseq @ AspenDB">
-            AGEseq @ AspenDB
-        </a>
-        
-    
-        
-        <a class="dropdown-item" href="http://motherbox.chemeng.ntua.gr/anastasia_dev/" title="ANASTASIA">
-            ANASTASIA
-        </a>
-        
-    
-        
-        <a class="dropdown-item" href="http://apostl.moffitt.org/" title="APOSTL">
-            APOSTL
-        </a>
-        
-    
-        
-        <a class="dropdown-item" href="http://mem.rcees.ac.cn:8083/" title="ARGA">
-            ARGA
-        </a>
-        
-    
-        
-        <a class="dropdown-item" href="http://smile.hku.hk/SARGs" title="ARGs-OAP">
-            ARGs-OAP
-        </a>
-        
-    
-        
-        <a class="dropdown-item" href="http://bf2i-galaxy.insa-lyon.fr:8080/" title="BF2I-MAP">
-            BF2I-MAP
-        </a>
-        
-    
-        
-        <a class="dropdown-item" href="http://143.169.238.104/galaxy/" title="Biomina">
-            Biomina
-        </a>
-        
-    
-        
-        <a class="dropdown-item" href="https://iris.angers.inra.fr/galaxypub-cfbp" title="CIRM-CFBP">
-            CIRM-CFBP
-        </a>
-        
-    
-        
-        <a class="dropdown-item" href="https://clipseq.usegalaxy.eu/" title="CLIP-Explorer">
-            CLIP-Explorer
-        </a>
-        
-    
-        
-        <a class="dropdown-item" href="https://cpt.tamu.edu/galaxy-public/" title="Center for Phage Technology (CPT)">
-            Center for Phage Technology (CPT)
-        </a>
-        
-    
-        
-        <a class="dropdown-item" href="https://vm-chemflow-francegrille.eu/" title="ChemFlow">
-            ChemFlow
-        </a>
-        
-    
-        
-        <a class="dropdown-item" href="https://cheminformatics.usegalaxy.eu/" title="ChemicalToolbox">
-            ChemicalToolbox
-        </a>
-        
-    
-        
-        <a class="dropdown-item" href="https://climate.usegalaxy.eu/" title="Climate Science Workbench">
-            Climate Science Workbench
-        </a>
-        
-    
-        
-        <a class="dropdown-item" href="https://hyperbrowser.uio.no/coloc-stats" title="Coloc-stats">
-            Coloc-stats
-        </a>
-        
-    
-        
-        <a class="dropdown-item" href="http://cropgalaxy.excellenceinbreeding.org/" title="CropGalaxy">
-            CropGalaxy
-        </a>
-        
-    
-        
-        <a class="dropdown-item" href="http://dintor.eurac.edu/" title="Dintor">
-            Dintor
-        </a>
-        
-    
-        
-        <a class="dropdown-item" href="http://www.freebioinfo.org/" title="FreeBioinfo">
-            FreeBioinfo
-        </a>
-        
-    
-        
-        <a class="dropdown-item" href="http://igg.cloud.ba.infn.it/galaxy" title="GASLINI">
-            GASLINI
-        </a>
-        
-    
-        
-        <a class="dropdown-item" href="https://africa.usegalaxy.eu/" title="Galaxy Africa">
-            Galaxy Africa
-        </a>
-        
-    
-        
-        <a class="dropdown-item" href="https://india.usegalaxy.eu/" title="Galaxy India">
-            Galaxy India
-        </a>
-        
-    
-        
-        <a class="dropdown-item" href="https://test.galaxyproject.org/" title="Galaxy Test">
-            Galaxy Test
-        </a>
-        
-    
-        
-        <a class="dropdown-item" href="https://ecology.usegalaxy.eu/" title="Galaxy for Ecology">
-            Galaxy for Ecology
-        </a>
-        
-    
-        
-        <a class="dropdown-item" href="https://galaxy.mesocentre.uca.fr" title="Galaxy@AuBi">
-            Galaxy@AuBi
-        </a>
-        
-    
-        
-        <a class="dropdown-item" href="https://galaxy.genouest.org" title="Galaxy@GenOuest">
-            Galaxy@GenOuest
-        </a>
-        
-    
-        
-        <a class="dropdown-item" href="https://galaxy.pasteur.fr/" title="Galaxy@Pasteur">
-            Galaxy@Pasteur
-        </a>
-        
-    
-        
-        <a class="dropdown-item" href="https://galaxytrakr.org/" title="GalaxyTrakr">
-            GalaxyTrakr
-        </a>
-        
-    
-        
-        <a class="dropdown-item" href="http://hyperbrowser.uio.no/hb/" title="Genomic Hyperbrowser">
-            Genomic Hyperbrowser
-        </a>
-        
-    
-        
-        <a class="dropdown-item" href="http://gigagalaxy.net/" title="GigaGalaxy">
-            GigaGalaxy
-        </a>
-        
-    
-        
-        <a class="dropdown-item" href="https://hicexplorer.usegalaxy.eu" title="HiCExplorer">
-            HiCExplorer
-        </a>
-        
-    
-        
-        <a class="dropdown-item" href="https://humancellatlas.usegalaxy.eu/" title="Human Cell Atlas">
-            Human Cell Atlas
-        </a>
-        
-    
-        
-        <a class="dropdown-item" href="https://galaxy.hyphy.org/" title="HyPhy HIV NGS Tools">
-            HyPhy HIV NGS Tools
-        </a>
-        
-    
-        
-        <a class="dropdown-item" href="http://mem.rcees.ac.cn:8081/" title="IDENAP">
-            IDENAP
-        </a>
-        
-    
-        
-        <a class="dropdown-item" href="https://www.immportgalaxy.org/" title="ImmPort Galaxy">
-            ImmPort Galaxy
-        </a>
-        
-    
-        
-        <a class="dropdown-item" href="http://galaxy.interactomix.com/" title="InteractoMIX">
-            InteractoMIX
-        </a>
-        
-    
-        
-        <a class="dropdown-item" href="https://ml.usegalaxy.eu/" title="Machine Learning Workbench">
-            Machine Learning Workbench
-        </a>
-        
-    
-        
-        <a class="dropdown-item" href="https://neo.engr.uconn.edu/" title="Mandoiu Lab">
-            Mandoiu Lab
-        </a>
-        
-    
-        
-        <a class="dropdown-item" href="https://metabolomics.usegalaxy.eu/" title="Metabolomics">
-            Metabolomics
-        </a>
-        
-    
-        
-        <a class="dropdown-item" href="https://metagenomics.usegalaxy.eu/" title="Metagenomics">
-            Metagenomics
-        </a>
-        
-    
-        
-        <a class="dropdown-item" href="http://mapping-by-sequencing.vm.uni-freiburg.de:8080/" title="MiModD NacreousMap">
-            MiModD NacreousMap
-        </a>
-        
-    
-        
-        <a class="dropdown-item" href="https://nanopore.usegalaxy.eu/" title="NanoGalaxy">
-            NanoGalaxy
-        </a>
-        
-    
-        
-        <a class="dropdown-item" href="https://palfinder.ls.manchester.ac.uk/" title="Palfinder">
-            Palfinder
-        </a>
-        
-    
-        
-        <a class="dropdown-item" href="http://pepsimili.e-nios.com:8080/" title="PepSimili">
-            PepSimili
-        </a>
-        
-    
-        
-        <a class="dropdown-item" href="https://galaxy.bio.di.uminho.pt/" title="PhagePromotor">
-            PhagePromotor
-        </a>
-        
-    
-        
-        <a class="dropdown-item" href="https://plants.usegalaxy.eu/" title="Plant Anaylsis Workbench">
-            Plant Anaylsis Workbench
-        </a>
-        
-    
-        
-        <a class="dropdown-item" href="http://protologger.de/" title="Protologger">
-            Protologger
-        </a>
-        
-    
-        
-        <a class="dropdown-item" href="https://singlecell.usegalaxy.eu/" title="Single Cell Omics workbench">
-            Single Cell Omics workbench
-        </a>
-        
-    
-        
-        <a class="dropdown-item" href="https://streetscience.usegalaxy.eu/" title="Street Science">
-            Street Science
-        </a>
-        
-    
-        
-        <a class="dropdown-item" href="https://usegalaxy.be/" title="UseGalaxy.be">
-            UseGalaxy.be
-        </a>
-        
-    
-        
-        <a class="dropdown-item" href="https://usegalaxy.eu" title="UseGalaxy.eu">
-            UseGalaxy.eu
-        </a>
-        
-    
-        
-        <a class="dropdown-item" href="https://usegalaxy.fr/" title="UseGalaxy.fr">
-            UseGalaxy.fr
-        </a>
-        
-    
-        
-        <a class="dropdown-item" href="https://usegalaxy.no/" title="UseGalaxy.no">
-            UseGalaxy.no
-        </a>
-        
-    
-        
-        <a class="dropdown-item" href="https://usegalaxy.org" title="UseGalaxy.org (Main)">
-            UseGalaxy.org (Main)
-        </a>
-        
-    
-        
-        <a class="dropdown-item" href="https://usegalaxy.org.au" title="UseGalaxy.org.au">
-            UseGalaxy.org.au
-        </a>
-        
-    
-        
-        <a class="dropdown-item" href="http://galaxy.bio.ku.dk/" title="Vinther Lab">
-            Vinther Lab
-        </a>
-        
-    
-        
-        <a class="dropdown-item" href="https://viralvariant.anses.fr/" title="Viral Variant Visualizer (VVV)">
-            Viral Variant Visualizer (VVV)
-        </a>
-        
-    
-        
-        <a class="dropdown-item" href="https://virology.usegalaxy.eu/" title="Virology">
-            Virology
-        </a>
-        
-    
-        
-        <a class="dropdown-item" href="https://covid19.usegalaxy.fr/" title="covid19.UseGalaxy.fr">
-            covid19.UseGalaxy.fr
-        </a>
-        
-    
-    </ul>
-
-
- </td>
           
          </tr>
        
@@ -3213,7 +1840,7 @@
             
             
               
-              <a href="/training-material/search?query=pangeo" class="label label-default tutorial_tag" style="--color-primary: #00e59d; --color-darker: #00cc8c; --color-dimmed: #00d894;" title="Click to show all tutorials tagged pangeo">pangeo</a>
+              <a href="/training-material/search?query=pangeo" class="label label-default tutorial_tag" style="--color-primary: #00d895; --color-darker: #00c184; --color-dimmed: #00cd8c;" title="Click to show all tutorials tagged pangeo">pangeo</a>
               
             
             </div>
@@ -3415,170 +2042,6 @@
               
 
               
-                  
-
-
-    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false" title="Where to run the tutorial">
-        <i class="fas fa-globe" aria-hidden="true"></i><span class="visually-hidden">instances</span>
-    </a>
-    <ul class="dropdown-menu">
-    
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-        <a class="dropdown-item" href="https://climate.usegalaxy.eu/" title="Climate Science Workbench">
-            Climate Science Workbench
-        </a>
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-        <a class="dropdown-item" href="https://africa.usegalaxy.eu/" title="Galaxy Africa">
-            Galaxy Africa
-        </a>
-        
-    
-        
-        <a class="dropdown-item" href="https://india.usegalaxy.eu/" title="Galaxy India">
-            Galaxy India
-        </a>
-        
-    
-        
-        <a class="dropdown-item" href="https://test.galaxyproject.org/" title="Galaxy Test">
-            Galaxy Test
-        </a>
-        
-    
-        
-        <a class="dropdown-item" href="https://ecology.usegalaxy.eu/" title="Galaxy for Ecology">
-            Galaxy for Ecology
-        </a>
-        
-    
-        
-    
-        
-        <a class="dropdown-item" href="https://galaxy.genouest.org" title="Galaxy@GenOuest">
-            Galaxy@GenOuest
-        </a>
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-        <a class="dropdown-item" href="https://streetscience.usegalaxy.eu/" title="Street Science">
-            Street Science
-        </a>
-        
-    
-        
-    
-        
-        <a class="dropdown-item" href="https://usegalaxy.eu" title="UseGalaxy.eu">
-            UseGalaxy.eu
-        </a>
-        
-    
-        
-    
-        
-    
-        
-        <a class="dropdown-item" href="https://usegalaxy.org" title="UseGalaxy.org (Main)">
-            UseGalaxy.org (Main)
-        </a>
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-    </ul>
-
-
-
-              
               </div>
             </div>
           </td>
@@ -3777,170 +2240,6 @@
  </td>
           
 
-          
-          <td> 
-
-
-    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false" title="Where to run the tutorial">
-        <i class="fas fa-globe" aria-hidden="true"></i><span class="visually-hidden">instances</span>
-    </a>
-    <ul class="dropdown-menu">
-    
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-        <a class="dropdown-item" href="https://climate.usegalaxy.eu/" title="Climate Science Workbench">
-            Climate Science Workbench
-        </a>
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-        <a class="dropdown-item" href="https://africa.usegalaxy.eu/" title="Galaxy Africa">
-            Galaxy Africa
-        </a>
-        
-    
-        
-        <a class="dropdown-item" href="https://india.usegalaxy.eu/" title="Galaxy India">
-            Galaxy India
-        </a>
-        
-    
-        
-        <a class="dropdown-item" href="https://test.galaxyproject.org/" title="Galaxy Test">
-            Galaxy Test
-        </a>
-        
-    
-        
-        <a class="dropdown-item" href="https://ecology.usegalaxy.eu/" title="Galaxy for Ecology">
-            Galaxy for Ecology
-        </a>
-        
-    
-        
-    
-        
-        <a class="dropdown-item" href="https://galaxy.genouest.org" title="Galaxy@GenOuest">
-            Galaxy@GenOuest
-        </a>
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-        <a class="dropdown-item" href="https://streetscience.usegalaxy.eu/" title="Street Science">
-            Street Science
-        </a>
-        
-    
-        
-    
-        
-        <a class="dropdown-item" href="https://usegalaxy.eu" title="UseGalaxy.eu">
-            UseGalaxy.eu
-        </a>
-        
-    
-        
-    
-        
-    
-        
-        <a class="dropdown-item" href="https://usegalaxy.org" title="UseGalaxy.org (Main)">
-            UseGalaxy.org (Main)
-        </a>
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-    </ul>
-
-
- </td>
           
          </tr>
        
@@ -3962,7 +2261,7 @@
             
             
               
-              <a href="/training-material/search?query=interactive-tools" class="label label-default tutorial_tag" style="--color-primary: #ffb9a0; --color-darker: #ff996a; --color-dimmed: #ffa987;" title="Click to show all tutorials tagged interactive-tools">interactive-tools</a>
+              <a href="/training-material/search?query=interactive-tools" class="label label-default tutorial_tag" style="--color-primary: #ffa988; --color-darker: #ff8a46; --color-dimmed: #ff9a6c;" title="Click to show all tutorials tagged interactive-tools">interactive-tools</a>
               
             
             </div>
@@ -4061,12 +2360,6 @@
               
 
               
-                  
-
-
-
-
-              
               </div>
             </div>
           </td>
@@ -4162,12 +2455,6 @@
  </td>
           
 
-          
-          <td> 
-
-
-
- </td>
           
          </tr>
        
@@ -4195,7 +2482,7 @@
     <h2 id="maintainers">Maintainers</h2>
     <p>This material is maintained by:</p>
     
-    <a href="/training-material/hall-of-fame/annefou/" class="contributor-badge contributor-annefou"><img src="/training-material/assets/images/orcid.png" alt="orcid logo"/><img src="https://avatars.githubusercontent.com/annefou?s=27" alt="Avatar">Anne Fouilloux</a>
+    <a href="/training-material/hall-of-fame/annefou/" class="contributor-badge contributor-annefou"><img src="/training-material/assets/images/orcid.png" alt="orcid logo" width="36" height="36"/><img src="https://avatars.githubusercontent.com/annefou?s=36" alt="Avatar" width="36" height="36">Anne Fouilloux</a>
 
     <p>
         <em>For any question related to this topic and the content, you can contact them or visit our <a href="https://gitter.im/Galaxy-Training-Network/Lobby">Gitter channel</a>.</em>
@@ -4204,63 +2491,59 @@
     <h2 id="contributors">Contributors</h2>
     <p>This material was contributed to by:</p>
     
-    <a href="/training-material/hall-of-fame/annefou/" class="contributor-badge contributor-annefou"><img src="/training-material/assets/images/orcid.png" alt="orcid logo"/><img src="https://avatars.githubusercontent.com/annefou?s=27" alt="Avatar">Anne Fouilloux</a><a href="/training-material/hall-of-fame/j34ni/" class="contributor-badge contributor-j34ni"><img src="https://avatars.githubusercontent.com/j34ni?s=27" alt="Avatar">Jean Iaquinta</a><a href="/training-material/hall-of-fame/huitang-earth/" class="contributor-badge contributor-huitang-earth"><img src="/training-material/assets/images/orcid.png" alt="orcid logo"/><img src="https://avatars.githubusercontent.com/huitang-earth?s=27" alt="Avatar">Hui Tang</a>
+    <a href="/training-material/hall-of-fame/j34ni/" class="contributor-badge contributor-j34ni"><img src="https://avatars.githubusercontent.com/j34ni?s=36" alt="Avatar" width="36" height="36">Jean Iaquinta</a><a href="/training-material/hall-of-fame/annefou/" class="contributor-badge contributor-annefou"><img src="/training-material/assets/images/orcid.png" alt="orcid logo" width="36" height="36"/><img src="https://avatars.githubusercontent.com/annefou?s=36" alt="Avatar" width="36" height="36">Anne Fouilloux</a><a href="/training-material/hall-of-fame/huitang-earth/" class="contributor-badge contributor-huitang-earth"><img src="/training-material/assets/images/orcid.png" alt="orcid logo" width="36" height="36"/><img src="https://avatars.githubusercontent.com/huitang-earth?s=36" alt="Avatar" width="36" height="36">Hui Tang</a>
+
+    <h2 id="funders">Funders</h2>
+    <p>This material was funded by:</p>
+    
+    
 
     
 </section>
 
         </div>
-        
-            <footer>
-    <div class="container">
-        <br><br>
-        <p>
-            The <a href="https://galaxyproject.org/teach/gtn/">Galaxy Training Network</a>
-            provides researchers with online training materials, connects them with local trainers, and helps promoting open data analysis practices worldwide.
-        </p>
-        <p>
-        The content of the tutorials is licensed under the <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>. The website and infrastructure is licensed under <a rel="license" href="https://github.com/galaxyproject/training-material/blob/main/LICENSE.md">MIT</a>.
-        </p>
+        <footer>
+	<hr />
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-6" style="text-align: left">
+				<p>
+					The <a href="https://galaxyproject.org/teach/gtn/">Galaxy Training Network</a>
+					provides researchers with online training materials, connects them with local trainers, and helps promoting FAIR and Open Science practices worldwide. All contributions are subject to the <a rel="code-of-conduct" href="https://galaxyproject.org/community/coc/">Galaxy Project Code of Conduct</a>.
+				</p>
+				<p>
+				The GTN infrastructure is licensed under <a rel="license" href="https://github.com/galaxyproject/training-material/blob/main/LICENSE.md">MIT</a>
+				</p>
+				<p>
+				Revision <a href="https://github.com/galaxyproject/training-material/commit/476574d2b382dd1db6c2c408d8fb6ec4393a6904">476574d</a>, built with Jekyll (4.3.2 | production)
+				</p>
+			</div>
+			<div class="col-sm-6" style="text-align: right">
+				
+				<p>
+					<i>This Material</i>:
+					
+					is licensed under
+					<a rel="license" href="https://spdx.org/licenses/CC-BY-4.0">
+						Creative Commons Attribution 4.0 International License
+					</a>
+				</p>
+				<p>
+					<a href="https://github.com/galaxyproject/training-material/edit/main/topics/climate/index.md" title="Edit on GitHub">
+					<i class="fab fa-github" aria-hidden="true"></i><span class="visually-hidden">github</span> Edit on GitHub
+					</a>
+				</p>
+			</div>
+		</div>
+	</div>
+</footer>
 
-        <p>This is revision <a href="https://github.com/galaxyproject/training-material/commit/18e949c75c52b69adbc92b0904a2082ec75d0dd7">18e949c75c52b69adbc92b0904a2082ec75d0dd7</a>. </p>
+
     </div>
 </footer>
 
-        
-        <script src="/training-material/assets/js/jquery.slim.min.js"></script>
-        <script src="/training-material/assets/js/popper.min.js"></script>
-        <script src="/training-material/assets/js/bootstrap.min.js?v=3"></script>
-        <script src="/training-material/assets/js/details-element-polyfill.js"></script>
+
+        <script src='/training-material/assets/js/bundle.main.js?v=1687830693'></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-        <script src="/training-material/assets/js/bootstrap-toc.min.js"></script>
-        <script src="/training-material/assets/js/main.js"></script>
-        <script src="/training-material/assets/js/clipboard.min.js"></script>
-        <script>
-        var snippets=document.querySelectorAll('div.highlight');
-        [].forEach.call(snippets,function(snippet){
-            snippet.firstChild.insertAdjacentHTML('beforebegin','<button class="btn btn-light" data-clipboard-snippet tabindex="0"><i class="fa fa-copy"></i>&nbsp;Copy</button>');
-        });
-
-        var clipboardSnippets=new ClipboardJS('[data-clipboard-snippet]',{
-            target:function(trigger){return trigger.nextElementSibling;
-        }});
-        </script>
-        
-        <script type="text/javascript" src="/training-material/assets/js/list.min.js"></script>
-        <script type="text/javascript" src="/training-material/assets/js/topic.js"></script>
-        
-
-        <script type="text/javascript">
-            if(window.location.hostname === "galaxyproject.github.io") {
-                // Redirect
-                var redirect = "https://training.galaxyproject.org" + window.location.pathname + window.location.search;
-                $('div.container.main-content').prepend("<div class='alert alert-warning'><strong>Note: </strong>This content has a new home at <a href=\"" + redirect + "\">" + redirect + "</a>, which you will be redirected to in 5 seconds.</div>");
-
-                window.setTimeout(function(){
-                    window.location.href = redirect;
-                }, 5000)
-
-            }
-        </script>
     </body>
 </html>

@@ -8,16 +8,45 @@
         
             <script async defer data-domain="training.galaxyproject.org" src="https://plausible.galaxyproject.eu/js/plausible.js"></script>
 
+<!-- JavaScript Error Monitoring, and performance tracking. -->
+<script
+  src="https://browser.sentry-cdn.com/7.52.1/bundle.tracing.min.js"
+  integrity="sha384-muuFXKS3752PNA4rPm9Uq6BLvOfV4CXyr9MHDBPvozOJJUWLKkogEFWOIRoVps43"
+  crossorigin="anonymous"
+></script>
+<script type="text/javascript">
+Sentry.init({
+  dsn: "https://45e0ec6e4373462b92969505df37cf40@sentry.galaxyproject.org/10",
+  release: "galaxy-training-network@476574d2b382dd1db6c2c408d8fb6ec4393a6904",
+  integrations: [new Sentry.BrowserTracing(), new Sentry.Replay()],
+  sampleRate: 0.1,
+  tracesSampleRate: 0.1,
+  // Capture Replay for no sessions by default
+  replaysSessionSampleRate: 0.01,
+  // plus for 1% of sessions with an error
+  replaysOnErrorSampleRate: 0.01,
+  // PII OFF
+  sendDefaultPii: false, // Off by default but just in case.
+  environment: "production",
+});
+</script>
+
         
-        <link rel="stylesheet" href="/training-material/assets/css/bootstrap.min.css?v=3">
-        <link rel="stylesheet" href="/training-material/assets/css/bootstrap-toc.min.css">
-        <link rel="stylesheet" href="/training-material/assets/css/main.css?v=2">
-        <link rel="stylesheet" href="/training-material/assets/fontawesome/css/all.css">
-        <link rel="stylesheet" href="/training-material/assets/css/academicons.css">
         <link rel="shortcut icon" href="/training-material/favicon.ico" type="image/x-icon">
         <link rel="alternate" type="application/atom+xml" href="/training-material/feed.xml">
         <link rel="canonical" href="https://training.galaxyproject.org/training-material/topics/proteomics/tutorials/proteogenomics-novel-peptide-analysis/tutorial.html">
-        <link rel="license" href="https://creativecommons.org/licenses/by/4.0/">
+        <link rel="license" href="https://spdx.org/licenses/CC-BY-4.0">
+        <link rel="preload" href="/training-material/assets/fonts/AtkinsonHyperlegible/Atkinson-Hyperlegible-Regular-102a.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="preload" href="/training-material/assets/fonts/AtkinsonHyperlegible/Atkinson-Hyperlegible-Bold-102a.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="preload" href="/training-material/assets/fonts/AtkinsonHyperlegible/Atkinson-Hyperlegible-Italic-102a.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML" as="script" crossorigin>
+        <link rel="preload" href="/training-material/assets/css/main.css?v=3" as="style">
+        <link rel='preload' href='/training-material/assets/js/bundle.theme.js?v=1687830693' as='script'>
+<link rel='preload' href='/training-material/assets/js/bundle.main.js?v=1687830693' as='script'>
+        <link rel="stylesheet" href="/training-material/assets/css/main.css?v=3">
+        <link rel="manifest" href="/training-material/manifest.json">
+        <meta name="theme-color" content="#2c3143"/>
+
 
         <meta name="DC.identifier" content="https://github.com/galaxyproject/training-material">
 <meta name="DC.type" content="text">
@@ -95,6 +124,10 @@
     "url": "https://galaxyproject.org/teach/gtn/"
   },
   "identifier": "https://github.com/galaxyproject/training-material",
+  "workTranslation": [
+
+  ],
+  "creativeWorkStatus": "Active",
   "accessMode": [
     "textual",
     "visual"
@@ -122,6 +155,7 @@
   "name": "Hands-on for 'Proteogenomics 3: Novel peptide analysis' tutorial",
   "url": "https://training.galaxyproject.org/training-material/topics/proteomics/tutorials/proteogenomics-novel-peptide-analysis/tutorial.html",
   "timeRequired": "PT30M",
+  "teaches": "How to assign and visualize the genomic localization of these identified novel proteoforms?",
   "keywords": "proteomics, proteogenomics",
   "description": "The questions this  addresses are:\n - How to verify the spectra of novel proteoforms?\n - How to assign genomic allocation to these novel proteoforms?\n\n\nThe objectives are:\n - How to assign and visualize the genomic localization of these identified novel proteoforms?\n\n",
   "inLanguage": {
@@ -149,8 +183,8 @@
       "@context": "https://schema.org",
       "@type": "Person",
       "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
+        "@id": "https://bioschemas.org/profiles/Person/0.3-DRAFT",
+        "@type": "CreativeWork"
       },
       "url": "https://training.galaxyproject.org/training-material/hall-of-fame/subinamehta/",
       "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/subinamehta/",
@@ -172,8 +206,8 @@
       "@context": "https://schema.org",
       "@type": "Person",
       "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
+        "@id": "https://bioschemas.org/profiles/Person/0.3-DRAFT",
+        "@type": "CreativeWork"
       },
       "url": "https://training.galaxyproject.org/training-material/hall-of-fame/timothygriffin/",
       "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/timothygriffin/",
@@ -195,8 +229,8 @@
       "@context": "https://schema.org",
       "@type": "Person",
       "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
+        "@id": "https://bioschemas.org/profiles/Person/0.3-DRAFT",
+        "@type": "CreativeWork"
       },
       "url": "https://training.galaxyproject.org/training-material/hall-of-fame/pratikdjagtap/",
       "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/pratikdjagtap/",
@@ -218,8 +252,8 @@
       "@context": "https://schema.org",
       "@type": "Person",
       "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
+        "@id": "https://bioschemas.org/profiles/Person/0.3-DRAFT",
+        "@type": "CreativeWork"
       },
       "url": "https://training.galaxyproject.org/training-material/hall-of-fame/jraysajulga/",
       "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/jraysajulga/",
@@ -239,8 +273,8 @@
       "@context": "https://schema.org",
       "@type": "Person",
       "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
+        "@id": "https://bioschemas.org/profiles/Person/0.3-DRAFT",
+        "@type": "CreativeWork"
       },
       "url": "https://training.galaxyproject.org/training-material/hall-of-fame/jj-umn/",
       "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/jj-umn/",
@@ -260,142 +294,8 @@
       "@context": "https://schema.org",
       "@type": "Person",
       "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
-      },
-      "url": "https://training.galaxyproject.org/training-material/hall-of-fame/pravs3683/",
-      "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/pravs3683/",
-      "name": "Praveen Kumar",
-      "image": "https://avatars.githubusercontent.com/pravs3683",
-      "description": "A contributor to the GTN project.",
-      "memberOf": [
-        {
-          "@type": "Organization",
-          "email": "galaxytrainingnetwork@gmail.com",
-          "name": "Galaxy Training Network",
-          "url": "https://galaxyproject.org/teach/gtn/"
-        }
-      ]
-    }
-  ],
-  "contributor": [
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
-      },
-      "url": "https://training.galaxyproject.org/training-material/hall-of-fame/subinamehta/",
-      "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/subinamehta/",
-      "name": "Subina Mehta",
-      "image": "https://avatars.githubusercontent.com/subinamehta",
-      "description": "A contributor to the GTN project.",
-      "memberOf": [
-        {
-          "@type": "Organization",
-          "email": "galaxytrainingnetwork@gmail.com",
-          "name": "Galaxy Training Network",
-          "url": "https://galaxyproject.org/teach/gtn/"
-        }
-      ],
-      "identifier": "https://orcid.org/0000-0001-9818-0537",
-      "orcid": "https://orcid.org/0000-0001-9818-0537"
-    },
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
-      },
-      "url": "https://training.galaxyproject.org/training-material/hall-of-fame/timothygriffin/",
-      "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/timothygriffin/",
-      "name": "Timothy J. Griffin",
-      "image": "https://avatars.githubusercontent.com/timothygriffin",
-      "description": "A contributor to the GTN project.",
-      "memberOf": [
-        {
-          "@type": "Organization",
-          "email": "galaxytrainingnetwork@gmail.com",
-          "name": "Galaxy Training Network",
-          "url": "https://galaxyproject.org/teach/gtn/"
-        }
-      ],
-      "identifier": "https://orcid.org/0000-0001-6801-2559",
-      "orcid": "https://orcid.org/0000-0001-6801-2559"
-    },
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
-      },
-      "url": "https://training.galaxyproject.org/training-material/hall-of-fame/pratikdjagtap/",
-      "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/pratikdjagtap/",
-      "name": "Pratik Jagtap",
-      "image": "https://avatars.githubusercontent.com/pratikdjagtap",
-      "description": "A contributor to the GTN project.",
-      "memberOf": [
-        {
-          "@type": "Organization",
-          "email": "galaxytrainingnetwork@gmail.com",
-          "name": "Galaxy Training Network",
-          "url": "https://galaxyproject.org/teach/gtn/"
-        }
-      ],
-      "identifier": "https://orcid.org/0000-0003-0984-0973",
-      "orcid": "https://orcid.org/0000-0003-0984-0973"
-    },
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
-      },
-      "url": "https://training.galaxyproject.org/training-material/hall-of-fame/jraysajulga/",
-      "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/jraysajulga/",
-      "name": "Ray Sajulga",
-      "image": "https://avatars.githubusercontent.com/jraysajulga",
-      "description": "A contributor to the GTN project.",
-      "memberOf": [
-        {
-          "@type": "Organization",
-          "email": "galaxytrainingnetwork@gmail.com",
-          "name": "Galaxy Training Network",
-          "url": "https://galaxyproject.org/teach/gtn/"
-        }
-      ]
-    },
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
-      },
-      "url": "https://training.galaxyproject.org/training-material/hall-of-fame/jj-umn/",
-      "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/jj-umn/",
-      "name": "James Johnson",
-      "image": "https://avatars.githubusercontent.com/jj-umn",
-      "description": "A contributor to the GTN project.",
-      "memberOf": [
-        {
-          "@type": "Organization",
-          "email": "galaxytrainingnetwork@gmail.com",
-          "name": "Galaxy Training Network",
-          "url": "https://galaxyproject.org/teach/gtn/"
-        }
-      ]
-    },
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
+        "@id": "https://bioschemas.org/profiles/Person/0.3-DRAFT",
+        "@type": "CreativeWork"
       },
       "url": "https://training.galaxyproject.org/training-material/hall-of-fame/pravs3683/",
       "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/pravs3683/",
@@ -427,13 +327,20 @@
       "url": "https://bioportal.bioontology.org/ontologies/EDAM/?p=classes&conceptid=http%3A%2F%2Fedamontology.org%2Ftopic_0121"
     }
   ],
-  "educationalLevel": "Intermediate"
+  "educationalLevel": "Intermediate",
+  "mentions": [
+    {
+      "@type": "Thing",
+      "name": "proteogenomics"
+    }
+  ],
+  "abstract": "# Introduction"
 }
         </script>
         
     </head>
     <body data-spy="scroll" data-target="#toc">
-        <script type="text/javascript" src="/training-material/assets/js/theme.js"></script>
+        <script src='/training-material/assets/js/bundle.theme.js?v=1687830693'></script>
         <header>
     <nav class="navbar navbar-expand-md navbar-dark" aria-label="Site Navigation">
         <div class="container">
@@ -502,7 +409,6 @@
     </a>
     <div class="dropdown-menu dropdown-menu-right">
 
-        
         <a class="dropdown-item" href="https://github.com/galaxyproject/training-material/edit/main/topics/proteomics/tutorials/proteogenomics-novel-peptide-analysis/tutorial.md" title="Edit on GitHub">
           <i class="fab fa-github" aria-hidden="true"></i><span class="visually-hidden">github</span> Edit on GitHub
         </a>
@@ -550,13 +456,13 @@
 
             <div id="archive-selector">
             
-                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2020-01-06/topics/proteomics/tutorials/proteogenomics-novel-peptide-analysis/tutorial.html" title="Version 2020-01-06">2020-01-06</a>
+                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2020-01-06/topics/proteomics/tutorials/proteogenomics-novel-peptide-analysis/tutorial.html">2020-01-06</a>
             
-                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2019-12-01/topics/proteomics/tutorials/proteogenomics-novel-peptide-analysis/tutorial.html" title="Version 2019-12-01">2019-12-01</a>
+                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2019-12-01/topics/proteomics/tutorials/proteogenomics-novel-peptide-analysis/tutorial.html">2019-12-01</a>
             
-                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2019-11-01/topics/proteomics/tutorials/proteogenomics-novel-peptide-analysis/tutorial.html" title="Version 2019-11-01">2019-11-01</a>
+                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2019-11-01/topics/proteomics/tutorials/proteogenomics-novel-peptide-analysis/tutorial.html">2019-11-01</a>
             
-                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/" title="Older Versions">Older Versions</a>
+                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/">Older Versions</a>
             </div>
 
         </div>
@@ -569,7 +475,7 @@
                     <li class="nav-item">
                       <div id="navbarSupportedContent" role="search">
                         <!-- Search form -->
-                        <form class="form-inline mr-auto" method="GET" action="/training-material/search">
+                        <form class="form-inline mr-auto" method="GET" action="/training-material/search2">
                           <i class="fas fa-search nav-link" aria-hidden="true"></i>
                           <div class="md-form mb-2">
                             <input name="query" class="form-control nicer" type="text" placeholder="Search Tutorials" aria-label="Search">
@@ -606,402 +512,7 @@
 
 
 
-<script>
-  ((window.gitter = {}).chat = {}).options = {
-  room: 'Galaxy-Training-Network/Lobby'
-  };
-</script>
 
-
-<script src="https://sidecar.gitter.im/dist/sidecar.v1.js" async defer></script>
-
-<script type="application/ld+json">
-    
-
-
-{
-  "@context": "http://schema.org",
-  "@type": "LearningResource",
-  "http://purl.org/dc/terms/conformsTo": {
-    "@id": "https://bioschemas.org/profiles/TrainingMaterial/1.0-RELEASE",
-    "@type": "CreativeWork"
-  },
-  "audience": {
-    "@type": "EducationalAudience",
-    "educationalRole": "Students"
-  },
-  "citation": {
-    "@type": "CreativeWork",
-    "name": "Community-Driven Data Analysis Training for Biology",
-    "url": "https://doi.org/10.1016/j.cels.2018.05.012"
-  },
-  "copyrightHolder": {
-    "@type": "Organization",
-    "email": "galaxytrainingnetwork@gmail.com",
-    "name": "Galaxy Training Network",
-    "url": "https://galaxyproject.org/teach/gtn/"
-  },
-  "dateModified": "2023-01-24 14:22:01 +0000",
-  "discussionUrl": "https://gitter.im/Galaxy-Training-Network/Lobby",
-  "headline": "Proteogenomics 3: Novel peptide analysis",
-  "interactivityType": "mixed",
-  "isAccessibleForFree": true,
-  "isFamilyFriendly": true,
-  "license": "https://spdx.org/licenses/CC-BY-4.0.html",
-  "producer": {
-    "@type": "Organization",
-    "email": "galaxytrainingnetwork@gmail.com",
-    "name": "Galaxy Training Network",
-    "url": "https://galaxyproject.org/teach/gtn/"
-  },
-  "provider": {
-    "@type": "Organization",
-    "email": "galaxytrainingnetwork@gmail.com",
-    "name": "Galaxy Training Network",
-    "url": "https://galaxyproject.org/teach/gtn/"
-  },
-  "sourceOrganization": {
-    "@type": "Organization",
-    "email": "galaxytrainingnetwork@gmail.com",
-    "name": "Galaxy Training Network",
-    "url": "https://galaxyproject.org/teach/gtn/"
-  },
-  "identifier": "https://github.com/galaxyproject/training-material",
-  "accessMode": [
-    "textual",
-    "visual"
-  ],
-  "accessModeSufficient": [
-    "textual",
-    "visual"
-  ],
-  "accessibilityControl": [
-    "fullKeyboardControl",
-    "fullMouseControl"
-  ],
-  "accessibilityFeature": [
-    "alternativeText",
-    "tableOfContents"
-  ],
-  "accessibilitySummary": "The text aims to be as accessible as possible. Image descriptions will vary per tutorial, from images being completely inaccessible, to images with good descriptions for non-visual users.",
-  "isPartOf": {
-    "@type": "CreativeWork",
-    "name": "Proteomics",
-    "description": "Training material for proteomics workflows in Galaxy",
-    "url": "https://training.galaxyproject.org/training-material/topics/proteomics/"
-  },
-  "learningResourceType": "hands-on tutorial",
-  "name": "Hands-on for 'Proteogenomics 3: Novel peptide analysis' tutorial",
-  "url": "https://training.galaxyproject.org/training-material/topics/proteomics/tutorials/proteogenomics-novel-peptide-analysis/tutorial.html",
-  "timeRequired": "PT30M",
-  "keywords": "proteomics, proteogenomics",
-  "description": "The questions this  addresses are:\n - How to verify the spectra of novel proteoforms?\n - How to assign genomic allocation to these novel proteoforms?\n\n\nThe objectives are:\n - How to assign and visualize the genomic localization of these identified novel proteoforms?\n\n",
-  "inLanguage": {
-    "@type": "Language",
-    "name": "English",
-    "alternateName": "en"
-  },
-  "competencyRequired": [
-    {
-      "@context": "http://schema.org",
-      "@type": "LearningResource",
-      "url": "https://training.galaxyproject.org/training-material/topics/introduction/",
-      "name": "Introduction to Galaxy Analyses",
-      "description": "Introduction to Galaxy Analyses",
-      "provider": {
-        "@type": "Organization",
-        "email": "galaxytrainingnetwork@gmail.com",
-        "name": "Galaxy Training Network",
-        "url": "https://galaxyproject.org/teach/gtn/"
-      }
-    }
-  ],
-  "author": [
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
-      },
-      "url": "https://training.galaxyproject.org/training-material/hall-of-fame/subinamehta/",
-      "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/subinamehta/",
-      "name": "Subina Mehta",
-      "image": "https://avatars.githubusercontent.com/subinamehta",
-      "description": "A contributor to the GTN project.",
-      "memberOf": [
-        {
-          "@type": "Organization",
-          "email": "galaxytrainingnetwork@gmail.com",
-          "name": "Galaxy Training Network",
-          "url": "https://galaxyproject.org/teach/gtn/"
-        }
-      ],
-      "identifier": "https://orcid.org/0000-0001-9818-0537",
-      "orcid": "https://orcid.org/0000-0001-9818-0537"
-    },
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
-      },
-      "url": "https://training.galaxyproject.org/training-material/hall-of-fame/timothygriffin/",
-      "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/timothygriffin/",
-      "name": "Timothy J. Griffin",
-      "image": "https://avatars.githubusercontent.com/timothygriffin",
-      "description": "A contributor to the GTN project.",
-      "memberOf": [
-        {
-          "@type": "Organization",
-          "email": "galaxytrainingnetwork@gmail.com",
-          "name": "Galaxy Training Network",
-          "url": "https://galaxyproject.org/teach/gtn/"
-        }
-      ],
-      "identifier": "https://orcid.org/0000-0001-6801-2559",
-      "orcid": "https://orcid.org/0000-0001-6801-2559"
-    },
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
-      },
-      "url": "https://training.galaxyproject.org/training-material/hall-of-fame/pratikdjagtap/",
-      "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/pratikdjagtap/",
-      "name": "Pratik Jagtap",
-      "image": "https://avatars.githubusercontent.com/pratikdjagtap",
-      "description": "A contributor to the GTN project.",
-      "memberOf": [
-        {
-          "@type": "Organization",
-          "email": "galaxytrainingnetwork@gmail.com",
-          "name": "Galaxy Training Network",
-          "url": "https://galaxyproject.org/teach/gtn/"
-        }
-      ],
-      "identifier": "https://orcid.org/0000-0003-0984-0973",
-      "orcid": "https://orcid.org/0000-0003-0984-0973"
-    },
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
-      },
-      "url": "https://training.galaxyproject.org/training-material/hall-of-fame/jraysajulga/",
-      "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/jraysajulga/",
-      "name": "Ray Sajulga",
-      "image": "https://avatars.githubusercontent.com/jraysajulga",
-      "description": "A contributor to the GTN project.",
-      "memberOf": [
-        {
-          "@type": "Organization",
-          "email": "galaxytrainingnetwork@gmail.com",
-          "name": "Galaxy Training Network",
-          "url": "https://galaxyproject.org/teach/gtn/"
-        }
-      ]
-    },
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
-      },
-      "url": "https://training.galaxyproject.org/training-material/hall-of-fame/jj-umn/",
-      "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/jj-umn/",
-      "name": "James Johnson",
-      "image": "https://avatars.githubusercontent.com/jj-umn",
-      "description": "A contributor to the GTN project.",
-      "memberOf": [
-        {
-          "@type": "Organization",
-          "email": "galaxytrainingnetwork@gmail.com",
-          "name": "Galaxy Training Network",
-          "url": "https://galaxyproject.org/teach/gtn/"
-        }
-      ]
-    },
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
-      },
-      "url": "https://training.galaxyproject.org/training-material/hall-of-fame/pravs3683/",
-      "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/pravs3683/",
-      "name": "Praveen Kumar",
-      "image": "https://avatars.githubusercontent.com/pravs3683",
-      "description": "A contributor to the GTN project.",
-      "memberOf": [
-        {
-          "@type": "Organization",
-          "email": "galaxytrainingnetwork@gmail.com",
-          "name": "Galaxy Training Network",
-          "url": "https://galaxyproject.org/teach/gtn/"
-        }
-      ]
-    }
-  ],
-  "contributor": [
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
-      },
-      "url": "https://training.galaxyproject.org/training-material/hall-of-fame/subinamehta/",
-      "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/subinamehta/",
-      "name": "Subina Mehta",
-      "image": "https://avatars.githubusercontent.com/subinamehta",
-      "description": "A contributor to the GTN project.",
-      "memberOf": [
-        {
-          "@type": "Organization",
-          "email": "galaxytrainingnetwork@gmail.com",
-          "name": "Galaxy Training Network",
-          "url": "https://galaxyproject.org/teach/gtn/"
-        }
-      ],
-      "identifier": "https://orcid.org/0000-0001-9818-0537",
-      "orcid": "https://orcid.org/0000-0001-9818-0537"
-    },
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
-      },
-      "url": "https://training.galaxyproject.org/training-material/hall-of-fame/timothygriffin/",
-      "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/timothygriffin/",
-      "name": "Timothy J. Griffin",
-      "image": "https://avatars.githubusercontent.com/timothygriffin",
-      "description": "A contributor to the GTN project.",
-      "memberOf": [
-        {
-          "@type": "Organization",
-          "email": "galaxytrainingnetwork@gmail.com",
-          "name": "Galaxy Training Network",
-          "url": "https://galaxyproject.org/teach/gtn/"
-        }
-      ],
-      "identifier": "https://orcid.org/0000-0001-6801-2559",
-      "orcid": "https://orcid.org/0000-0001-6801-2559"
-    },
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
-      },
-      "url": "https://training.galaxyproject.org/training-material/hall-of-fame/pratikdjagtap/",
-      "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/pratikdjagtap/",
-      "name": "Pratik Jagtap",
-      "image": "https://avatars.githubusercontent.com/pratikdjagtap",
-      "description": "A contributor to the GTN project.",
-      "memberOf": [
-        {
-          "@type": "Organization",
-          "email": "galaxytrainingnetwork@gmail.com",
-          "name": "Galaxy Training Network",
-          "url": "https://galaxyproject.org/teach/gtn/"
-        }
-      ],
-      "identifier": "https://orcid.org/0000-0003-0984-0973",
-      "orcid": "https://orcid.org/0000-0003-0984-0973"
-    },
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
-      },
-      "url": "https://training.galaxyproject.org/training-material/hall-of-fame/jraysajulga/",
-      "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/jraysajulga/",
-      "name": "Ray Sajulga",
-      "image": "https://avatars.githubusercontent.com/jraysajulga",
-      "description": "A contributor to the GTN project.",
-      "memberOf": [
-        {
-          "@type": "Organization",
-          "email": "galaxytrainingnetwork@gmail.com",
-          "name": "Galaxy Training Network",
-          "url": "https://galaxyproject.org/teach/gtn/"
-        }
-      ]
-    },
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
-      },
-      "url": "https://training.galaxyproject.org/training-material/hall-of-fame/jj-umn/",
-      "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/jj-umn/",
-      "name": "James Johnson",
-      "image": "https://avatars.githubusercontent.com/jj-umn",
-      "description": "A contributor to the GTN project.",
-      "memberOf": [
-        {
-          "@type": "Organization",
-          "email": "galaxytrainingnetwork@gmail.com",
-          "name": "Galaxy Training Network",
-          "url": "https://galaxyproject.org/teach/gtn/"
-        }
-      ]
-    },
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
-      },
-      "url": "https://training.galaxyproject.org/training-material/hall-of-fame/pravs3683/",
-      "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/pravs3683/",
-      "name": "Praveen Kumar",
-      "image": "https://avatars.githubusercontent.com/pravs3683",
-      "description": "A contributor to the GTN project.",
-      "memberOf": [
-        {
-          "@type": "Organization",
-          "email": "galaxytrainingnetwork@gmail.com",
-          "name": "Galaxy Training Network",
-          "url": "https://galaxyproject.org/teach/gtn/"
-        }
-      ]
-    }
-  ],
-  "about": [
-    {
-      "@type": "CreativeWork",
-      "name": "Proteomics",
-      "description": "Training material for proteomics workflows in Galaxy",
-      "url": "https://training.galaxyproject.org/training-material/topics/proteomics/"
-    },
-    {
-      "@type": "DefinedTerm",
-      "@id": "http://edamontology.org/topic_0121",
-      "inDefinedTermSet": "http://edamontology.org",
-      "termCode": "topic_0121",
-      "url": "https://bioportal.bioontology.org/ontologies/EDAM/?p=classes&conceptid=http%3A%2F%2Fedamontology.org%2Ftopic_0121"
-    }
-  ],
-  "educationalLevel": "Intermediate"
-}
-</script>
 
 <article class="tutorial topic-proteomics">
     <h1 data-toc-skip>Proteogenomics 3: Novel peptide analysis</h1>
@@ -1011,7 +522,7 @@
     <div markdown="0">
 
 	<div class="contributors-line">
-		Authors: <a href="/training-material/hall-of-fame/subinamehta/" class="contributor-badge contributor-subinamehta"><img src="/training-material/assets/images/orcid.png" alt="orcid logo"/><img src="https://avatars.githubusercontent.com/subinamehta?s=27" alt="Avatar">Subina Mehta</a><a href="/training-material/hall-of-fame/timothygriffin/" class="contributor-badge contributor-timothygriffin"><img src="/training-material/assets/images/orcid.png" alt="orcid logo"/><img src="https://avatars.githubusercontent.com/timothygriffin?s=27" alt="Avatar">Timothy J. Griffin</a><a href="/training-material/hall-of-fame/pratikdjagtap/" class="contributor-badge contributor-pratikdjagtap"><img src="/training-material/assets/images/orcid.png" alt="orcid logo"/><img src="https://avatars.githubusercontent.com/pratikdjagtap?s=27" alt="Avatar">Pratik Jagtap</a><a href="/training-material/hall-of-fame/jraysajulga/" class="contributor-badge contributor-jraysajulga"><img src="https://avatars.githubusercontent.com/jraysajulga?s=27" alt="Avatar">Ray Sajulga</a><a href="/training-material/hall-of-fame/jj-umn/" class="contributor-badge contributor-jj-umn"><img src="https://avatars.githubusercontent.com/jj-umn?s=27" alt="Avatar">James Johnson</a><a href="/training-material/hall-of-fame/pravs3683/" class="contributor-badge contributor-pravs3683"><img src="https://avatars.githubusercontent.com/pravs3683?s=27" alt="Avatar">Praveen Kumar</a>
+		Authors: <a href="/training-material/hall-of-fame/subinamehta/" class="contributor-badge contributor-subinamehta"><img src="/training-material/assets/images/orcid.png" alt="orcid logo" width="36" height="36"/><img src="https://avatars.githubusercontent.com/subinamehta?s=36" alt="Avatar" width="36" height="36">Subina Mehta</a><a href="/training-material/hall-of-fame/timothygriffin/" class="contributor-badge contributor-timothygriffin"><img src="/training-material/assets/images/orcid.png" alt="orcid logo" width="36" height="36"/><img src="https://avatars.githubusercontent.com/timothygriffin?s=36" alt="Avatar" width="36" height="36">Timothy J. Griffin</a><a href="/training-material/hall-of-fame/pratikdjagtap/" class="contributor-badge contributor-pratikdjagtap"><img src="/training-material/assets/images/orcid.png" alt="orcid logo" width="36" height="36"/><img src="https://avatars.githubusercontent.com/pratikdjagtap?s=36" alt="Avatar" width="36" height="36">Pratik Jagtap</a><a href="/training-material/hall-of-fame/jraysajulga/" class="contributor-badge contributor-jraysajulga"><img src="https://avatars.githubusercontent.com/jraysajulga?s=36" alt="Avatar" width="36" height="36">Ray Sajulga</a><a href="/training-material/hall-of-fame/jj-umn/" class="contributor-badge contributor-jj-umn"><img src="https://avatars.githubusercontent.com/jj-umn?s=36" alt="Avatar" width="36" height="36">James Johnson</a><a href="/training-material/hall-of-fame/pravs3683/" class="contributor-badge contributor-pravs3683"><img src="https://avatars.githubusercontent.com/pravs3683?s=36" alt="Avatar" width="36" height="36">Praveen Kumar</a>
 	</div>
 
 </div>
@@ -1170,174 +681,73 @@
                 <li class="btn btn-default supporting_material">
 
 
+
+
+
     <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false" title="Where to run the tutorial">
         <i class="fas fa-globe" aria-hidden="true"></i><span class="visually-hidden">instances</span>&nbsp;Available on these Galaxies 
     </a>
     <ul class="dropdown-menu">
+	<li class="dropdown-header">
+		<b>Known Working</b>
+	</li>
+	
+	
+
     
+	<li>
+		<a class="dropdown-item" href="https://usegalaxy.be/" title="">
+			UseGalaxy.be <abbr title="This instance supports the precise tool versions used in this tutorial">✅</abbr> ⭐️
+		</a>
+	</li>
+    
+	<li>
+		<a class="dropdown-item" href="https://usegalaxy.eu" title="">
+			UseGalaxy.eu <abbr title="This instance supports the precise tool versions used in this tutorial">✅</abbr> ⭐️
+		</a>
+	</li>
+    
+	<li>
+		<a class="dropdown-item" href="https://usegalaxy.org" title="">
+			UseGalaxy.org (Main) <abbr title="This instance supports the precise tool versions used in this tutorial">✅</abbr> ⭐️
+		</a>
+	</li>
+    
+	<li>
+		<a class="dropdown-item" href="https://usegalaxy.org.au" title="">
+			UseGalaxy.org.au <abbr title="This instance supports the precise tool versions used in this tutorial">✅</abbr> ⭐️
+		</a>
+	</li>
+    
+    
+	<li class="dropdown-header">
+		<b>Possibly Working</b>
+	</li>
+    
+	<li>
+		<a class="dropdown-item" href="https://galaxy.genouest.org" title="">
+			Galaxy@GenOuest
+		</a>
+	</li>
+    
+	<li>
+		<a class="dropdown-item" href="https://usegalaxy.no/" title="">
+			UseGalaxy.no
+		</a>
+	</li>
+    
+
+    
+	<li class="dropdown-header">
+		Containers
+	</li>
         <li>
-            <a class="dropdown-item" href="https://github.com/galaxyproject/training-material/tree/main/topics/proteomics/docker" title="Docker image for this tutorial">
+            <a class="dropdown-item" href="https://github.com/galaxyproject/training-material/tree/main/topics//docker" title="Docker image for this tutorial">
                 <i class="fab fa-docker" aria-hidden="true"></i><span class="visually-hidden">docker_image</span> Docker image
             </a>
         </li>
     
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-        <a class="dropdown-item" href="https://africa.usegalaxy.eu/" title="Galaxy Africa">
-            Galaxy Africa
-        </a>
-        
-    
-        
-        <a class="dropdown-item" href="https://india.usegalaxy.eu/" title="Galaxy India">
-            Galaxy India
-        </a>
-        
-    
-        
-        <a class="dropdown-item" href="https://test.galaxyproject.org/" title="Galaxy Test">
-            Galaxy Test
-        </a>
-        
-    
-        
-    
-        
-    
-        
-        <a class="dropdown-item" href="https://galaxy.genouest.org" title="Galaxy@GenOuest">
-            Galaxy@GenOuest
-        </a>
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-        <a class="dropdown-item" href="https://streetscience.usegalaxy.eu/" title="Street Science">
-            Street Science
-        </a>
-        
-    
-        
-        <a class="dropdown-item" href="https://usegalaxy.be/" title="UseGalaxy.be">
-            UseGalaxy.be
-        </a>
-        
-    
-        
-        <a class="dropdown-item" href="https://usegalaxy.eu" title="UseGalaxy.eu">
-            UseGalaxy.eu
-        </a>
-        
-    
-        
-    
-        
-        <a class="dropdown-item" href="https://usegalaxy.no/" title="UseGalaxy.no">
-            UseGalaxy.no
-        </a>
-        
-    
-        
-        <a class="dropdown-item" href="https://usegalaxy.org" title="UseGalaxy.org (Main)">
-            UseGalaxy.org (Main)
-        </a>
-        
-    
-        
-        <a class="dropdown-item" href="https://usegalaxy.org.au" title="UseGalaxy.org.au">
-            UseGalaxy.org.au
-        </a>
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
     </ul>
-
 
 </li>
             
@@ -1346,13 +756,13 @@
 
         <div><strong><i class="far fa-calendar" aria-hidden="true"></i> Last modification:</strong> Jan 24, 2023 </div>
         <div><strong><i class="fas fa-balance-scale" aria-hidden="true"></i> License:</strong>
+		
             
-            <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Tutorial Content is licensed under Creative Commons Attribution 4.0 International License</a>
-            
-            <a rel="license" href="https://github.com/galaxyproject/training-material/blob/main/LICENSE.md">The GTN Framework is licensed under MIT</a>
+            <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Tutorial Content is licensed under Creative Commons Attribution 4.0 International License</a>.
+             The GTN Framework is licensed under <a rel="license" href="https://github.com/galaxyproject/training-material/blob/main/LICENSE.md">MIT</a>
         </div>
         
-        <div><strong>Short Link:</strong> <a href="https://gxy.io/GTN:T00233">https://gxy.io/GTN:T00233</a> </div>
+        <div><strong><i class="fas fa-fingerprint" aria-hidden="true"></i><span class="visually-hidden">purl</span><abbr title="Persistent URL">PURL</abbr>:</strong> <a href="https://gxy.io/GTN:T00233">https://gxy.io/GTN:T00233</a> </div>
         
     </blockquote>
     </section>
@@ -1376,7 +786,7 @@ Please look at the following tutorials in this proteogenomics series before star
   <li><a href="/training-material/topics/proteomics/tutorials/proteogenomics-dbsearch/tutorial.html">Proteogenomics database search</a></li>
 </ol>
 
-<p><img src="../../images/Third_workflow.png" alt="Workflow. " loading="lazy" /></p>
+<p><img src="../../images/Third_workflow.png" alt="Workflow. " width="1772" height="1084" loading="lazy" /></p>
 
 <blockquote class="agenda">
   <div class="box-title agenda-title" id="agenda">Agenda</div>
@@ -1399,7 +809,7 @@ Please look at the following tutorials in this proteogenomics series before star
 <p>All the files to run this workflow can be obtained from the <a href="/training-material/topics/proteomics/tutorials/proteogenomics-dbsearch/tutorial.html">second tutorial</a> output. Once the tabular output is generated, we convert this tabular report into a FASTA file. This can be achieved by using the Tabular to FASTA convertion tool.</p>
 
 <blockquote class="notranslate hands_on">
-  <div class="box-title hands-on-title" id="hands-on-data-organization"><i class="fas fa-pencil-alt" aria-hidden="true"></i> Hands-on: data organization</div>
+  <div class="box-title hands-on-title" id="hands-on-data-organization"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: data organization</div>
 
   <ol>
     <li>The inputs for this workflow are:
@@ -1427,10 +837,10 @@ https://zenodo.org/record/1489208/files/genomic_mapping_sqlite.sqlite
 <p>The first step in this tutorial is to perfrom BLAST-P analysis using the NCBI-NR database. The output from BLASTP will determine the identification of the novel peptides. The result is a tabular file with 25 columns containing all the information regarding the alignment of these peptides with the sequences in the NCBI-NR database.</p>
 
 <blockquote class="notranslate hands_on">
-  <div class="box-title hands-on-title" id="hands-on-ncbi-blast-blastp"><i class="fas fa-pencil-alt" aria-hidden="true"></i> Hands-on: NCBI BLAST+ blastp</div>
+  <div class="box-title hands-on-title" id="hands-on-ncbi-blast-blastp"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: NCBI BLAST+ blastp</div>
 
   <ol>
-    <li><span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/devteam/ncbi_blast_plus/ncbi_blastp_wrapper/0.3.3" title="NCBI BLAST+ blastp tool"><strong>NCBI BLAST+ blastp</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: toolshed.g2.bx.psu.edu/repos/devteam/ncbi_blast_plus/ncbi_blastp_wrapper/0.3.3</span></span>  with the following parameters:
+    <li><span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/devteam/ncbi_blast_plus/ncbi_blastp_wrapper/0.3.3" title="NCBI BLAST+ blastp tool" aria-role="link"><strong>NCBI BLAST+ blastp</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: toolshed.g2.bx.psu.edu/repos/devteam/ncbi_blast_plus/ncbi_blastp_wrapper/0.3.3</span></span> with the following parameters:
       <ul>
         <li><i class="far fa-file" aria-hidden="true"></i><span class="visually-hidden">param-file</span> <strong>Protein query sequence(s)</strong> - <code class="language-plaintext highlighter-rouge">Peptides for Blast-P analysis.tabular</code></li>
         <li><i class="fas fa-filter" aria-hidden="true"></i><span class="visually-hidden">param-select</span> <strong>Subject database/sequences</strong> - <code class="language-plaintext highlighter-rouge">Locally installed BLAST database</code>
@@ -1471,10 +881,10 @@ https://zenodo.org/record/1489208/files/genomic_mapping_sqlite.sqlite
 <p>Once Blast-P search is performed, it provides a tabular output containing “<strong>Novel peptides</strong>”. Now this output is further processed by comparing the Novel Peptide output with the PSM report for selecting only distinct peptides which meet the criteria.</p>
 
 <blockquote class="notranslate hands_on">
-  <div class="box-title hands-on-title" id="hands-on-query-tabular"><i class="fas fa-pencil-alt" aria-hidden="true"></i> Hands-on: Query Tabular</div>
+  <div class="box-title hands-on-title" id="hands-on-query-tabular"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Query Tabular</div>
 
   <ol>
-    <li><span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/iuc/query_tabular/query_tabular/3.0.0" title="Query Tabular tool"><strong>Query Tabular</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: toolshed.g2.bx.psu.edu/repos/iuc/query_tabular/query_tabular/3.0.0</span></span>  with the following parameters:
+    <li><span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/iuc/query_tabular/query_tabular/3.0.0" title="Query Tabular tool" aria-role="link"><strong>Query Tabular</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: toolshed.g2.bx.psu.edu/repos/iuc/query_tabular/query_tabular/3.0.0</span></span> with the following parameters:
       <ul>
         <li><i class="far fa-plus-square" aria-hidden="true"></i><span class="visually-hidden">param-repeat</span> <strong>Insert Database Table</strong>
           <ul>
@@ -1521,7 +931,7 @@ https://zenodo.org/record/1489208/files/genomic_mapping_sqlite.sqlite
           <p><em>“Save the sqlite database in your history”</em>: <code class="language-plaintext highlighter-rouge">No</code></p>
 
           <blockquote class="comment">
-            <div class="box-title comment-title" id="comment-querying-an-sqlite-database"><i class="far fa-comment-dots" aria-hidden="true"></i> Comment: Querying an SQLite Database</div>
+            <div class="box-title comment-title" id="comment-querying-an-sqlite-database"><i class="far fa-comment-dots" aria-hidden="true" ></i> Comment: Querying an SQLite Database</div>
 
             <p><strong>Query Tabular</strong> can also use an existing SQLite database. Activating <code class="language-plaintext highlighter-rouge">Save the sqlite database in your history</code>
 will store the created database in the history, allowing to reuse it directly.</p>
@@ -1536,7 +946,7 @@ ORDER BY psm.Sequence, psm.ID
 </code></pre></div>          </div>
 
           <blockquote class="comment">
-            <div class="box-title comment-title" id="comment-query-information"><i class="far fa-comment-dots" aria-hidden="true"></i> Comment: Query information</div>
+            <div class="box-title comment-title" id="comment-query-information"><i class="far fa-comment-dots" aria-hidden="true" ></i> Comment: Query information</div>
 
             <p>The query wants a tabular list of peptides in which the lenght of the PSM sequence is equal to the length of the Blast sequence, where in the pident (percentage identity) is less that 100 i.e. Peptide cannot be a 100% identical to the NCBI-nr reference database. Or it should fulfill the criteria that there should be atleast 1 gap present (blast.gapopen &gt;= 1) or the length of the peptide in NCBI-nr should be less than the length of the query length. If the peptide follows all this then it is accepted as a “Novel” proteoform.</p>
 
@@ -1553,10 +963,10 @@ ORDER BY psm.Sequence, psm.ID
 <p>Once this step is completed, a tabular output containing novel proteoforms are displayed. These novel proteforms fulfill our criteria of not being present in the existing NCBI repository. The next step is to remove any duplicate sequences. For this, we use the Query tabular tool again to select distinct sequences from the tabular output.</p>
 
 <blockquote class="notranslate hands_on">
-  <div class="box-title hands-on-title" id="hands-on-query-tabular-1"><i class="fas fa-pencil-alt" aria-hidden="true"></i> Hands-on: Query Tabular</div>
+  <div class="box-title hands-on-title" id="hands-on-query-tabular-1"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Query Tabular</div>
 
   <ol>
-    <li><span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/iuc/query_tabular/query_tabular/3.0.0" title="Query Tabular tool"><strong>Query Tabular</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: toolshed.g2.bx.psu.edu/repos/iuc/query_tabular/query_tabular/3.0.0</span></span>
+    <li><span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/iuc/query_tabular/query_tabular/3.0.0" title="Query Tabular tool" aria-role="link"><strong>Query Tabular</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: toolshed.g2.bx.psu.edu/repos/iuc/query_tabular/query_tabular/3.0.0</span></span>
       <ul>
         <li><i class="far fa-plus-square" aria-hidden="true"></i><span class="visually-hidden">param-repeat</span> <strong>Insert Database Table</strong>
           <ul>
@@ -1597,82 +1007,82 @@ ORDER BY psm.Sequence, psm.ID
 <p>The Multiomics Visualization Platform is a Galaxy visualization plugin that allows the user to browse the selected proteomics data. It uses the SQlite database which allows the data to be filtered and aggregated in a user defined manner. It allows various features such as; the PSM can be displayed with a lorikeet spectral view, the selected peptide can be displayed in a protein view and an IGV browser is also available for the selected protein. The step by step guide shown below will provide a walkthrough on how to use this plugin (NOTE: the example shown below is a representative peptide which is subjected to change, so while you are running this tool please take a look at the “Novel Peptide” output from the previous steps).</p>
 
 <blockquote class="notranslate hands_on">
-  <div class="box-title hands-on-title" id="hands-on-guide-to-mvp"><i class="fas fa-pencil-alt" aria-hidden="true"></i> Hands-on: Guide to MVP</div>
+  <div class="box-title hands-on-title" id="hands-on-guide-to-mvp"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Guide to MVP</div>
 
   <p>The spectra belonging to these “Novel peptides” can be viewed using MVP,this can be achieved by selecting the output from the <code class="language-plaintext highlighter-rouge">mz to sqlite tool</code> (Generated in the second workflow).
 Here is a step by step guide to obtain the proteogenomic view of the “Novel peptides”.</p>
 
   <p>1) Click on the <strong>Visualize in MVP application</strong>, it will open up options for visualization application in the center pane, Select <strong>MVP Application</strong> from the options (or Right click to open in a new window).</p>
 
-  <p><img src="../../images/Visualize.png" alt="mz to sqlite. " width="20%" loading="lazy" /></p>
+  <p><img src="../../images/Visualize.png" alt="mz to sqlite. " width="570" height="634" loading="lazy" /></p>
 
   <p>This will open in the Center Pane. Select the MVP application.</p>
 
-  <p><img src="../../images/Open_MVP.png" alt="MVP. " width="20%" loading="lazy" /></p>
+  <p><img src="../../images/Open_MVP.png" alt="MVP. " width="614" height="625" loading="lazy" /></p>
 
   <p>This is how it will look.</p>
 
-  <p><img src="../../images/Peptide_overview.png" alt="Overview. " width="60%" loading="lazy" /></p>
+  <p><img src="../../images/Peptide_overview.png" alt="Overview. " width="2208" height="1772" loading="lazy" /></p>
 
   <p>2) Click on <strong>Load from Galaxy</strong> to open the list of peptides you would like to view.</p>
 
-  <p><img src="../../images/load_from_Galaxy.png" alt="load from galaxy. " width="80%" loading="lazy" /></p>
+  <p><img src="../../images/load_from_Galaxy.png" alt="load from galaxy. " width="1476" height="1032" loading="lazy" /></p>
 
   <p>This will open a dropdown list. Select the novel peptides from there.</p>
 
-  <p><img src="../../images/DropDown_novel.png" alt="dropdown. " width="50%" loading="lazy" /></p>
+  <p><img src="../../images/DropDown_novel.png" alt="dropdown. " width="908" height="743" loading="lazy" /></p>
 
   <p>3) Select <strong>Novel Peptides</strong> from the right hand side.</p>
 
-  <p><img src="../../images/novel_peptides_view.png" alt="novel peptides view. " width="70%" loading="lazy" /></p>
+  <p><img src="../../images/novel_peptides_view.png" alt="novel peptides view. " width="1316" height="904" loading="lazy" /></p>
 
   <p>4) Select any peptide, For eg: <code class="language-plaintext highlighter-rouge">DGDLENPVLYSGAV</code>, and then click on <strong>Selected Peptide PSMs</strong>.</p>
 
-  <p><img src="../../images/Filtering_novelpeptides.png" alt="select_pep. " width="70%" loading="lazy" /></p>
+  <p><img src="../../images/Filtering_novelpeptides.png" alt="select_pep. " width="989" height="802" loading="lazy" /></p>
 
   <p>5) If you scroll down, the PSM associated with the peptide will be displayed. By clicking on the PSM, the <em>Lorikeet</em>
 values will be shown. The Lorikeet visualization is interactive, i.e the user can change the values or select any
 parameter and click on Update button to view these changes.</p>
 
-  <p><img src="../../images/Peptide-Protein_Viewer.png" alt="PSM. " width="90%" loading="lazy" /></p>
+  <p><img src="../../images/Peptide-Protein_Viewer.png" alt="PSM. " width="1906" height="876" loading="lazy" /></p>
 
-  <p><img src="../../images/Lorikeet_Viewer.png" alt="lorikeet. " width="70%" loading="lazy" /></p>
+  <p><img src="../../images/Lorikeet_Viewer.png" alt="lorikeet. " width="1890" height="1816" loading="lazy" /></p>
 
   <p>6) For a Protein centric view, click on <strong>View in Protein</strong> , it will open up all the proteins associate with the
 peptides. For eg: Select the <code class="language-plaintext highlighter-rouge">DGDLENPVLYSGAV</code> peptide and click on the first protein. The chromosome location
 of the peptide will be displayed.</p>
 
-  <p><img src="../../images/Selecting_peptide.png" alt="view in protein. " width="70%" loading="lazy" /></p>
+  <p><img src="../../images/Selecting_peptide.png" alt="view in protein. " width="887" height="835" loading="lazy" /></p>
 
   <p>Once you click on protein it will show the list of proteins the belongs to the peptides.</p>
 
-  <p><img src="../../images/opening_IGV.png" alt="select protein. " width="60%" loading="lazy" /></p>
+  <p><img src="../../images/opening_IGV.png" alt="select protein. " width="987" height="677" loading="lazy" /></p>
 
   <p>Once you select the protein that you want to visualize you can click on the protein view.</p>
 
-  <p><img src="../../images/ProteinViewer.png" alt="protein view. " width="80%" loading="lazy" /></p>
+  <p><img src="../../images/ProteinViewer.png" alt="protein view. " width="1768" height="581" loading="lazy" /></p>
 
   <p>7) Clicking on the arrow marks will open up the IGV(js) visualization tool, where-in the genomic localization of the
 peptide will be displayed.</p>
 
-  <p><img src="../../images/IGV_1.png" alt="IGV. " width="90%" loading="lazy" /></p>
+  <p><img src="../../images/IGV_1.png" alt="IGV. " width="2044" height="824" loading="lazy" /></p>
 
   <p>8) To add tracks to your IGV viewer, click on <strong>Add Track</strong>. This will open up a list of tracks that are compatible
 to view in your IGV viewer. For eg. Select the <code class="language-plaintext highlighter-rouge">Pep_gen_coordinate.bed</code> file and then click on <strong>Load Track</strong>.
 This will open up the bed will below the nucleotide sequence.</p>
 
-  <p><img src="../../images/Options_for_Track.png" alt="tracks align. " width="90%" loading="lazy" /></p>
+  <p><img src="../../images/Options_for_Track.png" alt="tracks align. " width="1160" height="764" loading="lazy" /></p>
 
   <p>9) By clicking the wheel, you can select the <strong>three frame translate</strong> which will show the three frame translated
 region of your sequence.</p>
 
-  <p><img src="../../images/IGV_viewer.png" alt="IGV viewer. " width="90%" loading="lazy" /></p>
+  <p><img src="../../images/IGV_viewer.png" alt="IGV viewer. " width="1254" height="220" loading="lazy" /></p>
 
   <p>10) The IGV is inbuilt in the MVP viewer and is very interactive, you could also load more tracks such as the aligned
 proBAM file (from HISAT) or the identified probam file (one of the input file).
 MVP has many useful features beyond those covered in this workshop and is under active development.</p>
 
-  <p><img src="../../images/IGV_2.png" alt="IGV2. " width="60%" loading="lazy" /></p>
+  <p><img src="../../images/IGV_2.png" alt="IGV2. " width="1378" height="546" loading="lazy" /></p>
 
 </blockquote>
 
@@ -1685,16 +1095,16 @@ loads two sqlite databases (mzsqlite and genomic mapping sqlite files) and calcu
 peptides provided as input. This outputs bed file for peptides.</p>
 
 <blockquote class="notranslate hands_on">
-  <div class="box-title hands-on-title" id="hands-on-peptide-genomic-coordinate"><i class="fas fa-pencil-alt" aria-hidden="true"></i> Hands-on: Peptide genomic Coordinate</div>
+  <div class="box-title hands-on-title" id="hands-on-peptide-genomic-coordinate"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Peptide genomic Coordinate</div>
 
   <ol>
-    <li>Run <span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/galaxyp/peptide_genomic_coordinate/peptide_genomic_coordinate/0.1.1" title="Peptide genomic Coordinate tool"><strong>Peptide genomic Coordinate</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: toolshed.g2.bx.psu.edu/repos/galaxyp/peptide_genomic_coordinate/peptide_genomic_coordinate/0.1.1</span></span>  with the following parameters:
+    <li>Run <span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/galaxyp/peptide_genomic_coordinate/peptide_genomic_coordinate/0.1.1" title="Peptide genomic Coordinate tool" aria-role="link"><strong>Peptide genomic Coordinate</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: toolshed.g2.bx.psu.edu/repos/galaxyp/peptide_genomic_coordinate/peptide_genomic_coordinate/0.1.1</span></span> with the following parameters:
       <ul>
         <li><em>“Input”</em>: <code class="language-plaintext highlighter-rouge">Peptide list file</code>, <code class="language-plaintext highlighter-rouge">mzsqlite sqlite DB file</code>, and <code class="language-plaintext highlighter-rouge">genomic mapping sqlite DB file</code></li>
         <li>
           <p><em>“Output”</em>: <code class="language-plaintext highlighter-rouge">Tabular BED file with all the columns</code></p>
 
-          <p><img src="../../images/Output_PGC.png" alt="Output PGC. " width="50%" loading="lazy" /></p>
+          <p><img src="../../images/Output_PGC.png" alt="Output PGC. " width="1710" height="358" loading="lazy" /></p>
         </li>
       </ul>
     </li>
@@ -1708,10 +1118,10 @@ peptides provided as input. This outputs bed file for peptides.</p>
 <p>Given chromosomal locations of peptides in a BED file, PepPointer classifies them as CDS, UTR, exon, intron, or intergene.</p>
 
 <blockquote class="notranslate hands_on">
-  <div class="box-title hands-on-title" id="hands-on-peppointer"><i class="fas fa-pencil-alt" aria-hidden="true"></i> Hands-on: Peppointer</div>
+  <div class="box-title hands-on-title" id="hands-on-peppointer"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Peppointer</div>
 
   <ol>
-    <li><span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/galaxyp/pep_pointer/pep_pointer/0.1.3" title="Peppointer tool"><strong>Peppointer</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: toolshed.g2.bx.psu.edu/repos/galaxyp/pep_pointer/pep_pointer/0.1.3</span></span>  with the following parameters:
+    <li><span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/galaxyp/pep_pointer/pep_pointer/0.1.3" title="Peppointer tool" aria-role="link"><strong>Peppointer</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: toolshed.g2.bx.psu.edu/repos/galaxyp/pep_pointer/pep_pointer/0.1.3</span></span> with the following parameters:
       <ul>
         <li><i class="fas fa-filter" aria-hidden="true"></i><span class="visually-hidden">param-select</span> <em>“Choose the source of the GTF file”</em> - <code class="language-plaintext highlighter-rouge">From History</code></li>
         <li><i class="far fa-file" aria-hidden="true"></i><span class="visually-hidden">param-file</span> <em>“GTF file with the genome of interest”</em> - <code class="language-plaintext highlighter-rouge">edited_Mus_Musculus_GRCm38.90_Ensembl_GTF</code></li>
@@ -1723,7 +1133,7 @@ peptides provided as input. This outputs bed file for peptides.</p>
 
   <p>This tool provides a bed output with the classification of the genomic location of the peptides.The Mus-musculus GTF file will be in your history if you have completed the proteogenomics 1 tutorial.</p>
 
-  <p><img src="../../images/Output_PP.png" alt="Output PP. " width="50%" loading="lazy" /></p>
+  <p><img src="../../images/Output_PP.png" alt="Output PP. " width="1350" height="444" loading="lazy" /></p>
 
 </blockquote>
 
@@ -1732,10 +1142,10 @@ peptides provided as input. This outputs bed file for peptides.</p>
 <h1 id="final-summary-output">Final Summary Output</h1>
 
 <blockquote class="notranslate hands_on">
-  <div class="box-title hands-on-title" id="hands-on-query-tabular-2"><i class="fas fa-pencil-alt" aria-hidden="true"></i> Hands-on: Query Tabular</div>
+  <div class="box-title hands-on-title" id="hands-on-query-tabular-2"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Query Tabular</div>
 
   <ol>
-    <li><span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/iuc/query_tabular/query_tabular/3.0.0" title="Query Tabular tool"><strong>Query Tabular</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: toolshed.g2.bx.psu.edu/repos/iuc/query_tabular/query_tabular/3.0.0</span></span>
+    <li><span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/iuc/query_tabular/query_tabular/3.0.0" title="Query Tabular tool" aria-role="link"><strong>Query Tabular</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: toolshed.g2.bx.psu.edu/repos/iuc/query_tabular/query_tabular/3.0.0</span></span>
       <ul>
         <li><i class="far fa-plus-square" aria-hidden="true"></i><span class="visually-hidden">param-repeat</span>  <strong>Insert Database Table</strong>
           <ul>
@@ -1793,7 +1203,7 @@ GROUP BY psm.Sequence
     <li>
       <p>Click <strong>Run Tool</strong> and inspect the query results file after it turned green. If everything went well, it should look similiar:</p>
 
-      <p><img src="../../images/final_summary.png" alt="Final Summary. " width="100%" loading="lazy" /></p>
+      <p><img src="../../images/final_summary.png" alt="Final Summary. " width="1784" height="290" loading="lazy" /></p>
     </li>
   </ol>
 
@@ -1856,6 +1266,9 @@ For more information about Galaxy-P or our ongoing work, please visit us at <a h
                             Subina Mehta, Timothy J. Griffin, Pratik Jagtap, Ray Sajulga, James Johnson, Praveen Kumar,  <b>Proteogenomics 3: Novel peptide analysis (Galaxy Training Materials)</b>. <a href="https://training.galaxyproject.org/training-material/topics/proteomics/tutorials/proteogenomics-novel-peptide-analysis/tutorial.html">https://training.galaxyproject.org/training-material/topics/proteomics/tutorials/proteogenomics-novel-peptide-analysis/tutorial.html</a> Online; accessed TODAY
                         </li>
                         <li>
+                        Hiltemann, Saskia, Rasche, Helena et al., 2023 <b>Galaxy Training: A Powerful Framework for Teaching!</b> PLOS Computational Biology <a href="https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1010752">10.1371/journal.pcbi.1010752</a>
+                        </li>
+                        <li>
                         Batut et al., 2018 <b>Community-Driven Data Analysis Training for Biology</b> Cell Systems <a href="https://doi.org/10.1016%2Fj.cels.2018.05.012">10.1016/j.cels.2018.05.012</a>
                         </li>
                     </ol>
@@ -1877,12 +1290,12 @@ For more information about Galaxy-P or our ongoing work, please visit us at <a h
 
 <code id="citation-code">@misc{proteomics-proteogenomics-novel-peptide-analysis,
 author = "Subina Mehta and Timothy J. Griffin and Pratik Jagtap and Ray Sajulga and James Johnson and Praveen Kumar",
-title = "Proteogenomics 3: Novel peptide analysis (Galaxy Training Materials)",
-year = "",
-month = "",
-day = ""
-url = "\url{https://training.galaxyproject.org/training-material/topics/proteomics/tutorials/proteogenomics-novel-peptide-analysis/tutorial.html}",
-note = "[Online; accessed TODAY]"
+	title = "Proteogenomics 3: Novel peptide analysis (Galaxy Training Materials)",
+	year = "",
+	month = "",
+	day = ""
+	url = "\url{https://training.galaxyproject.org/training-material/topics/proteomics/tutorials/proteogenomics-novel-peptide-analysis/tutorial.html}",
+	note = "[Online; accessed TODAY]"
 }
 @article{Hiltemann_2023,
 	doi = {10.1371/journal.pcbi.1010752},
@@ -1908,9 +1321,9 @@ note = "[Online; accessed TODAY]"
 
 <script>
 // update the date on load, or leave fallback of 'today'
-var d = new Date();
-document.getElementById("citation-code").innerHTML = document.getElementById("citation-code").innerHTML.replace("TODAY", d.toDateString());
-document.getElementById("citation-text").innerHTML = document.getElementById("citation-text").innerHTML.replace("TODAY", d.toDateString());
+const citationTodaysDate = new Date();
+document.getElementById("citation-code").innerHTML = document.getElementById("citation-code").innerHTML.replace("TODAY", citationTodaysDate.toDateString());
+document.getElementById("citation-text").innerHTML = document.getElementById("citation-text").innerHTML.replace("TODAY", citationTodaysDate.toDateString());
 </script>
 
                 <i class="far fa-thumbs-up" aria-hidden="true"></i> Congratulations on successfully completing this tutorial!
@@ -1919,6 +1332,7 @@ document.getElementById("citation-text").innerHTML = document.getElementById("ci
 
                 
                 <blockquote class="agenda follow-up">
+                    <div class="box-title">Go Further</div>
                     <strong class="follow-up"><i class="fas fa-graduation-cap" aria-hidden="true"></i> Do you want to extend your knowledge? Follow one of our recommended follow-up trainings:</strong>
                     <ul>
                         
@@ -2070,6 +1484,43 @@ document.getElementById("citation-text").innerHTML = document.getElementById("ci
                     </ul>
                 </blockquote>
                 
+
+		
+                <blockquote class="agenda follow-up" id="admins-install-missing-tools">
+                    <div class="box-title">Galaxy Administrators: Install the missing tools</div>
+			<p>You can use Ephemeris's <code>shed-tools install</code> command to install the tools used in this tutorial.</p>
+<div class="highlight"><pre class="highlight"><code>shed-tools install [-g GALAXY] [-a API_KEY] -t &lt;(curl https://training.galaxyproject.org/training-material/api/topics/proteomics/tutorials/proteogenomics-novel-peptide-analysis/tutorial.json | jq .admin_install_yaml -r)</code></pre></div>
+<p>Alternatively you can copy and paste the following YAML</p>
+<div class="highlight"><pre class="highlight"><code>---
+install_tool_dependencies: true
+install_repository_dependencies: true
+install_resolver_dependencies: true
+tools:
+- name: ncbi_blast_plus
+  owner: devteam
+  revisions: 2889433c7ae1
+  tool_panel_section_label: Proteomics
+  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+- name: pep_pointer
+  owner: galaxyp
+  revisions: 073a2965e3b2
+  tool_panel_section_label: Proteomics
+  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+- name: peptide_genomic_coordinate
+  owner: galaxyp
+  revisions: 5f49ffce52cb
+  tool_panel_section_label: Proteomics
+  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+- name: query_tabular
+  owner: iuc
+  revisions: 33d61c89fb8d
+  tool_panel_section_label: Proteomics
+  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+</code></pre></div>
+                </blockquote>
+		
+
+
                 </section>
 
             </div>
@@ -2081,38 +1532,52 @@ document.getElementById("citation-text").innerHTML = document.getElementById("ci
 <br/>
 
         </div>
-        
-        <script src="/training-material/assets/js/jquery.slim.min.js"></script>
-        <script src="/training-material/assets/js/popper.min.js"></script>
-        <script src="/training-material/assets/js/bootstrap.min.js?v=3"></script>
-        <script src="/training-material/assets/js/details-element-polyfill.js"></script>
+        <footer>
+	<hr />
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-6" style="text-align: left">
+				<p>
+					The <a href="https://galaxyproject.org/teach/gtn/">Galaxy Training Network</a>
+					provides researchers with online training materials, connects them with local trainers, and helps promoting FAIR and Open Science practices worldwide. All contributions are subject to the <a rel="code-of-conduct" href="https://galaxyproject.org/community/coc/">Galaxy Project Code of Conduct</a>.
+				</p>
+				<p>
+				The GTN infrastructure is licensed under <a rel="license" href="https://github.com/galaxyproject/training-material/blob/main/LICENSE.md">MIT</a>
+				</p>
+				<p>
+				Revision <a href="https://github.com/galaxyproject/training-material/commit/476574d2b382dd1db6c2c408d8fb6ec4393a6904">476574d</a>, built with Jekyll (4.3.2 | production)
+				</p>
+			</div>
+			<div class="col-sm-6" style="text-align: right">
+				
+				<p>
+					Resource <i class="fas fa-fingerprint" aria-hidden="true"></i><span class="visually-hidden">purl</span><abbr title="Persistent URL">PURL</abbr>: <a href="https://gxy.io/GTN:T00233">https://gxy.io/GTN:T00233</a>
+				</p>
+				
+				<p>
+					<i>This Material</i>:
+					
+					is licensed under
+					<a rel="license" href="https://spdx.org/licenses/CC-BY-4.0">
+						Creative Commons Attribution 4.0 International License
+					</a>
+				</p>
+				<p>
+					<a href="https://github.com/galaxyproject/training-material/edit/main/topics/proteomics/tutorials/proteogenomics-novel-peptide-analysis/tutorial.md" title="Edit on GitHub">
+					<i class="fab fa-github" aria-hidden="true"></i><span class="visually-hidden">github</span> Edit on GitHub
+					</a>
+				</p>
+			</div>
+		</div>
+	</div>
+</footer>
+
+
+    </div>
+</footer>
+
+
+        <script src='/training-material/assets/js/bundle.main.js?v=1687830693'></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-        <script src="/training-material/assets/js/bootstrap-toc.min.js"></script>
-        <script src="/training-material/assets/js/main.js"></script>
-        <script src="/training-material/assets/js/clipboard.min.js"></script>
-        <script>
-        var snippets=document.querySelectorAll('div.highlight');
-        [].forEach.call(snippets,function(snippet){
-            snippet.firstChild.insertAdjacentHTML('beforebegin','<button class="btn btn-light" data-clipboard-snippet tabindex="0"><i class="fa fa-copy"></i>&nbsp;Copy</button>');
-        });
-
-        var clipboardSnippets=new ClipboardJS('[data-clipboard-snippet]',{
-            target:function(trigger){return trigger.nextElementSibling;
-        }});
-        </script>
-        
-
-        <script type="text/javascript">
-            if(window.location.hostname === "galaxyproject.github.io") {
-                // Redirect
-                var redirect = "https://training.galaxyproject.org" + window.location.pathname + window.location.search;
-                $('div.container.main-content').prepend("<div class='alert alert-warning'><strong>Note: </strong>This content has a new home at <a href=\"" + redirect + "\">" + redirect + "</a>, which you will be redirected to in 5 seconds.</div>");
-
-                window.setTimeout(function(){
-                    window.location.href = redirect;
-                }, 5000)
-
-            }
-        </script>
     </body>
 </html>

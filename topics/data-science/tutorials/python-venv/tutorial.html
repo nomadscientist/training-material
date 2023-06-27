@@ -8,22 +8,51 @@
         
             <script async defer data-domain="training.galaxyproject.org" src="https://plausible.galaxyproject.eu/js/plausible.js"></script>
 
+<!-- JavaScript Error Monitoring, and performance tracking. -->
+<script
+  src="https://browser.sentry-cdn.com/7.52.1/bundle.tracing.min.js"
+  integrity="sha384-muuFXKS3752PNA4rPm9Uq6BLvOfV4CXyr9MHDBPvozOJJUWLKkogEFWOIRoVps43"
+  crossorigin="anonymous"
+></script>
+<script type="text/javascript">
+Sentry.init({
+  dsn: "https://45e0ec6e4373462b92969505df37cf40@sentry.galaxyproject.org/10",
+  release: "galaxy-training-network@476574d2b382dd1db6c2c408d8fb6ec4393a6904",
+  integrations: [new Sentry.BrowserTracing(), new Sentry.Replay()],
+  sampleRate: 0.1,
+  tracesSampleRate: 0.1,
+  // Capture Replay for no sessions by default
+  replaysSessionSampleRate: 0.01,
+  // plus for 1% of sessions with an error
+  replaysOnErrorSampleRate: 0.01,
+  // PII OFF
+  sendDefaultPii: false, // Off by default but just in case.
+  environment: "production",
+});
+</script>
+
         
-        <link rel="stylesheet" href="/training-material/assets/css/bootstrap.min.css?v=3">
-        <link rel="stylesheet" href="/training-material/assets/css/bootstrap-toc.min.css">
-        <link rel="stylesheet" href="/training-material/assets/css/main.css?v=2">
-        <link rel="stylesheet" href="/training-material/assets/fontawesome/css/all.css">
-        <link rel="stylesheet" href="/training-material/assets/css/academicons.css">
         <link rel="shortcut icon" href="/training-material/favicon.ico" type="image/x-icon">
         <link rel="alternate" type="application/atom+xml" href="/training-material/feed.xml">
         <link rel="canonical" href="https://training.galaxyproject.org/training-material/topics/data-science/tutorials/python-venv/tutorial.html">
-        <link rel="license" href="https://creativecommons.org/licenses/by/4.0/">
+        <link rel="license" href="https://spdx.org/licenses/CC-BY-4.0">
+        <link rel="preload" href="/training-material/assets/fonts/AtkinsonHyperlegible/Atkinson-Hyperlegible-Regular-102a.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="preload" href="/training-material/assets/fonts/AtkinsonHyperlegible/Atkinson-Hyperlegible-Bold-102a.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="preload" href="/training-material/assets/fonts/AtkinsonHyperlegible/Atkinson-Hyperlegible-Italic-102a.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML" as="script" crossorigin>
+        <link rel="preload" href="/training-material/assets/css/main.css?v=3" as="style">
+        <link rel='preload' href='/training-material/assets/js/bundle.theme.js?v=1687830693' as='script'>
+<link rel='preload' href='/training-material/assets/js/bundle.main.js?v=1687830693' as='script'>
+        <link rel="stylesheet" href="/training-material/assets/css/main.css?v=3">
+        <link rel="manifest" href="/training-material/manifest.json">
+        <meta name="theme-color" content="#2c3143"/>
+
 
         <meta name="DC.identifier" content="https://github.com/galaxyproject/training-material">
 <meta name="DC.type" content="text">
 <meta name="DC.title" content="Virtual Environments For Software Development">
 <meta name="DC.publisher" content="Galaxy Training Network">
-<meta name="DC.date" content="2022-10-19 12:39:43 +0000">
+<meta name="DC.date" content="2023-05-17 17:21:19 +0000">
 <meta name="DC.creator" content="The Carpentries">
 <meta name="DC.creator" content="Helena Rasche">
 
@@ -65,7 +94,7 @@
     "name": "Galaxy Training Network",
     "url": "https://galaxyproject.org/teach/gtn/"
   },
-  "dateModified": "2022-10-19 12:39:43 +0000",
+  "dateModified": "2023-05-17 17:21:19 +0000",
   "discussionUrl": "https://gitter.im/Galaxy-Training-Network/Lobby",
   "headline": "Virtual Environments For Software Development",
   "interactivityType": "mixed",
@@ -91,6 +120,10 @@
     "url": "https://galaxyproject.org/teach/gtn/"
   },
   "identifier": "https://github.com/galaxyproject/training-material",
+  "workTranslation": [
+
+  ],
+  "creativeWorkStatus": "Active",
   "accessMode": [
     "textual",
     "visual"
@@ -118,6 +151,7 @@
   "name": "Hands-on for 'Virtual Environments For Software Development' tutorial",
   "url": "https://training.galaxyproject.org/training-material/topics/data-science/tutorials/python-venv/tutorial.html",
   "timeRequired": "PT30M",
+  "teaches": "Set up a Python virtual environment for our software project using `venv` and `pip`.\n - Run our software from the command line.",
   "keywords": "data-science, jupyter-notebook",
   "description": "The questions this  addresses are:\n - What are virtual environments in software development and why you should use them?\n - How can we manage Python virtual environments and external (third-party) libraries?\n\n\nThe objectives are:\n - Set up a Python virtual environment for our software project using `venv` and `pip`.\n - Run our software from the command line.\n\n",
   "inLanguage": {
@@ -125,6 +159,52 @@
     "name": "English",
     "alternateName": "en"
   },
+  "author": [
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "http://purl.org/dc/terms/conformsTo": {
+        "@id": "https://bioschemas.org/profiles/Person/0.3-DRAFT",
+        "@type": "CreativeWork"
+      },
+      "url": "https://training.galaxyproject.org/training-material/hall-of-fame/carpentries/",
+      "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/carpentries/",
+      "name": "The Carpentries",
+      "image": "https://avatars.githubusercontent.com/carpentries",
+      "description": "A contributor to the GTN project.",
+      "memberOf": [
+        {
+          "@type": "Organization",
+          "email": "galaxytrainingnetwork@gmail.com",
+          "name": "Galaxy Training Network",
+          "url": "https://galaxyproject.org/teach/gtn/"
+        }
+      ]
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "http://purl.org/dc/terms/conformsTo": {
+        "@id": "https://bioschemas.org/profiles/Person/0.3-DRAFT",
+        "@type": "CreativeWork"
+      },
+      "url": "https://training.galaxyproject.org/training-material/hall-of-fame/hexylena/",
+      "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/hexylena/",
+      "name": "Helena Rasche",
+      "image": "https://avatars.githubusercontent.com/hexylena",
+      "description": "A contributor to the GTN project.",
+      "memberOf": [
+        {
+          "@type": "Organization",
+          "email": "galaxytrainingnetwork@gmail.com",
+          "name": "Galaxy Training Network",
+          "url": "https://galaxyproject.org/teach/gtn/"
+        }
+      ],
+      "identifier": "https://orcid.org/0000-0001-9760-8992",
+      "orcid": "https://orcid.org/0000-0001-9760-8992"
+    }
+  ],
   "about": [
     {
       "@type": "CreativeWork",
@@ -140,13 +220,20 @@
       "url": "https://bioportal.bioontology.org/ontologies/EDAM/?p=classes&conceptid=http%3A%2F%2Fedamontology.org%2Ftopic_3372"
     }
   ],
-  "educationalLevel": "Intermediate"
+  "educationalLevel": "Intermediate",
+  "mentions": [
+    {
+      "@type": "Thing",
+      "name": "jupyter-notebook"
+    }
+  ],
+  "abstract": "\"Virtual Environments\" allow you to easily manage your installed Python packages and prevent conflicts between different project's dependencies. In general most modern projects should use `conda` for dependency management, but `venv` can be convenient for Python-only projects."
 }
         </script>
         
     </head>
     <body data-spy="scroll" data-target="#toc">
-        <script type="text/javascript" src="/training-material/assets/js/theme.js"></script>
+        <script src='/training-material/assets/js/bundle.theme.js?v=1687830693'></script>
         <header>
     <nav class="navbar navbar-expand-md navbar-dark" aria-label="Site Navigation">
         <div class="container">
@@ -215,7 +302,6 @@
     </a>
     <div class="dropdown-menu dropdown-menu-right">
 
-        
         <a class="dropdown-item" href="https://github.com/galaxyproject/training-material/edit/main/topics/data-science/tutorials/python-venv/tutorial.md" title="Edit on GitHub">
           <i class="fab fa-github" aria-hidden="true"></i><span class="visually-hidden">github</span> Edit on GitHub
         </a>
@@ -263,13 +349,13 @@
 
             <div id="archive-selector">
             
-                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2020-01-06/topics/data-science/tutorials/python-venv/tutorial.html" title="Version 2020-01-06">2020-01-06</a>
+                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2020-01-06/topics/data-science/tutorials/python-venv/tutorial.html">2020-01-06</a>
             
-                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2019-12-01/topics/data-science/tutorials/python-venv/tutorial.html" title="Version 2019-12-01">2019-12-01</a>
+                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2019-12-01/topics/data-science/tutorials/python-venv/tutorial.html">2019-12-01</a>
             
-                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2019-11-01/topics/data-science/tutorials/python-venv/tutorial.html" title="Version 2019-11-01">2019-11-01</a>
+                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2019-11-01/topics/data-science/tutorials/python-venv/tutorial.html">2019-11-01</a>
             
-                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/" title="Older Versions">Older Versions</a>
+                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/">Older Versions</a>
             </div>
 
         </div>
@@ -282,7 +368,7 @@
                     <li class="nav-item">
                       <div id="navbarSupportedContent" role="search">
                         <!-- Search form -->
-                        <form class="form-inline mr-auto" method="GET" action="/training-material/search">
+                        <form class="form-inline mr-auto" method="GET" action="/training-material/search2">
                           <i class="fas fa-search nav-link" aria-hidden="true"></i>
                           <div class="md-form mb-2">
                             <input name="query" class="form-control nicer" type="text" placeholder="Search Tutorials" aria-label="Search">
@@ -319,119 +405,7 @@
 
 
 
-<script>
-  ((window.gitter = {}).chat = {}).options = {
-  room: 'Galaxy-Training-Network/Lobby'
-  };
-</script>
 
-
-<script src="https://sidecar.gitter.im/dist/sidecar.v1.js" async defer></script>
-
-<script type="application/ld+json">
-    
-
-
-{
-  "@context": "http://schema.org",
-  "@type": "LearningResource",
-  "http://purl.org/dc/terms/conformsTo": {
-    "@id": "https://bioschemas.org/profiles/TrainingMaterial/1.0-RELEASE",
-    "@type": "CreativeWork"
-  },
-  "audience": {
-    "@type": "EducationalAudience",
-    "educationalRole": "Students"
-  },
-  "citation": {
-    "@type": "CreativeWork",
-    "name": "Community-Driven Data Analysis Training for Biology",
-    "url": "https://doi.org/10.1016/j.cels.2018.05.012"
-  },
-  "copyrightHolder": {
-    "@type": "Organization",
-    "email": "galaxytrainingnetwork@gmail.com",
-    "name": "Galaxy Training Network",
-    "url": "https://galaxyproject.org/teach/gtn/"
-  },
-  "dateModified": "2022-10-19 12:39:43 +0000",
-  "discussionUrl": "https://gitter.im/Galaxy-Training-Network/Lobby",
-  "headline": "Virtual Environments For Software Development",
-  "interactivityType": "mixed",
-  "isAccessibleForFree": true,
-  "isFamilyFriendly": true,
-  "license": "https://spdx.org/licenses/CC-BY-4.0.html",
-  "producer": {
-    "@type": "Organization",
-    "email": "galaxytrainingnetwork@gmail.com",
-    "name": "Galaxy Training Network",
-    "url": "https://galaxyproject.org/teach/gtn/"
-  },
-  "provider": {
-    "@type": "Organization",
-    "email": "galaxytrainingnetwork@gmail.com",
-    "name": "Galaxy Training Network",
-    "url": "https://galaxyproject.org/teach/gtn/"
-  },
-  "sourceOrganization": {
-    "@type": "Organization",
-    "email": "galaxytrainingnetwork@gmail.com",
-    "name": "Galaxy Training Network",
-    "url": "https://galaxyproject.org/teach/gtn/"
-  },
-  "identifier": "https://github.com/galaxyproject/training-material",
-  "accessMode": [
-    "textual",
-    "visual"
-  ],
-  "accessModeSufficient": [
-    "textual",
-    "visual"
-  ],
-  "accessibilityControl": [
-    "fullKeyboardControl",
-    "fullMouseControl"
-  ],
-  "accessibilityFeature": [
-    "alternativeText",
-    "tableOfContents"
-  ],
-  "accessibilitySummary": "The text aims to be as accessible as possible. Image descriptions will vary per tutorial, from images being completely inaccessible, to images with good descriptions for non-visual users.",
-  "isPartOf": {
-    "@type": "CreativeWork",
-    "name": "Foundations of Data Science",
-    "description": "These lessons will help you get your feet in data science and give you tools to help you slice and dice your data into results.",
-    "url": "https://training.galaxyproject.org/training-material/topics/data-science/"
-  },
-  "learningResourceType": "hands-on tutorial",
-  "name": "Hands-on for 'Virtual Environments For Software Development' tutorial",
-  "url": "https://training.galaxyproject.org/training-material/topics/data-science/tutorials/python-venv/tutorial.html",
-  "timeRequired": "PT30M",
-  "keywords": "data-science, jupyter-notebook",
-  "description": "The questions this  addresses are:\n - What are virtual environments in software development and why you should use them?\n - How can we manage Python virtual environments and external (third-party) libraries?\n\n\nThe objectives are:\n - Set up a Python virtual environment for our software project using `venv` and `pip`.\n - Run our software from the command line.\n\n",
-  "inLanguage": {
-    "@type": "Language",
-    "name": "English",
-    "alternateName": "en"
-  },
-  "about": [
-    {
-      "@type": "CreativeWork",
-      "name": "Foundations of Data Science",
-      "description": "These lessons will help you get your feet in data science and give you tools to help you slice and dice your data into results.",
-      "url": "https://training.galaxyproject.org/training-material/topics/data-science/"
-    },
-    {
-      "@type": "DefinedTerm",
-      "@id": "http://edamontology.org/topic_3372",
-      "inDefinedTermSet": "http://edamontology.org",
-      "termCode": "topic_3372",
-      "url": "https://bioportal.bioontology.org/ontologies/EDAM/?p=classes&conceptid=http%3A%2F%2Fedamontology.org%2Ftopic_3372"
-    }
-  ],
-  "educationalLevel": "Intermediate"
-}
-</script>
 
 <article class="tutorial topic-data-science">
     <h1 data-toc-skip>Virtual Environments For Software Development</h1>
@@ -447,7 +421,7 @@
 	<tr>
 		<td><abbr title="These people wrote the bulk of the tutorial, they may have done the analysis, built the workflow, and wrote the text themselves.">Author(s)</abbr></td>
 		<td>
-			<a href="/training-material/hall-of-fame/carpentries/" class="contributor-badge contributor-carpentries"><img src="https://avatars.githubusercontent.com/carpentries?s=27" alt="Avatar">The Carpentries</a><a href="/training-material/hall-of-fame/hexylena/" class="contributor-badge contributor-hexylena"><img src="/training-material/assets/images/orcid.png" alt="orcid logo"/><img src="https://avatars.githubusercontent.com/hexylena?s=27" alt="Avatar">Helena Rasche</a>
+			<a href="/training-material/hall-of-fame/carpentries/" class="contributor-badge contributor-carpentries"><img src="https://avatars.githubusercontent.com/carpentries?s=36" alt="Avatar" width="36" height="36">The Carpentries</a><a href="/training-material/hall-of-fame/hexylena/" class="contributor-badge contributor-hexylena"><img src="/training-material/assets/images/orcid.png" alt="orcid logo" width="36" height="36"/><img src="https://avatars.githubusercontent.com/hexylena?s=36" alt="Avatar" width="36" height="36">Helena Rasche</a>
 		</td>
 	</tr>
 	
@@ -575,15 +549,15 @@
         </ul>
         
 
-        <div><strong><i class="far fa-calendar" aria-hidden="true"></i> Last modification:</strong> Oct 19, 2022 </div>
+        <div><strong><i class="far fa-calendar" aria-hidden="true"></i> Last modification:</strong> May 17, 2023 </div>
         <div><strong><i class="fas fa-balance-scale" aria-hidden="true"></i> License:</strong>
+		
             
-            <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Tutorial Content is licensed under Creative Commons Attribution 4.0 International License</a>
-            
-            <a rel="license" href="https://github.com/galaxyproject/training-material/blob/main/LICENSE.md">The GTN Framework is licensed under MIT</a>
+            <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Tutorial Content is licensed under Creative Commons Attribution 4.0 International License</a>.
+             The GTN Framework is licensed under <a rel="license" href="https://github.com/galaxyproject/training-material/blob/main/LICENSE.md">MIT</a>
         </div>
         
-        <div><strong>Short Link:</strong> <a href="https://gxy.io/GTN:T00101">https://gxy.io/GTN:T00101</a> </div>
+        <div><strong><i class="fas fa-fingerprint" aria-hidden="true"></i><span class="visually-hidden">purl</span><abbr title="Persistent URL">PURL</abbr>:</strong> <a href="https://gxy.io/GTN:T00101">https://gxy.io/GTN:T00101</a> </div>
         
     </blockquote>
     </section>
@@ -637,7 +611,7 @@
                 <p>“Virtual Environments” allow you to easily manage your installed Python packages and prevent conflicts between different project’s dependencies. In general most modern projects should use <code class="language-plaintext highlighter-rouge">conda</code> for dependency management, but <code class="language-plaintext highlighter-rouge">venv</code> can be convenient for Python-only projects.</p>
 
 <blockquote class="comment">
-  <div class="box-title comment-title" id="comment"><i class="far fa-comment-dots" aria-hidden="true"></i> Comment</div>
+  <div class="box-title comment-title" id="comment"><i class="far fa-comment-dots" aria-hidden="true" ></i> Comment</div>
 
   <p>This tutorial is significantly based on <a href="https://carpentries.org">the Carpentries</a> lesson <a href="https://carpentries-incubator.github.io/python-intermediate-development/">“Intermediate Research Software Development”</a>.</p>
 
@@ -713,7 +687,7 @@ Virtual environments enable you to always use the latest available version witho
 They also enable you to use a specific older version of a package for your project, should you need to.</p>
 
 <blockquote class="tip">
-  <div class="box-title tip-title" id="tip-a-specific-python-or-package-version-is-only-ever-installed-once"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-a-specific-python-or-package-version-is-only-ever-installed-once" aria-expanded="true"><i class="far fa-lightbulb" aria-hidden="true"></i> Tip: A Specific Python or Package Version is Only Ever Installed Once<span class="fold-unfold fa fa-minus-square"></span></button></div>
+  <div class="box-title tip-title" id="tip-a-specific-python-or-package-version-is-only-ever-installed-once"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-a-specific-python-or-package-version-is-only-ever-installed-once" aria-expanded="true"><i class="far fa-lightbulb" aria-hidden="true" ></i> Tip: A Specific Python or Package Version is Only Ever Installed Once<span class="fold-unfold fa fa-minus-square"></span></button></div>
   <p>Note that you will not have a separate Python or package installations for each of your projects - they will only
 ever be installed once on your system but will be referenced from different virtual environments.</p>
 </blockquote>
@@ -747,7 +721,7 @@ on your system. The Python package manager tool <code class="language-plaintext 
 <code class="language-plaintext highlighter-rouge">pip</code> can now be used with all Python distributions (including Anaconda).</p>
 
 <blockquote class="tip">
-  <div class="box-title tip-title" id="tip-a-note-on-anaconda-and-conda"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-a-note-on-anaconda-and-conda" aria-expanded="true"><i class="far fa-lightbulb" aria-hidden="true"></i> Tip: A Note on Anaconda and `conda`<span class="fold-unfold fa fa-minus-square"></span></button></div>
+  <div class="box-title tip-title" id="tip-a-note-on-anaconda-and-conda"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-a-note-on-anaconda-and-conda" aria-expanded="true"><i class="far fa-lightbulb" aria-hidden="true" ></i> Tip: A Note on Anaconda and `conda`<span class="fold-unfold fa fa-minus-square"></span></button></div>
   <p>Anaconda is an open source Python
 distribution commonly used for scientific programming - it conveniently installs Python, package and environment management <code class="language-plaintext highlighter-rouge">conda</code>, and a 
 number of commonly used scientific computing packages so you do not have to obtain them separately. 
@@ -772,7 +746,7 @@ and use them accordingly. As you become more familiar with them you will realise
 way even though the command syntax may be different (and that there are equivalent tools for other programming languages
 too to which your knowledge can be ported).</p>
 
-<figure id="figure-1"><img src="../../images/xkcd/python_environment.png" alt="Python environment hell XKCD comic  showing boxes like pip, easy_install, homebrew 2.7, anaconda, homebrew 3.6, /usr/local/Cellar, ~/python/, and a chaotic mess of arrows moving between them all. At the bottom is the text: My python environment has become so degraded that my laptop has been declared a superfund site. (A superfund site is generally an environmental disaster area.). " width="492" height="487" loading="lazy" /><figcaption><span class="figcaption-prefix"><strong>Figure 1</strong>:</span> Python Environment Hell from XKCD 1987 (CC-BY-NC 2.5)</figcaption></figure>
+<figure id="figure-1" style="max-width: 90%; margin:auto;"><img src="../../images/xkcd/python_environment.png" alt="Python environment hell XKCD comic  showing boxes like pip, easy_install, homebrew 2.7, anaconda, homebrew 3.6, /usr/local/Cellar, ~/python/, and a chaotic mess of arrows moving between them all. At the bottom is the text: My python environment has become so degraded that my laptop has been declared a superfund site. (A superfund site is generally an environmental disaster area.). " width="492" height="487" loading="lazy" /><figcaption><span class="figcaption-prefix"><strong>Figure 1</strong>:</span> Python Environment Hell from XKCD 1987 (CC-BY-NC 2.5)</figcaption></figure>
 
 <p>Let us have a look at how we can create and manage virtual environments from the command line using <code class="language-plaintext highlighter-rouge">venv</code> and manage packages using <code class="language-plaintext highlighter-rouge">pip</code>.</p>
 
@@ -809,7 +783,7 @@ environment and the standard Python library,</li>
 </ul>
 
 <blockquote class="tip">
-  <div class="box-title tip-title" id="tip-naming-virtual-environments"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-naming-virtual-environments" aria-expanded="true"><i class="far fa-lightbulb" aria-hidden="true"></i> Tip: Naming Virtual Environments<span class="fold-unfold fa fa-minus-square"></span></button></div>
+  <div class="box-title tip-title" id="tip-naming-virtual-environments"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-naming-virtual-environments" aria-expanded="true"><i class="far fa-lightbulb" aria-hidden="true" ></i> Tip: Naming Virtual Environments<span class="fold-unfold fa fa-minus-square"></span></button></div>
   <p>What is a good name to use for a virtual environment? Using “venv” or “.venv” as the
 name for an environment and storing it within the project’s directory seems to be the recommended way -
 this way when you come across such a subdirectory within a software project,
@@ -854,7 +828,7 @@ version of Python configured in your virtual environment.</p>
 </code></pre></div></div>
 
 <blockquote class="tip">
-  <div class="box-title tip-title" id="tip-python-within-a-virtual-environment"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-python-within-a-virtual-environment" aria-expanded="true"><i class="far fa-lightbulb" aria-hidden="true"></i> Tip: Python Within A Virtual Environment<span class="fold-unfold fa fa-minus-square"></span></button></div>
+  <div class="box-title tip-title" id="tip-python-within-a-virtual-environment"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-python-within-a-virtual-environment" aria-expanded="true"><i class="far fa-lightbulb" aria-hidden="true" ></i> Tip: Python Within A Virtual Environment<span class="fold-unfold fa fa-minus-square"></span></button></div>
 
   <p>Within a virtual environment, commands <code class="language-plaintext highlighter-rouge">python</code> and <code class="language-plaintext highlighter-rouge">pip</code> will refer to the version of Python you created the environment with. If you create a virtual environment with <code class="language-plaintext highlighter-rouge">python3 -m venv venv</code>, <code class="language-plaintext highlighter-rouge">python</code> will refer to <code class="language-plaintext highlighter-rouge">python3</code> and <code class="language-plaintext highlighter-rouge">pip</code> will refer to <code class="language-plaintext highlighter-rouge">pip3</code>.</p>
 
@@ -879,7 +853,7 @@ pip3 <span class="nb">install </span>matplotlib
 </code></pre></div></div>
 
 <blockquote class="tip">
-  <div class="box-title tip-title" id="tip-how-about-python3-m-pip-install"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-how-about-python3-m-pip-install" aria-expanded="true"><i class="far fa-lightbulb" aria-hidden="true"></i> Tip: How About `python3 -m pip install`?<span class="fold-unfold fa fa-minus-square"></span></button></div>
+  <div class="box-title tip-title" id="tip-how-about-python3-m-pip-install"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-how-about-python3-m-pip-install" aria-expanded="true"><i class="far fa-lightbulb" aria-hidden="true" ></i> Tip: How About `python3 -m pip install`?<span class="fold-unfold fa fa-minus-square"></span></button></div>
   <p>Why are we not using <code class="language-plaintext highlighter-rouge">pip</code> as an argument to <code class="language-plaintext highlighter-rouge">python3</code> command, in the same way we did with <code class="language-plaintext highlighter-rouge">venv</code> 
 (i.e. <code class="language-plaintext highlighter-rouge">python3 -m venv</code>)? <code class="language-plaintext highlighter-rouge">python3 -m pip install</code> should be used according to the 
 <a href="https://pip.pypa.io/en/stable/user_guide/#running-pip">official Pip documentation</a>; other official documentation
@@ -944,7 +918,7 @@ accordingly by re-issuing <code class="language-plaintext highlighter-rouge">pip
 via your code sharing platform (e.g. GitHub).</p>
 
 <blockquote class="tip">
-  <div class="box-title tip-title" id="tip-official-documentation"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-official-documentation" aria-expanded="true"><i class="far fa-lightbulb" aria-hidden="true"></i> Tip: Official Documentation<span class="fold-unfold fa fa-minus-square"></span></button></div>
+  <div class="box-title tip-title" id="tip-official-documentation"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-official-documentation" aria-expanded="true"><i class="far fa-lightbulb" aria-hidden="true" ></i> Tip: Official Documentation<span class="fold-unfold fa fa-minus-square"></span></button></div>
   <p>For a full list of options and commands, consult the <a href="https://docs.python.org/3/library/venv.html">official <code class="language-plaintext highlighter-rouge">venv</code> documentation</a>
 and the <a href="https://docs.python.org/3/installing/index.html#installing-index">Installing Python Modules with <code class="language-plaintext highlighter-rouge">pip</code> guide</a>. Also check out the guide <a href="https://packaging.python.org/guides/installing-using-pip-and-virtual-environments/#installing-packages-using-pip-and-virtual-environments">“Installing packages using <code class="language-plaintext highlighter-rouge">pip</code> and virtual environments”</a>.</p>
 </blockquote>
@@ -1016,6 +990,9 @@ from the command line.</p>
                             The Carpentries, Helena Rasche,  <b>Virtual Environments For Software Development (Galaxy Training Materials)</b>. <a href="https://training.galaxyproject.org/training-material/topics/data-science/tutorials/python-venv/tutorial.html">https://training.galaxyproject.org/training-material/topics/data-science/tutorials/python-venv/tutorial.html</a> Online; accessed TODAY
                         </li>
                         <li>
+                        Hiltemann, Saskia, Rasche, Helena et al., 2023 <b>Galaxy Training: A Powerful Framework for Teaching!</b> PLOS Computational Biology <a href="https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1010752">10.1371/journal.pcbi.1010752</a>
+                        </li>
+                        <li>
                         Batut et al., 2018 <b>Community-Driven Data Analysis Training for Biology</b> Cell Systems <a href="https://doi.org/10.1016%2Fj.cels.2018.05.012">10.1016/j.cels.2018.05.012</a>
                         </li>
                     </ol>
@@ -1037,12 +1014,12 @@ from the command line.</p>
 
 <code id="citation-code">@misc{data-science-python-venv,
 author = "The Carpentries and Helena Rasche",
-title = "Virtual Environments For Software Development (Galaxy Training Materials)",
-year = "",
-month = "",
-day = ""
-url = "\url{https://training.galaxyproject.org/training-material/topics/data-science/tutorials/python-venv/tutorial.html}",
-note = "[Online; accessed TODAY]"
+	title = "Virtual Environments For Software Development (Galaxy Training Materials)",
+	year = "",
+	month = "",
+	day = ""
+	url = "\url{https://training.galaxyproject.org/training-material/topics/data-science/tutorials/python-venv/tutorial.html}",
+	note = "[Online; accessed TODAY]"
 }
 @article{Hiltemann_2023,
 	doi = {10.1371/journal.pcbi.1010752},
@@ -1102,9 +1079,9 @@ note = "[Online; accessed TODAY]"
 
 <script>
 // update the date on load, or leave fallback of 'today'
-var d = new Date();
-document.getElementById("citation-code").innerHTML = document.getElementById("citation-code").innerHTML.replace("TODAY", d.toDateString());
-document.getElementById("citation-text").innerHTML = document.getElementById("citation-text").innerHTML.replace("TODAY", d.toDateString());
+const citationTodaysDate = new Date();
+document.getElementById("citation-code").innerHTML = document.getElementById("citation-code").innerHTML.replace("TODAY", citationTodaysDate.toDateString());
+document.getElementById("citation-text").innerHTML = document.getElementById("citation-text").innerHTML.replace("TODAY", citationTodaysDate.toDateString());
 </script>
 
                 <i class="far fa-thumbs-up" aria-hidden="true"></i> Congratulations on successfully completing this tutorial!
@@ -1113,12 +1090,30 @@ document.getElementById("citation-text").innerHTML = document.getElementById("ci
 
                 
                 <blockquote class="agenda follow-up">
+                    <div class="box-title">Go Further</div>
                     <strong class="follow-up"><i class="fas fa-graduation-cap" aria-hidden="true"></i> Do you want to extend your knowledge? Follow one of our recommended follow-up trainings:</strong>
                     <ul>
                         
                     </ul>
                 </blockquote>
                 
+
+		
+                <blockquote class="agenda follow-up" id="admins-install-missing-tools">
+                    <div class="box-title">Galaxy Administrators: Install the missing tools</div>
+			<p>You can use Ephemeris's <code>shed-tools install</code> command to install the tools used in this tutorial.</p>
+<div class="highlight"><pre class="highlight"><code>shed-tools install [-g GALAXY] [-a API_KEY] -t &lt;(curl https://training.galaxyproject.org/training-material/api/topics/data-science/tutorials/python-venv/tutorial.json | jq .admin_install_yaml -r)</code></pre></div>
+<p>Alternatively you can copy and paste the following YAML</p>
+<div class="highlight"><pre class="highlight"><code>---
+install_tool_dependencies: true
+install_repository_dependencies: true
+install_resolver_dependencies: true
+tools: []
+</code></pre></div>
+                </blockquote>
+		
+
+
                 </section>
 
             </div>
@@ -1130,38 +1125,52 @@ document.getElementById("citation-text").innerHTML = document.getElementById("ci
 <br/>
 
         </div>
-        
-        <script src="/training-material/assets/js/jquery.slim.min.js"></script>
-        <script src="/training-material/assets/js/popper.min.js"></script>
-        <script src="/training-material/assets/js/bootstrap.min.js?v=3"></script>
-        <script src="/training-material/assets/js/details-element-polyfill.js"></script>
+        <footer>
+	<hr />
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-6" style="text-align: left">
+				<p>
+					The <a href="https://galaxyproject.org/teach/gtn/">Galaxy Training Network</a>
+					provides researchers with online training materials, connects them with local trainers, and helps promoting FAIR and Open Science practices worldwide. All contributions are subject to the <a rel="code-of-conduct" href="https://galaxyproject.org/community/coc/">Galaxy Project Code of Conduct</a>.
+				</p>
+				<p>
+				The GTN infrastructure is licensed under <a rel="license" href="https://github.com/galaxyproject/training-material/blob/main/LICENSE.md">MIT</a>
+				</p>
+				<p>
+				Revision <a href="https://github.com/galaxyproject/training-material/commit/476574d2b382dd1db6c2c408d8fb6ec4393a6904">476574d</a>, built with Jekyll (4.3.2 | production)
+				</p>
+			</div>
+			<div class="col-sm-6" style="text-align: right">
+				
+				<p>
+					Resource <i class="fas fa-fingerprint" aria-hidden="true"></i><span class="visually-hidden">purl</span><abbr title="Persistent URL">PURL</abbr>: <a href="https://gxy.io/GTN:T00101">https://gxy.io/GTN:T00101</a>
+				</p>
+				
+				<p>
+					<i>This Material</i>:
+					
+					is licensed under
+					<a rel="license" href="https://spdx.org/licenses/CC-BY-4.0">
+						Creative Commons Attribution 4.0 International License
+					</a>
+				</p>
+				<p>
+					<a href="https://github.com/galaxyproject/training-material/edit/main/topics/data-science/tutorials/python-venv/tutorial.md" title="Edit on GitHub">
+					<i class="fab fa-github" aria-hidden="true"></i><span class="visually-hidden">github</span> Edit on GitHub
+					</a>
+				</p>
+			</div>
+		</div>
+	</div>
+</footer>
+
+
+    </div>
+</footer>
+
+
+        <script src='/training-material/assets/js/bundle.main.js?v=1687830693'></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-        <script src="/training-material/assets/js/bootstrap-toc.min.js"></script>
-        <script src="/training-material/assets/js/main.js"></script>
-        <script src="/training-material/assets/js/clipboard.min.js"></script>
-        <script>
-        var snippets=document.querySelectorAll('div.highlight');
-        [].forEach.call(snippets,function(snippet){
-            snippet.firstChild.insertAdjacentHTML('beforebegin','<button class="btn btn-light" data-clipboard-snippet tabindex="0"><i class="fa fa-copy"></i>&nbsp;Copy</button>');
-        });
-
-        var clipboardSnippets=new ClipboardJS('[data-clipboard-snippet]',{
-            target:function(trigger){return trigger.nextElementSibling;
-        }});
-        </script>
-        
-
-        <script type="text/javascript">
-            if(window.location.hostname === "galaxyproject.github.io") {
-                // Redirect
-                var redirect = "https://training.galaxyproject.org" + window.location.pathname + window.location.search;
-                $('div.container.main-content').prepend("<div class='alert alert-warning'><strong>Note: </strong>This content has a new home at <a href=\"" + redirect + "\">" + redirect + "</a>, which you will be redirected to in 5 seconds.</div>");
-
-                window.setTimeout(function(){
-                    window.location.href = redirect;
-                }, 5000)
-
-            }
-        </script>
     </body>
 </html>

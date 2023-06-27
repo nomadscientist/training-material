@@ -8,22 +8,51 @@
         
             <script async defer data-domain="training.galaxyproject.org" src="https://plausible.galaxyproject.eu/js/plausible.js"></script>
 
+<!-- JavaScript Error Monitoring, and performance tracking. -->
+<script
+  src="https://browser.sentry-cdn.com/7.52.1/bundle.tracing.min.js"
+  integrity="sha384-muuFXKS3752PNA4rPm9Uq6BLvOfV4CXyr9MHDBPvozOJJUWLKkogEFWOIRoVps43"
+  crossorigin="anonymous"
+></script>
+<script type="text/javascript">
+Sentry.init({
+  dsn: "https://45e0ec6e4373462b92969505df37cf40@sentry.galaxyproject.org/10",
+  release: "galaxy-training-network@476574d2b382dd1db6c2c408d8fb6ec4393a6904",
+  integrations: [new Sentry.BrowserTracing(), new Sentry.Replay()],
+  sampleRate: 0.1,
+  tracesSampleRate: 0.1,
+  // Capture Replay for no sessions by default
+  replaysSessionSampleRate: 0.01,
+  // plus for 1% of sessions with an error
+  replaysOnErrorSampleRate: 0.01,
+  // PII OFF
+  sendDefaultPii: false, // Off by default but just in case.
+  environment: "production",
+});
+</script>
+
         
-        <link rel="stylesheet" href="/training-material/assets/css/bootstrap.min.css?v=3">
-        <link rel="stylesheet" href="/training-material/assets/css/bootstrap-toc.min.css">
-        <link rel="stylesheet" href="/training-material/assets/css/main.css?v=2">
-        <link rel="stylesheet" href="/training-material/assets/fontawesome/css/all.css">
-        <link rel="stylesheet" href="/training-material/assets/css/academicons.css">
         <link rel="shortcut icon" href="/training-material/favicon.ico" type="image/x-icon">
         <link rel="alternate" type="application/atom+xml" href="/training-material/feed.xml">
         <link rel="canonical" href="https://training.galaxyproject.org/training-material/topics/epigenetics/tutorials/formation_of_super-structures_on_xi/tutorial.html">
-        <link rel="license" href="https://creativecommons.org/licenses/by/4.0/">
+        <link rel="license" href="https://spdx.org/licenses/CC-BY-4.0">
+        <link rel="preload" href="/training-material/assets/fonts/AtkinsonHyperlegible/Atkinson-Hyperlegible-Regular-102a.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="preload" href="/training-material/assets/fonts/AtkinsonHyperlegible/Atkinson-Hyperlegible-Bold-102a.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="preload" href="/training-material/assets/fonts/AtkinsonHyperlegible/Atkinson-Hyperlegible-Italic-102a.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML" as="script" crossorigin>
+        <link rel="preload" href="/training-material/assets/css/main.css?v=3" as="style">
+        <link rel='preload' href='/training-material/assets/js/bundle.theme.js?v=1687830693' as='script'>
+<link rel='preload' href='/training-material/assets/js/bundle.main.js?v=1687830693' as='script'>
+        <link rel="stylesheet" href="/training-material/assets/css/main.css?v=3">
+        <link rel="manifest" href="/training-material/manifest.json">
+        <meta name="theme-color" content="#2c3143"/>
+
 
         <meta name="DC.identifier" content="https://github.com/galaxyproject/training-material">
 <meta name="DC.type" content="text">
 <meta name="DC.title" content="Formation of the Super-Structures on the Inactive X">
 <meta name="DC.publisher" content="Galaxy Training Network">
-<meta name="DC.date" content="2023-02-20 20:37:17 +0000">
+<meta name="DC.date" content="2023-05-18 09:34:29 +0000">
 <meta name="DC.creator" content="Friederike Dündar">
 <meta name="DC.creator" content="Anika Erxleben">
 <meta name="DC.creator" content="Bérénice Batut">
@@ -69,7 +98,7 @@
     "name": "Galaxy Training Network",
     "url": "https://galaxyproject.org/teach/gtn/"
   },
-  "dateModified": "2023-02-20 20:37:17 +0000",
+  "dateModified": "2023-05-18 09:34:29 +0000",
   "discussionUrl": "https://gitter.im/Galaxy-Training-Network/Lobby",
   "headline": "Formation of the Super-Structures on the Inactive X",
   "interactivityType": "mixed",
@@ -95,6 +124,10 @@
     "url": "https://galaxyproject.org/teach/gtn/"
   },
   "identifier": "https://github.com/galaxyproject/training-material",
+  "workTranslation": [
+
+  ],
+  "creativeWorkStatus": "Active",
   "accessMode": [
     "textual",
     "visual"
@@ -122,6 +155,7 @@
   "name": "Hands-on for 'Formation of the Super-Structures on the Inactive X' tutorial",
   "url": "https://training.galaxyproject.org/training-material/topics/epigenetics/tutorials/formation_of_super-structures_on_xi/tutorial.html",
   "timeRequired": "PT3H",
+  "teaches": "Inspect the read quality\n - Trim low quality bases\n - Map reads on a reference genome\n - Assess the quality of a ChIP-seq experiment\n - Extract coverage files\n - Call enriched regions or peaks",
   "keywords": "epigenetics, ChIP-seq",
   "description": "The questions this  addresses are:\n - Histone modification?\n - How is a raw set of ChIP-seq data processed and analyzed?\n - Where are the enriched regions for H3K27me3, H3K4me3 and CTCF on the chrX?\n\n\nThe objectives are:\n - Inspect the read quality\n - Trim low quality bases\n - Map reads on a reference genome\n - Assess the quality of a ChIP-seq experiment\n - Extract coverage files\n - Call enriched regions or peaks\n\n",
   "inLanguage": {
@@ -209,8 +243,8 @@
       "@context": "https://schema.org",
       "@type": "Person",
       "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
+        "@id": "https://bioschemas.org/profiles/Person/0.3-DRAFT",
+        "@type": "CreativeWork"
       },
       "url": "https://training.galaxyproject.org/training-material/hall-of-fame/friedue/",
       "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/friedue/",
@@ -230,8 +264,8 @@
       "@context": "https://schema.org",
       "@type": "Person",
       "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
+        "@id": "https://bioschemas.org/profiles/Person/0.3-DRAFT",
+        "@type": "CreativeWork"
       },
       "url": "https://training.galaxyproject.org/training-material/hall-of-fame/erxleben/",
       "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/erxleben/",
@@ -253,8 +287,8 @@
       "@context": "https://schema.org",
       "@type": "Person",
       "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
+        "@id": "https://bioschemas.org/profiles/Person/0.3-DRAFT",
+        "@type": "CreativeWork"
       },
       "url": "https://training.galaxyproject.org/training-material/hall-of-fame/bebatut/",
       "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/bebatut/",
@@ -276,8 +310,8 @@
       "@context": "https://schema.org",
       "@type": "Person",
       "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
+        "@id": "https://bioschemas.org/profiles/Person/0.3-DRAFT",
+        "@type": "CreativeWork"
       },
       "url": "https://training.galaxyproject.org/training-material/hall-of-fame/vivekbhr/",
       "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/vivekbhr/",
@@ -297,8 +331,8 @@
       "@context": "https://schema.org",
       "@type": "Person",
       "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
+        "@id": "https://bioschemas.org/profiles/Person/0.3-DRAFT",
+        "@type": "CreativeWork"
       },
       "url": "https://training.galaxyproject.org/training-material/hall-of-fame/fidelram/",
       "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/fidelram/",
@@ -318,140 +352,8 @@
       "@context": "https://schema.org",
       "@type": "Person",
       "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
-      },
-      "url": "https://training.galaxyproject.org/training-material/hall-of-fame/LeilyR/",
-      "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/LeilyR/",
-      "name": "Leily Rabbani",
-      "image": "https://avatars.githubusercontent.com/LeilyR",
-      "description": "A contributor to the GTN project.",
-      "memberOf": [
-        {
-          "@type": "Organization",
-          "email": "galaxytrainingnetwork@gmail.com",
-          "name": "Galaxy Training Network",
-          "url": "https://galaxyproject.org/teach/gtn/"
-        }
-      ]
-    }
-  ],
-  "contributor": [
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
-      },
-      "url": "https://training.galaxyproject.org/training-material/hall-of-fame/friedue/",
-      "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/friedue/",
-      "name": "Friederike Dündar",
-      "image": "https://avatars.githubusercontent.com/friedue",
-      "description": "A contributor to the GTN project.",
-      "memberOf": [
-        {
-          "@type": "Organization",
-          "email": "galaxytrainingnetwork@gmail.com",
-          "name": "Galaxy Training Network",
-          "url": "https://galaxyproject.org/teach/gtn/"
-        }
-      ]
-    },
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
-      },
-      "url": "https://training.galaxyproject.org/training-material/hall-of-fame/erxleben/",
-      "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/erxleben/",
-      "name": "Anika Erxleben",
-      "image": "https://avatars.githubusercontent.com/erxleben",
-      "description": "A contributor to the GTN project.",
-      "memberOf": [
-        {
-          "@type": "Organization",
-          "email": "galaxytrainingnetwork@gmail.com",
-          "name": "Galaxy Training Network",
-          "url": "https://galaxyproject.org/teach/gtn/"
-        }
-      ],
-      "identifier": "https://orcid.org/0000-0002-7427-6478",
-      "orcid": "https://orcid.org/0000-0002-7427-6478"
-    },
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
-      },
-      "url": "https://training.galaxyproject.org/training-material/hall-of-fame/bebatut/",
-      "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/bebatut/",
-      "name": "Bérénice Batut",
-      "image": "https://avatars.githubusercontent.com/bebatut",
-      "description": "A contributor to the GTN project.",
-      "memberOf": [
-        {
-          "@type": "Organization",
-          "email": "galaxytrainingnetwork@gmail.com",
-          "name": "Galaxy Training Network",
-          "url": "https://galaxyproject.org/teach/gtn/"
-        }
-      ],
-      "identifier": "https://orcid.org/0000-0001-9852-1987",
-      "orcid": "https://orcid.org/0000-0001-9852-1987"
-    },
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
-      },
-      "url": "https://training.galaxyproject.org/training-material/hall-of-fame/vivekbhr/",
-      "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/vivekbhr/",
-      "name": "Vivek Bhardwaj",
-      "image": "https://avatars.githubusercontent.com/vivekbhr",
-      "description": "A contributor to the GTN project.",
-      "memberOf": [
-        {
-          "@type": "Organization",
-          "email": "galaxytrainingnetwork@gmail.com",
-          "name": "Galaxy Training Network",
-          "url": "https://galaxyproject.org/teach/gtn/"
-        }
-      ]
-    },
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
-      },
-      "url": "https://training.galaxyproject.org/training-material/hall-of-fame/fidelram/",
-      "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/fidelram/",
-      "name": "Fidel Ramirez",
-      "image": "https://avatars.githubusercontent.com/fidelram",
-      "description": "A contributor to the GTN project.",
-      "memberOf": [
-        {
-          "@type": "Organization",
-          "email": "galaxytrainingnetwork@gmail.com",
-          "name": "Galaxy Training Network",
-          "url": "https://galaxyproject.org/teach/gtn/"
-        }
-      ]
-    },
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
+        "@id": "https://bioschemas.org/profiles/Person/0.3-DRAFT",
+        "@type": "CreativeWork"
       },
       "url": "https://training.galaxyproject.org/training-material/hall-of-fame/LeilyR/",
       "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/LeilyR/",
@@ -482,13 +384,21 @@
       "termCode": "topic_3173",
       "url": "https://bioportal.bioontology.org/ontologies/EDAM/?p=classes&conceptid=http%3A%2F%2Fedamontology.org%2Ftopic_3173"
     }
-  ]
+  ],
+  "educationalLevel": "Introductory",
+  "mentions": [
+    {
+      "@type": "Thing",
+      "name": "ChIP-seq"
+    }
+  ],
+  "abstract": "# Introduction"
 }
         </script>
         
     </head>
     <body data-spy="scroll" data-target="#toc">
-        <script type="text/javascript" src="/training-material/assets/js/theme.js"></script>
+        <script src='/training-material/assets/js/bundle.theme.js?v=1687830693'></script>
         <header>
     <nav class="navbar navbar-expand-md navbar-dark" aria-label="Site Navigation">
         <div class="container">
@@ -557,7 +467,6 @@
     </a>
     <div class="dropdown-menu dropdown-menu-right">
 
-        
         <a class="dropdown-item" href="https://github.com/galaxyproject/training-material/edit/main/topics/epigenetics/tutorials/formation_of_super-structures_on_xi/tutorial.md" title="Edit on GitHub">
           <i class="fab fa-github" aria-hidden="true"></i><span class="visually-hidden">github</span> Edit on GitHub
         </a>
@@ -605,13 +514,13 @@
 
             <div id="archive-selector">
             
-                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2020-01-06/topics/epigenetics/tutorials/formation_of_super-structures_on_xi/tutorial.html" title="Version 2020-01-06">2020-01-06</a>
+                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2020-01-06/topics/epigenetics/tutorials/formation_of_super-structures_on_xi/tutorial.html">2020-01-06</a>
             
-                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2019-12-01/topics/epigenetics/tutorials/formation_of_super-structures_on_xi/tutorial.html" title="Version 2019-12-01">2019-12-01</a>
+                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2019-12-01/topics/epigenetics/tutorials/formation_of_super-structures_on_xi/tutorial.html">2019-12-01</a>
             
-                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2019-11-01/topics/epigenetics/tutorials/formation_of_super-structures_on_xi/tutorial.html" title="Version 2019-11-01">2019-11-01</a>
+                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2019-11-01/topics/epigenetics/tutorials/formation_of_super-structures_on_xi/tutorial.html">2019-11-01</a>
             
-                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/" title="Older Versions">Older Versions</a>
+                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/">Older Versions</a>
             </div>
 
         </div>
@@ -624,7 +533,7 @@
                     <li class="nav-item">
                       <div id="navbarSupportedContent" role="search">
                         <!-- Search form -->
-                        <form class="form-inline mr-auto" method="GET" action="/training-material/search">
+                        <form class="form-inline mr-auto" method="GET" action="/training-material/search2">
                           <i class="fas fa-search nav-link" aria-hidden="true"></i>
                           <div class="md-form mb-2">
                             <input name="query" class="form-control nicer" type="text" placeholder="Search Tutorials" aria-label="Search">
@@ -661,457 +570,7 @@
 
 
 
-<script>
-  ((window.gitter = {}).chat = {}).options = {
-  room: 'Galaxy-Training-Network/Lobby'
-  };
-</script>
 
-
-<script src="https://sidecar.gitter.im/dist/sidecar.v1.js" async defer></script>
-
-<script type="application/ld+json">
-    
-
-
-{
-  "@context": "http://schema.org",
-  "@type": "LearningResource",
-  "http://purl.org/dc/terms/conformsTo": {
-    "@id": "https://bioschemas.org/profiles/TrainingMaterial/1.0-RELEASE",
-    "@type": "CreativeWork"
-  },
-  "audience": {
-    "@type": "EducationalAudience",
-    "educationalRole": "Students"
-  },
-  "citation": {
-    "@type": "CreativeWork",
-    "name": "Community-Driven Data Analysis Training for Biology",
-    "url": "https://doi.org/10.1016/j.cels.2018.05.012"
-  },
-  "copyrightHolder": {
-    "@type": "Organization",
-    "email": "galaxytrainingnetwork@gmail.com",
-    "name": "Galaxy Training Network",
-    "url": "https://galaxyproject.org/teach/gtn/"
-  },
-  "dateModified": "2023-02-20 20:37:17 +0000",
-  "discussionUrl": "https://gitter.im/Galaxy-Training-Network/Lobby",
-  "headline": "Formation of the Super-Structures on the Inactive X",
-  "interactivityType": "mixed",
-  "isAccessibleForFree": true,
-  "isFamilyFriendly": true,
-  "license": "https://spdx.org/licenses/CC-BY-4.0.html",
-  "producer": {
-    "@type": "Organization",
-    "email": "galaxytrainingnetwork@gmail.com",
-    "name": "Galaxy Training Network",
-    "url": "https://galaxyproject.org/teach/gtn/"
-  },
-  "provider": {
-    "@type": "Organization",
-    "email": "galaxytrainingnetwork@gmail.com",
-    "name": "Galaxy Training Network",
-    "url": "https://galaxyproject.org/teach/gtn/"
-  },
-  "sourceOrganization": {
-    "@type": "Organization",
-    "email": "galaxytrainingnetwork@gmail.com",
-    "name": "Galaxy Training Network",
-    "url": "https://galaxyproject.org/teach/gtn/"
-  },
-  "identifier": "https://github.com/galaxyproject/training-material",
-  "accessMode": [
-    "textual",
-    "visual"
-  ],
-  "accessModeSufficient": [
-    "textual",
-    "visual"
-  ],
-  "accessibilityControl": [
-    "fullKeyboardControl",
-    "fullMouseControl"
-  ],
-  "accessibilityFeature": [
-    "alternativeText",
-    "tableOfContents"
-  ],
-  "accessibilitySummary": "The text aims to be as accessible as possible. Image descriptions will vary per tutorial, from images being completely inaccessible, to images with good descriptions for non-visual users.",
-  "isPartOf": {
-    "@type": "CreativeWork",
-    "name": "Epigenetics",
-    "description": "DNA methylation is an epigenetic mechanism used by higher eukaryotes and involved in e.g. gene expression, X-Chromosome inactivating, imprinting, and gene silencing of germline specific gene and repetitive elements.",
-    "url": "https://training.galaxyproject.org/training-material/topics/epigenetics/"
-  },
-  "learningResourceType": "hands-on tutorial",
-  "name": "Hands-on for 'Formation of the Super-Structures on the Inactive X' tutorial",
-  "url": "https://training.galaxyproject.org/training-material/topics/epigenetics/tutorials/formation_of_super-structures_on_xi/tutorial.html",
-  "timeRequired": "PT3H",
-  "keywords": "epigenetics, ChIP-seq",
-  "description": "The questions this  addresses are:\n - Histone modification?\n - How is a raw set of ChIP-seq data processed and analyzed?\n - Where are the enriched regions for H3K27me3, H3K4me3 and CTCF on the chrX?\n\n\nThe objectives are:\n - Inspect the read quality\n - Trim low quality bases\n - Map reads on a reference genome\n - Assess the quality of a ChIP-seq experiment\n - Extract coverage files\n - Call enriched regions or peaks\n\n",
-  "inLanguage": {
-    "@type": "Language",
-    "name": "English",
-    "alternateName": "en"
-  },
-  "competencyRequired": [
-    {
-      "@context": "http://schema.org",
-      "@type": "LearningResource",
-      "url": "https://training.galaxyproject.org/training-material/topics/introduction/",
-      "name": "Introduction to Galaxy Analyses",
-      "description": "Introduction to Galaxy Analyses",
-      "provider": {
-        "@type": "Organization",
-        "email": "galaxytrainingnetwork@gmail.com",
-        "name": "Galaxy Training Network",
-        "url": "https://galaxyproject.org/teach/gtn/"
-      }
-    },
-    {
-      "@context": "http://schema.org",
-      "@type": "LearningResource",
-      "url": "https://training.galaxyproject.org/training-material/topics/sequence-analysis/tutorials/quality-control/slides.html",
-      "name": "Quality Control",
-      "description": "Slides for 'Quality Control' tutorial",
-      "learningResourceType": "slides",
-      "interactivityType": "expositive",
-      "provider": {
-        "@type": "Organization",
-        "email": "galaxytrainingnetwork@gmail.com",
-        "name": "Galaxy Training Network",
-        "url": "https://galaxyproject.org/teach/gtn/"
-      }
-    },
-    {
-      "@context": "http://schema.org",
-      "@type": "LearningResource",
-      "url": "https://training.galaxyproject.org/training-material/topics/sequence-analysis/tutorials/quality-control/tutorial.html",
-      "name": "Quality Control",
-      "description": "Hands-on for 'Quality Control' tutorial",
-      "learningResourceType": "hands-on tutorial",
-      "interactivityType": "expositive",
-      "provider": {
-        "@type": "Organization",
-        "email": "galaxytrainingnetwork@gmail.com",
-        "name": "Galaxy Training Network",
-        "url": "https://galaxyproject.org/teach/gtn/"
-      }
-    },
-    {
-      "@context": "http://schema.org",
-      "@type": "LearningResource",
-      "url": "https://training.galaxyproject.org/training-material/topics/sequence-analysis/tutorials/mapping/slides.html",
-      "name": "Mapping",
-      "description": "Slides for 'Mapping' tutorial",
-      "learningResourceType": "slides",
-      "interactivityType": "expositive",
-      "provider": {
-        "@type": "Organization",
-        "email": "galaxytrainingnetwork@gmail.com",
-        "name": "Galaxy Training Network",
-        "url": "https://galaxyproject.org/teach/gtn/"
-      }
-    },
-    {
-      "@context": "http://schema.org",
-      "@type": "LearningResource",
-      "url": "https://training.galaxyproject.org/training-material/topics/sequence-analysis/tutorials/mapping/tutorial.html",
-      "name": "Mapping",
-      "description": "Hands-on for 'Mapping' tutorial",
-      "learningResourceType": "hands-on tutorial",
-      "interactivityType": "expositive",
-      "provider": {
-        "@type": "Organization",
-        "email": "galaxytrainingnetwork@gmail.com",
-        "name": "Galaxy Training Network",
-        "url": "https://galaxyproject.org/teach/gtn/"
-      }
-    }
-  ],
-  "author": [
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
-      },
-      "url": "https://training.galaxyproject.org/training-material/hall-of-fame/friedue/",
-      "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/friedue/",
-      "name": "Friederike Dündar",
-      "image": "https://avatars.githubusercontent.com/friedue",
-      "description": "A contributor to the GTN project.",
-      "memberOf": [
-        {
-          "@type": "Organization",
-          "email": "galaxytrainingnetwork@gmail.com",
-          "name": "Galaxy Training Network",
-          "url": "https://galaxyproject.org/teach/gtn/"
-        }
-      ]
-    },
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
-      },
-      "url": "https://training.galaxyproject.org/training-material/hall-of-fame/erxleben/",
-      "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/erxleben/",
-      "name": "Anika Erxleben",
-      "image": "https://avatars.githubusercontent.com/erxleben",
-      "description": "A contributor to the GTN project.",
-      "memberOf": [
-        {
-          "@type": "Organization",
-          "email": "galaxytrainingnetwork@gmail.com",
-          "name": "Galaxy Training Network",
-          "url": "https://galaxyproject.org/teach/gtn/"
-        }
-      ],
-      "identifier": "https://orcid.org/0000-0002-7427-6478",
-      "orcid": "https://orcid.org/0000-0002-7427-6478"
-    },
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
-      },
-      "url": "https://training.galaxyproject.org/training-material/hall-of-fame/bebatut/",
-      "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/bebatut/",
-      "name": "Bérénice Batut",
-      "image": "https://avatars.githubusercontent.com/bebatut",
-      "description": "A contributor to the GTN project.",
-      "memberOf": [
-        {
-          "@type": "Organization",
-          "email": "galaxytrainingnetwork@gmail.com",
-          "name": "Galaxy Training Network",
-          "url": "https://galaxyproject.org/teach/gtn/"
-        }
-      ],
-      "identifier": "https://orcid.org/0000-0001-9852-1987",
-      "orcid": "https://orcid.org/0000-0001-9852-1987"
-    },
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
-      },
-      "url": "https://training.galaxyproject.org/training-material/hall-of-fame/vivekbhr/",
-      "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/vivekbhr/",
-      "name": "Vivek Bhardwaj",
-      "image": "https://avatars.githubusercontent.com/vivekbhr",
-      "description": "A contributor to the GTN project.",
-      "memberOf": [
-        {
-          "@type": "Organization",
-          "email": "galaxytrainingnetwork@gmail.com",
-          "name": "Galaxy Training Network",
-          "url": "https://galaxyproject.org/teach/gtn/"
-        }
-      ]
-    },
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
-      },
-      "url": "https://training.galaxyproject.org/training-material/hall-of-fame/fidelram/",
-      "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/fidelram/",
-      "name": "Fidel Ramirez",
-      "image": "https://avatars.githubusercontent.com/fidelram",
-      "description": "A contributor to the GTN project.",
-      "memberOf": [
-        {
-          "@type": "Organization",
-          "email": "galaxytrainingnetwork@gmail.com",
-          "name": "Galaxy Training Network",
-          "url": "https://galaxyproject.org/teach/gtn/"
-        }
-      ]
-    },
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
-      },
-      "url": "https://training.galaxyproject.org/training-material/hall-of-fame/LeilyR/",
-      "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/LeilyR/",
-      "name": "Leily Rabbani",
-      "image": "https://avatars.githubusercontent.com/LeilyR",
-      "description": "A contributor to the GTN project.",
-      "memberOf": [
-        {
-          "@type": "Organization",
-          "email": "galaxytrainingnetwork@gmail.com",
-          "name": "Galaxy Training Network",
-          "url": "https://galaxyproject.org/teach/gtn/"
-        }
-      ]
-    }
-  ],
-  "contributor": [
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
-      },
-      "url": "https://training.galaxyproject.org/training-material/hall-of-fame/friedue/",
-      "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/friedue/",
-      "name": "Friederike Dündar",
-      "image": "https://avatars.githubusercontent.com/friedue",
-      "description": "A contributor to the GTN project.",
-      "memberOf": [
-        {
-          "@type": "Organization",
-          "email": "galaxytrainingnetwork@gmail.com",
-          "name": "Galaxy Training Network",
-          "url": "https://galaxyproject.org/teach/gtn/"
-        }
-      ]
-    },
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
-      },
-      "url": "https://training.galaxyproject.org/training-material/hall-of-fame/erxleben/",
-      "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/erxleben/",
-      "name": "Anika Erxleben",
-      "image": "https://avatars.githubusercontent.com/erxleben",
-      "description": "A contributor to the GTN project.",
-      "memberOf": [
-        {
-          "@type": "Organization",
-          "email": "galaxytrainingnetwork@gmail.com",
-          "name": "Galaxy Training Network",
-          "url": "https://galaxyproject.org/teach/gtn/"
-        }
-      ],
-      "identifier": "https://orcid.org/0000-0002-7427-6478",
-      "orcid": "https://orcid.org/0000-0002-7427-6478"
-    },
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
-      },
-      "url": "https://training.galaxyproject.org/training-material/hall-of-fame/bebatut/",
-      "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/bebatut/",
-      "name": "Bérénice Batut",
-      "image": "https://avatars.githubusercontent.com/bebatut",
-      "description": "A contributor to the GTN project.",
-      "memberOf": [
-        {
-          "@type": "Organization",
-          "email": "galaxytrainingnetwork@gmail.com",
-          "name": "Galaxy Training Network",
-          "url": "https://galaxyproject.org/teach/gtn/"
-        }
-      ],
-      "identifier": "https://orcid.org/0000-0001-9852-1987",
-      "orcid": "https://orcid.org/0000-0001-9852-1987"
-    },
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
-      },
-      "url": "https://training.galaxyproject.org/training-material/hall-of-fame/vivekbhr/",
-      "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/vivekbhr/",
-      "name": "Vivek Bhardwaj",
-      "image": "https://avatars.githubusercontent.com/vivekbhr",
-      "description": "A contributor to the GTN project.",
-      "memberOf": [
-        {
-          "@type": "Organization",
-          "email": "galaxytrainingnetwork@gmail.com",
-          "name": "Galaxy Training Network",
-          "url": "https://galaxyproject.org/teach/gtn/"
-        }
-      ]
-    },
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
-      },
-      "url": "https://training.galaxyproject.org/training-material/hall-of-fame/fidelram/",
-      "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/fidelram/",
-      "name": "Fidel Ramirez",
-      "image": "https://avatars.githubusercontent.com/fidelram",
-      "description": "A contributor to the GTN project.",
-      "memberOf": [
-        {
-          "@type": "Organization",
-          "email": "galaxytrainingnetwork@gmail.com",
-          "name": "Galaxy Training Network",
-          "url": "https://galaxyproject.org/teach/gtn/"
-        }
-      ]
-    },
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
-      },
-      "url": "https://training.galaxyproject.org/training-material/hall-of-fame/LeilyR/",
-      "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/LeilyR/",
-      "name": "Leily Rabbani",
-      "image": "https://avatars.githubusercontent.com/LeilyR",
-      "description": "A contributor to the GTN project.",
-      "memberOf": [
-        {
-          "@type": "Organization",
-          "email": "galaxytrainingnetwork@gmail.com",
-          "name": "Galaxy Training Network",
-          "url": "https://galaxyproject.org/teach/gtn/"
-        }
-      ]
-    }
-  ],
-  "about": [
-    {
-      "@type": "CreativeWork",
-      "name": "Epigenetics",
-      "description": "DNA methylation is an epigenetic mechanism used by higher eukaryotes and involved in e.g. gene expression, X-Chromosome inactivating, imprinting, and gene silencing of germline specific gene and repetitive elements.",
-      "url": "https://training.galaxyproject.org/training-material/topics/epigenetics/"
-    },
-    {
-      "@type": "DefinedTerm",
-      "@id": "http://edamontology.org/topic_3173",
-      "inDefinedTermSet": "http://edamontology.org",
-      "termCode": "topic_3173",
-      "url": "https://bioportal.bioontology.org/ontologies/EDAM/?p=classes&conceptid=http%3A%2F%2Fedamontology.org%2Ftopic_3173"
-    }
-  ]
-}
-</script>
 
 <article class="tutorial topic-epigenetics">
     <h1 data-toc-skip>Formation of the Super-Structures on the Inactive X</h1>
@@ -1121,7 +580,7 @@
     <div markdown="0">
 
 	<div class="contributors-line">
-		Authors: <a href="/training-material/hall-of-fame/friedue/" class="contributor-badge contributor-friedue"><img src="https://avatars.githubusercontent.com/friedue?s=27" alt="Avatar">Friederike Dündar</a><a href="/training-material/hall-of-fame/erxleben/" class="contributor-badge contributor-erxleben"><img src="/training-material/assets/images/orcid.png" alt="orcid logo"/><img src="https://avatars.githubusercontent.com/erxleben?s=27" alt="Avatar">Anika Erxleben</a><a href="/training-material/hall-of-fame/bebatut/" class="contributor-badge contributor-bebatut"><img src="/training-material/assets/images/orcid.png" alt="orcid logo"/><img src="https://avatars.githubusercontent.com/bebatut?s=27" alt="Avatar">Bérénice Batut</a><a href="/training-material/hall-of-fame/vivekbhr/" class="contributor-badge contributor-vivekbhr"><img src="https://avatars.githubusercontent.com/vivekbhr?s=27" alt="Avatar">Vivek Bhardwaj</a><a href="/training-material/hall-of-fame/fidelram/" class="contributor-badge contributor-fidelram"><img src="https://avatars.githubusercontent.com/fidelram?s=27" alt="Avatar">Fidel Ramirez</a><a href="/training-material/hall-of-fame/LeilyR/" class="contributor-badge contributor-LeilyR"><img src="https://avatars.githubusercontent.com/LeilyR?s=27" alt="Avatar">Leily Rabbani</a>
+		Authors: <a href="/training-material/hall-of-fame/friedue/" class="contributor-badge contributor-friedue"><img src="https://avatars.githubusercontent.com/friedue?s=36" alt="Avatar" width="36" height="36">Friederike Dündar</a><a href="/training-material/hall-of-fame/erxleben/" class="contributor-badge contributor-erxleben"><img src="/training-material/assets/images/orcid.png" alt="orcid logo" width="36" height="36"/><img src="https://avatars.githubusercontent.com/erxleben?s=36" alt="Avatar" width="36" height="36">Anika Erxleben</a><a href="/training-material/hall-of-fame/bebatut/" class="contributor-badge contributor-bebatut"><img src="/training-material/assets/images/orcid.png" alt="orcid logo" width="36" height="36"/><img src="https://avatars.githubusercontent.com/bebatut?s=36" alt="Avatar" width="36" height="36">Bérénice Batut</a><a href="/training-material/hall-of-fame/vivekbhr/" class="contributor-badge contributor-vivekbhr"><img src="https://avatars.githubusercontent.com/vivekbhr?s=36" alt="Avatar" width="36" height="36">Vivek Bhardwaj</a><a href="/training-material/hall-of-fame/fidelram/" class="contributor-badge contributor-fidelram"><img src="https://avatars.githubusercontent.com/fidelram?s=36" alt="Avatar" width="36" height="36">Fidel Ramirez</a><a href="/training-material/hall-of-fame/LeilyR/" class="contributor-badge contributor-LeilyR"><img src="https://avatars.githubusercontent.com/LeilyR?s=36" alt="Avatar" width="36" height="36">Leily Rabbani</a>
 	</div>
 
 </div>
@@ -1321,205 +780,88 @@
                 <li class="btn btn-default supporting_material">
 
 
+
+
+
     <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false" title="Where to run the tutorial">
         <i class="fas fa-globe" aria-hidden="true"></i><span class="visually-hidden">instances</span>&nbsp;Available on these Galaxies 
     </a>
     <ul class="dropdown-menu">
+	<li class="dropdown-header">
+		<b>Known Working</b>
+	</li>
+	
+	
+
     
+	<li>
+		<a class="dropdown-item" href="https://usegalaxy.be/" title="">
+			UseGalaxy.be <abbr title="This instance supports the precise tool versions used in this tutorial">✅</abbr> ⭐️
+		</a>
+	</li>
+    
+    
+	<li class="dropdown-header">
+		<b>Possibly Working</b>
+	</li>
+    
+	<li>
+		<a class="dropdown-item" href="https://usegalaxy.eu" title="">
+			UseGalaxy.eu
+		</a>
+	</li>
+    
+	<li>
+		<a class="dropdown-item" href="https://usegalaxy.fr/" title="">
+			UseGalaxy.fr
+		</a>
+	</li>
+    
+	<li>
+		<a class="dropdown-item" href="https://usegalaxy.no/" title="">
+			UseGalaxy.no
+		</a>
+	</li>
+    
+	<li>
+		<a class="dropdown-item" href="https://usegalaxy.org" title="">
+			UseGalaxy.org (Main)
+		</a>
+	</li>
+    
+	<li>
+		<a class="dropdown-item" href="https://usegalaxy.org.au" title="">
+			UseGalaxy.org.au
+		</a>
+	</li>
+    
+
+    
+	<li class="dropdown-header">
+		Containers
+	</li>
         <li>
-            <a class="dropdown-item" href="https://github.com/galaxyproject/training-material/tree/main/topics/epigenetics/docker" title="Docker image for this tutorial">
+            <a class="dropdown-item" href="https://github.com/galaxyproject/training-material/tree/main/topics//docker" title="Docker image for this tutorial">
                 <i class="fab fa-docker" aria-hidden="true"></i><span class="visually-hidden">docker_image</span> Docker image
             </a>
         </li>
     
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-        <a class="dropdown-item" href="https://clipseq.usegalaxy.eu/" title="CLIP-Explorer">
-            CLIP-Explorer
-        </a>
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-        <a class="dropdown-item" href="https://africa.usegalaxy.eu/" title="Galaxy Africa">
-            Galaxy Africa
-        </a>
-        
-    
-        
-        <a class="dropdown-item" href="https://india.usegalaxy.eu/" title="Galaxy India">
-            Galaxy India
-        </a>
-        
-    
-        
-        <a class="dropdown-item" href="https://test.galaxyproject.org/" title="Galaxy Test">
-            Galaxy Test
-        </a>
-        
-    
-        
-    
-        
-    
-        
-        <a class="dropdown-item" href="https://galaxy.genouest.org" title="Galaxy@GenOuest">
-            Galaxy@GenOuest
-        </a>
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-        <a class="dropdown-item" href="https://hicexplorer.usegalaxy.eu" title="HiCExplorer">
-            HiCExplorer
-        </a>
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-        <a class="dropdown-item" href="https://plants.usegalaxy.eu/" title="Plant Anaylsis Workbench">
-            Plant Anaylsis Workbench
-        </a>
-        
-    
-        
-    
-        
-    
-        
-        <a class="dropdown-item" href="https://streetscience.usegalaxy.eu/" title="Street Science">
-            Street Science
-        </a>
-        
-    
-        
-        <a class="dropdown-item" href="https://usegalaxy.be/" title="UseGalaxy.be">
-            UseGalaxy.be
-        </a>
-        
-    
-        
-        <a class="dropdown-item" href="https://usegalaxy.eu" title="UseGalaxy.eu">
-            UseGalaxy.eu
-        </a>
-        
-    
-        
-        <a class="dropdown-item" href="https://usegalaxy.fr/" title="UseGalaxy.fr">
-            UseGalaxy.fr
-        </a>
-        
-    
-        
-        <a class="dropdown-item" href="https://usegalaxy.no/" title="UseGalaxy.no">
-            UseGalaxy.no
-        </a>
-        
-    
-        
-        <a class="dropdown-item" href="https://usegalaxy.org" title="UseGalaxy.org (Main)">
-            UseGalaxy.org (Main)
-        </a>
-        
-    
-        
-        <a class="dropdown-item" href="https://usegalaxy.org.au" title="UseGalaxy.org.au">
-            UseGalaxy.org.au
-        </a>
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
     </ul>
-
 
 </li>
             
         </ul>
         
 
-        <div><strong><i class="far fa-calendar" aria-hidden="true"></i> Last modification:</strong> Feb 20, 2023 </div>
+        <div><strong><i class="far fa-calendar" aria-hidden="true"></i> Last modification:</strong> May 18, 2023 </div>
         <div><strong><i class="fas fa-balance-scale" aria-hidden="true"></i> License:</strong>
+		
             
-            <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Tutorial Content is licensed under Creative Commons Attribution 4.0 International License</a>
-            
-            <a rel="license" href="https://github.com/galaxyproject/training-material/blob/main/LICENSE.md">The GTN Framework is licensed under MIT</a>
+            <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Tutorial Content is licensed under Creative Commons Attribution 4.0 International License</a>.
+             The GTN Framework is licensed under <a rel="license" href="https://github.com/galaxyproject/training-material/blob/main/LICENSE.md">MIT</a>
         </div>
         
-        <div><strong>Short Link:</strong> <a href="https://gxy.io/GTN:T00140">https://gxy.io/GTN:T00140</a> </div>
+        <div><strong><i class="fas fa-fingerprint" aria-hidden="true"></i><span class="visually-hidden">purl</span><abbr title="Persistent URL">PURL</abbr>:</strong> <a href="https://gxy.io/GTN:T00140">https://gxy.io/GTN:T00140</a> </div>
         
     </blockquote>
     </section>
@@ -1543,7 +885,7 @@
 <p>On a larger scale than nucleosomes, DNA is forming loops. DNA elements that would be otherwise separated by large distances can interact. The corresponding self-interacting (or self-associating) domains are found in many organisms: they are called Topologically Associating Domains (TADs) in mammalian cells. Mammalian chromosomes are also partitioned into two spatial compartments, labeled “A” and “B”, where regions in compartment A tend to interact preferentially with A compartment-associated regions than B compartment-associated ones. Similarly, regions in compartment B tend to associate with other B compartment-associated regions.</p>
 
 <blockquote class="comment">
-  <div class="box-title comment-title" id="comment-tip-learn-more-about-chromosome-conformation"><i class="far fa-comment-dots" aria-hidden="true"></i> Comment: Tip: Learn more about chromosome conformation</div>
+  <div class="box-title comment-title" id="comment-tip-learn-more-about-chromosome-conformation"><i class="far fa-comment-dots" aria-hidden="true" ></i> Comment: Tip: Learn more about chromosome conformation</div>
   <p>To learn more about chromosome conformation and TADs, you can follow our <a href="/training-material/topics/epigenetics/tutorials/hicexplorer/tutorial.html">HiC tutorial</a></p>
 </blockquote>
 
@@ -1551,7 +893,7 @@
 
 <p>Binding certain molecules to histone proteins can modify the chromatin structure and may result in changes in transcription level. For example, the H3K4me3 results from adding 3 methyl-group to the 4th lysine in the histone 3 protein. This modification is known to activate the transcription on nearby genes by opening the chromatin. The H3K27me3 on the other hand is inactivating the transcription of the nearby genes:</p>
 
-<figure id="figure-1"><img src="../../images/formation_of_super-structures_on_xi/histone_modifications.jpg" alt="Fadloun et al, 2013. " width="478" height="254" loading="lazy" /><figcaption><span class="figcaption-prefix"><strong>Figure 1</strong>:</span> Source: Fadloun et al, 2013</figcaption></figure>
+<figure id="figure-1" style="max-width: 90%; margin:auto;"><img src="../../images/formation_of_super-structures_on_xi/histone_modifications.jpg" alt="Fadloun et al, 2013. " width="478" height="254" loading="lazy" /><figcaption><span class="figcaption-prefix"><strong>Figure 1</strong>:</span> Source: Fadloun et al, 2013</figcaption></figure>
 
 <p>More H3K27me3 and less H3K4me3 on the Xi could explain a lower expression of the genes there.</p>
 
@@ -1564,7 +906,7 @@
 <p>Their idea was to identify the differences which could be observed between the Xi and activated X chromosome, on both wild-type and SMCHD1 gene knockdown samples to study the SMCHD1 effect.
 In different experiments, they targeted histones with H3K27me3 or H3K4me3 and CTCF using ChIP-seq experiments.</p>
 
-<figure id="figure-2"><img src="../../images/formation_of_super-structures_on_xi/Chromatin_immunoprecipitation_sequencing.jpg" alt="ChIP-seq workflow. " width="700" height="933" loading="lazy" /><figcaption><span class="figcaption-prefix"><strong>Figure 2</strong>:</span> Source: http://e.biohackers.net/ChIP-seq</figcaption></figure>
+<figure id="figure-2" style="max-width: 90%; margin:auto;"><img src="../../images/formation_of_super-structures_on_xi/Chromatin_immunoprecipitation_sequencing.jpg" alt="ChIP-seq workflow. " width="700" height="933" loading="lazy" /><figcaption><span class="figcaption-prefix"><strong>Figure 2</strong>:</span> Source: http://e.biohackers.net/ChIP-seq</figcaption></figure>
 
 <p>They obtained sequences corresponding to a portion of DNA linked to histones with H3K27me3, H3K4me3 or CTCF. Using this information, they could identify if there are differences in the H3K27me3, H3K4me3 and CTCF between the X (active or inactive) chromosomes and the potentially influenced genes.</p>
 
@@ -1618,7 +960,7 @@ In different experiments, they targeted histones with H3K27me3 or H3K4me3 and CT
 <p>To save time, we will do it only on the data of one sample <code class="language-plaintext highlighter-rouge">wt_H3K4me3_rep1</code> which has been already down-sampled. keep in mind that with real data this should be done on each and every sample.</p>
 
 <blockquote class="notranslate hands_on">
-  <div class="box-title hands-on-title" id="hands-on-import-the-data"><i class="fas fa-pencil-alt" aria-hidden="true"></i> Hands-on: Import the data</div>
+  <div class="box-title hands-on-title" id="hands-on-import-the-data"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Import the data</div>
 
   <ol>
     <li>
@@ -1626,8 +968,11 @@ In different experiments, they targeted histones with H3K27me3 or H3K4me3 and CT
 
       <!--SNIPPET-->
       <blockquote class="tip">   <div class="box-title tip-title" id="tip-creating-a-new-history"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-creating-a-new-history" aria-expanded="true"><i class="far fa-lightbulb" aria-hidden="true"></i> Tip: Creating a new history<span class="fold-unfold fa fa-minus-square"></span></button></div>   <p>Click the <i class="fas fa-plus" aria-hidden="true"></i><span class="visually-hidden">new-history</span> icon at the top of the history panel.</p>   <p>If the <i class="fas fa-plus" aria-hidden="true"></i><span class="visually-hidden">new-history</span> is missing:</p>   <ol>   <li>Click on the <i class="fas fa-cog" aria-hidden="true"></i><span class="visually-hidden">galaxy-gear</span> icon (<strong>History options</strong>) on the top of the history panel</li>   <li>Select the option <strong>Create New</strong> from the menu</li> </ol> </blockquote>
+      <p><!--END_SNIPPET--></p>
+
       <!--SNIPPET-->
       <blockquote class="tip">   <div class="box-title tip-title" id="tip-renaming-a-history"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-renaming-a-history" aria-expanded="true"><i class="far fa-lightbulb" aria-hidden="true"></i> Tip: Renaming a history<span class="fold-unfold fa fa-minus-square"></span></button></div>   <ol>   <li>Click on <i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden">galaxy-pencil</span> (<strong>Edit</strong>) next to the history name (which by default is “Unnamed history”)</li>   <li>Type the new name</li>   <li>Click on <strong>Save</strong></li> </ol>   <p>If you do not have the <i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden">galaxy-pencil</span> (<strong>Edit</strong>) next to the history name:</p>   <ol>   <li>Click on <strong>Unnamed history</strong> (or the current name of the history) (<strong>Click to rename history</strong>) at the top of your history panel</li>   <li>Type the new name</li>   <li>Press <kbd>Enter</kbd></li> </ol> </blockquote>
+      <p><!--END_SNIPPET--></p>
     </li>
     <li>
       <p>Import <code class="language-plaintext highlighter-rouge">wt_H3K4me3_read1.fastq.gz</code> and <code class="language-plaintext highlighter-rouge">wt_H3K4me3_read2.fastq.gz</code> from <a href="https://zenodo.org/record/1324070">Zenodo</a> or from the data library (ask your instructor)</p>
@@ -1637,9 +982,12 @@ https://zenodo.org/record/1324070/files/wt_H3K4me3_read2.fastq.gz
 </code></pre></div>      </div>
 
       <!--SNIPPET-->
-      <blockquote class="tip">   <div class="box-title tip-title" id="tip-importing-via-links"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-importing-via-links" aria-expanded="true"><i class="far fa-lightbulb" aria-hidden="true"></i> Tip: Importing via links<span class="fold-unfold fa fa-minus-square"></span></button></div>   <ul>   <li>Copy the link location</li>   <li>     <p>Open the Galaxy Upload Manager (<i class="fas fa-upload" aria-hidden="true"></i><span class="visually-hidden">galaxy-upload</span> on the top-right of the tool panel)</p>   </li>   <li>Select <strong>Paste/Fetch Data</strong></li>   <li>     <p>Paste the link(s) into the text field</p>   </li>   <li>     <p>Press <strong>Start</strong></p>   </li>   <li><strong>Close</strong> the window</li> </ul> </blockquote>
+      <blockquote class="tip">   <div class="box-title tip-title" id="tip-importing-via-links"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-importing-via-links" aria-expanded="true"><i class="far fa-lightbulb" aria-hidden="true"></i> Tip: Importing via links<span class="fold-unfold fa fa-minus-square"></span></button></div>   <ul>   <li>Copy the link location</li>   <li>     <p>Click <i class="fas fa-upload" aria-hidden="true"></i><span class="visually-hidden">galaxy-upload</span> <strong>Upload Data</strong> at the top of the tool panel</p>   </li>   <li>Select <i class="fa fa-edit" aria-hidden="true"></i><span class="visually-hidden">galaxy-wf-edit</span> <strong>Paste/Fetch Data</strong></li>   <li>     <p>Paste the link(s) into the text field</p>   </li>   <li>     <p>Press <strong>Start</strong></p>   </li>   <li><strong>Close</strong> the window</li> </ul> </blockquote>
+      <p><!--END_SNIPPET--></p>
+
       <!--SNIPPET-->
-      <blockquote class="tip">   <div class="box-title tip-title" id="tip-importing-data-from-a-data-library"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-importing-data-from-a-data-library" aria-expanded="true"><i class="far fa-lightbulb" aria-hidden="true"></i> Tip: Importing data from a data library<span class="fold-unfold fa fa-minus-square"></span></button></div>   <p>As an alternative to uploading the data from a URL or your computer, the files may also have been made available from a <em>shared data library</em>:</p>   <ul>   <li>Go into <strong>Shared data</strong> (top panel) then <strong>Data libraries</strong></li>   <li>Navigate to  the correct folder as indicated by your instructor</li>   <li>Select the desired files</li>   <li>Click on the <strong>To History</strong> button near the top and select <strong>as Datasets</strong> from the dropdown menu</li>   <li>In the pop-up window, select the history you want to import the files to (or create a new one)</li>   <li>Click on <strong>Import</strong></li> </ul> </blockquote>
+      <blockquote class="tip">   <div class="box-title tip-title" id="tip-importing-data-from-a-data-library"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-importing-data-from-a-data-library" aria-expanded="true"><i class="far fa-lightbulb" aria-hidden="true"></i> Tip: Importing data from a data library<span class="fold-unfold fa fa-minus-square"></span></button></div>   <p>As an alternative to uploading the data from a URL or your computer, the files may also have been made available from a <em>shared data library</em>:</p>   <ol>   <li>Go into <strong>Shared data</strong> (top panel) then <strong>Data libraries</strong></li>   <li>Navigate to  the correct folder as indicated by your instructor.     <ul>       <li>On most Galaxies tutorial data will be provided in a folder named <strong>GTN - Material –&gt; Topic Name -&gt; Tutorial Name</strong>.</li>     </ul>   </li>   <li>Select the desired files</li>   <li>Click on <strong>Add to History</strong> <i class="fas fa-caret-down" aria-hidden="true"></i><span class="visually-hidden">galaxy-dropdown</span> near the top and select <strong>as Datasets</strong> from the dropdown menu</li>   <li>     <p>In the pop-up window, choose</p>     <ul>       <li><em>“Select history”</em>: the history you want to import the data to (or create a new one)</li>     </ul>   </li>   <li>Click on <strong>Import</strong></li> </ol> </blockquote>
+      <p><!--END_SNIPPET--></p>
 
       <p>As default, Galaxy takes the link as name, so rename them.</p>
     </li>
@@ -1648,6 +996,7 @@ https://zenodo.org/record/1324070/files/wt_H3K4me3_read2.fastq.gz
 
       <!--SNIPPET-->
       <blockquote class="tip">   <div class="box-title tip-title" id="tip-renaming-a-dataset"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-renaming-a-dataset" aria-expanded="true"><i class="far fa-lightbulb" aria-hidden="true"></i> Tip: Renaming a dataset<span class="fold-unfold fa fa-minus-square"></span></button></div>   <ul>   <li>Click on the <i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden">galaxy-pencil</span> <strong>pencil icon</strong> for the dataset to edit its attributes</li>   <li>In the central panel, change the <strong>Name</strong> field</li>   <li>Click the <strong>Save</strong> button</li> </ul> </blockquote>
+      <p><!--END_SNIPPET--></p>
     </li>
     <li>
       <p>Inspect the first file by clicking on the <i class="far fa-eye" aria-hidden="true"></i><span class="visually-hidden">galaxy-eye</span> (eye) icon (<strong>View data</strong>)</p>
@@ -1657,7 +1006,7 @@ https://zenodo.org/record/1324070/files/wt_H3K4me3_read2.fastq.gz
 </blockquote>
 
 <blockquote class="question">
-  <div class="box-title question-title" id="question-15"><i class="far fa-question-circle" aria-hidden="true" ></i> Question</div>
+  <div class="box-title question-title" id="question"><i class="far fa-question-circle" aria-hidden="true" ></i> Question</div>
 
   <ol>
     <li>How are the DNA sequences stored?</li>
@@ -1665,7 +1014,7 @@ https://zenodo.org/record/1324070/files/wt_H3K4me3_read2.fastq.gz
   </ol>
 
   <blockquote class="solution">
-    <div class="box-title solution-title" id="solution-15"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-15" aria-expanded="true"><i class="far fa-eye" aria-hidden="true" ></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
+    <div class="box-title solution-title" id="solution"><button class="gtn-boxify-button solution" type="button" aria-controls="solution" aria-expanded="true"><i class="far fa-eye" aria-hidden="true" ></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
     <ol>
       <li>The DNA sequences are stored in a FASTQ file, in the second line of every 4-line group.</li>
       <li>This file format is called <a href="https://en.wikipedia.org/wiki/FASTQ_format">FASTQ format</a>. It stores sequence information and quality information. Each sequence is represented by a group of 4 lines with the 1st line being the sequence id, the second the sequence of nucleotides, the third a transition line and the last one a sequence of quality score for each nucleotide.</li>
@@ -1678,7 +1027,7 @@ https://zenodo.org/record/1324070/files/wt_H3K4me3_read2.fastq.gz
 <p>Sequence quality control is therefore an essential first step in your analysis. We use here similar tools as described in <a href="/training-material/topics/sequence-analysis">“Quality control” tutorial</a>: <a href="https://www.bioinformatics.babraham.ac.uk/projects/fastqc/">FastQC</a> and <a href="https://www.bioinformatics.babraham.ac.uk/projects/trim_galore/">Trim Galore</a>.</p>
 
 <blockquote class="notranslate hands_on">
-  <div class="box-title hands-on-title" id="hands-on-quality-control"><i class="fas fa-pencil-alt" aria-hidden="true"></i> Hands-on: Quality control</div>
+  <div class="box-title hands-on-title" id="hands-on-quality-control"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Quality control</div>
 
   <ol>
     <li>Run <strong>FastQC</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> with the following parameters
@@ -1688,12 +1037,13 @@ https://zenodo.org/record/1324070/files/wt_H3K4me3_read2.fastq.gz
 
       <!--SNIPPET-->
       <blockquote class="tip">   <div class="box-title tip-title" id="tip-select-multiple-datasets"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-select-multiple-datasets" aria-expanded="true"><i class="far fa-lightbulb" aria-hidden="true"></i> Tip: Select multiple datasets<span class="fold-unfold fa fa-minus-square"></span></button></div>   <ol>   <li>Click on <i class="far fa-copy" aria-hidden="true"></i><span class="visually-hidden">param-files</span> <strong>Multiple datasets</strong></li>   <li>Select several files by keeping the <kbd>Ctrl</kbd> (or <kbd>COMMAND</kbd>) key pressed and clicking on the files of interest</li> </ol> </blockquote>
+      <p><!--END_SNIPPET--></p>
     </li>
     <li>
       <p>Inspect the generated HTML files</p>
 
       <blockquote class="question">
-        <div class="box-title question-title" id="question"><i class="far fa-question-circle" aria-hidden="true"></i> Question</div>
+        <div class="box-title question-title" id="question-1"><i class="far fa-question-circle" aria-hidden="true" ></i> Question</div>
 
         <ol>
           <li>How is the quality of the reads in <code class="language-plaintext highlighter-rouge">wt_H3K4me3_read1</code>?</li>
@@ -1702,7 +1052,7 @@ https://zenodo.org/record/1324070/files/wt_H3K4me3_read2.fastq.gz
         </ol>
 
         <blockquote class="solution">
-          <div class="box-title solution-title" id="solution"><button class="gtn-boxify-button solution" type="button" aria-controls="solution" aria-expanded="true"><i class="far fa-eye" aria-hidden="true"></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
+          <div class="box-title solution-title" id="solution-1"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-1" aria-expanded="true"><i class="far fa-eye" aria-hidden="true" ></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
           <ol>
             <li>The reads in <code class="language-plaintext highlighter-rouge">wt_H3K4me3_read1</code> are of good quality:
               <ul>
@@ -1710,32 +1060,32 @@ https://zenodo.org/record/1324070/files/wt_H3K4me3_read2.fastq.gz
                 <li>
                   <p>The “Per base sequence quality” is not decreasing too much at the end of the sequences</p>
 
-                  <figure id="figure-3"><img src="../../images/formation_of_super-structures_on_xi/read1_per_base_sequence_quality.png" alt="Per base sequence quality for read1. " width="600" height="438" loading="lazy" /><figcaption><span class="figcaption-prefix"><strong>Figure 3</strong>:</span> Per base sequence quality</figcaption></figure>
+                  <figure id="figure-3" style="max-width: 90%; margin:auto;"><img src="../../images/formation_of_super-structures_on_xi/read1_per_base_sequence_quality.png" alt="Per base sequence quality for read1. " width="600" height="438" loading="lazy" /><figcaption><span class="figcaption-prefix"><strong>Figure 3</strong>:</span> Per base sequence quality</figcaption></figure>
                 </li>
                 <li>
                   <p>The mean quality score over the reads is quite high</p>
 
-                  <figure id="figure-4"><img src="../../images/formation_of_super-structures_on_xi/read1_per_sequence_quality_scores.png" alt="Per sequence quality scores for read1. " width="500" height="366" loading="lazy" /><figcaption><span class="figcaption-prefix"><strong>Figure 4</strong>:</span> Per sequence quality scores</figcaption></figure>
+                  <figure id="figure-4" style="max-width: 90%; margin:auto;"><img src="../../images/formation_of_super-structures_on_xi/read1_per_sequence_quality_scores.png" alt="Per sequence quality scores for read1. " width="500" height="366" loading="lazy" /><figcaption><span class="figcaption-prefix"><strong>Figure 4</strong>:</span> Per sequence quality scores</figcaption></figure>
                 </li>
                 <li>
                   <p>Homogeneous percentage of the bases</p>
 
-                  <figure id="figure-5"><img src="../../images/formation_of_super-structures_on_xi/read1_per_base_sequence_content.png" alt="Per base sequence content for read1. " width="500" height="362" loading="lazy" /><figcaption><span class="figcaption-prefix"><strong>Figure 5</strong>:</span> Per base sequence content</figcaption></figure>
+                  <figure id="figure-5" style="max-width: 90%; margin:auto;"><img src="../../images/formation_of_super-structures_on_xi/read1_per_base_sequence_content.png" alt="Per base sequence content for read1. " width="500" height="362" loading="lazy" /><figcaption><span class="figcaption-prefix"><strong>Figure 5</strong>:</span> Per base sequence content</figcaption></figure>
                 </li>
                 <li>
                   <p>No N in the reads</p>
 
-                  <figure id="figure-6"><img src="../../images/formation_of_super-structures_on_xi/read1_per_base_n_content.png" alt="Per base N content for read1. " width="500" height="364" loading="lazy" /><figcaption><span class="figcaption-prefix"><strong>Figure 6</strong>:</span> Per base N content</figcaption></figure>
+                  <figure id="figure-6" style="max-width: 90%; margin:auto;"><img src="../../images/formation_of_super-structures_on_xi/read1_per_base_n_content.png" alt="Per base N content for read1. " width="500" height="364" loading="lazy" /><figcaption><span class="figcaption-prefix"><strong>Figure 6</strong>:</span> Per base N content</figcaption></figure>
                 </li>
                 <li>
                   <p>No duplicated sequences</p>
 
-                  <figure id="figure-7"><img src="../../images/formation_of_super-structures_on_xi/read1_sequence_duplication_levels.png" alt="Sequence Duplication Levels for read1. " width="500" height="366" loading="lazy" /><figcaption><span class="figcaption-prefix"><strong>Figure 7</strong>:</span> Sequence Duplication Levels</figcaption></figure>
+                  <figure id="figure-7" style="max-width: 90%; margin:auto;"><img src="../../images/formation_of_super-structures_on_xi/read1_sequence_duplication_levels.png" alt="Sequence Duplication Levels for read1. " width="500" height="366" loading="lazy" /><figcaption><span class="figcaption-prefix"><strong>Figure 7</strong>:</span> Sequence Duplication Levels</figcaption></figure>
                 </li>
                 <li>
                   <p>No more known adapters</p>
 
-                  <figure id="figure-8"><img src="../../images/formation_of_super-structures_on_xi/read1_adapter_content.png" alt="Adapter Content for read1. " width="500" height="365" loading="lazy" /><figcaption><span class="figcaption-prefix"><strong>Figure 8</strong>:</span> Adapter Content</figcaption></figure>
+                  <figure id="figure-8" style="max-width: 90%; margin:auto;"><img src="../../images/formation_of_super-structures_on_xi/read1_adapter_content.png" alt="Adapter Content for read1. " width="500" height="365" loading="lazy" /><figcaption><span class="figcaption-prefix"><strong>Figure 8</strong>:</span> Adapter Content</figcaption></figure>
                 </li>
               </ul>
             </li>
@@ -1746,7 +1096,7 @@ https://zenodo.org/record/1324070/files/wt_H3K4me3_read2.fastq.gz
                 <li>
                   <p>The “Per base sequence quality” is decreasing more at the end of the sequences, but it stays correct</p>
 
-                  <figure id="figure-9"><img src="../../images/formation_of_super-structures_on_xi/read1_per_base_sequence_quality.png" alt="Per base sequence quality for read2. " width="600" height="438" loading="lazy" /><figcaption><span class="figcaption-prefix"><strong>Figure 9</strong>:</span> Per base sequence quality</figcaption></figure>
+                  <figure id="figure-9" style="max-width: 90%; margin:auto;"><img src="../../images/formation_of_super-structures_on_xi/read1_per_base_sequence_quality.png" alt="Per base sequence quality for read2. " width="600" height="438" loading="lazy" /><figcaption><span class="figcaption-prefix"><strong>Figure 9</strong>:</span> Per base sequence quality</figcaption></figure>
                 </li>
                 <li>
                   <p>The sequence <code class="language-plaintext highlighter-rouge">NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN</code> is over represented</p>
@@ -1774,12 +1124,12 @@ https://zenodo.org/record/1324070/files/wt_H3K4me3_read2.fastq.gz
 <p>It is often necessary to trim sequenced read, for example, to get rid of bases that were sequenced with high uncertainty (= low quality bases) at the read ends.</p>
 
 <blockquote class="question">
-  <div class="box-title question-title" id="question-16"><i class="far fa-question-circle" aria-hidden="true" ></i> Question</div>
+  <div class="box-title question-title" id="question-2"><i class="far fa-question-circle" aria-hidden="true" ></i> Question</div>
 
   <p>What is the relation between <code class="language-plaintext highlighter-rouge">wt_H3K4me3_read1</code> and <code class="language-plaintext highlighter-rouge">wt_H3K4me3_read2</code> ?</p>
 
   <blockquote class="solution">
-    <div class="box-title solution-title" id="solution-16"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-16" aria-expanded="true"><i class="far fa-eye" aria-hidden="true" ></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
+    <div class="box-title solution-title" id="solution-2"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-2" aria-expanded="true"><i class="far fa-eye" aria-hidden="true" ></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
     <p>The data has been sequenced using paired-end sequencing.</p>
 
     <p>The paired-end sequencing is based on the idea that the initial DNA fragments (longer than the actual read length) is sequenced from both sides. This approach results in two reads per fragment, with the first read in forward orientation and the second read in reverse-complement orientation. The distance between both reads is known. Thus, it can be used as an additional piece of information to improve the read mapping.</p>
@@ -1810,7 +1160,7 @@ https://zenodo.org/record/1324070/files/wt_H3K4me3_read2.fastq.gz
 </blockquote>
 
 <blockquote class="notranslate hands_on">
-  <div class="box-title hands-on-title" id="hands-on-trimming-low-quality-bases"><i class="fas fa-pencil-alt" aria-hidden="true"></i> Hands-on: Trimming low quality bases</div>
+  <div class="box-title hands-on-title" id="hands-on-trimming-low-quality-bases"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Trimming low quality bases</div>
 
   <ol>
     <li>Run <strong>Trim Galore!</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> with the following parameters
@@ -1824,7 +1174,7 @@ https://zenodo.org/record/1324070/files/wt_H3K4me3_read2.fastq.gz
           <p>The order is important here!</p>
 
           <blockquote class="tip">
-            <div class="box-title tip-title" id="tip-not-selectable-files"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-not-selectable-files" aria-expanded="true"><i class="far fa-lightbulb" aria-hidden="true"></i> Tip: Not selectable files?<span class="fold-unfold fa fa-minus-square"></span></button></div>
+            <div class="box-title tip-title" id="tip-not-selectable-files"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-not-selectable-files" aria-expanded="true"><i class="far fa-lightbulb" aria-hidden="true" ></i> Tip: Not selectable files?<span class="fold-unfold fa fa-minus-square"></span></button></div>
 
             <p>If your FASTQ files cannot be selected, you might check whether their format is FASTQ with Sanger-scaled quality values (<code class="language-plaintext highlighter-rouge">fastqsanger</code>). You can edit the data type by clicking on the <code class="language-plaintext highlighter-rouge">pencil</code> symbol.</p>
           </blockquote>
@@ -1842,7 +1192,7 @@ https://zenodo.org/record/1324070/files/wt_H3K4me3_read2.fastq.gz
       <p>Inspect the generated txt file (<code class="language-plaintext highlighter-rouge">report file</code>)</p>
 
       <blockquote class="question">
-        <div class="box-title question-title" id="question-1"><i class="far fa-question-circle" aria-hidden="true"></i> Question</div>
+        <div class="box-title question-title" id="question-3"><i class="far fa-question-circle" aria-hidden="true" ></i> Question</div>
 
         <ol>
           <li>How many basepairs has been removed from the forwards reads because of bad quality?</li>
@@ -1851,7 +1201,7 @@ https://zenodo.org/record/1324070/files/wt_H3K4me3_read2.fastq.gz
         </ol>
 
         <blockquote class="solution">
-          <div class="box-title solution-title" id="solution-1"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-1" aria-expanded="true"><i class="far fa-eye" aria-hidden="true"></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
+          <div class="box-title solution-title" id="solution-3"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-3" aria-expanded="true"><i class="far fa-eye" aria-hidden="true" ></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
           <ol>
             <li>32,198 bp (1.3%) (first <code class="language-plaintext highlighter-rouge">Quality-trimmed:</code>)</li>
             <li>116,414 bp (4.6%) (second <code class="language-plaintext highlighter-rouge">Quality-trimmed:</code>). It is not a surprise: we saw that the quality was dropping more at the end of the sequences for the reverse reads thant for the forward reads.</li>
@@ -1876,7 +1226,7 @@ https://zenodo.org/record/1324070/files/wt_H3K4me3_read2.fastq.gz
 <p>Nowadays, there are many mapping programs for shotgun sequenced DNA. We will use <a href="http://bowtie-bio.sourceforge.net/bowtie2/index.shtml">Bowtie2</a>.</p>
 
 <blockquote class="question">
-  <div class="box-title question-title" id="question-17"><i class="far fa-question-circle" aria-hidden="true" ></i> Question</div>
+  <div class="box-title question-title" id="question-4"><i class="far fa-question-circle" aria-hidden="true" ></i> Question</div>
 
   <ol>
     <li>What is a reference genome?</li>
@@ -1885,7 +1235,7 @@ https://zenodo.org/record/1324070/files/wt_H3K4me3_read2.fastq.gz
   </ol>
 
   <blockquote class="solution">
-    <div class="box-title solution-title" id="solution-17"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-17" aria-expanded="true"><i class="far fa-eye" aria-hidden="true" ></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
+    <div class="box-title solution-title" id="solution-4"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-4" aria-expanded="true"><i class="far fa-eye" aria-hidden="true" ></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
     <ol>
       <li>A reference genome (or reference assembly) is a set of nucleic acid sequences assembled as a representative example of a species’ genetic material. As they are often assembled from the sequencing of different individuals, they do not accurately represent the set of genes of any single organism, but a mosaic of different nucleic acid sequences from each individual.</li>
       <li>As the cost of DNA sequencing falls, and new full genome sequencing technologies emerge, more genome sequences continue to be generated. Using these new sequences, new alignments are built and the reference genomes improved (fewer gaps, fixed misrepresentations in the sequence, etc). The different reference genomes correspond to the different released versions (called “builds”).</li>
@@ -1897,7 +1247,7 @@ https://zenodo.org/record/1324070/files/wt_H3K4me3_read2.fastq.gz
 <h2 id="running-bowtie2">Running Bowtie2</h2>
 
 <blockquote class="notranslate hands_on">
-  <div class="box-title hands-on-title" id="hands-on-mapping"><i class="fas fa-pencil-alt" aria-hidden="true"></i> Hands-on: Mapping</div>
+  <div class="box-title hands-on-title" id="hands-on-mapping"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Mapping</div>
 
   <ol>
     <li><strong>Bowtie2</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> with
@@ -1920,12 +1270,12 @@ https://zenodo.org/record/1324070/files/wt_H3K4me3_read2.fastq.gz
       <p>Inspect the mapping stats</p>
 
       <blockquote class="question">
-        <div class="box-title question-title" id="question-2"><i class="far fa-question-circle" aria-hidden="true"></i> Question</div>
+        <div class="box-title question-title" id="question-5"><i class="far fa-question-circle" aria-hidden="true" ></i> Question</div>
 
         <p>How many reads where mapped? Uniquely or several times?</p>
 
         <blockquote class="solution">
-          <div class="box-title solution-title" id="solution-2"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-2" aria-expanded="true"><i class="far fa-eye" aria-hidden="true"></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
+          <div class="box-title solution-title" id="solution-5"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-5" aria-expanded="true"><i class="far fa-eye" aria-hidden="true" ></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
           <p>The overall alignment rate is 98.64%. This score is quite high. If you have less than 70-80%, you should investigate the cause: contamination, etc.</p>
 
           <p>43719 (90.27%) reads have been aligned concordantly exactly 1 time and 3340 (6.90%) aligned concordantly &gt;1 times. The latter ones correspond to multiple mapped reads. Allowing for multiple  mapped reads increases the number of usable reads and the sensitivity of peak detection;
@@ -2041,7 +1391,7 @@ however, the number of false positives may also increase.</p>
 </ul>
 
 <blockquote class="question">
-  <div class="box-title question-title" id="question-18"><i class="far fa-question-circle" aria-hidden="true" ></i> Question</div>
+  <div class="box-title question-title" id="question-6"><i class="far fa-question-circle" aria-hidden="true" ></i> Question</div>
 
   <ol>
     <li>Which information do you find in a SAM/BAM file?</li>
@@ -2049,7 +1399,7 @@ however, the number of false positives may also increase.</p>
   </ol>
 
   <blockquote class="solution">
-    <div class="box-title solution-title" id="solution-18"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-18" aria-expanded="true"><i class="far fa-eye" aria-hidden="true" ></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
+    <div class="box-title solution-title" id="solution-6"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-6" aria-expanded="true"><i class="far fa-eye" aria-hidden="true" ></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
     <ol>
       <li>Sequences and quality information, like a FASTQ</li>
       <li>Mapping information, Location of the read on the chromosome, Mapping quality, etc</li>
@@ -2085,7 +1435,7 @@ however, the number of false positives may also increase.</p>
 <p>The reads have a direction: they are mapped to the forward or reverse strand, respectively. When hovering over a read, extra information is displayed</p>
 
 <blockquote class="question">
-  <div class="box-title question-title" id="question-19"><i class="far fa-question-circle" aria-hidden="true" ></i> Question</div>
+  <div class="box-title question-title" id="question-7"><i class="far fa-question-circle" aria-hidden="true" ></i> Question</div>
 
   <ol>
     <li>What could it mean if a bar in the coverage view is colored?</li>
@@ -2093,7 +1443,7 @@ however, the number of false positives may also increase.</p>
   </ol>
 
   <blockquote class="solution">
-    <div class="box-title solution-title" id="solution-19"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-19" aria-expanded="true"><i class="far fa-eye" aria-hidden="true" ></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
+    <div class="box-title solution-title" id="solution-7"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-7" aria-expanded="true"><i class="far fa-eye" aria-hidden="true" ></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
     <ol>
       <li>If a nucleotide differs from the reference sequence in more than 20% of quality weighted reads, IGV colors the bar in proportion to the read count of each base.</li>
       <li>They have a mapping quality equal to zero. Interpretation of this mapping quality depends on the mapping aligner as some commonly used aligners use this convention to mark a read with multiple alignments. In such a case, the read also maps to another location with equally good placement. It is also possible that the read could not be uniquely placed but the other placements do not necessarily give equally good quality hits.</li>
@@ -2130,7 +1480,7 @@ We expect that the replicates of the ChIP-seq experiments should be clustered mo
 <p>Since in this tutorial we are interested in assessing H3K4me3, H3K27me3 and CTCF ChIP samples, the previous steps (quality control and mapping) needs to be run on all the replicates of ChIP samples as well as the input samples. To save time, we have already done that and you can now work directly on the BAM files of the provided 8 samples. For simplicity, the files include only the ChrX.</p>
 
 <blockquote class="notranslate hands_on">
-  <div class="box-title hands-on-title" id="hands-on-correlation-between-samples"><i class="fas fa-pencil-alt" aria-hidden="true"></i> Hands-on: Correlation between samples</div>
+  <div class="box-title hands-on-title" id="hands-on-correlation-between-samples"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Correlation between samples</div>
 
   <ol>
     <li>Create a new history</li>
@@ -2187,14 +1537,14 @@ https://zenodo.org/record/1324070/files/wt_input_rep2.bam
 </blockquote>
 
 <blockquote class="question">
-  <div class="box-title question-title" id="question-3"><i class="far fa-question-circle" aria-hidden="true"></i> Question</div>
+  <div class="box-title question-title" id="question-8"><i class="far fa-question-circle" aria-hidden="true" ></i> Question</div>
 
-  <figure id="figure-10"><img src="../../images/formation_of_super-structures_on_xi/plotCorrelation.png" alt="Output for plotCorrelation with the correlation scores between the 8 samples. " width="1100" height="950" loading="lazy" /><figcaption><span class="figcaption-prefix"><strong>Figure 10</strong>:</span> Correlation scores between the 8 samples</figcaption></figure>
+  <figure id="figure-10" style="max-width: 90%; margin:auto;"><img src="../../images/formation_of_super-structures_on_xi/plotCorrelation.png" alt="Output for plotCorrelation with the correlation scores between the 8 samples. " width="1100" height="950" loading="lazy" /><figcaption><span class="figcaption-prefix"><strong>Figure 10</strong>:</span> Correlation scores between the 8 samples</figcaption></figure>
 
   <p>How are your samples clustered? Does that correspond to your expectations?</p>
 
   <blockquote class="solution">
-    <div class="box-title solution-title" id="solution-3"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-3" aria-expanded="true"><i class="far fa-eye" aria-hidden="true"></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
+    <div class="box-title solution-title" id="solution-8"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-8" aria-expanded="true"><i class="far fa-eye" aria-hidden="true" ></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
     <p>As one could expect, the input replicates cluster together and the ChIP replicates cluster together. It confirms that the immuno-precipitation step worked on our ChIP replicates.</p>
 
     <p>Moreover, for each sample, there is a high correlation between the two replicates which confirms the validity of the experiments.</p>
@@ -2211,7 +1561,7 @@ https://zenodo.org/record/1324070/files/wt_input_rep2.bam
 <p>Similar to <strong>multiBamSummary</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span>, <strong>plotFingerprint</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> randomly samples genome regions of a specified length (bins) and sums the per-base coverage in the indexed BAM files that overlap with those regions. These coverage values are then sorted according to their rank and the cumulative sum of read counts is plotted.</p>
 
 <blockquote class="notranslate hands_on">
-  <div class="box-title hands-on-title" id="hands-on-ip-strength-estimation"><i class="fas fa-pencil-alt" aria-hidden="true"></i> Hands-on: IP strength estimation</div>
+  <div class="box-title hands-on-title" id="hands-on-ip-strength-estimation"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: IP strength estimation</div>
 
   <ol>
     <li><strong>plotFingerprint</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> with the following parameters
@@ -2236,17 +1586,17 @@ https://zenodo.org/record/1324070/files/wt_input_rep2.bam
 
 <p>An ideal ‘input’ with perfect uniform distribution of reads along the genome (i.e. without enrichments in open chromatin) and infinite sequencing coverage should generate a straight diagonal line. A very specific and strong ChIP enrichment will be indicated by a prominent and steep rise of the cumulative sum towards the highest rank. This means that a big chunk of reads from the ChIP sample is located in few bins which corresponds to high, narrow enrichments typically seen for transcription factors.</p>
 
-<figure id="figure-11"><img src="../../images/estrogen-receptor-binding-site-identification/QC_fingerprint.png" alt="A guide to interpret a fingerprint plot. " width="1436" height="722" loading="lazy" /><figcaption><span class="figcaption-prefix"><strong>Figure 11</strong>:</span> How to interpret a fingerprint plot? Image extracted from the deepTools documentation</figcaption></figure>
+<figure id="figure-11" style="max-width: 90%; margin:auto;"><img src="../../images/estrogen-receptor-binding-site-identification/QC_fingerprint.png" alt="A guide to interpret a fingerprint plot. " width="1436" height="722" loading="lazy" /><figcaption><span class="figcaption-prefix"><strong>Figure 11</strong>:</span> How to interpret a fingerprint plot? Image extracted from the deepTools documentation</figcaption></figure>
 
 <blockquote class="question">
-  <div class="box-title question-title" id="question-4"><i class="far fa-question-circle" aria-hidden="true"></i> Question</div>
+  <div class="box-title question-title" id="question-9"><i class="far fa-question-circle" aria-hidden="true" ></i> Question</div>
 
-  <figure id="figure-12"><img src="../../images/formation_of_super-structures_on_xi/plotFingerPrint.png" alt="Output for plotFingerprint with the fingerprint plot to estimate the IP strength. " width="640" height="480" loading="lazy" /><figcaption><span class="figcaption-prefix"><strong>Figure 12</strong>:</span> Fingerprint plot for the first replicates to estimate the IP strength</figcaption></figure>
+  <figure id="figure-12" style="max-width: 90%; margin:auto;"><img src="../../images/formation_of_super-structures_on_xi/plotFingerPrint.png" alt="Output for plotFingerprint with the fingerprint plot to estimate the IP strength. " width="640" height="480" loading="lazy" /><figcaption><span class="figcaption-prefix"><strong>Figure 12</strong>:</span> Fingerprint plot for the first replicates to estimate the IP strength</figcaption></figure>
 
   <p>What do you think about the quality of the IP for this experiment?</p>
 
   <blockquote class="solution">
-    <div class="box-title solution-title" id="solution-4"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-4" aria-expanded="true"><i class="far fa-eye" aria-hidden="true"></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
+    <div class="box-title solution-title" id="solution-9"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-9" aria-expanded="true"><i class="far fa-eye" aria-hidden="true" ></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
     <p>There is clear distinction between H3K4me3 and the input.</p>
 
     <p>A small percentage of the genome contain a very large fraction of the reads (&gt;70%, point of change in the blue curve)</p>
@@ -2256,7 +1606,7 @@ https://zenodo.org/record/1324070/files/wt_input_rep2.bam
 </blockquote>
 
 <blockquote class="notranslate hands_on">
-  <div class="box-title hands-on-title" id="hands-on-optional-ip-strength-estimation-other-samples"><i class="fas fa-pencil-alt" aria-hidden="true"></i> Hands-on: (Optional) IP strength estimation (other samples)</div>
+  <div class="box-title hands-on-title" id="hands-on-optional-ip-strength-estimation-other-samples"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: (Optional) IP strength estimation (other samples)</div>
 
   <p>Run the same analysis on the other ChIP-seq data along with their corresponding input and compare the output</p>
 </blockquote>
@@ -2275,7 +1625,7 @@ https://zenodo.org/record/1324070/files/wt_input_rep2.bam
 <h2 id="generation-of-coverage-files-normalized-by-sequencing-depth">Generation of coverage files normalized by sequencing depth</h2>
 
 <blockquote class="notranslate hands_on">
-  <div class="box-title hands-on-title" id="hands-on-estimation-of-the-sequencing-depth"><i class="fas fa-pencil-alt" aria-hidden="true"></i> Hands-on: Estimation of the sequencing depth</div>
+  <div class="box-title hands-on-title" id="hands-on-estimation-of-the-sequencing-depth"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Estimation of the sequencing depth</div>
 
   <ol>
     <li><strong>IdxStats</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> with the following parameters
@@ -2286,7 +1636,7 @@ https://zenodo.org/record/1324070/files/wt_input_rep2.bam
   </ol>
 
   <blockquote class="question">
-    <div class="box-title question-title" id="question-5"><i class="far fa-question-circle" aria-hidden="true"></i> Question</div>
+    <div class="box-title question-title" id="question-10"><i class="far fa-question-circle" aria-hidden="true" ></i> Question</div>
 
     <ol>
       <li>What is the output of <strong>IdxStats</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span>?</li>
@@ -2295,7 +1645,7 @@ https://zenodo.org/record/1324070/files/wt_input_rep2.bam
     </ol>
 
     <blockquote class="solution">
-      <div class="box-title solution-title" id="solution-5"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-5" aria-expanded="true"><i class="far fa-eye" aria-hidden="true"></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
+      <div class="box-title solution-title" id="solution-10"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-10" aria-expanded="true"><i class="far fa-eye" aria-hidden="true" ></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
       <ol>
         <li>This tool generates a table with 4 columns:  reference sequence identifier, reference sequence length, number of mapped reads and number of placed but unmapped reads. Here it estimates how many reads mapped to which chromosome. Furthermore, it tells the chromosome lengths and naming convention (with or without ‘chr’ in the beginning)</li>
         <li>1,204,821 for ChIP-seq samples and 1,893,595 for the input</li>
@@ -2310,7 +1660,7 @@ https://zenodo.org/record/1324070/files/wt_input_rep2.bam
 <p>We are using <strong>bamCoverage</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span>. Given a BAM file, this tool generates coverages by first calculating all the number of reads (either extended to match the fragment length or not) that overlap each bin in the genome and then normalizing with various options. It produces a coverage file where for each bin the number of overlapping reads (possibly normalized) is noted.</p>
 
 <blockquote class="notranslate hands_on">
-  <div class="box-title hands-on-title" id="hands-on-coverage-file-normalization"><i class="fas fa-pencil-alt" aria-hidden="true"></i> Hands-on: Coverage file normalization</div>
+  <div class="box-title hands-on-title" id="hands-on-coverage-file-normalization"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Coverage file normalization</div>
 
   <ol>
     <li><strong>bamCoverage</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> with the following parameters
@@ -2327,7 +1677,7 @@ https://zenodo.org/record/1324070/files/wt_input_rep2.bam
       </ul>
 
       <blockquote class="question">
-        <div class="box-title question-title" id="question-6"><i class="far fa-question-circle" aria-hidden="true"></i> Question</div>
+        <div class="box-title question-title" id="question-11"><i class="far fa-question-circle" aria-hidden="true" ></i> Question</div>
 
         <ol>
           <li>What is a <code class="language-plaintext highlighter-rouge">bedgraph</code> file?</li>
@@ -2335,7 +1685,7 @@ https://zenodo.org/record/1324070/files/wt_input_rep2.bam
         </ol>
 
         <blockquote class="solution">
-          <div class="box-title solution-title" id="solution-6"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-6" aria-expanded="true"><i class="far fa-eye" aria-hidden="true"></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
+          <div class="box-title solution-title" id="solution-11"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-11" aria-expanded="true"><i class="far fa-eye" aria-hidden="true" ></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
           <ol>
             <li>It is a tabular file with 4 columns: chrom, chromStart, chromEnd and a data value (coverage)</li>
             <li>We can run <strong>Sort</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> on the 4th column in descending order to get the regions with the highest (normalized) coverage. For <code class="language-plaintext highlighter-rouge">wt_H3K4me3_rep1</code>, the regions between 152,233,600	and 152,233,625	 are the most covered. For <code class="language-plaintext highlighter-rouge">wt_input_rep1</code>, between 143,483,000 and 143,483,100.</li>
@@ -2349,12 +1699,12 @@ https://zenodo.org/record/1324070/files/wt_input_rep2.bam
       </ul>
 
       <blockquote class="question">
-        <div class="box-title question-title" id="question-7"><i class="far fa-question-circle" aria-hidden="true"></i> Question</div>
+        <div class="box-title question-title" id="question-12"><i class="far fa-question-circle" aria-hidden="true" ></i> Question</div>
 
         <p>What is a <code class="language-plaintext highlighter-rouge">bigWig</code> file?</p>
 
         <blockquote class="solution">
-          <div class="box-title solution-title" id="solution-7"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-7" aria-expanded="true"><i class="far fa-eye" aria-hidden="true"></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
+          <div class="box-title solution-title" id="solution-12"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-12" aria-expanded="true"><i class="far fa-eye" aria-hidden="true" ></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
           <p>A <code class="language-plaintext highlighter-rouge">bigWig</code> file is a compressed <code class="language-plaintext highlighter-rouge">bedgraph</code> file. Similar in relation as BAM to SAM, but this time just for coverage data. This means bigWig and bedgraph files are much smaller than BAM or SAM files (no sequence or quality information).</p>
         </blockquote>
       </blockquote>
@@ -2365,14 +1715,14 @@ https://zenodo.org/record/1324070/files/wt_input_rep2.bam
 </blockquote>
 
 <blockquote class="question">
-  <div class="box-title question-title" id="question-8"><i class="far fa-question-circle" aria-hidden="true"></i> Question</div>
+  <div class="box-title question-title" id="question-13"><i class="far fa-question-circle" aria-hidden="true" ></i> Question</div>
 
   <p>If you zoom to <code class="language-plaintext highlighter-rouge">chrX:151,385,260-152,426,526</code>, what do you observe?</p>
 
-  <figure id="figure-13"><img src="../../images/formation_of_super-structures_on_xi/bamcoverage_igv.png" alt="Output of bamCoverage. " width="1265" height="337" loading="lazy" /><figcaption><span class="figcaption-prefix"><strong>Figure 13</strong>:</span> bamCoverage for wt_H3K4me3_rep1 and wt_input_rep1 on chrX:151,385,260-152,426,526</figcaption></figure>
+  <figure id="figure-13" style="max-width: 90%; margin:auto;"><img src="../../images/formation_of_super-structures_on_xi/bamcoverage_igv.png" alt="Output of bamCoverage. " width="1265" height="337" loading="lazy" /><figcaption><span class="figcaption-prefix"><strong>Figure 13</strong>:</span> bamCoverage for wt_H3K4me3_rep1 and wt_input_rep1 on chrX:151,385,260-152,426,526</figcaption></figure>
 
   <blockquote class="solution">
-    <div class="box-title solution-title" id="solution-8"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-8" aria-expanded="true"><i class="far fa-eye" aria-hidden="true"></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
+    <div class="box-title solution-title" id="solution-13"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-13" aria-expanded="true"><i class="far fa-eye" aria-hidden="true" ></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
     <p>The track with the coverage for the input (<code class="language-plaintext highlighter-rouge">wt_input_rep1</code>) seems quite homogeneous. On the other hand, for <code class="language-plaintext highlighter-rouge">wt_H3K4me3_rep1</code>, we can observe some clear peaks at the beginning of the genes.</p>
   </blockquote>
 </blockquote>
@@ -2382,7 +1732,7 @@ https://zenodo.org/record/1324070/files/wt_input_rep2.bam
 <p>To extract only the information induced by the immunoprecipitation, we normalize the coverage file for the sample that underwent immunoprecipitation by the coverage file for the input sample. Here we use the tool <strong>bamCompare</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> which compare 2 BAM files while caring for sequencing depth normalization.</p>
 
 <blockquote class="notranslate hands_on">
-  <div class="box-title hands-on-title" id="hands-on-generation-of-input-normalized-coverage-files"><i class="fas fa-pencil-alt" aria-hidden="true"></i> Hands-on: Generation of input-normalized coverage files</div>
+  <div class="box-title hands-on-title" id="hands-on-generation-of-input-normalized-coverage-files"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Generation of input-normalized coverage files</div>
 
   <ol>
     <li><strong>bamCompare</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> with the following parameters
@@ -2396,7 +1746,7 @@ https://zenodo.org/record/1324070/files/wt_input_rep2.bam
       </ul>
 
       <blockquote class="question">
-        <div class="box-title question-title" id="question-9"><i class="far fa-question-circle" aria-hidden="true"></i> Question</div>
+        <div class="box-title question-title" id="question-14"><i class="far fa-question-circle" aria-hidden="true" ></i> Question</div>
 
         <ol>
           <li>What does a positive value or a negative value mean in the 4th column?</li>
@@ -2404,7 +1754,7 @@ https://zenodo.org/record/1324070/files/wt_input_rep2.bam
         </ol>
 
         <blockquote class="solution">
-          <div class="box-title solution-title" id="solution-9"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-9" aria-expanded="true"><i class="far fa-eye" aria-hidden="true"></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
+          <div class="box-title solution-title" id="solution-14"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-14" aria-expanded="true"><i class="far fa-eye" aria-hidden="true" ></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
           <ol>
             <li>The 4th column contains the log2 of the number of reads ratio between the ChIP-seq sample and the input sample. A positive value means that the coverage on this portion of genome is higher in the ChIP-seq sample than in the input sample</li>
             <li>The highest: 152,233,800-152,233,850 (consistent with the most covered regions in <code class="language-plaintext highlighter-rouge">wt_H3K4me3_rep1</code> given by <strong>bamCoverage</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span>). The lowest: 169,916,600-169,916,650</li>
@@ -2423,14 +1773,14 @@ https://zenodo.org/record/1324070/files/wt_input_rep2.bam
 </blockquote>
 
 <blockquote class="question">
-  <div class="box-title question-title" id="question-10"><i class="far fa-question-circle" aria-hidden="true"></i> Question</div>
+  <div class="box-title question-title" id="question-15"><i class="far fa-question-circle" aria-hidden="true" ></i> Question</div>
 
   <p>How could you interpret the new track if you zoom to <code class="language-plaintext highlighter-rouge">chrX:151,385,260-152,426,526</code>?</p>
 
-  <figure id="figure-14"><img src="../../images/formation_of_super-structures_on_xi/bamcompare_igv.png" alt="Output of bamCoverage. " width="1266" height="336" loading="lazy" /><figcaption><span class="figcaption-prefix"><strong>Figure 14</strong>:</span> bamCoverage for wt_H3K4me3_rep1 and wt_input_rep1 on chrX:151,385,260-152,426,526</figcaption></figure>
+  <figure id="figure-14" style="max-width: 90%; margin:auto;"><img src="../../images/formation_of_super-structures_on_xi/bamcompare_igv.png" alt="Output of bamCoverage. " width="1266" height="336" loading="lazy" /><figcaption><span class="figcaption-prefix"><strong>Figure 14</strong>:</span> bamCoverage for wt_H3K4me3_rep1 and wt_input_rep1 on chrX:151,385,260-152,426,526</figcaption></figure>
 
   <blockquote class="solution">
-    <div class="box-title solution-title" id="solution-10"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-10" aria-expanded="true"><i class="far fa-eye" aria-hidden="true"></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
+    <div class="box-title solution-title" id="solution-15"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-15" aria-expanded="true"><i class="far fa-eye" aria-hidden="true" ></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
     <p>The new track is the difference between the first track (<code class="language-plaintext highlighter-rouge">wt_H3K4me3_rep1</code>) and the second track (<code class="language-plaintext highlighter-rouge">wt_input_rep1</code>)</p>
   </blockquote>
 </blockquote>
@@ -2440,7 +1790,7 @@ https://zenodo.org/record/1324070/files/wt_input_rep2.bam
 <p>We could see in the ChIP data some enriched regions (peaks). We now would like to call these regions to obtain their coordinates, using <strong>MACS2 callpeak</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span></p>
 
 <blockquote class="notranslate hands_on">
-  <div class="box-title hands-on-title" id="hands-on-peak-calling"><i class="fas fa-pencil-alt" aria-hidden="true"></i> Hands-on: Peak calling</div>
+  <div class="box-title hands-on-title" id="hands-on-peak-calling"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Peak calling</div>
 
   <ol>
     <li><strong>MACS2 callpeak</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> with the following parameters
@@ -2465,7 +1815,7 @@ https://zenodo.org/record/1324070/files/wt_input_rep2.bam
       </ul>
 
       <blockquote class="comment">
-        <div class="box-title comment-title" id="comment"><i class="far fa-comment-dots" aria-hidden="true"></i> Comment</div>
+        <div class="box-title comment-title" id="comment"><i class="far fa-comment-dots" aria-hidden="true" ></i> Comment</div>
         <p>The advanced options may be adjusted, depending of the samples.
 If your ChIP-seq experiment targets regions of broad enrichment, <em>e.g.</em> non-punctuate histone modifications, select calling of broad regions.
 If your sample has a low duplication rate (<em>e.g.</em> below 10%), you might keep all duplicate reads (tags). Otherwise, you might use the ‘auto’ option to estimate the maximal allowed number of duplicated reads per genomic location.</p>
@@ -2475,12 +1825,12 @@ If your sample has a low duplication rate (<em>e.g.</em> below 10%), you might k
       <p>Inspect the <i class="far fa-file" aria-hidden="true"></i><span class="visually-hidden">param-file</span> <code class="language-plaintext highlighter-rouge">(narrow Peaks)</code> file (output of <strong>MACS2 callpeak</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span>)</p>
 
       <blockquote class="question">
-        <div class="box-title question-title" id="question-11"><i class="far fa-question-circle" aria-hidden="true"></i> Question</div>
+        <div class="box-title question-title" id="question-16"><i class="far fa-question-circle" aria-hidden="true" ></i> Question</div>
 
         <p>Which type of files were generated? What do they include?</p>
 
         <blockquote class="solution">
-          <div class="box-title solution-title" id="solution-11"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-11" aria-expanded="true"><i class="far fa-eye" aria-hidden="true"></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
+          <div class="box-title solution-title" id="solution-16"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-16" aria-expanded="true"><i class="far fa-eye" aria-hidden="true" ></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
           <p><strong>MACS2 callpeak</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> has generated a bed file with the coordinates of the identified peaks: chromosome, start, stop, name, integer score, strand, fold-change, -log10pvalue, -log10qvalue and relative summit position to peak start, as well as a html report which contains links to additional bed and xls files.</p>
         </blockquote>
       </blockquote>
@@ -2491,20 +1841,20 @@ If your sample has a low duplication rate (<em>e.g.</em> below 10%), you might k
 </blockquote>
 
 <blockquote class="question">
-  <div class="box-title question-title" id="question-12"><i class="far fa-question-circle" aria-hidden="true"></i> Question</div>
+  <div class="box-title question-title" id="question-17"><i class="far fa-question-circle" aria-hidden="true" ></i> Question</div>
 
   <ol>
     <li>
       <p>How many peaks have been identified in <code class="language-plaintext highlighter-rouge">chrX:151,385,260-152,426,526</code> based on IGV?</p>
 
-      <figure id="figure-15"><img src="../../images/formation_of_super-structures_on_xi/macs2_igv.png" alt="Output of MACS2. " width="1267" height="393" loading="lazy" /><figcaption><span class="figcaption-prefix"><strong>Figure 15</strong>:</span> Peaks for wt_H3K4me3_rep1 and wt_input_rep1 on chrX:151,385,260-152,426,526</figcaption></figure>
+      <figure id="figure-15" style="max-width: 90%; margin:auto;"><img src="../../images/formation_of_super-structures_on_xi/macs2_igv.png" alt="Output of MACS2. " width="1267" height="393" loading="lazy" /><figcaption><span class="figcaption-prefix"><strong>Figure 15</strong>:</span> Peaks for wt_H3K4me3_rep1 and wt_input_rep1 on chrX:151,385,260-152,426,526</figcaption></figure>
     </li>
     <li>What are the fold change of the peaks identified in <code class="language-plaintext highlighter-rouge">chrX:151,385,260-152,426,526</code>? Hint: using the BED file</li>
     <li>How many peaks have been identified on the full chromosome X? How many peaks have a fold change &gt; 50?</li>
   </ol>
 
   <blockquote class="solution">
-    <div class="box-title solution-title" id="solution-12"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-12" aria-expanded="true"><i class="far fa-eye" aria-hidden="true"></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
+    <div class="box-title solution-title" id="solution-17"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-17" aria-expanded="true"><i class="far fa-eye" aria-hidden="true" ></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
     <ol>
       <li>We can see 11 peaks (track below the genes).</li>
       <li>Using <strong>Filter</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> with <code class="language-plaintext highlighter-rouge">c2&gt;151385260 and c3&lt;152426526</code>, we found that the 11 peaks with fold changes between 3.81927 and 162.06572</li>
@@ -2522,7 +1872,7 @@ If your sample has a low duplication rate (<em>e.g.</em> below 10%), you might k
 <p>Since we already generated the required files for the H3K4me3 sample, let’s make them only for the CTCF sample:</p>
 
 <blockquote class="notranslate hands_on">
-  <div class="box-title hands-on-title" id="hands-on-prepare-the-peaks-and-data-for-ctcf"><i class="fas fa-pencil-alt" aria-hidden="true"></i> Hands-on: Prepare the peaks and data for CTCF</div>
+  <div class="box-title hands-on-title" id="hands-on-prepare-the-peaks-and-data-for-ctcf"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Prepare the peaks and data for CTCF</div>
 
   <ol>
     <li><strong>bamCompare</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> with the following parameters
@@ -2563,7 +1913,7 @@ If your sample has a low duplication rate (<em>e.g.</em> below 10%), you might k
 <p>We can now concatenate the MACS2 outputs with the location of the peaks (concatenate the files and merge the overlapping regions) to obtain one BED file corresponding to the coordinates of the interesting regions to plot.</p>
 
 <blockquote class="notranslate hands_on">
-  <div class="box-title hands-on-title" id="hands-on-prepare-the-peak-coordinates"><i class="fas fa-pencil-alt" aria-hidden="true"></i> Hands-on: Prepare the peak coordinates</div>
+  <div class="box-title hands-on-title" id="hands-on-prepare-the-peak-coordinates"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Prepare the peak coordinates</div>
 
   <ol>
     <li><strong>Concatenate two datasets into one dataset</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> with the following parameters
@@ -2595,7 +1945,7 @@ If your sample has a low duplication rate (<em>e.g.</em> below 10%), you might k
 <p>Optionally, we can also use <strong>plotProfile</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> to create a profile plot from <strong>computeMatrix</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> output.</p>
 
 <blockquote class="notranslate hands_on">
-  <div class="box-title hands-on-title" id="hands-on-plot-the-heatmap"><i class="fas fa-pencil-alt" aria-hidden="true"></i> Hands-on: Plot the heatmap</div>
+  <div class="box-title hands-on-title" id="hands-on-plot-the-heatmap"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Plot the heatmap</div>
 
   <ol>
     <li><strong>computeMatrix</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> with the following parameters:
@@ -2640,12 +1990,12 @@ If your sample has a low duplication rate (<em>e.g.</em> below 10%), you might k
 
 <p>It should generate an heatmap similar to:</p>
 
-<figure id="figure-16"><img src="../../images/formation_of_super-structures_on_xi/peak_heatmap_1.png" alt="Output of plotHeatmap for 2 samples. " width="600" height="1059" loading="lazy" /><figcaption><span class="figcaption-prefix"><strong>Figure 16</strong>:</span> Scores around the peaks for wt_H3K4me3_rep1 and wt_input_rep1</figcaption></figure>
+<figure id="figure-16" style="max-width: 90%; margin:auto;"><img src="../../images/formation_of_super-structures_on_xi/peak_heatmap_1.png" alt="Output of plotHeatmap for 2 samples. " width="600" height="1059" loading="lazy" /><figcaption><span class="figcaption-prefix"><strong>Figure 16</strong>:</span> Scores around the peaks for wt_H3K4me3_rep1 and wt_input_rep1</figcaption></figure>
 
 <p>When we look at this graph, it seems that less but larger peaks are found for <code class="language-plaintext highlighter-rouge">H3K4me3_rep1</code> and that only few peaks are shared.</p>
 
 <blockquote class="question">
-  <div class="box-title question-title" id="question-13"><i class="far fa-question-circle" aria-hidden="true"></i> Question</div>
+  <div class="box-title question-title" id="question-18"><i class="far fa-question-circle" aria-hidden="true" ></i> Question</div>
 
   <ol>
     <li>How many peaks have been found for <code class="language-plaintext highlighter-rouge">CTCF_rep1</code> and for <code class="language-plaintext highlighter-rouge">H3K4me3_rep1</code>?</li>
@@ -2654,7 +2004,7 @@ If your sample has a low duplication rate (<em>e.g.</em> below 10%), you might k
   </ol>
 
   <blockquote class="solution">
-    <div class="box-title solution-title" id="solution-13"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-13" aria-expanded="true"><i class="far fa-eye" aria-hidden="true"></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
+    <div class="box-title solution-title" id="solution-18"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-18" aria-expanded="true"><i class="far fa-eye" aria-hidden="true" ></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
     <ol>
       <li>656 peaks for <code class="language-plaintext highlighter-rouge">H3K4me3_rep1</code> and 2,688 for <code class="language-plaintext highlighter-rouge">CTCF_rep1</code> (number of lines in the <strong>MACS2 callpeak</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> BED file)</li>
       <li>1630.77 bp for <code class="language-plaintext highlighter-rouge">H3K4me3_rep1</code> and 404.55 for <code class="language-plaintext highlighter-rouge">CTCF_rep1</code> (<strong>Compute</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> with <code class="language-plaintext highlighter-rouge">c3-c2</code> and then <strong>Datamash</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> with <code class="language-plaintext highlighter-rouge">Mean</code> on <code class="language-plaintext highlighter-rouge">Column:11</code>)</li>
@@ -2666,7 +2016,7 @@ If your sample has a low duplication rate (<em>e.g.</em> below 10%), you might k
 <p>So far, we have only analyzed 2 samples, but we can do the same for all the 6 samples:</p>
 
 <blockquote class="notranslate hands_on">
-  <div class="box-title hands-on-title" id="hands-on-optional-plot-the-heatmap-for-all-the-samples"><i class="fas fa-pencil-alt" aria-hidden="true"></i> Hands-on: (Optional) Plot the heatmap for all the samples</div>
+  <div class="box-title hands-on-title" id="hands-on-optional-plot-the-heatmap-for-all-the-samples"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: (Optional) Plot the heatmap for all the samples</div>
 
   <ol>
     <li><strong>bamCompare</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> for each combination input - ChIP data:
@@ -2739,24 +2089,24 @@ If your sample has a low duplication rate (<em>e.g.</em> below 10%), you might k
 </blockquote>
 
 <blockquote class="question">
-  <div class="box-title question-title" id="question-14"><i class="far fa-question-circle" aria-hidden="true"></i> Question</div>
+  <div class="box-title question-title" id="question-19"><i class="far fa-question-circle" aria-hidden="true" ></i> Question</div>
 
   <ol>
     <li>How many peaks are found for the different samples?</li>
     <li>
       <p>How are the peaks?</p>
 
-      <figure id="figure-17"><img src="../../images/formation_of_super-structures_on_xi/peak_heatmap_all.png" alt="Output of plotHeatmap for all samples. " width="3510" height="2328" loading="lazy" /><figcaption><span class="figcaption-prefix"><strong>Figure 17</strong>:</span> Scores around the peaks for all samples</figcaption></figure>
+      <figure id="figure-17" style="max-width: 90%; margin:auto;"><img src="../../images/formation_of_super-structures_on_xi/peak_heatmap_all.png" alt="Output of plotHeatmap for all samples. " width="3510" height="2328" loading="lazy" /><figcaption><span class="figcaption-prefix"><strong>Figure 17</strong>:</span> Scores around the peaks for all samples</figcaption></figure>
     </li>
     <li>
       <p>How could be interpreted the peaks and read coverage in the <code class="language-plaintext highlighter-rouge">chrX:151,385,260-152,426,526</code> region?</p>
 
-      <figure id="figure-18"><img src="../../images/formation_of_super-structures_on_xi/rep1_igv.png" alt="Coverage and peaks for the replicate 1. " width="1270" height="445" loading="lazy" /><figcaption><span class="figcaption-prefix"><strong>Figure 18</strong>:</span> Coverage and peaks for the replicate 1</figcaption></figure>
+      <figure id="figure-18" style="max-width: 90%; margin:auto;"><img src="../../images/formation_of_super-structures_on_xi/rep1_igv.png" alt="Coverage and peaks for the replicate 1. " width="1270" height="445" loading="lazy" /><figcaption><span class="figcaption-prefix"><strong>Figure 18</strong>:</span> Coverage and peaks for the replicate 1</figcaption></figure>
     </li>
   </ol>
 
   <blockquote class="solution">
-    <div class="box-title solution-title" id="solution-14"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-14" aria-expanded="true"><i class="far fa-eye" aria-hidden="true"></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
+    <div class="box-title solution-title" id="solution-19"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-19" aria-expanded="true"><i class="far fa-eye" aria-hidden="true" ></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
     <ol>
       <li>
         <p>Found peaks (number of lines in <strong>MACS2 callpeak</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> outputs):</p>
@@ -2806,7 +2156,7 @@ If your sample has a low duplication rate (<em>e.g.</em> below 10%), you might k
 
 <p>Along this tutorial, we learn how to extract peaks and coverage information from raw data of ChIP experiments:</p>
 
-<figure id="figure-19"><img src="../../images/formation_of_super-structures_on_xi/tutorial-scheme.png" alt="Workflow to extract peaks and coverage information from raw data of ChIP experiments. " width="2672" height="2917" loading="lazy" /><figcaption><span class="figcaption-prefix"><strong>Figure 19</strong>:</span> Workflow to extract peaks and coverage information from raw data of ChIP experiments</figcaption></figure>
+<figure id="figure-19" style="max-width: 90%; margin:auto;"><img src="../../images/formation_of_super-structures_on_xi/tutorial-scheme.png" alt="Workflow to extract peaks and coverage information from raw data of ChIP experiments. " width="2672" height="2917" loading="lazy" /><figcaption><span class="figcaption-prefix"><strong>Figure 19</strong>:</span> Workflow to extract peaks and coverage information from raw data of ChIP experiments</figcaption></figure>
 
 <p>This information can be then related to the biology to answer the original question. We tried then to relate the observed differences of peak and read coverage between H3K27me3 and H3K4me3 to the known biology. We could go even further in the analysis to reproduce the results of the original paper (e.g. by looking at the bivalent genes, identifying the differences between Xa and Xi).</p>
 
@@ -2864,6 +2214,9 @@ If your sample has a low duplication rate (<em>e.g.</em> below 10%), you might k
                             Friederike Dündar, Anika Erxleben, Bérénice Batut, Vivek Bhardwaj, Fidel Ramirez, Leily Rabbani,  <b>Formation of the Super-Structures on the Inactive X (Galaxy Training Materials)</b>. <a href="https://training.galaxyproject.org/training-material/topics/epigenetics/tutorials/formation_of_super-structures_on_xi/tutorial.html">https://training.galaxyproject.org/training-material/topics/epigenetics/tutorials/formation_of_super-structures_on_xi/tutorial.html</a> Online; accessed TODAY
                         </li>
                         <li>
+                        Hiltemann, Saskia, Rasche, Helena et al., 2023 <b>Galaxy Training: A Powerful Framework for Teaching!</b> PLOS Computational Biology <a href="https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1010752">10.1371/journal.pcbi.1010752</a>
+                        </li>
+                        <li>
                         Batut et al., 2018 <b>Community-Driven Data Analysis Training for Biology</b> Cell Systems <a href="https://doi.org/10.1016%2Fj.cels.2018.05.012">10.1016/j.cels.2018.05.012</a>
                         </li>
                     </ol>
@@ -2885,12 +2238,12 @@ If your sample has a low duplication rate (<em>e.g.</em> below 10%), you might k
 
 <code id="citation-code">@misc{epigenetics-formation_of_super-structures_on_xi,
 author = "Friederike Dündar and Anika Erxleben and Bérénice Batut and Vivek Bhardwaj and Fidel Ramirez and Leily Rabbani",
-title = "Formation of the Super-Structures on the Inactive X (Galaxy Training Materials)",
-year = "",
-month = "",
-day = ""
-url = "\url{https://training.galaxyproject.org/training-material/topics/epigenetics/tutorials/formation_of_super-structures_on_xi/tutorial.html}",
-note = "[Online; accessed TODAY]"
+	title = "Formation of the Super-Structures on the Inactive X (Galaxy Training Materials)",
+	year = "",
+	month = "",
+	day = ""
+	url = "\url{https://training.galaxyproject.org/training-material/topics/epigenetics/tutorials/formation_of_super-structures_on_xi/tutorial.html}",
+	note = "[Online; accessed TODAY]"
 }
 @article{Hiltemann_2023,
 	doi = {10.1371/journal.pcbi.1010752},
@@ -2916,9 +2269,9 @@ note = "[Online; accessed TODAY]"
 
 <script>
 // update the date on load, or leave fallback of 'today'
-var d = new Date();
-document.getElementById("citation-code").innerHTML = document.getElementById("citation-code").innerHTML.replace("TODAY", d.toDateString());
-document.getElementById("citation-text").innerHTML = document.getElementById("citation-text").innerHTML.replace("TODAY", d.toDateString());
+const citationTodaysDate = new Date();
+document.getElementById("citation-code").innerHTML = document.getElementById("citation-code").innerHTML.replace("TODAY", citationTodaysDate.toDateString());
+document.getElementById("citation-text").innerHTML = document.getElementById("citation-text").innerHTML.replace("TODAY", citationTodaysDate.toDateString());
 </script>
 
                 <i class="far fa-thumbs-up" aria-hidden="true"></i> Congratulations on successfully completing this tutorial!
@@ -2926,6 +2279,118 @@ document.getElementById("citation-text").innerHTML = document.getElementById("ci
                 
 
                 
+
+		
+                <blockquote class="agenda follow-up" id="admins-install-missing-tools">
+                    <div class="box-title">Galaxy Administrators: Install the missing tools</div>
+			<p>You can use Ephemeris's <code>shed-tools install</code> command to install the tools used in this tutorial.</p>
+<div class="highlight"><pre class="highlight"><code>shed-tools install [-g GALAXY] [-a API_KEY] -t &lt;(curl https://training.galaxyproject.org/training-material/api/topics/epigenetics/tutorials/formation_of_super-structures_on_xi/tutorial.json | jq .admin_install_yaml -r)</code></pre></div>
+<p>Alternatively you can copy and paste the following YAML</p>
+<div class="highlight"><pre class="highlight"><code>---
+install_tool_dependencies: true
+install_repository_dependencies: true
+install_resolver_dependencies: true
+tools:
+- name: deeptools_bam_compare
+  owner: bgruening
+  revisions: 439e75416e1a
+  tool_panel_section_label: Epigenetics
+  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+- name: deeptools_bam_coverage
+  owner: bgruening
+  revisions: 3033c3fba046
+  tool_panel_section_label: Epigenetics
+  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+- name: deeptools_compute_matrix
+  owner: bgruening
+  revisions: fb9cf9c97ec4
+  tool_panel_section_label: Epigenetics
+  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+- name: deeptools_multi_bam_summary
+  owner: bgruening
+  revisions: 6dfe9740ffc5
+  tool_panel_section_label: Epigenetics
+  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+- name: deeptools_plot_correlation
+  owner: bgruening
+  revisions: 4e8b35fd2173
+  tool_panel_section_label: Epigenetics
+  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+- name: deeptools_plot_fingerprint
+  owner: bgruening
+  revisions: a064962bb6e2
+  tool_panel_section_label: Epigenetics
+  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+- name: deeptools_plot_heatmap
+  owner: bgruening
+  revisions: 010e58e9d822
+  tool_panel_section_label: Epigenetics
+  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+- name: text_processing
+  owner: bgruening
+  revisions: d698c222f354
+  tool_panel_section_label: Epigenetics
+  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+- name: trim_galore
+  owner: bgruening
+  revisions: 949f01671246
+  tool_panel_section_label: Epigenetics
+  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+- name: bowtie2
+  owner: devteam
+  revisions: 17062a0decb7
+  tool_panel_section_label: Epigenetics
+  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+- name: column_maker
+  owner: devteam
+  revisions: 626658afe4cb
+  tool_panel_section_label: Epigenetics
+  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+- name: concat
+  owner: devteam
+  revisions: 73ca13a7ec5f
+  tool_panel_section_label: Epigenetics
+  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+- name: fastqc
+  owner: devteam
+  revisions: ff9530579d1f
+  tool_panel_section_label: Epigenetics
+  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+- name: samtools_idxstats
+  owner: devteam
+  revisions: 88b8c2916784
+  tool_panel_section_label: Epigenetics
+  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+- name: bedtools
+  owner: iuc
+  revisions: e19bebe96cd2
+  tool_panel_section_label: Epigenetics
+  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+- name: bedtools
+  owner: iuc
+  revisions: e19bebe96cd2
+  tool_panel_section_label: Epigenetics
+  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+- name: bedtools
+  owner: iuc
+  revisions: e19bebe96cd2
+  tool_panel_section_label: Epigenetics
+  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+- name: datamash_ops
+  owner: iuc
+  revisions: 2f3c6f2dcf39
+  tool_panel_section_label: Epigenetics
+  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+- name: macs2
+  owner: iuc
+  revisions: c16dbe4e2db2
+  tool_panel_section_label: Epigenetics
+  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+</code></pre></div>
+                </blockquote>
+		
+
+
                 </section>
 
             </div>
@@ -2937,38 +2402,52 @@ document.getElementById("citation-text").innerHTML = document.getElementById("ci
 <br/>
 
         </div>
-        
-        <script src="/training-material/assets/js/jquery.slim.min.js"></script>
-        <script src="/training-material/assets/js/popper.min.js"></script>
-        <script src="/training-material/assets/js/bootstrap.min.js?v=3"></script>
-        <script src="/training-material/assets/js/details-element-polyfill.js"></script>
+        <footer>
+	<hr />
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-6" style="text-align: left">
+				<p>
+					The <a href="https://galaxyproject.org/teach/gtn/">Galaxy Training Network</a>
+					provides researchers with online training materials, connects them with local trainers, and helps promoting FAIR and Open Science practices worldwide. All contributions are subject to the <a rel="code-of-conduct" href="https://galaxyproject.org/community/coc/">Galaxy Project Code of Conduct</a>.
+				</p>
+				<p>
+				The GTN infrastructure is licensed under <a rel="license" href="https://github.com/galaxyproject/training-material/blob/main/LICENSE.md">MIT</a>
+				</p>
+				<p>
+				Revision <a href="https://github.com/galaxyproject/training-material/commit/476574d2b382dd1db6c2c408d8fb6ec4393a6904">476574d</a>, built with Jekyll (4.3.2 | production)
+				</p>
+			</div>
+			<div class="col-sm-6" style="text-align: right">
+				
+				<p>
+					Resource <i class="fas fa-fingerprint" aria-hidden="true"></i><span class="visually-hidden">purl</span><abbr title="Persistent URL">PURL</abbr>: <a href="https://gxy.io/GTN:T00140">https://gxy.io/GTN:T00140</a>
+				</p>
+				
+				<p>
+					<i>This Material</i>:
+					
+					is licensed under
+					<a rel="license" href="https://spdx.org/licenses/CC-BY-4.0">
+						Creative Commons Attribution 4.0 International License
+					</a>
+				</p>
+				<p>
+					<a href="https://github.com/galaxyproject/training-material/edit/main/topics/epigenetics/tutorials/formation_of_super-structures_on_xi/tutorial.md" title="Edit on GitHub">
+					<i class="fab fa-github" aria-hidden="true"></i><span class="visually-hidden">github</span> Edit on GitHub
+					</a>
+				</p>
+			</div>
+		</div>
+	</div>
+</footer>
+
+
+    </div>
+</footer>
+
+
+        <script src='/training-material/assets/js/bundle.main.js?v=1687830693'></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-        <script src="/training-material/assets/js/bootstrap-toc.min.js"></script>
-        <script src="/training-material/assets/js/main.js"></script>
-        <script src="/training-material/assets/js/clipboard.min.js"></script>
-        <script>
-        var snippets=document.querySelectorAll('div.highlight');
-        [].forEach.call(snippets,function(snippet){
-            snippet.firstChild.insertAdjacentHTML('beforebegin','<button class="btn btn-light" data-clipboard-snippet tabindex="0"><i class="fa fa-copy"></i>&nbsp;Copy</button>');
-        });
-
-        var clipboardSnippets=new ClipboardJS('[data-clipboard-snippet]',{
-            target:function(trigger){return trigger.nextElementSibling;
-        }});
-        </script>
-        
-
-        <script type="text/javascript">
-            if(window.location.hostname === "galaxyproject.github.io") {
-                // Redirect
-                var redirect = "https://training.galaxyproject.org" + window.location.pathname + window.location.search;
-                $('div.container.main-content').prepend("<div class='alert alert-warning'><strong>Note: </strong>This content has a new home at <a href=\"" + redirect + "\">" + redirect + "</a>, which you will be redirected to in 5 seconds.</div>");
-
-                window.setTimeout(function(){
-                    window.location.href = redirect;
-                }, 5000)
-
-            }
-        </script>
     </body>
 </html>

@@ -8,16 +8,45 @@
         
             <script async defer data-domain="training.galaxyproject.org" src="https://plausible.galaxyproject.eu/js/plausible.js"></script>
 
+<!-- JavaScript Error Monitoring, and performance tracking. -->
+<script
+  src="https://browser.sentry-cdn.com/7.52.1/bundle.tracing.min.js"
+  integrity="sha384-muuFXKS3752PNA4rPm9Uq6BLvOfV4CXyr9MHDBPvozOJJUWLKkogEFWOIRoVps43"
+  crossorigin="anonymous"
+></script>
+<script type="text/javascript">
+Sentry.init({
+  dsn: "https://45e0ec6e4373462b92969505df37cf40@sentry.galaxyproject.org/10",
+  release: "galaxy-training-network@476574d2b382dd1db6c2c408d8fb6ec4393a6904",
+  integrations: [new Sentry.BrowserTracing(), new Sentry.Replay()],
+  sampleRate: 0.1,
+  tracesSampleRate: 0.1,
+  // Capture Replay for no sessions by default
+  replaysSessionSampleRate: 0.01,
+  // plus for 1% of sessions with an error
+  replaysOnErrorSampleRate: 0.01,
+  // PII OFF
+  sendDefaultPii: false, // Off by default but just in case.
+  environment: "production",
+});
+</script>
+
         
-        <link rel="stylesheet" href="/training-material/assets/css/bootstrap.min.css?v=3">
-        <link rel="stylesheet" href="/training-material/assets/css/bootstrap-toc.min.css">
-        <link rel="stylesheet" href="/training-material/assets/css/main.css?v=2">
-        <link rel="stylesheet" href="/training-material/assets/fontawesome/css/all.css">
-        <link rel="stylesheet" href="/training-material/assets/css/academicons.css">
         <link rel="shortcut icon" href="/training-material/favicon.ico" type="image/x-icon">
         <link rel="alternate" type="application/atom+xml" href="/training-material/feed.xml">
         <link rel="canonical" href="https://training.galaxyproject.org/training-material/topics/proteomics/tutorials/protein-id-oms/tutorial.html">
-        <link rel="license" href="https://creativecommons.org/licenses/by/4.0/">
+        <link rel="license" href="https://spdx.org/licenses/CC-BY-4.0">
+        <link rel="preload" href="/training-material/assets/fonts/AtkinsonHyperlegible/Atkinson-Hyperlegible-Regular-102a.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="preload" href="/training-material/assets/fonts/AtkinsonHyperlegible/Atkinson-Hyperlegible-Bold-102a.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="preload" href="/training-material/assets/fonts/AtkinsonHyperlegible/Atkinson-Hyperlegible-Italic-102a.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML" as="script" crossorigin>
+        <link rel="preload" href="/training-material/assets/css/main.css?v=3" as="style">
+        <link rel='preload' href='/training-material/assets/js/bundle.theme.js?v=1687830693' as='script'>
+<link rel='preload' href='/training-material/assets/js/bundle.main.js?v=1687830693' as='script'>
+        <link rel="stylesheet" href="/training-material/assets/css/main.css?v=3">
+        <link rel="manifest" href="/training-material/manifest.json">
+        <meta name="theme-color" content="#2c3143"/>
+
 
         <meta name="DC.identifier" content="https://github.com/galaxyproject/training-material">
 <meta name="DC.type" content="text">
@@ -91,6 +120,10 @@
     "url": "https://galaxyproject.org/teach/gtn/"
   },
   "identifier": "https://github.com/galaxyproject/training-material",
+  "workTranslation": [
+
+  ],
+  "creativeWorkStatus": "Active",
   "accessMode": [
     "textual",
     "visual"
@@ -118,6 +151,7 @@
   "name": "Hands-on for 'Peptide and Protein ID using OpenMS tools' tutorial",
   "url": "https://training.galaxyproject.org/training-material/topics/proteomics/tutorials/protein-id-oms/tutorial.html",
   "timeRequired": "PT45M",
+  "teaches": "Protein identification from LC-MS/MS raw files.",
   "keywords": "proteomics, DDA, HeLa",
   "description": "The questions this  addresses are:\n - How to convert LC-MS/MS raw files?\n - How to identify peptides?\n - How to identify proteins?\n - How to evaluate the results?\n\n\nThe objectives are:\n - Protein identification from LC-MS/MS raw files.\n\n",
   "inLanguage": {
@@ -160,8 +194,8 @@
       "@context": "https://schema.org",
       "@type": "Person",
       "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
+        "@id": "https://bioschemas.org/profiles/Person/0.3-DRAFT",
+        "@type": "CreativeWork"
       },
       "url": "https://training.galaxyproject.org/training-material/hall-of-fame/stortebecker/",
       "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/stortebecker/",
@@ -181,54 +215,8 @@
       "@context": "https://schema.org",
       "@type": "Person",
       "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
-      },
-      "url": "https://training.galaxyproject.org/training-material/hall-of-fame/bgruening/",
-      "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/bgruening/",
-      "name": "Björn Grüning",
-      "image": "https://avatars.githubusercontent.com/bgruening",
-      "description": "A contributor to the GTN project.",
-      "memberOf": [
-        {
-          "@type": "Organization",
-          "email": "galaxytrainingnetwork@gmail.com",
-          "name": "Galaxy Training Network",
-          "url": "https://galaxyproject.org/teach/gtn/"
-        }
-      ],
-      "identifier": "https://orcid.org/0000-0002-3079-6586",
-      "orcid": "https://orcid.org/0000-0002-3079-6586"
-    }
-  ],
-  "contributor": [
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
-      },
-      "url": "https://training.galaxyproject.org/training-material/hall-of-fame/stortebecker/",
-      "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/stortebecker/",
-      "name": "Florian Christoph Sigloch",
-      "image": "https://avatars.githubusercontent.com/stortebecker",
-      "description": "A contributor to the GTN project.",
-      "memberOf": [
-        {
-          "@type": "Organization",
-          "email": "galaxytrainingnetwork@gmail.com",
-          "name": "Galaxy Training Network",
-          "url": "https://galaxyproject.org/teach/gtn/"
-        }
-      ]
-    },
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
+        "@id": "https://bioschemas.org/profiles/Person/0.3-DRAFT",
+        "@type": "CreativeWork"
       },
       "url": "https://training.galaxyproject.org/training-material/hall-of-fame/bgruening/",
       "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/bgruening/",
@@ -262,13 +250,24 @@
       "url": "https://bioportal.bioontology.org/ontologies/EDAM/?p=classes&conceptid=http%3A%2F%2Fedamontology.org%2Ftopic_0121"
     }
   ],
-  "educationalLevel": "Advanced"
+  "educationalLevel": "Advanced",
+  "mentions": [
+    {
+      "@type": "Thing",
+      "name": "DDA"
+    },
+    {
+      "@type": "Thing",
+      "name": "HeLa"
+    }
+  ],
+  "abstract": "# Introduction"
 }
         </script>
         
     </head>
     <body data-spy="scroll" data-target="#toc">
-        <script type="text/javascript" src="/training-material/assets/js/theme.js"></script>
+        <script src='/training-material/assets/js/bundle.theme.js?v=1687830693'></script>
         <header>
     <nav class="navbar navbar-expand-md navbar-dark" aria-label="Site Navigation">
         <div class="container">
@@ -337,7 +336,6 @@
     </a>
     <div class="dropdown-menu dropdown-menu-right">
 
-        
         <a class="dropdown-item" href="https://github.com/galaxyproject/training-material/edit/main/topics/proteomics/tutorials/protein-id-oms/tutorial.md" title="Edit on GitHub">
           <i class="fab fa-github" aria-hidden="true"></i><span class="visually-hidden">github</span> Edit on GitHub
         </a>
@@ -385,13 +383,13 @@
 
             <div id="archive-selector">
             
-                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2020-01-06/topics/proteomics/tutorials/protein-id-oms/tutorial.html" title="Version 2020-01-06">2020-01-06</a>
+                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2020-01-06/topics/proteomics/tutorials/protein-id-oms/tutorial.html">2020-01-06</a>
             
-                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2019-12-01/topics/proteomics/tutorials/protein-id-oms/tutorial.html" title="Version 2019-12-01">2019-12-01</a>
+                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2019-12-01/topics/proteomics/tutorials/protein-id-oms/tutorial.html">2019-12-01</a>
             
-                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2019-11-01/topics/proteomics/tutorials/protein-id-oms/tutorial.html" title="Version 2019-11-01">2019-11-01</a>
+                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2019-11-01/topics/proteomics/tutorials/protein-id-oms/tutorial.html">2019-11-01</a>
             
-                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/" title="Older Versions">Older Versions</a>
+                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/">Older Versions</a>
             </div>
 
         </div>
@@ -404,7 +402,7 @@
                     <li class="nav-item">
                       <div id="navbarSupportedContent" role="search">
                         <!-- Search form -->
-                        <form class="form-inline mr-auto" method="GET" action="/training-material/search">
+                        <form class="form-inline mr-auto" method="GET" action="/training-material/search2">
                           <i class="fas fa-search nav-link" aria-hidden="true"></i>
                           <div class="md-form mb-2">
                             <input name="query" class="form-control nicer" type="text" placeholder="Search Tutorials" aria-label="Search">
@@ -441,241 +439,7 @@
 
 
 
-<script>
-  ((window.gitter = {}).chat = {}).options = {
-  room: 'Galaxy-Training-Network/Lobby'
-  };
-</script>
 
-
-<script src="https://sidecar.gitter.im/dist/sidecar.v1.js" async defer></script>
-
-<script type="application/ld+json">
-    
-
-
-{
-  "@context": "http://schema.org",
-  "@type": "LearningResource",
-  "http://purl.org/dc/terms/conformsTo": {
-    "@id": "https://bioschemas.org/profiles/TrainingMaterial/1.0-RELEASE",
-    "@type": "CreativeWork"
-  },
-  "audience": {
-    "@type": "EducationalAudience",
-    "educationalRole": "Students"
-  },
-  "citation": {
-    "@type": "CreativeWork",
-    "name": "Community-Driven Data Analysis Training for Biology",
-    "url": "https://doi.org/10.1016/j.cels.2018.05.012"
-  },
-  "copyrightHolder": {
-    "@type": "Organization",
-    "email": "galaxytrainingnetwork@gmail.com",
-    "name": "Galaxy Training Network",
-    "url": "https://galaxyproject.org/teach/gtn/"
-  },
-  "dateModified": "2023-02-03 09:27:07 +0000",
-  "discussionUrl": "https://gitter.im/Galaxy-Training-Network/Lobby",
-  "headline": "Peptide and Protein ID using OpenMS tools",
-  "interactivityType": "mixed",
-  "isAccessibleForFree": true,
-  "isFamilyFriendly": true,
-  "license": "https://spdx.org/licenses/CC-BY-4.0.html",
-  "producer": {
-    "@type": "Organization",
-    "email": "galaxytrainingnetwork@gmail.com",
-    "name": "Galaxy Training Network",
-    "url": "https://galaxyproject.org/teach/gtn/"
-  },
-  "provider": {
-    "@type": "Organization",
-    "email": "galaxytrainingnetwork@gmail.com",
-    "name": "Galaxy Training Network",
-    "url": "https://galaxyproject.org/teach/gtn/"
-  },
-  "sourceOrganization": {
-    "@type": "Organization",
-    "email": "galaxytrainingnetwork@gmail.com",
-    "name": "Galaxy Training Network",
-    "url": "https://galaxyproject.org/teach/gtn/"
-  },
-  "identifier": "https://github.com/galaxyproject/training-material",
-  "accessMode": [
-    "textual",
-    "visual"
-  ],
-  "accessModeSufficient": [
-    "textual",
-    "visual"
-  ],
-  "accessibilityControl": [
-    "fullKeyboardControl",
-    "fullMouseControl"
-  ],
-  "accessibilityFeature": [
-    "alternativeText",
-    "tableOfContents"
-  ],
-  "accessibilitySummary": "The text aims to be as accessible as possible. Image descriptions will vary per tutorial, from images being completely inaccessible, to images with good descriptions for non-visual users.",
-  "isPartOf": {
-    "@type": "CreativeWork",
-    "name": "Proteomics",
-    "description": "Training material for proteomics workflows in Galaxy",
-    "url": "https://training.galaxyproject.org/training-material/topics/proteomics/"
-  },
-  "learningResourceType": "hands-on tutorial",
-  "name": "Hands-on for 'Peptide and Protein ID using OpenMS tools' tutorial",
-  "url": "https://training.galaxyproject.org/training-material/topics/proteomics/tutorials/protein-id-oms/tutorial.html",
-  "timeRequired": "PT45M",
-  "keywords": "proteomics, DDA, HeLa",
-  "description": "The questions this  addresses are:\n - How to convert LC-MS/MS raw files?\n - How to identify peptides?\n - How to identify proteins?\n - How to evaluate the results?\n\n\nThe objectives are:\n - Protein identification from LC-MS/MS raw files.\n\n",
-  "inLanguage": {
-    "@type": "Language",
-    "name": "English",
-    "alternateName": "en"
-  },
-  "competencyRequired": [
-    {
-      "@context": "http://schema.org",
-      "@type": "LearningResource",
-      "url": "https://training.galaxyproject.org/training-material/topics/introduction/",
-      "name": "Introduction to Galaxy Analyses",
-      "description": "Introduction to Galaxy Analyses",
-      "provider": {
-        "@type": "Organization",
-        "email": "galaxytrainingnetwork@gmail.com",
-        "name": "Galaxy Training Network",
-        "url": "https://galaxyproject.org/teach/gtn/"
-      }
-    },
-    {
-      "@context": "http://schema.org",
-      "@type": "LearningResource",
-      "url": "https://training.galaxyproject.org/training-material/topics/proteomics/tutorials/database-handling/tutorial.html",
-      "name": "Protein FASTA Database Handling",
-      "description": "Hands-on for 'Protein FASTA Database Handling' tutorial",
-      "learningResourceType": "hands-on tutorial",
-      "interactivityType": "expositive",
-      "provider": {
-        "@type": "Organization",
-        "email": "galaxytrainingnetwork@gmail.com",
-        "name": "Galaxy Training Network",
-        "url": "https://galaxyproject.org/teach/gtn/"
-      }
-    }
-  ],
-  "author": [
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
-      },
-      "url": "https://training.galaxyproject.org/training-material/hall-of-fame/stortebecker/",
-      "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/stortebecker/",
-      "name": "Florian Christoph Sigloch",
-      "image": "https://avatars.githubusercontent.com/stortebecker",
-      "description": "A contributor to the GTN project.",
-      "memberOf": [
-        {
-          "@type": "Organization",
-          "email": "galaxytrainingnetwork@gmail.com",
-          "name": "Galaxy Training Network",
-          "url": "https://galaxyproject.org/teach/gtn/"
-        }
-      ]
-    },
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
-      },
-      "url": "https://training.galaxyproject.org/training-material/hall-of-fame/bgruening/",
-      "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/bgruening/",
-      "name": "Björn Grüning",
-      "image": "https://avatars.githubusercontent.com/bgruening",
-      "description": "A contributor to the GTN project.",
-      "memberOf": [
-        {
-          "@type": "Organization",
-          "email": "galaxytrainingnetwork@gmail.com",
-          "name": "Galaxy Training Network",
-          "url": "https://galaxyproject.org/teach/gtn/"
-        }
-      ],
-      "identifier": "https://orcid.org/0000-0002-3079-6586",
-      "orcid": "https://orcid.org/0000-0002-3079-6586"
-    }
-  ],
-  "contributor": [
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
-      },
-      "url": "https://training.galaxyproject.org/training-material/hall-of-fame/stortebecker/",
-      "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/stortebecker/",
-      "name": "Florian Christoph Sigloch",
-      "image": "https://avatars.githubusercontent.com/stortebecker",
-      "description": "A contributor to the GTN project.",
-      "memberOf": [
-        {
-          "@type": "Organization",
-          "email": "galaxytrainingnetwork@gmail.com",
-          "name": "Galaxy Training Network",
-          "url": "https://galaxyproject.org/teach/gtn/"
-        }
-      ]
-    },
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
-      },
-      "url": "https://training.galaxyproject.org/training-material/hall-of-fame/bgruening/",
-      "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/bgruening/",
-      "name": "Björn Grüning",
-      "image": "https://avatars.githubusercontent.com/bgruening",
-      "description": "A contributor to the GTN project.",
-      "memberOf": [
-        {
-          "@type": "Organization",
-          "email": "galaxytrainingnetwork@gmail.com",
-          "name": "Galaxy Training Network",
-          "url": "https://galaxyproject.org/teach/gtn/"
-        }
-      ],
-      "identifier": "https://orcid.org/0000-0002-3079-6586",
-      "orcid": "https://orcid.org/0000-0002-3079-6586"
-    }
-  ],
-  "about": [
-    {
-      "@type": "CreativeWork",
-      "name": "Proteomics",
-      "description": "Training material for proteomics workflows in Galaxy",
-      "url": "https://training.galaxyproject.org/training-material/topics/proteomics/"
-    },
-    {
-      "@type": "DefinedTerm",
-      "@id": "http://edamontology.org/topic_0121",
-      "inDefinedTermSet": "http://edamontology.org",
-      "termCode": "topic_0121",
-      "url": "https://bioportal.bioontology.org/ontologies/EDAM/?p=classes&conceptid=http%3A%2F%2Fedamontology.org%2Ftopic_0121"
-    }
-  ],
-  "educationalLevel": "Advanced"
-}
-</script>
 
 <article class="tutorial topic-proteomics">
     <h1 data-toc-skip>Peptide and Protein ID using OpenMS tools</h1>
@@ -685,7 +449,7 @@
     <div markdown="0">
 
 	<div class="contributors-line">
-		Authors: <a href="/training-material/hall-of-fame/stortebecker/" class="contributor-badge contributor-stortebecker"><img src="https://avatars.githubusercontent.com/stortebecker?s=27" alt="Avatar">Florian Christoph Sigloch</a><a href="/training-material/hall-of-fame/bgruening/" class="contributor-badge contributor-bgruening"><img src="/training-material/assets/images/orcid.png" alt="orcid logo"/><img src="https://avatars.githubusercontent.com/bgruening?s=27" alt="Avatar">Björn Grüning</a>
+		Authors: <a href="/training-material/hall-of-fame/stortebecker/" class="contributor-badge contributor-stortebecker"><img src="https://avatars.githubusercontent.com/stortebecker?s=36" alt="Avatar" width="36" height="36">Florian Christoph Sigloch</a><a href="/training-material/hall-of-fame/bgruening/" class="contributor-badge contributor-bgruening"><img src="/training-material/assets/images/orcid.png" alt="orcid logo" width="36" height="36"/><img src="https://avatars.githubusercontent.com/bgruening?s=36" alt="Avatar" width="36" height="36">Björn Grüning</a>
 	</div>
 
 </div>
@@ -900,158 +664,55 @@
                 <li class="btn btn-default supporting_material">
 
 
+
+
+
     <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false" title="Where to run the tutorial">
         <i class="fas fa-globe" aria-hidden="true"></i><span class="visually-hidden">instances</span>&nbsp;Available on these Galaxies 
     </a>
     <ul class="dropdown-menu">
+	<li class="dropdown-header">
+		<b>Known Working</b>
+	</li>
+	
+	
+
     
+    
+	<li class="dropdown-header">
+		<b>Possibly Working</b>
+	</li>
+    
+	<li>
+		<a class="dropdown-item" href="https://usegalaxy.eu" title="">
+			UseGalaxy.eu
+		</a>
+	</li>
+    
+	<li>
+		<a class="dropdown-item" href="https://usegalaxy.no/" title="">
+			UseGalaxy.no
+		</a>
+	</li>
+    
+	<li>
+		<a class="dropdown-item" href="https://usegalaxy.org.au" title="">
+			UseGalaxy.org.au
+		</a>
+	</li>
+    
+
+    
+	<li class="dropdown-header">
+		Containers
+	</li>
         <li>
-            <a class="dropdown-item" href="https://github.com/galaxyproject/training-material/tree/main/topics/proteomics/docker" title="Docker image for this tutorial">
+            <a class="dropdown-item" href="https://github.com/galaxyproject/training-material/tree/main/topics//docker" title="Docker image for this tutorial">
                 <i class="fab fa-docker" aria-hidden="true"></i><span class="visually-hidden">docker_image</span> Docker image
             </a>
         </li>
     
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-        <a class="dropdown-item" href="https://africa.usegalaxy.eu/" title="Galaxy Africa">
-            Galaxy Africa
-        </a>
-        
-    
-        
-        <a class="dropdown-item" href="https://india.usegalaxy.eu/" title="Galaxy India">
-            Galaxy India
-        </a>
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-        <a class="dropdown-item" href="https://streetscience.usegalaxy.eu/" title="Street Science">
-            Street Science
-        </a>
-        
-    
-        
-    
-        
-        <a class="dropdown-item" href="https://usegalaxy.eu" title="UseGalaxy.eu">
-            UseGalaxy.eu
-        </a>
-        
-    
-        
-    
-        
-        <a class="dropdown-item" href="https://usegalaxy.no/" title="UseGalaxy.no">
-            UseGalaxy.no
-        </a>
-        
-    
-        
-    
-        
-        <a class="dropdown-item" href="https://usegalaxy.org.au" title="UseGalaxy.org.au">
-            UseGalaxy.org.au
-        </a>
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
     </ul>
-
 
 </li>
             
@@ -1060,13 +721,13 @@
 
         <div><strong><i class="far fa-calendar" aria-hidden="true"></i> Last modification:</strong> Feb 3, 2023 </div>
         <div><strong><i class="fas fa-balance-scale" aria-hidden="true"></i> License:</strong>
+		
             
-            <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Tutorial Content is licensed under Creative Commons Attribution 4.0 International License</a>
-            
-            <a rel="license" href="https://github.com/galaxyproject/training-material/blob/main/LICENSE.md">The GTN Framework is licensed under MIT</a>
+            <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Tutorial Content is licensed under Creative Commons Attribution 4.0 International License</a>.
+             The GTN Framework is licensed under <a rel="license" href="https://github.com/galaxyproject/training-material/blob/main/LICENSE.md">MIT</a>
         </div>
         
-        <div><strong>Short Link:</strong> <a href="https://gxy.io/GTN:T00228">https://gxy.io/GTN:T00228</a> </div>
+        <div><strong><i class="fas fa-fingerprint" aria-hidden="true"></i><span class="visually-hidden">purl</span><abbr title="Persistent URL">PURL</abbr>:</strong> <a href="https://gxy.io/GTN:T00228">https://gxy.io/GTN:T00228</a> </div>
         
     </blockquote>
     </section>
@@ -1140,7 +801,7 @@ However, the OpenMS tool <strong><em>PeakPickerHiRes</em></strong> <i class="fas
 If your data were generated on a low resolution mass spectrometer, use <strong>PeakPickerWavelet</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> instead.</p>
 
 <blockquote class="notranslate hands_on">
-  <div class="box-title hands-on-title" id="hands-on-file-conversion-and-peak-picking"><i class="fas fa-pencil-alt" aria-hidden="true"></i> Hands-on: File Conversion and Peak Picking</div>
+  <div class="box-title hands-on-title" id="hands-on-file-conversion-and-peak-picking"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: File Conversion and Peak Picking</div>
 
   <p>We provide the <a href="https://zenodo.org/record/796184">input data</a> in the original <code class="language-plaintext highlighter-rouge">raw</code> format and also already converted to <code class="language-plaintext highlighter-rouge">mzML</code>. If <strong>msconvert</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> does not run on your Galaxy instance, please download the preconverted <code class="language-plaintext highlighter-rouge">mzML</code> as an input and continue with step 5 of the following hands-on training.</p>
 
@@ -1150,6 +811,7 @@ If your data were generated on a low resolution mass spectrometer, use <strong>P
 
       <!--SNIPPET-->
       <blockquote class="tip">   <div class="box-title tip-title" id="tip-creating-a-new-history"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-creating-a-new-history" aria-expanded="true"><i class="far fa-lightbulb" aria-hidden="true"></i> Tip: Creating a new history<span class="fold-unfold fa fa-minus-square"></span></button></div>   <p>Click the <i class="fas fa-plus" aria-hidden="true"></i><span class="visually-hidden">new-history</span> icon at the top of the history panel.</p>   <p>If the <i class="fas fa-plus" aria-hidden="true"></i><span class="visually-hidden">new-history</span> is missing:</p>   <ol>   <li>Click on the <i class="fas fa-cog" aria-hidden="true"></i><span class="visually-hidden">galaxy-gear</span> icon (<strong>History options</strong>) on the top of the history panel</li>   <li>Select the option <strong>Create New</strong> from the menu</li> </ol> </blockquote>
+      <p><!--END_SNIPPET--></p>
     </li>
     <li>
       <p>Load one of the example datasets into your history from Zenodo</p>
@@ -1159,19 +821,20 @@ https://zenodo.org/record/892005/files/qExactive01819_profile.mzml
 </code></pre></div>      </div>
 
       <!--SNIPPET-->
-      <blockquote class="tip">   <div class="box-title tip-title" id="tip-importing-via-links"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-importing-via-links" aria-expanded="true"><i class="far fa-lightbulb" aria-hidden="true"></i> Tip: Importing via links<span class="fold-unfold fa fa-minus-square"></span></button></div>   <ul>   <li>Copy the link location</li>   <li>     <p>Open the Galaxy Upload Manager (<i class="fas fa-upload" aria-hidden="true"></i><span class="visually-hidden">galaxy-upload</span> on the top-right of the tool panel)</p>   </li>   <li>Select <strong>Paste/Fetch Data</strong></li>   <li>     <p>Paste the link(s) into the text field</p>   </li>   <li>     <p>Press <strong>Start</strong></p>   </li>   <li><strong>Close</strong> the window</li> </ul> </blockquote>
+      <blockquote class="tip">   <div class="box-title tip-title" id="tip-importing-via-links"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-importing-via-links" aria-expanded="true"><i class="far fa-lightbulb" aria-hidden="true"></i> Tip: Importing via links<span class="fold-unfold fa fa-minus-square"></span></button></div>   <ul>   <li>Copy the link location</li>   <li>     <p>Click <i class="fas fa-upload" aria-hidden="true"></i><span class="visually-hidden">galaxy-upload</span> <strong>Upload Data</strong> at the top of the tool panel</p>   </li>   <li>Select <i class="fa fa-edit" aria-hidden="true"></i><span class="visually-hidden">galaxy-wf-edit</span> <strong>Paste/Fetch Data</strong></li>   <li>     <p>Paste the link(s) into the text field</p>   </li>   <li>     <p>Press <strong>Start</strong></p>   </li>   <li><strong>Close</strong> the window</li> </ul> </blockquote>
+      <p><!--END_SNIPPET--></p>
     </li>
     <li>
       <p>Rename the dataset to something meaningful</p>
     </li>
-    <li>Run <span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/galaxyp/msconvert/msconvert/3.0.19052.1" title="msconvert tool"><strong>msconvert</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: toolshed.g2.bx.psu.edu/repos/galaxyp/msconvert/msconvert/3.0.19052.1</span></span>  on the training <code class="language-plaintext highlighter-rouge">raw</code> file to convert to the <code class="language-plaintext highlighter-rouge">mzML</code> format
+    <li>Run <span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/galaxyp/msconvert/msconvert/3.0.19052.1" title="msconvert tool" aria-role="link"><strong>msconvert</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: toolshed.g2.bx.psu.edu/repos/galaxyp/msconvert/msconvert/3.0.19052.1</span></span> on the training <code class="language-plaintext highlighter-rouge">raw</code> file to convert to the <code class="language-plaintext highlighter-rouge">mzML</code> format
       <ul>
         <li><i class="far fa-file" aria-hidden="true"></i><span class="visually-hidden">param-file</span> <em>“Input unrefined MS data”</em>: imported <code class="language-plaintext highlighter-rouge">raw</code> file</li>
         <li><em>“Do you agree to the vendor licenses”</em>: set to <code class="language-plaintext highlighter-rouge">Yes</code></li>
         <li><em>“Output Type”</em>: set to <code class="language-plaintext highlighter-rouge">mzML</code></li>
       </ul>
     </li>
-    <li>Run <span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/galaxyp/openms_peakpickerhires/PeakPickerHiRes/2.3.0" title="PeakPickerHiRes tool"><strong>PeakPickerHiRes</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: toolshed.g2.bx.psu.edu/repos/galaxyp/openms_peakpickerhires/PeakPickerHiRes/2.3.0</span></span>  on the resulting file
+    <li>Run <span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/galaxyp/openms_peakpickerhires/PeakPickerHiRes/2.3.0" title="PeakPickerHiRes tool" aria-role="link"><strong>PeakPickerHiRes</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: toolshed.g2.bx.psu.edu/repos/galaxyp/openms_peakpickerhires/PeakPickerHiRes/2.3.0</span></span> on the resulting file
       <ul>
         <li><i class="far fa-file" aria-hidden="true"></i><span class="visually-hidden">param-file</span> *“input profile data file”: output of <strong>msconvert</strong> or <code class="language-plaintext highlighter-rouge">mzML</code> file</li>
         <li>In <em>“param_algorithm_ms_levels”</em>
@@ -1193,14 +856,14 @@ https://zenodo.org/record/892005/files/qExactive01819_profile.mzml
   </ol>
 
   <blockquote class="comment">
-    <div class="box-title comment-title" id="comment-local-use-of-msconvert"><i class="far fa-comment-dots" aria-hidden="true"></i> Comment: Local Use of MSConvert</div>
+    <div class="box-title comment-title" id="comment-local-use-of-msconvert"><i class="far fa-comment-dots" aria-hidden="true" ></i> Comment: Local Use of MSConvert</div>
     <p>The vendor libraries used by MSConvert are only licensed for Windows systems and are therefore rarely implemented in Galaxy instances. If <strong>msconvert</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> is not available in your Galaxy instance, please install the software on a Windows computer and run the conversion locally. You can find a <a href="https://compomics.com/bioinformatics-for-proteomics/identification/">detailed description of the necessary steps on this site</a> (“Peak List Generation”). Afterwards, upload the resulting mzML file to your Galaxy history.</p>
   </blockquote>
 
 </blockquote>
 
 <blockquote class="comment">
-  <div class="box-title comment-title" id="comment-ms2-peak-picking-during-data-acquisition"><i class="far fa-comment-dots" aria-hidden="true"></i> Comment: MS2 peak picking during data acquisition</div>
+  <div class="box-title comment-title" id="comment-ms2-peak-picking-during-data-acquisition"><i class="far fa-comment-dots" aria-hidden="true" ></i> Comment: MS2 peak picking during data acquisition</div>
   <p>MS2 peaks are often acquired in centroided mode in first place. The profile data are converted to centroided mode already during data acquisition, resulting in MS2-centroided <code class="language-plaintext highlighter-rouge">raw</code> files. If your MS2 data are already centroided, simply omit the peak picking step.</p>
 </blockquote>
 
@@ -1212,14 +875,14 @@ To find out the peptide sequences, the MS2 spectrum is compared to a theoretical
 <p>Different peptide search engines have been developed to fulfill the matching procedure. Here, we will use the search engine <a href="https://www.ncbi.nlm.nih.gov/pubmed/14976030">X!Tandem</a>. OpenMS provides “adapters” (wrappers) for several other peptide search engines, like MSGF+ or OMSSA. You may replace the XTandemAdapter by another search engine of your choice.</p>
 
 <blockquote class="notranslate hands_on">
-  <div class="box-title hands-on-title" id="hands-on-peptide-identification"><i class="fas fa-pencil-alt" aria-hidden="true"></i> Hands-on: Peptide Identification</div>
+  <div class="box-title hands-on-title" id="hands-on-peptide-identification"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Peptide Identification</div>
 
   <ol>
     <li>Copy the prepared protein database (Human database including cRAP contaminants and decoys) from the tutorial <a href="/training-material/topics/proteomics/tutorials/database-handling/tutorial.html">Database Handling</a> into your current history by using the multiple history view</li>
   </ol>
 
   <blockquote class="comment">
-    <div class="box-title comment-title" id="comment-you-did-not-run-the-database-handling-first"><i class="far fa-comment-dots" aria-hidden="true"></i> Comment: You did not run the Database Handling first?</div>
+    <div class="box-title comment-title" id="comment-you-did-not-run-the-database-handling-first"><i class="far fa-comment-dots" aria-hidden="true" ></i> Comment: You did not run the Database Handling first?</div>
     <p>You can upload the ready-made database from Zenodo</p>
 
     <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>https://zenodo.org/record/892005/files/Human_database_including_decoys_%28cRAP_added%29.fasta
@@ -1227,7 +890,7 @@ To find out the peptide sequences, the MS2 spectrum is compared to a theoretical
   </blockquote>
 
   <ol>
-    <li>Run <span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/galaxyp/openms_xtandemadapter/XTandemAdapter/2.6+galaxy0" title="XTandemAdapter tool"><strong>XTandemAdapter</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: toolshed.g2.bx.psu.edu/repos/galaxyp/openms_xtandemadapter/XTandemAdapter/2.6+galaxy0</span></span>  with:
+    <li>Run <span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/galaxyp/openms_xtandemadapter/XTandemAdapter/2.6+galaxy0" title="XTandemAdapter tool" aria-role="link"><strong>XTandemAdapter</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: toolshed.g2.bx.psu.edu/repos/galaxyp/openms_xtandemadapter/XTandemAdapter/2.6+galaxy0</span></span> with:
       <ul>
         <li><i class="far fa-file" aria-hidden="true"></i><span class="visually-hidden">param-file</span> <em>“Input file containing MS2 spectra”</em>: MS2-centroided mzML file</li>
         <li><i class="far fa-file" aria-hidden="true"></i><span class="visually-hidden">param-file</span> <em>“FASTA file”</em>: FASTA protein database</li>
@@ -1236,7 +899,7 @@ To find out the peptide sequences, the MS2 spectrum is compared to a theoretical
         <li><em>“Optional Outputs”</em> select <code class="language-plaintext highlighter-rouge">out (Output file containing search results)</code></li>
       </ul>
     </li>
-    <li>Run <span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/galaxyp/openms_fileinfo/FileInfo/2.6+galaxy0" title="FileInfo tool"><strong>FileInfo</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: toolshed.g2.bx.psu.edu/repos/galaxyp/openms_fileinfo/FileInfo/2.6+galaxy0</span></span>
+    <li>Run <span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/galaxyp/openms_fileinfo/FileInfo/2.6+galaxy0" title="FileInfo tool" aria-role="link"><strong>FileInfo</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: toolshed.g2.bx.psu.edu/repos/galaxyp/openms_fileinfo/FileInfo/2.6+galaxy0</span></span>
       <ul>
         <li><i class="far fa-file" aria-hidden="true"></i><span class="visually-hidden">param-file</span> <em>“input file”</em>: <strong>XTandem</strong> output</li>
       </ul>
@@ -1245,12 +908,12 @@ To find out the peptide sequences, the MS2 spectrum is compared to a theoretical
 </blockquote>
 
 <blockquote class="comment">
-  <div class="box-title comment-title" id="comment-settings-for-labelled-data"><i class="far fa-comment-dots" aria-hidden="true"></i> Comment: Settings for labelled data</div>
+  <div class="box-title comment-title" id="comment-settings-for-labelled-data"><i class="far fa-comment-dots" aria-hidden="true" ></i> Comment: Settings for labelled data</div>
   <p>Several common quantitation methods are based on labels e.g. SILAC, TMT, iTRAQ, Dimethyl. Those labels must be specified in the search engine as a (variable) modification. See also <a href="/training-material/topics/proteomics/tutorials/protein-quant-sil/tutorial.html">Peptide and Protein Quantification via Stable Isotope Labelling</a>.</p>
 </blockquote>
 
 <blockquote class="comment">
-  <div class="box-title comment-title" id="comment-advanced-search-engine-parameters"><i class="far fa-comment-dots" aria-hidden="true"></i> Comment: Advanced Search Engine Parameters</div>
+  <div class="box-title comment-title" id="comment-advanced-search-engine-parameters"><i class="far fa-comment-dots" aria-hidden="true" ></i> Comment: Advanced Search Engine Parameters</div>
   <p>The OpenMS adapters do not always allow to set every option of the underlying search engine. If an option is missing, you may also run the search engine locally or by using a Galaxy wrapper. Afterwards, convert the search engine output to the OpenMS format <code class="language-plaintext highlighter-rouge">idXML</code> by running <strong>IDFileConverter</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span>.</p>
 
   <p>The search engine X!Tandem features some more advanced options than the ones reflected in the <strong>XTandemAdapter</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span>. If you need those advanced options, the <strong>XTandemAdapter</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> allows for the optional input of a classic X!Tandem parameter file. Upload your parameter file to the history and use it as an input in the field <code class="language-plaintext highlighter-rouge">Default X!Tandem configuration file</code>. You may also set the option <em>“ignore_adapter_param”</em> to <code class="language-plaintext highlighter-rouge">Yes</code> to overwrite all options set by the GUI.</p>
@@ -1267,10 +930,10 @@ The false discovery rate is therefore defined as the number of false discoveries
 <p>To calculate FDRs, we first have to annotate the identified peptides to determine which of them are decoys. This is done with the tool <strong>PeptideIndexer</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span>. This tool allows the annotation of protein names and calculates the protein coverage based on the identified peptides. Then we calculate peptide posterior error probabilities (PEPs), because they are needed for the protein inference algorithm Fido, which is used by OpenMS. We will then filter PSMs for 1 % FDR with <strong>FalseDiscoveryRate</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span>. and set the score back to PEP with <strong>IDScoreSwitcher</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span>.</p>
 
 <blockquote class="notranslate hands_on">
-  <div class="box-title hands-on-title" id="hands-on-peptide-fdr-filtering"><i class="fas fa-pencil-alt" aria-hidden="true"></i> Hands-on: Peptide FDR filtering</div>
+  <div class="box-title hands-on-title" id="hands-on-peptide-fdr-filtering"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Peptide FDR filtering</div>
 
   <ol>
-    <li>Run <span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/galaxyp/openms_peptideindexer/PeptideIndexer/2.6+galaxy0" title="PeptideIndexer tool"><strong>PeptideIndexer</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: toolshed.g2.bx.psu.edu/repos/galaxyp/openms_peptideindexer/PeptideIndexer/2.6+galaxy0</span></span>  with
+    <li>Run <span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/galaxyp/openms_peptideindexer/PeptideIndexer/2.6+galaxy0" title="PeptideIndexer tool" aria-role="link"><strong>PeptideIndexer</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: toolshed.g2.bx.psu.edu/repos/galaxyp/openms_peptideindexer/PeptideIndexer/2.6+galaxy0</span></span> with
       <ul>
         <li><i class="far fa-file" aria-hidden="true"></i><span class="visually-hidden">param-file</span> <em>“Input idXML file containing the identifications”</em>: output of <strong>XTandemAdapter</strong></li>
         <li><i class="far fa-file" aria-hidden="true"></i><span class="visually-hidden">param-file</span> <em>“Input sequence database in FASTA format”</em>: FASTA protein database</li>
@@ -1279,13 +942,13 @@ The false discovery rate is therefore defined as the number of false discoveries
         <li>In the <em>“enzyme”</em> section set <em>“Specificity of the enzyme”</em>: <code class="language-plaintext highlighter-rouge">none</code></li>
       </ul>
     </li>
-    <li>Run <span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/galaxyp/openms_idposteriorerrorprobability/IDPosteriorErrorProbability/2.6+galaxy" title="IDPosteriorErrorProbability tool"><strong>IDPosteriorErrorProbability</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: toolshed.g2.bx.psu.edu/repos/galaxyp/openms_idposteriorerrorprobability/IDPosteriorErrorProbability/2.6+galaxy</span></span>  with
+    <li>Run <span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/galaxyp/openms_idposteriorerrorprobability/IDPosteriorErrorProbability/2.6+galaxy" title="IDPosteriorErrorProbability tool" aria-role="link"><strong>IDPosteriorErrorProbability</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: toolshed.g2.bx.psu.edu/repos/galaxyp/openms_idposteriorerrorprobability/IDPosteriorErrorProbability/2.6+galaxy</span></span> with
       <ul>
         <li><i class="far fa-file" aria-hidden="true"></i><span class="visually-hidden">param-file</span> <em>“input file”</em>: <strong>PeptideIndexer</strong> output</li>
         <li><em>“If set scores will be calculated as ‘1 - ErrorProbabilities’ and can be interpreted as probabilities for correct identifications”</em>: <code class="language-plaintext highlighter-rouge">Yes</code></li>
       </ul>
     </li>
-    <li>Run <span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/galaxyp/openms_falsediscoveryrate/FalseDiscoveryRate/2.6+galaxy0" title="FalseDiscoveryRate tool"><strong>FalseDiscoveryRate</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: toolshed.g2.bx.psu.edu/repos/galaxyp/openms_falsediscoveryrate/FalseDiscoveryRate/2.6+galaxy0</span></span>  with
+    <li>Run <span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/galaxyp/openms_falsediscoveryrate/FalseDiscoveryRate/2.6+galaxy0" title="FalseDiscoveryRate tool" aria-role="link"><strong>FalseDiscoveryRate</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: toolshed.g2.bx.psu.edu/repos/galaxyp/openms_falsediscoveryrate/FalseDiscoveryRate/2.6+galaxy0</span></span> with
       <ul>
         <li><i class="far fa-file" aria-hidden="true"></i><span class="visually-hidden">param-file</span> <em>“Identifications from searching a target-decoy database”</em>: output of <strong>IDPosteriorErrorProbability</strong></li>
         <li><em>“Perform FDR calculation on protein level”</em>: <code class="language-plaintext highlighter-rouge">false</code></li>
@@ -1293,14 +956,14 @@ The false discovery rate is therefore defined as the number of false discoveries
         <li>In the “Parameter section for the FDR calculation algorithm”* section select <em>“If ‘true’ decoy peptides will be written to output file, too”</em>: <code class="language-plaintext highlighter-rouge">Yes</code></li>
       </ul>
     </li>
-    <li>Run <span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/galaxyp/openms_idscoreswitcher/IDScoreSwitcher/2.6+galaxy0" title="IDScoreSwitcher tool"><strong>IDScoreSwitcher</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: toolshed.g2.bx.psu.edu/repos/galaxyp/openms_idscoreswitcher/IDScoreSwitcher/2.6+galaxy0</span></span>  with
+    <li>Run <span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/galaxyp/openms_idscoreswitcher/IDScoreSwitcher/2.6+galaxy0" title="IDScoreSwitcher tool" aria-role="link"><strong>IDScoreSwitcher</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: toolshed.g2.bx.psu.edu/repos/galaxyp/openms_idscoreswitcher/IDScoreSwitcher/2.6+galaxy0</span></span> with
       <ul>
         <li><i class="far fa-file" aria-hidden="true"></i><span class="visually-hidden">param-file</span> <em>“Input file”</em>: output of <strong>FalseDiscoveryRate</strong></li>
         <li><em>“Name of the meta value to use as the new score”</em>: <code class="language-plaintext highlighter-rouge">Posterior Probability_score</code></li>
         <li><em>“Orientation of the new score”</em>: <code class="language-plaintext highlighter-rouge">higher_better</code></li>
       </ul>
     </li>
-    <li>Run <span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/galaxyp/openms_fileinfo/FileInfo/2.6+galaxy0" title="FileInfo tool"><strong>FileInfo</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: toolshed.g2.bx.psu.edu/repos/galaxyp/openms_fileinfo/FileInfo/2.6+galaxy0</span></span>  to get basic information about the identified peptides
+    <li>Run <span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/galaxyp/openms_fileinfo/FileInfo/2.6+galaxy0" title="FileInfo tool" aria-role="link"><strong>FileInfo</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: toolshed.g2.bx.psu.edu/repos/galaxyp/openms_fileinfo/FileInfo/2.6+galaxy0</span></span> to get basic information about the identified peptides
       <ul>
         <li><i class="far fa-file" aria-hidden="true"></i><span class="visually-hidden">param-file</span> <em>“input file”</em>: <strong>IDScoreSwitcher</strong> output</li>
       </ul>
@@ -1310,14 +973,14 @@ The false discovery rate is therefore defined as the number of false discoveries
 </blockquote>
 
 <blockquote class="question">
-  <div class="box-title question-title" id="question"><i class="far fa-question-circle" aria-hidden="true"></i> Question</div>
+  <div class="box-title question-title" id="question"><i class="far fa-question-circle" aria-hidden="true" ></i> Question</div>
   <ol>
     <li>How many peptides were identified?</li>
     <li>How many peptides with oxidized methionine were identified?</li>
   </ol>
 
   <blockquote class="solution">
-    <div class="box-title solution-title" id="solution"><button class="gtn-boxify-button solution" type="button" aria-controls="solution" aria-expanded="true"><i class="far fa-eye" aria-hidden="true"></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
+    <div class="box-title solution-title" id="solution"><button class="gtn-boxify-button solution" type="button" aria-controls="solution" aria-expanded="true"><i class="far fa-eye" aria-hidden="true" ></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
     <ol>
       <li>You should have identified 3378 non-redundant peptide hits.</li>
       <li>804 peptides contain an oxidized methionine.
@@ -1331,23 +994,23 @@ Numbers may slightly vary depending on the versions of the tools and the used FA
 The OpenMS suite implemented the <a href="https://www.ncbi.nlm.nih.gov/pubmed/20712337">Fido</a> algorithm for protein inference. Fido uses a Bayesian probabilistic model to group and score proteins based on peptide-spectrum matches. Afterwards, we keep only proteins with 1% FDR.</p>
 
 <blockquote class="notranslate hands_on">
-  <div class="box-title hands-on-title" id="hands-on-protein-inference"><i class="fas fa-pencil-alt" aria-hidden="true"></i> Hands-on: Protein inference</div>
+  <div class="box-title hands-on-title" id="hands-on-protein-inference"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Protein inference</div>
 
   <ol>
-    <li>Run <span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/galaxyp/openms_fidoadapter/FidoAdapter/2.6+galaxy0" title="FidoAdapter tool"><strong>FidoAdapter</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: toolshed.g2.bx.psu.edu/repos/galaxyp/openms_fidoadapter/FidoAdapter/2.6+galaxy0</span></span>
+    <li>Run <span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/galaxyp/openms_fidoadapter/FidoAdapter/2.6+galaxy0" title="FidoAdapter tool" aria-role="link"><strong>FidoAdapter</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: toolshed.g2.bx.psu.edu/repos/galaxyp/openms_fidoadapter/FidoAdapter/2.6+galaxy0</span></span>
       <ul>
         <li><i class="far fa-file" aria-hidden="true"></i><span class="visually-hidden">param-file</span> <em>“Input: identification results”</em>: output of <strong>IDScoreSwitcher</strong></li>
         <li><em>“Post-process Fido output with greedy resolution of shared peptides based on the protein probabilities”</em>: <code class="language-plaintext highlighter-rouge">Yes</code></li>
       </ul>
     </li>
-    <li>Run <span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/galaxyp/openms_falsediscoveryrate/FalseDiscoveryRate/2.6+galaxy0" title="FalseDiscoveryRate tool"><strong>FalseDiscoveryRate</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: toolshed.g2.bx.psu.edu/repos/galaxyp/openms_falsediscoveryrate/FalseDiscoveryRate/2.6+galaxy0</span></span>
+    <li>Run <span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/galaxyp/openms_falsediscoveryrate/FalseDiscoveryRate/2.6+galaxy0" title="FalseDiscoveryRate tool" aria-role="link"><strong>FalseDiscoveryRate</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: toolshed.g2.bx.psu.edu/repos/galaxyp/openms_falsediscoveryrate/FalseDiscoveryRate/2.6+galaxy0</span></span>
       <ul>
         <li><i class="far fa-file" aria-hidden="true"></i><span class="visually-hidden">param-file</span> <em>“Identifications from searching a target-decoy database”</em>: output of <strong>FidoAdapter</strong></li>
         <li><em>“Perform FDR calculation on PSM level”</em>: <code class="language-plaintext highlighter-rouge">false</code></li>
         <li>In the <em>“FDR control”</em> section select <em>“Filter proteins based on q-value”</em>: <code class="language-plaintext highlighter-rouge">0.01</code></li>
       </ul>
     </li>
-    <li>Run <span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/galaxyp/openms_fileinfo/FileInfo/2.6+galaxy0" title="FileInfo tool"><strong>FileInfo</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: toolshed.g2.bx.psu.edu/repos/galaxyp/openms_fileinfo/FileInfo/2.6+galaxy0</span></span>  to get basic information about the identified proteins
+    <li>Run <span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/galaxyp/openms_fileinfo/FileInfo/2.6+galaxy0" title="FileInfo tool" aria-role="link"><strong>FileInfo</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: toolshed.g2.bx.psu.edu/repos/galaxyp/openms_fileinfo/FileInfo/2.6+galaxy0</span></span> to get basic information about the identified proteins
       <ul>
         <li><i class="far fa-file" aria-hidden="true"></i><span class="visually-hidden">param-file</span> <em>“input file”</em>: output of <strong>FalseDiscoveryRate</strong></li>
       </ul>
@@ -1356,16 +1019,16 @@ The OpenMS suite implemented the <a href="https://www.ncbi.nlm.nih.gov/pubmed/20
 </blockquote>
 
 <blockquote class="comment">
-  <div class="box-title comment-title" id="comment-quot-greedy-quot-group-resolution"><i class="far fa-comment-dots" aria-hidden="true"></i> Comment: &quot;Greedy&quot; Group Resolution</div>
+  <div class="box-title comment-title" id="comment-quot-greedy-quot-group-resolution"><i class="far fa-comment-dots" aria-hidden="true" ></i> Comment: &quot;Greedy&quot; Group Resolution</div>
   <p>Protein groups are reported, when an identified peptide maps to multiple proteins in the used database <a href="https://www.ncbi.nlm.nih.gov/pubmed/16009968">Nesvizhskii and Aebersold (2005)</a>. Some peptides may map to different protein groups and can therefore not be used for protein quantitation. The option <code class="language-plaintext highlighter-rouge">-greedy_group_resolution</code> solves this problem by assigning peptides only to the one most probable protein group, thus enabling to quantify proteins based not only on unique, but also on shared peptides. This usually leads to a much higher number of quantified proteins. However it will introduce noise in the FCs when a peptide was indeed shared by different proteins and the quantity of this peptide was a weighted sum of contributions. The greedy group resolution is similar to Occam’s razor.</p>
 </blockquote>
 
 <blockquote class="question">
-  <div class="box-title question-title" id="question-1"><i class="far fa-question-circle" aria-hidden="true"></i> Question</div>
+  <div class="box-title question-title" id="question-1"><i class="far fa-question-circle" aria-hidden="true" ></i> Question</div>
   <p>How many proteins were finally identified?</p>
 
   <blockquote class="solution">
-    <div class="box-title solution-title" id="solution-1"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-1" aria-expanded="true"><i class="far fa-eye" aria-hidden="true"></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
+    <div class="box-title solution-title" id="solution-1"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-1" aria-expanded="true"><i class="far fa-eye" aria-hidden="true" ></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
     <p>You should have identified 1252 proteins.
 Numbers may slightly vary depending on the versions of the tools and the used FASTA file.</p>
   </blockquote>
@@ -1379,22 +1042,22 @@ It also enables you to check for contaminations in your samples.</p>
 <p><strong>CAVE:</strong> When analyzing human samples, many proteins that are common contaminants may also stem from the sample. Therefore, human contaminants do not have to be excluded from further analysis, but you should keep in mind that the source of these proteins is unclear.</p>
 
 <blockquote class="notranslate hands_on">
-  <div class="box-title hands-on-title" id="hands-on-analysis-of-contaminants"><i class="fas fa-pencil-alt" aria-hidden="true"></i> Hands-on: Analysis of Contaminants</div>
+  <div class="box-title hands-on-title" id="hands-on-analysis-of-contaminants"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Analysis of Contaminants</div>
 
   <ol>
-    <li>Run <span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/galaxyp/openms_textexporter/TextExporter/2.6+galaxy0" title="TextExporter tool"><strong>TextExporter</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: toolshed.g2.bx.psu.edu/repos/galaxyp/openms_textexporter/TextExporter/2.6+galaxy0</span></span>  to convert the idXML output to a human-readable tabular file.
+    <li>Run <span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/galaxyp/openms_textexporter/TextExporter/2.6+galaxy0" title="TextExporter tool" aria-role="link"><strong>TextExporter</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: toolshed.g2.bx.psu.edu/repos/galaxyp/openms_textexporter/TextExporter/2.6+galaxy0</span></span> to convert the idXML output to a human-readable tabular file.
       <ul>
         <li><i class="far fa-file" aria-hidden="true"></i><span class="visually-hidden">param-file</span> <em>“Input file”</em>: <strong>FalseDiscoveryRate</strong> output</li>
       </ul>
     </li>
-    <li>Run <span class="tool" data-tool="Grep1" title="Select lines that match an expression tool"><strong>Select lines that match an expression</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: Grep1</span></span>
+    <li>Run <span class="tool" data-tool="Grep1" title="Select lines that match an expression tool" aria-role="link"><strong>Select lines that match an expression</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: Grep1</span></span>
       <ul>
         <li><i class="far fa-file" aria-hidden="true"></i><span class="visually-hidden">param-file</span> <em>“Select lines from”</em>: <strong>TextExporter</strong></li>
         <li><em>“that”</em>: <code class="language-plaintext highlighter-rouge">Matching</code></li>
         <li><em>“the pattern”</em>: <code class="language-plaintext highlighter-rouge">CONTAMINANT</code></li>
       </ul>
     </li>
-    <li>Run <span class="tool" data-tool="Grep1" title="Select lines that match an expression tool"><strong>Select lines that match an expression</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: Grep1</span></span>  to remove all non human proteins (e.g. bovine)
+    <li>Run <span class="tool" data-tool="Grep1" title="Select lines that match an expression tool" aria-role="link"><strong>Select lines that match an expression</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: Grep1</span></span> to remove all non human proteins (e.g. bovine)
       <ul>
         <li><i class="far fa-file" aria-hidden="true"></i><span class="visually-hidden">param-file</span> <em>“Select lines from”</em>: <strong>TextExporter</strong></li>
         <li><em>“that”</em>: <code class="language-plaintext highlighter-rouge">Matching</code></li>
@@ -1406,7 +1069,7 @@ It also enables you to check for contaminations in your samples.</p>
 </blockquote>
 
 <blockquote class="question">
-  <div class="box-title question-title" id="question-2"><i class="far fa-question-circle" aria-hidden="true"></i> Question</div>
+  <div class="box-title question-title" id="question-2"><i class="far fa-question-circle" aria-hidden="true" ></i> Question</div>
   <ol>
     <li>Which contaminants did you identify? Where do these contaminations likely come from?</li>
     <li>What other sources of contaminants exist?</li>
@@ -1414,7 +1077,7 @@ It also enables you to check for contaminations in your samples.</p>
   </ol>
 
   <blockquote class="solution">
-    <div class="box-title solution-title" id="solution-2"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-2" aria-expanded="true"><i class="far fa-eye" aria-hidden="true"></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
+    <div class="box-title solution-title" id="solution-2"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-2" aria-expanded="true"><i class="far fa-eye" aria-hidden="true" ></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
     <ol>
       <li>TRY1_BOVIN is bovine trypsin. It was used to degrade the proteins to peptides. ALBU_BOVIN is bovine serum albumin. It is added to cell culture medium in high amounts. Also, eight human proteins are listed, these are commonly introduced during sample preparation. As we were analyzing a human sample, it is not neccessary to remove these proteins, as they may as well originate from the HeLa cells.</li>
       <li>Contaminants often stem from the experimenter, these are typically keratins or other high-abundant human proteins. Basically any protein present in the room of the mass spectrometer might get into the ion source, if it is airborne. As an example, sheep keratins are sometimes found in proteomic samples, stemming from clothing made of sheep wool.</li>
@@ -1431,7 +1094,7 @@ By comparing results of multiple search engines, you may improve the <em>sensiti
 <p>Here, we will use the OpenMS tool <a href="https://abibuilder.informatik.uni-tuebingen.de/archive/openms/Documentation/release/latest/html/TOPP_ConsensusID.html">ConsensusID</a> to combine the search engine results.</p>
 
 <blockquote class="notranslate hands_on">
-  <div class="box-title hands-on-title" id="hands-on-multiple-search-engines"><i class="fas fa-pencil-alt" aria-hidden="true"></i> Hands-on: Multiple search engines</div>
+  <div class="box-title hands-on-title" id="hands-on-multiple-search-engines"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Multiple search engines</div>
 
   <ol>
     <li>Run <strong>MSGFPlusAdapter</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> with
@@ -1534,14 +1197,14 @@ By comparing results of multiple search engines, you may improve the <em>sensiti
 </blockquote>
 
 <blockquote class="question">
-  <div class="box-title question-title" id="question-3"><i class="far fa-question-circle" aria-hidden="true"></i> Question</div>
+  <div class="box-title question-title" id="question-3"><i class="far fa-question-circle" aria-hidden="true" ></i> Question</div>
   <ol>
     <li>How many PSMs could be matched with XTandem and MSGFPlus alone? How many peptides were identified?</li>
     <li>How many PSMs could be matched after combining the results with ConsensusID? How many peptides were identified?</li>
   </ol>
 
   <blockquote class="solution">
-    <div class="box-title solution-title" id="solution-3"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-3" aria-expanded="true"><i class="far fa-eye" aria-hidden="true"></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
+    <div class="box-title solution-title" id="solution-3"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-3" aria-expanded="true"><i class="far fa-eye" aria-hidden="true" ></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
     <ol>
       <li>After FDR-filtering, XTandem matched 3,552 PSMs (2,616 unique peptides) and MSGFPlus matched 4,292 PSMs (2,991 peptides).</li>
       <li>Combining the results with ConsensusID leads to matching of 4,299 PSMs (3,041 unique peptides).</li>
@@ -1618,6 +1281,9 @@ By comparing results of multiple search engines, you may improve the <em>sensiti
                             Florian Christoph Sigloch, Björn Grüning,  <b>Peptide and Protein ID using OpenMS tools (Galaxy Training Materials)</b>. <a href="https://training.galaxyproject.org/training-material/topics/proteomics/tutorials/protein-id-oms/tutorial.html">https://training.galaxyproject.org/training-material/topics/proteomics/tutorials/protein-id-oms/tutorial.html</a> Online; accessed TODAY
                         </li>
                         <li>
+                        Hiltemann, Saskia, Rasche, Helena et al., 2023 <b>Galaxy Training: A Powerful Framework for Teaching!</b> PLOS Computational Biology <a href="https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1010752">10.1371/journal.pcbi.1010752</a>
+                        </li>
+                        <li>
                         Batut et al., 2018 <b>Community-Driven Data Analysis Training for Biology</b> Cell Systems <a href="https://doi.org/10.1016%2Fj.cels.2018.05.012">10.1016/j.cels.2018.05.012</a>
                         </li>
                     </ol>
@@ -1639,12 +1305,12 @@ By comparing results of multiple search engines, you may improve the <em>sensiti
 
 <code id="citation-code">@misc{proteomics-protein-id-oms,
 author = "Florian Christoph Sigloch and Björn Grüning",
-title = "Peptide and Protein ID using OpenMS tools (Galaxy Training Materials)",
-year = "",
-month = "",
-day = ""
-url = "\url{https://training.galaxyproject.org/training-material/topics/proteomics/tutorials/protein-id-oms/tutorial.html}",
-note = "[Online; accessed TODAY]"
+	title = "Peptide and Protein ID using OpenMS tools (Galaxy Training Materials)",
+	year = "",
+	month = "",
+	day = ""
+	url = "\url{https://training.galaxyproject.org/training-material/topics/proteomics/tutorials/protein-id-oms/tutorial.html}",
+	note = "[Online; accessed TODAY]"
 }
 @article{Hiltemann_2023,
 	doi = {10.1371/journal.pcbi.1010752},
@@ -1670,9 +1336,9 @@ note = "[Online; accessed TODAY]"
 
 <script>
 // update the date on load, or leave fallback of 'today'
-var d = new Date();
-document.getElementById("citation-code").innerHTML = document.getElementById("citation-code").innerHTML.replace("TODAY", d.toDateString());
-document.getElementById("citation-text").innerHTML = document.getElementById("citation-text").innerHTML.replace("TODAY", d.toDateString());
+const citationTodaysDate = new Date();
+document.getElementById("citation-code").innerHTML = document.getElementById("citation-code").innerHTML.replace("TODAY", citationTodaysDate.toDateString());
+document.getElementById("citation-text").innerHTML = document.getElementById("citation-text").innerHTML.replace("TODAY", citationTodaysDate.toDateString());
 </script>
 
                 <i class="far fa-thumbs-up" aria-hidden="true"></i> Congratulations on successfully completing this tutorial!
@@ -1681,6 +1347,7 @@ document.getElementById("citation-text").innerHTML = document.getElementById("ci
 
                 
                 <blockquote class="agenda follow-up">
+                    <div class="box-title">Go Further</div>
                     <strong class="follow-up"><i class="fas fa-graduation-cap" aria-hidden="true"></i> Do you want to extend your knowledge? Follow one of our recommended follow-up trainings:</strong>
                     <ul>
                         
@@ -1766,6 +1433,128 @@ document.getElementById("citation-text").innerHTML = document.getElementById("ci
                     </ul>
                 </blockquote>
                 
+
+		
+                <blockquote class="agenda follow-up" id="admins-install-missing-tools">
+                    <div class="box-title">Galaxy Administrators: Install the missing tools</div>
+			<p>You can use Ephemeris's <code>shed-tools install</code> command to install the tools used in this tutorial.</p>
+<div class="highlight"><pre class="highlight"><code>shed-tools install [-g GALAXY] [-a API_KEY] -t &lt;(curl https://training.galaxyproject.org/training-material/api/topics/proteomics/tutorials/protein-id-oms/tutorial.json | jq .admin_install_yaml -r)</code></pre></div>
+<p>Alternatively you can copy and paste the following YAML</p>
+<div class="highlight"><pre class="highlight"><code>---
+install_tool_dependencies: true
+install_repository_dependencies: true
+install_resolver_dependencies: true
+tools:
+- name: msconvert
+  owner: galaxyp
+  revisions: 3cf310697624
+  tool_panel_section_label: Proteomics
+  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+- name: openms_consensusid
+  owner: galaxyp
+  revisions: 4e77b8f12cd3
+  tool_panel_section_label: Proteomics
+  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+- name: openms_falsediscoveryrate
+  owner: galaxyp
+  revisions: f7fef900f5b2
+  tool_panel_section_label: Proteomics
+  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+- name: openms_falsediscoveryrate
+  owner: galaxyp
+  revisions: c9eff69a7c62
+  tool_panel_section_label: Proteomics
+  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+- name: openms_fidoadapter
+  owner: galaxyp
+  revisions: 890025d6e426
+  tool_panel_section_label: Proteomics
+  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+- name: openms_fidoadapter
+  owner: galaxyp
+  revisions: 658494a2cb00
+  tool_panel_section_label: Proteomics
+  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+- name: openms_fileinfo
+  owner: galaxyp
+  revisions: 5ad830edc021
+  tool_panel_section_label: Proteomics
+  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+- name: openms_fileinfo
+  owner: galaxyp
+  revisions: 52ba9695e752
+  tool_panel_section_label: Proteomics
+  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+- name: openms_idfilter
+  owner: galaxyp
+  revisions: 382cde407f81
+  tool_panel_section_label: Proteomics
+  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+- name: openms_idmerger
+  owner: galaxyp
+  revisions: 1c5f31b8d632
+  tool_panel_section_label: Proteomics
+  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+- name: openms_idposteriorerrorprobability
+  owner: galaxyp
+  revisions: c69f69d7867a
+  tool_panel_section_label: Proteomics
+  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+- name: openms_idposteriorerrorprobability
+  owner: galaxyp
+  revisions: 111c3a00136d
+  tool_panel_section_label: Proteomics
+  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+- name: openms_idscoreswitcher
+  owner: galaxyp
+  revisions: 476b5e296979
+  tool_panel_section_label: Proteomics
+  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+- name: openms_idscoreswitcher
+  owner: galaxyp
+  revisions: be74a8cd7d66
+  tool_panel_section_label: Proteomics
+  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+- name: openms_msgfplusadapter
+  owner: galaxyp
+  revisions: a407b6790342
+  tool_panel_section_label: Proteomics
+  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+- name: openms_peakpickerhires
+  owner: galaxyp
+  revisions: 3d8d4ada5405
+  tool_panel_section_label: Proteomics
+  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+- name: openms_peptideindexer
+  owner: galaxyp
+  revisions: e039cc5c7aed
+  tool_panel_section_label: Proteomics
+  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+- name: openms_peptideindexer
+  owner: galaxyp
+  revisions: dd173849c3d8
+  tool_panel_section_label: Proteomics
+  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+- name: openms_textexporter
+  owner: galaxyp
+  revisions: 9020199dba0a
+  tool_panel_section_label: Proteomics
+  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+- name: openms_xtandemadapter
+  owner: galaxyp
+  revisions: c8b225c69a7f
+  tool_panel_section_label: Proteomics
+  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+- name: openms_xtandemadapter
+  owner: galaxyp
+  revisions: 7f6a1f27553e
+  tool_panel_section_label: Proteomics
+  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+</code></pre></div>
+                </blockquote>
+		
+
+
                 </section>
 
             </div>
@@ -1777,38 +1566,52 @@ document.getElementById("citation-text").innerHTML = document.getElementById("ci
 <br/>
 
         </div>
-        
-        <script src="/training-material/assets/js/jquery.slim.min.js"></script>
-        <script src="/training-material/assets/js/popper.min.js"></script>
-        <script src="/training-material/assets/js/bootstrap.min.js?v=3"></script>
-        <script src="/training-material/assets/js/details-element-polyfill.js"></script>
+        <footer>
+	<hr />
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-6" style="text-align: left">
+				<p>
+					The <a href="https://galaxyproject.org/teach/gtn/">Galaxy Training Network</a>
+					provides researchers with online training materials, connects them with local trainers, and helps promoting FAIR and Open Science practices worldwide. All contributions are subject to the <a rel="code-of-conduct" href="https://galaxyproject.org/community/coc/">Galaxy Project Code of Conduct</a>.
+				</p>
+				<p>
+				The GTN infrastructure is licensed under <a rel="license" href="https://github.com/galaxyproject/training-material/blob/main/LICENSE.md">MIT</a>
+				</p>
+				<p>
+				Revision <a href="https://github.com/galaxyproject/training-material/commit/476574d2b382dd1db6c2c408d8fb6ec4393a6904">476574d</a>, built with Jekyll (4.3.2 | production)
+				</p>
+			</div>
+			<div class="col-sm-6" style="text-align: right">
+				
+				<p>
+					Resource <i class="fas fa-fingerprint" aria-hidden="true"></i><span class="visually-hidden">purl</span><abbr title="Persistent URL">PURL</abbr>: <a href="https://gxy.io/GTN:T00228">https://gxy.io/GTN:T00228</a>
+				</p>
+				
+				<p>
+					<i>This Material</i>:
+					
+					is licensed under
+					<a rel="license" href="https://spdx.org/licenses/CC-BY-4.0">
+						Creative Commons Attribution 4.0 International License
+					</a>
+				</p>
+				<p>
+					<a href="https://github.com/galaxyproject/training-material/edit/main/topics/proteomics/tutorials/protein-id-oms/tutorial.md" title="Edit on GitHub">
+					<i class="fab fa-github" aria-hidden="true"></i><span class="visually-hidden">github</span> Edit on GitHub
+					</a>
+				</p>
+			</div>
+		</div>
+	</div>
+</footer>
+
+
+    </div>
+</footer>
+
+
+        <script src='/training-material/assets/js/bundle.main.js?v=1687830693'></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-        <script src="/training-material/assets/js/bootstrap-toc.min.js"></script>
-        <script src="/training-material/assets/js/main.js"></script>
-        <script src="/training-material/assets/js/clipboard.min.js"></script>
-        <script>
-        var snippets=document.querySelectorAll('div.highlight');
-        [].forEach.call(snippets,function(snippet){
-            snippet.firstChild.insertAdjacentHTML('beforebegin','<button class="btn btn-light" data-clipboard-snippet tabindex="0"><i class="fa fa-copy"></i>&nbsp;Copy</button>');
-        });
-
-        var clipboardSnippets=new ClipboardJS('[data-clipboard-snippet]',{
-            target:function(trigger){return trigger.nextElementSibling;
-        }});
-        </script>
-        
-
-        <script type="text/javascript">
-            if(window.location.hostname === "galaxyproject.github.io") {
-                // Redirect
-                var redirect = "https://training.galaxyproject.org" + window.location.pathname + window.location.search;
-                $('div.container.main-content').prepend("<div class='alert alert-warning'><strong>Note: </strong>This content has a new home at <a href=\"" + redirect + "\">" + redirect + "</a>, which you will be redirected to in 5 seconds.</div>");
-
-                window.setTimeout(function(){
-                    window.location.href = redirect;
-                }, 5000)
-
-            }
-        </script>
     </body>
 </html>

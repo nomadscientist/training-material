@@ -8,16 +8,45 @@
         
             <script async defer data-domain="training.galaxyproject.org" src="https://plausible.galaxyproject.eu/js/plausible.js"></script>
 
+<!-- JavaScript Error Monitoring, and performance tracking. -->
+<script
+  src="https://browser.sentry-cdn.com/7.52.1/bundle.tracing.min.js"
+  integrity="sha384-muuFXKS3752PNA4rPm9Uq6BLvOfV4CXyr9MHDBPvozOJJUWLKkogEFWOIRoVps43"
+  crossorigin="anonymous"
+></script>
+<script type="text/javascript">
+Sentry.init({
+  dsn: "https://45e0ec6e4373462b92969505df37cf40@sentry.galaxyproject.org/10",
+  release: "galaxy-training-network@476574d2b382dd1db6c2c408d8fb6ec4393a6904",
+  integrations: [new Sentry.BrowserTracing(), new Sentry.Replay()],
+  sampleRate: 0.1,
+  tracesSampleRate: 0.1,
+  // Capture Replay for no sessions by default
+  replaysSessionSampleRate: 0.01,
+  // plus for 1% of sessions with an error
+  replaysOnErrorSampleRate: 0.01,
+  // PII OFF
+  sendDefaultPii: false, // Off by default but just in case.
+  environment: "production",
+});
+</script>
+
         
-        <link rel="stylesheet" href="/training-material/assets/css/bootstrap.min.css?v=3">
-        <link rel="stylesheet" href="/training-material/assets/css/bootstrap-toc.min.css">
-        <link rel="stylesheet" href="/training-material/assets/css/main.css?v=2">
-        <link rel="stylesheet" href="/training-material/assets/fontawesome/css/all.css">
-        <link rel="stylesheet" href="/training-material/assets/css/academicons.css">
         <link rel="shortcut icon" href="/training-material/favicon.ico" type="image/x-icon">
         <link rel="alternate" type="application/atom+xml" href="/training-material/feed.xml">
         <link rel="canonical" href="https://training.galaxyproject.org/training-material/topics/galaxy-interface/tutorials/upload-rules-advanced/tutorial.html">
-        <link rel="license" href="https://creativecommons.org/licenses/by/4.0/">
+        <link rel="license" href="https://spdx.org/licenses/CC-BY-4.0">
+        <link rel="preload" href="/training-material/assets/fonts/AtkinsonHyperlegible/Atkinson-Hyperlegible-Regular-102a.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="preload" href="/training-material/assets/fonts/AtkinsonHyperlegible/Atkinson-Hyperlegible-Bold-102a.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="preload" href="/training-material/assets/fonts/AtkinsonHyperlegible/Atkinson-Hyperlegible-Italic-102a.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML" as="script" crossorigin>
+        <link rel="preload" href="/training-material/assets/css/main.css?v=3" as="style">
+        <link rel='preload' href='/training-material/assets/js/bundle.theme.js?v=1687830693' as='script'>
+<link rel='preload' href='/training-material/assets/js/bundle.main.js?v=1687830693' as='script'>
+        <link rel="stylesheet" href="/training-material/assets/css/main.css?v=3">
+        <link rel="manifest" href="/training-material/manifest.json">
+        <meta name="theme-color" content="#2c3143"/>
+
 
         <meta name="DC.identifier" content="https://github.com/galaxyproject/training-material">
 <meta name="DC.type" content="text">
@@ -91,6 +120,10 @@
     "url": "https://galaxyproject.org/teach/gtn/"
   },
   "identifier": "https://github.com/galaxyproject/training-material",
+  "workTranslation": [
+
+  ],
+  "creativeWorkStatus": "Active",
   "accessMode": [
     "textual",
     "visual"
@@ -118,6 +151,7 @@
   "name": "Hands-on for 'Rule Based Uploader: Advanced' tutorial",
   "url": "https://training.galaxyproject.org/training-material/topics/galaxy-interface/tutorials/upload-rules-advanced/tutorial.html",
   "timeRequired": "PT20M",
+  "teaches": "Learn even more about the Rule Based Uploader",
   "keywords": "galaxy-interface, collections, tags",
   "description": "The questions this  addresses are:\n - How to use the rule based uploader to create complex collections\n\n\nThe objectives are:\n - Learn even more about the Rule Based Uploader\n\n",
   "inLanguage": {
@@ -162,8 +196,8 @@
       "@context": "https://schema.org",
       "@type": "Person",
       "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
+        "@id": "https://bioschemas.org/profiles/Person/0.3-DRAFT",
+        "@type": "CreativeWork"
       },
       "url": "https://training.galaxyproject.org/training-material/hall-of-fame/jmchilton/",
       "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/jmchilton/",
@@ -185,56 +219,8 @@
       "@context": "https://schema.org",
       "@type": "Person",
       "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
-      },
-      "url": "https://training.galaxyproject.org/training-material/hall-of-fame/hexylena/",
-      "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/hexylena/",
-      "name": "Helena Rasche",
-      "image": "https://avatars.githubusercontent.com/hexylena",
-      "description": "A contributor to the GTN project.",
-      "memberOf": [
-        {
-          "@type": "Organization",
-          "email": "galaxytrainingnetwork@gmail.com",
-          "name": "Galaxy Training Network",
-          "url": "https://galaxyproject.org/teach/gtn/"
-        }
-      ],
-      "identifier": "https://orcid.org/0000-0001-9760-8992",
-      "orcid": "https://orcid.org/0000-0001-9760-8992"
-    }
-  ],
-  "contributor": [
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
-      },
-      "url": "https://training.galaxyproject.org/training-material/hall-of-fame/jmchilton/",
-      "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/jmchilton/",
-      "name": "John Chilton",
-      "image": "https://avatars.githubusercontent.com/jmchilton",
-      "description": "A contributor to the GTN project.",
-      "memberOf": [
-        {
-          "@type": "Organization",
-          "email": "galaxytrainingnetwork@gmail.com",
-          "name": "Galaxy Training Network",
-          "url": "https://galaxyproject.org/teach/gtn/"
-        }
-      ],
-      "identifier": "https://orcid.org/0000-0002-6794-0756",
-      "orcid": "https://orcid.org/0000-0002-6794-0756"
-    },
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
+        "@id": "https://bioschemas.org/profiles/Person/0.3-DRAFT",
+        "@type": "CreativeWork"
       },
       "url": "https://training.galaxyproject.org/training-material/hall-of-fame/hexylena/",
       "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/hexylena/",
@@ -261,13 +247,24 @@
       "url": "https://training.galaxyproject.org/training-material/topics/galaxy-interface/"
     }
   ],
-  "educationalLevel": "Advanced"
+  "educationalLevel": "Advanced",
+  "mentions": [
+    {
+      "@type": "Thing",
+      "name": "collections"
+    },
+    {
+      "@type": "Thing",
+      "name": "tags"
+    }
+  ],
+  "abstract": "# Introduction"
 }
         </script>
         
     </head>
     <body data-spy="scroll" data-target="#toc">
-        <script type="text/javascript" src="/training-material/assets/js/theme.js"></script>
+        <script src='/training-material/assets/js/bundle.theme.js?v=1687830693'></script>
         <header>
     <nav class="navbar navbar-expand-md navbar-dark" aria-label="Site Navigation">
         <div class="container">
@@ -336,7 +333,6 @@
     </a>
     <div class="dropdown-menu dropdown-menu-right">
 
-        
         <a class="dropdown-item" href="https://github.com/galaxyproject/training-material/edit/main/topics/galaxy-interface/tutorials/upload-rules-advanced/tutorial.md" title="Edit on GitHub">
           <i class="fab fa-github" aria-hidden="true"></i><span class="visually-hidden">github</span> Edit on GitHub
         </a>
@@ -384,13 +380,13 @@
 
             <div id="archive-selector">
             
-                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2020-01-06/topics/galaxy-interface/tutorials/upload-rules-advanced/tutorial.html" title="Version 2020-01-06">2020-01-06</a>
+                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2020-01-06/topics/galaxy-interface/tutorials/upload-rules-advanced/tutorial.html">2020-01-06</a>
             
-                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2019-12-01/topics/galaxy-interface/tutorials/upload-rules-advanced/tutorial.html" title="Version 2019-12-01">2019-12-01</a>
+                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2019-12-01/topics/galaxy-interface/tutorials/upload-rules-advanced/tutorial.html">2019-12-01</a>
             
-                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2019-11-01/topics/galaxy-interface/tutorials/upload-rules-advanced/tutorial.html" title="Version 2019-11-01">2019-11-01</a>
+                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2019-11-01/topics/galaxy-interface/tutorials/upload-rules-advanced/tutorial.html">2019-11-01</a>
             
-                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/" title="Older Versions">Older Versions</a>
+                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/">Older Versions</a>
             </div>
 
         </div>
@@ -403,7 +399,7 @@
                     <li class="nav-item">
                       <div id="navbarSupportedContent" role="search">
                         <!-- Search form -->
-                        <form class="form-inline mr-auto" method="GET" action="/training-material/search">
+                        <form class="form-inline mr-auto" method="GET" action="/training-material/search2">
                           <i class="fas fa-search nav-link" aria-hidden="true"></i>
                           <div class="md-form mb-2">
                             <input name="query" class="form-control nicer" type="text" placeholder="Search Tutorials" aria-label="Search">
@@ -440,240 +436,7 @@
 
 
 
-<script>
-  ((window.gitter = {}).chat = {}).options = {
-  room: 'Galaxy-Training-Network/Lobby'
-  };
-</script>
 
-
-<script src="https://sidecar.gitter.im/dist/sidecar.v1.js" async defer></script>
-
-<script type="application/ld+json">
-    
-
-
-{
-  "@context": "http://schema.org",
-  "@type": "LearningResource",
-  "http://purl.org/dc/terms/conformsTo": {
-    "@id": "https://bioschemas.org/profiles/TrainingMaterial/1.0-RELEASE",
-    "@type": "CreativeWork"
-  },
-  "audience": {
-    "@type": "EducationalAudience",
-    "educationalRole": "Students"
-  },
-  "citation": {
-    "@type": "CreativeWork",
-    "name": "Community-Driven Data Analysis Training for Biology",
-    "url": "https://doi.org/10.1016/j.cels.2018.05.012"
-  },
-  "copyrightHolder": {
-    "@type": "Organization",
-    "email": "galaxytrainingnetwork@gmail.com",
-    "name": "Galaxy Training Network",
-    "url": "https://galaxyproject.org/teach/gtn/"
-  },
-  "dateModified": "2023-02-02 12:10:58 +0000",
-  "discussionUrl": "https://gitter.im/Galaxy-Training-Network/Lobby",
-  "headline": "Rule Based Uploader: Advanced",
-  "interactivityType": "mixed",
-  "isAccessibleForFree": true,
-  "isFamilyFriendly": true,
-  "license": "https://spdx.org/licenses/CC-BY-4.0.html",
-  "producer": {
-    "@type": "Organization",
-    "email": "galaxytrainingnetwork@gmail.com",
-    "name": "Galaxy Training Network",
-    "url": "https://galaxyproject.org/teach/gtn/"
-  },
-  "provider": {
-    "@type": "Organization",
-    "email": "galaxytrainingnetwork@gmail.com",
-    "name": "Galaxy Training Network",
-    "url": "https://galaxyproject.org/teach/gtn/"
-  },
-  "sourceOrganization": {
-    "@type": "Organization",
-    "email": "galaxytrainingnetwork@gmail.com",
-    "name": "Galaxy Training Network",
-    "url": "https://galaxyproject.org/teach/gtn/"
-  },
-  "identifier": "https://github.com/galaxyproject/training-material",
-  "accessMode": [
-    "textual",
-    "visual"
-  ],
-  "accessModeSufficient": [
-    "textual",
-    "visual"
-  ],
-  "accessibilityControl": [
-    "fullKeyboardControl",
-    "fullMouseControl"
-  ],
-  "accessibilityFeature": [
-    "alternativeText",
-    "tableOfContents"
-  ],
-  "accessibilitySummary": "The text aims to be as accessible as possible. Image descriptions will vary per tutorial, from images being completely inaccessible, to images with good descriptions for non-visual users.",
-  "isPartOf": {
-    "@type": "CreativeWork",
-    "name": "Using Galaxy and Managing your Data",
-    "description": "A collection of microtutorials explaining various features of the Galaxy user interface and manipulating data within Galaxy.",
-    "url": "https://training.galaxyproject.org/training-material/topics/galaxy-interface/"
-  },
-  "learningResourceType": "hands-on tutorial",
-  "name": "Hands-on for 'Rule Based Uploader: Advanced' tutorial",
-  "url": "https://training.galaxyproject.org/training-material/topics/galaxy-interface/tutorials/upload-rules-advanced/tutorial.html",
-  "timeRequired": "PT20M",
-  "keywords": "galaxy-interface, collections, tags",
-  "description": "The questions this  addresses are:\n - How to use the rule based uploader to create complex collections\n\n\nThe objectives are:\n - Learn even more about the Rule Based Uploader\n\n",
-  "inLanguage": {
-    "@type": "Language",
-    "name": "English",
-    "alternateName": "en"
-  },
-  "competencyRequired": [
-    {
-      "@context": "http://schema.org",
-      "@type": "LearningResource",
-      "url": "https://training.galaxyproject.org/training-material/topics/galaxy-interface/tutorials/collections/tutorial.html",
-      "name": "Using dataset collections",
-      "description": "Hands-on for 'Using dataset collections' tutorial",
-      "learningResourceType": "hands-on tutorial",
-      "interactivityType": "expositive",
-      "provider": {
-        "@type": "Organization",
-        "email": "galaxytrainingnetwork@gmail.com",
-        "name": "Galaxy Training Network",
-        "url": "https://galaxyproject.org/teach/gtn/"
-      }
-    },
-    {
-      "@context": "http://schema.org",
-      "@type": "LearningResource",
-      "url": "https://training.galaxyproject.org/training-material/topics/galaxy-interface/tutorials/upload-rules/tutorial.html",
-      "name": "Rule Based Uploader",
-      "description": "Hands-on for 'Rule Based Uploader' tutorial",
-      "learningResourceType": "hands-on tutorial",
-      "interactivityType": "expositive",
-      "provider": {
-        "@type": "Organization",
-        "email": "galaxytrainingnetwork@gmail.com",
-        "name": "Galaxy Training Network",
-        "url": "https://galaxyproject.org/teach/gtn/"
-      }
-    }
-  ],
-  "author": [
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
-      },
-      "url": "https://training.galaxyproject.org/training-material/hall-of-fame/jmchilton/",
-      "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/jmchilton/",
-      "name": "John Chilton",
-      "image": "https://avatars.githubusercontent.com/jmchilton",
-      "description": "A contributor to the GTN project.",
-      "memberOf": [
-        {
-          "@type": "Organization",
-          "email": "galaxytrainingnetwork@gmail.com",
-          "name": "Galaxy Training Network",
-          "url": "https://galaxyproject.org/teach/gtn/"
-        }
-      ],
-      "identifier": "https://orcid.org/0000-0002-6794-0756",
-      "orcid": "https://orcid.org/0000-0002-6794-0756"
-    },
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
-      },
-      "url": "https://training.galaxyproject.org/training-material/hall-of-fame/hexylena/",
-      "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/hexylena/",
-      "name": "Helena Rasche",
-      "image": "https://avatars.githubusercontent.com/hexylena",
-      "description": "A contributor to the GTN project.",
-      "memberOf": [
-        {
-          "@type": "Organization",
-          "email": "galaxytrainingnetwork@gmail.com",
-          "name": "Galaxy Training Network",
-          "url": "https://galaxyproject.org/teach/gtn/"
-        }
-      ],
-      "identifier": "https://orcid.org/0000-0001-9760-8992",
-      "orcid": "https://orcid.org/0000-0001-9760-8992"
-    }
-  ],
-  "contributor": [
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
-      },
-      "url": "https://training.galaxyproject.org/training-material/hall-of-fame/jmchilton/",
-      "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/jmchilton/",
-      "name": "John Chilton",
-      "image": "https://avatars.githubusercontent.com/jmchilton",
-      "description": "A contributor to the GTN project.",
-      "memberOf": [
-        {
-          "@type": "Organization",
-          "email": "galaxytrainingnetwork@gmail.com",
-          "name": "Galaxy Training Network",
-          "url": "https://galaxyproject.org/teach/gtn/"
-        }
-      ],
-      "identifier": "https://orcid.org/0000-0002-6794-0756",
-      "orcid": "https://orcid.org/0000-0002-6794-0756"
-    },
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
-      },
-      "url": "https://training.galaxyproject.org/training-material/hall-of-fame/hexylena/",
-      "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/hexylena/",
-      "name": "Helena Rasche",
-      "image": "https://avatars.githubusercontent.com/hexylena",
-      "description": "A contributor to the GTN project.",
-      "memberOf": [
-        {
-          "@type": "Organization",
-          "email": "galaxytrainingnetwork@gmail.com",
-          "name": "Galaxy Training Network",
-          "url": "https://galaxyproject.org/teach/gtn/"
-        }
-      ],
-      "identifier": "https://orcid.org/0000-0001-9760-8992",
-      "orcid": "https://orcid.org/0000-0001-9760-8992"
-    }
-  ],
-  "about": [
-    {
-      "@type": "CreativeWork",
-      "name": "Using Galaxy and Managing your Data",
-      "description": "A collection of microtutorials explaining various features of the Galaxy user interface and manipulating data within Galaxy.",
-      "url": "https://training.galaxyproject.org/training-material/topics/galaxy-interface/"
-    }
-  ],
-  "educationalLevel": "Advanced"
-}
-</script>
 
 <article class="tutorial topic-galaxy-interface">
     <h1 data-toc-skip>Rule Based Uploader: Advanced</h1>
@@ -683,7 +446,7 @@
     <div markdown="0">
 
 	<div class="contributors-line">
-		Authors: <a href="/training-material/hall-of-fame/jmchilton/" class="contributor-badge contributor-jmchilton"><img src="/training-material/assets/images/orcid.png" alt="orcid logo"/><img src="https://avatars.githubusercontent.com/jmchilton?s=27" alt="Avatar">John Chilton</a><a href="/training-material/hall-of-fame/hexylena/" class="contributor-badge contributor-hexylena"><img src="/training-material/assets/images/orcid.png" alt="orcid logo"/><img src="https://avatars.githubusercontent.com/hexylena?s=27" alt="Avatar">Helena Rasche</a>
+		Authors: <a href="/training-material/hall-of-fame/jmchilton/" class="contributor-badge contributor-jmchilton"><img src="/training-material/assets/images/orcid.png" alt="orcid logo" width="36" height="36"/><img src="https://avatars.githubusercontent.com/jmchilton?s=36" alt="Avatar" width="36" height="36">John Chilton</a><a href="/training-material/hall-of-fame/hexylena/" class="contributor-badge contributor-hexylena"><img src="/training-material/assets/images/orcid.png" alt="orcid logo" width="36" height="36"/><img src="https://avatars.githubusercontent.com/hexylena?s=36" alt="Avatar" width="36" height="36">Helena Rasche</a>
 	</div>
 
 </div>
@@ -867,13 +630,13 @@
 
         <div><strong><i class="far fa-calendar" aria-hidden="true"></i> Last modification:</strong> Feb 2, 2023 </div>
         <div><strong><i class="fas fa-balance-scale" aria-hidden="true"></i> License:</strong>
+		
             
-            <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Tutorial Content is licensed under Creative Commons Attribution 4.0 International License</a>
-            
-            <a rel="license" href="https://github.com/galaxyproject/training-material/blob/main/LICENSE.md">The GTN Framework is licensed under MIT</a>
+            <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Tutorial Content is licensed under Creative Commons Attribution 4.0 International License</a>.
+             The GTN Framework is licensed under <a rel="license" href="https://github.com/galaxyproject/training-material/blob/main/LICENSE.md">MIT</a>
         </div>
         
-        <div><strong>Short Link:</strong> <a href="https://gxy.io/GTN:T00161">https://gxy.io/GTN:T00161</a> </div>
+        <div><strong><i class="fas fa-fingerprint" aria-hidden="true"></i><span class="visually-hidden">purl</span><abbr title="Persistent URL">PURL</abbr>:</strong> <a href="https://gxy.io/GTN:T00161">https://gxy.io/GTN:T00161</a> </div>
         
     </blockquote>
     </section>
@@ -918,12 +681,12 @@
 
 <p>For this multiomics example, we will start with a uniprot query and build URLs from accession numbers contained within the supplied tabular data. Consider the uniprot query <a href="https://uniprot.org/uniprot/?query=proteome:UP000052092+AND+proteomecomponent:%22Genome%22">https://uniprot.org/uniprot/?query=proteome:UP000052092+AND+proteomecomponent:”Genome”</a>, pictured below.</p>
 
-<p><img src="../../images/rules/uniprot_url.png" alt="UniProt table screenshot. " loading="lazy" /></p>
+<p><img src="../../images/rules/uniprot_url.png" alt="UniProt table screenshot. " width="1701" height="720" loading="lazy" /></p>
 
 <p>In order to make this data useful for the Rule Builder, we need to turn these accessoin IDs into URLs.</p>
 
 <blockquote class="hands_on" id="example-3-metadata">
-  <div class="box-title hands-on-title" id="hands-on-turn-uniprot-accession-ids-into-urls"><i class="fas fa-pencil-alt" aria-hidden="true"></i> Hands-on: Turn Uniprot Accession IDs into URLs</div>
+  <div class="box-title hands-on-title" id="hands-on-turn-uniprot-accession-ids-into-urls"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Turn Uniprot Accession IDs into URLs</div>
 
   <ol>
     <li>Open <a href="https://www.uniprot.org/uniprot/E7C0H6">Uniprot</a></li>
@@ -932,12 +695,12 @@
     <li>
       <p><strong>Click</strong> <code class="language-plaintext highlighter-rouge">FASTA (canonical)</code></p>
 
-      <p><img src="../../images/rules/uniprot_fasta.png" alt="Link to access FASTA file. " loading="lazy" /></p>
+      <p><img src="../../images/rules/uniprot_fasta.png" alt="Link to access FASTA file. " width="1123" height="635" loading="lazy" /></p>
     </li>
     <li>
       <p>Your browser will redirect to the fasta file</p>
 
-      <p><img src="../../images/rules/uniprot_fasta_url.png" alt="Viewing the FASTA file. " loading="lazy" /></p>
+      <p><img src="../../images/rules/uniprot_fasta_url.png" alt="Viewing the FASTA file. " width="861" height="219" loading="lazy" /></p>
     </li>
     <li>We can deduce that the FASTA files for the other accession IDs will be available from URLs of the form <code class="language-plaintext highlighter-rouge">https://www.uniprot.org/uniprot/{identifier}.fasta</code>
 <!-- https://rest.uniprot.org/uniprotkb/search?format=fasta&includeIsoform=true&query=accession:E7C0H6  is also an option, for future editors. --></li>
@@ -947,7 +710,7 @@
 <p>We will use this information to build a collection of FASTA files from our query.</p>
 
 <blockquote class="notranslate hands_on">
-  <div class="box-title hands-on-title" id="hands-on-build-collection-from-uniprot-accession-ids"><i class="fas fa-pencil-alt" aria-hidden="true"></i> Hands-on: Build Collection from Uniprot Accession IDs</div>
+  <div class="box-title hands-on-title" id="hands-on-build-collection-from-uniprot-accession-ids"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Build Collection from Uniprot Accession IDs</div>
 
   <ol>
     <li>Open the Rule Builder
@@ -1019,7 +782,7 @@ E7C0H2	E7C0H2_9PAPI	unreviewed	Replication protein E1 (EC 3.6.4.12) (ATP-depende
       </ul>
 
       <blockquote class="comment">
-        <div class="box-title comment-title" id="comment-regular-expression-explained"><i class="far fa-comment-dots" aria-hidden="true"></i> Comment: Regular expression explained</div>
+        <div class="box-title comment-title" id="comment-regular-expression-explained"><i class="far fa-comment-dots" aria-hidden="true" ></i> Comment: Regular expression explained</div>
         <p>In this regular expression, <code class="language-plaintext highlighter-rouge">.*</code> will capture the entire accession ID.</p>
 
         <p>In the replacement expression, <code class="language-plaintext highlighter-rouge">https://www.uniprot.org/uniprot/\0.fasta</code>, the <code class="language-plaintext highlighter-rouge">\0</code> will be replaced by the captured
@@ -1046,7 +809,7 @@ regular expression (the accession ID) in the resulting column values.</p>
       </ul>
 
       <blockquote class="comment">
-        <div class="box-title comment-title" id="comment-json-rule-definitions"><i class="far fa-comment-dots" aria-hidden="true"></i> Comment: JSON Rule Definitions</div>
+        <div class="box-title comment-title" id="comment-json-rule-definitions"><i class="far fa-comment-dots" aria-hidden="true" ></i> Comment: JSON Rule Definitions</div>
         <p>This example is ready to go, but before clicking “Build” it may be interesting to check out the rules Galaxy is following to clean and import your data. Click the little Wrench icon at the top of the list of rules. The result is a bunch of JavaScript object notation (JSON) text that you should never need to worry about but that you can build or modify by hand if you find it useful. We will use it the next example to quickly restore the list builder back to this state.</p>
 
         <p><img src="https://galaxy-tests.s3.amazonaws.com/galaxy-gtn-screenshots/local/rules_example_4_8_source.png" alt="screenshot. " loading="lazy" /></p>
@@ -1065,7 +828,7 @@ regular expression (the accession ID) in the resulting column values.</p>
 <p>For this example we will re-use the metadata from the <a href="#example-3-metadata">previous example</a>.</p>
 
 <blockquote class="notranslate hands_on">
-  <div class="box-title hands-on-title" id="hands-on-build-a-matched-collection"><i class="fas fa-pencil-alt" aria-hidden="true"></i> Hands-on: Build a matched collection</div>
+  <div class="box-title hands-on-title" id="hands-on-build-a-matched-collection"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Build a matched collection</div>
 
   <ol>
     <li><strong>Open</strong> the Rule Builder
@@ -1094,7 +857,7 @@ E7C0H2	E7C0H2_9PAPI	unreviewed	Replication protein E1 (EC 3.6.4.12) (ATP-depende
 <img src="https://galaxy-tests.s3.amazonaws.com/galaxy-gtn-screenshots/local/rules_example_5_3_initial_rules.png" alt="screenshot. " loading="lazy" /></p>
 
       <blockquote class="comment">
-        <div class="box-title comment-title" id="comment-json-editor"><i class="far fa-comment-dots" aria-hidden="true"></i> Comment: JSON Editor</div>
+        <div class="box-title comment-title" id="comment-json-editor"><i class="far fa-comment-dots" aria-hidden="true" ></i> Comment: JSON Editor</div>
 
         <p>Another way to do this is to open the JSON Editor, by clicking the wrench icon <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> to the left of the history icon.  This will open up the JSON that gets created as you modify rules.  You can copy and paste JSON here or modify it directly. When you’re working in this way, be sure to write good JSON (closing brackets, fields that make sense, etc.), otherwise you will get an error.</p>
       </blockquote>
@@ -1208,7 +971,7 @@ E7C0H2	E7C0H2_9PAPI	unreviewed	Replication protein E1 (EC 3.6.4.12) (ATP-depende
 <p>So use either the SRA exporter tool or download the CSV file with fake URLs. If you download the data from the SRA exporter tool, select only the first 12 columns from the data (up to the column labeled “Library Name”) and copy the resulting data to your clipboard.</p>
 
 <blockquote class="notranslate hands_on">
-  <div class="box-title hands-on-title" id="hands-on-building-nested-lists"><i class="fas fa-pencil-alt" aria-hidden="true"></i> Hands-on: Building Nested Lists</div>
+  <div class="box-title hands-on-title" id="hands-on-building-nested-lists"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Building Nested Lists</div>
 
   <ol>
     <li>Open the Rule Builder
@@ -1219,7 +982,7 @@ E7C0H2	E7C0H2_9PAPI	unreviewed	Replication protein E1 (EC 3.6.4.12) (ATP-depende
       </ul>
 
       <blockquote class="solution">
-        <div class="box-title solution-title" id="solution-show-table"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-show-table" aria-expanded="true"><i class="far fa-eye" aria-hidden="true"></i> Solution: Show Table<span class="fold-unfold fa fa-minus-square"></span></button></div>
+        <div class="box-title solution-title" id="solution-show-table"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-show-table" aria-expanded="true"><i class="far fa-eye" aria-hidden="true" ></i> Solution: Show Table<span class="fold-unfold fa fa-minus-square"></span></button></div>
 
         <p>Below is the table with pre-downloaded example data mentioned above:</p>
 
@@ -1324,7 +1087,7 @@ SRR5363715	2017-03-21 11:26:06	2017-03-21 10:59:33	712060	142833136	702138	200	5
           <p>Strip the header row</p>
 
           <blockquote class="solution">
-            <div class="box-title solution-title" id="solution"><button class="gtn-boxify-button solution" type="button" aria-controls="solution" aria-expanded="true"><i class="far fa-eye" aria-hidden="true"></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
+            <div class="box-title solution-title" id="solution"><button class="gtn-boxify-button solution" type="button" aria-controls="solution" aria-expanded="true"><i class="far fa-eye" aria-hidden="true" ></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
             <p>From <strong>Filter</strong> menu, select <code class="language-plaintext highlighter-rouge">First or Last N Rows</code></p>
             <ul>
               <li>Filter first Row</li>
@@ -1355,7 +1118,7 @@ as an identifier for grouping the datasets. To do this, use the regex column add
 <img src="https://galaxy-tests.s3.amazonaws.com/galaxy-gtn-screenshots/local/rules_example_6_4_regex.png" alt="screenshot. " loading="lazy" /></p>
 
       <blockquote class="comment">
-        <div class="box-title comment-title" id="comment-regular-expression-explained-1"><i class="far fa-comment-dots" aria-hidden="true"></i> Comment: Regular expression explained</div>
+        <div class="box-title comment-title" id="comment-regular-expression-explained-1"><i class="far fa-comment-dots" aria-hidden="true" ></i> Comment: Regular expression explained</div>
         <p>In this regular expression, <code class="language-plaintext highlighter-rouge">\d</code> means any digit, so <code class="language-plaintext highlighter-rouge">[^...]</code> means match anything that is not inside the brackets.
 So together <code class="language-plaintext highlighter-rouge">[^\d]+</code> means match one or more, non digits at the start of the column and the <code class="language-plaintext highlighter-rouge">()</code> around that means capture
 them into a group. We’ve add <code class="language-plaintext highlighter-rouge">\d+</code> at the end of the expression but it isn’t grouped so we are effectively ignoring the
@@ -1373,7 +1136,7 @@ first column <code class="language-plaintext highlighter-rouge">A</code> for the
           <p>Select column <code class="language-plaintext highlighter-rouge">A</code></p>
 
           <blockquote class="comment">
-            <div class="box-title comment-title" id="comment-re-ordering-columns"><i class="far fa-comment-dots" aria-hidden="true"></i> Comment: Re-ordering columns</div>
+            <div class="box-title comment-title" id="comment-re-ordering-columns"><i class="far fa-comment-dots" aria-hidden="true" ></i> Comment: Re-ordering columns</div>
             <p>If you make a mistake in the order you select columns in you can simple use the up and down arrows to re-arrange the list</p>
           </blockquote>
         </li>
@@ -1407,7 +1170,7 @@ will be the same as those used by the <a href="https://bioconductor.org/packages
 from the <a href="https://bioconductor.org/packages/release/data/experiment/html/pasilla.html">Pasilla Bioconductor Package</a>.</p>
 
 <blockquote class="notranslate hands_on">
-  <div class="box-title hands-on-title" id="hands-on-applying-rules-to-existing-collections"><i class="fas fa-pencil-alt" aria-hidden="true"></i> Hands-on: Applying Rules to Existing Collections</div>
+  <div class="box-title hands-on-title" id="hands-on-applying-rules-to-existing-collections"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Applying Rules to Existing Collections</div>
 
   <ol>
     <li>Open the Rule Builder
@@ -1480,7 +1243,7 @@ then “single” and “paired” sublists of that. This rule is found under th
       </ul>
 
       <blockquote class="comment">
-        <div class="box-title comment-title" id="comment-regular-expression-explained-2"><i class="far fa-comment-dots" aria-hidden="true"></i> Comment: Regular expression explained</div>
+        <div class="box-title comment-title" id="comment-regular-expression-explained-2"><i class="far fa-comment-dots" aria-hidden="true" ></i> Comment: Regular expression explained</div>
         <p>Here <code class="language-plaintext highlighter-rouge">.*</code> means match any number of any character - so basically match anything.
  The parentheses around <code class="language-plaintext highlighter-rouge">.*</code> means form a “group” from whatever is matched.
  The <code class="language-plaintext highlighter-rouge">_</code> describes the literal <code class="language-plaintext highlighter-rouge">_</code> values in the identifier we are matching. The result is that
@@ -1628,6 +1391,9 @@ filter elements out of the collection.</p>
                             John Chilton, Helena Rasche,  <b>Rule Based Uploader: Advanced (Galaxy Training Materials)</b>. <a href="https://training.galaxyproject.org/training-material/topics/galaxy-interface/tutorials/upload-rules-advanced/tutorial.html">https://training.galaxyproject.org/training-material/topics/galaxy-interface/tutorials/upload-rules-advanced/tutorial.html</a> Online; accessed TODAY
                         </li>
                         <li>
+                        Hiltemann, Saskia, Rasche, Helena et al., 2023 <b>Galaxy Training: A Powerful Framework for Teaching!</b> PLOS Computational Biology <a href="https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1010752">10.1371/journal.pcbi.1010752</a>
+                        </li>
+                        <li>
                         Batut et al., 2018 <b>Community-Driven Data Analysis Training for Biology</b> Cell Systems <a href="https://doi.org/10.1016%2Fj.cels.2018.05.012">10.1016/j.cels.2018.05.012</a>
                         </li>
                     </ol>
@@ -1649,12 +1415,12 @@ filter elements out of the collection.</p>
 
 <code id="citation-code">@misc{galaxy-interface-upload-rules-advanced,
 author = "John Chilton and Helena Rasche",
-title = "Rule Based Uploader: Advanced (Galaxy Training Materials)",
-year = "",
-month = "",
-day = ""
-url = "\url{https://training.galaxyproject.org/training-material/topics/galaxy-interface/tutorials/upload-rules-advanced/tutorial.html}",
-note = "[Online; accessed TODAY]"
+	title = "Rule Based Uploader: Advanced (Galaxy Training Materials)",
+	year = "",
+	month = "",
+	day = ""
+	url = "\url{https://training.galaxyproject.org/training-material/topics/galaxy-interface/tutorials/upload-rules-advanced/tutorial.html}",
+	note = "[Online; accessed TODAY]"
 }
 @article{Hiltemann_2023,
 	doi = {10.1371/journal.pcbi.1010752},
@@ -1680,9 +1446,9 @@ note = "[Online; accessed TODAY]"
 
 <script>
 // update the date on load, or leave fallback of 'today'
-var d = new Date();
-document.getElementById("citation-code").innerHTML = document.getElementById("citation-code").innerHTML.replace("TODAY", d.toDateString());
-document.getElementById("citation-text").innerHTML = document.getElementById("citation-text").innerHTML.replace("TODAY", d.toDateString());
+const citationTodaysDate = new Date();
+document.getElementById("citation-code").innerHTML = document.getElementById("citation-code").innerHTML.replace("TODAY", citationTodaysDate.toDateString());
+document.getElementById("citation-text").innerHTML = document.getElementById("citation-text").innerHTML.replace("TODAY", citationTodaysDate.toDateString());
 </script>
 
                 <i class="far fa-thumbs-up" aria-hidden="true"></i> Congratulations on successfully completing this tutorial!
@@ -1690,6 +1456,23 @@ document.getElementById("citation-text").innerHTML = document.getElementById("ci
                 
 
                 
+
+		
+                <blockquote class="agenda follow-up" id="admins-install-missing-tools">
+                    <div class="box-title">Galaxy Administrators: Install the missing tools</div>
+			<p>You can use Ephemeris's <code>shed-tools install</code> command to install the tools used in this tutorial.</p>
+<div class="highlight"><pre class="highlight"><code>shed-tools install [-g GALAXY] [-a API_KEY] -t &lt;(curl https://training.galaxyproject.org/training-material/api/topics/galaxy-interface/tutorials/upload-rules-advanced/tutorial.json | jq .admin_install_yaml -r)</code></pre></div>
+<p>Alternatively you can copy and paste the following YAML</p>
+<div class="highlight"><pre class="highlight"><code>---
+install_tool_dependencies: true
+install_repository_dependencies: true
+install_resolver_dependencies: true
+tools: []
+</code></pre></div>
+                </blockquote>
+		
+
+
                 </section>
 
             </div>
@@ -1701,38 +1484,52 @@ document.getElementById("citation-text").innerHTML = document.getElementById("ci
 <br/>
 
         </div>
-        
-        <script src="/training-material/assets/js/jquery.slim.min.js"></script>
-        <script src="/training-material/assets/js/popper.min.js"></script>
-        <script src="/training-material/assets/js/bootstrap.min.js?v=3"></script>
-        <script src="/training-material/assets/js/details-element-polyfill.js"></script>
+        <footer>
+	<hr />
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-6" style="text-align: left">
+				<p>
+					The <a href="https://galaxyproject.org/teach/gtn/">Galaxy Training Network</a>
+					provides researchers with online training materials, connects them with local trainers, and helps promoting FAIR and Open Science practices worldwide. All contributions are subject to the <a rel="code-of-conduct" href="https://galaxyproject.org/community/coc/">Galaxy Project Code of Conduct</a>.
+				</p>
+				<p>
+				The GTN infrastructure is licensed under <a rel="license" href="https://github.com/galaxyproject/training-material/blob/main/LICENSE.md">MIT</a>
+				</p>
+				<p>
+				Revision <a href="https://github.com/galaxyproject/training-material/commit/476574d2b382dd1db6c2c408d8fb6ec4393a6904">476574d</a>, built with Jekyll (4.3.2 | production)
+				</p>
+			</div>
+			<div class="col-sm-6" style="text-align: right">
+				
+				<p>
+					Resource <i class="fas fa-fingerprint" aria-hidden="true"></i><span class="visually-hidden">purl</span><abbr title="Persistent URL">PURL</abbr>: <a href="https://gxy.io/GTN:T00161">https://gxy.io/GTN:T00161</a>
+				</p>
+				
+				<p>
+					<i>This Material</i>:
+					
+					is licensed under
+					<a rel="license" href="https://spdx.org/licenses/CC-BY-4.0">
+						Creative Commons Attribution 4.0 International License
+					</a>
+				</p>
+				<p>
+					<a href="https://github.com/galaxyproject/training-material/edit/main/topics/galaxy-interface/tutorials/upload-rules-advanced/tutorial.md" title="Edit on GitHub">
+					<i class="fab fa-github" aria-hidden="true"></i><span class="visually-hidden">github</span> Edit on GitHub
+					</a>
+				</p>
+			</div>
+		</div>
+	</div>
+</footer>
+
+
+    </div>
+</footer>
+
+
+        <script src='/training-material/assets/js/bundle.main.js?v=1687830693'></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-        <script src="/training-material/assets/js/bootstrap-toc.min.js"></script>
-        <script src="/training-material/assets/js/main.js"></script>
-        <script src="/training-material/assets/js/clipboard.min.js"></script>
-        <script>
-        var snippets=document.querySelectorAll('div.highlight');
-        [].forEach.call(snippets,function(snippet){
-            snippet.firstChild.insertAdjacentHTML('beforebegin','<button class="btn btn-light" data-clipboard-snippet tabindex="0"><i class="fa fa-copy"></i>&nbsp;Copy</button>');
-        });
-
-        var clipboardSnippets=new ClipboardJS('[data-clipboard-snippet]',{
-            target:function(trigger){return trigger.nextElementSibling;
-        }});
-        </script>
-        
-
-        <script type="text/javascript">
-            if(window.location.hostname === "galaxyproject.github.io") {
-                // Redirect
-                var redirect = "https://training.galaxyproject.org" + window.location.pathname + window.location.search;
-                $('div.container.main-content').prepend("<div class='alert alert-warning'><strong>Note: </strong>This content has a new home at <a href=\"" + redirect + "\">" + redirect + "</a>, which you will be redirected to in 5 seconds.</div>");
-
-                window.setTimeout(function(){
-                    window.location.href = redirect;
-                }, 5000)
-
-            }
-        </script>
     </body>
 </html>

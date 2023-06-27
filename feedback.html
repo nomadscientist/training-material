@@ -8,16 +8,45 @@
         
             <script async defer data-domain="training.galaxyproject.org" src="https://plausible.galaxyproject.eu/js/plausible.js"></script>
 
+<!-- JavaScript Error Monitoring, and performance tracking. -->
+<script
+  src="https://browser.sentry-cdn.com/7.52.1/bundle.tracing.min.js"
+  integrity="sha384-muuFXKS3752PNA4rPm9Uq6BLvOfV4CXyr9MHDBPvozOJJUWLKkogEFWOIRoVps43"
+  crossorigin="anonymous"
+></script>
+<script type="text/javascript">
+Sentry.init({
+  dsn: "https://45e0ec6e4373462b92969505df37cf40@sentry.galaxyproject.org/10",
+  release: "galaxy-training-network@476574d2b382dd1db6c2c408d8fb6ec4393a6904",
+  integrations: [new Sentry.BrowserTracing(), new Sentry.Replay()],
+  sampleRate: 0.1,
+  tracesSampleRate: 0.1,
+  // Capture Replay for no sessions by default
+  replaysSessionSampleRate: 0.01,
+  // plus for 1% of sessions with an error
+  replaysOnErrorSampleRate: 0.01,
+  // PII OFF
+  sendDefaultPii: false, // Off by default but just in case.
+  environment: "production",
+});
+</script>
+
         
-        <link rel="stylesheet" href="/training-material/assets/css/bootstrap.min.css?v=3">
-        <link rel="stylesheet" href="/training-material/assets/css/bootstrap-toc.min.css">
-        <link rel="stylesheet" href="/training-material/assets/css/main.css?v=2">
-        <link rel="stylesheet" href="/training-material/assets/fontawesome/css/all.css">
-        <link rel="stylesheet" href="/training-material/assets/css/academicons.css">
         <link rel="shortcut icon" href="/training-material/favicon.ico" type="image/x-icon">
         <link rel="alternate" type="application/atom+xml" href="/training-material/feed.xml">
         <link rel="canonical" href="https://training.galaxyproject.org/training-material/feedback.html">
-        <link rel="license" href="https://creativecommons.org/licenses/by/4.0/">
+        <link rel="license" href="https://spdx.org/licenses/CC-BY-4.0">
+        <link rel="preload" href="/training-material/assets/fonts/AtkinsonHyperlegible/Atkinson-Hyperlegible-Regular-102a.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="preload" href="/training-material/assets/fonts/AtkinsonHyperlegible/Atkinson-Hyperlegible-Bold-102a.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="preload" href="/training-material/assets/fonts/AtkinsonHyperlegible/Atkinson-Hyperlegible-Italic-102a.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML" as="script" crossorigin>
+        <link rel="preload" href="/training-material/assets/css/main.css?v=3" as="style">
+        <link rel='preload' href='/training-material/assets/js/bundle.theme.js?v=1687830693' as='script'>
+<link rel='preload' href='/training-material/assets/js/bundle.main.js?v=1687830693' as='script'>
+        <link rel="stylesheet" href="/training-material/assets/css/main.css?v=3">
+        <link rel="manifest" href="/training-material/manifest.json">
+        <meta name="theme-color" content="#2c3143"/>
+
 
         <meta name="DC.identifier" content="https://github.com/galaxyproject/training-material">
 <meta name="DC.type" content="text">
@@ -39,7 +68,7 @@
         
     </head>
     <body data-spy="scroll" data-target="#toc">
-        <script type="text/javascript" src="/training-material/assets/js/theme.js"></script>
+        <script src='/training-material/assets/js/bundle.theme.js?v=1687830693'></script>
         <header>
     <nav class="navbar navbar-expand-md navbar-dark" aria-label="Site Navigation">
         <div class="container">
@@ -103,7 +132,6 @@
     </a>
     <div class="dropdown-menu dropdown-menu-right">
 
-        
         <a class="dropdown-item" href="https://github.com/galaxyproject/training-material/edit/main/feedback.md" title="Edit on GitHub">
           <i class="fab fa-github" aria-hidden="true"></i><span class="visually-hidden">github</span> Edit on GitHub
         </a>
@@ -148,13 +176,13 @@
 
             <div id="archive-selector">
             
-                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2020-01-06/feedback.html" title="Version 2020-01-06">2020-01-06</a>
+                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2020-01-06/feedback.html">2020-01-06</a>
             
-                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2019-12-01/feedback.html" title="Version 2019-12-01">2019-12-01</a>
+                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2019-12-01/feedback.html">2019-12-01</a>
             
-                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2019-11-01/feedback.html" title="Version 2019-11-01">2019-11-01</a>
+                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2019-11-01/feedback.html">2019-11-01</a>
             
-                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/" title="Older Versions">Older Versions</a>
+                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/">Older Versions</a>
             </div>
 
         </div>
@@ -167,7 +195,7 @@
                     <li class="nav-item">
                       <div id="navbarSupportedContent" role="search">
                         <!-- Search form -->
-                        <form class="form-inline mr-auto" method="GET" action="/training-material/search">
+                        <form class="form-inline mr-auto" method="GET" action="/training-material/search2">
                           <i class="fas fa-search nav-link" aria-hidden="true"></i>
                           <div class="md-form mb-2">
                             <input name="query" class="form-control nicer" type="text" placeholder="Search Tutorials" aria-label="Search">
@@ -287,13 +315,13 @@
         all_topics: [
             {
                 label: "All topic",
-                data: [{x:"2018-09", y: 28 } ,{x:"2018-10", y: 70 } ,{x:"2018-11", y: 101 } ,{x:"2018-12", y: 115 } ,{x:"2019-01", y: 139 } ,{x:"2019-02", y: 160 } ,{x:"2019-03", y: 184 } ,{x:"2019-04", y: 224 } ,{x:"2019-05", y: 246 } ,{x:"2019-06", y: 269 } ,{x:"2019-07", y: 315 } ,{x:"2019-08", y: 356 } ,{x:"2019-09", y: 399 } ,{x:"2019-10", y: 453 } ,{x:"2019-11", y: 484 } ,{x:"2019-12", y: 504 } ,{x:"2020-01", y: 538 } ,{x:"2020-02", y: 576 } ,{x:"2020-03", y: 622 } ,{x:"2020-04", y: 667 } ,{x:"2020-05", y: 703 } ,{x:"2020-06", y: 757 } ,{x:"2020-07", y: 797 } ,{x:"2020-08", y: 808 } ,{x:"2020-09", y: 829 } ,{x:"2020-10", y: 856 } ,{x:"2020-11", y: 888 } ,{x:"2020-12", y: 908 } ,{x:"2021-01", y: 988 } ,{x:"2021-02", y: 1101 } ,{x:"2021-03", y: 1128 } ,{x:"2021-04", y: 1156 } ,{x:"2021-05", y: 1185 } ,{x:"2021-06", y: 1241 } ,{x:"2021-07", y: 1327 } ,{x:"2021-08", y: 1401 } ,{x:"2021-09", y: 1428 } ,{x:"2021-10", y: 1470 } ,{x:"2021-11", y: 1520 } ,{x:"2021-12", y: 1546 } ,{x:"2022-01", y: 1567 } ,{x:"2022-02", y: 1604 } ,{x:"2022-03", y: 1808 } ,{x:"2022-04", y: 1852 } ,{x:"2022-05", y: 1879 } ,{x:"2022-06", y: 1905 } ,{x:"2022-07", y: 1926 } ,{x:"2022-08", y: 1948 } ,{x:"2022-09", y: 1975 } ,{x:"2022-10", y: 1999 } ,{x:"2022-11", y: 2026 } ,{x:"2022-12", y: 2036 } ,{x:"2023-01", y: 2059 } ,{x:"2023-02", y: 2076 } ,{x:"2023-03", y: 2105 } ,{x:"2023-04", y: 2142 } ,{x:"2023-05", y: 2257 } ,{x:"2023-06", y: 2295 } ],
+                data: [{x:"2018-09", y: 28 } ,{x:"2018-10", y: 71 } ,{x:"2018-11", y: 102 } ,{x:"2018-12", y: 116 } ,{x:"2019-01", y: 140 } ,{x:"2019-02", y: 161 } ,{x:"2019-03", y: 185 } ,{x:"2019-04", y: 225 } ,{x:"2019-05", y: 247 } ,{x:"2019-06", y: 270 } ,{x:"2019-07", y: 316 } ,{x:"2019-08", y: 357 } ,{x:"2019-09", y: 400 } ,{x:"2019-10", y: 454 } ,{x:"2019-11", y: 485 } ,{x:"2019-12", y: 505 } ,{x:"2020-01", y: 539 } ,{x:"2020-02", y: 577 } ,{x:"2020-03", y: 623 } ,{x:"2020-04", y: 668 } ,{x:"2020-05", y: 704 } ,{x:"2020-06", y: 758 } ,{x:"2020-07", y: 798 } ,{x:"2020-08", y: 809 } ,{x:"2020-09", y: 830 } ,{x:"2020-10", y: 857 } ,{x:"2020-11", y: 889 } ,{x:"2020-12", y: 909 } ,{x:"2021-01", y: 994 } ,{x:"2021-02", y: 1107 } ,{x:"2021-03", y: 1134 } ,{x:"2021-04", y: 1162 } ,{x:"2021-05", y: 1192 } ,{x:"2021-06", y: 1248 } ,{x:"2021-07", y: 1334 } ,{x:"2021-08", y: 1408 } ,{x:"2021-09", y: 1435 } ,{x:"2021-10", y: 1477 } ,{x:"2021-11", y: 1527 } ,{x:"2021-12", y: 1553 } ,{x:"2022-01", y: 1574 } ,{x:"2022-02", y: 1611 } ,{x:"2022-03", y: 1815 } ,{x:"2022-04", y: 1859 } ,{x:"2022-05", y: 1886 } ,{x:"2022-06", y: 1912 } ,{x:"2022-07", y: 1934 } ,{x:"2022-08", y: 1956 } ,{x:"2022-09", y: 1983 } ,{x:"2022-10", y: 2007 } ,{x:"2022-11", y: 2035 } ,{x:"2022-12", y: 2045 } ,{x:"2023-01", y: 2069 } ,{x:"2023-02", y: 2086 } ,{x:"2023-03", y: 2116 } ,{x:"2023-04", y: 2153 } ,{x:"2023-05", y: 2270 } ,{x:"2023-06", y: 2309 } ],
                 fill: false,
             }
         ]
     };
     var data_notes = {
-        all_topics: [30,80,41,107,416,1621]
+        all_topics: [30,80,41,108,418,1632]
     };
     var labels_notes = ["0","1","2","3","4","5"];
 </script>
@@ -302,12 +330,12 @@
     var topic_data =
     {
         label: "Assembly",
-        data: [{x:"2018-09", y: 2 } ,{x:"2018-10", y: 3 } ,{x:"2018-11", y: 4 } ,{x:"2018-12", y: 5 } ,{x:"2019-03", y: 8 } ,{x:"2019-04", y: 11 } ,{x:"2019-06", y: 12 } ,{x:"2019-10", y: 14 } ,{x:"2019-11", y: 15 } ,{x:"2020-01", y: 16 } ,{x:"2020-04", y: 19 } ,{x:"2020-06", y: 20 } ,{x:"2020-07", y: 23 } ,{x:"2020-10", y: 24 } ,{x:"2020-12", y: 25 } ,{x:"2021-01", y: 27 } ,{x:"2021-02", y: 37 } ,{x:"2021-04", y: 38 } ,{x:"2021-05", y: 40 } ,{x:"2021-06", y: 43 } ,{x:"2021-07", y: 45 } ,{x:"2021-08", y: 47 } ,{x:"2021-10", y: 48 } ,{x:"2021-11", y: 49 } ,{x:"2021-12", y: 50 } ,{x:"2022-01", y: 51 } ,{x:"2022-02", y: 53 } ,{x:"2022-03", y: 62 } ,{x:"2022-04", y: 64 } ,{x:"2022-06", y: 66 } ,{x:"2022-09", y: 67 } ,{x:"2022-10", y: 69 } ,{x:"2022-11", y: 70 } ,{x:"2022-12", y: 71 } ,{x:"2023-03", y: 72 } ,{x:"2023-04", y: 73 } ,{x:"2023-05", y: 80 } ,{x:"2023-06", y: 81 } ],
+        data: [{x:"2018-09", y: 2 } ,{x:"2018-10", y: 3 } ,{x:"2018-11", y: 4 } ,{x:"2018-12", y: 5 } ,{x:"2019-03", y: 8 } ,{x:"2019-04", y: 11 } ,{x:"2019-06", y: 12 } ,{x:"2019-10", y: 14 } ,{x:"2019-11", y: 15 } ,{x:"2020-01", y: 16 } ,{x:"2020-04", y: 19 } ,{x:"2020-06", y: 20 } ,{x:"2020-07", y: 23 } ,{x:"2020-10", y: 24 } ,{x:"2020-12", y: 25 } ,{x:"2021-01", y: 27 } ,{x:"2021-02", y: 37 } ,{x:"2021-04", y: 38 } ,{x:"2021-05", y: 40 } ,{x:"2021-06", y: 43 } ,{x:"2021-07", y: 45 } ,{x:"2021-08", y: 47 } ,{x:"2021-10", y: 48 } ,{x:"2021-11", y: 49 } ,{x:"2021-12", y: 50 } ,{x:"2022-01", y: 51 } ,{x:"2022-02", y: 53 } ,{x:"2022-03", y: 62 } ,{x:"2022-04", y: 64 } ,{x:"2022-06", y: 66 } ,{x:"2022-09", y: 67 } ,{x:"2022-10", y: 69 } ,{x:"2022-11", y: 70 } ,{x:"2022-12", y: 71 } ,{x:"2023-03", y: 72 } ,{x:"2023-04", y: 73 } ,{x:"2023-05", y: 80 } ,{x:"2023-06", y: 82 } ],
         fill: false,
     };
     fdbk_over_month['topic-assembly'] = [topic_data];
     fdbk_over_month['all_topics'].push(topic_data);
-    data_notes['topic-assembly'] = [1,3,2,4,20,51];
+    data_notes['topic-assembly'] = [1,3,2,4,20,52];
 </script>
 
 <script>
@@ -344,6 +372,18 @@
     fdbk_over_month['tuto-debruijn-graph-assembly'] = [tuto_data];
     fdbk_over_month['topic-assembly'].push(tuto_data);
     data_notes['tuto-debruijn-graph-assembly'] = [0,1,0,0,2,2];
+</script>
+
+<script>
+    var tuto_data =
+    {
+        label: "ERGA post-assembly QC",
+        data: [{x:"2023-06", y: 1 } ],
+        fill: false,
+    };
+    fdbk_over_month['tuto-ERGA-post-assembly-QC'] = [tuto_data];
+    fdbk_over_month['topic-assembly'].push(tuto_data);
+    data_notes['tuto-ERGA-post-assembly-QC'] = [0,0,0,0,0,1];
 </script>
 
 <script>
@@ -889,6 +929,42 @@
 <script>
     var topic_data =
     {
+        label: "Evolution",
+        data: [{x:"2022-07", y: 1 } ,{x:"2023-01", y: 2 } ,{x:"2023-05", y: 4 } ],
+        fill: false,
+    };
+    fdbk_over_month['topic-evolution'] = [topic_data];
+    fdbk_over_month['all_topics'].push(topic_data);
+    data_notes['topic-evolution'] = [0,0,0,0,2,2];
+</script>
+
+<script>
+    var tuto_data =
+    {
+        label: "Identifying tuberculosis transmission links: from SNPs to transmission clusters",
+        data: [{x:"2022-07", y: 1 } ,{x:"2023-01", y: 2 } ,{x:"2023-05", y: 3 } ],
+        fill: false,
+    };
+    fdbk_over_month['tuto-mtb_transmission'] = [tuto_data];
+    fdbk_over_month['topic-evolution'].push(tuto_data);
+    data_notes['tuto-mtb_transmission'] = [0,0,0,0,2,1];
+</script>
+
+<script>
+    var tuto_data =
+    {
+        label: "Tree thinking for tuberculosis evolution and epidemiology",
+        data: [{x:"2023-05", y: 1 } ],
+        fill: false,
+    };
+    fdbk_over_month['tuto-mtb_phylogeny'] = [tuto_data];
+    fdbk_over_month['topic-evolution'].push(tuto_data);
+    data_notes['tuto-mtb_phylogeny'] = [0,0,0,0,0,1];
+</script>
+
+<script>
+    var topic_data =
+    {
         label: "Foundations of Data Science",
         data: [{x:"2019-10", y: 1 } ,{x:"2020-02", y: 2 } ,{x:"2020-04", y: 3 } ,{x:"2020-06", y: 6 } ,{x:"2020-07", y: 7 } ,{x:"2020-08", y: 8 } ,{x:"2020-09", y: 10 } ,{x:"2020-12", y: 11 } ,{x:"2021-02", y: 17 } ,{x:"2021-03", y: 18 } ,{x:"2021-08", y: 19 } ,{x:"2021-09", y: 20 } ,{x:"2022-03", y: 22 } ,{x:"2022-11", y: 23 } ,{x:"2022-12", y: 24 } ,{x:"2023-05", y: 28 } ],
         fill: false,
@@ -962,12 +1038,12 @@
     var topic_data =
     {
         label: "Galaxy Server administration",
-        data: [{x:"2018-10", y: 2 } ,{x:"2018-11", y: 4 } ,{x:"2018-12", y: 5 } ,{x:"2019-01", y: 8 } ,{x:"2019-03", y: 9 } ,{x:"2019-05", y: 10 } ,{x:"2019-07", y: 19 } ,{x:"2019-12", y: 20 } ,{x:"2020-01", y: 21 } ,{x:"2020-02", y: 23 } ,{x:"2020-03", y: 30 } ,{x:"2020-05", y: 33 } ,{x:"2020-06", y: 34 } ,{x:"2020-07", y: 37 } ,{x:"2020-08", y: 38 } ,{x:"2021-01", y: 98 } ,{x:"2021-02", y: 104 } ,{x:"2021-06", y: 117 } ,{x:"2021-07", y: 128 } ,{x:"2021-09", y: 129 } ,{x:"2021-10", y: 131 } ,{x:"2021-11", y: 132 } ,{x:"2022-01", y: 134 } ,{x:"2022-02", y: 135 } ,{x:"2022-03", y: 152 } ,{x:"2022-04", y: 153 } ,{x:"2022-06", y: 155 } ,{x:"2022-07", y: 156 } ,{x:"2022-08", y: 157 } ,{x:"2023-04", y: 163 } ,{x:"2023-06", y: 164 } ],
+        data: [{x:"2018-10", y: 2 } ,{x:"2018-11", y: 4 } ,{x:"2018-12", y: 5 } ,{x:"2019-01", y: 8 } ,{x:"2019-03", y: 9 } ,{x:"2019-05", y: 10 } ,{x:"2019-07", y: 19 } ,{x:"2019-12", y: 20 } ,{x:"2020-01", y: 21 } ,{x:"2020-02", y: 23 } ,{x:"2020-03", y: 30 } ,{x:"2020-05", y: 33 } ,{x:"2020-06", y: 34 } ,{x:"2020-07", y: 37 } ,{x:"2020-08", y: 38 } ,{x:"2021-01", y: 103 } ,{x:"2021-02", y: 109 } ,{x:"2021-06", y: 122 } ,{x:"2021-07", y: 133 } ,{x:"2021-09", y: 134 } ,{x:"2021-10", y: 136 } ,{x:"2021-11", y: 137 } ,{x:"2022-01", y: 139 } ,{x:"2022-02", y: 140 } ,{x:"2022-03", y: 157 } ,{x:"2022-04", y: 158 } ,{x:"2022-06", y: 160 } ,{x:"2022-07", y: 161 } ,{x:"2022-08", y: 162 } ,{x:"2023-03", y: 163 } ,{x:"2023-04", y: 169 } ,{x:"2023-06", y: 170 } ],
         fill: false,
     };
     fdbk_over_month['topic-admin'] = [topic_data];
     fdbk_over_month['all_topics'].push(topic_data);
-    data_notes['topic-admin'] = [6,2,0,8,25,123];
+    data_notes['topic-admin'] = [6,2,0,8,25,129];
 </script>
 
 <script>
@@ -1082,12 +1158,12 @@
     var tuto_data =
     {
         label: "Galaxy Installation with Ansible",
-        data: [{x:"2019-01", y: 1 } ,{x:"2019-07", y: 6 } ,{x:"2020-02", y: 7 } ,{x:"2020-03", y: 9 } ,{x:"2020-05", y: 11 } ,{x:"2020-07", y: 13 } ,{x:"2020-08", y: 14 } ,{x:"2021-01", y: 19 } ,{x:"2021-02", y: 21 } ,{x:"2021-06", y: 22 } ,{x:"2021-07", y: 23 } ,{x:"2021-09", y: 24 } ,{x:"2022-01", y: 25 } ,{x:"2022-02", y: 26 } ,{x:"2022-03", y: 29 } ,{x:"2022-06", y: 30 } ,{x:"2022-07", y: 31 } ,{x:"2022-08", y: 32 } ,{x:"2023-04", y: 33 } ],
+        data: [{x:"2019-01", y: 1 } ,{x:"2019-07", y: 6 } ,{x:"2020-02", y: 7 } ,{x:"2020-03", y: 9 } ,{x:"2020-05", y: 11 } ,{x:"2020-07", y: 13 } ,{x:"2020-08", y: 14 } ,{x:"2021-01", y: 19 } ,{x:"2021-02", y: 21 } ,{x:"2021-06", y: 22 } ,{x:"2021-07", y: 23 } ,{x:"2021-09", y: 24 } ,{x:"2022-01", y: 25 } ,{x:"2022-02", y: 26 } ,{x:"2022-03", y: 29 } ,{x:"2022-06", y: 30 } ,{x:"2022-07", y: 31 } ,{x:"2022-08", y: 32 } ,{x:"2023-03", y: 33 } ,{x:"2023-04", y: 34 } ],
         fill: false,
     };
     fdbk_over_month['tuto-ansible-galaxy'] = [tuto_data];
     fdbk_over_month['topic-admin'].push(tuto_data);
-    data_notes['tuto-ansible-galaxy'] = [3,1,0,2,7,20];
+    data_notes['tuto-ansible-galaxy'] = [3,1,0,2,7,21];
 </script>
 
 <script>
@@ -1382,24 +1458,24 @@
     var topic_data =
     {
         label: "Introduction to Galaxy Analyses",
-        data: [{x:"2018-09", y: 12 } ,{x:"2018-10", y: 36 } ,{x:"2018-11", y: 56 } ,{x:"2018-12", y: 59 } ,{x:"2019-01", y: 73 } ,{x:"2019-02", y: 83 } ,{x:"2019-03", y: 89 } ,{x:"2019-04", y: 108 } ,{x:"2019-05", y: 116 } ,{x:"2019-06", y: 127 } ,{x:"2019-07", y: 136 } ,{x:"2019-08", y: 157 } ,{x:"2019-09", y: 171 } ,{x:"2019-10", y: 181 } ,{x:"2019-11", y: 200 } ,{x:"2019-12", y: 207 } ,{x:"2020-01", y: 224 } ,{x:"2020-02", y: 245 } ,{x:"2020-03", y: 265 } ,{x:"2020-04", y: 284 } ,{x:"2020-05", y: 296 } ,{x:"2020-06", y: 320 } ,{x:"2020-07", y: 332 } ,{x:"2020-08", y: 337 } ,{x:"2020-09", y: 348 } ,{x:"2020-10", y: 356 } ,{x:"2020-11", y: 372 } ,{x:"2020-12", y: 380 } ,{x:"2021-01", y: 387 } ,{x:"2021-02", y: 408 } ,{x:"2021-03", y: 419 } ,{x:"2021-04", y: 423 } ,{x:"2021-05", y: 437 } ,{x:"2021-06", y: 451 } ,{x:"2021-07", y: 470 } ,{x:"2021-08", y: 495 } ,{x:"2021-09", y: 505 } ,{x:"2021-10", y: 525 } ,{x:"2021-11", y: 551 } ,{x:"2021-12", y: 558 } ,{x:"2022-01", y: 565 } ,{x:"2022-02", y: 579 } ,{x:"2022-03", y: 631 } ,{x:"2022-04", y: 650 } ,{x:"2022-05", y: 662 } ,{x:"2022-06", y: 670 } ,{x:"2022-07", y: 678 } ,{x:"2022-08", y: 684 } ,{x:"2022-09", y: 692 } ,{x:"2022-10", y: 706 } ,{x:"2022-11", y: 716 } ,{x:"2022-12", y: 719 } ,{x:"2023-01", y: 728 } ,{x:"2023-02", y: 739 } ,{x:"2023-03", y: 756 } ,{x:"2023-04", y: 770 } ,{x:"2023-05", y: 798 } ,{x:"2023-06", y: 813 } ],
+        data: [{x:"2018-09", y: 12 } ,{x:"2018-10", y: 36 } ,{x:"2018-11", y: 56 } ,{x:"2018-12", y: 59 } ,{x:"2019-01", y: 73 } ,{x:"2019-02", y: 83 } ,{x:"2019-03", y: 89 } ,{x:"2019-04", y: 108 } ,{x:"2019-05", y: 116 } ,{x:"2019-06", y: 127 } ,{x:"2019-07", y: 136 } ,{x:"2019-08", y: 157 } ,{x:"2019-09", y: 171 } ,{x:"2019-10", y: 181 } ,{x:"2019-11", y: 200 } ,{x:"2019-12", y: 207 } ,{x:"2020-01", y: 224 } ,{x:"2020-02", y: 245 } ,{x:"2020-03", y: 265 } ,{x:"2020-04", y: 284 } ,{x:"2020-05", y: 296 } ,{x:"2020-06", y: 320 } ,{x:"2020-07", y: 332 } ,{x:"2020-08", y: 337 } ,{x:"2020-09", y: 348 } ,{x:"2020-10", y: 356 } ,{x:"2020-11", y: 372 } ,{x:"2020-12", y: 380 } ,{x:"2021-01", y: 387 } ,{x:"2021-02", y: 408 } ,{x:"2021-03", y: 419 } ,{x:"2021-04", y: 423 } ,{x:"2021-05", y: 438 } ,{x:"2021-06", y: 452 } ,{x:"2021-07", y: 471 } ,{x:"2021-08", y: 496 } ,{x:"2021-09", y: 506 } ,{x:"2021-10", y: 526 } ,{x:"2021-11", y: 552 } ,{x:"2021-12", y: 559 } ,{x:"2022-01", y: 566 } ,{x:"2022-02", y: 580 } ,{x:"2022-03", y: 632 } ,{x:"2022-04", y: 651 } ,{x:"2022-05", y: 663 } ,{x:"2022-06", y: 671 } ,{x:"2022-07", y: 679 } ,{x:"2022-08", y: 685 } ,{x:"2022-09", y: 693 } ,{x:"2022-10", y: 707 } ,{x:"2022-11", y: 717 } ,{x:"2022-12", y: 720 } ,{x:"2023-01", y: 729 } ,{x:"2023-02", y: 740 } ,{x:"2023-03", y: 757 } ,{x:"2023-04", y: 771 } ,{x:"2023-05", y: 799 } ,{x:"2023-06", y: 814 } ],
         fill: false,
     };
     fdbk_over_month['topic-introduction'] = [topic_data];
     fdbk_over_month['all_topics'].push(topic_data);
-    data_notes['topic-introduction'] = [4,17,11,25,130,626];
+    data_notes['topic-introduction'] = [4,17,11,25,130,627];
 </script>
 
 <script>
     var tuto_data =
     {
         label: "A short introduction to Galaxy",
-        data: [{x:"2018-10", y: 13 } ,{x:"2018-11", y: 19 } ,{x:"2018-12", y: 21 } ,{x:"2019-01", y: 28 } ,{x:"2019-02", y: 32 } ,{x:"2019-03", y: 35 } ,{x:"2019-04", y: 50 } ,{x:"2019-05", y: 54 } ,{x:"2019-06", y: 60 } ,{x:"2019-07", y: 65 } ,{x:"2019-08", y: 75 } ,{x:"2019-09", y: 83 } ,{x:"2019-10", y: 88 } ,{x:"2019-11", y: 101 } ,{x:"2019-12", y: 106 } ,{x:"2020-01", y: 120 } ,{x:"2020-02", y: 129 } ,{x:"2020-03", y: 138 } ,{x:"2020-04", y: 153 } ,{x:"2020-05", y: 162 } ,{x:"2020-06", y: 176 } ,{x:"2020-07", y: 185 } ,{x:"2020-08", y: 189 } ,{x:"2020-09", y: 195 } ,{x:"2020-10", y: 199 } ,{x:"2020-11", y: 210 } ,{x:"2020-12", y: 216 } ,{x:"2021-01", y: 219 } ,{x:"2021-02", y: 223 } ,{x:"2021-03", y: 227 } ,{x:"2021-04", y: 230 } ,{x:"2021-05", y: 235 } ,{x:"2021-06", y: 241 } ,{x:"2021-07", y: 247 } ,{x:"2021-08", y: 250 } ,{x:"2021-09", y: 253 } ,{x:"2021-10", y: 262 } ,{x:"2021-11", y: 274 } ,{x:"2021-12", y: 279 } ,{x:"2022-01", y: 280 } ,{x:"2022-02", y: 282 } ,{x:"2022-03", y: 299 } ,{x:"2022-04", y: 309 } ,{x:"2022-05", y: 315 } ,{x:"2022-06", y: 317 } ,{x:"2022-07", y: 322 } ,{x:"2022-08", y: 326 } ,{x:"2022-09", y: 333 } ,{x:"2022-10", y: 345 } ,{x:"2022-11", y: 348 } ,{x:"2022-12", y: 351 } ,{x:"2023-01", y: 357 } ,{x:"2023-02", y: 361 } ,{x:"2023-03", y: 368 } ,{x:"2023-04", y: 379 } ,{x:"2023-05", y: 396 } ,{x:"2023-06", y: 409 } ],
+        data: [{x:"2018-10", y: 13 } ,{x:"2018-11", y: 19 } ,{x:"2018-12", y: 21 } ,{x:"2019-01", y: 28 } ,{x:"2019-02", y: 32 } ,{x:"2019-03", y: 35 } ,{x:"2019-04", y: 50 } ,{x:"2019-05", y: 54 } ,{x:"2019-06", y: 60 } ,{x:"2019-07", y: 65 } ,{x:"2019-08", y: 75 } ,{x:"2019-09", y: 83 } ,{x:"2019-10", y: 88 } ,{x:"2019-11", y: 101 } ,{x:"2019-12", y: 106 } ,{x:"2020-01", y: 120 } ,{x:"2020-02", y: 129 } ,{x:"2020-03", y: 138 } ,{x:"2020-04", y: 153 } ,{x:"2020-05", y: 162 } ,{x:"2020-06", y: 176 } ,{x:"2020-07", y: 185 } ,{x:"2020-08", y: 189 } ,{x:"2020-09", y: 195 } ,{x:"2020-10", y: 199 } ,{x:"2020-11", y: 210 } ,{x:"2020-12", y: 216 } ,{x:"2021-01", y: 219 } ,{x:"2021-02", y: 223 } ,{x:"2021-03", y: 227 } ,{x:"2021-04", y: 230 } ,{x:"2021-05", y: 236 } ,{x:"2021-06", y: 242 } ,{x:"2021-07", y: 248 } ,{x:"2021-08", y: 251 } ,{x:"2021-09", y: 254 } ,{x:"2021-10", y: 263 } ,{x:"2021-11", y: 275 } ,{x:"2021-12", y: 280 } ,{x:"2022-01", y: 281 } ,{x:"2022-02", y: 283 } ,{x:"2022-03", y: 300 } ,{x:"2022-04", y: 310 } ,{x:"2022-05", y: 316 } ,{x:"2022-06", y: 318 } ,{x:"2022-07", y: 323 } ,{x:"2022-08", y: 327 } ,{x:"2022-09", y: 334 } ,{x:"2022-10", y: 346 } ,{x:"2022-11", y: 349 } ,{x:"2022-12", y: 352 } ,{x:"2023-01", y: 358 } ,{x:"2023-02", y: 362 } ,{x:"2023-03", y: 369 } ,{x:"2023-04", y: 380 } ,{x:"2023-05", y: 397 } ,{x:"2023-06", y: 410 } ],
         fill: false,
     };
     fdbk_over_month['tuto-galaxy-intro-short'] = [tuto_data];
     fdbk_over_month['topic-introduction'].push(tuto_data);
-    data_notes['tuto-galaxy-intro-short'] = [3,1,2,5,57,341];
+    data_notes['tuto-galaxy-intro-short'] = [3,1,2,5,57,342];
 </script>
 
 <script>
@@ -1544,6 +1620,18 @@
     fdbk_over_month['tuto-msi-analyte-distribution'] = [tuto_data];
     fdbk_over_month['topic-metabolomics'].push(tuto_data);
     data_notes['tuto-msi-analyte-distribution'] = [0,0,0,0,1,2];
+</script>
+
+<script>
+    var tuto_data =
+    {
+        label: "Mass spectrometry: GC-MS data processing (with XCMS, RAMClustR, RIAssigner, and matchms)",
+        data: [{x:"2023-06", y: 1 } ],
+        fill: false,
+    };
+    fdbk_over_month['tuto-gc_ms_with_xcms'] = [tuto_data];
+    fdbk_over_month['topic-metabolomics'].push(tuto_data);
+    data_notes['tuto-gc_ms_with_xcms'] = [0,0,0,0,0,1];
 </script>
 
 <script>
@@ -2257,6 +2345,30 @@
 <script>
     var topic_data =
     {
+        label: "Synthetic Biology",
+        data: [{x:"2022-11", y: 1 } ],
+        fill: false,
+    };
+    fdbk_over_month['topic-synthetic-biology'] = [topic_data];
+    fdbk_over_month['all_topics'].push(topic_data);
+    data_notes['topic-synthetic-biology'] = [0,0,0,1,0,0];
+</script>
+
+<script>
+    var tuto_data =
+    {
+        label: "Generating theoretical possible pathways for the production of Lycopene in E.Coli using Retrosynthesis tools",
+        data: [{x:"2022-11", y: 1 } ],
+        fill: false,
+    };
+    fdbk_over_month['tuto-retrosynthesis_analysis'] = [tuto_data];
+    fdbk_over_month['topic-synthetic-biology'].push(tuto_data);
+    data_notes['tuto-retrosynthesis_analysis'] = [0,0,0,1,0,0];
+</script>
+
+<script>
+    var topic_data =
+    {
         label: "Teaching and Hosting Galaxy training",
         data: [{x:"2019-04", y: 1 } ,{x:"2020-01", y: 3 } ,{x:"2022-04", y: 4 } ,{x:"2023-06", y: 5 } ],
         fill: false,
@@ -2306,12 +2418,12 @@
     var topic_data =
     {
         label: "Transcriptomics",
-        data: [{x:"2018-09", y: 3 } ,{x:"2018-10", y: 8 } ,{x:"2018-12", y: 12 } ,{x:"2019-01", y: 15 } ,{x:"2019-02", y: 18 } ,{x:"2019-03", y: 20 } ,{x:"2019-04", y: 25 } ,{x:"2019-05", y: 32 } ,{x:"2019-06", y: 38 } ,{x:"2019-07", y: 42 } ,{x:"2019-08", y: 49 } ,{x:"2019-09", y: 57 } ,{x:"2019-10", y: 75 } ,{x:"2019-11", y: 77 } ,{x:"2019-12", y: 79 } ,{x:"2020-01", y: 83 } ,{x:"2020-02", y: 86 } ,{x:"2020-03", y: 91 } ,{x:"2020-04", y: 97 } ,{x:"2020-05", y: 104 } ,{x:"2020-06", y: 107 } ,{x:"2020-07", y: 111 } ,{x:"2020-08", y: 113 } ,{x:"2020-09", y: 115 } ,{x:"2020-10", y: 116 } ,{x:"2020-11", y: 124 } ,{x:"2021-01", y: 127 } ,{x:"2021-02", y: 143 } ,{x:"2021-03", y: 149 } ,{x:"2021-04", y: 156 } ,{x:"2021-05", y: 158 } ,{x:"2021-06", y: 164 } ,{x:"2021-07", y: 180 } ,{x:"2021-08", y: 183 } ,{x:"2021-09", y: 185 } ,{x:"2021-11", y: 191 } ,{x:"2021-12", y: 195 } ,{x:"2022-01", y: 199 } ,{x:"2022-02", y: 204 } ,{x:"2022-03", y: 220 } ,{x:"2022-04", y: 225 } ,{x:"2022-05", y: 229 } ,{x:"2022-06", y: 230 } ,{x:"2022-07", y: 232 } ,{x:"2022-08", y: 235 } ,{x:"2022-09", y: 239 } ,{x:"2022-10", y: 243 } ,{x:"2022-11", y: 247 } ,{x:"2022-12", y: 250 } ,{x:"2023-01", y: 251 } ,{x:"2023-02", y: 252 } ,{x:"2023-03", y: 253 } ,{x:"2023-04", y: 256 } ,{x:"2023-05", y: 267 } ,{x:"2023-06", y: 271 } ],
+        data: [{x:"2018-09", y: 3 } ,{x:"2018-10", y: 9 } ,{x:"2018-12", y: 13 } ,{x:"2019-01", y: 16 } ,{x:"2019-02", y: 19 } ,{x:"2019-03", y: 21 } ,{x:"2019-04", y: 26 } ,{x:"2019-05", y: 33 } ,{x:"2019-06", y: 39 } ,{x:"2019-07", y: 43 } ,{x:"2019-08", y: 50 } ,{x:"2019-09", y: 58 } ,{x:"2019-10", y: 76 } ,{x:"2019-11", y: 78 } ,{x:"2019-12", y: 80 } ,{x:"2020-01", y: 84 } ,{x:"2020-02", y: 87 } ,{x:"2020-03", y: 92 } ,{x:"2020-04", y: 98 } ,{x:"2020-05", y: 105 } ,{x:"2020-06", y: 108 } ,{x:"2020-07", y: 112 } ,{x:"2020-08", y: 114 } ,{x:"2020-09", y: 116 } ,{x:"2020-10", y: 117 } ,{x:"2020-11", y: 125 } ,{x:"2021-01", y: 128 } ,{x:"2021-02", y: 144 } ,{x:"2021-03", y: 150 } ,{x:"2021-04", y: 157 } ,{x:"2021-05", y: 159 } ,{x:"2021-06", y: 165 } ,{x:"2021-07", y: 181 } ,{x:"2021-08", y: 184 } ,{x:"2021-09", y: 186 } ,{x:"2021-11", y: 192 } ,{x:"2021-12", y: 196 } ,{x:"2022-01", y: 200 } ,{x:"2022-02", y: 205 } ,{x:"2022-03", y: 221 } ,{x:"2022-04", y: 226 } ,{x:"2022-05", y: 230 } ,{x:"2022-06", y: 231 } ,{x:"2022-07", y: 233 } ,{x:"2022-08", y: 236 } ,{x:"2022-09", y: 240 } ,{x:"2022-10", y: 244 } ,{x:"2022-11", y: 248 } ,{x:"2022-12", y: 251 } ,{x:"2023-01", y: 252 } ,{x:"2023-02", y: 253 } ,{x:"2023-03", y: 254 } ,{x:"2023-04", y: 257 } ,{x:"2023-05", y: 268 } ,{x:"2023-06", y: 272 } ],
         fill: false,
     };
     fdbk_over_month['topic-transcriptomics'] = [topic_data];
     fdbk_over_month['all_topics'].push(topic_data);
-    data_notes['topic-transcriptomics'] = [2,14,2,9,51,193];
+    data_notes['topic-transcriptomics'] = [2,14,2,9,51,194];
 </script>
 
 <script>
@@ -2845,6 +2957,18 @@
 <script>
     var tuto_data =
     {
+        label: "Pox virus genome analysis from tiled-amplicon sequencing data",
+        data: [{x:"2023-05", y: 1 } ],
+        fill: false,
+    };
+    fdbk_over_month['tuto-pox-tiled-amplicon'] = [tuto_data];
+    fdbk_over_month['topic-variant-analysis'].push(tuto_data);
+    data_notes['tuto-pox-tiled-amplicon'] = [0,0,0,0,1,0];
+</script>
+
+<script>
+    var tuto_data =
+    {
         label: "Somatic Variant Discovery from WES Data Using Control-FREEC",
         data: [{x:"2022-11", y: 1 } ],
         fill: false,
@@ -2893,7 +3017,7 @@
                 <div class="col-md-6">
                     <div class="card">
                         <div class="card-body">
-                            <h5 class="card-title">2295 responses</h5>
+                            <h5 class="card-title">2309 responses</h5>
                             
                             <canvas id="allFdbkOverMonthGraph" width="400" height="400">
 <script>
@@ -2931,7 +3055,7 @@
                     <div class="col-md-6">
                         <div class="card">
                             <div class="card-body">
-                                <h5 class="card-title">81 responses</h5>
+                                <h5 class="card-title">82 responses</h5>
                                 
                                 <canvas id="assembly-topic-fdbkOverMonthGraph" width="400" height="400">
 <script>
@@ -4466,6 +4590,99 @@
                                                                 
                                                             
                                                                 
+                                                                    
+                                                                
+                                                            
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    
+                
+                    
+                    
+                    
+                        
+                        
+                        <div class="accordion-card card" id="tutorial-ERGA-post-assembly-QC">
+                            <div class="card-header" id="heading-ERGA-post-assembly-QC">
+                                <div class="mb-0">
+                                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapse-ERGA-post-assembly-QC" aria-expanded="false" aria-controls="collapse-ERGA-post-assembly-QC">
+                                        ERGA post-assembly QC
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div id="collapse-ERGA-post-assembly-QC" class="collapse" aria-labelledby="heading-ERGA-post-assembly-QC" data-parent="#accordion-assembly">
+                                <div class="card-body">
+                                    
+                                    <div class="row">
+                                        <!-- feedback over time  -->
+                                        <div class="col-md-6">
+                                            <div class="card">
+                                                <div class="card-body">
+                                                    <h5 class="card-title">1 responses</h5>
+                                                    
+                                                    <canvas id="ERGA-post-assembly-QC-tutorial-fdbkOverMonthGraph" width="400" height="400">
+<script>
+    window.addEventListener('DOMContentLoaded', (event) => {
+        drawFdbkOverMonthGraph("ERGA-post-assembly-QC-tutorial-fdbkOverMonthGraph", fdbk_over_month['tuto-ERGA-post-assembly-QC']);
+    });
+</script>
+                                                    </canvas>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- feedback notes  -->
+                                        <div class="col-md-6">
+                                            <div class="card">
+                                                <div class="card-body">
+                                                    <h5 class="card-title">Rating Distribution</h5>
+                                                    
+                                                    <canvas id="ERGA-post-assembly-QC-tutorial-fdbkNoteGraph" width="400" height="400">
+<script>
+    window.addEventListener('DOMContentLoaded', (event) => {
+        drawFdbkNoteGraph("ERGA-post-assembly-QC-tutorial-fdbkNoteGraph", data_notes['tuto-ERGA-post-assembly-QC'], labels_notes);
+    });
+</script>
+                                                    </canvas>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <a href="/training-material/topics/assembly/tutorials/ERGA-post-assembly-QC/tutorial.html">View this Tutorial</a>
+                                    
+
+                                    <div class="row">
+                                        <div class="col">
+                                            <div class="card">
+                                                <div class="card-body">
+
+                                                    <h5 class="card-title">Detailed feedback</h5>
+                                                    <table class="table table-striped">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>Date</th>
+                                                                <th>What did you like?</th>
+                                                                <th>What could be improved?</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            
+                                                            
+                                                                
+                                                                    
+                                                                    <tr>
+                                                                        <td>Jun 26, 2023</td>
+                                                                        <td>Everything!</td>
+                                                                        <td>It&apos;s awesome!</td>
+                                                                    </tr>
                                                                     
                                                                 
                                                             
@@ -8391,6 +8608,254 @@
                 
                 
                 
+                <h3 id="topic-evolution">Evolution  <a href="/training-material/topics/evolution"><i class="fas fa-external-link-alt" aria-hidden="true"></i><span class="visually-hidden">galaxy_instance</span></a></h3>
+                <div class="row">
+                    <!-- feedback over time  -->
+                    <div class="col-md-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">4 responses</h5>
+                                
+                                <canvas id="evolution-topic-fdbkOverMonthGraph" width="400" height="400">
+<script>
+    if ( counter > 4) {
+        window.addEventListener('DOMContentLoaded', (event) => {
+            drawFdbkOverMonthGraph("evolution-topic-fdbkOverMonthGraph", fdbk_over_month['topic-evolution']);
+        });
+    } else {
+        drawFdbkOverMonthGraph("evolution-topic-fdbkOverMonthGraph", fdbk_over_month['topic-evolution']);
+    }
+</script>
+                                </canvas>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- feedback notes  -->
+                    <div class="col-md-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">Rating Distribution</h5>
+                                
+                                <canvas id="evolution-topic-fdbkNoteGraph" width="400" height="400">
+<script>
+    if ( counter > 4) {
+        window.addEventListener('DOMContentLoaded', (event) => {
+            drawFdbkNoteGraph("evolution-topic-fdbkNoteGraph", data_notes['topic-evolution'], labels_notes);
+        });
+    } else {
+        drawFdbkNoteGraph("evolution-topic-fdbkNoteGraph", data_notes['topic-evolution'], labels_notes);
+    }
+    counter = counter + 1;
+</script>
+                                </canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                
+                <div class="accordion" id="accordion-evolution">
+                
+                    
+                    
+                    
+                        
+                        
+                        <div class="accordion-card card" id="tutorial-mtb_transmission">
+                            <div class="card-header" id="heading-mtb_transmission">
+                                <div class="mb-0">
+                                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapse-mtb_transmission" aria-expanded="false" aria-controls="collapse-mtb_transmission">
+                                        Identifying tuberculosis transmission links: from SNPs to transmission clusters
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div id="collapse-mtb_transmission" class="collapse" aria-labelledby="heading-mtb_transmission" data-parent="#accordion-evolution">
+                                <div class="card-body">
+                                    
+                                    <div class="row">
+                                        <!-- feedback over time  -->
+                                        <div class="col-md-6">
+                                            <div class="card">
+                                                <div class="card-body">
+                                                    <h5 class="card-title">3 responses</h5>
+                                                    
+                                                    <canvas id="mtb_transmission-tutorial-fdbkOverMonthGraph" width="400" height="400">
+<script>
+    window.addEventListener('DOMContentLoaded', (event) => {
+        drawFdbkOverMonthGraph("mtb_transmission-tutorial-fdbkOverMonthGraph", fdbk_over_month['tuto-mtb_transmission']);
+    });
+</script>
+                                                    </canvas>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- feedback notes  -->
+                                        <div class="col-md-6">
+                                            <div class="card">
+                                                <div class="card-body">
+                                                    <h5 class="card-title">Rating Distribution</h5>
+                                                    
+                                                    <canvas id="mtb_transmission-tutorial-fdbkNoteGraph" width="400" height="400">
+<script>
+    window.addEventListener('DOMContentLoaded', (event) => {
+        drawFdbkNoteGraph("mtb_transmission-tutorial-fdbkNoteGraph", data_notes['tuto-mtb_transmission'], labels_notes);
+    });
+</script>
+                                                    </canvas>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <a href="/training-material/topics/evolution/tutorials/mtb_transmission/tutorial.html">View this Tutorial</a>
+                                    
+
+                                    <div class="row">
+                                        <div class="col">
+                                            <div class="card">
+                                                <div class="card-body">
+
+                                                    <h5 class="card-title">Detailed feedback</h5>
+                                                    <table class="table table-striped">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>Date</th>
+                                                                <th>What did you like?</th>
+                                                                <th>What could be improved?</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            
+                                                            
+                                                                
+                                                                    
+                                                                
+                                                            
+                                                                
+                                                                    
+                                                                    <tr>
+                                                                        <td>Jan 7, 2023</td>
+                                                                        <td>All except the R studio that is not yet clear</td>
+                                                                        <td>Rstudio</td>
+                                                                    </tr>
+                                                                    
+                                                                
+                                                            
+                                                                
+                                                                    
+                                                                    <tr>
+                                                                        <td>Jul 5, 2022</td>
+                                                                        <td>This hands on tutorial made me understands some of the concepts raised in the webnar</td>
+                                                                        <td>A note on the estimated run time of the on the provided data, this will help to know if i have done something wrong.</td>
+                                                                    </tr>
+                                                                    
+                                                                
+                                                            
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    
+                
+                    
+                    
+                    
+                        
+                        
+                        <div class="accordion-card card" id="tutorial-mtb_phylogeny">
+                            <div class="card-header" id="heading-mtb_phylogeny">
+                                <div class="mb-0">
+                                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapse-mtb_phylogeny" aria-expanded="false" aria-controls="collapse-mtb_phylogeny">
+                                        Tree thinking for tuberculosis evolution and epidemiology
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div id="collapse-mtb_phylogeny" class="collapse" aria-labelledby="heading-mtb_phylogeny" data-parent="#accordion-evolution">
+                                <div class="card-body">
+                                    
+                                    <div class="row">
+                                        <!-- feedback over time  -->
+                                        <div class="col-md-6">
+                                            <div class="card">
+                                                <div class="card-body">
+                                                    <h5 class="card-title">1 responses</h5>
+                                                    
+                                                    <canvas id="mtb_phylogeny-tutorial-fdbkOverMonthGraph" width="400" height="400">
+<script>
+    window.addEventListener('DOMContentLoaded', (event) => {
+        drawFdbkOverMonthGraph("mtb_phylogeny-tutorial-fdbkOverMonthGraph", fdbk_over_month['tuto-mtb_phylogeny']);
+    });
+</script>
+                                                    </canvas>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- feedback notes  -->
+                                        <div class="col-md-6">
+                                            <div class="card">
+                                                <div class="card-body">
+                                                    <h5 class="card-title">Rating Distribution</h5>
+                                                    
+                                                    <canvas id="mtb_phylogeny-tutorial-fdbkNoteGraph" width="400" height="400">
+<script>
+    window.addEventListener('DOMContentLoaded', (event) => {
+        drawFdbkNoteGraph("mtb_phylogeny-tutorial-fdbkNoteGraph", data_notes['tuto-mtb_phylogeny'], labels_notes);
+    });
+</script>
+                                                    </canvas>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <a href="/training-material/topics/evolution/tutorials/mtb_phylogeny/tutorial.html">View this Tutorial</a>
+                                    
+
+                                    <div class="row">
+                                        <div class="col">
+                                            <div class="card">
+                                                <div class="card-body">
+
+                                                    <h5 class="card-title">Detailed feedback</h5>
+                                                    <table class="table table-striped">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>Date</th>
+                                                                <th>What did you like?</th>
+                                                                <th>What could be improved?</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            
+                                                            
+                                                                
+                                                                    
+                                                                
+                                                            
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    
+                
+                </div>
+                
+            
+                
+                
+                
                 <h3 id="topic-data-science">Foundations of Data Science  <a href="/training-material/topics/data-science"><i class="fas fa-external-link-alt" aria-hidden="true"></i><span class="visually-hidden">galaxy_instance</span></a></h3>
                 <div class="row">
                     <!-- feedback over time  -->
@@ -9092,7 +9557,7 @@
                     <div class="col-md-6">
                         <div class="card">
                             <div class="card-body">
-                                <h5 class="card-title">164 responses</h5>
+                                <h5 class="card-title">170 responses</h5>
                                 
                                 <canvas id="admin-topic-fdbkOverMonthGraph" width="400" height="400">
 <script>
@@ -9735,7 +10200,7 @@
                                         <div class="col-md-6">
                                             <div class="card">
                                                 <div class="card-body">
-                                                    <h5 class="card-title">33 responses</h5>
+                                                    <h5 class="card-title">34 responses</h5>
                                                     
                                                     <canvas id="ansible-galaxy-tutorial-fdbkOverMonthGraph" width="400" height="400">
 <script>
@@ -9786,6 +10251,16 @@
                                                             
                                                             
                                                                 
+                                                                    
+                                                                
+                                                            
+                                                                
+                                                                    
+                                                                    <tr>
+                                                                        <td>Mar 14, 2023</td>
+                                                                        <td>Everything &lt;script&gt;console.log(&quot;Helena Testing&quot;);&lt;/script&gt;</td>
+                                                                        <td></td>
+                                                                    </tr>
                                                                     
                                                                 
                                                             
@@ -11254,6 +11729,14 @@
                     
                         <div class="alert alert-warning" role="alert">
                             <p>Tutorial "Mapping Jobs to Destinations" is not available anymore.</p>
+                        </div>
+                    
+                
+                    
+                    
+                    
+                        <div class="alert alert-warning" role="alert">
+                            <p>Tutorial "Recording Job Metrics" is not available anymore.</p>
                         </div>
                     
                 
@@ -13484,7 +13967,7 @@
                     <div class="col-md-6">
                         <div class="card">
                             <div class="card-body">
-                                <h5 class="card-title">813 responses</h5>
+                                <h5 class="card-title">814 responses</h5>
                                 
                                 <canvas id="introduction-topic-fdbkOverMonthGraph" width="400" height="400">
 <script>
@@ -16392,7 +16875,7 @@
                                         <div class="col-md-6">
                                             <div class="card">
                                                 <div class="card-body">
-                                                    <h5 class="card-title">409 responses</h5>
+                                                    <h5 class="card-title">410 responses</h5>
                                                     
                                                     <canvas id="galaxy-intro-short-tutorial-fdbkOverMonthGraph" width="400" height="400">
 <script>
@@ -17804,6 +18287,16 @@
                                                                         <td>May 12, 2021</td>
                                                                         <td>The trimming and filtering part is the most important stage of RNA-seq data analysis. Generally, adapter sequences are not given with SRA data in NCBI . Therefore, I was shot in the dark while using the trimmomatic, cuadapt and other tools whose results are not that much satisfactory. The information given in the tutorial seems to work for one of the messiest data.</td>
                                                                         <td>I think it would be great to see usage of filtering and trimming tools on one or two messy data. It will give us insights about how to deal with such data</td>
+                                                                    </tr>
+                                                                    
+                                                                
+                                                            
+                                                                
+                                                                    
+                                                                    <tr>
+                                                                        <td>May 6, 2021</td>
+                                                                        <td>TESTING</td>
+                                                                        <td>TESTING</td>
                                                                     </tr>
                                                                     
                                                                 
@@ -20926,8 +21419,93 @@
                     
                     
                     
-                        <div class="alert alert-warning" role="alert">
-                            <p>Tutorial "Mass spectrometry: GC-MS data processing (with XCMS, RAMClustR, RIAssigner, and matchms)" is not available anymore.</p>
+                        
+                        
+                        <div class="accordion-card card" id="tutorial-gc_ms_with_xcms">
+                            <div class="card-header" id="heading-gc_ms_with_xcms">
+                                <div class="mb-0">
+                                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapse-gc_ms_with_xcms" aria-expanded="false" aria-controls="collapse-gc_ms_with_xcms">
+                                        Mass spectrometry: GC-MS data processing (with XCMS, RAMClustR, RIAssigner, and matchms)
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div id="collapse-gc_ms_with_xcms" class="collapse" aria-labelledby="heading-gc_ms_with_xcms" data-parent="#accordion-metabolomics">
+                                <div class="card-body">
+                                    
+                                    <div class="row">
+                                        <!-- feedback over time  -->
+                                        <div class="col-md-6">
+                                            <div class="card">
+                                                <div class="card-body">
+                                                    <h5 class="card-title">1 responses</h5>
+                                                    
+                                                    <canvas id="gc_ms_with_xcms-tutorial-fdbkOverMonthGraph" width="400" height="400">
+<script>
+    window.addEventListener('DOMContentLoaded', (event) => {
+        drawFdbkOverMonthGraph("gc_ms_with_xcms-tutorial-fdbkOverMonthGraph", fdbk_over_month['tuto-gc_ms_with_xcms']);
+    });
+</script>
+                                                    </canvas>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- feedback notes  -->
+                                        <div class="col-md-6">
+                                            <div class="card">
+                                                <div class="card-body">
+                                                    <h5 class="card-title">Rating Distribution</h5>
+                                                    
+                                                    <canvas id="gc_ms_with_xcms-tutorial-fdbkNoteGraph" width="400" height="400">
+<script>
+    window.addEventListener('DOMContentLoaded', (event) => {
+        drawFdbkNoteGraph("gc_ms_with_xcms-tutorial-fdbkNoteGraph", data_notes['tuto-gc_ms_with_xcms'], labels_notes);
+    });
+</script>
+                                                    </canvas>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <a href="/training-material/topics/metabolomics/tutorials/gc_ms_with_xcms/tutorial.html">View this Tutorial</a>
+                                    
+
+                                    <div class="row">
+                                        <div class="col">
+                                            <div class="card">
+                                                <div class="card-body">
+
+                                                    <h5 class="card-title">Detailed feedback</h5>
+                                                    <table class="table table-striped">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>Date</th>
+                                                                <th>What did you like?</th>
+                                                                <th>What could be improved?</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            
+                                                            
+                                                                
+                                                                    
+                                                                    <tr>
+                                                                        <td>Jun 14, 2023</td>
+                                                                        <td>The training is very good. I like the step by step teaching. </td>
+                                                                        <td>I need more time to follow. </td>
+                                                                    </tr>
+                                                                    
+                                                                
+                                                            
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     
                 
@@ -29642,6 +30220,147 @@
                 
                 
                 
+                <h3 id="topic-synthetic-biology">Synthetic Biology  <a href="/training-material/topics/synthetic-biology"><i class="fas fa-external-link-alt" aria-hidden="true"></i><span class="visually-hidden">galaxy_instance</span></a></h3>
+                <div class="row">
+                    <!-- feedback over time  -->
+                    <div class="col-md-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">1 responses</h5>
+                                
+                                <canvas id="synthetic-biology-topic-fdbkOverMonthGraph" width="400" height="400">
+<script>
+    if ( counter > 4) {
+        window.addEventListener('DOMContentLoaded', (event) => {
+            drawFdbkOverMonthGraph("synthetic-biology-topic-fdbkOverMonthGraph", fdbk_over_month['topic-synthetic-biology']);
+        });
+    } else {
+        drawFdbkOverMonthGraph("synthetic-biology-topic-fdbkOverMonthGraph", fdbk_over_month['topic-synthetic-biology']);
+    }
+</script>
+                                </canvas>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- feedback notes  -->
+                    <div class="col-md-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">Rating Distribution</h5>
+                                
+                                <canvas id="synthetic-biology-topic-fdbkNoteGraph" width="400" height="400">
+<script>
+    if ( counter > 4) {
+        window.addEventListener('DOMContentLoaded', (event) => {
+            drawFdbkNoteGraph("synthetic-biology-topic-fdbkNoteGraph", data_notes['topic-synthetic-biology'], labels_notes);
+        });
+    } else {
+        drawFdbkNoteGraph("synthetic-biology-topic-fdbkNoteGraph", data_notes['topic-synthetic-biology'], labels_notes);
+    }
+    counter = counter + 1;
+</script>
+                                </canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                
+                <div class="accordion" id="accordion-synthetic-biology">
+                
+                    
+                    
+                    
+                        
+                        
+                        <div class="accordion-card card" id="tutorial-retrosynthesis_analysis">
+                            <div class="card-header" id="heading-retrosynthesis_analysis">
+                                <div class="mb-0">
+                                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapse-retrosynthesis_analysis" aria-expanded="false" aria-controls="collapse-retrosynthesis_analysis">
+                                        Generating theoretical possible pathways for the production of Lycopene in E.Coli using Retrosynthesis tools
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div id="collapse-retrosynthesis_analysis" class="collapse" aria-labelledby="heading-retrosynthesis_analysis" data-parent="#accordion-synthetic-biology">
+                                <div class="card-body">
+                                    
+                                    <div class="row">
+                                        <!-- feedback over time  -->
+                                        <div class="col-md-6">
+                                            <div class="card">
+                                                <div class="card-body">
+                                                    <h5 class="card-title">1 responses</h5>
+                                                    
+                                                    <canvas id="retrosynthesis_analysis-tutorial-fdbkOverMonthGraph" width="400" height="400">
+<script>
+    window.addEventListener('DOMContentLoaded', (event) => {
+        drawFdbkOverMonthGraph("retrosynthesis_analysis-tutorial-fdbkOverMonthGraph", fdbk_over_month['tuto-retrosynthesis_analysis']);
+    });
+</script>
+                                                    </canvas>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- feedback notes  -->
+                                        <div class="col-md-6">
+                                            <div class="card">
+                                                <div class="card-body">
+                                                    <h5 class="card-title">Rating Distribution</h5>
+                                                    
+                                                    <canvas id="retrosynthesis_analysis-tutorial-fdbkNoteGraph" width="400" height="400">
+<script>
+    window.addEventListener('DOMContentLoaded', (event) => {
+        drawFdbkNoteGraph("retrosynthesis_analysis-tutorial-fdbkNoteGraph", data_notes['tuto-retrosynthesis_analysis'], labels_notes);
+    });
+</script>
+                                                    </canvas>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <a href="/training-material/topics/synthetic-biology/tutorials/retrosynthesis_analysis/tutorial.html">View this Tutorial</a>
+                                    
+
+                                    <div class="row">
+                                        <div class="col">
+                                            <div class="card">
+                                                <div class="card-body">
+
+                                                    <h5 class="card-title">Detailed feedback</h5>
+                                                    <table class="table table-striped">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>Date</th>
+                                                                <th>What did you like?</th>
+                                                                <th>What could be improved?</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            
+                                                            
+                                                                
+                                                                    
+                                                                
+                                                            
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    
+                
+                </div>
+                
+            
+                
+                
+                
                 <h3 id="topic-teaching">Teaching and Hosting Galaxy training  <a href="/training-material/topics/teaching"><i class="fas fa-external-link-alt" aria-hidden="true"></i><span class="visually-hidden">galaxy_instance</span></a></h3>
                 <div class="row">
                     <!-- feedback over time  -->
@@ -29983,7 +30702,7 @@
                     <div class="col-md-6">
                         <div class="card">
                             <div class="card-body">
-                                <h5 class="card-title">271 responses</h5>
+                                <h5 class="card-title">272 responses</h5>
                                 
                                 <canvas id="transcriptomics-topic-fdbkOverMonthGraph" width="400" height="400">
 <script>
@@ -31065,6 +31784,14 @@
                                     </div>
                                 </div>
                             </div>
+                        </div>
+                    
+                
+                    
+                    
+                    
+                        <div class="alert alert-warning" role="alert">
+                            <p>Tutorial "RNA-seq counts to genes and pathways" is not available anymore.</p>
                         </div>
                     
                 
@@ -37035,8 +37762,93 @@
                     
                     
                     
-                        <div class="alert alert-warning" role="alert">
-                            <p>Tutorial "Pox virus genome analysis from tiled-amplicon sequencing data" is not available anymore.</p>
+                        
+                        
+                        <div class="accordion-card card" id="tutorial-pox-tiled-amplicon">
+                            <div class="card-header" id="heading-pox-tiled-amplicon">
+                                <div class="mb-0">
+                                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapse-pox-tiled-amplicon" aria-expanded="false" aria-controls="collapse-pox-tiled-amplicon">
+                                        Pox virus genome analysis from tiled-amplicon sequencing data
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div id="collapse-pox-tiled-amplicon" class="collapse" aria-labelledby="heading-pox-tiled-amplicon" data-parent="#accordion-variant-analysis">
+                                <div class="card-body">
+                                    
+                                    <div class="row">
+                                        <!-- feedback over time  -->
+                                        <div class="col-md-6">
+                                            <div class="card">
+                                                <div class="card-body">
+                                                    <h5 class="card-title">1 responses</h5>
+                                                    
+                                                    <canvas id="pox-tiled-amplicon-tutorial-fdbkOverMonthGraph" width="400" height="400">
+<script>
+    window.addEventListener('DOMContentLoaded', (event) => {
+        drawFdbkOverMonthGraph("pox-tiled-amplicon-tutorial-fdbkOverMonthGraph", fdbk_over_month['tuto-pox-tiled-amplicon']);
+    });
+</script>
+                                                    </canvas>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- feedback notes  -->
+                                        <div class="col-md-6">
+                                            <div class="card">
+                                                <div class="card-body">
+                                                    <h5 class="card-title">Rating Distribution</h5>
+                                                    
+                                                    <canvas id="pox-tiled-amplicon-tutorial-fdbkNoteGraph" width="400" height="400">
+<script>
+    window.addEventListener('DOMContentLoaded', (event) => {
+        drawFdbkNoteGraph("pox-tiled-amplicon-tutorial-fdbkNoteGraph", data_notes['tuto-pox-tiled-amplicon'], labels_notes);
+    });
+</script>
+                                                    </canvas>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <a href="/training-material/topics/variant-analysis/tutorials/pox-tiled-amplicon/tutorial.html">View this Tutorial</a>
+                                    
+
+                                    <div class="row">
+                                        <div class="col">
+                                            <div class="card">
+                                                <div class="card-body">
+
+                                                    <h5 class="card-title">Detailed feedback</h5>
+                                                    <table class="table table-striped">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>Date</th>
+                                                                <th>What did you like?</th>
+                                                                <th>What could be improved?</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            
+                                                            
+                                                                
+                                                                    
+                                                                    <tr>
+                                                                        <td>May 19, 2023</td>
+                                                                        <td>The tutorial was easy to reproduce.</td>
+                                                                        <td>Perhaps a video of this tutorial could be generated, explaining in more detail the parameters used.</td>
+                                                                    </tr>
+                                                                    
+                                                                
+                                                            
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     
                 
@@ -37252,54 +38064,48 @@
 </div>
 
         </div>
-        
-            <footer>
-    <div class="container">
-        <br><br>
-        <p>
-            The <a href="https://galaxyproject.org/teach/gtn/">Galaxy Training Network</a>
-            provides researchers with online training materials, connects them with local trainers, and helps promoting open data analysis practices worldwide.
-        </p>
-        <p>
-        The content of the tutorials is licensed under the <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>. The website and infrastructure is licensed under <a rel="license" href="https://github.com/galaxyproject/training-material/blob/main/LICENSE.md">MIT</a>.
-        </p>
+        <footer>
+	<hr />
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-6" style="text-align: left">
+				<p>
+					The <a href="https://galaxyproject.org/teach/gtn/">Galaxy Training Network</a>
+					provides researchers with online training materials, connects them with local trainers, and helps promoting FAIR and Open Science practices worldwide. All contributions are subject to the <a rel="code-of-conduct" href="https://galaxyproject.org/community/coc/">Galaxy Project Code of Conduct</a>.
+				</p>
+				<p>
+				The GTN infrastructure is licensed under <a rel="license" href="https://github.com/galaxyproject/training-material/blob/main/LICENSE.md">MIT</a>
+				</p>
+				<p>
+				Revision <a href="https://github.com/galaxyproject/training-material/commit/476574d2b382dd1db6c2c408d8fb6ec4393a6904">476574d</a>, built with Jekyll (4.3.2 | production)
+				</p>
+			</div>
+			<div class="col-sm-6" style="text-align: right">
+				
+				<p>
+					<i>This Material</i>:
+					
+					is licensed under
+					<a rel="license" href="https://spdx.org/licenses/CC-BY-4.0">
+						Creative Commons Attribution 4.0 International License
+					</a>
+				</p>
+				<p>
+					<a href="https://github.com/galaxyproject/training-material/edit/main/feedback.md" title="Edit on GitHub">
+					<i class="fab fa-github" aria-hidden="true"></i><span class="visually-hidden">github</span> Edit on GitHub
+					</a>
+				</p>
+			</div>
+		</div>
+	</div>
+</footer>
 
-        <p>This is revision <a href="https://github.com/galaxyproject/training-material/commit/18e949c75c52b69adbc92b0904a2082ec75d0dd7">18e949c75c52b69adbc92b0904a2082ec75d0dd7</a>. </p>
+
     </div>
 </footer>
 
-        
-        <script src="/training-material/assets/js/jquery.slim.min.js"></script>
-        <script src="/training-material/assets/js/popper.min.js"></script>
-        <script src="/training-material/assets/js/bootstrap.min.js?v=3"></script>
-        <script src="/training-material/assets/js/details-element-polyfill.js"></script>
+
+        <script src='/training-material/assets/js/bundle.main.js?v=1687830693'></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-        <script src="/training-material/assets/js/bootstrap-toc.min.js"></script>
-        <script src="/training-material/assets/js/main.js"></script>
-        <script src="/training-material/assets/js/clipboard.min.js"></script>
-        <script>
-        var snippets=document.querySelectorAll('div.highlight');
-        [].forEach.call(snippets,function(snippet){
-            snippet.firstChild.insertAdjacentHTML('beforebegin','<button class="btn btn-light" data-clipboard-snippet tabindex="0"><i class="fa fa-copy"></i>&nbsp;Copy</button>');
-        });
-
-        var clipboardSnippets=new ClipboardJS('[data-clipboard-snippet]',{
-            target:function(trigger){return trigger.nextElementSibling;
-        }});
-        </script>
-        
-
-        <script type="text/javascript">
-            if(window.location.hostname === "galaxyproject.github.io") {
-                // Redirect
-                var redirect = "https://training.galaxyproject.org" + window.location.pathname + window.location.search;
-                $('div.container.main-content').prepend("<div class='alert alert-warning'><strong>Note: </strong>This content has a new home at <a href=\"" + redirect + "\">" + redirect + "</a>, which you will be redirected to in 5 seconds.</div>");
-
-                window.setTimeout(function(){
-                    window.location.href = redirect;
-                }, 5000)
-
-            }
-        </script>
     </body>
 </html>

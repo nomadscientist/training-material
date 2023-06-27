@@ -8,22 +8,51 @@
         
             <script async defer data-domain="training.galaxyproject.org" src="https://plausible.galaxyproject.eu/js/plausible.js"></script>
 
+<!-- JavaScript Error Monitoring, and performance tracking. -->
+<script
+  src="https://browser.sentry-cdn.com/7.52.1/bundle.tracing.min.js"
+  integrity="sha384-muuFXKS3752PNA4rPm9Uq6BLvOfV4CXyr9MHDBPvozOJJUWLKkogEFWOIRoVps43"
+  crossorigin="anonymous"
+></script>
+<script type="text/javascript">
+Sentry.init({
+  dsn: "https://45e0ec6e4373462b92969505df37cf40@sentry.galaxyproject.org/10",
+  release: "galaxy-training-network@476574d2b382dd1db6c2c408d8fb6ec4393a6904",
+  integrations: [new Sentry.BrowserTracing(), new Sentry.Replay()],
+  sampleRate: 0.1,
+  tracesSampleRate: 0.1,
+  // Capture Replay for no sessions by default
+  replaysSessionSampleRate: 0.01,
+  // plus for 1% of sessions with an error
+  replaysOnErrorSampleRate: 0.01,
+  // PII OFF
+  sendDefaultPii: false, // Off by default but just in case.
+  environment: "production",
+});
+</script>
+
         
-        <link rel="stylesheet" href="/training-material/assets/css/bootstrap.min.css?v=3">
-        <link rel="stylesheet" href="/training-material/assets/css/bootstrap-toc.min.css">
-        <link rel="stylesheet" href="/training-material/assets/css/main.css?v=2">
-        <link rel="stylesheet" href="/training-material/assets/fontawesome/css/all.css">
-        <link rel="stylesheet" href="/training-material/assets/css/academicons.css">
         <link rel="shortcut icon" href="/training-material/favicon.ico" type="image/x-icon">
         <link rel="alternate" type="application/atom+xml" href="/training-material/feed.xml">
         <link rel="canonical" href="https://training.galaxyproject.org/training-material/topics/data-science/tutorials/python-iterables/tutorial.html">
-        <link rel="license" href="https://creativecommons.org/licenses/by/4.0/">
+        <link rel="license" href="https://spdx.org/licenses/CC-BY-4.0">
+        <link rel="preload" href="/training-material/assets/fonts/AtkinsonHyperlegible/Atkinson-Hyperlegible-Regular-102a.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="preload" href="/training-material/assets/fonts/AtkinsonHyperlegible/Atkinson-Hyperlegible-Bold-102a.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="preload" href="/training-material/assets/fonts/AtkinsonHyperlegible/Atkinson-Hyperlegible-Italic-102a.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML" as="script" crossorigin>
+        <link rel="preload" href="/training-material/assets/css/main.css?v=3" as="style">
+        <link rel='preload' href='/training-material/assets/js/bundle.theme.js?v=1687830693' as='script'>
+<link rel='preload' href='/training-material/assets/js/bundle.main.js?v=1687830693' as='script'>
+        <link rel="stylesheet" href="/training-material/assets/css/main.css?v=3">
+        <link rel="manifest" href="/training-material/manifest.json">
+        <meta name="theme-color" content="#2c3143"/>
+
 
         <meta name="DC.identifier" content="https://github.com/galaxyproject/training-material">
 <meta name="DC.type" content="text">
 <meta name="DC.title" content="Python - Lists & Strings & Dictionaries">
 <meta name="DC.publisher" content="Galaxy Training Network">
-<meta name="DC.date" content="2023-02-13 13:04:13 +0000">
+<meta name="DC.date" content="2023-05-17 17:21:19 +0000">
 <meta name="DC.creator" content="The Carpentries">
 <meta name="DC.creator" content="Helena Rasche">
 <meta name="DC.creator" content="Donny Vrins">
@@ -67,7 +96,7 @@
     "name": "Galaxy Training Network",
     "url": "https://galaxyproject.org/teach/gtn/"
   },
-  "dateModified": "2023-02-13 13:04:13 +0000",
+  "dateModified": "2023-05-17 17:21:19 +0000",
   "discussionUrl": "https://gitter.im/Galaxy-Training-Network/Lobby",
   "headline": "Python - Lists & Strings & Dictionaries",
   "interactivityType": "mixed",
@@ -93,6 +122,10 @@
     "url": "https://galaxyproject.org/teach/gtn/"
   },
   "identifier": "https://github.com/galaxyproject/training-material",
+  "workTranslation": [
+
+  ],
+  "creativeWorkStatus": "Active",
   "accessMode": [
     "textual",
     "visual"
@@ -120,6 +153,7 @@
   "name": "Hands-on for 'Python - Lists & Strings & Dictionaries' tutorial",
   "url": "https://training.galaxyproject.org/training-material/topics/data-science/tutorials/python-iterables/tutorial.html",
   "timeRequired": "PT1H",
+  "teaches": "Explain why programs need collections of values.\n - Write programs that create flat lists, index them, slice them, and modify them through assignment and method calls.",
   "keywords": "data-science, jupyter-notebook",
   "description": "The questions this  addresses are:\n - How can I store multiple values?\n\n\nThe objectives are:\n - Explain why programs need collections of values.\n - Write programs that create flat lists, index them, slice them, and modify them through assignment and method calls.\n\n",
   "inLanguage": {
@@ -132,8 +166,8 @@
       "@context": "https://schema.org",
       "@type": "Person",
       "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
+        "@id": "https://bioschemas.org/profiles/Person/0.3-DRAFT",
+        "@type": "CreativeWork"
       },
       "url": "https://training.galaxyproject.org/training-material/hall-of-fame/carpentries/",
       "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/carpentries/",
@@ -153,8 +187,8 @@
       "@context": "https://schema.org",
       "@type": "Person",
       "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
+        "@id": "https://bioschemas.org/profiles/Person/0.3-DRAFT",
+        "@type": "CreativeWork"
       },
       "url": "https://training.galaxyproject.org/training-material/hall-of-fame/hexylena/",
       "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/hexylena/",
@@ -176,8 +210,8 @@
       "@context": "https://schema.org",
       "@type": "Person",
       "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
+        "@id": "https://bioschemas.org/profiles/Person/0.3-DRAFT",
+        "@type": "CreativeWork"
       },
       "url": "https://training.galaxyproject.org/training-material/hall-of-fame/dirowa/",
       "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/dirowa/",
@@ -197,96 +231,8 @@
       "@context": "https://schema.org",
       "@type": "Person",
       "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
-      },
-      "url": "https://training.galaxyproject.org/training-material/hall-of-fame/bazante1/",
-      "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/bazante1/",
-      "name": "Bazante Sanders",
-      "image": "https://avatars.githubusercontent.com/bazante1",
-      "description": "A contributor to the GTN project.",
-      "memberOf": [
-        {
-          "@type": "Organization",
-          "email": "galaxytrainingnetwork@gmail.com",
-          "name": "Galaxy Training Network",
-          "url": "https://galaxyproject.org/teach/gtn/"
-        }
-      ]
-    }
-  ],
-  "contributor": [
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
-      },
-      "url": "https://training.galaxyproject.org/training-material/hall-of-fame/carpentries/",
-      "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/carpentries/",
-      "name": "The Carpentries",
-      "image": "https://avatars.githubusercontent.com/carpentries",
-      "description": "A contributor to the GTN project.",
-      "memberOf": [
-        {
-          "@type": "Organization",
-          "email": "galaxytrainingnetwork@gmail.com",
-          "name": "Galaxy Training Network",
-          "url": "https://galaxyproject.org/teach/gtn/"
-        }
-      ]
-    },
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
-      },
-      "url": "https://training.galaxyproject.org/training-material/hall-of-fame/hexylena/",
-      "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/hexylena/",
-      "name": "Helena Rasche",
-      "image": "https://avatars.githubusercontent.com/hexylena",
-      "description": "A contributor to the GTN project.",
-      "memberOf": [
-        {
-          "@type": "Organization",
-          "email": "galaxytrainingnetwork@gmail.com",
-          "name": "Galaxy Training Network",
-          "url": "https://galaxyproject.org/teach/gtn/"
-        }
-      ],
-      "identifier": "https://orcid.org/0000-0001-9760-8992",
-      "orcid": "https://orcid.org/0000-0001-9760-8992"
-    },
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
-      },
-      "url": "https://training.galaxyproject.org/training-material/hall-of-fame/dirowa/",
-      "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/dirowa/",
-      "name": "Donny Vrins",
-      "image": "https://avatars.githubusercontent.com/dirowa",
-      "description": "A contributor to the GTN project.",
-      "memberOf": [
-        {
-          "@type": "Organization",
-          "email": "galaxytrainingnetwork@gmail.com",
-          "name": "Galaxy Training Network",
-          "url": "https://galaxyproject.org/teach/gtn/"
-        }
-      ]
-    },
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
+        "@id": "https://bioschemas.org/profiles/Person/0.3-DRAFT",
+        "@type": "CreativeWork"
       },
       "url": "https://training.galaxyproject.org/training-material/hall-of-fame/bazante1/",
       "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/bazante1/",
@@ -318,13 +264,20 @@
       "url": "https://bioportal.bioontology.org/ontologies/EDAM/?p=classes&conceptid=http%3A%2F%2Fedamontology.org%2Ftopic_3372"
     }
   ],
-  "educationalLevel": "Beginner"
+  "educationalLevel": "Beginner",
+  "mentions": [
+    {
+      "@type": "Thing",
+      "name": "jupyter-notebook"
+    }
+  ],
+  "abstract": "> <div class="box-title agenda-title" id="agenda">Agenda</div>"
 }
         </script>
         
     </head>
     <body data-spy="scroll" data-target="#toc">
-        <script type="text/javascript" src="/training-material/assets/js/theme.js"></script>
+        <script src='/training-material/assets/js/bundle.theme.js?v=1687830693'></script>
         <header>
     <nav class="navbar navbar-expand-md navbar-dark" aria-label="Site Navigation">
         <div class="container">
@@ -393,7 +346,6 @@
     </a>
     <div class="dropdown-menu dropdown-menu-right">
 
-        
         <a class="dropdown-item" href="https://github.com/galaxyproject/training-material/edit/main/topics/data-science/tutorials/python-iterables/tutorial.md" title="Edit on GitHub">
           <i class="fab fa-github" aria-hidden="true"></i><span class="visually-hidden">github</span> Edit on GitHub
         </a>
@@ -441,13 +393,13 @@
 
             <div id="archive-selector">
             
-                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2020-01-06/topics/data-science/tutorials/python-iterables/tutorial.html" title="Version 2020-01-06">2020-01-06</a>
+                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2020-01-06/topics/data-science/tutorials/python-iterables/tutorial.html">2020-01-06</a>
             
-                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2019-12-01/topics/data-science/tutorials/python-iterables/tutorial.html" title="Version 2019-12-01">2019-12-01</a>
+                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2019-12-01/topics/data-science/tutorials/python-iterables/tutorial.html">2019-12-01</a>
             
-                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2019-11-01/topics/data-science/tutorials/python-iterables/tutorial.html" title="Version 2019-11-01">2019-11-01</a>
+                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2019-11-01/topics/data-science/tutorials/python-iterables/tutorial.html">2019-11-01</a>
             
-                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/" title="Older Versions">Older Versions</a>
+                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/">Older Versions</a>
             </div>
 
         </div>
@@ -460,7 +412,7 @@
                     <li class="nav-item">
                       <div id="navbarSupportedContent" role="search">
                         <!-- Search form -->
-                        <form class="form-inline mr-auto" method="GET" action="/training-material/search">
+                        <form class="form-inline mr-auto" method="GET" action="/training-material/search2">
                           <i class="fas fa-search nav-link" aria-hidden="true"></i>
                           <div class="md-form mb-2">
                             <input name="query" class="form-control nicer" type="text" placeholder="Search Tutorials" aria-label="Search">
@@ -497,295 +449,7 @@
 
 
 
-<script>
-  ((window.gitter = {}).chat = {}).options = {
-  room: 'Galaxy-Training-Network/Lobby'
-  };
-</script>
 
-
-<script src="https://sidecar.gitter.im/dist/sidecar.v1.js" async defer></script>
-
-<script type="application/ld+json">
-    
-
-
-{
-  "@context": "http://schema.org",
-  "@type": "LearningResource",
-  "http://purl.org/dc/terms/conformsTo": {
-    "@id": "https://bioschemas.org/profiles/TrainingMaterial/1.0-RELEASE",
-    "@type": "CreativeWork"
-  },
-  "audience": {
-    "@type": "EducationalAudience",
-    "educationalRole": "Students"
-  },
-  "citation": {
-    "@type": "CreativeWork",
-    "name": "Community-Driven Data Analysis Training for Biology",
-    "url": "https://doi.org/10.1016/j.cels.2018.05.012"
-  },
-  "copyrightHolder": {
-    "@type": "Organization",
-    "email": "galaxytrainingnetwork@gmail.com",
-    "name": "Galaxy Training Network",
-    "url": "https://galaxyproject.org/teach/gtn/"
-  },
-  "dateModified": "2023-02-13 13:04:13 +0000",
-  "discussionUrl": "https://gitter.im/Galaxy-Training-Network/Lobby",
-  "headline": "Python - Lists & Strings & Dictionaries",
-  "interactivityType": "mixed",
-  "isAccessibleForFree": true,
-  "isFamilyFriendly": true,
-  "license": "https://spdx.org/licenses/CC-BY-4.0.html",
-  "producer": {
-    "@type": "Organization",
-    "email": "galaxytrainingnetwork@gmail.com",
-    "name": "Galaxy Training Network",
-    "url": "https://galaxyproject.org/teach/gtn/"
-  },
-  "provider": {
-    "@type": "Organization",
-    "email": "galaxytrainingnetwork@gmail.com",
-    "name": "Galaxy Training Network",
-    "url": "https://galaxyproject.org/teach/gtn/"
-  },
-  "sourceOrganization": {
-    "@type": "Organization",
-    "email": "galaxytrainingnetwork@gmail.com",
-    "name": "Galaxy Training Network",
-    "url": "https://galaxyproject.org/teach/gtn/"
-  },
-  "identifier": "https://github.com/galaxyproject/training-material",
-  "accessMode": [
-    "textual",
-    "visual"
-  ],
-  "accessModeSufficient": [
-    "textual",
-    "visual"
-  ],
-  "accessibilityControl": [
-    "fullKeyboardControl",
-    "fullMouseControl"
-  ],
-  "accessibilityFeature": [
-    "alternativeText",
-    "tableOfContents"
-  ],
-  "accessibilitySummary": "The text aims to be as accessible as possible. Image descriptions will vary per tutorial, from images being completely inaccessible, to images with good descriptions for non-visual users.",
-  "isPartOf": {
-    "@type": "CreativeWork",
-    "name": "Foundations of Data Science",
-    "description": "These lessons will help you get your feet in data science and give you tools to help you slice and dice your data into results.",
-    "url": "https://training.galaxyproject.org/training-material/topics/data-science/"
-  },
-  "learningResourceType": "hands-on tutorial",
-  "name": "Hands-on for 'Python - Lists & Strings & Dictionaries' tutorial",
-  "url": "https://training.galaxyproject.org/training-material/topics/data-science/tutorials/python-iterables/tutorial.html",
-  "timeRequired": "PT1H",
-  "keywords": "data-science, jupyter-notebook",
-  "description": "The questions this  addresses are:\n - How can I store multiple values?\n\n\nThe objectives are:\n - Explain why programs need collections of values.\n - Write programs that create flat lists, index them, slice them, and modify them through assignment and method calls.\n\n",
-  "inLanguage": {
-    "@type": "Language",
-    "name": "English",
-    "alternateName": "en"
-  },
-  "author": [
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
-      },
-      "url": "https://training.galaxyproject.org/training-material/hall-of-fame/carpentries/",
-      "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/carpentries/",
-      "name": "The Carpentries",
-      "image": "https://avatars.githubusercontent.com/carpentries",
-      "description": "A contributor to the GTN project.",
-      "memberOf": [
-        {
-          "@type": "Organization",
-          "email": "galaxytrainingnetwork@gmail.com",
-          "name": "Galaxy Training Network",
-          "url": "https://galaxyproject.org/teach/gtn/"
-        }
-      ]
-    },
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
-      },
-      "url": "https://training.galaxyproject.org/training-material/hall-of-fame/hexylena/",
-      "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/hexylena/",
-      "name": "Helena Rasche",
-      "image": "https://avatars.githubusercontent.com/hexylena",
-      "description": "A contributor to the GTN project.",
-      "memberOf": [
-        {
-          "@type": "Organization",
-          "email": "galaxytrainingnetwork@gmail.com",
-          "name": "Galaxy Training Network",
-          "url": "https://galaxyproject.org/teach/gtn/"
-        }
-      ],
-      "identifier": "https://orcid.org/0000-0001-9760-8992",
-      "orcid": "https://orcid.org/0000-0001-9760-8992"
-    },
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
-      },
-      "url": "https://training.galaxyproject.org/training-material/hall-of-fame/dirowa/",
-      "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/dirowa/",
-      "name": "Donny Vrins",
-      "image": "https://avatars.githubusercontent.com/dirowa",
-      "description": "A contributor to the GTN project.",
-      "memberOf": [
-        {
-          "@type": "Organization",
-          "email": "galaxytrainingnetwork@gmail.com",
-          "name": "Galaxy Training Network",
-          "url": "https://galaxyproject.org/teach/gtn/"
-        }
-      ]
-    },
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
-      },
-      "url": "https://training.galaxyproject.org/training-material/hall-of-fame/bazante1/",
-      "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/bazante1/",
-      "name": "Bazante Sanders",
-      "image": "https://avatars.githubusercontent.com/bazante1",
-      "description": "A contributor to the GTN project.",
-      "memberOf": [
-        {
-          "@type": "Organization",
-          "email": "galaxytrainingnetwork@gmail.com",
-          "name": "Galaxy Training Network",
-          "url": "https://galaxyproject.org/teach/gtn/"
-        }
-      ]
-    }
-  ],
-  "contributor": [
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
-      },
-      "url": "https://training.galaxyproject.org/training-material/hall-of-fame/carpentries/",
-      "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/carpentries/",
-      "name": "The Carpentries",
-      "image": "https://avatars.githubusercontent.com/carpentries",
-      "description": "A contributor to the GTN project.",
-      "memberOf": [
-        {
-          "@type": "Organization",
-          "email": "galaxytrainingnetwork@gmail.com",
-          "name": "Galaxy Training Network",
-          "url": "https://galaxyproject.org/teach/gtn/"
-        }
-      ]
-    },
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
-      },
-      "url": "https://training.galaxyproject.org/training-material/hall-of-fame/hexylena/",
-      "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/hexylena/",
-      "name": "Helena Rasche",
-      "image": "https://avatars.githubusercontent.com/hexylena",
-      "description": "A contributor to the GTN project.",
-      "memberOf": [
-        {
-          "@type": "Organization",
-          "email": "galaxytrainingnetwork@gmail.com",
-          "name": "Galaxy Training Network",
-          "url": "https://galaxyproject.org/teach/gtn/"
-        }
-      ],
-      "identifier": "https://orcid.org/0000-0001-9760-8992",
-      "orcid": "https://orcid.org/0000-0001-9760-8992"
-    },
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
-      },
-      "url": "https://training.galaxyproject.org/training-material/hall-of-fame/dirowa/",
-      "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/dirowa/",
-      "name": "Donny Vrins",
-      "image": "https://avatars.githubusercontent.com/dirowa",
-      "description": "A contributor to the GTN project.",
-      "memberOf": [
-        {
-          "@type": "Organization",
-          "email": "galaxytrainingnetwork@gmail.com",
-          "name": "Galaxy Training Network",
-          "url": "https://galaxyproject.org/teach/gtn/"
-        }
-      ]
-    },
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
-      },
-      "url": "https://training.galaxyproject.org/training-material/hall-of-fame/bazante1/",
-      "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/bazante1/",
-      "name": "Bazante Sanders",
-      "image": "https://avatars.githubusercontent.com/bazante1",
-      "description": "A contributor to the GTN project.",
-      "memberOf": [
-        {
-          "@type": "Organization",
-          "email": "galaxytrainingnetwork@gmail.com",
-          "name": "Galaxy Training Network",
-          "url": "https://galaxyproject.org/teach/gtn/"
-        }
-      ]
-    }
-  ],
-  "about": [
-    {
-      "@type": "CreativeWork",
-      "name": "Foundations of Data Science",
-      "description": "These lessons will help you get your feet in data science and give you tools to help you slice and dice your data into results.",
-      "url": "https://training.galaxyproject.org/training-material/topics/data-science/"
-    },
-    {
-      "@type": "DefinedTerm",
-      "@id": "http://edamontology.org/topic_3372",
-      "inDefinedTermSet": "http://edamontology.org",
-      "termCode": "topic_3372",
-      "url": "https://bioportal.bioontology.org/ontologies/EDAM/?p=classes&conceptid=http%3A%2F%2Fedamontology.org%2Ftopic_3372"
-    }
-  ],
-  "educationalLevel": "Beginner"
-}
-</script>
 
 <article class="tutorial topic-data-science">
     <h1 data-toc-skip>Python - Lists & Strings & Dictionaries</h1>
@@ -795,7 +459,7 @@
     <div markdown="0">
 
 	<div class="contributors-line">
-		Authors: <a href="/training-material/hall-of-fame/carpentries/" class="contributor-badge contributor-carpentries"><img src="https://avatars.githubusercontent.com/carpentries?s=27" alt="Avatar">The Carpentries</a><a href="/training-material/hall-of-fame/hexylena/" class="contributor-badge contributor-hexylena"><img src="/training-material/assets/images/orcid.png" alt="orcid logo"/><img src="https://avatars.githubusercontent.com/hexylena?s=27" alt="Avatar">Helena Rasche</a><a href="/training-material/hall-of-fame/dirowa/" class="contributor-badge contributor-dirowa"><img src="https://avatars.githubusercontent.com/dirowa?s=27" alt="Avatar">Donny Vrins</a><a href="/training-material/hall-of-fame/bazante1/" class="contributor-badge contributor-bazante1"><img src="https://avatars.githubusercontent.com/bazante1?s=27" alt="Avatar">Bazante Sanders</a>
+		Authors: <a href="/training-material/hall-of-fame/carpentries/" class="contributor-badge contributor-carpentries"><img src="https://avatars.githubusercontent.com/carpentries?s=36" alt="Avatar" width="36" height="36">The Carpentries</a><a href="/training-material/hall-of-fame/hexylena/" class="contributor-badge contributor-hexylena"><img src="/training-material/assets/images/orcid.png" alt="orcid logo" width="36" height="36"/><img src="https://avatars.githubusercontent.com/hexylena?s=36" alt="Avatar" width="36" height="36">Helena Rasche</a><a href="/training-material/hall-of-fame/dirowa/" class="contributor-badge contributor-dirowa"><img src="https://avatars.githubusercontent.com/dirowa?s=36" alt="Avatar" width="36" height="36">Donny Vrins</a><a href="/training-material/hall-of-fame/bazante1/" class="contributor-badge contributor-bazante1"><img src="https://avatars.githubusercontent.com/bazante1?s=36" alt="Avatar" width="36" height="36">Bazante Sanders</a>
 	</div>
 
 </div>
@@ -903,15 +567,15 @@
         </ul>
         
 
-        <div><strong><i class="far fa-calendar" aria-hidden="true"></i> Last modification:</strong> Feb 13, 2023 </div>
+        <div><strong><i class="far fa-calendar" aria-hidden="true"></i> Last modification:</strong> May 17, 2023 </div>
         <div><strong><i class="fas fa-balance-scale" aria-hidden="true"></i> License:</strong>
+		
             
-            <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Tutorial Content is licensed under Creative Commons Attribution 4.0 International License</a>
-            
-            <a rel="license" href="https://github.com/galaxyproject/training-material/blob/main/LICENSE.md">The GTN Framework is licensed under MIT</a>
+            <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Tutorial Content is licensed under Creative Commons Attribution 4.0 International License</a>.
+             The GTN Framework is licensed under <a rel="license" href="https://github.com/galaxyproject/training-material/blob/main/LICENSE.md">MIT</a>
         </div>
         
-        <div><strong>Short Link:</strong> <a href="https://gxy.io/GTN:T00091">https://gxy.io/GTN:T00091</a> </div>
+        <div><strong><i class="fas fa-fingerprint" aria-hidden="true"></i><span class="visually-hidden">purl</span><abbr title="Persistent URL">PURL</abbr>:</strong> <a href="https://gxy.io/GTN:T00091">https://gxy.io/GTN:T00091</a> </div>
         
     </blockquote>
     </section>
@@ -969,7 +633,7 @@
 
                 <section aria-label="Tutorial Content" id="tutorial-content">
                 <blockquote class="agenda">
-  <div class="box-title agenda-title" id="agenda">Agenda</div>
+  <div class="box-title agenda-title" id="agenda-1">Agenda</div>
 
   <p>In this tutorial, we will cover:</p>
 
@@ -1095,7 +759,7 @@
 <p>returns a <code class="language-plaintext highlighter-rouge">IndexError: list index out of range</code>.</p>
 
 <blockquote class="tip">
-  <div class="box-title tip-title" id="tip-reading-error-messages"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-reading-error-messages" aria-expanded="true"><i class="far fa-lightbulb" aria-hidden="true"></i> Tip: Reading Error Messages<span class="fold-unfold fa fa-minus-square"></span></button></div>
+  <div class="box-title tip-title" id="tip-reading-error-messages"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-reading-error-messages" aria-expanded="true"><i class="far fa-lightbulb" aria-hidden="true" ></i> Tip: Reading Error Messages<span class="fold-unfold fa fa-minus-square"></span></button></div>
   <p>So how do you read this?</p>
   <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1 | ---------------------------------------------------------------------------
 2 | IndexError                                Traceback (most recent call last)
@@ -1183,7 +847,7 @@ Python considers the string to be a single value with parts, not a collection of
 <h2 id="exercises">Exercises</h2>
 
 <blockquote class="question">
-  <div class="box-title question-title" id="question-checking-suffixes"><i class="far fa-question-circle" aria-hidden="true"></i> Question: Checking suffixes</div>
+  <div class="box-title question-title" id="question-checking-suffixes"><i class="far fa-question-circle" aria-hidden="true" ></i> Question: Checking suffixes</div>
 
   <ol>
     <li>How could you check that the extension of a filename is <code class="language-plaintext highlighter-rouge">.csv</code></li>
@@ -1191,7 +855,7 @@ Python considers the string to be a single value with parts, not a collection of
   </ol>
 
   <blockquote class="solution">
-    <div class="box-title solution-title" id="solution"><button class="gtn-boxify-button solution" type="button" aria-controls="solution" aria-expanded="true"><i class="far fa-eye" aria-hidden="true"></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
+    <div class="box-title solution-title" id="solution"><button class="gtn-boxify-button solution" type="button" aria-controls="solution" aria-expanded="true"><i class="far fa-eye" aria-hidden="true" ></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
 
     <ol>
       <li><code class="language-plaintext highlighter-rouge">a[-4:] == "csv"</code> (Here we use <code class="language-plaintext highlighter-rouge">==</code> for comparing two values)</li>
@@ -1209,7 +873,7 @@ Python considers the string to be a single value with parts, not a collection of
 </code></pre></div></div>
 
 <blockquote class="question">
-  <div class="box-title question-title" id="question-say-it-loud"><i class="far fa-question-circle" aria-hidden="true"></i> Question: Say it loud!</div>
+  <div class="box-title question-title" id="question-say-it-loud"><i class="far fa-question-circle" aria-hidden="true" ></i> Question: Say it loud!</div>
 
   <ol>
     <li>Can you find a method in the <code class="language-plaintext highlighter-rouge">str</code>’s help that converts the string to upper case</li>
@@ -1218,7 +882,7 @@ Python considers the string to be a single value with parts, not a collection of
   </ol>
 
   <blockquote class="solution">
-    <div class="box-title solution-title" id="solution-1"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-1" aria-expanded="true"><i class="far fa-eye" aria-hidden="true"></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
+    <div class="box-title solution-title" id="solution-1"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-1" aria-expanded="true"><i class="far fa-eye" aria-hidden="true" ></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
     <ol>
       <li><code class="language-plaintext highlighter-rouge">"shout it out".upper()</code></li>
       <li><code class="language-plaintext highlighter-rouge">"WHISPER THIS".lower()</code></li>
@@ -1236,7 +900,7 @@ Python considers the string to be a single value with parts, not a collection of
 </code></pre></div></div>
 
 <blockquote class="question">
-  <div class="box-title question-title" id="question-splitting"><i class="far fa-question-circle" aria-hidden="true"></i> Question: Splitting</div>
+  <div class="box-title question-title" id="question-splitting"><i class="far fa-question-circle" aria-hidden="true" ></i> Question: Splitting</div>
   <ol>
     <li>We use <code class="language-plaintext highlighter-rouge">.split()</code> to split a string by some character. Here we have a comma separated list of values, try splitting that up by a comma, but we actually wanted it separated by <code class="language-plaintext highlighter-rouge">|</code> characters. Can you split it up, and then re-join it with that new character?</li>
     <li>Does <code class="language-plaintext highlighter-rouge">help(str)</code> give you another option for replacing a character like that.</li>
@@ -1244,7 +908,7 @@ Python considers the string to be a single value with parts, not a collection of
   </ol>
 
   <blockquote class="solution">
-    <div class="box-title solution-title" id="solution-2"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-2" aria-expanded="true"><i class="far fa-eye" aria-hidden="true"></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
+    <div class="box-title solution-title" id="solution-2"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-2" aria-expanded="true"><i class="far fa-eye" aria-hidden="true" ></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
     <ol>
       <li><code class="language-plaintext highlighter-rouge">data.split(",")</code></li>
       <li><code class="language-plaintext highlighter-rouge">data.replace(",", "|")</code></li>
@@ -1283,7 +947,7 @@ Python considers the string to be a single value with parts, not a collection of
 <p>If you don’t supply an end value, Python will default to going to the end of the list. Likewise, if you don’t provide a start value, Python will use <code class="language-plaintext highlighter-rouge">0</code> as the start by default, until whatever end value you provide.</p>
 
 <blockquote class="question">
-  <div class="box-title question-title" id="question-valid-and-invalid-slices"><i class="far fa-question-circle" aria-hidden="true"></i> Question: Valid and Invalid Slices</div>
+  <div class="box-title question-title" id="question-valid-and-invalid-slices"><i class="far fa-question-circle" aria-hidden="true" ></i> Question: Valid and Invalid Slices</div>
   <p>Which of these do you think will be valid? Which are invalid? Predict what they will return:</p>
   <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code># 1
 elements = ['H', 'He', 'Li', 'Be', 'B', 'C', 'N', 'O', 'F']
@@ -1306,7 +970,7 @@ elements[1.5:]
 </code></pre></div>  </div>
 
   <blockquote class="solution">
-    <div class="box-title solution-title" id="solution-3"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-3" aria-expanded="true"><i class="far fa-eye" aria-hidden="true"></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
+    <div class="box-title solution-title" id="solution-3"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-3" aria-expanded="true"><i class="far fa-eye" aria-hidden="true" ></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
     <p>All of these are valid except the last two.</p>
     <ol>
       <li>If you dont’ fill in a position, Python will use the default. 0 for the left hand side of the <code class="language-plaintext highlighter-rouge">:</code>, and <code class="language-plaintext highlighter-rouge">len(elements)</code> for the right hand side.</li>
@@ -1351,12 +1015,12 @@ elements[1.5:]
 </code></pre></div></div>
 
 <blockquote class="tip">
-  <div class="box-title tip-title" id="tip-sorting-names-is-hard"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-sorting-names-is-hard" aria-expanded="true"><i class="far fa-lightbulb" aria-hidden="true"></i> Tip: Sorting names is hard!<span class="fold-unfold fa fa-minus-square"></span></button></div>
+  <div class="box-title tip-title" id="tip-sorting-names-is-hard"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-sorting-names-is-hard" aria-expanded="true"><i class="far fa-lightbulb" aria-hidden="true" ></i> Tip: Sorting names is hard!<span class="fold-unfold fa fa-minus-square"></span></button></div>
   <p>Some people have 1 name, some have 4 or more! Some cultures have surnames first, some not. Sorting names is a complex situation, so be sure you consider your data before sorting and assuming it’s correct. Test with multiple values to make sure your code works!</p>
 </blockquote>
 
 <blockquote class="tip">
-  <div class="box-title tip-title" id="tip-results-can-be-dependent-on-analysis-order"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-results-can-be-dependent-on-analysis-order" aria-expanded="true"><i class="far fa-lightbulb" aria-hidden="true"></i> Tip: Results can be dependent on analysis order!<span class="fold-unfold fa fa-minus-square"></span></button></div>
+  <div class="box-title tip-title" id="tip-results-can-be-dependent-on-analysis-order"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-results-can-be-dependent-on-analysis-order" aria-expanded="true"><i class="far fa-lightbulb" aria-hidden="true" ></i> Tip: Results can be dependent on analysis order!<span class="fold-unfold fa fa-minus-square"></span></button></div>
   <p>Some analyses (especially simultaions) can be dependent on data input order or data sorting. This was recently seen in <span class="citation"><a href="#Bhandari_Neupane_2019">Neupane <i>et al.</i> 2019</a></span> where the data files used were sorted one way on Windows, and another on Linux, resulting in different results for the same code and the same datasets! Yikes!</p>
 
   <p>If you know your analyses are dependent on file ordering, then you can use <code class="language-plaintext highlighter-rouge">sorted()</code> to make sure the data is provided in a uniform way every time.</p>
@@ -1383,7 +1047,7 @@ elements[1.5:]
 <h1 id="exercise-time">Exercise Time</h1>
 
 <blockquote class="question">
-  <div class="box-title question-title" id="question-fill-in-the-blanks"><i class="far fa-question-circle" aria-hidden="true"></i> Question: Fill in the Blanks</div>
+  <div class="box-title question-title" id="question-fill-in-the-blanks"><i class="far fa-question-circle" aria-hidden="true" ></i> Question: Fill in the Blanks</div>
 
   <p>Fill in the blanks so that the program below produces the output shown.</p>
 
@@ -1401,7 +1065,7 @@ second time: [3, 5]
 </code></pre></div>  </div>
 
   <blockquote class="solution">
-    <div class="box-title solution-title" id="solution-4"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-4" aria-expanded="true"><i class="far fa-eye" aria-hidden="true"></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
+    <div class="box-title solution-title" id="solution-4"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-4" aria-expanded="true"><i class="far fa-eye" aria-hidden="true" ></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
     <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>values = []
 values.append(1)
 values.append(3)
@@ -1553,6 +1217,7 @@ print(element[-1:3])
     <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>lithium
 
 </code></pre></div>    </div>
+
     <p>The first statement prints the whole string, since the slice goes beyond the total length of the string.
 The second statement returns an empty string, because the slice goes “out of bounds” of the string.</p>
   </blockquote>
@@ -1651,7 +1316,7 @@ The second statement returns an empty string, because the slice goes “out of b
 <p>You can see a string (the country name) being used for the key, and then the number (an integer) as the value. (Would a float make sense? Why or why not?)</p>
 
 <blockquote class="tip">
-  <div class="box-title tip-title" id="tip-other-names"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-other-names" aria-expanded="true"><i class="far fa-lightbulb" aria-hidden="true"></i> Tip: Other Names<span class="fold-unfold fa fa-minus-square"></span></button></div>
+  <div class="box-title tip-title" id="tip-other-names"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-other-names" aria-expanded="true"><i class="far fa-lightbulb" aria-hidden="true" ></i> Tip: Other Names<span class="fold-unfold fa fa-minus-square"></span></button></div>
   <p>They’re also sometimes called associative arrays (because they’re an array or list of values that associate a key to a value) or maps (because they map a key to a value), depending on what you’re reading.</p>
 </blockquote>
 
@@ -1678,7 +1343,7 @@ The second statement returns an empty string, because the slice goes “out of b
 </code></pre></div></div>
 
 <blockquote class="tip">
-  <div class="box-title tip-title" id="tip-dictionaries-are-faster-than-lists-for-looking-up-values"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-dictionaries-are-faster-than-lists-for-looking-up-values" aria-expanded="true"><i class="far fa-lightbulb" aria-hidden="true"></i> Tip: Dictionaries are faster than lists for looking up values<span class="fold-unfold fa fa-minus-square"></span></button></div>
+  <div class="box-title tip-title" id="tip-dictionaries-are-faster-than-lists-for-looking-up-values"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-dictionaries-are-faster-than-lists-for-looking-up-values" aria-expanded="true"><i class="far fa-lightbulb" aria-hidden="true" ></i> Tip: Dictionaries are faster than lists for looking up values<span class="fold-unfold fa fa-minus-square"></span></button></div>
   <p>Just like in real life, searching a dictionary for a specific term is quite fast. Often a lot faster than searching a list for a specific value.</p>
 
   <p>For those of you old enough to remember the paper version of a dictionary, you knew that As would be at the start and Zs at the end, and probably Ms around the middle. And if you were looking for a word like “Squirrel”, you’d open the dictionary in the middle, maybe decide it was in the second half of the book, randomly choose a page in the second half, and you could keep deciding if it was “before” or “after” the current page, never even bothering to search the first half.</p>
@@ -1718,7 +1383,7 @@ The second statement returns an empty string, because the slice goes “out of b
 <h2 id="exercises-1">Exercises</h2>
 
 <blockquote class="question">
-  <div class="box-title question-title" id="question-dna-complement"><i class="far fa-question-circle" aria-hidden="true"></i> Question: DNA Complement</div>
+  <div class="box-title question-title" id="question-dna-complement"><i class="far fa-question-circle" aria-hidden="true" ></i> Question: DNA Complement</div>
 
   <p>DNA is usually in the form of dsDNA, a paired strand, where A maps to T and C maps to G and vice versa.
 But when we’re working with DNA sequences in bioinformatics, we often only store one strand, because we can calculate the <em>complement</em> on the fly, when we need.</p>
@@ -1726,7 +1391,7 @@ But when we’re working with DNA sequences in bioinformatics, we often only sto
   <p>Write a dictionary that lets you look up the letters A, C, T, and G and find their complements.</p>
 
   <blockquote class="solution">
-    <div class="box-title solution-title" id="solution-5"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-5" aria-expanded="true"><i class="far fa-eye" aria-hidden="true"></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
+    <div class="box-title solution-title" id="solution-5"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-5" aria-expanded="true"><i class="far fa-eye" aria-hidden="true" ></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
     <p>You need to have the complements of every base. If you just defined ‘A’ and ‘C’, how would you look up the complement when you want to translate a ‘T’ or a ‘G’? It’s not easily possible to look up a key by a value, only to search a key and find a value.</p>
     <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>translation = {
 'A': 'T',
@@ -1746,7 +1411,7 @@ But when we’re working with DNA sequences in bioinformatics, we often only sto
 </code></pre></div></div>
 
 <blockquote class="question">
-  <div class="box-title question-title" id="question-modifying-an-array"><i class="far fa-question-circle" aria-hidden="true"></i> Question: Modifying an array</div>
+  <div class="box-title question-title" id="question-modifying-an-array"><i class="far fa-question-circle" aria-hidden="true" ></i> Question: Modifying an array</div>
 
   <p>Fill in the blanks to make the execution correct:</p>
 
@@ -1766,7 +1431,7 @@ print(variants[______]) # Should print 43486
 </code></pre></div>  </div>
 
   <blockquote class="solution">
-    <div class="box-title solution-title" id="solution-6"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-6" aria-expanded="true"><i class="far fa-eye" aria-hidden="true"></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
+    <div class="box-title solution-title" id="solution-6"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-6" aria-expanded="true"><i class="far fa-eye" aria-hidden="true" ></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
 
     <p>variants = {
   ‘B.1.1.7’: 26267,
@@ -1858,7 +1523,7 @@ print(variants[‘B.1.617.2’]) # Should print 43486
 <h2 id="exercises-2">Exercises</h2>
 
 <blockquote class="question">
-  <div class="box-title question-title" id="question-which-datatype"><i class="far fa-question-circle" aria-hidden="true"></i> Question: Which Datatype</div>
+  <div class="box-title question-title" id="question-which-datatype"><i class="far fa-question-circle" aria-hidden="true" ></i> Question: Which Datatype</div>
 
   <ol>
     <li>Chromosome Length</li>
@@ -1870,7 +1535,7 @@ print(variants[‘B.1.617.2’]) # Should print 43486
   </ol>
 
   <blockquote class="solution">
-    <div class="box-title solution-title" id="solution-7"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-7" aria-expanded="true"><i class="far fa-eye" aria-hidden="true"></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
+    <div class="box-title solution-title" id="solution-7"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-7" aria-expanded="true"><i class="far fa-eye" aria-hidden="true" ></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
 
     <ol>
       <li>Here you need to use an integer, a fractional or float value would not make sense. You cannot have half an A/C/T/G.</li>
@@ -1960,6 +1625,9 @@ print(variants[‘B.1.617.2’]) # Should print 43486
                             The Carpentries, Helena Rasche, Donny Vrins, Bazante Sanders,  <b>Python - Lists & Strings & Dictionaries (Galaxy Training Materials)</b>. <a href="https://training.galaxyproject.org/training-material/topics/data-science/tutorials/python-iterables/tutorial.html">https://training.galaxyproject.org/training-material/topics/data-science/tutorials/python-iterables/tutorial.html</a> Online; accessed TODAY
                         </li>
                         <li>
+                        Hiltemann, Saskia, Rasche, Helena et al., 2023 <b>Galaxy Training: A Powerful Framework for Teaching!</b> PLOS Computational Biology <a href="https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1010752">10.1371/journal.pcbi.1010752</a>
+                        </li>
+                        <li>
                         Batut et al., 2018 <b>Community-Driven Data Analysis Training for Biology</b> Cell Systems <a href="https://doi.org/10.1016%2Fj.cels.2018.05.012">10.1016/j.cels.2018.05.012</a>
                         </li>
                     </ol>
@@ -1981,12 +1649,12 @@ print(variants[‘B.1.617.2’]) # Should print 43486
 
 <code id="citation-code">@misc{data-science-python-iterables,
 author = "The Carpentries and Helena Rasche and Donny Vrins and Bazante Sanders",
-title = "Python - Lists & Strings & Dictionaries (Galaxy Training Materials)",
-year = "",
-month = "",
-day = ""
-url = "\url{https://training.galaxyproject.org/training-material/topics/data-science/tutorials/python-iterables/tutorial.html}",
-note = "[Online; accessed TODAY]"
+	title = "Python - Lists & Strings & Dictionaries (Galaxy Training Materials)",
+	year = "",
+	month = "",
+	day = ""
+	url = "\url{https://training.galaxyproject.org/training-material/topics/data-science/tutorials/python-iterables/tutorial.html}",
+	note = "[Online; accessed TODAY]"
 }
 @article{Hiltemann_2023,
 	doi = {10.1371/journal.pcbi.1010752},
@@ -2012,9 +1680,9 @@ note = "[Online; accessed TODAY]"
 
 <script>
 // update the date on load, or leave fallback of 'today'
-var d = new Date();
-document.getElementById("citation-code").innerHTML = document.getElementById("citation-code").innerHTML.replace("TODAY", d.toDateString());
-document.getElementById("citation-text").innerHTML = document.getElementById("citation-text").innerHTML.replace("TODAY", d.toDateString());
+const citationTodaysDate = new Date();
+document.getElementById("citation-code").innerHTML = document.getElementById("citation-code").innerHTML.replace("TODAY", citationTodaysDate.toDateString());
+document.getElementById("citation-text").innerHTML = document.getElementById("citation-text").innerHTML.replace("TODAY", citationTodaysDate.toDateString());
 </script>
 
                 <i class="far fa-thumbs-up" aria-hidden="true"></i> Congratulations on successfully completing this tutorial!
@@ -2023,12 +1691,30 @@ document.getElementById("citation-text").innerHTML = document.getElementById("ci
 
                 
                 <blockquote class="agenda follow-up">
+                    <div class="box-title">Go Further</div>
                     <strong class="follow-up"><i class="fas fa-graduation-cap" aria-hidden="true"></i> Do you want to extend your knowledge? Follow one of our recommended follow-up trainings:</strong>
                     <ul>
                         
                     </ul>
                 </blockquote>
                 
+
+		
+                <blockquote class="agenda follow-up" id="admins-install-missing-tools">
+                    <div class="box-title">Galaxy Administrators: Install the missing tools</div>
+			<p>You can use Ephemeris's <code>shed-tools install</code> command to install the tools used in this tutorial.</p>
+<div class="highlight"><pre class="highlight"><code>shed-tools install [-g GALAXY] [-a API_KEY] -t &lt;(curl https://training.galaxyproject.org/training-material/api/topics/data-science/tutorials/python-iterables/tutorial.json | jq .admin_install_yaml -r)</code></pre></div>
+<p>Alternatively you can copy and paste the following YAML</p>
+<div class="highlight"><pre class="highlight"><code>---
+install_tool_dependencies: true
+install_repository_dependencies: true
+install_resolver_dependencies: true
+tools: []
+</code></pre></div>
+                </blockquote>
+		
+
+
                 </section>
 
             </div>
@@ -2040,38 +1726,52 @@ document.getElementById("citation-text").innerHTML = document.getElementById("ci
 <br/>
 
         </div>
-        
-        <script src="/training-material/assets/js/jquery.slim.min.js"></script>
-        <script src="/training-material/assets/js/popper.min.js"></script>
-        <script src="/training-material/assets/js/bootstrap.min.js?v=3"></script>
-        <script src="/training-material/assets/js/details-element-polyfill.js"></script>
+        <footer>
+	<hr />
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-6" style="text-align: left">
+				<p>
+					The <a href="https://galaxyproject.org/teach/gtn/">Galaxy Training Network</a>
+					provides researchers with online training materials, connects them with local trainers, and helps promoting FAIR and Open Science practices worldwide. All contributions are subject to the <a rel="code-of-conduct" href="https://galaxyproject.org/community/coc/">Galaxy Project Code of Conduct</a>.
+				</p>
+				<p>
+				The GTN infrastructure is licensed under <a rel="license" href="https://github.com/galaxyproject/training-material/blob/main/LICENSE.md">MIT</a>
+				</p>
+				<p>
+				Revision <a href="https://github.com/galaxyproject/training-material/commit/476574d2b382dd1db6c2c408d8fb6ec4393a6904">476574d</a>, built with Jekyll (4.3.2 | production)
+				</p>
+			</div>
+			<div class="col-sm-6" style="text-align: right">
+				
+				<p>
+					Resource <i class="fas fa-fingerprint" aria-hidden="true"></i><span class="visually-hidden">purl</span><abbr title="Persistent URL">PURL</abbr>: <a href="https://gxy.io/GTN:T00091">https://gxy.io/GTN:T00091</a>
+				</p>
+				
+				<p>
+					<i>This Material</i>:
+					
+					is licensed under
+					<a rel="license" href="https://spdx.org/licenses/CC-BY-4.0">
+						Creative Commons Attribution 4.0 International License
+					</a>
+				</p>
+				<p>
+					<a href="https://github.com/galaxyproject/training-material/edit/main/topics/data-science/tutorials/python-iterables/tutorial.md" title="Edit on GitHub">
+					<i class="fab fa-github" aria-hidden="true"></i><span class="visually-hidden">github</span> Edit on GitHub
+					</a>
+				</p>
+			</div>
+		</div>
+	</div>
+</footer>
+
+
+    </div>
+</footer>
+
+
+        <script src='/training-material/assets/js/bundle.main.js?v=1687830693'></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-        <script src="/training-material/assets/js/bootstrap-toc.min.js"></script>
-        <script src="/training-material/assets/js/main.js"></script>
-        <script src="/training-material/assets/js/clipboard.min.js"></script>
-        <script>
-        var snippets=document.querySelectorAll('div.highlight');
-        [].forEach.call(snippets,function(snippet){
-            snippet.firstChild.insertAdjacentHTML('beforebegin','<button class="btn btn-light" data-clipboard-snippet tabindex="0"><i class="fa fa-copy"></i>&nbsp;Copy</button>');
-        });
-
-        var clipboardSnippets=new ClipboardJS('[data-clipboard-snippet]',{
-            target:function(trigger){return trigger.nextElementSibling;
-        }});
-        </script>
-        
-
-        <script type="text/javascript">
-            if(window.location.hostname === "galaxyproject.github.io") {
-                // Redirect
-                var redirect = "https://training.galaxyproject.org" + window.location.pathname + window.location.search;
-                $('div.container.main-content').prepend("<div class='alert alert-warning'><strong>Note: </strong>This content has a new home at <a href=\"" + redirect + "\">" + redirect + "</a>, which you will be redirected to in 5 seconds.</div>");
-
-                window.setTimeout(function(){
-                    window.location.href = redirect;
-                }, 5000)
-
-            }
-        </script>
     </body>
 </html>

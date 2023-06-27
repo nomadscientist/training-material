@@ -8,16 +8,45 @@
         
             <script async defer data-domain="training.galaxyproject.org" src="https://plausible.galaxyproject.eu/js/plausible.js"></script>
 
+<!-- JavaScript Error Monitoring, and performance tracking. -->
+<script
+  src="https://browser.sentry-cdn.com/7.52.1/bundle.tracing.min.js"
+  integrity="sha384-muuFXKS3752PNA4rPm9Uq6BLvOfV4CXyr9MHDBPvozOJJUWLKkogEFWOIRoVps43"
+  crossorigin="anonymous"
+></script>
+<script type="text/javascript">
+Sentry.init({
+  dsn: "https://45e0ec6e4373462b92969505df37cf40@sentry.galaxyproject.org/10",
+  release: "galaxy-training-network@476574d2b382dd1db6c2c408d8fb6ec4393a6904",
+  integrations: [new Sentry.BrowserTracing(), new Sentry.Replay()],
+  sampleRate: 0.1,
+  tracesSampleRate: 0.1,
+  // Capture Replay for no sessions by default
+  replaysSessionSampleRate: 0.01,
+  // plus for 1% of sessions with an error
+  replaysOnErrorSampleRate: 0.01,
+  // PII OFF
+  sendDefaultPii: false, // Off by default but just in case.
+  environment: "production",
+});
+</script>
+
         
-        <link rel="stylesheet" href="/training-material/assets/css/bootstrap.min.css?v=3">
-        <link rel="stylesheet" href="/training-material/assets/css/bootstrap-toc.min.css">
-        <link rel="stylesheet" href="/training-material/assets/css/main.css?v=2">
-        <link rel="stylesheet" href="/training-material/assets/fontawesome/css/all.css">
-        <link rel="stylesheet" href="/training-material/assets/css/academicons.css">
         <link rel="shortcut icon" href="/training-material/favicon.ico" type="image/x-icon">
         <link rel="alternate" type="application/atom+xml" href="/training-material/feed.xml">
         <link rel="canonical" href="https://training.galaxyproject.org/training-material/topics/dev/tutorials/bioblend-api/tutorial.html">
-        <link rel="license" href="https://creativecommons.org/licenses/by/4.0/">
+        <link rel="license" href="https://spdx.org/licenses/CC-BY-4.0">
+        <link rel="preload" href="/training-material/assets/fonts/AtkinsonHyperlegible/Atkinson-Hyperlegible-Regular-102a.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="preload" href="/training-material/assets/fonts/AtkinsonHyperlegible/Atkinson-Hyperlegible-Bold-102a.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="preload" href="/training-material/assets/fonts/AtkinsonHyperlegible/Atkinson-Hyperlegible-Italic-102a.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML" as="script" crossorigin>
+        <link rel="preload" href="/training-material/assets/css/main.css?v=3" as="style">
+        <link rel='preload' href='/training-material/assets/js/bundle.theme.js?v=1687830693' as='script'>
+<link rel='preload' href='/training-material/assets/js/bundle.main.js?v=1687830693' as='script'>
+        <link rel="stylesheet" href="/training-material/assets/css/main.css?v=3">
+        <link rel="manifest" href="/training-material/manifest.json">
+        <meta name="theme-color" content="#2c3143"/>
+
 
         <meta name="DC.identifier" content="https://github.com/galaxyproject/training-material">
 <meta name="DC.type" content="text">
@@ -90,6 +119,10 @@
     "url": "https://galaxyproject.org/teach/gtn/"
   },
   "identifier": "https://github.com/galaxyproject/training-material",
+  "workTranslation": [
+
+  ],
+  "creativeWorkStatus": "Active",
   "accessMode": [
     "textual",
     "visual"
@@ -117,6 +150,7 @@
   "name": "Hands-on for 'Scripting Galaxy using the API and BioBlend' tutorial",
   "url": "https://training.galaxyproject.org/training-material/topics/dev/tutorials/bioblend-api/tutorial.html",
   "timeRequired": "PT2H",
+  "teaches": "Interact with Galaxy via BioBlend.",
   "keywords": "dev, jupyter-notebook",
   "description": "The questions this  addresses are:\n - What is a REST API?\n - How to interact with Galaxy programmatically?\n - Why and when should I use BioBlend?\n\n\nThe objectives are:\n - Interact with Galaxy via BioBlend.\n\n",
   "inLanguage": {
@@ -124,6 +158,31 @@
     "name": "English",
     "alternateName": "en"
   },
+  "author": [
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "http://purl.org/dc/terms/conformsTo": {
+        "@id": "https://bioschemas.org/profiles/Person/0.3-DRAFT",
+        "@type": "CreativeWork"
+      },
+      "url": "https://training.galaxyproject.org/training-material/hall-of-fame/nsoranzo/",
+      "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/nsoranzo/",
+      "name": "Nicola Soranzo",
+      "image": "https://avatars.githubusercontent.com/nsoranzo",
+      "description": "A contributor to the GTN project.",
+      "memberOf": [
+        {
+          "@type": "Organization",
+          "email": "galaxytrainingnetwork@gmail.com",
+          "name": "Galaxy Training Network",
+          "url": "https://galaxyproject.org/teach/gtn/"
+        }
+      ],
+      "identifier": "https://orcid.org/0000-0003-3627-5340",
+      "orcid": "https://orcid.org/0000-0003-3627-5340"
+    }
+  ],
   "about": [
     {
       "@type": "CreativeWork",
@@ -139,13 +198,20 @@
       "url": "https://bioportal.bioontology.org/ontologies/EDAM/?p=classes&conceptid=http%3A%2F%2Fedamontology.org%2Ftopic_3372"
     }
   ],
-  "educationalLevel": "Beginner"
+  "educationalLevel": "Beginner",
+  "mentions": [
+    {
+      "@type": "Thing",
+      "name": "jupyter-notebook"
+    }
+  ],
+  "abstract": "> <div class="box-title agenda-title" id="agenda">Agenda</div>"
 }
         </script>
         
     </head>
     <body data-spy="scroll" data-target="#toc">
-        <script type="text/javascript" src="/training-material/assets/js/theme.js"></script>
+        <script src='/training-material/assets/js/bundle.theme.js?v=1687830693'></script>
         <header>
     <nav class="navbar navbar-expand-md navbar-dark" aria-label="Site Navigation">
         <div class="container">
@@ -214,7 +280,6 @@
     </a>
     <div class="dropdown-menu dropdown-menu-right">
 
-        
         <a class="dropdown-item" href="https://github.com/galaxyproject/training-material/edit/main/topics/dev/tutorials/bioblend-api/tutorial.md" title="Edit on GitHub">
           <i class="fab fa-github" aria-hidden="true"></i><span class="visually-hidden">github</span> Edit on GitHub
         </a>
@@ -262,13 +327,13 @@
 
             <div id="archive-selector">
             
-                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2020-01-06/topics/dev/tutorials/bioblend-api/tutorial.html" title="Version 2020-01-06">2020-01-06</a>
+                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2020-01-06/topics/dev/tutorials/bioblend-api/tutorial.html">2020-01-06</a>
             
-                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2019-12-01/topics/dev/tutorials/bioblend-api/tutorial.html" title="Version 2019-12-01">2019-12-01</a>
+                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2019-12-01/topics/dev/tutorials/bioblend-api/tutorial.html">2019-12-01</a>
             
-                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2019-11-01/topics/dev/tutorials/bioblend-api/tutorial.html" title="Version 2019-11-01">2019-11-01</a>
+                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2019-11-01/topics/dev/tutorials/bioblend-api/tutorial.html">2019-11-01</a>
             
-                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/" title="Older Versions">Older Versions</a>
+                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/">Older Versions</a>
             </div>
 
         </div>
@@ -281,7 +346,7 @@
                     <li class="nav-item">
                       <div id="navbarSupportedContent" role="search">
                         <!-- Search form -->
-                        <form class="form-inline mr-auto" method="GET" action="/training-material/search">
+                        <form class="form-inline mr-auto" method="GET" action="/training-material/search2">
                           <i class="fas fa-search nav-link" aria-hidden="true"></i>
                           <div class="md-form mb-2">
                             <input name="query" class="form-control nicer" type="text" placeholder="Search Tutorials" aria-label="Search">
@@ -318,119 +383,7 @@
 
 
 
-<script>
-  ((window.gitter = {}).chat = {}).options = {
-  room: 'galaxyproject/dev'
-  };
-</script>
 
-
-<script src="https://sidecar.gitter.im/dist/sidecar.v1.js" async defer></script>
-
-<script type="application/ld+json">
-    
-
-
-{
-  "@context": "http://schema.org",
-  "@type": "LearningResource",
-  "http://purl.org/dc/terms/conformsTo": {
-    "@id": "https://bioschemas.org/profiles/TrainingMaterial/1.0-RELEASE",
-    "@type": "CreativeWork"
-  },
-  "audience": {
-    "@type": "EducationalAudience",
-    "educationalRole": "Students"
-  },
-  "citation": {
-    "@type": "CreativeWork",
-    "name": "Community-Driven Data Analysis Training for Biology",
-    "url": "https://doi.org/10.1016/j.cels.2018.05.012"
-  },
-  "copyrightHolder": {
-    "@type": "Organization",
-    "email": "galaxytrainingnetwork@gmail.com",
-    "name": "Galaxy Training Network",
-    "url": "https://galaxyproject.org/teach/gtn/"
-  },
-  "dateModified": "2023-04-18 07:51:23 +0000",
-  "discussionUrl": "https://gitter.im/Galaxy-Training-Network/Lobby",
-  "headline": "Scripting Galaxy using the API and BioBlend",
-  "interactivityType": "mixed",
-  "isAccessibleForFree": true,
-  "isFamilyFriendly": true,
-  "license": "https://spdx.org/licenses/CC-BY-4.0.html",
-  "producer": {
-    "@type": "Organization",
-    "email": "galaxytrainingnetwork@gmail.com",
-    "name": "Galaxy Training Network",
-    "url": "https://galaxyproject.org/teach/gtn/"
-  },
-  "provider": {
-    "@type": "Organization",
-    "email": "galaxytrainingnetwork@gmail.com",
-    "name": "Galaxy Training Network",
-    "url": "https://galaxyproject.org/teach/gtn/"
-  },
-  "sourceOrganization": {
-    "@type": "Organization",
-    "email": "galaxytrainingnetwork@gmail.com",
-    "name": "Galaxy Training Network",
-    "url": "https://galaxyproject.org/teach/gtn/"
-  },
-  "identifier": "https://github.com/galaxyproject/training-material",
-  "accessMode": [
-    "textual",
-    "visual"
-  ],
-  "accessModeSufficient": [
-    "textual",
-    "visual"
-  ],
-  "accessibilityControl": [
-    "fullKeyboardControl",
-    "fullMouseControl"
-  ],
-  "accessibilityFeature": [
-    "alternativeText",
-    "tableOfContents"
-  ],
-  "accessibilitySummary": "The text aims to be as accessible as possible. Image descriptions will vary per tutorial, from images being completely inaccessible, to images with good descriptions for non-visual users.",
-  "isPartOf": {
-    "@type": "CreativeWork",
-    "name": "Development in Galaxy",
-    "description": "Galaxy is an open-source project. Everyone can contribute to its development with core Galaxy development, integration of softwares in Galaxy environment, ...",
-    "url": "https://training.galaxyproject.org/training-material/topics/dev/"
-  },
-  "learningResourceType": "hands-on tutorial",
-  "name": "Hands-on for 'Scripting Galaxy using the API and BioBlend' tutorial",
-  "url": "https://training.galaxyproject.org/training-material/topics/dev/tutorials/bioblend-api/tutorial.html",
-  "timeRequired": "PT2H",
-  "keywords": "dev, jupyter-notebook",
-  "description": "The questions this  addresses are:\n - What is a REST API?\n - How to interact with Galaxy programmatically?\n - Why and when should I use BioBlend?\n\n\nThe objectives are:\n - Interact with Galaxy via BioBlend.\n\n",
-  "inLanguage": {
-    "@type": "Language",
-    "name": "English",
-    "alternateName": "en"
-  },
-  "about": [
-    {
-      "@type": "CreativeWork",
-      "name": "Development in Galaxy",
-      "description": "Galaxy is an open-source project. Everyone can contribute to its development with core Galaxy development, integration of softwares in Galaxy environment, ...",
-      "url": "https://training.galaxyproject.org/training-material/topics/dev/"
-    },
-    {
-      "@type": "DefinedTerm",
-      "@id": "http://edamontology.org/topic_3372",
-      "inDefinedTermSet": "http://edamontology.org",
-      "termCode": "topic_3372",
-      "url": "https://bioportal.bioontology.org/ontologies/EDAM/?p=classes&conceptid=http%3A%2F%2Fedamontology.org%2Ftopic_3372"
-    }
-  ],
-  "educationalLevel": "Beginner"
-}
-</script>
 
 <article class="tutorial topic-dev">
     <h1 data-toc-skip>Scripting Galaxy using the API and BioBlend</h1>
@@ -446,7 +399,7 @@
 	<tr>
 		<td><abbr title="These people wrote the bulk of the tutorial, they may have done the analysis, built the workflow, and wrote the text themselves.">Author(s)</abbr></td>
 		<td>
-			<a href="/training-material/hall-of-fame/nsoranzo/" class="contributor-badge contributor-nsoranzo"><img src="/training-material/assets/images/orcid.png" alt="orcid logo"/><img src="https://avatars.githubusercontent.com/nsoranzo?s=27" alt="Avatar">Nicola Soranzo</a>
+			<a href="/training-material/hall-of-fame/nsoranzo/" class="contributor-badge contributor-nsoranzo"><img src="/training-material/assets/images/orcid.png" alt="orcid logo" width="36" height="36"/><img src="https://avatars.githubusercontent.com/nsoranzo?s=36" alt="Avatar" width="36" height="36">Nicola Soranzo</a>
 		</td>
 	</tr>
 	
@@ -458,7 +411,7 @@
 	<tr>
 		<td><abbr title="These people edited the text, either for spelling and grammar, flow, GTN-fit, or other similar editing categories">Editor(s)</abbr></td>
 		<td>
-			<a href="/training-material/hall-of-fame/claresloggett/" class="contributor-badge contributor-claresloggett"><img src="https://avatars.githubusercontent.com/claresloggett?s=27" alt="Avatar">Clare Sloggett</a><a href="/training-material/hall-of-fame/nturaga/" class="contributor-badge contributor-nturaga"><img src="https://avatars.githubusercontent.com/nturaga?s=27" alt="Avatar">Nitesh Turaga</a><a href="/training-material/hall-of-fame/hexylena/" class="contributor-badge contributor-hexylena"><img src="/training-material/assets/images/orcid.png" alt="orcid logo"/><img src="https://avatars.githubusercontent.com/hexylena?s=27" alt="Avatar">Helena Rasche</a></td>
+			<a href="/training-material/hall-of-fame/claresloggett/" class="contributor-badge contributor-claresloggett"><img src="https://avatars.githubusercontent.com/claresloggett?s=36" alt="Avatar" width="36" height="36">Clare Sloggett</a><a href="/training-material/hall-of-fame/nturaga/" class="contributor-badge contributor-nturaga"><img src="https://avatars.githubusercontent.com/nturaga?s=36" alt="Avatar" width="36" height="36">Nitesh Turaga</a><a href="/training-material/hall-of-fame/hexylena/" class="contributor-badge contributor-hexylena"><img src="/training-material/assets/images/orcid.png" alt="orcid logo" width="36" height="36"/><img src="https://avatars.githubusercontent.com/hexylena?s=36" alt="Avatar" width="36" height="36">Helena Rasche</a></td>
 	</tr>
 	
 
@@ -589,20 +542,55 @@
                 <li class="btn btn-default supporting_material">
 
 
+
+
+
     <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false" title="Where to run the tutorial">
         <i class="fas fa-globe" aria-hidden="true"></i><span class="visually-hidden">instances</span>&nbsp;Available on these Galaxies 
     </a>
     <ul class="dropdown-menu">
+	<li class="dropdown-header">
+		<b>Known Working</b>
+	</li>
+	
+	
+
     
+    
+	<li class="dropdown-header">
+		<b>Possibly Working</b>
+	</li>
+    
+	<li>
+		<a class="dropdown-item" href="https://usegalaxy.eu" title="">
+			UseGalaxy.eu
+		</a>
+	</li>
+    
+	<li>
+		<a class="dropdown-item" href="https://usegalaxy.org" title="">
+			UseGalaxy.org
+		</a>
+	</li>
+    
+	<li>
+		<a class="dropdown-item" href="https://usegalaxy.org.au" title="">
+			UseGalaxy.org.au
+		</a>
+	</li>
+    
+
+    
+	<li class="dropdown-header">
+		Containers
+	</li>
         <li>
-            <a class="dropdown-item" href="https://github.com/galaxyproject/training-material/tree/main/topics/dev/docker" title="Docker image for this tutorial">
+            <a class="dropdown-item" href="https://github.com/galaxyproject/training-material/tree/main/topics//docker" title="Docker image for this tutorial">
                 <i class="fab fa-docker" aria-hidden="true"></i><span class="visually-hidden">docker_image</span> Docker image
             </a>
         </li>
     
-    
     </ul>
-
 
 </li>
             
@@ -611,13 +599,13 @@
 
         <div><strong><i class="far fa-calendar" aria-hidden="true"></i> Last modification:</strong> Apr 18, 2023 </div>
         <div><strong><i class="fas fa-balance-scale" aria-hidden="true"></i> License:</strong>
+		
             
-            <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Tutorial Content is licensed under Creative Commons Attribution 4.0 International License</a>
-            
-            <a rel="license" href="https://github.com/galaxyproject/training-material/blob/main/LICENSE.md">The GTN Framework is licensed under MIT</a>
+            <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Tutorial Content is licensed under Creative Commons Attribution 4.0 International License</a>.
+             The GTN Framework is licensed under <a rel="license" href="https://github.com/galaxyproject/training-material/blob/main/LICENSE.md">MIT</a>
         </div>
         
-        <div><strong>Short Link:</strong> <a href="https://gxy.io/GTN:T00111">https://gxy.io/GTN:T00111</a> </div>
+        <div><strong><i class="fas fa-fingerprint" aria-hidden="true"></i><span class="visually-hidden">purl</span><abbr title="Persistent URL">PURL</abbr>:</strong> <a href="https://gxy.io/GTN:T00111">https://gxy.io/GTN:T00111</a> </div>
         
     </blockquote>
     </section>
@@ -669,7 +657,7 @@
 
                 <section aria-label="Tutorial Content" id="tutorial-content">
                 <blockquote class="agenda">
-  <div class="box-title agenda-title" id="agenda">Agenda</div>
+  <div class="box-title agenda-title" id="agenda-1">Agenda</div>
 
   <p>In this tutorial, we will cover:</p>
 
@@ -811,10 +799,10 @@
 <p><strong>Goal</strong>: Upload a file to a new history, import a workflow and run it on the uploaded dataset.</p>
 
 <blockquote class="question">
-  <div class="box-title question-title" id="question-initialise"><i class="far fa-question-circle" aria-hidden="true"></i> Question: Initialise</div>
+  <div class="box-title question-title" id="question-initialise"><i class="far fa-question-circle" aria-hidden="true" ></i> Question: Initialise</div>
   <p>First, define the connection parameters. What variables do you need?</p>
   <blockquote class="solution">
-    <div class="box-title solution-title" id="solution"><button class="gtn-boxify-button solution" type="button" aria-controls="solution" aria-expanded="true"><i class="far fa-eye" aria-hidden="true"></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
+    <div class="box-title solution-title" id="solution"><button class="gtn-boxify-button solution" type="button" aria-controls="solution" aria-expanded="true"><i class="far fa-eye" aria-hidden="true" ></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
     <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="n">json</span>
 <span class="kn">from</span> <span class="n">pprint</span> <span class="kn">import</span> <span class="n">pprint</span>
 <span class="kn">from</span> <span class="n">urllib.parse</span> <span class="kn">import</span> <span class="n">urljoin</span>
@@ -834,10 +822,10 @@
 </code></pre></div></div>
 
 <blockquote class="question">
-  <div class="box-title question-title" id="question-new-history"><i class="far fa-question-circle" aria-hidden="true"></i> Question: New History</div>
+  <div class="box-title question-title" id="question-new-history"><i class="far fa-question-circle" aria-hidden="true" ></i> Question: New History</div>
   <p>Next, create a new Galaxy history via POST to the correct API.</p>
   <blockquote class="solution">
-    <div class="box-title solution-title" id="solution-1"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-1" aria-expanded="true"><i class="far fa-eye" aria-hidden="true"></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
+    <div class="box-title solution-title" id="solution-1"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-1" aria-expanded="true"><i class="far fa-eye" aria-hidden="true" ></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
     <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">headers</span> <span class="o">=</span> <span class="p">{</span><span class="s">"Content-Type"</span><span class="p">:</span> <span class="s">"application/json"</span><span class="p">,</span> <span class="s">"x-api-key"</span><span class="p">:</span> <span class="n">api_key</span><span class="p">}</span>
 <span class="n">data</span> <span class="o">=</span> <span class="p">{</span><span class="s">"name"</span><span class="p">:</span> <span class="s">"New history"</span><span class="p">}</span>
 <span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="nf">post</span><span class="p">(</span><span class="n">base_url</span> <span class="o">+</span> <span class="s">"/histories"</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">json</span><span class="p">.</span><span class="nf">dumps</span><span class="p">(</span><span class="n">data</span><span class="p">),</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
@@ -853,7 +841,7 @@
 </code></pre></div></div>
 
 <blockquote class="question">
-  <div class="box-title question-title" id="question-upload-a-dataset"><i class="far fa-question-circle" aria-hidden="true"></i> Question: Upload a dataset</div>
+  <div class="box-title question-title" id="question-upload-a-dataset"><i class="far fa-question-circle" aria-hidden="true" ></i> Question: Upload a dataset</div>
   <p><strong>Upload</strong> the local file <code class="language-plaintext highlighter-rouge">1.txt</code> to the new history. You need to run the special <code class="language-plaintext highlighter-rouge">upload1</code> tool by making a <code class="language-plaintext highlighter-rouge">POST</code> request to <code class="language-plaintext highlighter-rouge">/api/tools</code>. You don’t need to pass any inputs to it apart from attaching the file as <code class="language-plaintext highlighter-rouge">files_0|file_data</code>. Also, note that when attaching a file the payload should <strong>not</strong> be serialized to a JSON string and you need to drop <code class="language-plaintext highlighter-rouge">Content-Type</code> from the request headers.</p>
 
   <p>You can obtain the <code class="language-plaintext highlighter-rouge">1.txt</code> file from the following URL, you’ll need to download it first.</p>
@@ -862,7 +850,7 @@
 </code></pre></div>  </div>
 
   <blockquote class="solution">
-    <div class="box-title solution-title" id="solution-2"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-2" aria-expanded="true"><i class="far fa-eye" aria-hidden="true"></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
+    <div class="box-title solution-title" id="solution-2"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-2" aria-expanded="true"><i class="far fa-eye" aria-hidden="true" ></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
     <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">data</span> <span class="o">=</span> <span class="p">{</span>
     <span class="s">"history_id"</span><span class="p">:</span> <span class="n">new_hist</span><span class="p">[</span><span class="s">"id"</span><span class="p">],</span>
     <span class="s">"tool_id"</span><span class="p">:</span> <span class="s">"upload1"</span>
@@ -882,10 +870,10 @@
 </code></pre></div></div>
 
 <blockquote class="question">
-  <div class="box-title question-title" id="question-find-the-dataset-in-your-history"><i class="far fa-question-circle" aria-hidden="true"></i> Question: Find the dataset in your history</div>
+  <div class="box-title question-title" id="question-find-the-dataset-in-your-history"><i class="far fa-question-circle" aria-hidden="true" ></i> Question: Find the dataset in your history</div>
   <p>Find the new uploaded dataset, either from the dict returned by the POST request above or from the history contents.</p>
   <blockquote class="solution">
-    <div class="box-title solution-title" id="solution-3"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-3" aria-expanded="true"><i class="far fa-eye" aria-hidden="true"></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
+    <div class="box-title solution-title" id="solution-3"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-3" aria-expanded="true"><i class="far fa-eye" aria-hidden="true" ></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
     <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">hda</span> <span class="o">=</span> <span class="n">ret</span><span class="p">[</span><span class="s">'outputs'</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
 <span class="nf">pprint</span><span class="p">(</span><span class="n">hda</span><span class="p">)</span>
 </code></pre></div>    </div>
@@ -898,7 +886,7 @@
 </code></pre></div></div>
 
 <blockquote class="question">
-  <div class="box-title question-title" id="question-import-a-workflow"><i class="far fa-question-circle" aria-hidden="true"></i> Question: Import a workflow</div>
+  <div class="box-title question-title" id="question-import-a-workflow"><i class="far fa-question-circle" aria-hidden="true" ></i> Question: Import a workflow</div>
   <p><strong>Import a workflow</strong> from the local file <code class="language-plaintext highlighter-rouge">convert_to_tab.ga</code> by making a <code class="language-plaintext highlighter-rouge">POST</code> request to <code class="language-plaintext highlighter-rouge">/api/workflows</code>. The only needed data is <code class="language-plaintext highlighter-rouge">workflow</code>, which must be a deserialized JSON representation of the workflow <code class="language-plaintext highlighter-rouge">.ga</code> file.</p>
 
   <p>You can obtain the <code class="language-plaintext highlighter-rouge">convert_to_tab.ga</code> file from the following URL, you’ll need to download it first.</p>
@@ -906,7 +894,7 @@
   <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>https://raw.githubusercontent.com/nsoranzo/bioblend-tutorial/main/test-data/convert_to_tab.ga
 </code></pre></div>  </div>
   <blockquote class="solution">
-    <div class="box-title solution-title" id="solution-4"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-4" aria-expanded="true"><i class="far fa-eye" aria-hidden="true"></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
+    <div class="box-title solution-title" id="solution-4"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-4" aria-expanded="true"><i class="far fa-eye" aria-hidden="true" ></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
 
     <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">with</span> <span class="nf">open</span><span class="p">(</span><span class="s">"convert_to_tab.ga"</span><span class="p">,</span> <span class="s">"r"</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
     <span class="n">workflow_dict</span> <span class="o">=</span> <span class="n">json</span><span class="p">.</span><span class="nf">load</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
@@ -923,10 +911,10 @@
 </code></pre></div></div>
 
 <blockquote class="question">
-  <div class="box-title question-title" id="question-view-the-workflow-details"><i class="far fa-question-circle" aria-hidden="true"></i> Question: View the workflow details</div>
+  <div class="box-title question-title" id="question-view-the-workflow-details"><i class="far fa-question-circle" aria-hidden="true" ></i> Question: View the workflow details</div>
   <p>View the details of the imported workflow by making a GET request to <code class="language-plaintext highlighter-rouge">/api/workflows</code>.</p>
   <blockquote class="solution">
-    <div class="box-title solution-title" id="solution-5"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-5" aria-expanded="true"><i class="far fa-eye" aria-hidden="true"></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
+    <div class="box-title solution-title" id="solution-5"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-5" aria-expanded="true"><i class="far fa-eye" aria-hidden="true" ></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
     <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="n">base_url</span> <span class="o">+</span> <span class="s">"/workflows/"</span> <span class="o">+</span> <span class="n">wf</span><span class="p">[</span><span class="s">"id"</span><span class="p">],</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
 <span class="n">wf</span> <span class="o">=</span> <span class="n">r</span><span class="p">.</span><span class="nf">json</span><span class="p">()</span>
 <span class="nf">pprint</span><span class="p">(</span><span class="n">wf</span><span class="p">)</span>
@@ -940,10 +928,10 @@
 </code></pre></div></div>
 
 <blockquote class="question">
-  <div class="box-title question-title" id="question-invoke-the-workflow"><i class="far fa-question-circle" aria-hidden="true"></i> Question: Invoke the workflow</div>
+  <div class="box-title question-title" id="question-invoke-the-workflow"><i class="far fa-question-circle" aria-hidden="true" ></i> Question: Invoke the workflow</div>
   <p><strong>Run</strong> the imported workflow on the uploaded dataset <strong>inside the same history</strong> by making a <code class="language-plaintext highlighter-rouge">POST</code> request to <code class="language-plaintext highlighter-rouge">/api/workflows/WORKFLOW_ID/invocations</code>. The only needed data are <code class="language-plaintext highlighter-rouge">history</code> and <code class="language-plaintext highlighter-rouge">inputs</code>.</p>
   <blockquote class="solution">
-    <div class="box-title solution-title" id="solution-6"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-6" aria-expanded="true"><i class="far fa-eye" aria-hidden="true"></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
+    <div class="box-title solution-title" id="solution-6"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-6" aria-expanded="true"><i class="far fa-eye" aria-hidden="true" ></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
 
     <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">inputs</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">:</span> <span class="p">{</span><span class="s">'id'</span><span class="p">:</span> <span class="n">hda</span><span class="p">[</span><span class="s">'id'</span><span class="p">],</span> <span class="s">'src'</span><span class="p">:</span> <span class="s">'hda'</span><span class="p">}}</span>
 <span class="n">data</span> <span class="o">=</span> <span class="p">{</span>
@@ -960,7 +948,7 @@
 </code></pre></div></div>
 
 <blockquote class="question">
-  <div class="box-title question-title" id="question-view-the-results"><i class="far fa-question-circle" aria-hidden="true"></i> Question: View the results</div>
+  <div class="box-title question-title" id="question-view-the-results"><i class="far fa-question-circle" aria-hidden="true" ></i> Question: View the results</div>
   <p>View the results on the Galaxy server with your web browser. Were you successful? Did it run?</p>
 </blockquote>
 
@@ -1085,10 +1073,10 @@ Therefore, method calls will have the format <code class="language-plaintext hig
 <p><strong>Goal</strong>: Upload a file to a new history, import a workflow and run it on the uploaded dataset.</p>
 
 <blockquote class="question">
-  <div class="box-title question-title" id="question-initialise-1"><i class="far fa-question-circle" aria-hidden="true"></i> Question: Initialise</div>
+  <div class="box-title question-title" id="question-initialise-1"><i class="far fa-question-circle" aria-hidden="true" ></i> Question: Initialise</div>
   <p>Create a <code class="language-plaintext highlighter-rouge">GalaxyInstance</code> object.</p>
   <blockquote class="solution">
-    <div class="box-title solution-title" id="solution-7"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-7" aria-expanded="true"><i class="far fa-eye" aria-hidden="true"></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
+    <div class="box-title solution-title" id="solution-7"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-7" aria-expanded="true"><i class="far fa-eye" aria-hidden="true" ></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
     <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="n">pprint</span> <span class="kn">import</span> <span class="n">pprint</span>
 
 <span class="kn">import</span> <span class="n">bioblend.galaxy</span>
@@ -1106,10 +1094,10 @@ Therefore, method calls will have the format <code class="language-plaintext hig
 </code></pre></div></div>
 
 <blockquote class="question">
-  <div class="box-title question-title" id="question-new-history-1"><i class="far fa-question-circle" aria-hidden="true"></i> Question: New History</div>
+  <div class="box-title question-title" id="question-new-history-1"><i class="far fa-question-circle" aria-hidden="true" ></i> Question: New History</div>
   <p>Create a new Galaxy history.</p>
   <blockquote class="solution">
-    <div class="box-title solution-title" id="solution-8"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-8" aria-expanded="true"><i class="far fa-eye" aria-hidden="true"></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
+    <div class="box-title solution-title" id="solution-8"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-8" aria-expanded="true"><i class="far fa-eye" aria-hidden="true" ></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
     <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">new_hist</span> <span class="o">=</span> <span class="n">gi</span><span class="p">.</span><span class="n">histories</span><span class="p">.</span><span class="nf">create_history</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s">'New history'</span><span class="p">)</span>
 <span class="nf">pprint</span><span class="p">(</span><span class="n">new_hist</span><span class="p">)</span>
 </code></pre></div>    </div>
@@ -1121,7 +1109,7 @@ Therefore, method calls will have the format <code class="language-plaintext hig
 </code></pre></div></div>
 
 <blockquote class="question">
-  <div class="box-title question-title" id="question-upload-a-dataset-1"><i class="far fa-question-circle" aria-hidden="true"></i> Question: Upload a dataset</div>
+  <div class="box-title question-title" id="question-upload-a-dataset-1"><i class="far fa-question-circle" aria-hidden="true" ></i> Question: Upload a dataset</div>
   <p><strong>Upload</strong> the local file <code class="language-plaintext highlighter-rouge">1.txt</code> to the new history using <code class="language-plaintext highlighter-rouge">tools.upload_file()</code> .</p>
 
   <p>You can obtain the <code class="language-plaintext highlighter-rouge">1.txt</code> file from the following URL, you’ll need to download it first.</p>
@@ -1129,7 +1117,7 @@ Therefore, method calls will have the format <code class="language-plaintext hig
   <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>https://raw.githubusercontent.com/nsoranzo/bioblend-tutorial/main/test-data/1.txt
 </code></pre></div>  </div>
   <blockquote class="solution">
-    <div class="box-title solution-title" id="solution-9"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-9" aria-expanded="true"><i class="far fa-eye" aria-hidden="true"></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
+    <div class="box-title solution-title" id="solution-9"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-9" aria-expanded="true"><i class="far fa-eye" aria-hidden="true" ></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
     <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">ret</span> <span class="o">=</span> <span class="n">gi</span><span class="p">.</span><span class="n">tools</span><span class="p">.</span><span class="nf">upload_file</span><span class="p">(</span><span class="s">"1.txt"</span><span class="p">,</span> <span class="n">new_hist</span><span class="p">[</span><span class="s">"id"</span><span class="p">])</span>
 <span class="nf">pprint</span><span class="p">(</span><span class="n">ret</span><span class="p">)</span>
 </code></pre></div>    </div>
@@ -1141,10 +1129,10 @@ Therefore, method calls will have the format <code class="language-plaintext hig
 </code></pre></div></div>
 
 <blockquote class="question">
-  <div class="box-title question-title" id="question-find-the-dataset-in-your-history-1"><i class="far fa-question-circle" aria-hidden="true"></i> Question: Find the dataset in your history</div>
+  <div class="box-title question-title" id="question-find-the-dataset-in-your-history-1"><i class="far fa-question-circle" aria-hidden="true" ></i> Question: Find the dataset in your history</div>
   <p>Find the new uploaded dataset, either from the dict returned by <code class="language-plaintext highlighter-rouge">tools.upload_file()</code> or from the history contents.</p>
   <blockquote class="solution">
-    <div class="box-title solution-title" id="solution-10"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-10" aria-expanded="true"><i class="far fa-eye" aria-hidden="true"></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
+    <div class="box-title solution-title" id="solution-10"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-10" aria-expanded="true"><i class="far fa-eye" aria-hidden="true" ></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
     <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">hda</span> <span class="o">=</span> <span class="n">ret</span><span class="p">[</span><span class="s">'outputs'</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
 <span class="nf">pprint</span><span class="p">(</span><span class="n">hda</span><span class="p">)</span>
 </code></pre></div>    </div>
@@ -1156,7 +1144,7 @@ Therefore, method calls will have the format <code class="language-plaintext hig
 </code></pre></div></div>
 
 <blockquote class="question">
-  <div class="box-title question-title" id="question-import-a-workflow-1"><i class="far fa-question-circle" aria-hidden="true"></i> Question: Import a workflow</div>
+  <div class="box-title question-title" id="question-import-a-workflow-1"><i class="far fa-question-circle" aria-hidden="true" ></i> Question: Import a workflow</div>
   <p><strong>Import a workflow</strong> from the local file <code class="language-plaintext highlighter-rouge">convert_to_tab.ga</code> using <code class="language-plaintext highlighter-rouge">workflows.import_workflow_from_local_path()</code> .</p>
 
   <p>You can obtain the <code class="language-plaintext highlighter-rouge">convert_to_tab.ga</code> file from the following URL, you’ll need to download it first.</p>
@@ -1164,7 +1152,7 @@ Therefore, method calls will have the format <code class="language-plaintext hig
   <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>https://raw.githubusercontent.com/nsoranzo/bioblend-tutorial/main/test-data/convert_to_tab.ga
 </code></pre></div>  </div>
   <blockquote class="solution">
-    <div class="box-title solution-title" id="solution-11"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-11" aria-expanded="true"><i class="far fa-eye" aria-hidden="true"></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
+    <div class="box-title solution-title" id="solution-11"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-11" aria-expanded="true"><i class="far fa-eye" aria-hidden="true" ></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
     <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">wf</span> <span class="o">=</span> <span class="n">gi</span><span class="p">.</span><span class="n">workflows</span><span class="p">.</span><span class="nf">import_workflow_from_local_path</span><span class="p">(</span><span class="s">"convert_to_tab.ga"</span><span class="p">)</span>
 <span class="nf">pprint</span><span class="p">(</span><span class="n">wf</span><span class="p">)</span>
 </code></pre></div>    </div>
@@ -1176,10 +1164,10 @@ Therefore, method calls will have the format <code class="language-plaintext hig
 </code></pre></div></div>
 
 <blockquote class="question">
-  <div class="box-title question-title" id="question-view-the-workflow-details-1"><i class="far fa-question-circle" aria-hidden="true"></i> Question: View the workflow details</div>
+  <div class="box-title question-title" id="question-view-the-workflow-details-1"><i class="far fa-question-circle" aria-hidden="true" ></i> Question: View the workflow details</div>
   <p>View the details of the imported workflow using <code class="language-plaintext highlighter-rouge">workflows.show_workflow()</code></p>
   <blockquote class="solution">
-    <div class="box-title solution-title" id="solution-12"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-12" aria-expanded="true"><i class="far fa-eye" aria-hidden="true"></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
+    <div class="box-title solution-title" id="solution-12"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-12" aria-expanded="true"><i class="far fa-eye" aria-hidden="true" ></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
     <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">wf</span> <span class="o">=</span> <span class="n">gi</span><span class="p">.</span><span class="n">workflows</span><span class="p">.</span><span class="nf">show_workflow</span><span class="p">(</span><span class="n">wf</span><span class="p">[</span><span class="s">'id'</span><span class="p">])</span>
 <span class="nf">pprint</span><span class="p">(</span><span class="n">wf</span><span class="p">)</span>
 </code></pre></div>    </div>
@@ -1191,10 +1179,10 @@ Therefore, method calls will have the format <code class="language-plaintext hig
 </code></pre></div></div>
 
 <blockquote class="question">
-  <div class="box-title question-title" id="question-invoke-the-workflow-1"><i class="far fa-question-circle" aria-hidden="true"></i> Question: Invoke the workflow</div>
+  <div class="box-title question-title" id="question-invoke-the-workflow-1"><i class="far fa-question-circle" aria-hidden="true" ></i> Question: Invoke the workflow</div>
   <p><strong>Run</strong> the imported workflow on the uploaded dataset <strong>inside the same history</strong> using <code class="language-plaintext highlighter-rouge">workflows.invoke_workflow()</code> .</p>
   <blockquote class="solution">
-    <div class="box-title solution-title" id="solution-13"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-13" aria-expanded="true"><i class="far fa-eye" aria-hidden="true"></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
+    <div class="box-title solution-title" id="solution-13"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-13" aria-expanded="true"><i class="far fa-eye" aria-hidden="true" ></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
     <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">inputs</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">:</span> <span class="p">{</span><span class="s">'id'</span><span class="p">:</span> <span class="n">hda</span><span class="p">[</span><span class="s">'id'</span><span class="p">],</span> <span class="s">'src'</span><span class="p">:</span> <span class="s">'hda'</span><span class="p">}}</span>
 <span class="n">ret</span> <span class="o">=</span> <span class="n">gi</span><span class="p">.</span><span class="n">workflows</span><span class="p">.</span><span class="nf">invoke_workflow</span><span class="p">(</span><span class="n">wf</span><span class="p">[</span><span class="s">'id'</span><span class="p">],</span> <span class="n">inputs</span><span class="o">=</span><span class="n">inputs</span><span class="p">,</span> <span class="n">history_id</span><span class="o">=</span><span class="n">new_hist</span><span class="p">[</span><span class="s">'id'</span><span class="p">])</span>
 <span class="nf">pprint</span><span class="p">(</span><span class="n">ret</span><span class="p">)</span>
@@ -1207,7 +1195,7 @@ Therefore, method calls will have the format <code class="language-plaintext hig
 </code></pre></div></div>
 
 <blockquote class="question">
-  <div class="box-title question-title" id="question-view-the-results-1"><i class="far fa-question-circle" aria-hidden="true"></i> Question: View the results</div>
+  <div class="box-title question-title" id="question-view-the-results-1"><i class="far fa-question-circle" aria-hidden="true" ></i> Question: View the results</div>
   <p>View the results on the Galaxy server with your web browser. Were you successful? Did it run?</p>
 </blockquote>
 
@@ -1306,10 +1294,10 @@ Therefore, method calls will have the format <code class="language-plaintext hig
 <p><strong>Goal</strong>: Upload a file to a new history, import a workflow and run it on the uploaded dataset.</p>
 
 <blockquote class="question">
-  <div class="box-title question-title" id="question-initialise-2"><i class="far fa-question-circle" aria-hidden="true"></i> Question: Initialise</div>
+  <div class="box-title question-title" id="question-initialise-2"><i class="far fa-question-circle" aria-hidden="true" ></i> Question: Initialise</div>
   <p>Create a <code class="language-plaintext highlighter-rouge">GalaxyInstance</code> object.</p>
   <blockquote class="solution">
-    <div class="box-title solution-title" id="solution-14"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-14" aria-expanded="true"><i class="far fa-eye" aria-hidden="true"></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
+    <div class="box-title solution-title" id="solution-14"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-14" aria-expanded="true"><i class="far fa-eye" aria-hidden="true" ></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
     <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="n">pprint</span> <span class="kn">import</span> <span class="n">pprint</span>
 
 <span class="kn">import</span> <span class="n">bioblend.galaxy</span>
@@ -1327,10 +1315,10 @@ Therefore, method calls will have the format <code class="language-plaintext hig
 </code></pre></div></div>
 
 <blockquote class="question">
-  <div class="box-title question-title" id="question-new-history-2"><i class="far fa-question-circle" aria-hidden="true"></i> Question: New History</div>
+  <div class="box-title question-title" id="question-new-history-2"><i class="far fa-question-circle" aria-hidden="true" ></i> Question: New History</div>
   <p>Create a new Galaxy history.</p>
   <blockquote class="solution">
-    <div class="box-title solution-title" id="solution-15"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-15" aria-expanded="true"><i class="far fa-eye" aria-hidden="true"></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
+    <div class="box-title solution-title" id="solution-15"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-15" aria-expanded="true"><i class="far fa-eye" aria-hidden="true" ></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
     <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">new_hist</span> <span class="o">=</span> <span class="n">gi</span><span class="p">.</span><span class="n">histories</span><span class="p">.</span><span class="nf">create</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s">'New history'</span><span class="p">)</span>
 <span class="nf">pprint</span><span class="p">(</span><span class="n">new_hist</span><span class="p">)</span>
 </code></pre></div>    </div>
@@ -1342,7 +1330,7 @@ Therefore, method calls will have the format <code class="language-plaintext hig
 </code></pre></div></div>
 
 <blockquote class="question">
-  <div class="box-title question-title" id="question-upload-a-dataset-2"><i class="far fa-question-circle" aria-hidden="true"></i> Question: Upload a dataset</div>
+  <div class="box-title question-title" id="question-upload-a-dataset-2"><i class="far fa-question-circle" aria-hidden="true" ></i> Question: Upload a dataset</div>
   <p><strong>Upload</strong> the local file <code class="language-plaintext highlighter-rouge">1.txt</code> to the new history using the <code class="language-plaintext highlighter-rouge">upload_file()</code> method of <code class="language-plaintext highlighter-rouge">History</code> objects.</p>
 
   <p>You can obtain the <code class="language-plaintext highlighter-rouge">1.txt</code> file from the following URL, you’ll need to download it first.</p>
@@ -1350,7 +1338,7 @@ Therefore, method calls will have the format <code class="language-plaintext hig
   <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>https://raw.githubusercontent.com/nsoranzo/bioblend-tutorial/main/test-data/1.txt
 </code></pre></div>  </div>
   <blockquote class="solution">
-    <div class="box-title solution-title" id="solution-16"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-16" aria-expanded="true"><i class="far fa-eye" aria-hidden="true"></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
+    <div class="box-title solution-title" id="solution-16"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-16" aria-expanded="true"><i class="far fa-eye" aria-hidden="true" ></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
     <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">hda</span> <span class="o">=</span> <span class="n">new_hist</span><span class="p">.</span><span class="nf">upload_file</span><span class="p">(</span><span class="s">"1.txt"</span><span class="p">)</span>
 <span class="nf">pprint</span><span class="p">(</span><span class="n">hda</span><span class="p">)</span>
 </code></pre></div>    </div>
@@ -1362,7 +1350,7 @@ Therefore, method calls will have the format <code class="language-plaintext hig
 </code></pre></div></div>
 
 <blockquote class="question">
-  <div class="box-title question-title" id="question-import-a-workflow-2"><i class="far fa-question-circle" aria-hidden="true"></i> Question: Import a workflow</div>
+  <div class="box-title question-title" id="question-import-a-workflow-2"><i class="far fa-question-circle" aria-hidden="true" ></i> Question: Import a workflow</div>
   <p><strong>Import a workflow</strong> from the local file <code class="language-plaintext highlighter-rouge">convert_to_tab.ga</code> using <code class="language-plaintext highlighter-rouge">workflows.import_new()</code></p>
 
   <p>You can obtain the <code class="language-plaintext highlighter-rouge">convert_to_tab.ga</code> file from the following URL, you’ll need to download it first.</p>
@@ -1370,7 +1358,7 @@ Therefore, method calls will have the format <code class="language-plaintext hig
   <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>https://raw.githubusercontent.com/nsoranzo/bioblend-tutorial/main/test-data/convert_to_tab.ga
 </code></pre></div>  </div>
   <blockquote class="solution">
-    <div class="box-title solution-title" id="solution-17"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-17" aria-expanded="true"><i class="far fa-eye" aria-hidden="true"></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
+    <div class="box-title solution-title" id="solution-17"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-17" aria-expanded="true"><i class="far fa-eye" aria-hidden="true" ></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
     <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">with</span> <span class="nf">open</span><span class="p">(</span><span class="s">"convert_to_tab.ga"</span><span class="p">,</span> <span class="s">"r"</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
     <span class="n">wf_string</span> <span class="o">=</span> <span class="n">f</span><span class="p">.</span><span class="nf">read</span><span class="p">()</span>
 <span class="n">wf</span> <span class="o">=</span> <span class="n">gi</span><span class="p">.</span><span class="n">workflows</span><span class="p">.</span><span class="nf">import_new</span><span class="p">(</span><span class="n">wf_string</span><span class="p">)</span>
@@ -1384,9 +1372,9 @@ Therefore, method calls will have the format <code class="language-plaintext hig
 </code></pre></div></div>
 
 <blockquote class="question">
-  <div class="box-title question-title" id="question-view-the-workflow-inputs"><i class="far fa-question-circle" aria-hidden="true"></i> Question: View the workflow inputs</div>
+  <div class="box-title question-title" id="question-view-the-workflow-inputs"><i class="far fa-question-circle" aria-hidden="true" ></i> Question: View the workflow inputs</div>
   <blockquote class="solution">
-    <div class="box-title solution-title" id="solution-18"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-18" aria-expanded="true"><i class="far fa-eye" aria-hidden="true"></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
+    <div class="box-title solution-title" id="solution-18"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-18" aria-expanded="true"><i class="far fa-eye" aria-hidden="true" ></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
     <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">pprint</span><span class="p">(</span><span class="n">wf</span><span class="p">.</span><span class="n">inputs</span><span class="p">)</span>
 </code></pre></div>    </div>
   </blockquote>
@@ -1397,10 +1385,10 @@ Therefore, method calls will have the format <code class="language-plaintext hig
 </code></pre></div></div>
 
 <blockquote class="question">
-  <div class="box-title question-title" id="question-invoke-the-workflow-2"><i class="far fa-question-circle" aria-hidden="true"></i> Question: Invoke the workflow</div>
+  <div class="box-title question-title" id="question-invoke-the-workflow-2"><i class="far fa-question-circle" aria-hidden="true" ></i> Question: Invoke the workflow</div>
   <p><strong>Run</strong> the imported workflow on the uploaded dataset <strong>inside the same history</strong> using the <code class="language-plaintext highlighter-rouge">invoke()</code> method of <code class="language-plaintext highlighter-rouge">Workflow</code> objects.</p>
   <blockquote class="solution">
-    <div class="box-title solution-title" id="solution-19"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-19" aria-expanded="true"><i class="far fa-eye" aria-hidden="true"></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
+    <div class="box-title solution-title" id="solution-19"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-19" aria-expanded="true"><i class="far fa-eye" aria-hidden="true" ></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
     <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">inputs</span> <span class="o">=</span> <span class="p">{</span><span class="s">'0'</span><span class="p">:</span> <span class="n">hda</span><span class="p">}</span>
 <span class="n">wf</span><span class="p">.</span><span class="nf">invoke</span><span class="p">(</span><span class="n">inputs</span><span class="o">=</span><span class="n">inputs</span><span class="p">,</span> <span class="n">history</span><span class="o">=</span><span class="n">new_hist</span><span class="p">)</span>
 </code></pre></div>    </div>
@@ -1412,7 +1400,7 @@ Therefore, method calls will have the format <code class="language-plaintext hig
 </code></pre></div></div>
 
 <blockquote class="question">
-  <div class="box-title question-title" id="question-view-the-results-2"><i class="far fa-question-circle" aria-hidden="true"></i> Question: View the results</div>
+  <div class="box-title question-title" id="question-view-the-results-2"><i class="far fa-question-circle" aria-hidden="true" ></i> Question: View the results</div>
   <p>View the results on the Galaxy server with your web browser. Were you successful? Did it run?</p>
 </blockquote>
 
@@ -1426,7 +1414,8 @@ Therefore, method calls will have the format <code class="language-plaintext hig
 </ol>
 
 <!--SNIPPET-->
-<blockquote class="comment">   <div class="box-title comment-title" id="comment-galaxy-admin-training-path"><i class="far fa-comment-dots" aria-hidden="true"></i> Comment: Galaxy Admin Training Path</div>   <p>The yearly Galaxy Admin Training follows a specific ordering of tutorials. Use this timeline to help keep track of where you are in Galaxy Admin Training.</p>   <ol id="git-gat-timeline">                    <li class="disabled">         <a href="/training-material/topics/admin/tutorials/ansible-galaxy/tutorial.html">             <div>Step 1</div>             <div>ansible-galaxy</div>         </a>     </li>               <span aria-hidden="true">         <i class="fas fa-arrow-right" aria-hidden="true"></i>     </span>                         <li class="disabled">         <a href="/training-material/topics/admin/tutorials/backup-cleanup/tutorial.html">             <div>Step 2</div>             <div>backup-cleanup</div>         </a>     </li>               <span aria-hidden="true">         <i class="fas fa-arrow-right" aria-hidden="true"></i>     </span>                         <li class="disabled">         <a href="/training-material/topics/admin/tutorials/customization/tutorial.html">             <div>Step 3</div>             <div>customization</div>         </a>     </li>               <span aria-hidden="true">         <i class="fas fa-arrow-right" aria-hidden="true"></i>     </span>                         <li class="disabled">         <a href="/training-material/topics/admin/tutorials/tus/tutorial.html">             <div>Step 4</div>             <div>tus</div>         </a>     </li>               <span aria-hidden="true">         <i class="fas fa-arrow-right" aria-hidden="true"></i>     </span>                         <li class="disabled">         <a href="/training-material/topics/admin/tutorials/cvmfs/tutorial.html">             <div>Step 5</div>             <div>cvmfs</div>         </a>     </li>               <span aria-hidden="true">         <i class="fas fa-arrow-right" aria-hidden="true"></i>     </span>                         <li class="disabled">         <a href="/training-material/topics/admin/tutorials/apptainer/tutorial.html">             <div>Step 6</div>             <div>apptainer</div>         </a>     </li>               <span aria-hidden="true">         <i class="fas fa-arrow-right" aria-hidden="true"></i>     </span>                         <li class="disabled">         <a href="/training-material/topics/admin/tutorials/tool-management/tutorial.html">             <div>Step 7</div>             <div>tool-management</div>         </a>     </li>               <span aria-hidden="true">         <i class="fas fa-arrow-right" aria-hidden="true"></i>     </span>                         <li class="disabled">         <a href="/training-material/topics/admin/tutorials/reference-genomes/tutorial.html">             <div>Step 8</div>             <div>reference-genomes</div>         </a>     </li>               <span aria-hidden="true">         <i class="fas fa-arrow-right" aria-hidden="true"></i>     </span>                         <li class="disabled">         <a href="/training-material/topics/admin/tutorials/data-library/tutorial.html">             <div>Step 9</div>             <div>data-library</div>         </a>     </li>               <span aria-hidden="true">         <i class="fas fa-arrow-right" aria-hidden="true"></i>     </span>                         <li class="active">         <a href="/training-material/topics/dev/tutorials/bioblend-api/tutorial.html">             <div>Step 10</div>             <div>dev/bioblend-api</div>         </a>     </li>               <span aria-hidden="true">         <i class="fas fa-arrow-right" aria-hidden="true"></i>     </span>                         <li class="">         <a href="/training-material/topics/admin/tutorials/connect-to-compute-cluster/tutorial.html">             <div>Step 11</div>             <div>connect-to-compute-cluster</div>         </a>     </li>               <span aria-hidden="true">         <i class="fas fa-arrow-right" aria-hidden="true"></i>     </span>                         <li class="">         <a href="/training-material/topics/admin/tutorials/job-destinations/tutorial.html">             <div>Step 12</div>             <div>job-destinations</div>         </a>     </li>               <span aria-hidden="true">         <i class="fas fa-arrow-right" aria-hidden="true"></i>     </span>                         <li class="">         <a href="/training-material/topics/admin/tutorials/pulsar/tutorial.html">             <div>Step 13</div>             <div>pulsar</div>         </a>     </li>               <span aria-hidden="true">         <i class="fas fa-arrow-right" aria-hidden="true"></i>     </span>                         <li class="">         <a href="/training-material/topics/admin/tutorials/celery/tutorial.html">             <div>Step 14</div>             <div>celery</div>         </a>     </li>               <span aria-hidden="true">         <i class="fas fa-arrow-right" aria-hidden="true"></i>     </span>                         <li class="">         <a href="/training-material/topics/admin/tutorials/gxadmin/tutorial.html">             <div>Step 15</div>             <div>gxadmin</div>         </a>     </li>               <span aria-hidden="true">         <i class="fas fa-arrow-right" aria-hidden="true"></i>     </span>                         <li class="">         <a href="/training-material/topics/admin/tutorials/reports/tutorial.html">             <div>Step 16</div>             <div>reports</div>         </a>     </li>               <span aria-hidden="true">         <i class="fas fa-arrow-right" aria-hidden="true"></i>     </span>                         <li class="">         <a href="/training-material/topics/admin/tutorials/monitoring/tutorial.html">             <div>Step 17</div>             <div>monitoring</div>         </a>     </li>               <span aria-hidden="true">         <i class="fas fa-arrow-right" aria-hidden="true"></i>     </span>                         <li class="">         <a href="/training-material/topics/admin/tutorials/tiaas/tutorial.html">             <div>Step 18</div>             <div>tiaas</div>         </a>     </li>               <span aria-hidden="true">         <i class="fas fa-arrow-right" aria-hidden="true"></i>     </span>                         <li class="">         <a href="/training-material/topics/admin/tutorials/sentry/tutorial.html">             <div>Step 19</div>             <div>sentry</div>         </a>     </li>               <span aria-hidden="true">         <i class="fas fa-arrow-right" aria-hidden="true"></i>     </span>                         <li class="">         <a href="/training-material/topics/admin/tutorials/ftp/tutorial.html">             <div>Step 20</div>             <div>ftp</div>         </a>     </li>               <span aria-hidden="true">         <i class="fas fa-arrow-right" aria-hidden="true"></i>     </span>                         <li class="">         <a href="/training-material/topics/admin/tutorials/beacon/tutorial.html">             <div>Step 21</div>             <div>beacon</div>         </a>     </li>           </ol>   <style type="text/css"> #git-gat-timeline {     display: flex;     flex-direction: row;     flex-wrap: wrap; } #git-gat-timeline li  {     display: flex;     flex-direction: column;     border: 1px solid black;     border-radius: 5px;     padding: 0.5em;     margin: 0.5em; } #git-gat-timeline li.active {     background: #a8ffa8;     color: black; } #git-gat-timeline li.disabled {     background: #eee; } #git-gat-timeline span {     align-self: center; } </style> </blockquote>
+<blockquote class="comment">   <div class="box-title comment-title" id="comment-galaxy-admin-training-path"><i class="far fa-comment-dots" aria-hidden="true"></i> Comment: Galaxy Admin Training Path</div>   <p>The yearly Galaxy Admin Training follows a specific ordering of tutorials. Use this timeline to help keep track of where you are in Galaxy Admin Training.</p>   <ol id="git-gat-timeline">                    <li class="disabled">         <a href="/training-material/topics/admin/tutorials/ansible-galaxy/tutorial.html">             <div>Step 1</div>             <div>ansible-galaxy</div>         </a>     </li>               <span aria-hidden="true">         <i class="fas fa-arrow-right" aria-hidden="true"></i>     </span>                         <li class="disabled">         <a href="/training-material/topics/admin/tutorials/backup-cleanup/tutorial.html">             <div>Step 2</div>             <div>backup-cleanup</div>         </a>     </li>               <span aria-hidden="true">         <i class="fas fa-arrow-right" aria-hidden="true"></i>     </span>                         <li class="disabled">         <a href="/training-material/topics/admin/tutorials/customization/tutorial.html">             <div>Step 3</div>             <div>customization</div>         </a>     </li>               <span aria-hidden="true">         <i class="fas fa-arrow-right" aria-hidden="true"></i>     </span>                         <li class="disabled">         <a href="/training-material/topics/admin/tutorials/tus/tutorial.html">             <div>Step 4</div>             <div>tus</div>         </a>     </li>               <span aria-hidden="true">         <i class="fas fa-arrow-right" aria-hidden="true"></i>     </span>                         <li class="disabled">         <a href="/training-material/topics/admin/tutorials/cvmfs/tutorial.html">             <div>Step 5</div>             <div>cvmfs</div>         </a>     </li>               <span aria-hidden="true">         <i class="fas fa-arrow-right" aria-hidden="true"></i>     </span>                         <li class="disabled">         <a href="/training-material/topics/admin/tutorials/apptainer/tutorial.html">             <div>Step 6</div>             <div>apptainer</div>         </a>     </li>               <span aria-hidden="true">         <i class="fas fa-arrow-right" aria-hidden="true"></i>     </span>                         <li class="disabled">         <a href="/training-material/topics/admin/tutorials/tool-management/tutorial.html">             <div>Step 7</div>             <div>tool-management</div>         </a>     </li>               <span aria-hidden="true">         <i class="fas fa-arrow-right" aria-hidden="true"></i>     </span>                         <li class="disabled">         <a href="/training-material/topics/admin/tutorials/reference-genomes/tutorial.html">             <div>Step 8</div>             <div>reference-genomes</div>         </a>     </li>               <span aria-hidden="true">         <i class="fas fa-arrow-right" aria-hidden="true"></i>     </span>                         <li class="disabled">         <a href="/training-material/topics/admin/tutorials/data-library/tutorial.html">             <div>Step 9</div>             <div>data-library</div>         </a>     </li>               <span aria-hidden="true">         <i class="fas fa-arrow-right" aria-hidden="true"></i>     </span>                         <li class="active">         <a href="/training-material/topics/dev/tutorials/bioblend-api/tutorial.html">             <div>Step 10</div>             <div>dev/bioblend-api</div>         </a>     </li>               <span aria-hidden="true">         <i class="fas fa-arrow-right" aria-hidden="true"></i>     </span>                         <li class="">         <a href="/training-material/topics/admin/tutorials/connect-to-compute-cluster/tutorial.html">             <div>Step 11</div>             <div>connect-to-compute-cluster</div>         </a>     </li>               <span aria-hidden="true">         <i class="fas fa-arrow-right" aria-hidden="true"></i>     </span>                         <li class="">         <a href="/training-material/topics/admin/tutorials/job-destinations/tutorial.html">             <div>Step 12</div>             <div>job-destinations</div>         </a>     </li>               <span aria-hidden="true">         <i class="fas fa-arrow-right" aria-hidden="true"></i>     </span>                         <li class="">         <a href="/training-material/topics/admin/tutorials/pulsar/tutorial.html">             <div>Step 13</div>             <div>pulsar</div>         </a>     </li>               <span aria-hidden="true">         <i class="fas fa-arrow-right" aria-hidden="true"></i>     </span>                         <li class="">         <a href="/training-material/topics/admin/tutorials/celery/tutorial.html">             <div>Step 14</div>             <div>celery</div>         </a>     </li>               <span aria-hidden="true">         <i class="fas fa-arrow-right" aria-hidden="true"></i>     </span>                         <li class="">         <a href="/training-material/topics/admin/tutorials/gxadmin/tutorial.html">             <div>Step 15</div>             <div>gxadmin</div>         </a>     </li>               <span aria-hidden="true">         <i class="fas fa-arrow-right" aria-hidden="true"></i>     </span>                         <li class="">         <a href="/training-material/topics/admin/tutorials/reports/tutorial.html">             <div>Step 16</div>             <div>reports</div>         </a>     </li>               <span aria-hidden="true">         <i class="fas fa-arrow-right" aria-hidden="true"></i>     </span>                         <li class="">         <a href="/training-material/topics/admin/tutorials/monitoring/tutorial.html">             <div>Step 17</div>             <div>monitoring</div>         </a>     </li>               <span aria-hidden="true">         <i class="fas fa-arrow-right" aria-hidden="true"></i>     </span>                         <li class="">         <a href="/training-material/topics/admin/tutorials/tiaas/tutorial.html">             <div>Step 18</div>             <div>tiaas</div>         </a>     </li>               <span aria-hidden="true">         <i class="fas fa-arrow-right" aria-hidden="true"></i>     </span>                         <li class="">         <a href="/training-material/topics/admin/tutorials/sentry/tutorial.html">             <div>Step 19</div>             <div>sentry</div>         </a>     </li>               <span aria-hidden="true">         <i class="fas fa-arrow-right" aria-hidden="true"></i>     </span>                         <li class="">         <a href="/training-material/topics/admin/tutorials/ftp/tutorial.html">             <div>Step 20</div>             <div>ftp</div>         </a>     </li>               <span aria-hidden="true">         <i class="fas fa-arrow-right" aria-hidden="true"></i>     </span>                         <li class="">         <a href="/training-material/topics/admin/tutorials/beacon/tutorial.html">             <div>Step 21</div>             <div>beacon</div>         </a>     </li>           </ol> </blockquote>
+<p><!--END_SNIPPET--></p>
 
                 </section>
 
@@ -1479,6 +1468,9 @@ Therefore, method calls will have the format <code class="language-plaintext hig
                             Nicola Soranzo,  <b>Scripting Galaxy using the API and BioBlend (Galaxy Training Materials)</b>. <a href="https://training.galaxyproject.org/training-material/topics/dev/tutorials/bioblend-api/tutorial.html">https://training.galaxyproject.org/training-material/topics/dev/tutorials/bioblend-api/tutorial.html</a> Online; accessed TODAY
                         </li>
                         <li>
+                        Hiltemann, Saskia, Rasche, Helena et al., 2023 <b>Galaxy Training: A Powerful Framework for Teaching!</b> PLOS Computational Biology <a href="https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1010752">10.1371/journal.pcbi.1010752</a>
+                        </li>
+                        <li>
                         Batut et al., 2018 <b>Community-Driven Data Analysis Training for Biology</b> Cell Systems <a href="https://doi.org/10.1016%2Fj.cels.2018.05.012">10.1016/j.cels.2018.05.012</a>
                         </li>
                     </ol>
@@ -1500,12 +1492,12 @@ Therefore, method calls will have the format <code class="language-plaintext hig
 
 <code id="citation-code">@misc{dev-bioblend-api,
 author = "Nicola Soranzo",
-title = "Scripting Galaxy using the API and BioBlend (Galaxy Training Materials)",
-year = "",
-month = "",
-day = ""
-url = "\url{https://training.galaxyproject.org/training-material/topics/dev/tutorials/bioblend-api/tutorial.html}",
-note = "[Online; accessed TODAY]"
+	title = "Scripting Galaxy using the API and BioBlend (Galaxy Training Materials)",
+	year = "",
+	month = "",
+	day = ""
+	url = "\url{https://training.galaxyproject.org/training-material/topics/dev/tutorials/bioblend-api/tutorial.html}",
+	note = "[Online; accessed TODAY]"
 }
 @article{Hiltemann_2023,
 	doi = {10.1371/journal.pcbi.1010752},
@@ -1534,9 +1526,9 @@ note = "[Online; accessed TODAY]"
 
 <script>
 // update the date on load, or leave fallback of 'today'
-var d = new Date();
-document.getElementById("citation-code").innerHTML = document.getElementById("citation-code").innerHTML.replace("TODAY", d.toDateString());
-document.getElementById("citation-text").innerHTML = document.getElementById("citation-text").innerHTML.replace("TODAY", d.toDateString());
+const citationTodaysDate = new Date();
+document.getElementById("citation-code").innerHTML = document.getElementById("citation-code").innerHTML.replace("TODAY", citationTodaysDate.toDateString());
+document.getElementById("citation-text").innerHTML = document.getElementById("citation-text").innerHTML.replace("TODAY", citationTodaysDate.toDateString());
 </script>
 
                 <i class="far fa-thumbs-up" aria-hidden="true"></i> Congratulations on successfully completing this tutorial!
@@ -1545,12 +1537,30 @@ document.getElementById("citation-text").innerHTML = document.getElementById("ci
 
                 
                 <blockquote class="agenda follow-up">
+                    <div class="box-title">Go Further</div>
                     <strong class="follow-up"><i class="fas fa-graduation-cap" aria-hidden="true"></i> Do you want to extend your knowledge? Follow one of our recommended follow-up trainings:</strong>
                     <ul>
                         
                     </ul>
                 </blockquote>
                 
+
+		
+                <blockquote class="agenda follow-up" id="admins-install-missing-tools">
+                    <div class="box-title">Galaxy Administrators: Install the missing tools</div>
+			<p>You can use Ephemeris's <code>shed-tools install</code> command to install the tools used in this tutorial.</p>
+<div class="highlight"><pre class="highlight"><code>shed-tools install [-g GALAXY] [-a API_KEY] -t &lt;(curl https://training.galaxyproject.org/training-material/api/topics/dev/tutorials/bioblend-api/tutorial.json | jq .admin_install_yaml -r)</code></pre></div>
+<p>Alternatively you can copy and paste the following YAML</p>
+<div class="highlight"><pre class="highlight"><code>---
+install_tool_dependencies: true
+install_repository_dependencies: true
+install_resolver_dependencies: true
+tools: []
+</code></pre></div>
+                </blockquote>
+		
+
+
                 </section>
 
             </div>
@@ -1562,38 +1572,52 @@ document.getElementById("citation-text").innerHTML = document.getElementById("ci
 <br/>
 
         </div>
-        
-        <script src="/training-material/assets/js/jquery.slim.min.js"></script>
-        <script src="/training-material/assets/js/popper.min.js"></script>
-        <script src="/training-material/assets/js/bootstrap.min.js?v=3"></script>
-        <script src="/training-material/assets/js/details-element-polyfill.js"></script>
+        <footer>
+	<hr />
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-6" style="text-align: left">
+				<p>
+					The <a href="https://galaxyproject.org/teach/gtn/">Galaxy Training Network</a>
+					provides researchers with online training materials, connects them with local trainers, and helps promoting FAIR and Open Science practices worldwide. All contributions are subject to the <a rel="code-of-conduct" href="https://galaxyproject.org/community/coc/">Galaxy Project Code of Conduct</a>.
+				</p>
+				<p>
+				The GTN infrastructure is licensed under <a rel="license" href="https://github.com/galaxyproject/training-material/blob/main/LICENSE.md">MIT</a>
+				</p>
+				<p>
+				Revision <a href="https://github.com/galaxyproject/training-material/commit/476574d2b382dd1db6c2c408d8fb6ec4393a6904">476574d</a>, built with Jekyll (4.3.2 | production)
+				</p>
+			</div>
+			<div class="col-sm-6" style="text-align: right">
+				
+				<p>
+					Resource <i class="fas fa-fingerprint" aria-hidden="true"></i><span class="visually-hidden">purl</span><abbr title="Persistent URL">PURL</abbr>: <a href="https://gxy.io/GTN:T00111">https://gxy.io/GTN:T00111</a>
+				</p>
+				
+				<p>
+					<i>This Material</i>:
+					
+					is licensed under
+					<a rel="license" href="https://spdx.org/licenses/CC-BY-4.0">
+						Creative Commons Attribution 4.0 International License
+					</a>
+				</p>
+				<p>
+					<a href="https://github.com/galaxyproject/training-material/edit/main/topics/dev/tutorials/bioblend-api/tutorial.md" title="Edit on GitHub">
+					<i class="fab fa-github" aria-hidden="true"></i><span class="visually-hidden">github</span> Edit on GitHub
+					</a>
+				</p>
+			</div>
+		</div>
+	</div>
+</footer>
+
+
+    </div>
+</footer>
+
+
+        <script src='/training-material/assets/js/bundle.main.js?v=1687830693'></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-        <script src="/training-material/assets/js/bootstrap-toc.min.js"></script>
-        <script src="/training-material/assets/js/main.js"></script>
-        <script src="/training-material/assets/js/clipboard.min.js"></script>
-        <script>
-        var snippets=document.querySelectorAll('div.highlight');
-        [].forEach.call(snippets,function(snippet){
-            snippet.firstChild.insertAdjacentHTML('beforebegin','<button class="btn btn-light" data-clipboard-snippet tabindex="0"><i class="fa fa-copy"></i>&nbsp;Copy</button>');
-        });
-
-        var clipboardSnippets=new ClipboardJS('[data-clipboard-snippet]',{
-            target:function(trigger){return trigger.nextElementSibling;
-        }});
-        </script>
-        
-
-        <script type="text/javascript">
-            if(window.location.hostname === "galaxyproject.github.io") {
-                // Redirect
-                var redirect = "https://training.galaxyproject.org" + window.location.pathname + window.location.search;
-                $('div.container.main-content').prepend("<div class='alert alert-warning'><strong>Note: </strong>This content has a new home at <a href=\"" + redirect + "\">" + redirect + "</a>, which you will be redirected to in 5 seconds.</div>");
-
-                window.setTimeout(function(){
-                    window.location.href = redirect;
-                }, 5000)
-
-            }
-        </script>
     </body>
 </html>

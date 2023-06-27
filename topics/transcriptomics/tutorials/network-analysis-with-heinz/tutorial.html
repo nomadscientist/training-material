@@ -8,22 +8,51 @@
         
             <script async defer data-domain="training.galaxyproject.org" src="https://plausible.galaxyproject.eu/js/plausible.js"></script>
 
+<!-- JavaScript Error Monitoring, and performance tracking. -->
+<script
+  src="https://browser.sentry-cdn.com/7.52.1/bundle.tracing.min.js"
+  integrity="sha384-muuFXKS3752PNA4rPm9Uq6BLvOfV4CXyr9MHDBPvozOJJUWLKkogEFWOIRoVps43"
+  crossorigin="anonymous"
+></script>
+<script type="text/javascript">
+Sentry.init({
+  dsn: "https://45e0ec6e4373462b92969505df37cf40@sentry.galaxyproject.org/10",
+  release: "galaxy-training-network@476574d2b382dd1db6c2c408d8fb6ec4393a6904",
+  integrations: [new Sentry.BrowserTracing(), new Sentry.Replay()],
+  sampleRate: 0.1,
+  tracesSampleRate: 0.1,
+  // Capture Replay for no sessions by default
+  replaysSessionSampleRate: 0.01,
+  // plus for 1% of sessions with an error
+  replaysOnErrorSampleRate: 0.01,
+  // PII OFF
+  sendDefaultPii: false, // Off by default but just in case.
+  environment: "production",
+});
+</script>
+
         
-        <link rel="stylesheet" href="/training-material/assets/css/bootstrap.min.css?v=3">
-        <link rel="stylesheet" href="/training-material/assets/css/bootstrap-toc.min.css">
-        <link rel="stylesheet" href="/training-material/assets/css/main.css?v=2">
-        <link rel="stylesheet" href="/training-material/assets/fontawesome/css/all.css">
-        <link rel="stylesheet" href="/training-material/assets/css/academicons.css">
         <link rel="shortcut icon" href="/training-material/favicon.ico" type="image/x-icon">
         <link rel="alternate" type="application/atom+xml" href="/training-material/feed.xml">
         <link rel="canonical" href="https://training.galaxyproject.org/training-material/topics/transcriptomics/tutorials/network-analysis-with-heinz/tutorial.html">
-        <link rel="license" href="https://creativecommons.org/licenses/by/4.0/">
+        <link rel="license" href="https://spdx.org/licenses/CC-BY-4.0">
+        <link rel="preload" href="/training-material/assets/fonts/AtkinsonHyperlegible/Atkinson-Hyperlegible-Regular-102a.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="preload" href="/training-material/assets/fonts/AtkinsonHyperlegible/Atkinson-Hyperlegible-Bold-102a.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="preload" href="/training-material/assets/fonts/AtkinsonHyperlegible/Atkinson-Hyperlegible-Italic-102a.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML" as="script" crossorigin>
+        <link rel="preload" href="/training-material/assets/css/main.css?v=3" as="style">
+        <link rel='preload' href='/training-material/assets/js/bundle.theme.js?v=1687830693' as='script'>
+<link rel='preload' href='/training-material/assets/js/bundle.main.js?v=1687830693' as='script'>
+        <link rel="stylesheet" href="/training-material/assets/css/main.css?v=3">
+        <link rel="manifest" href="/training-material/manifest.json">
+        <meta name="theme-color" content="#2c3143"/>
+
 
         <meta name="DC.identifier" content="https://github.com/galaxyproject/training-material">
 <meta name="DC.type" content="text">
 <meta name="DC.title" content="Network analysis with Heinz">
 <meta name="DC.publisher" content="Galaxy Training Network">
-<meta name="DC.date" content="2023-03-29 07:47:34 +0000">
+<meta name="DC.date" content="2023-05-18 09:34:29 +0000">
 <meta name="DC.creator" content="Chao Zhang">
 
         
@@ -64,7 +93,7 @@
     "name": "Galaxy Training Network",
     "url": "https://galaxyproject.org/teach/gtn/"
   },
-  "dateModified": "2023-03-29 07:47:34 +0000",
+  "dateModified": "2023-05-18 09:34:29 +0000",
   "discussionUrl": "https://gitter.im/Galaxy-Training-Network/Lobby",
   "headline": "Network analysis with Heinz",
   "interactivityType": "mixed",
@@ -90,6 +119,10 @@
     "url": "https://galaxyproject.org/teach/gtn/"
   },
   "identifier": "https://github.com/galaxyproject/training-material",
+  "workTranslation": [
+
+  ],
+  "creativeWorkStatus": "Active",
   "accessMode": [
     "textual",
     "visual"
@@ -117,6 +150,7 @@
   "name": "Hands-on for 'Network analysis with Heinz' tutorial",
   "url": "https://training.galaxyproject.org/training-material/topics/transcriptomics/tutorials/network-analysis-with-heinz/tutorial.html",
   "timeRequired": "PT1H30M",
+  "teaches": "Network Analysis of metatranscriptomics data using Heinz in Galaxy to pinpoint the optimal scoring subnetwork.",
   "keywords": "transcriptomics, metatranscriptomics, network analysis",
   "description": "The questions this  addresses are:\n - Which pathways are potentially contributing to dental caries?\n\n\nThe objectives are:\n - Network Analysis of metatranscriptomics data using Heinz in Galaxy to pinpoint the optimal scoring subnetwork.\n\n",
   "inLanguage": {
@@ -204,31 +238,8 @@
       "@context": "https://schema.org",
       "@type": "Person",
       "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
-      },
-      "url": "https://training.galaxyproject.org/training-material/hall-of-fame/ChaoZhang123/",
-      "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/ChaoZhang123/",
-      "name": "Chao Zhang",
-      "image": "https://avatars.githubusercontent.com/ChaoZhang123",
-      "description": "A contributor to the GTN project.",
-      "memberOf": [
-        {
-          "@type": "Organization",
-          "email": "galaxytrainingnetwork@gmail.com",
-          "name": "Galaxy Training Network",
-          "url": "https://galaxyproject.org/teach/gtn/"
-        }
-      ]
-    }
-  ],
-  "contributor": [
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
+        "@id": "https://bioschemas.org/profiles/Person/0.3-DRAFT",
+        "@type": "CreativeWork"
       },
       "url": "https://training.galaxyproject.org/training-material/hall-of-fame/ChaoZhang123/",
       "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/ChaoZhang123/",
@@ -259,13 +270,25 @@
       "termCode": "topic_3308",
       "url": "https://bioportal.bioontology.org/ontologies/EDAM/?p=classes&conceptid=http%3A%2F%2Fedamontology.org%2Ftopic_3308"
     }
-  ]
+  ],
+  "educationalLevel": "Introductory",
+  "mentions": [
+    {
+      "@type": "Thing",
+      "name": "metatranscriptomics"
+    },
+    {
+      "@type": "Thing",
+      "name": "network analysis"
+    }
+  ],
+  "abstract": "# Overview"
 }
         </script>
         
     </head>
     <body data-spy="scroll" data-target="#toc">
-        <script type="text/javascript" src="/training-material/assets/js/theme.js"></script>
+        <script src='/training-material/assets/js/bundle.theme.js?v=1687830693'></script>
         <header>
     <nav class="navbar navbar-expand-md navbar-dark" aria-label="Site Navigation">
         <div class="container">
@@ -334,7 +357,6 @@
     </a>
     <div class="dropdown-menu dropdown-menu-right">
 
-        
         <a class="dropdown-item" href="https://github.com/galaxyproject/training-material/edit/main/topics/transcriptomics/tutorials/network-analysis-with-heinz/tutorial.md" title="Edit on GitHub">
           <i class="fab fa-github" aria-hidden="true"></i><span class="visually-hidden">github</span> Edit on GitHub
         </a>
@@ -382,13 +404,13 @@
 
             <div id="archive-selector">
             
-                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2020-01-06/topics/transcriptomics/tutorials/network-analysis-with-heinz/tutorial.html" title="Version 2020-01-06">2020-01-06</a>
+                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2020-01-06/topics/transcriptomics/tutorials/network-analysis-with-heinz/tutorial.html">2020-01-06</a>
             
-                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2019-12-01/topics/transcriptomics/tutorials/network-analysis-with-heinz/tutorial.html" title="Version 2019-12-01">2019-12-01</a>
+                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2019-12-01/topics/transcriptomics/tutorials/network-analysis-with-heinz/tutorial.html">2019-12-01</a>
             
-                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2019-11-01/topics/transcriptomics/tutorials/network-analysis-with-heinz/tutorial.html" title="Version 2019-11-01">2019-11-01</a>
+                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2019-11-01/topics/transcriptomics/tutorials/network-analysis-with-heinz/tutorial.html">2019-11-01</a>
             
-                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/" title="Older Versions">Older Versions</a>
+                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/">Older Versions</a>
             </div>
 
         </div>
@@ -401,7 +423,7 @@
                     <li class="nav-item">
                       <div id="navbarSupportedContent" role="search">
                         <!-- Search form -->
-                        <form class="form-inline mr-auto" method="GET" action="/training-material/search">
+                        <form class="form-inline mr-auto" method="GET" action="/training-material/search2">
                           <i class="fas fa-search nav-link" aria-hidden="true"></i>
                           <div class="md-form mb-2">
                             <input name="query" class="form-control nicer" type="text" placeholder="Search Tutorials" aria-label="Search">
@@ -438,239 +460,7 @@
 
 
 
-<script>
-  ((window.gitter = {}).chat = {}).options = {
-  room: 'Galaxy-Training-Network/Lobby'
-  };
-</script>
 
-
-<script src="https://sidecar.gitter.im/dist/sidecar.v1.js" async defer></script>
-
-<script type="application/ld+json">
-    
-
-
-{
-  "@context": "http://schema.org",
-  "@type": "LearningResource",
-  "http://purl.org/dc/terms/conformsTo": {
-    "@id": "https://bioschemas.org/profiles/TrainingMaterial/1.0-RELEASE",
-    "@type": "CreativeWork"
-  },
-  "audience": {
-    "@type": "EducationalAudience",
-    "educationalRole": "Students"
-  },
-  "citation": {
-    "@type": "CreativeWork",
-    "name": "Community-Driven Data Analysis Training for Biology",
-    "url": "https://doi.org/10.1016/j.cels.2018.05.012"
-  },
-  "copyrightHolder": {
-    "@type": "Organization",
-    "email": "galaxytrainingnetwork@gmail.com",
-    "name": "Galaxy Training Network",
-    "url": "https://galaxyproject.org/teach/gtn/"
-  },
-  "dateModified": "2023-03-29 07:47:34 +0000",
-  "discussionUrl": "https://gitter.im/Galaxy-Training-Network/Lobby",
-  "headline": "Network analysis with Heinz",
-  "interactivityType": "mixed",
-  "isAccessibleForFree": true,
-  "isFamilyFriendly": true,
-  "license": "https://spdx.org/licenses/CC-BY-4.0.html",
-  "producer": {
-    "@type": "Organization",
-    "email": "galaxytrainingnetwork@gmail.com",
-    "name": "Galaxy Training Network",
-    "url": "https://galaxyproject.org/teach/gtn/"
-  },
-  "provider": {
-    "@type": "Organization",
-    "email": "galaxytrainingnetwork@gmail.com",
-    "name": "Galaxy Training Network",
-    "url": "https://galaxyproject.org/teach/gtn/"
-  },
-  "sourceOrganization": {
-    "@type": "Organization",
-    "email": "galaxytrainingnetwork@gmail.com",
-    "name": "Galaxy Training Network",
-    "url": "https://galaxyproject.org/teach/gtn/"
-  },
-  "identifier": "https://github.com/galaxyproject/training-material",
-  "accessMode": [
-    "textual",
-    "visual"
-  ],
-  "accessModeSufficient": [
-    "textual",
-    "visual"
-  ],
-  "accessibilityControl": [
-    "fullKeyboardControl",
-    "fullMouseControl"
-  ],
-  "accessibilityFeature": [
-    "alternativeText",
-    "tableOfContents"
-  ],
-  "accessibilitySummary": "The text aims to be as accessible as possible. Image descriptions will vary per tutorial, from images being completely inaccessible, to images with good descriptions for non-visual users.",
-  "isPartOf": {
-    "@type": "CreativeWork",
-    "name": "Transcriptomics",
-    "description": "Training material for all kinds of transcriptomics analysis.",
-    "url": "https://training.galaxyproject.org/training-material/topics/transcriptomics/"
-  },
-  "learningResourceType": "hands-on tutorial",
-  "name": "Hands-on for 'Network analysis with Heinz' tutorial",
-  "url": "https://training.galaxyproject.org/training-material/topics/transcriptomics/tutorials/network-analysis-with-heinz/tutorial.html",
-  "timeRequired": "PT1H30M",
-  "keywords": "transcriptomics, metatranscriptomics, network analysis",
-  "description": "The questions this  addresses are:\n - Which pathways are potentially contributing to dental caries?\n\n\nThe objectives are:\n - Network Analysis of metatranscriptomics data using Heinz in Galaxy to pinpoint the optimal scoring subnetwork.\n\n",
-  "inLanguage": {
-    "@type": "Language",
-    "name": "English",
-    "alternateName": "en"
-  },
-  "competencyRequired": [
-    {
-      "@context": "http://schema.org",
-      "@type": "LearningResource",
-      "url": "https://training.galaxyproject.org/training-material/topics/introduction/",
-      "name": "Introduction to Galaxy Analyses",
-      "description": "Introduction to Galaxy Analyses",
-      "provider": {
-        "@type": "Organization",
-        "email": "galaxytrainingnetwork@gmail.com",
-        "name": "Galaxy Training Network",
-        "url": "https://galaxyproject.org/teach/gtn/"
-      }
-    },
-    {
-      "@context": "http://schema.org",
-      "@type": "LearningResource",
-      "url": "https://training.galaxyproject.org/training-material/topics/sequence-analysis/tutorials/quality-control/slides.html",
-      "name": "Quality Control",
-      "description": "Slides for 'Quality Control' tutorial",
-      "learningResourceType": "slides",
-      "interactivityType": "expositive",
-      "provider": {
-        "@type": "Organization",
-        "email": "galaxytrainingnetwork@gmail.com",
-        "name": "Galaxy Training Network",
-        "url": "https://galaxyproject.org/teach/gtn/"
-      }
-    },
-    {
-      "@context": "http://schema.org",
-      "@type": "LearningResource",
-      "url": "https://training.galaxyproject.org/training-material/topics/sequence-analysis/tutorials/quality-control/tutorial.html",
-      "name": "Quality Control",
-      "description": "Hands-on for 'Quality Control' tutorial",
-      "learningResourceType": "hands-on tutorial",
-      "interactivityType": "expositive",
-      "provider": {
-        "@type": "Organization",
-        "email": "galaxytrainingnetwork@gmail.com",
-        "name": "Galaxy Training Network",
-        "url": "https://galaxyproject.org/teach/gtn/"
-      }
-    },
-    {
-      "@context": "http://schema.org",
-      "@type": "LearningResource",
-      "url": "https://training.galaxyproject.org/training-material/topics/sequence-analysis/tutorials/mapping/slides.html",
-      "name": "Mapping",
-      "description": "Slides for 'Mapping' tutorial",
-      "learningResourceType": "slides",
-      "interactivityType": "expositive",
-      "provider": {
-        "@type": "Organization",
-        "email": "galaxytrainingnetwork@gmail.com",
-        "name": "Galaxy Training Network",
-        "url": "https://galaxyproject.org/teach/gtn/"
-      }
-    },
-    {
-      "@context": "http://schema.org",
-      "@type": "LearningResource",
-      "url": "https://training.galaxyproject.org/training-material/topics/sequence-analysis/tutorials/mapping/tutorial.html",
-      "name": "Mapping",
-      "description": "Hands-on for 'Mapping' tutorial",
-      "learningResourceType": "hands-on tutorial",
-      "interactivityType": "expositive",
-      "provider": {
-        "@type": "Organization",
-        "email": "galaxytrainingnetwork@gmail.com",
-        "name": "Galaxy Training Network",
-        "url": "https://galaxyproject.org/teach/gtn/"
-      }
-    }
-  ],
-  "author": [
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
-      },
-      "url": "https://training.galaxyproject.org/training-material/hall-of-fame/ChaoZhang123/",
-      "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/ChaoZhang123/",
-      "name": "Chao Zhang",
-      "image": "https://avatars.githubusercontent.com/ChaoZhang123",
-      "description": "A contributor to the GTN project.",
-      "memberOf": [
-        {
-          "@type": "Organization",
-          "email": "galaxytrainingnetwork@gmail.com",
-          "name": "Galaxy Training Network",
-          "url": "https://galaxyproject.org/teach/gtn/"
-        }
-      ]
-    }
-  ],
-  "contributor": [
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
-      },
-      "url": "https://training.galaxyproject.org/training-material/hall-of-fame/ChaoZhang123/",
-      "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/ChaoZhang123/",
-      "name": "Chao Zhang",
-      "image": "https://avatars.githubusercontent.com/ChaoZhang123",
-      "description": "A contributor to the GTN project.",
-      "memberOf": [
-        {
-          "@type": "Organization",
-          "email": "galaxytrainingnetwork@gmail.com",
-          "name": "Galaxy Training Network",
-          "url": "https://galaxyproject.org/teach/gtn/"
-        }
-      ]
-    }
-  ],
-  "about": [
-    {
-      "@type": "CreativeWork",
-      "name": "Transcriptomics",
-      "description": "Training material for all kinds of transcriptomics analysis.",
-      "url": "https://training.galaxyproject.org/training-material/topics/transcriptomics/"
-    },
-    {
-      "@type": "DefinedTerm",
-      "@id": "http://edamontology.org/topic_3308",
-      "inDefinedTermSet": "http://edamontology.org",
-      "termCode": "topic_3308",
-      "url": "https://bioportal.bioontology.org/ontologies/EDAM/?p=classes&conceptid=http%3A%2F%2Fedamontology.org%2Ftopic_3308"
-    }
-  ]
-}
-</script>
 
 <article class="tutorial topic-transcriptomics">
     <h1 data-toc-skip>Network analysis with Heinz</h1>
@@ -680,7 +470,7 @@
     <div markdown="0">
 
 	<div class="contributors-line">
-		Authors: <a href="/training-material/hall-of-fame/ChaoZhang123/" class="contributor-badge contributor-ChaoZhang123"><img src="https://avatars.githubusercontent.com/ChaoZhang123?s=27" alt="Avatar">Chao Zhang</a>
+		Authors: <a href="/training-material/hall-of-fame/ChaoZhang123/" class="contributor-badge contributor-ChaoZhang123"><img src="https://avatars.githubusercontent.com/ChaoZhang123?s=36" alt="Avatar" width="36" height="36">Chao Zhang</a>
 	</div>
 
 </div>
@@ -859,205 +649,82 @@
                 <li class="btn btn-default supporting_material">
 
 
+
+
+
     <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false" title="Where to run the tutorial">
         <i class="fas fa-globe" aria-hidden="true"></i><span class="visually-hidden">instances</span>&nbsp;Available on these Galaxies 
     </a>
     <ul class="dropdown-menu">
+	<li class="dropdown-header">
+		<b>Known Working</b>
+	</li>
+	
+	
+
     
+	<li>
+		<a class="dropdown-item" href="https://usegalaxy.be/" title="">
+			UseGalaxy.be <abbr title="This instance supports the precise tool versions used in this tutorial">✅</abbr> ⭐️
+		</a>
+	</li>
+    
+	<li>
+		<a class="dropdown-item" href="https://usegalaxy.eu" title="">
+			UseGalaxy.eu <abbr title="This instance supports the precise tool versions used in this tutorial">✅</abbr> ⭐️
+		</a>
+	</li>
+    
+    
+	<li class="dropdown-header">
+		<b>Possibly Working</b>
+	</li>
+    
+	<li>
+		<a class="dropdown-item" href="https://usegalaxy.no/" title="">
+			UseGalaxy.no
+		</a>
+	</li>
+    
+	<li>
+		<a class="dropdown-item" href="https://usegalaxy.org" title="">
+			UseGalaxy.org (Main)
+		</a>
+	</li>
+    
+	<li>
+		<a class="dropdown-item" href="https://usegalaxy.org.au" title="">
+			UseGalaxy.org.au
+		</a>
+	</li>
+    
+
+    
+	<li class="dropdown-header">
+		Containers
+	</li>
         <li>
-            <a class="dropdown-item" href="https://github.com/galaxyproject/training-material/tree/main/topics/transcriptomics/docker" title="Docker image for this tutorial">
+            <a class="dropdown-item" href="https://github.com/galaxyproject/training-material/tree/main/topics//docker" title="Docker image for this tutorial">
                 <i class="fab fa-docker" aria-hidden="true"></i><span class="visually-hidden">docker_image</span> Docker image
             </a>
         </li>
     
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-        <a class="dropdown-item" href="https://clipseq.usegalaxy.eu/" title="CLIP-Explorer">
-            CLIP-Explorer
-        </a>
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-        <a class="dropdown-item" href="https://africa.usegalaxy.eu/" title="Galaxy Africa">
-            Galaxy Africa
-        </a>
-        
-    
-        
-        <a class="dropdown-item" href="https://india.usegalaxy.eu/" title="Galaxy India">
-            Galaxy India
-        </a>
-        
-    
-        
-        <a class="dropdown-item" href="https://test.galaxyproject.org/" title="Galaxy Test">
-            Galaxy Test
-        </a>
-        
-    
-        
-    
-        
-    
-        
-        <a class="dropdown-item" href="https://galaxy.genouest.org" title="Galaxy@GenOuest">
-            Galaxy@GenOuest
-        </a>
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-        <a class="dropdown-item" href="https://humancellatlas.usegalaxy.eu/" title="Human Cell Atlas">
-            Human Cell Atlas
-        </a>
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-        <a class="dropdown-item" href="https://plants.usegalaxy.eu/" title="Plant Anaylsis Workbench">
-            Plant Anaylsis Workbench
-        </a>
-        
-    
-        
-    
-        
-        <a class="dropdown-item" href="https://singlecell.usegalaxy.eu/" title="Single Cell Omics workbench">
-            Single Cell Omics workbench
-        </a>
-        
-    
-        
-        <a class="dropdown-item" href="https://streetscience.usegalaxy.eu/" title="Street Science">
-            Street Science
-        </a>
-        
-    
-        
-        <a class="dropdown-item" href="https://usegalaxy.be/" title="UseGalaxy.be">
-            UseGalaxy.be
-        </a>
-        
-    
-        
-        <a class="dropdown-item" href="https://usegalaxy.eu" title="UseGalaxy.eu">
-            UseGalaxy.eu
-        </a>
-        
-    
-        
-    
-        
-        <a class="dropdown-item" href="https://usegalaxy.no/" title="UseGalaxy.no">
-            UseGalaxy.no
-        </a>
-        
-    
-        
-        <a class="dropdown-item" href="https://usegalaxy.org" title="UseGalaxy.org (Main)">
-            UseGalaxy.org (Main)
-        </a>
-        
-    
-        
-        <a class="dropdown-item" href="https://usegalaxy.org.au" title="UseGalaxy.org.au">
-            UseGalaxy.org.au
-        </a>
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
     </ul>
-
 
 </li>
             
         </ul>
         
 
-        <div><strong><i class="far fa-calendar" aria-hidden="true"></i> Last modification:</strong> Mar 29, 2023 </div>
+        <div><strong><i class="far fa-calendar" aria-hidden="true"></i> Last modification:</strong> May 18, 2023 </div>
         <div><strong><i class="fas fa-balance-scale" aria-hidden="true"></i> License:</strong>
+		
             
-            <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Tutorial Content is licensed under Creative Commons Attribution 4.0 International License</a>
-            
-            <a rel="license" href="https://github.com/galaxyproject/training-material/blob/main/LICENSE.md">The GTN Framework is licensed under MIT</a>
+            <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Tutorial Content is licensed under Creative Commons Attribution 4.0 International License</a>.
+             The GTN Framework is licensed under <a rel="license" href="https://github.com/galaxyproject/training-material/blob/main/LICENSE.md">MIT</a>
         </div>
         
-        <div><strong>Short Link:</strong> <a href="https://gxy.io/GTN:T00293">https://gxy.io/GTN:T00293</a> </div>
+        <div><strong><i class="fas fa-fingerprint" aria-hidden="true"></i><span class="visually-hidden">purl</span><abbr title="Persistent URL">PURL</abbr>:</strong> <a href="https://gxy.io/GTN:T00293">https://gxy.io/GTN:T00293</a> </div>
         
     </blockquote>
     </section>
@@ -1120,11 +787,12 @@ parameters to speed up the analysis for the purposes of this tutorial.</p>
 
 <!--SNIPPET-->
 <blockquote class="comment">   <div class="box-title comment-title" id="comment-results-may-vary"><i class="far fa-comment-dots" aria-hidden="true"></i> Comment: Results may vary</div>   <p>Your results may be slightly different from the ones presented in this tutorial due to differing versions of tools, reference data, external databases, or because of stochastic processes in the algorithms.</p> </blockquote>
+<p><!--END_SNIPPET--></p>
 
 <p>In this tutorial, we will run the Heinz workflow step by step to understand how each step works. To get an overview of what this workflow does
 and what kind of calculation is involved, view the flowchart below.</p>
 
-<p><img src="../../images/transcriptomics_images/flowchart-heinz.png" alt="Heinz flowchart. " loading="lazy" /></p>
+<p><img src="../../images/transcriptomics_images/flowchart-heinz.png" alt="Heinz flowchart. " width="3112" height="558" loading="lazy" /></p>
 
 <h1 id="obtaining-and-preparing-data--">Obtaining and preparing data  <a href="https://doi.org/10.5281/zenodo.1344105"><img src="https://zenodo.org/badge/DOI/10.5281/zenodo.1344105.svg" alt="DOI. " loading="lazy" /></a></h1>
 
@@ -1136,7 +804,7 @@ material. In this tutorial, we start with the interpreted data, which are KO
 available from Zenodo.</p>
 
 <blockquote class="details">
-  <div class="box-title details-title" id="details-background-what-is-ko-count"><button class="gtn-boxify-button details" type="button" aria-controls="details-background-what-is-ko-count" aria-expanded="true"><i class="fas fa-info-circle" aria-hidden="true"></i> Details: Background: What is KO count?<span class="fold-unfold fa fa-minus-square"></span></button></div>
+  <div class="box-title details-title" id="details-background-what-is-ko-count"><button class="gtn-boxify-button details" type="button" aria-controls="details-background-what-is-ko-count" aria-expanded="true"><i class="fas fa-info-circle" aria-hidden="true" ></i> Details: Background: What is KO count?<span class="fold-unfold fa fa-minus-square"></span></button></div>
 
   <p>KOs are organism-independent identifiers that group together proteins of similar biochemical functions.
 It is a term specific to <a href="https://www.genome.jp/kegg/">KEGG</a> database. It is a group concept, similar to the concept “pathway”, which
@@ -1154,7 +822,7 @@ a caries-negative (health) oral profile. Each of the 36 samples was sequenced, p
 into KO counts. We will use these count data as the starting point to perform the network analysis.</p>
 
 <blockquote class="comment">
-  <div class="box-title comment-title" id="comment-dataset-details"><i class="far fa-comment-dots" aria-hidden="true"></i> Comment: Dataset details</div>
+  <div class="box-title comment-title" id="comment-dataset-details"><i class="far fa-comment-dots" aria-hidden="true" ></i> Comment: Dataset details</div>
   <p>The count data of the 36 samples are separated into 36 files, organized into two groups:
 ‘CP’ (caries-positive) and ‘CN’ (caries-negative).</p>
 </blockquote>
@@ -1164,7 +832,7 @@ into KO counts. We will use these count data as the starting point to perform th
 <p>After knowing what our input data are like, let’s get them into Galaxy history:</p>
 
 <blockquote class="notranslate hands_on">
-  <div class="box-title hands-on-title" id="hands-on-obtaining-our-data"><i class="fas fa-pencil-alt" aria-hidden="true"></i> Hands-on: Obtaining our data</div>
+  <div class="box-title hands-on-title" id="hands-on-obtaining-our-data"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Obtaining our data</div>
 
   <ol>
     <li>
@@ -1172,8 +840,11 @@ into KO counts. We will use these count data as the starting point to perform th
 
       <!--SNIPPET-->
       <blockquote class="tip">   <div class="box-title tip-title" id="tip-creating-a-new-history"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-creating-a-new-history" aria-expanded="true"><i class="far fa-lightbulb" aria-hidden="true"></i> Tip: Creating a new history<span class="fold-unfold fa fa-minus-square"></span></button></div>   <p>Click the <i class="fas fa-plus" aria-hidden="true"></i><span class="visually-hidden">new-history</span> icon at the top of the history panel.</p>   <p>If the <i class="fas fa-plus" aria-hidden="true"></i><span class="visually-hidden">new-history</span> is missing:</p>   <ol>   <li>Click on the <i class="fas fa-cog" aria-hidden="true"></i><span class="visually-hidden">galaxy-gear</span> icon (<strong>History options</strong>) on the top of the history panel</li>   <li>Select the option <strong>Create New</strong> from the menu</li> </ol> </blockquote>
+      <p><!--END_SNIPPET--></p>
+
       <!--SNIPPET-->
       <blockquote class="tip">   <div class="box-title tip-title" id="tip-renaming-a-history"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-renaming-a-history" aria-expanded="true"><i class="far fa-lightbulb" aria-hidden="true"></i> Tip: Renaming a history<span class="fold-unfold fa fa-minus-square"></span></button></div>   <ol>   <li>Click on <i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden">galaxy-pencil</span> (<strong>Edit</strong>) next to the history name (which by default is “Unnamed history”)</li>   <li>Type the new name</li>   <li>Click on <strong>Save</strong></li> </ol>   <p>If you do not have the <i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden">galaxy-pencil</span> (<strong>Edit</strong>) next to the history name:</p>   <ol>   <li>Click on <strong>Unnamed history</strong> (or the current name of the history) (<strong>Click to rename history</strong>) at the top of your history panel</li>   <li>Type the new name</li>   <li>Press <kbd>Enter</kbd></li> </ol> </blockquote>
+      <p><!--END_SNIPPET--></p>
     </li>
     <li><strong>Upload Disease Dataset</strong>
       <ul>
@@ -1182,7 +853,7 @@ into KO counts. We will use these count data as the starting point to perform th
         <li>Click on the <strong>Paste/Fetch data</strong> button</li>
         <li>Copy the Zenodo links for the Disease Datasets
           <blockquote class="details">
-            <div class="box-title details-title" id="details-view-list-of-zenodo-urls-for-dental-caries-dataset-disease-cp"><button class="gtn-boxify-button details" type="button" aria-controls="details-view-list-of-zenodo-urls-for-dental-caries-dataset-disease-cp" aria-expanded="true"><i class="fas fa-info-circle" aria-hidden="true"></i> Details: View list of Zenodo URLs for Dental Caries Dataset (Disease, CP)<span class="fold-unfold fa fa-minus-square"></span></button></div>
+            <div class="box-title details-title" id="details-view-list-of-zenodo-urls-for-dental-caries-dataset-disease-cp"><button class="gtn-boxify-button details" type="button" aria-controls="details-view-list-of-zenodo-urls-for-dental-caries-dataset-disease-cp" aria-expanded="true"><i class="fas fa-info-circle" aria-hidden="true" ></i> Details: View list of Zenodo URLs for Dental Caries Dataset (Disease, CP)<span class="fold-unfold fa fa-minus-square"></span></button></div>
             <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>https://zenodo.org/record/1344105/files/2241_CP_DZ_PairTo_2242.txt
 https://zenodo.org/record/1344105/files/2126_CP_MZ_PairTo_2125.txt
 https://zenodo.org/record/1344105/files/2991_CP_DZ_PairTo_2992.txt
@@ -1215,7 +886,7 @@ https://zenodo.org/record/1344105/files/2242_CP_DZ_PairTo_2241.txt
       <ul>
         <li>Repeat the previous steps with the samples from healthy individuals:
           <blockquote class="details">
-            <div class="box-title details-title" id="details-view-list-of-zenodo-urls-for-dental-caries-dataset-healthy-cn"><button class="gtn-boxify-button details" type="button" aria-controls="details-view-list-of-zenodo-urls-for-dental-caries-dataset-healthy-cn" aria-expanded="true"><i class="fas fa-info-circle" aria-hidden="true"></i> Details: View list of Zenodo URLs for Dental Caries Dataset (Healthy, CN)<span class="fold-unfold fa fa-minus-square"></span></button></div>
+            <div class="box-title details-title" id="details-view-list-of-zenodo-urls-for-dental-caries-dataset-healthy-cn"><button class="gtn-boxify-button details" type="button" aria-controls="details-view-list-of-zenodo-urls-for-dental-caries-dataset-healthy-cn" aria-expanded="true"><i class="fas fa-info-circle" aria-hidden="true" ></i> Details: View list of Zenodo URLs for Dental Caries Dataset (Healthy, CN)<span class="fold-unfold fa fa-minus-square"></span></button></div>
             <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>https://zenodo.org/record/1344105/files/2310_CN_DZ_PairTo_2309.txt
 https://zenodo.org/record/1344105/files/2062_CN_DZ_PairTo_2061.txt
 https://zenodo.org/record/1344105/files/2191_CN_MZ_PairTo_2192.txt
@@ -1240,7 +911,7 @@ https://zenodo.org/record/1344105/files/3307_CN_DZ_PairTo_3306.txt
       </ul>
 
       <blockquote class="question">
-        <div class="box-title question-title" id="question"><i class="far fa-question-circle" aria-hidden="true"></i> Question</div>
+        <div class="box-title question-title" id="question"><i class="far fa-question-circle" aria-hidden="true" ></i> Question</div>
 
         <ol>
           <li>How many samples do you have in our disease collection (CP)? How many healthy samples (CN)?</li>
@@ -1248,7 +919,7 @@ https://zenodo.org/record/1344105/files/3307_CN_DZ_PairTo_3306.txt
         </ol>
 
         <blockquote class="solution">
-          <div class="box-title solution-title" id="solution"><button class="gtn-boxify-button solution" type="button" aria-controls="solution" aria-expanded="true"><i class="far fa-eye" aria-hidden="true"></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
+          <div class="box-title solution-title" id="solution"><button class="gtn-boxify-button solution" type="button" aria-controls="solution" aria-expanded="true"><i class="far fa-eye" aria-hidden="true" ></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
 
           <ol>
             <li>You should have 19 samples in the disease collection (CP), and 17 in the negative collection (CN).</li>
@@ -1263,14 +934,14 @@ https://zenodo.org/record/1344105/files/3307_CN_DZ_PairTo_3306.txt
 </blockquote>
 
 <blockquote class="tip">
-  <div class="box-title tip-title" id="tip-creating-a-collection-from-files-already-in-your-history"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-creating-a-collection-from-files-already-in-your-history" aria-expanded="true"><i class="far fa-lightbulb" aria-hidden="true"></i> Tip: Creating a collection from files already in your history<span class="fold-unfold fa fa-minus-square"></span></button></div>
+  <div class="box-title tip-title" id="tip-creating-a-collection-from-files-already-in-your-history"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-creating-a-collection-from-files-already-in-your-history" aria-expanded="true"><i class="far fa-lightbulb" aria-hidden="true" ></i> Tip: Creating a collection from files already in your history<span class="fold-unfold fa fa-minus-square"></span></button></div>
 
   <p><em>Dataset collections</em> enables us to easily run tools on multiple datasets at once, you probably
 have done that in the file upload menu using the <code class="language-plaintext highlighter-rouge">Collection</code> tab. If not, you can still create
 <em>dataset collections</em> manually.</p>
 
   <blockquote class="notranslate hands_on">
-    <div class="box-title hands-on-title" id="hands-on-manually-organizing-our-data-into-a-collection"><i class="fas fa-pencil-alt" aria-hidden="true"></i> Hands-on: Manually organizing our data into a collection</div>
+    <div class="box-title hands-on-title" id="hands-on-manually-organizing-our-data-into-a-collection"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Manually organizing our data into a collection</div>
 
     <p>If you have all the datasets in the history, but they are not organized into a collection yet,
 you can follow these steps to create a collection:</p>
@@ -1278,7 +949,7 @@ you can follow these steps to create a collection:</p>
     <ol>
       <li>
         <p>Click on the <strong>checkmark icon</strong> at top of your history.
-  <img src="../../../../shared/images/history_menu_buttons2.png" alt="Checkmark icon in history menu. " loading="lazy" /></p>
+  <img src="../../../../shared/images/history_menu_buttons2.png" alt="Checkmark icon in history menu. " width="75" height="33" loading="lazy" /></p>
       </li>
       <li>
         <p>Select all the files whose name contains <code class="language-plaintext highlighter-rouge">CP</code>, then click on <strong>n of N selected</strong> and select
@@ -1299,7 +970,7 @@ you can follow these steps to create a collection:</p>
 <h2 id="what-is-differential-expression-analysis">What is differential expression analysis?</h2>
 
 <blockquote class="comment">
-  <div class="box-title comment-title" id="comment-a-definition"><i class="far fa-comment-dots" aria-hidden="true"></i> Comment: A definition</div>
+  <div class="box-title comment-title" id="comment-a-definition"><i class="far fa-comment-dots" aria-hidden="true" ></i> Comment: A definition</div>
 
   <p>The definition of differential expression analysis given by
 <a href="https://www.ebi.ac.uk/training/online/course/functional-genomics-ii-common-technologies-and-data-analysis-methods/differential-gene">EBI</a>
@@ -1326,7 +997,7 @@ may look up the pros and cons of each tool. Here we use DESeq2.</p>
 <p>After learning about differential expression analysis, let’s get some hands-on experience.</p>
 
 <blockquote class="notranslate hands_on">
-  <div class="box-title hands-on-title" id="hands-on-dea-via-deseq2"><i class="fas fa-pencil-alt" aria-hidden="true"></i> Hands-on: DEA via DESeq2</div>
+  <div class="box-title hands-on-title" id="hands-on-dea-via-deseq2"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: DEA via DESeq2</div>
 
   <ul>
     <li><strong>DESeq2</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> with the following parameters
@@ -1368,10 +1039,10 @@ under alternative hypothesis, the noise component (which holds under null hypoth
 modeled by a uniform distribution. With this knowledge, we can fit these p-values to a mixture model
 (BUM model), as the figure below shows.</p>
 
-<p><img src="../../images/transcriptomics_images/bum.jpeg" alt="p-values are fitted to a mixture model. " width="50%" loading="lazy" /></p>
+<p><img src="../../images/transcriptomics_images/bum.jpeg" alt="p-values are fitted to a mixture model. " width="1280" height="1138" loading="lazy" /></p>
 
 <blockquote class="comment">
-  <div class="box-title comment-title" id="comment-why-do-we-need-a-mixture-model"><i class="far fa-comment-dots" aria-hidden="true"></i> Comment: Why do we need a mixture model?</div>
+  <div class="box-title comment-title" id="comment-why-do-we-need-a-mixture-model"><i class="far fa-comment-dots" aria-hidden="true" ></i> Comment: Why do we need a mixture model?</div>
 
   <p>To avoid making this tutorial sound like a math class, let’s focus on the philosophy of using a statistical model.
 In the graph above, we have visualized the p-values; those bins have some shapes; by viewing the figure, it
@@ -1386,7 +1057,7 @@ which computers can understand easily.</p>
 <strong>Fit a BUM model</strong>, that’s a file that only contains p-values.</p>
 
 <blockquote class="notranslate hands_on">
-  <div class="box-title hands-on-title" id="hands-on-extract-p-values-from-deseq2-output"><i class="fas fa-pencil-alt" aria-hidden="true"></i> Hands-on: extract p-values from DESeq2 output</div>
+  <div class="box-title hands-on-title" id="hands-on-extract-p-values-from-deseq2-output"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: extract p-values from DESeq2 output</div>
 
   <ul>
     <li><strong>cut</strong> columns from a table <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> with the following parameters:
@@ -1403,7 +1074,7 @@ which computers can understand easily.</p>
 <p>Now we can <strong>Fit a BUM model</strong>:</p>
 
 <blockquote class="notranslate hands_on">
-  <div class="box-title hands-on-title" id="hands-on-fit-the-bum-model"><i class="fas fa-pencil-alt" aria-hidden="true"></i> Hands-on: fit the BUM model</div>
+  <div class="box-title hands-on-title" id="hands-on-fit-the-bum-model"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: fit the BUM model</div>
 
   <ul>
     <li><strong>Fit a BUM model</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> with the following parameters
@@ -1438,7 +1109,7 @@ NPTX1	CIAO1
 <p>Upload this edge file (hereafter we call it edge file) into the Galaxy instance.</p>
 
 <blockquote class="notranslate hands_on">
-  <div class="box-title hands-on-title" id="hands-on-upload-edge-file"><i class="fas fa-pencil-alt" aria-hidden="true"></i> Hands-on: Upload edge file</div>
+  <div class="box-title hands-on-title" id="hands-on-upload-edge-file"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Upload edge file</div>
 
   <ol>
     <li><strong>Upload the edge file from Zenodo</strong>
@@ -1461,7 +1132,7 @@ NPTX1	CIAO1
 we obtained; meanwhile, we also need to specify an FDR value as input.</p>
 
 <blockquote class="comment">
-  <div class="box-title comment-title" id="comment-what-is-an-fdr-value"><i class="far fa-comment-dots" aria-hidden="true"></i> Comment: What is an FDR value?</div>
+  <div class="box-title comment-title" id="comment-what-is-an-fdr-value"><i class="far fa-comment-dots" aria-hidden="true" ></i> Comment: What is an FDR value?</div>
 
   <p>FDR is short for false discovery rate, which is a method of conceptualizing the rate of type I errors
 in null hypothesis testing when conducting multiple comparisons, if you are interested, view the detail
@@ -1475,12 +1146,12 @@ in <a href="https://en.wikipedia.org/wiki/False_discovery_rate">Wikipedia</a>.</
 <strong>Calculate a Heinz score</strong>.</p>
 
 <blockquote class="question">
-  <div class="box-title question-title" id="question-1"><i class="far fa-question-circle" aria-hidden="true"></i> Question</div>
+  <div class="box-title question-title" id="question-1"><i class="far fa-question-circle" aria-hidden="true" ></i> Question</div>
 
   <p>What is the requirement of the input data format for <strong>Calculate a Heinz score</strong>?</p>
 
   <blockquote class="solution">
-    <div class="box-title solution-title" id="solution-1"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-1" aria-expanded="true"><i class="far fa-eye" aria-hidden="true"></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
+    <div class="box-title solution-title" id="solution-1"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-1" aria-expanded="true"><i class="far fa-eye" aria-hidden="true" ></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
 
     <p>In the user interface of the tool “Calculate a Heinz score”, we see that “A node file with p-values” is needed.
 It should contain two columns delimited by tab, one is KO ID; the other, p-value.</p>
@@ -1489,7 +1160,7 @@ It should contain two columns delimited by tab, one is KO ID; the other, p-value
 </blockquote>
 
 <blockquote class="notranslate hands_on">
-  <div class="box-title hands-on-title" id="hands-on-extract-geneid-and-p-values-from-deseq2-output"><i class="fas fa-pencil-alt" aria-hidden="true"></i> Hands-on: extract geneID and p-values from DESeq2 output</div>
+  <div class="box-title hands-on-title" id="hands-on-extract-geneid-and-p-values-from-deseq2-output"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: extract geneID and p-values from DESeq2 output</div>
 
   <ul>
     <li><strong>cut</strong> columns from a table <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> with the following parameters
@@ -1504,7 +1175,7 @@ It should contain two columns delimited by tab, one is KO ID; the other, p-value
 </blockquote>
 
 <blockquote class="notranslate hands_on">
-  <div class="box-title hands-on-title" id="hands-on-calculate-heinz-scores"><i class="fas fa-pencil-alt" aria-hidden="true"></i> Hands-on: calculate Heinz scores</div>
+  <div class="box-title hands-on-title" id="hands-on-calculate-heinz-scores"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: calculate Heinz scores</div>
 
   <ul>
     <li><strong>Calculate a Heinz score</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> with the following parameters
@@ -1519,7 +1190,7 @@ It should contain two columns delimited by tab, one is KO ID; the other, p-value
 </blockquote>
 
 <blockquote class="comment">
-  <div class="box-title comment-title" id="comment-what-is-the-heinz-score"><i class="far fa-comment-dots" aria-hidden="true"></i> Comment: What is the Heinz score?</div>
+  <div class="box-title comment-title" id="comment-what-is-the-heinz-score"><i class="far fa-comment-dots" aria-hidden="true" ></i> Comment: What is the Heinz score?</div>
 
   <p>To figure out this score without reading the formula, we can understand Heinz score in this way. FDR is involved in calculating a p-value threshold
 and any KO whose p-value is below this threshold is regarded as significant, which means the Heinz score is positive (another calculation in the formula). If we pick a higher FDR value, then we will have a higher p-value threshold, and more KOs are probably regarded as significant. In this situation, we probably have many false positive (those regarded as significant are actually not) on the one hand; on the other hand, Heinz will deliver a bigger subnetwork, which might be exhausting to analyze. Therefore, we need to pick up an FDR value properly.</p>
@@ -1531,7 +1202,7 @@ and any KO whose p-value is below this threshold is regarded as significant, whi
 <p>After getting Heinz scores, let’s run Heinz program to find the optimal subnetwork from the background network which we mentioned earlier.</p>
 
 <blockquote class="notranslate hands_on">
-  <div class="box-title hands-on-title" id="hands-on-pinpoint-the-optimal-subnetwork"><i class="fas fa-pencil-alt" aria-hidden="true"></i> Hands-on: pinpoint the optimal subnetwork</div>
+  <div class="box-title hands-on-title" id="hands-on-pinpoint-the-optimal-subnetwork"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: pinpoint the optimal subnetwork</div>
 
   <ul>
     <li><strong>Identify optimal scoring subnetwork</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> with the following parameters
@@ -1547,7 +1218,7 @@ and any KO whose p-value is below this threshold is regarded as significant, whi
 <p>It usually takes a few minutes to get the result, but mind you, for some tasks, it might take a few hours to get a result in practice.</p>
 
 <blockquote class="comment">
-  <div class="box-title comment-title" id="comment-the-running-time-of-the-program"><i class="far fa-comment-dots" aria-hidden="true"></i> Comment: The running time of the program</div>
+  <div class="box-title comment-title" id="comment-the-running-time-of-the-program"><i class="far fa-comment-dots" aria-hidden="true" ></i> Comment: The running time of the program</div>
 
   <ul>
     <li>Graph problem is way more complicated than we thought.</li>
@@ -1562,7 +1233,7 @@ but, to use that, you can install Heinz directly via <a href="https://anaconda.o
 <p>The result we got from the last step is not very human-readable, is it? It is a little painful to understand the Heinz result directly. Therefore we need to visualize the output by making it into graphs.</p>
 
 <blockquote class="notranslate hands_on">
-  <div class="box-title hands-on-title" id="hands-on-visualize-the-optimal-subnetwork"><i class="fas fa-pencil-alt" aria-hidden="true"></i> Hands-on: visualize the optimal subnetwork</div>
+  <div class="box-title hands-on-title" id="hands-on-visualize-the-optimal-subnetwork"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: visualize the optimal subnetwork</div>
 
   <ul>
     <li><strong>Visualize</strong> the optimal scoring subnetwork <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> with the following parameters
@@ -1576,15 +1247,15 @@ but, to use that, you can install Heinz directly via <a href="https://anaconda.o
 
 <p>In this tutorial, you probably get a similar graph to the following:</p>
 
-<p><img src="../../images/transcriptomics_images/Heinz_visualisation.png" alt="p-values are fitted to a mixture model. " width="30%" loading="lazy" /></p>
+<p><img src="../../images/transcriptomics_images/Heinz_visualisation.png" alt="p-values are fitted to a mixture model. " width="860" height="1414" loading="lazy" /></p>
 
 <blockquote class="question">
-  <div class="box-title question-title" id="question-2"><i class="far fa-question-circle" aria-hidden="true"></i> Question</div>
+  <div class="box-title question-title" id="question-2"><i class="far fa-question-circle" aria-hidden="true" ></i> Question</div>
 
   <p>According to the figure above, Why are some shapes are round, others square?</p>
 
   <blockquote class="solution">
-    <div class="box-title solution-title" id="solution-2"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-2" aria-expanded="true"><i class="far fa-eye" aria-hidden="true"></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
+    <div class="box-title solution-title" id="solution-2"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-2" aria-expanded="true"><i class="far fa-eye" aria-hidden="true" ></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
 
     <p>Round shape corresponds to positive Heinz score; square shape corresponds to negative Heinz score.</p>
 
@@ -1593,7 +1264,7 @@ but, to use that, you can install Heinz directly via <a href="https://anaconda.o
 
 <p>In addition to the tool we will use in Galaxy, you may consider using eXamine plugin in Cytoscape for a richer visualization, if we use the original data from the study <a href="https://academic.oup.com/bioinformatics/article/32/11/1678/2240171">May et al.</a>, perform all of these steps and visualize the result by eXamine, we can get a visualization as follows:</p>
 
-<p><img src="../../images/transcriptomics_images/metaModules.png" alt="metaModules Result. " width="60%" loading="lazy" /></p>
+<p><img src="../../images/transcriptomics_images/metaModules.png" alt="metaModules Result. " width="2250" height="1742" loading="lazy" /></p>
 
 <p>If you are interested, you may try to make sense of the result yourself. To answer the question “which pathways are potentially contributing to dental caries?”, we need to find the key pathways relevant to the subnetwork. To achieve that, we probably need to combine information from other bioinformatics services and literature.</p>
 
@@ -1602,7 +1273,7 @@ but, to use that, you can install Heinz directly via <a href="https://anaconda.o
 <p>Let’s assume that these are the operations we always need for different datasets, to make life easier, we can save all of these operations into a workflow in Galaxy, which you can reuse for different datasets next time.</p>
 
 <blockquote class="notranslate hands_on">
-  <div class="box-title hands-on-title" id="hands-on-extract-the-heinz-workflow"><i class="fas fa-pencil-alt" aria-hidden="true"></i> Hands-on: Extract the Heinz workflow</div>
+  <div class="box-title hands-on-title" id="hands-on-extract-the-heinz-workflow"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Extract the Heinz workflow</div>
 
   <ol>
     <li>
@@ -1610,6 +1281,7 @@ but, to use that, you can install Heinz directly via <a href="https://anaconda.o
 
       <!--SNIPPET-->
       <blockquote class="tip">   <div class="box-title tip-title" id="tip-extracting-a-workflow-from-your-history"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-extracting-a-workflow-from-your-history" aria-expanded="true"><i class="far fa-lightbulb" aria-hidden="true"></i> Tip: Extracting a workflow from your history<span class="fold-unfold fa fa-minus-square"></span></button></div>   <ol>   <li>     <p><strong>Clean up</strong> your history: remove any failed (red) jobs from your history by clicking on the <i class="fas fa-trash" aria-hidden="true"></i><span class="visually-hidden">galaxy-delete</span> button.</p>     <p>This will make the creation of the workflow easier.</p>   </li>   <li>     <p>Click on <i class="fas fa-cog" aria-hidden="true"></i><span class="visually-hidden">galaxy-gear</span> (<strong>History options</strong>) at the top of your history panel and select <strong>Extract workflow</strong>.</p>     <p><img src="/training-material/topics/introduction/images/history_menu_extract_workflow.png" alt="`Extract Workflow` entry in the history options menu" /></p>     <p>The central panel will show the content of the history in reverse order (oldest on top), and you will be able to choose which steps to include in the workflow.</p>   </li>   <li>     <p>Replace the <strong>Workflow name</strong> to something more descriptive.</p>   </li>   <li>     <p><strong>Rename</strong> each workflow input in the boxes at the top of the second column.</p>   </li>   <li>     <p>If there are any steps that shouldn’t be included in the workflow, you can <strong>uncheck</strong> them in the first column of boxes.</p>   </li>   <li>     <p>Click on the <strong>Create Workflow</strong> button near the top.</p>     <p>You will get a message that the workflow was created.</p>   </li> </ol> </blockquote>
+      <p><!--END_SNIPPET--></p>
     </li>
     <li>
       <p>Run the workflow on the dataset in this tutorial</p>
@@ -1618,7 +1290,7 @@ but, to use that, you can install Heinz directly via <a href="https://anaconda.o
 
 </blockquote>
 
-<p><img src="../../images/transcriptomics_images/heinz-workflow.png" alt="Heinz workflow. " loading="lazy" /></p>
+<p><img src="../../images/transcriptomics_images/heinz-workflow.png" alt="Heinz workflow. " width="2630" height="866" loading="lazy" /></p>
 
 <p>As a self practice, you ran the newly created workflow with the dataset in this tutorial. Do you feel the convenience of running a workflow directly?</p>
 
@@ -1684,6 +1356,9 @@ but, to use that, you can install Heinz directly via <a href="https://anaconda.o
                             Chao Zhang,  <b>Network analysis with Heinz (Galaxy Training Materials)</b>. <a href="https://training.galaxyproject.org/training-material/topics/transcriptomics/tutorials/network-analysis-with-heinz/tutorial.html">https://training.galaxyproject.org/training-material/topics/transcriptomics/tutorials/network-analysis-with-heinz/tutorial.html</a> Online; accessed TODAY
                         </li>
                         <li>
+                        Hiltemann, Saskia, Rasche, Helena et al., 2023 <b>Galaxy Training: A Powerful Framework for Teaching!</b> PLOS Computational Biology <a href="https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1010752">10.1371/journal.pcbi.1010752</a>
+                        </li>
+                        <li>
                         Batut et al., 2018 <b>Community-Driven Data Analysis Training for Biology</b> Cell Systems <a href="https://doi.org/10.1016%2Fj.cels.2018.05.012">10.1016/j.cels.2018.05.012</a>
                         </li>
                     </ol>
@@ -1705,12 +1380,12 @@ but, to use that, you can install Heinz directly via <a href="https://anaconda.o
 
 <code id="citation-code">@misc{transcriptomics-network-analysis-with-heinz,
 author = "Chao Zhang",
-title = "Network analysis with Heinz (Galaxy Training Materials)",
-year = "",
-month = "",
-day = ""
-url = "\url{https://training.galaxyproject.org/training-material/topics/transcriptomics/tutorials/network-analysis-with-heinz/tutorial.html}",
-note = "[Online; accessed TODAY]"
+	title = "Network analysis with Heinz (Galaxy Training Materials)",
+	year = "",
+	month = "",
+	day = ""
+	url = "\url{https://training.galaxyproject.org/training-material/topics/transcriptomics/tutorials/network-analysis-with-heinz/tutorial.html}",
+	note = "[Online; accessed TODAY]"
 }
 @article{Hiltemann_2023,
 	doi = {10.1371/journal.pcbi.1010752},
@@ -1736,9 +1411,9 @@ note = "[Online; accessed TODAY]"
 
 <script>
 // update the date on load, or leave fallback of 'today'
-var d = new Date();
-document.getElementById("citation-code").innerHTML = document.getElementById("citation-code").innerHTML.replace("TODAY", d.toDateString());
-document.getElementById("citation-text").innerHTML = document.getElementById("citation-text").innerHTML.replace("TODAY", d.toDateString());
+const citationTodaysDate = new Date();
+document.getElementById("citation-code").innerHTML = document.getElementById("citation-code").innerHTML.replace("TODAY", citationTodaysDate.toDateString());
+document.getElementById("citation-text").innerHTML = document.getElementById("citation-text").innerHTML.replace("TODAY", citationTodaysDate.toDateString());
 </script>
 
                 <i class="far fa-thumbs-up" aria-hidden="true"></i> Congratulations on successfully completing this tutorial!
@@ -1746,6 +1421,48 @@ document.getElementById("citation-text").innerHTML = document.getElementById("ci
                 
 
                 
+
+		
+                <blockquote class="agenda follow-up" id="admins-install-missing-tools">
+                    <div class="box-title">Galaxy Administrators: Install the missing tools</div>
+			<p>You can use Ephemeris's <code>shed-tools install</code> command to install the tools used in this tutorial.</p>
+<div class="highlight"><pre class="highlight"><code>shed-tools install [-g GALAXY] [-a API_KEY] -t &lt;(curl https://training.galaxyproject.org/training-material/api/topics/transcriptomics/tutorials/network-analysis-with-heinz/tutorial.json | jq .admin_install_yaml -r)</code></pre></div>
+<p>Alternatively you can copy and paste the following YAML</p>
+<div class="highlight"><pre class="highlight"><code>---
+install_tool_dependencies: true
+install_repository_dependencies: true
+install_resolver_dependencies: true
+tools:
+- name: deseq2
+  owner: iuc
+  revisions: d9e5cadc7f0b
+  tool_panel_section_label: Transcriptomics
+  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+- name: heinz
+  owner: iuc
+  revisions: 2b80a2596064
+  tool_panel_section_label: Transcriptomics
+  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+- name: heinz
+  owner: iuc
+  revisions: 2b80a2596064
+  tool_panel_section_label: Transcriptomics
+  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+- name: heinz
+  owner: iuc
+  revisions: 2b80a2596064
+  tool_panel_section_label: Transcriptomics
+  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+- name: heinz
+  owner: iuc
+  revisions: 5f589c91566e
+  tool_panel_section_label: Transcriptomics
+  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+</code></pre></div>
+                </blockquote>
+		
+
+
                 </section>
 
             </div>
@@ -1757,38 +1474,52 @@ document.getElementById("citation-text").innerHTML = document.getElementById("ci
 <br/>
 
         </div>
-        
-        <script src="/training-material/assets/js/jquery.slim.min.js"></script>
-        <script src="/training-material/assets/js/popper.min.js"></script>
-        <script src="/training-material/assets/js/bootstrap.min.js?v=3"></script>
-        <script src="/training-material/assets/js/details-element-polyfill.js"></script>
+        <footer>
+	<hr />
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-6" style="text-align: left">
+				<p>
+					The <a href="https://galaxyproject.org/teach/gtn/">Galaxy Training Network</a>
+					provides researchers with online training materials, connects them with local trainers, and helps promoting FAIR and Open Science practices worldwide. All contributions are subject to the <a rel="code-of-conduct" href="https://galaxyproject.org/community/coc/">Galaxy Project Code of Conduct</a>.
+				</p>
+				<p>
+				The GTN infrastructure is licensed under <a rel="license" href="https://github.com/galaxyproject/training-material/blob/main/LICENSE.md">MIT</a>
+				</p>
+				<p>
+				Revision <a href="https://github.com/galaxyproject/training-material/commit/476574d2b382dd1db6c2c408d8fb6ec4393a6904">476574d</a>, built with Jekyll (4.3.2 | production)
+				</p>
+			</div>
+			<div class="col-sm-6" style="text-align: right">
+				
+				<p>
+					Resource <i class="fas fa-fingerprint" aria-hidden="true"></i><span class="visually-hidden">purl</span><abbr title="Persistent URL">PURL</abbr>: <a href="https://gxy.io/GTN:T00293">https://gxy.io/GTN:T00293</a>
+				</p>
+				
+				<p>
+					<i>This Material</i>:
+					
+					is licensed under
+					<a rel="license" href="https://spdx.org/licenses/CC-BY-4.0">
+						Creative Commons Attribution 4.0 International License
+					</a>
+				</p>
+				<p>
+					<a href="https://github.com/galaxyproject/training-material/edit/main/topics/transcriptomics/tutorials/network-analysis-with-heinz/tutorial.md" title="Edit on GitHub">
+					<i class="fab fa-github" aria-hidden="true"></i><span class="visually-hidden">github</span> Edit on GitHub
+					</a>
+				</p>
+			</div>
+		</div>
+	</div>
+</footer>
+
+
+    </div>
+</footer>
+
+
+        <script src='/training-material/assets/js/bundle.main.js?v=1687830693'></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-        <script src="/training-material/assets/js/bootstrap-toc.min.js"></script>
-        <script src="/training-material/assets/js/main.js"></script>
-        <script src="/training-material/assets/js/clipboard.min.js"></script>
-        <script>
-        var snippets=document.querySelectorAll('div.highlight');
-        [].forEach.call(snippets,function(snippet){
-            snippet.firstChild.insertAdjacentHTML('beforebegin','<button class="btn btn-light" data-clipboard-snippet tabindex="0"><i class="fa fa-copy"></i>&nbsp;Copy</button>');
-        });
-
-        var clipboardSnippets=new ClipboardJS('[data-clipboard-snippet]',{
-            target:function(trigger){return trigger.nextElementSibling;
-        }});
-        </script>
-        
-
-        <script type="text/javascript">
-            if(window.location.hostname === "galaxyproject.github.io") {
-                // Redirect
-                var redirect = "https://training.galaxyproject.org" + window.location.pathname + window.location.search;
-                $('div.container.main-content').prepend("<div class='alert alert-warning'><strong>Note: </strong>This content has a new home at <a href=\"" + redirect + "\">" + redirect + "</a>, which you will be redirected to in 5 seconds.</div>");
-
-                window.setTimeout(function(){
-                    window.location.href = redirect;
-                }, 5000)
-
-            }
-        </script>
     </body>
 </html>

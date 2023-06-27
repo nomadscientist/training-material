@@ -8,22 +8,51 @@
         
             <script async defer data-domain="training.galaxyproject.org" src="https://plausible.galaxyproject.eu/js/plausible.js"></script>
 
+<!-- JavaScript Error Monitoring, and performance tracking. -->
+<script
+  src="https://browser.sentry-cdn.com/7.52.1/bundle.tracing.min.js"
+  integrity="sha384-muuFXKS3752PNA4rPm9Uq6BLvOfV4CXyr9MHDBPvozOJJUWLKkogEFWOIRoVps43"
+  crossorigin="anonymous"
+></script>
+<script type="text/javascript">
+Sentry.init({
+  dsn: "https://45e0ec6e4373462b92969505df37cf40@sentry.galaxyproject.org/10",
+  release: "galaxy-training-network@476574d2b382dd1db6c2c408d8fb6ec4393a6904",
+  integrations: [new Sentry.BrowserTracing(), new Sentry.Replay()],
+  sampleRate: 0.1,
+  tracesSampleRate: 0.1,
+  // Capture Replay for no sessions by default
+  replaysSessionSampleRate: 0.01,
+  // plus for 1% of sessions with an error
+  replaysOnErrorSampleRate: 0.01,
+  // PII OFF
+  sendDefaultPii: false, // Off by default but just in case.
+  environment: "production",
+});
+</script>
+
         
-        <link rel="stylesheet" href="/training-material/assets/css/bootstrap.min.css?v=3">
-        <link rel="stylesheet" href="/training-material/assets/css/bootstrap-toc.min.css">
-        <link rel="stylesheet" href="/training-material/assets/css/main.css?v=2">
-        <link rel="stylesheet" href="/training-material/assets/fontawesome/css/all.css">
-        <link rel="stylesheet" href="/training-material/assets/css/academicons.css">
         <link rel="shortcut icon" href="/training-material/favicon.ico" type="image/x-icon">
         <link rel="alternate" type="application/atom+xml" href="/training-material/feed.xml">
         <link rel="canonical" href="https://training.galaxyproject.org/training-material/news/2021/03/30/tutorial_scrna_plant.html">
-        <link rel="license" href="https://creativecommons.org/licenses/by/4.0/">
+        <link rel="license" href="https://spdx.org/licenses/CC-BY-4.0">
+        <link rel="preload" href="/training-material/assets/fonts/AtkinsonHyperlegible/Atkinson-Hyperlegible-Regular-102a.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="preload" href="/training-material/assets/fonts/AtkinsonHyperlegible/Atkinson-Hyperlegible-Bold-102a.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="preload" href="/training-material/assets/fonts/AtkinsonHyperlegible/Atkinson-Hyperlegible-Italic-102a.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML" as="script" crossorigin>
+        <link rel="preload" href="/training-material/assets/css/main.css?v=3" as="style">
+        <link rel='preload' href='/training-material/assets/js/bundle.theme.js?v=1687830693' as='script'>
+<link rel='preload' href='/training-material/assets/js/bundle.main.js?v=1687830693' as='script'>
+        <link rel="stylesheet" href="/training-material/assets/css/main.css?v=3">
+        <link rel="manifest" href="/training-material/manifest.json">
+        <meta name="theme-color" content="#2c3143"/>
+
 
         <meta name="DC.identifier" content="https://github.com/galaxyproject/training-material">
 <meta name="DC.type" content="text">
 <meta name="DC.title" content="New Tutorial: Downstream Single-cell RNA Plant analysis with ScanPy">
 <meta name="DC.publisher" content="Galaxy Training Network">
-<meta name="DC.date" content="2022-11-15 14:10:34 +0000">
+<meta name="DC.date" content="2023-05-18 11:55:15 +0000">
 <meta name="DC.creator" content="Mehmet Tekman">
 <meta name="DC.creator" content="Beatriz Serrano-Solano">
 
@@ -36,12 +65,12 @@
         <meta property="og:title" content="Galaxy Training: New Tutorial: Downstream Single-cell RNA Plant analysis w...">
         <meta property="og:description" content="Collection of tutorials developed and maintained by the w...">
         
-        <meta property="og:image" content="/training-material/assets/images/GTNLogo1000.png">
+        <meta property="og:image" content="/training-materialtopics/single-cell/images/scrna-plant/scrna-plant1.jpg">
 
         
     </head>
     <body data-spy="scroll" data-target="#toc">
-        <script type="text/javascript" src="/training-material/assets/js/theme.js"></script>
+        <script src='/training-material/assets/js/bundle.theme.js?v=1687830693'></script>
         <header>
     <nav class="navbar navbar-expand-md navbar-dark" aria-label="Site Navigation">
         <div class="container">
@@ -105,8 +134,7 @@
     </a>
     <div class="dropdown-menu dropdown-menu-right">
 
-        
-        <a class="dropdown-item" href="https://github.com/galaxyproject/training-material/edit/main/news/2021/03/30/tutorial_scrna_plant.md" title="Edit on GitHub">
+        <a class="dropdown-item" href="https://github.com/galaxyproject/training-material/edit/main/news/_posts/2021-03-30-tutorial_scrna_plant.md" title="Edit on GitHub">
           <i class="fab fa-github" aria-hidden="true"></i><span class="visually-hidden">github</span> Edit on GitHub
         </a>
 
@@ -150,13 +178,13 @@
 
             <div id="archive-selector">
             
-                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2020-01-06/news/2021/03/30/tutorial_scrna_plant.html" title="Version 2020-01-06">2020-01-06</a>
+                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2020-01-06/news/2021/03/30/tutorial_scrna_plant.html">2020-01-06</a>
             
-                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2019-12-01/news/2021/03/30/tutorial_scrna_plant.html" title="Version 2019-12-01">2019-12-01</a>
+                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2019-12-01/news/2021/03/30/tutorial_scrna_plant.html">2019-12-01</a>
             
-                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2019-11-01/news/2021/03/30/tutorial_scrna_plant.html" title="Version 2019-11-01">2019-11-01</a>
+                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2019-11-01/news/2021/03/30/tutorial_scrna_plant.html">2019-11-01</a>
             
-                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/" title="Older Versions">Older Versions</a>
+                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/">Older Versions</a>
             </div>
 
         </div>
@@ -169,7 +197,7 @@
                     <li class="nav-item">
                       <div id="navbarSupportedContent" role="search">
                         <!-- Search form -->
-                        <form class="form-inline mr-auto" method="GET" action="/training-material/search">
+                        <form class="form-inline mr-auto" method="GET" action="/training-material/search2">
                           <i class="fas fa-search nav-link" aria-hidden="true"></i>
                           <div class="md-form mb-2">
                             <input name="query" class="form-control nicer" type="text" placeholder="Search Tutorials" aria-label="Search">
@@ -188,32 +216,61 @@
         <section>
   <h1>New Tutorial: Downstream Single-cell RNA Plant analysis with ScanPy</h1>
 
-  
+  <article>
+
 
 <div class="newsitem">
 <div markdown="0">
 
 	<div class="contributors-line">
-		Authors: <a href="/training-material/hall-of-fame/mtekman/" class="contributor-badge contributor-mtekman"><img src="https://avatars.githubusercontent.com/mtekman?s=27" alt="Avatar">Mehmet Tekman</a><a href="/training-material/hall-of-fame/beatrizserrano/" class="contributor-badge contributor-beatrizserrano"><img src="/training-material/assets/images/orcid.png" alt="orcid logo"/><img src="https://avatars.githubusercontent.com/beatrizserrano?s=27" alt="Avatar">Beatriz Serrano-Solano</a>
+		
+<table class="contributions">
+	
+	<tr>
+		<td><abbr title="These people wrote the bulk of the tutorial, they may have done the analysis, built the workflow, and wrote the text themselves.">Author(s)</abbr></td>
+		<td>
+			<a href="/training-material/hall-of-fame/mtekman/" class="contributor-badge contributor-mtekman"><img src="https://avatars.githubusercontent.com/mtekman?s=36" alt="Avatar" width="36" height="36">Mehmet Tekman</a><a href="/training-material/hall-of-fame/beatrizserrano/" class="contributor-badge contributor-beatrizserrano"><img src="/training-material/assets/images/orcid.png" alt="orcid logo" width="36" height="36"/><img src="https://avatars.githubusercontent.com/beatrizserrano?s=36" alt="Avatar" width="36" height="36">Beatriz Serrano-Solano</a>
+		</td>
+	</tr>
+	
+
+
+	
+
+	
+
+	
+
+	
+
+	
+</table>
+
+
 	</div>
 
 </div>
 
 
 
-<button class="label label-default tutorial_tag" id="new tutorial" style="--color-primary: #ffbc76; --color-darker: #f5a100; --color-dimmed: #ffad3b;" title="new tutorial">new tutorial</button>
+<span class="label label-default tutorial_tag" id="new tutorial" style="--color-primary: #ffad3c; --color-darker: #e89800; --color-dimmed: #f6a200;">new tutorial</span>
 
-<button class="label label-default tutorial_tag" id="single-cell" style="--color-primary: #00e1d0; --color-darker: #00c8b9; --color-dimmed: #00d5c4;" title="single-cell">single-cell</button>
+<span class="label label-default tutorial_tag" id="single-cell" style="--color-primary: #00d5c4; --color-darker: #00beaf; --color-dimmed: #00c9b9;">single-cell</span>
 
-<button class="label label-default tutorial_tag" id="plant" style="--color-primary: #d5beff; --color-darker: #c5a2ff; --color-dimmed: #cdb0ff;" title="plant">plant</button>
+<span class="label label-default tutorial_tag" id="plant" style="--color-primary: #cdb1ff; --color-darker: #be95ff; --color-dimmed: #c6a3ff;">plant</span>
 
 
 <hr/>
 
 <div class="row">
   <div class="col-md-8">
-    <p class="text-muted">
-      Posted on: 30 March 2021
+    <p class="text-muted" style="display: inline-flex; width: 100%; justify-content: space-between;">
+      <span>Posted on: 30 March 2021</span>
+      <span>
+        
+        <i class="fas fa-fingerprint" aria-hidden="true"></i><span class="visually-hidden">purl</span><abbr title="Persistent URL">PURL</abbr>: <a class="badge badge-info" href="https://gxy.io/GTN:N00009">https://gxy.io/GTN:N00009</a>
+        
+      </span>
     </p>
 
     <p>Single cell RNA-seq analysis is a cornerstone of developmental research and provides a great level of detail in understanding the underlying dynamic processes within tissues. In the context of plants, this highlights some of the key differentiation pathways that root cells undergo.</p>
@@ -224,16 +281,19 @@
     
 
     
-    <a href="/training-material/topics/single-cell/tutorials/scrna-plant/tutorial.html" class="btn btn-primary">View Tutorial</a>
+    <a href="/training-material/topics/single-cell/tutorials/scrna-plant/tutorial.html" class="btn btn-primary">View Material</a>
     
 
+    
+
+    
     
 
     
   </div>
 
   <div class="col-md-4">
-    <img alt="Arabidopsis clusters with trajectory from meristematic cells towards trichoblasts" src="/training-material/topics/single-cell/images/scrna-plant/scrna-plant1.jpg" width="300" loading="lazy"/>
+    <img alt="Arabidopsis clusters with trajectory from meristematic cells towards trichoblasts" src="/training-material/topics/single-cell/images/scrna-plant/scrna-plant1.jpg" width="300"/>
   </div>
 </div>
 </div>
@@ -253,14 +313,14 @@
   "description": "<p>Single cell RNA-seq analysis is a cornerstone of developmental research and provides a great level",
   "articleBody": "<p>Single cell RNA-seq analysis is a cornerstone of developmental research and provides a great level of detail in understanding the underlying dynamic processes within tissues. In the context of plants, this highlights some of the key differentiation pathways that root cells undergo.</p>\n\n<p>This tutorial replicates the paper <a href=\"https://doi.org/10.1016/j.devcel.2019.02.022\">“Spatiotemporal Developmental Trajectories in the Arabidopsis Root Revealed Using High-Throughput Single-Cell RNA Sequencing” (Denyer et al., 2019)</a>, where the major plant cell types are recovered in the data as well as distinguishing between QC and meristematic cells.</p>\n",
   "datePublished": "2021-03-30 00:00:00 +0000",
-  "dateModified": "2022-11-15 14:10:34 +0000",
+  "dateModified": "2023-05-18 11:55:15 +0000",
   "author": [
     {
       "@context": "https://schema.org",
       "@type": "Person",
       "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
+        "@id": "https://bioschemas.org/profiles/Person/0.3-DRAFT",
+        "@type": "CreativeWork"
       },
       "url": "https://training.galaxyproject.org/training-material/hall-of-fame/mtekman/",
       "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/mtekman/",
@@ -280,8 +340,8 @@
       "@context": "https://schema.org",
       "@type": "Person",
       "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
+        "@id": "https://bioschemas.org/profiles/Person/0.3-DRAFT",
+        "@type": "CreativeWork"
       },
       "url": "https://training.galaxyproject.org/training-material/hall-of-fame/beatrizserrano/",
       "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/beatrizserrano/",
@@ -335,59 +395,169 @@
   "accessibilitySummary": "The text aims to be as accessible as possible. Image descriptions will vary per tutorial, from images being completely inaccessible, to images with good descriptions for non-visual users."
 }
 </script>
+</article>
+
+<hr/>
+<h2>Recent News</h2>
+<a href="/training-material/news.html">See all news</a>
+
+<div>
+
+
+
+	<article>
+	<h3>
+		<a href="/training-material/news/2023/06/21/fair.html">ELIXIR-UK Fellow Launches New FAIR Data Management Training</a>
+	</h3>
+	<p>
+	21 June 2023 &nbsp;
+	
+	<span class="label label-default tutorial_tag" style="--color-primary: #bab7ff; --color-darker: #a39fff; --color-dimmed: #aeabff;">new topic</span>
+	
+	<span class="label label-default tutorial_tag" style="--color-primary: #ffad3c; --color-darker: #e89800; --color-dimmed: #f6a200;">new tutorial</span>
+	
+	</p>
+	<p class="card-text">
+		
+		Katarzyna Kamieniecka (University of Bradford), a member of the ELIXIR-UK Fellowship Programme, has just launched a new series of lessons to improve {FAIR} data management in the life sciences. The lessons are designed to help researchers and research support staff understand the principles of FAIR data management and apply them to their own work.
+
+		
+	</p>
+</article>
+
+
+	<article>
+	<h3>
+		<a href="/training-material/news/2023/06/07/pan-galactic-search.html">New Feature: Pan-Galactic Tool Search</a>
+	</h3>
+	<p>
+	7 June 2023 &nbsp;
+	
+	<span class="label label-default tutorial_tag" style="--color-primary: #b6b8ff; --color-darker: #9ea0ff; --color-dimmed: #aaacff;">new feature</span>
+	
+	<span class="label label-default tutorial_tag" style="--color-primary: #fff098; --color-darker: #ebd600; --color-dimmed: #f9e300;">gtn</span>
+	
+	</p>
+	<p class="card-text">
+		
+		Did you ever want to run a tool, but not know where it might be available?
+The GTN has you covered with the Pan-Galactic Tool Search that is now available.
+
+		
+	</p>
+</article>
+
+
+	<article>
+	<h3>
+		<a href="/training-material/news/2023/06/01/hart.html">GTN Celebrates Pride Month: Alan Hart & M. Tuberculosis</a>
+	</h3>
+	<p>
+	1 June 2023 &nbsp;
+	
+	</p>
+	<p class="card-text">
+		
+		June is Pride Month in the US and countries around the world. We have automatically activated the new Progress Pride theme on the home page (Click to Activate) if you hadn’t already selected a theme.
+
+		
+	</p>
+</article>
+
+
+	<article>
+	<h3>
+		<a href="/training-material/news/2023/05/15/isoform-usage-training.html">New Galaxy training: Genome-wide alternative splicing analysis</a>
+	</h3>
+	<p>
+	15 May 2023 &nbsp;
+	
+	<span class="label label-default tutorial_tag" style="--color-primary: #ffad3c; --color-darker: #e89800; --color-dimmed: #f6a200;">new tutorial</span>
+	
+	</p>
+	<p class="card-text">
+		
+		The GTN hosts a new training for analyzing alternative splicing at genome-wide scale!
+
+		
+	</p>
+</article>
+
+
+	<article>
+	<h3>
+		<a href="/training-material/news/2023/05/11/ro-crate.html">BY-COVID and RO-Crate collaboration brings new topic: FAIR Data, Workflows & More</a>
+	</h3>
+	<p>
+	11 May 2023 &nbsp;
+	
+	<span class="label label-default tutorial_tag" style="--color-primary: #bab7ff; --color-darker: #a39fff; --color-dimmed: #aeabff;">new topic</span>
+	
+	<span class="label label-default tutorial_tag" style="--color-primary: #b6b8ff; --color-darker: #9ea0ff; --color-dimmed: #aaacff;">new feature</span>
+	
+	</p>
+	<p class="card-text">
+		
+		As part of the BY-COVID project, the RO-Crate team and BY-COVID members have
+brought several RO-Crate related tutorials into the Galaxy Training Network, under a brand new {FAIR} topic!
+
+		
+	</p>
+</article>
+
+
+</div>
 
 
 </section>
 
         </div>
-        
-            <footer>
-    <div class="container">
-        <br><br>
-        <p>
-            The <a href="https://galaxyproject.org/teach/gtn/">Galaxy Training Network</a>
-            provides researchers with online training materials, connects them with local trainers, and helps promoting open data analysis practices worldwide.
-        </p>
-        <p>
-        The content of the tutorials is licensed under the <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>. The website and infrastructure is licensed under <a rel="license" href="https://github.com/galaxyproject/training-material/blob/main/LICENSE.md">MIT</a>.
-        </p>
+        <footer>
+	<hr />
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-6" style="text-align: left">
+				<p>
+					The <a href="https://galaxyproject.org/teach/gtn/">Galaxy Training Network</a>
+					provides researchers with online training materials, connects them with local trainers, and helps promoting FAIR and Open Science practices worldwide. All contributions are subject to the <a rel="code-of-conduct" href="https://galaxyproject.org/community/coc/">Galaxy Project Code of Conduct</a>.
+				</p>
+				<p>
+				The GTN infrastructure is licensed under <a rel="license" href="https://github.com/galaxyproject/training-material/blob/main/LICENSE.md">MIT</a>
+				</p>
+				<p>
+				Revision <a href="https://github.com/galaxyproject/training-material/commit/476574d2b382dd1db6c2c408d8fb6ec4393a6904">476574d</a>, built with Jekyll (4.3.2 | production)
+				</p>
+			</div>
+			<div class="col-sm-6" style="text-align: right">
+				
+				<p>
+					Resource <i class="fas fa-fingerprint" aria-hidden="true"></i><span class="visually-hidden">purl</span><abbr title="Persistent URL">PURL</abbr>: <a href="https://gxy.io/GTN:N00009">https://gxy.io/GTN:N00009</a>
+				</p>
+				
+				<p>
+					<i>This Material</i>:
+					
+					is licensed under
+					<a rel="license" href="https://spdx.org/licenses/CC-BY-4.0">
+						Creative Commons Attribution 4.0 International License
+					</a>
+				</p>
+				<p>
+					<a href="https://github.com/galaxyproject/training-material/edit/main/news/_posts/2021-03-30-tutorial_scrna_plant.md" title="Edit on GitHub">
+					<i class="fab fa-github" aria-hidden="true"></i><span class="visually-hidden">github</span> Edit on GitHub
+					</a>
+				</p>
+			</div>
+		</div>
+	</div>
+</footer>
 
-        <p>This is revision <a href="https://github.com/galaxyproject/training-material/commit/18e949c75c52b69adbc92b0904a2082ec75d0dd7">18e949c75c52b69adbc92b0904a2082ec75d0dd7</a>. </p>
+
     </div>
 </footer>
 
-        
-        <script src="/training-material/assets/js/jquery.slim.min.js"></script>
-        <script src="/training-material/assets/js/popper.min.js"></script>
-        <script src="/training-material/assets/js/bootstrap.min.js?v=3"></script>
-        <script src="/training-material/assets/js/details-element-polyfill.js"></script>
+
+        <script src='/training-material/assets/js/bundle.main.js?v=1687830693'></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-        <script src="/training-material/assets/js/bootstrap-toc.min.js"></script>
-        <script src="/training-material/assets/js/main.js"></script>
-        <script src="/training-material/assets/js/clipboard.min.js"></script>
-        <script>
-        var snippets=document.querySelectorAll('div.highlight');
-        [].forEach.call(snippets,function(snippet){
-            snippet.firstChild.insertAdjacentHTML('beforebegin','<button class="btn btn-light" data-clipboard-snippet tabindex="0"><i class="fa fa-copy"></i>&nbsp;Copy</button>');
-        });
-
-        var clipboardSnippets=new ClipboardJS('[data-clipboard-snippet]',{
-            target:function(trigger){return trigger.nextElementSibling;
-        }});
-        </script>
-        
-
-        <script type="text/javascript">
-            if(window.location.hostname === "galaxyproject.github.io") {
-                // Redirect
-                var redirect = "https://training.galaxyproject.org" + window.location.pathname + window.location.search;
-                $('div.container.main-content').prepend("<div class='alert alert-warning'><strong>Note: </strong>This content has a new home at <a href=\"" + redirect + "\">" + redirect + "</a>, which you will be redirected to in 5 seconds.</div>");
-
-                window.setTimeout(function(){
-                    window.location.href = redirect;
-                }, 5000)
-
-            }
-        </script>
     </body>
 </html>

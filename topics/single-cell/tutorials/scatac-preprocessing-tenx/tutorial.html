@@ -8,16 +8,45 @@
         
             <script async defer data-domain="training.galaxyproject.org" src="https://plausible.galaxyproject.eu/js/plausible.js"></script>
 
+<!-- JavaScript Error Monitoring, and performance tracking. -->
+<script
+  src="https://browser.sentry-cdn.com/7.52.1/bundle.tracing.min.js"
+  integrity="sha384-muuFXKS3752PNA4rPm9Uq6BLvOfV4CXyr9MHDBPvozOJJUWLKkogEFWOIRoVps43"
+  crossorigin="anonymous"
+></script>
+<script type="text/javascript">
+Sentry.init({
+  dsn: "https://45e0ec6e4373462b92969505df37cf40@sentry.galaxyproject.org/10",
+  release: "galaxy-training-network@476574d2b382dd1db6c2c408d8fb6ec4393a6904",
+  integrations: [new Sentry.BrowserTracing(), new Sentry.Replay()],
+  sampleRate: 0.1,
+  tracesSampleRate: 0.1,
+  // Capture Replay for no sessions by default
+  replaysSessionSampleRate: 0.01,
+  // plus for 1% of sessions with an error
+  replaysOnErrorSampleRate: 0.01,
+  // PII OFF
+  sendDefaultPii: false, // Off by default but just in case.
+  environment: "production",
+});
+</script>
+
         
-        <link rel="stylesheet" href="/training-material/assets/css/bootstrap.min.css?v=3">
-        <link rel="stylesheet" href="/training-material/assets/css/bootstrap-toc.min.css">
-        <link rel="stylesheet" href="/training-material/assets/css/main.css?v=2">
-        <link rel="stylesheet" href="/training-material/assets/fontawesome/css/all.css">
-        <link rel="stylesheet" href="/training-material/assets/css/academicons.css">
         <link rel="shortcut icon" href="/training-material/favicon.ico" type="image/x-icon">
         <link rel="alternate" type="application/atom+xml" href="/training-material/feed.xml">
         <link rel="canonical" href="https://training.galaxyproject.org/training-material/topics/single-cell/tutorials/scatac-preprocessing-tenx/tutorial.html">
-        <link rel="license" href="https://creativecommons.org/licenses/by/4.0/">
+        <link rel="license" href="https://spdx.org/licenses/CC-BY-4.0">
+        <link rel="preload" href="/training-material/assets/fonts/AtkinsonHyperlegible/Atkinson-Hyperlegible-Regular-102a.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="preload" href="/training-material/assets/fonts/AtkinsonHyperlegible/Atkinson-Hyperlegible-Bold-102a.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="preload" href="/training-material/assets/fonts/AtkinsonHyperlegible/Atkinson-Hyperlegible-Italic-102a.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML" as="script" crossorigin>
+        <link rel="preload" href="/training-material/assets/css/main.css?v=3" as="style">
+        <link rel='preload' href='/training-material/assets/js/bundle.theme.js?v=1687830693' as='script'>
+<link rel='preload' href='/training-material/assets/js/bundle.main.js?v=1687830693' as='script'>
+        <link rel="stylesheet" href="/training-material/assets/css/main.css?v=3">
+        <link rel="manifest" href="/training-material/manifest.json">
+        <meta name="theme-color" content="#2c3143"/>
+
 
         <meta name="DC.identifier" content="https://github.com/galaxyproject/training-material">
 <meta name="DC.type" content="text">
@@ -90,6 +119,10 @@
     "url": "https://galaxyproject.org/teach/gtn/"
   },
   "identifier": "https://github.com/galaxyproject/training-material",
+  "workTranslation": [
+
+  ],
+  "creativeWorkStatus": "Active",
   "accessMode": [
     "textual",
     "visual"
@@ -117,6 +150,7 @@
   "name": "Hands-on for 'Pre-processing of 10X Single-Cell ATAC-seq Datasets' tutorial",
   "url": "https://training.galaxyproject.org/training-material/topics/single-cell/tutorials/scatac-preprocessing-tenx/tutorial.html",
   "timeRequired": "PT1H",
+  "teaches": "Demultiplex single-cell FASTQ data from 10X Genomics\n - Learn about transparent matrix formats\n - Create a high-quality count matrix starting from scATAC-seq FASTQ files",
   "keywords": "single-cell, single-cell, 10x",
   "description": "The questions this  addresses are:\n - What is 10X?\n - What are single-cell ATAC fragments and MTX files?\n - What is an Anndata file, and why is it important?\n\n\nThe objectives are:\n - Demultiplex single-cell FASTQ data from 10X Genomics\n - Learn about transparent matrix formats\n - Create a high-quality count matrix starting from scATAC-seq FASTQ files\n\n",
   "inLanguage": {
@@ -159,33 +193,8 @@
       "@context": "https://schema.org",
       "@type": "Person",
       "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
-      },
-      "url": "https://training.galaxyproject.org/training-material/hall-of-fame/pavanvidem/",
-      "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/pavanvidem/",
-      "name": "Pavankumar Videm",
-      "image": "https://avatars.githubusercontent.com/pavanvidem",
-      "description": "A contributor to the GTN project.",
-      "memberOf": [
-        {
-          "@type": "Organization",
-          "email": "galaxytrainingnetwork@gmail.com",
-          "name": "Galaxy Training Network",
-          "url": "https://galaxyproject.org/teach/gtn/"
-        }
-      ],
-      "identifier": "https://orcid.org/0000-0002-5192-126X",
-      "orcid": "https://orcid.org/0000-0002-5192-126X"
-    }
-  ],
-  "contributor": [
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
+        "@id": "https://bioschemas.org/profiles/Person/0.3-DRAFT",
+        "@type": "CreativeWork"
       },
       "url": "https://training.galaxyproject.org/training-material/hall-of-fame/pavanvidem/",
       "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/pavanvidem/",
@@ -211,13 +220,25 @@
       "description": "Training material and practicals for all kinds of single cell analysis (particularly scRNA-seq!). When you generate your lovely gene lists for your cells, consider checking out our Transcriptomics tutorials for further network analysis!",
       "url": "https://training.galaxyproject.org/training-material/topics/single-cell/"
     }
-  ]
+  ],
+  "educationalLevel": "Introductory",
+  "mentions": [
+    {
+      "@type": "Thing",
+      "name": "single-cell"
+    },
+    {
+      "@type": "Thing",
+      "name": "10x"
+    }
+  ],
+  "abstract": "# Introduction"
 }
         </script>
         
     </head>
     <body data-spy="scroll" data-target="#toc">
-        <script type="text/javascript" src="/training-material/assets/js/theme.js"></script>
+        <script src='/training-material/assets/js/bundle.theme.js?v=1687830693'></script>
         <header>
     <nav class="navbar navbar-expand-md navbar-dark" aria-label="Site Navigation">
         <div class="container">
@@ -286,7 +307,6 @@
     </a>
     <div class="dropdown-menu dropdown-menu-right">
 
-        
         <a class="dropdown-item" href="https://github.com/galaxyproject/training-material/edit/main/topics/single-cell/tutorials/scatac-preprocessing-tenx/tutorial.md" title="Edit on GitHub">
           <i class="fab fa-github" aria-hidden="true"></i><span class="visually-hidden">github</span> Edit on GitHub
         </a>
@@ -334,13 +354,13 @@
 
             <div id="archive-selector">
             
-                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2020-01-06/topics/single-cell/tutorials/scatac-preprocessing-tenx/tutorial.html" title="Version 2020-01-06">2020-01-06</a>
+                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2020-01-06/topics/single-cell/tutorials/scatac-preprocessing-tenx/tutorial.html">2020-01-06</a>
             
-                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2019-12-01/topics/single-cell/tutorials/scatac-preprocessing-tenx/tutorial.html" title="Version 2019-12-01">2019-12-01</a>
+                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2019-12-01/topics/single-cell/tutorials/scatac-preprocessing-tenx/tutorial.html">2019-12-01</a>
             
-                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2019-11-01/topics/single-cell/tutorials/scatac-preprocessing-tenx/tutorial.html" title="Version 2019-11-01">2019-11-01</a>
+                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2019-11-01/topics/single-cell/tutorials/scatac-preprocessing-tenx/tutorial.html">2019-11-01</a>
             
-                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/" title="Older Versions">Older Versions</a>
+                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/">Older Versions</a>
             </div>
 
         </div>
@@ -353,7 +373,7 @@
                     <li class="nav-item">
                       <div id="navbarSupportedContent" role="search">
                         <!-- Search form -->
-                        <form class="form-inline mr-auto" method="GET" action="/training-material/search">
+                        <form class="form-inline mr-auto" method="GET" action="/training-material/search2">
                           <i class="fas fa-search nav-link" aria-hidden="true"></i>
                           <div class="md-form mb-2">
                             <input name="query" class="form-control nicer" type="text" placeholder="Search Tutorials" aria-label="Search">
@@ -390,191 +410,7 @@
 
 
 
-<script>
-  ((window.gitter = {}).chat = {}).options = {
-  room: 'Galaxy-Training-Network/galaxy-single-cell'
-  };
-</script>
 
-
-<script src="https://sidecar.gitter.im/dist/sidecar.v1.js" async defer></script>
-
-<script type="application/ld+json">
-    
-
-
-{
-  "@context": "http://schema.org",
-  "@type": "LearningResource",
-  "http://purl.org/dc/terms/conformsTo": {
-    "@id": "https://bioschemas.org/profiles/TrainingMaterial/1.0-RELEASE",
-    "@type": "CreativeWork"
-  },
-  "audience": {
-    "@type": "EducationalAudience",
-    "educationalRole": "Students"
-  },
-  "citation": {
-    "@type": "CreativeWork",
-    "name": "Community-Driven Data Analysis Training for Biology",
-    "url": "https://doi.org/10.1016/j.cels.2018.05.012"
-  },
-  "copyrightHolder": {
-    "@type": "Organization",
-    "email": "galaxytrainingnetwork@gmail.com",
-    "name": "Galaxy Training Network",
-    "url": "https://galaxyproject.org/teach/gtn/"
-  },
-  "dateModified": "2023-04-25 16:03:32 +0000",
-  "discussionUrl": "https://gitter.im/Galaxy-Training-Network/Lobby",
-  "headline": "Pre-processing of 10X Single-Cell ATAC-seq Datasets",
-  "interactivityType": "mixed",
-  "isAccessibleForFree": true,
-  "isFamilyFriendly": true,
-  "license": "https://spdx.org/licenses/CC-BY-4.0.html",
-  "producer": {
-    "@type": "Organization",
-    "email": "galaxytrainingnetwork@gmail.com",
-    "name": "Galaxy Training Network",
-    "url": "https://galaxyproject.org/teach/gtn/"
-  },
-  "provider": {
-    "@type": "Organization",
-    "email": "galaxytrainingnetwork@gmail.com",
-    "name": "Galaxy Training Network",
-    "url": "https://galaxyproject.org/teach/gtn/"
-  },
-  "sourceOrganization": {
-    "@type": "Organization",
-    "email": "galaxytrainingnetwork@gmail.com",
-    "name": "Galaxy Training Network",
-    "url": "https://galaxyproject.org/teach/gtn/"
-  },
-  "identifier": "https://github.com/galaxyproject/training-material",
-  "accessMode": [
-    "textual",
-    "visual"
-  ],
-  "accessModeSufficient": [
-    "textual",
-    "visual"
-  ],
-  "accessibilityControl": [
-    "fullKeyboardControl",
-    "fullMouseControl"
-  ],
-  "accessibilityFeature": [
-    "alternativeText",
-    "tableOfContents"
-  ],
-  "accessibilitySummary": "The text aims to be as accessible as possible. Image descriptions will vary per tutorial, from images being completely inaccessible, to images with good descriptions for non-visual users.",
-  "isPartOf": {
-    "@type": "CreativeWork",
-    "name": "Single Cell",
-    "description": "Training material and practicals for all kinds of single cell analysis (particularly scRNA-seq!). When you generate your lovely gene lists for your cells, consider checking out our Transcriptomics tutorials for further network analysis!",
-    "url": "https://training.galaxyproject.org/training-material/topics/single-cell/"
-  },
-  "learningResourceType": "hands-on tutorial",
-  "name": "Hands-on for 'Pre-processing of 10X Single-Cell ATAC-seq Datasets' tutorial",
-  "url": "https://training.galaxyproject.org/training-material/topics/single-cell/tutorials/scatac-preprocessing-tenx/tutorial.html",
-  "timeRequired": "PT1H",
-  "keywords": "single-cell, single-cell, 10x",
-  "description": "The questions this  addresses are:\n - What is 10X?\n - What are single-cell ATAC fragments and MTX files?\n - What is an Anndata file, and why is it important?\n\n\nThe objectives are:\n - Demultiplex single-cell FASTQ data from 10X Genomics\n - Learn about transparent matrix formats\n - Create a high-quality count matrix starting from scATAC-seq FASTQ files\n\n",
-  "inLanguage": {
-    "@type": "Language",
-    "name": "English",
-    "alternateName": "en"
-  },
-  "competencyRequired": [
-    {
-      "@context": "http://schema.org",
-      "@type": "LearningResource",
-      "url": "https://training.galaxyproject.org/training-material/topics/introduction/",
-      "name": "Introduction to Galaxy Analyses",
-      "description": "Introduction to Galaxy Analyses",
-      "provider": {
-        "@type": "Organization",
-        "email": "galaxytrainingnetwork@gmail.com",
-        "name": "Galaxy Training Network",
-        "url": "https://galaxyproject.org/teach/gtn/"
-      }
-    },
-    {
-      "@context": "http://schema.org",
-      "@type": "LearningResource",
-      "url": "https://training.galaxyproject.org/training-material/topics/single-cell/tutorials/scrna-preprocessing-tenx/tutorial.html",
-      "name": "Pre-processing of 10X Single-Cell RNA Datasets",
-      "description": "Hands-on for 'Pre-processing of 10X Single-Cell RNA Datasets' tutorial",
-      "learningResourceType": "hands-on tutorial",
-      "interactivityType": "expositive",
-      "provider": {
-        "@type": "Organization",
-        "email": "galaxytrainingnetwork@gmail.com",
-        "name": "Galaxy Training Network",
-        "url": "https://galaxyproject.org/teach/gtn/"
-      }
-    }
-  ],
-  "author": [
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
-      },
-      "url": "https://training.galaxyproject.org/training-material/hall-of-fame/pavanvidem/",
-      "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/pavanvidem/",
-      "name": "Pavankumar Videm",
-      "image": "https://avatars.githubusercontent.com/pavanvidem",
-      "description": "A contributor to the GTN project.",
-      "memberOf": [
-        {
-          "@type": "Organization",
-          "email": "galaxytrainingnetwork@gmail.com",
-          "name": "Galaxy Training Network",
-          "url": "https://galaxyproject.org/teach/gtn/"
-        }
-      ],
-      "identifier": "https://orcid.org/0000-0002-5192-126X",
-      "orcid": "https://orcid.org/0000-0002-5192-126X"
-    }
-  ],
-  "contributor": [
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
-      },
-      "url": "https://training.galaxyproject.org/training-material/hall-of-fame/pavanvidem/",
-      "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/pavanvidem/",
-      "name": "Pavankumar Videm",
-      "image": "https://avatars.githubusercontent.com/pavanvidem",
-      "description": "A contributor to the GTN project.",
-      "memberOf": [
-        {
-          "@type": "Organization",
-          "email": "galaxytrainingnetwork@gmail.com",
-          "name": "Galaxy Training Network",
-          "url": "https://galaxyproject.org/teach/gtn/"
-        }
-      ],
-      "identifier": "https://orcid.org/0000-0002-5192-126X",
-      "orcid": "https://orcid.org/0000-0002-5192-126X"
-    }
-  ],
-  "about": [
-    {
-      "@type": "CreativeWork",
-      "name": "Single Cell",
-      "description": "Training material and practicals for all kinds of single cell analysis (particularly scRNA-seq!). When you generate your lovely gene lists for your cells, consider checking out our Transcriptomics tutorials for further network analysis!",
-      "url": "https://training.galaxyproject.org/training-material/topics/single-cell/"
-    }
-  ]
-}
-</script>
 
 <article class="tutorial topic-single-cell">
     <h1 data-toc-skip>Pre-processing of 10X Single-Cell ATAC-seq Datasets</h1>
@@ -584,7 +420,7 @@
     <div markdown="0">
 
 	<div class="contributors-line">
-		Authors: <a href="/training-material/hall-of-fame/pavanvidem/" class="contributor-badge contributor-pavanvidem"><img src="/training-material/assets/images/orcid.png" alt="orcid logo"/><img src="https://avatars.githubusercontent.com/pavanvidem?s=27" alt="Avatar">Pavankumar Videm</a>
+		Authors: <a href="/training-material/hall-of-fame/pavanvidem/" class="contributor-badge contributor-pavanvidem"><img src="/training-material/assets/images/orcid.png" alt="orcid logo" width="36" height="36"/><img src="https://avatars.githubusercontent.com/pavanvidem?s=36" alt="Avatar" width="36" height="36">Pavankumar Videm</a>
 	</div>
 
 </div>
@@ -776,174 +612,18 @@
 
 
             
-                <li class="btn btn-default supporting_material">
-
-
-    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false" title="Where to run the tutorial">
-        <i class="fas fa-globe" aria-hidden="true"></i><span class="visually-hidden">instances</span>&nbsp;Available on these Galaxies 
-    </a>
-    <ul class="dropdown-menu">
-    
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-        <a class="dropdown-item" href="https://africa.usegalaxy.eu/" title="Galaxy Africa">
-            Galaxy Africa
-        </a>
-        
-    
-        
-        <a class="dropdown-item" href="https://india.usegalaxy.eu/" title="Galaxy India">
-            Galaxy India
-        </a>
-        
-    
-        
-        <a class="dropdown-item" href="https://test.galaxyproject.org/" title="Galaxy Test">
-            Galaxy Test
-        </a>
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-        <a class="dropdown-item" href="https://plants.usegalaxy.eu/" title="Plant Anaylsis Workbench">
-            Plant Anaylsis Workbench
-        </a>
-        
-    
-        
-    
-        
-    
-        
-        <a class="dropdown-item" href="https://streetscience.usegalaxy.eu/" title="Street Science">
-            Street Science
-        </a>
-        
-    
-        
-    
-        
-        <a class="dropdown-item" href="https://usegalaxy.eu" title="UseGalaxy.eu">
-            UseGalaxy.eu
-        </a>
-        
-    
-        
-    
-        
-    
-        
-        <a class="dropdown-item" href="https://usegalaxy.org" title="UseGalaxy.org (Main)">
-            UseGalaxy.org (Main)
-        </a>
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-    </ul>
-
-
-</li>
-            
         </ul>
         
 
         <div><strong><i class="far fa-calendar" aria-hidden="true"></i> Last modification:</strong> Apr 25, 2023 </div>
         <div><strong><i class="fas fa-balance-scale" aria-hidden="true"></i> License:</strong>
+		
             
-            <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Tutorial Content is licensed under Creative Commons Attribution 4.0 International License</a>
-            
-            <a rel="license" href="https://github.com/galaxyproject/training-material/blob/main/LICENSE.md">The GTN Framework is licensed under MIT</a>
+            <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Tutorial Content is licensed under Creative Commons Attribution 4.0 International License</a>.
+             The GTN Framework is licensed under <a rel="license" href="https://github.com/galaxyproject/training-material/blob/main/LICENSE.md">MIT</a>
         </div>
         
-        <div><strong>Short Link:</strong> <a href="https://gxy.io/GTN:T00335">https://gxy.io/GTN:T00335</a> </div>
+        <div><strong><i class="fas fa-fingerprint" aria-hidden="true"></i><span class="visually-hidden">purl</span><abbr title="Persistent URL">PURL</abbr>:</strong> <a href="https://gxy.io/GTN:T00335">https://gxy.io/GTN:T00335</a> </div>
         
     </blockquote>
     </section>
@@ -968,7 +648,7 @@
 
 <h2 id="library-preparation">Library Preparation</h2>
 
-<figure id="figure-1"><img src="/training-material/topics/single-cell/images/scatac-pre-processing/tenx_libprep_scatac.png" alt="Library Preparation. " width="890" height="343" loading="lazy" /><figcaption><span class="figcaption-prefix"><strong>Figure 1</strong>:</span> An overview of the 10x single-nuclei ATAC-seq library preparation</figcaption></figure>
+<figure id="figure-1" style="max-width: 90%; margin:auto;"><img src="/training-material/topics/single-cell/images/scatac-pre-processing/tenx_libprep_scatac.png" alt="Library Preparation. " width="890" height="343" loading="lazy" /><figcaption><span class="figcaption-prefix"><strong>Figure 1</strong>:</span> An overview of the 10x single-nuclei ATAC-seq library preparation</figcaption></figure>
 
 <p>The 10X barcoded gel beads consist of a pool of barcodes which are used to separately index each cell. The individual gel barcodes are delivered to each cell via flow cytometry, where each cell is fed single-file along a liquid tube and tagged with a 10X gel bead. The cells are then isolated from one another within thousands of nanoliter droplets, where each droplet is described by a unique 10x barcode that all reads in that droplet are associated with. The oil is then removed and all (now barcoded) DNA reads are pooled together to be sequenced.</p>
 
@@ -978,7 +658,7 @@
 
 <p>There are two main reagent kits used during the library preparation. Below we can see the layout of the primers used in both chemistries. We can ignore most of these as they are not relevant, namely: the P5 and P7 Illumina primers are used in the Illumina <a href="https://en.wikipedia.org/wiki/Illumina_dye_sequencing#Bridge_amplification">bridge amplification</a> process; the Sample Index is an 8bp primer which is related to the Chromium system that balances nucleotide bias and ensures that there is no sample overlap during the multiplexed sequencing. The primer of interest to us is the Cell Barcode (CB). Unlike scRNA-seq, Unique Molecular Identifiers (UMIs) are not used in scATAC-seq.</p>
 
-<figure id="figure-2"><img src="/training-material/topics/single-cell/images/scatac-pre-processing/tenx_primers_scatac.svg" alt="chem. " width="899" height="213" loading="lazy" /><figcaption><span class="figcaption-prefix"><strong>Figure 2</strong>:</span> 10x scATAC-Seq sequencing library</figcaption></figure>
+<figure id="figure-2" style="max-width: 90%; margin:auto;"><img src="/training-material/topics/single-cell/images/scatac-pre-processing/tenx_primers_scatac.svg" alt="chem. " width="899" height="213" loading="lazy" /><figcaption><span class="figcaption-prefix"><strong>Figure 2</strong>:</span> 10x scATAC-Seq sequencing library</figcaption></figure>
 
 <p>There are two major chemistries (v1 and v2) used in 10x scATAC-seq library construction. Technically, v2 chemistry is more sensitive and has better data yield. But the final sequencing library is the same. Hence, same the data analysis applies to both chemistries. Both chemistries generate the 4 FASTQ files containing:</p>
 <ul>
@@ -1051,7 +731,7 @@
 <p>We import all three FASTQ files into a history.</p>
 
 <blockquote class="notranslate hands_on">
-  <div class="box-title hands-on-title" id="hands-on-data-upload-and-organization"><i class="fas fa-pencil-alt" aria-hidden="true"></i> Hands-on: Data upload and organization</div>
+  <div class="box-title hands-on-title" id="hands-on-data-upload-and-organization"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Data upload and organization</div>
 
   <ol>
     <li>
@@ -1059,12 +739,14 @@
 
       <!--SNIPPET-->
       <blockquote class="tip">   <div class="box-title tip-title" id="tip-creating-a-new-history"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-creating-a-new-history" aria-expanded="true"><i class="far fa-lightbulb" aria-hidden="true"></i> Tip: Creating a new history<span class="fold-unfold fa fa-minus-square"></span></button></div>   <p>Click the <i class="fas fa-plus" aria-hidden="true"></i><span class="visually-hidden">new-history</span> icon at the top of the history panel.</p>   <p>If the <i class="fas fa-plus" aria-hidden="true"></i><span class="visually-hidden">new-history</span> is missing:</p>   <ol>   <li>Click on the <i class="fas fa-cog" aria-hidden="true"></i><span class="visually-hidden">galaxy-gear</span> icon (<strong>History options</strong>) on the top of the history panel</li>   <li>Select the option <strong>Create New</strong> from the menu</li> </ol> </blockquote>
+      <p><!--END_SNIPPET--></p>
     </li>
     <li>
       <p>Import the sub-sampled FASTQ data from <a href="https://zenodo.org/record/7855968"><code class="language-plaintext highlighter-rouge">Zenodo</code></a> or from the data library (ask your instructor)</p>
 
       <!--SNIPPET-->
-      <blockquote class="tip">   <div class="box-title tip-title" id="tip-importing-data-from-a-data-library"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-importing-data-from-a-data-library" aria-expanded="true"><i class="far fa-lightbulb" aria-hidden="true"></i> Tip: Importing data from a data library<span class="fold-unfold fa fa-minus-square"></span></button></div>   <p>As an alternative to uploading the data from a URL or your computer, the files may also have been made available from a <em>shared data library</em>:</p>   <ul>   <li>Go into <strong>Shared data</strong> (top panel) then <strong>Data libraries</strong></li>   <li>Navigate to  the correct folder as indicated by your instructor</li>   <li>Select the desired files</li>   <li>Click on the <strong>To History</strong> button near the top and select <strong>as Datasets</strong> from the dropdown menu</li>   <li>In the pop-up window, select the history you want to import the files to (or create a new one)</li>   <li>Click on <strong>Import</strong></li> </ul> </blockquote>
+      <blockquote class="tip">   <div class="box-title tip-title" id="tip-importing-data-from-a-data-library"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-importing-data-from-a-data-library" aria-expanded="true"><i class="far fa-lightbulb" aria-hidden="true"></i> Tip: Importing data from a data library<span class="fold-unfold fa fa-minus-square"></span></button></div>   <p>As an alternative to uploading the data from a URL or your computer, the files may also have been made available from a <em>shared data library</em>:</p>   <ol>   <li>Go into <strong>Shared data</strong> (top panel) then <strong>Data libraries</strong></li>   <li>Navigate to  the correct folder as indicated by your instructor.     <ul>       <li>On most Galaxies tutorial data will be provided in a folder named <strong>GTN - Material –&gt; Topic Name -&gt; Tutorial Name</strong>.</li>     </ul>   </li>   <li>Select the desired files</li>   <li>Click on <strong>Add to History</strong> <i class="fas fa-caret-down" aria-hidden="true"></i><span class="visually-hidden">galaxy-dropdown</span> near the top and select <strong>as Datasets</strong> from the dropdown menu</li>   <li>     <p>In the pop-up window, choose</p>     <ul>       <li><em>“Select history”</em>: the history you want to import the data to (or create a new one)</li>     </ul>   </li>   <li>Click on <strong>Import</strong></li> </ol> </blockquote>
+      <p><!--END_SNIPPET--></p>
 
       <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>https://zenodo.org/record/7855968/files/atac_pbmc_1k_nextgem_S1_R1_001_chr21.fastq.gz
 https://zenodo.org/record/7855968/files/atac_pbmc_1k_nextgem_S1_R2_001_chr21.fastq.gz
@@ -1072,14 +754,15 @@ https://zenodo.org/record/7855968/files/atac_pbmc_1k_nextgem_S1_R3_001_chr21.fas
 </code></pre></div>      </div>
 
       <!--SNIPPET-->
-      <blockquote class="tip">   <div class="box-title tip-title" id="tip-importing-via-links"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-importing-via-links" aria-expanded="true"><i class="far fa-lightbulb" aria-hidden="true"></i> Tip: Importing via links<span class="fold-unfold fa fa-minus-square"></span></button></div>   <ul>   <li>Copy the link location</li>   <li>     <p>Open the Galaxy Upload Manager (<i class="fas fa-upload" aria-hidden="true"></i><span class="visually-hidden">galaxy-upload</span> on the top-right of the tool panel)</p>   </li>   <li>Select <strong>Paste/Fetch Data</strong></li>   <li>     <p>Paste the link(s) into the text field</p>   </li>   <li>     <p>Press <strong>Start</strong></p>   </li>   <li><strong>Close</strong> the window</li> </ul> </blockquote>
+      <blockquote class="tip">   <div class="box-title tip-title" id="tip-importing-via-links"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-importing-via-links" aria-expanded="true"><i class="far fa-lightbulb" aria-hidden="true"></i> Tip: Importing via links<span class="fold-unfold fa fa-minus-square"></span></button></div>   <ul>   <li>Copy the link location</li>   <li>     <p>Click <i class="fas fa-upload" aria-hidden="true"></i><span class="visually-hidden">galaxy-upload</span> <strong>Upload Data</strong> at the top of the tool panel</p>   </li>   <li>Select <i class="fa fa-edit" aria-hidden="true"></i><span class="visually-hidden">galaxy-wf-edit</span> <strong>Paste/Fetch Data</strong></li>   <li>     <p>Paste the link(s) into the text field</p>   </li>   <li>     <p>Press <strong>Start</strong></p>   </li>   <li><strong>Close</strong> the window</li> </ul> </blockquote>
+      <p><!--END_SNIPPET--></p>
     </li>
   </ol>
 
 </blockquote>
 <blockquote class="question">
 
-  <div class="box-title question-title" id="question"><i class="far fa-question-circle" aria-hidden="true"></i> Question</div>
+  <div class="box-title question-title" id="question"><i class="far fa-question-circle" aria-hidden="true" ></i> Question</div>
   <p>Inspect all the uploaded FASTQ files by clicking on the <i class="far fa-eye" aria-hidden="true"></i><span class="visually-hidden">galaxy-eye</span> symbol.</p>
   <ol>
     <li>Which FASTQ file contains the barcode sequence?</li>
@@ -1087,7 +770,7 @@ https://zenodo.org/record/7855968/files/atac_pbmc_1k_nextgem_S1_R3_001_chr21.fas
   </ol>
 
   <blockquote class="solution">
-    <div class="box-title solution-title" id="solution"><button class="gtn-boxify-button solution" type="button" aria-controls="solution" aria-expanded="true"><i class="far fa-eye" aria-hidden="true"></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
+    <div class="box-title solution-title" id="solution"><button class="gtn-boxify-button solution" type="button" aria-controls="solution" aria-expanded="true"><i class="far fa-eye" aria-hidden="true" ></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
     <ol>
       <li>In this case, R2 contains the cell barcodes</li>
       <li>16bp</li>
@@ -1101,15 +784,15 @@ https://zenodo.org/record/7855968/files/atac_pbmc_1k_nextgem_S1_R3_001_chr21.fas
 <p>First, we will attach the barcodes from the barcodes FASTQ file to the ids of forward and reverse reads that carry the association between reads and barcodes throughout the analysis. We will use this information to demultiplex the cells at the end while creating the count matrix. We will be left with only two FASTQ files of forward and reverse reads after this step.</p>
 
 <blockquote class="comment">
-  <div class="box-title comment-title" id="comment"><i class="far fa-comment-dots" aria-hidden="true"></i> Comment</div>
+  <div class="box-title comment-title" id="comment"><i class="far fa-comment-dots" aria-hidden="true" ></i> Comment</div>
 
-  <p><span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/iuc/sinto_barcode/sinto_barcode/0.9.0+galaxy1" title="Sinto barcode tool"><strong>Sinto barcode</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: toolshed.g2.bx.psu.edu/repos/iuc/sinto_barcode/sinto_barcode/0.9.0+galaxy1</span></span>   consumes the barcode sequence from the <code class="language-plaintext highlighter-rouge">atac_pbmc_1k_nextgem_S1_R2_001_chr21.fastq.gz</code> file and uses <code class="language-plaintext highlighter-rouge">:</code> delimiter to prepend it to both the forward and reverse read ids. The tool expects the same number of reads in all three FASTQ files and should be present in the same order.</p>
+  <p><span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/iuc/sinto_barcode/sinto_barcode/0.9.0+galaxy1" title="Sinto barcode tool" aria-role="link"><strong>Sinto barcode</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: toolshed.g2.bx.psu.edu/repos/iuc/sinto_barcode/sinto_barcode/0.9.0+galaxy1</span></span>  consumes the barcode sequence from the <code class="language-plaintext highlighter-rouge">atac_pbmc_1k_nextgem_S1_R2_001_chr21.fastq.gz</code> file and uses <code class="language-plaintext highlighter-rouge">:</code> delimiter to prepend it to both the forward and reverse read ids. The tool expects the same number of reads in all three FASTQ files and should be present in the same order.</p>
 </blockquote>
 
 <blockquote class="notranslate hands_on">
-  <div class="box-title hands-on-title" id="hands-on"><i class="fas fa-pencil-alt" aria-hidden="true"></i> Hands-on</div>
+  <div class="box-title hands-on-title" id="hands-on"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on</div>
 
-  <p><span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/iuc/sinto_barcode/sinto_barcode/0.9.0+galaxy1" title="Sinto barcode tool"><strong>Sinto barcode</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: toolshed.g2.bx.psu.edu/repos/iuc/sinto_barcode/sinto_barcode/0.9.0+galaxy1</span></span>   with the following parameters:</p>
+  <p><span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/iuc/sinto_barcode/sinto_barcode/0.9.0+galaxy1" title="Sinto barcode tool" aria-role="link"><strong>Sinto barcode</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: toolshed.g2.bx.psu.edu/repos/iuc/sinto_barcode/sinto_barcode/0.9.0+galaxy1</span></span>  with the following parameters:</p>
   <ul>
     <li><em>“FASTQ file containing cell barcode sequences”</em>: <code class="language-plaintext highlighter-rouge">atac_pbmc_1k_nextgem_S1_R2_001_chr21.fastq.gz</code></li>
     <li><em>“Single or Paired-end data”</em>: <code class="language-plaintext highlighter-rouge">Paired</code></li>
@@ -1119,7 +802,7 @@ https://zenodo.org/record/7855968/files/atac_pbmc_1k_nextgem_S1_R3_001_chr21.fas
   </ul>
 
   <blockquote class="comment">
-    <div class="box-title comment-title" id="comment-sinto-barcode-output"><i class="far fa-comment-dots" aria-hidden="true"></i> Comment: Sinto barcode output</div>
+    <div class="box-title comment-title" id="comment-sinto-barcode-output"><i class="far fa-comment-dots" aria-hidden="true" ></i> Comment: Sinto barcode output</div>
 
     <p>After a successful run, the barcode sequences from the barcode FASTQ file are prepended to the read names. We can inspect the output FASTQ files by clicking on the <i class="far fa-eye" aria-hidden="true"></i><span class="visually-hidden">galaxy-eye</span> symbol of the <em>barcoded read 1</em> file.</p>
   </blockquote>
@@ -1132,10 +815,10 @@ https://zenodo.org/record/7855968/files/atac_pbmc_1k_nextgem_S1_R3_001_chr21.fas
 <p>First things first. Let’s do a basic FASTQ quality control using <strong>FastQC</strong></p>
 
 <blockquote class="notranslate hands_on">
-  <div class="box-title hands-on-title" id="hands-on-1"><i class="fas fa-pencil-alt" aria-hidden="true"></i> Hands-on</div>
+  <div class="box-title hands-on-title" id="hands-on-1"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on</div>
 
   <ol>
-    <li><span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/devteam/fastqc/fastqc/0.73+galaxy0" title="FastQC tool"><strong>FastQC</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: toolshed.g2.bx.psu.edu/repos/devteam/fastqc/fastqc/0.73+galaxy0</span></span>  with the following parameters:
+    <li><span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/devteam/fastqc/fastqc/0.73+galaxy0" title="FastQC tool" aria-role="link"><strong>FastQC</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: toolshed.g2.bx.psu.edu/repos/devteam/fastqc/fastqc/0.73+galaxy0</span></span> with the following parameters:
       <ul>
         <li><em>“Short read data from your current history”</em>: Use <i class="far fa-copy" aria-hidden="true"></i><span class="visually-hidden">param-files</span> <strong>Multiple datasets</strong> to choose both <code class="language-plaintext highlighter-rouge">barcoded read 1</code> and <code class="language-plaintext highlighter-rouge">barcoded read 2</code> (outputs of <strong>Sinto barcode</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span>).</li>
       </ul>
@@ -1144,7 +827,7 @@ https://zenodo.org/record/7855968/files/atac_pbmc_1k_nextgem_S1_R3_001_chr21.fas
   </ol>
 
   <blockquote class="question">
-    <div class="box-title question-title" id="question-1"><i class="far fa-question-circle" aria-hidden="true"></i> Question</div>
+    <div class="box-title question-title" id="question-1"><i class="far fa-question-circle" aria-hidden="true" ></i> Question</div>
 
     <ol>
       <li>How many reads are in the FASTQ?</li>
@@ -1152,7 +835,7 @@ https://zenodo.org/record/7855968/files/atac_pbmc_1k_nextgem_S1_R3_001_chr21.fas
     </ol>
 
     <blockquote class="solution">
-      <div class="box-title solution-title" id="solution-1"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-1" aria-expanded="true"><i class="far fa-eye" aria-hidden="true"></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
+      <div class="box-title solution-title" id="solution-1"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-1" aria-expanded="true"><i class="far fa-eye" aria-hidden="true" ></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
 
       <ol>
         <li>There are 685686 reads.</li>
@@ -1181,18 +864,18 @@ simply by the PCR itself. We will remove these duplicates later on.</p>
 </blockquote>
 
 <blockquote class="tip">
-  <div class="box-title tip-title" id="tip-adapter-trimming"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-adapter-trimming" aria-expanded="true"><i class="far fa-lightbulb" aria-hidden="true"></i> Tip: Adapter trimming<span class="fold-unfold fa fa-minus-square"></span></button></div>
+  <div class="box-title tip-title" id="tip-adapter-trimming"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-adapter-trimming" aria-expanded="true"><i class="far fa-lightbulb" aria-hidden="true" ></i> Tip: Adapter trimming<span class="fold-unfold fa fa-minus-square"></span></button></div>
 
   <p>There is only a little amount of Nextera Transposase Sequence in the reads (see Adapter Content section of <strong>FastQC</strong> output). In this case, we skip the adapter trimming step and proceed to the mapping step. If your data has a significant amount of Nextera Transposase Sequences, then proceed to adapter trimming using either <strong>cutadapt</strong> or <strong>Trim Galore!</strong>. <strong>Trim Galore</strong> can automatically detect the adapter sequence. If you use <strong>Cutadapt</strong>, follow the bulk ATAC-Seq tutorial <a href="/training-material/topics/epigenetics/tutorials/atac-seq/tutorial.html">Trimming Reads</a> step.</p>
 </blockquote>
 
 <h2 id="mapping-reads-to-a-reference-genome">Mapping reads to a reference genome</h2>
-<p>Now we map the reads to a reference genome using <span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/devteam/bwa/bwa_mem/0.7.17.2" title="BWA-MEM tool"><strong>BWA-MEM</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: toolshed.g2.bx.psu.edu/repos/devteam/bwa/bwa_mem/0.7.17.2</span></span> .</p>
+<p>Now we map the reads to a reference genome using <span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/devteam/bwa/bwa_mem/0.7.17.2" title="BWA-MEM tool" aria-role="link"><strong>BWA-MEM</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: toolshed.g2.bx.psu.edu/repos/devteam/bwa/bwa_mem/0.7.17.2</span></span>.</p>
 
 <blockquote class="notranslate hands_on">
-  <div class="box-title hands-on-title" id="hands-on-mapping"><i class="fas fa-pencil-alt" aria-hidden="true"></i> Hands-on: Mapping</div>
+  <div class="box-title hands-on-title" id="hands-on-mapping"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Mapping</div>
 
-  <p><span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/devteam/bwa/bwa_mem/0.7.17.2" title="Map with BWA-MEM tool"><strong>Map with BWA-MEM</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: toolshed.g2.bx.psu.edu/repos/devteam/bwa/bwa_mem/0.7.17.2</span></span>  with the following parameters:</p>
+  <p><span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/devteam/bwa/bwa_mem/0.7.17.2" title="Map with BWA-MEM tool" aria-role="link"><strong>Map with BWA-MEM</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: toolshed.g2.bx.psu.edu/repos/devteam/bwa/bwa_mem/0.7.17.2</span></span> with the following parameters:</p>
   <ul>
     <li><em>“Using reference genome”</em>: <code class="language-plaintext highlighter-rouge">hg38</code></li>
     <li>In <em>“Single or Paired-end reads”</em>: <code class="language-plaintext highlighter-rouge">Paired</code>
@@ -1220,18 +903,18 @@ simply by the PCR itself. We will remove these duplicates later on.</p>
 <p>An ATAC-seq fragment file is a BED file with Tn5 integration sites, the cell barcode associated with the fragment, and the frequency of the sequenced fragment. PCR duplicates are collapsed. Here we filter out the alignments with low mapping quality.</p>
 
 <blockquote class="comment">
-  <div class="box-title comment-title" id="comment-on-tn5-insertion"><i class="far fa-comment-dots" aria-hidden="true"></i> Comment: on Tn5 insertion</div>
+  <div class="box-title comment-title" id="comment-on-tn5-insertion"><i class="far fa-comment-dots" aria-hidden="true" ></i> Comment: on Tn5 insertion</div>
 
   <p>When Tn5 cuts an accessible chromatin locus it inserts adapters separated by 9bp (<span class="citation"><a href="#Kia2017">Kia <i>et al.</i> 2017</a></span>):</p>
-  <figure id="figure-3"><img src="/training-material/topics/epigenetics/images/atac-seq/NexteraLibraryConstruction.jpg" alt="Nextera_Library_Construction. " width="378" height="189" loading="lazy" /><figcaption><span class="figcaption-prefix"><strong>Figure 3</strong>:</span> Nextera Library Construction</figcaption></figure>
+  <figure id="figure-3" style="max-width: 90%; margin:auto;"><img src="/training-material/topics/epigenetics/images/atac-seq/NexteraLibraryConstruction.jpg" alt="Nextera_Library_Construction. " width="378" height="189" loading="lazy" /><figcaption><span class="figcaption-prefix"><strong>Figure 3</strong>:</span> Nextera Library Construction</figcaption></figure>
 
   <p>This means, to have the read start site reflecting the center of where Tn5 bound, the reads on the positive strand should be shifted 4 bp to the right and reads on the negative strands should be shifted 5 bp to the left as in <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3959825">Buenrostro et al. 2013</a>. <strong>Genrich</strong> can apply these shifts when ATAC-seq mode is selected. In most cases, we do not have 9bp resolution so we don’t take it into account but if you are interested in the footprint, this is important.</p>
 </blockquote>
 
 <blockquote class="notranslate hands_on">
-  <div class="box-title hands-on-title" id="hands-on-create-scatac-fragments"><i class="fas fa-pencil-alt" aria-hidden="true"></i> Hands-on: Create scATAC fragments</div>
+  <div class="box-title hands-on-title" id="hands-on-create-scatac-fragments"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Create scATAC fragments</div>
   <ol>
-    <li><span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/iuc/sinto_fragments/sinto_fragments/0.9.0+galaxy1" title="Sinto fragments tool"><strong>Sinto fragments</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: toolshed.g2.bx.psu.edu/repos/iuc/sinto_fragments/sinto_fragments/0.9.0+galaxy1</span></span>  with the following parameters:
+    <li><span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/iuc/sinto_fragments/sinto_fragments/0.9.0+galaxy1" title="Sinto fragments tool" aria-role="link"><strong>Sinto fragments</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: toolshed.g2.bx.psu.edu/repos/iuc/sinto_fragments/sinto_fragments/0.9.0+galaxy1</span></span> with the following parameters:
       <ul>
         <li><em>“Input BAM file”</em>: <code class="language-plaintext highlighter-rouge">mapped reads in BAM format</code> (output of <strong>Map with BWA-MEM</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span>)`</li>
         <li><em>“Minimum MAPQ required to retain fragment”</em>: <code class="language-plaintext highlighter-rouge">30</code></li>
@@ -1240,7 +923,7 @@ simply by the PCR itself. We will remove these duplicates later on.</p>
         <li><em>“Number of bases to shift Tn5 insertion position by on the reverse strand”</em>: <code class="language-plaintext highlighter-rouge">-5</code></li>
       </ul>
     </li>
-    <li><span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/iuc/bedtools/bedtools_sortbed/2.30.0+galaxy2" title="bedtools SortBED tool"><strong>bedtools SortBED</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: toolshed.g2.bx.psu.edu/repos/iuc/bedtools/bedtools_sortbed/2.30.0+galaxy2</span></span>  with the following parameters:
+    <li><span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/iuc/bedtools/bedtools_sortbed/2.30.0+galaxy2" title="bedtools SortBED tool" aria-role="link"><strong>bedtools SortBED</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: toolshed.g2.bx.psu.edu/repos/iuc/bedtools/bedtools_sortbed/2.30.0+galaxy2</span></span> with the following parameters:
       <ul>
         <li><em>“Sort the following BED/bedGraph/GFF/VCF/EncodePeak file *“</em>: <code class="language-plaintext highlighter-rouge">fragments BED</code> (output of <strong>Sinto fragments</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span>)`</li>
         <li><em>“Sort by”</em>: <code class="language-plaintext highlighter-rouge">chromosome, then by start position (asc)</code></li>
@@ -1260,16 +943,16 @@ At this step, two approaches exist:</p>
   <li>The second one chosen here is to use all reads to be more exhaustive. In this approach, it is very important to re-center the signal of each read on the 5’ extremity (read start site) as this is where Tn5 cuts. Indeed, you want your peaks around the nucleosomes and not directly on the nucleosome:</li>
 </ul>
 
-<figure id="figure-4"><img src="/training-material/topics/epigenetics/images/atac-seq/schemeWithLegend.jpg" alt="ATAC-Seq_reads_relative_to_nucleosomes. " width="680" height="378" loading="lazy" /><figcaption><span class="figcaption-prefix"><strong>Figure 4</strong>:</span> Scheme of ATAC-Seq reads relative to nucleosomes</figcaption></figure>
+<figure id="figure-4" style="max-width: 90%; margin:auto;"><img src="/training-material/topics/epigenetics/images/atac-seq/schemeWithLegend.jpg" alt="ATAC-Seq_reads_relative_to_nucleosomes. " width="680" height="378" loading="lazy" /><figcaption><span class="figcaption-prefix"><strong>Figure 4</strong>:</span> Scheme of ATAC-Seq reads relative to nucleosomes</figcaption></figure>
 
 <p>If we only assess the coverage of the 5’ extremity of the reads, the data would be too sparse and it would be impossible to call peaks. Thus, we will extend the start sites of the reads by 200bp (100bp in each direction) to assess coverage. We call peaks with MACS2. In order to get the coverage centered on the 5’ extended 100bp on each side we will use <code class="language-plaintext highlighter-rouge">--shift -100</code> and <code class="language-plaintext highlighter-rouge">--extend 200</code>:</p>
-<figure id="figure-5"><img src="/training-material/topics/epigenetics/images/atac-seq/macs2Options.jpg" alt="MACS2_peak_centering_options. " width="643" height="113" loading="lazy" /><figcaption><span class="figcaption-prefix"><strong>Figure 5</strong>:</span> MACS2 options to get 100bp each side</figcaption></figure>
+<figure id="figure-5" style="max-width: 90%; margin:auto;"><img src="/training-material/topics/epigenetics/images/atac-seq/macs2Options.jpg" alt="MACS2_peak_centering_options. " width="643" height="113" loading="lazy" /><figcaption><span class="figcaption-prefix"><strong>Figure 5</strong>:</span> MACS2 options to get 100bp each side</figcaption></figure>
 
 <blockquote class="notranslate hands_on">
-  <div class="box-title hands-on-title" id="hands-on-call-peaks-with-macs2"><i class="fas fa-pencil-alt" aria-hidden="true"></i> Hands-on: Call peaks with MACS2</div>
+  <div class="box-title hands-on-title" id="hands-on-call-peaks-with-macs2"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Call peaks with MACS2</div>
 
   <ol>
-    <li><span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/iuc/macs2/macs2_callpeak/2.1.1.20160309.6" title="MACS2 callpeak tool"><strong>MACS2 callpeak</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: toolshed.g2.bx.psu.edu/repos/iuc/macs2/macs2_callpeak/2.1.1.20160309.6</span></span>  with the following parameters:
+    <li><span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/iuc/macs2/macs2_callpeak/2.1.1.20160309.6" title="MACS2 callpeak tool" aria-role="link"><strong>MACS2 callpeak</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: toolshed.g2.bx.psu.edu/repos/iuc/macs2/macs2_callpeak/2.1.1.20160309.6</span></span> with the following parameters:
       <ul>
         <li><em>“Are you pooling Treatment Files?”</em>: <code class="language-plaintext highlighter-rouge">No</code></li>
         <li><em>“ChIP-Seq Treatment File”</em>: <code class="language-plaintext highlighter-rouge">sorted fragments</code></li>
@@ -1302,12 +985,12 @@ At this step, two approaches exist:</p>
       </ul>
 
       <blockquote class="comment">
-        <div class="box-title comment-title" id="comment-why-keeping-all-duplicates-is-important"><i class="far fa-comment-dots" aria-hidden="true"></i> Comment: Why keeping all duplicates is important</div>
+        <div class="box-title comment-title" id="comment-why-keeping-all-duplicates-is-important"><i class="far fa-comment-dots" aria-hidden="true" ></i> Comment: Why keeping all duplicates is important</div>
 
         <p>We previously removed duplicates using <strong>Sinto fragment</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> using paired-end information. If two pairs had identical R1 but different R2, we knew it was not a PCR duplicate. Because we converted the BAM to BED we lost the pair information. If we keep the default (removing duplicates) one of the 2 identical R1 would be filtered out as duplicate.</p>
       </blockquote>
       <blockquote class="comment">
-        <div class="box-title comment-title" id="comment-bed-encode-narrowpeak-format"><i class="far fa-comment-dots" aria-hidden="true"></i> Comment: BED / encode narrowPeak format</div>
+        <div class="box-title comment-title" id="comment-bed-encode-narrowpeak-format"><i class="far fa-comment-dots" aria-hidden="true" ></i> Comment: BED / encode narrowPeak format</div>
         <p>If you are not familiar with BED format or encode narrowPeak format, see the <a href="https://genome.ucsc.edu/FAQ/FAQformat.html">BED Format</a></p>
       </blockquote>
     </li>
@@ -1322,10 +1005,10 @@ At this step, two approaches exist:</p>
 <p>For count matrix creation, we will use <strong>Build count matrix</strong> from <strong>EpiScanpy</strong> tool suite. It takes fragments file and the peaks in either BED format or directly a narrowPeak file of <strong>MACS2</strong> output. Regardless of file type, the tool only considers the first 3 columns which contain chromosome id, start and end positions of the peak regions. Parameters like <code class="language-plaintext highlighter-rouge">--call-summits</code> from our MACS2 run can result in different peaks with the same peak boundaries. It is always a  good practice to remove duplicate peak regions so that our final count matrix will have unique features.</p>
 
 <blockquote class="notranslate hands_on">
-  <div class="box-title hands-on-title" id="hands-on-extract-unique-peak-regions"><i class="fas fa-pencil-alt" aria-hidden="true"></i> Hands-on: Extract unique peak regions</div>
+  <div class="box-title hands-on-title" id="hands-on-extract-unique-peak-regions"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Extract unique peak regions</div>
 
   <ol>
-    <li><span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/bgruening/text_processing/tp_sorted_uniq/1.1.0" title="Unique occurrences of each record tool"><strong>Unique occurrences of each record</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: toolshed.g2.bx.psu.edu/repos/bgruening/text_processing/tp_sorted_uniq/1.1.0</span></span>  with the following parameters:
+    <li><span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/bgruening/text_processing/tp_sorted_uniq/1.1.0" title="Unique occurrences of each record tool" aria-role="link"><strong>Unique occurrences of each record</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: toolshed.g2.bx.psu.edu/repos/bgruening/text_processing/tp_sorted_uniq/1.1.0</span></span> with the following parameters:
       <ul>
         <li><em>“File to scan for unique values”</em>: <code class="language-plaintext highlighter-rouge">narrow Peaks</code> (output of <strong>MACS2</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span>)</li>
         <li>In <em>“Advanced Options”</em>: <code class="language-plaintext highlighter-rouge">Show Advanced Options</code>
@@ -1339,14 +1022,14 @@ At this step, two approaches exist:</p>
   </ol>
 
   <blockquote class="question">
-    <div class="box-title question-title" id="question-2"><i class="far fa-question-circle" aria-hidden="true"></i> Question</div>
+    <div class="box-title question-title" id="question-2"><i class="far fa-question-circle" aria-hidden="true" ></i> Question</div>
 
     <ol>
       <li>How many peak regions were duplicated?</li>
     </ol>
 
     <blockquote class="solution">
-      <div class="box-title solution-title" id="solution-2"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-2" aria-expanded="true"><i class="far fa-eye" aria-hidden="true"></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
+      <div class="box-title solution-title" id="solution-2"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-2" aria-expanded="true"><i class="far fa-eye" aria-hidden="true" ></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
 
       <ol>
         <li>There were initially 1064 regions in the <code class="language-plaintext highlighter-rouge">narrow Peaks</code> file. Now there are 891 regions after deduplication. More than 15% (173) of regions have the same peak boundaries.</li>
@@ -1361,15 +1044,15 @@ At this step, two approaches exist:</p>
 
 <p>The most common format, called <a href="https://anndata.readthedocs.io/en/stable/"><code class="language-plaintext highlighter-rouge">AnnData</code></a>, stores the matrix as well as gene and cell annotations in a concise, compressed and extremely readable manner:</p>
 
-<figure id="figure-6"><img src="/training-material/topics/single-cell/images/scrna-pre-processing/tenx_anndata.png" alt="Anndata format. " width="1381" height="1122" loading="lazy" /><figcaption><span class="figcaption-prefix"><strong>Figure 6</strong>:</span> <code>AnnData</code> format stores a count matrix <code>X</code> together with annotations of observations (i.e. cells) <code>obs</code>, variables (i.e. peaks) <code>var</code> and unstructured annotations <code>uns</code>.</figcaption></figure>
+<figure id="figure-6" style="max-width: 90%; margin:auto;"><img src="/training-material/topics/single-cell/images/scrna-pre-processing/tenx_anndata.png" alt="Anndata format. " width="1381" height="1122" loading="lazy" /><figcaption><span class="figcaption-prefix"><strong>Figure 6</strong>:</span> <code>AnnData</code> format stores a count matrix <code>X</code> together with annotations of observations (i.e. cells) <code>obs</code>, variables (i.e. peaks) <code>var</code> and unstructured annotations <code>uns</code>.</figcaption></figure>
 
 <p>This format is used by <a href="https://scanpy.readthedocs.io/en/stable/index.html">Scanpy</a> (<span class="citation"><a href="#wolf2018scanpy">Wolf <i>et al.</i> 2018</a></span>) and <a href="https://colomemaria.github.io/episcanpy_doc/index.html">EpiScanpy</a> (<span class="citation"><a href="#danese2021episcanpy">Danese <i>et al.</i> 2021</a></span>) tool suits for analyzing single-cell omics data. So we need first to import the matrix and annotations of peaks and cells (present in fragments BED file) into an <code class="language-plaintext highlighter-rouge">AnnData</code> object.</p>
 
 <blockquote class="notranslate hands_on">
-  <div class="box-title hands-on-title" id="hands-on-build-count-matrix-with-episcanpy"><i class="fas fa-pencil-alt" aria-hidden="true"></i> Hands-on: Build count matrix with EpiScanpy</div>
+  <div class="box-title hands-on-title" id="hands-on-build-count-matrix-with-episcanpy"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Build count matrix with EpiScanpy</div>
 
   <ol>
-    <li><span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/iuc/episcanpy_build_matrix/episcanpy_build_matrix/0.3.2+galaxy1" title="Build count matrix with EpiScanpy tool"><strong>Build count matrix with EpiScanpy</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: toolshed.g2.bx.psu.edu/repos/iuc/episcanpy_build_matrix/episcanpy_build_matrix/0.3.2+galaxy1</span></span>  with the following parameters:
+    <li><span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/iuc/episcanpy_build_matrix/episcanpy_build_matrix/0.3.2+galaxy1" title="Build count matrix with EpiScanpy tool" aria-role="link"><strong>Build count matrix with EpiScanpy</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: toolshed.g2.bx.psu.edu/repos/iuc/episcanpy_build_matrix/episcanpy_build_matrix/0.3.2+galaxy1</span></span> with the following parameters:
       <ul>
         <li><em>“ATAC fragments file”</em>: <code class="language-plaintext highlighter-rouge">sorted fragments</code></li>
         <li><em>“Features file”</em>: output of <strong>Unique</strong> tool <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span></li>
@@ -1386,7 +1069,7 @@ At this step, two approaches exist:</p>
   </ol>
 
   <blockquote class="tip">
-    <div class="box-title tip-title" id="tip-chromosome-selection"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-chromosome-selection" aria-expanded="true"><i class="far fa-lightbulb" aria-hidden="true"></i> Tip: Chromosome selection<span class="fold-unfold fa fa-minus-square"></span></button></div>
+    <div class="box-title tip-title" id="tip-chromosome-selection"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-chromosome-selection" aria-expanded="true"><i class="far fa-lightbulb" aria-hidden="true" ></i> Tip: Chromosome selection<span class="fold-unfold fa fa-minus-square"></span></button></div>
 
     <p>In this example data, our reads are from the <em>chr21</em>. Hence, we input <code class="language-plaintext highlighter-rouge">21</code> for chromosome ids. For human or mouse genomes, directly select from the dropdown list. Make sure that all the canonical chromosomes are present in the fragments file.</p>
 
@@ -1397,10 +1080,10 @@ At this step, two approaches exist:</p>
 <p>Because the <code class="language-plaintext highlighter-rouge">AnnData</code> format is an extension of the HDF5 format, i.e. a binary format, an <code class="language-plaintext highlighter-rouge">AnnData</code> object can not be inspected directly in Galaxy by clicking on the <i class="far fa-eye" aria-hidden="true"></i><span class="visually-hidden">galaxy-eye</span> (<strong>View data</strong>) icon. Instead, we need to use a dedicated tool from the <strong>AnnData</strong> suite.</p>
 
 <blockquote class="notranslate hands_on">
-  <div class="box-title hands-on-title" id="hands-on-inspect-an-anndata-object"><i class="fas fa-pencil-alt" aria-hidden="true"></i> Hands-on: Inspect an AnnData object</div>
+  <div class="box-title hands-on-title" id="hands-on-inspect-an-anndata-object"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Inspect an AnnData object</div>
 
   <ol>
-    <li><span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/iuc/anndata_inspect/anndata_inspect/0.7.5+galaxy1" title="Inspect AnnData tool"><strong>Inspect AnnData</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: toolshed.g2.bx.psu.edu/repos/iuc/anndata_inspect/anndata_inspect/0.7.5+galaxy1</span></span>  with the following parameters:
+    <li><span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/iuc/anndata_inspect/anndata_inspect/0.7.5+galaxy1" title="Inspect AnnData tool" aria-role="link"><strong>Inspect AnnData</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: toolshed.g2.bx.psu.edu/repos/iuc/anndata_inspect/anndata_inspect/0.7.5+galaxy1</span></span> with the following parameters:
       <ul>
         <li><i class="far fa-file" aria-hidden="true"></i><span class="visually-hidden">param-file</span> <em>“Annotated data matrix”</em>: <code class="language-plaintext highlighter-rouge">PBMC 1k chr21 Anndata</code></li>
         <li><em>“What to inspect?”</em>: <code class="language-plaintext highlighter-rouge">General information about the object</code></li>
@@ -1410,7 +1093,7 @@ At this step, two approaches exist:</p>
       <p>Inspect the generated file</p>
 
       <blockquote class="question">
-        <div class="box-title question-title" id="question-3"><i class="far fa-question-circle" aria-hidden="true"></i> Question</div>
+        <div class="box-title question-title" id="question-3"><i class="far fa-question-circle" aria-hidden="true" ></i> Question</div>
 
         <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>AnnData object with n_obs × n_vars = 18426 × 891
 </code></pre></div>        </div>
@@ -1421,7 +1104,7 @@ At this step, two approaches exist:</p>
         </ol>
 
         <blockquote class="solution">
-          <div class="box-title solution-title" id="solution-3"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-3" aria-expanded="true"><i class="far fa-eye" aria-hidden="true"></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
+          <div class="box-title solution-title" id="solution-3"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-3" aria-expanded="true"><i class="far fa-eye" aria-hidden="true" ></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
 
           <ol>
             <li>There are 18,426 observations, representing the cells.</li>
@@ -1433,7 +1116,7 @@ At this step, two approaches exist:</p>
       </blockquote>
 
       <blockquote class="comment">
-        <div class="box-title comment-title" id="comment-faster-method-for-general-information"><i class="far fa-comment-dots" aria-hidden="true"></i> Comment: Faster Method for General Information</div>
+        <div class="box-title comment-title" id="comment-faster-method-for-general-information"><i class="far fa-comment-dots" aria-hidden="true" ></i> Comment: Faster Method for General Information</div>
 
         <ul>
           <li>To view general information of any <em>Anndata</em> file:
@@ -1450,11 +1133,11 @@ At this step, two approaches exist:</p>
               </li>
             </ul>
           </li>
-          <li>For more specific queries, <span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/iuc/anndata_inspect/anndata_inspect/0.7.5+galaxy1" title="Inspect AnnData tool"><strong>Inspect AnnData</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: toolshed.g2.bx.psu.edu/repos/iuc/anndata_inspect/anndata_inspect/0.7.5+galaxy1</span></span>  is required.</li>
+          <li>For more specific queries, <span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/iuc/anndata_inspect/anndata_inspect/0.7.5+galaxy1" title="Inspect AnnData tool" aria-role="link"><strong>Inspect AnnData</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: toolshed.g2.bx.psu.edu/repos/iuc/anndata_inspect/anndata_inspect/0.7.5+galaxy1</span></span> is required.</li>
         </ul>
       </blockquote>
     </li>
-    <li><span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/iuc/anndata_inspect/anndata_inspect/0.7.5+galaxy1" title="Inspect AnnData tool"><strong>Inspect AnnData</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: toolshed.g2.bx.psu.edu/repos/iuc/anndata_inspect/anndata_inspect/0.7.5+galaxy1</span></span>  with the following parameters:
+    <li><span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/iuc/anndata_inspect/anndata_inspect/0.7.5+galaxy1" title="Inspect AnnData tool" aria-role="link"><strong>Inspect AnnData</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: toolshed.g2.bx.psu.edu/repos/iuc/anndata_inspect/anndata_inspect/0.7.5+galaxy1</span></span> with the following parameters:
       <ul>
         <li><i class="far fa-file" aria-hidden="true"></i><span class="visually-hidden">param-file</span> <em>“Annotated data matrix”</em>: <code class="language-plaintext highlighter-rouge">PBMC 1k chr21 Anndata</code></li>
         <li><em>“What to inspect?”</em>: <code class="language-plaintext highlighter-rouge">The full data matrix</code></li>
@@ -1464,7 +1147,7 @@ At this step, two approaches exist:</p>
       <p>Inspect the generated file</p>
 
       <blockquote class="question">
-        <div class="box-title question-title" id="question-4"><i class="far fa-question-circle" aria-hidden="true"></i> Question</div>
+        <div class="box-title question-title" id="question-4"><i class="far fa-question-circle" aria-hidden="true" ></i> Question</div>
 
         <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>	chr21_10272276_10272566	chr21_10330743_10330987	chr21_10489276_10489476	chr21_13979698_13980574	chr21_14027127_14027558 ...
 AAAAAATACCCGAAGG	0.0	0.0	0.0	0.0
@@ -1477,7 +1160,7 @@ AAAACCTCACCCAACA	0.0	0.0	0.0	0.0
         <p>What is stored in the generated file?</p>
 
         <blockquote class="solution">
-          <div class="box-title solution-title" id="solution-4"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-4" aria-expanded="true"><i class="far fa-eye" aria-hidden="true"></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
+          <div class="box-title solution-title" id="solution-4"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-4" aria-expanded="true"><i class="far fa-eye" aria-hidden="true" ></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
 
           <p>The file is a table with 18,426 lines (observations or cells) and 891 columns (variables or peaks): the count matrix for each of the 891 peaks and 18,426 cells. The 1st row contains the peak location as an annotation of the columns and the 1st column the barcodes of the cells as an annotation of the rows.</p>
 
@@ -1485,7 +1168,7 @@ AAAACCTCACCCAACA	0.0	0.0	0.0	0.0
 
       </blockquote>
     </li>
-    <li><span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/iuc/anndata_inspect/anndata_inspect/0.7.5+galaxy1" title="Inspect AnnData tool"><strong>Inspect AnnData</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: toolshed.g2.bx.psu.edu/repos/iuc/anndata_inspect/anndata_inspect/0.7.5+galaxy1</span></span>  with the following parameters:
+    <li><span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/iuc/anndata_inspect/anndata_inspect/0.7.5+galaxy1" title="Inspect AnnData tool" aria-role="link"><strong>Inspect AnnData</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: toolshed.g2.bx.psu.edu/repos/iuc/anndata_inspect/anndata_inspect/0.7.5+galaxy1</span></span> with the following parameters:
       <ul>
         <li><i class="far fa-file" aria-hidden="true"></i><span class="visually-hidden">param-file</span> <em>“Annotated data matrix”</em>: <code class="language-plaintext highlighter-rouge">PBMC 1k chr21 Anndata</code></li>
         <li><em>“What to inspect?”</em>: <code class="language-plaintext highlighter-rouge">Key-indexed observations annotation (obs)</code></li>
@@ -1495,7 +1178,7 @@ AAAACCTCACCCAACA	0.0	0.0	0.0	0.0
       <p>Inspect the generated file</p>
 
       <blockquote class="question">
-        <div class="box-title question-title" id="question-5"><i class="far fa-question-circle" aria-hidden="true"></i> Question</div>
+        <div class="box-title question-title" id="question-5"><i class="far fa-question-circle" aria-hidden="true" ></i> Question</div>
 
         <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>AAAAAATACCCGAAGG
 AAAAACAAAAATATAC
@@ -1507,7 +1190,7 @@ AAAACCTCACCCAACA
         <p>What is stored in the generated file?</p>
 
         <blockquote class="solution">
-          <div class="box-title solution-title" id="solution-5"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-5" aria-expanded="true"><i class="far fa-eye" aria-hidden="true"></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
+          <div class="box-title solution-title" id="solution-5"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-5" aria-expanded="true"><i class="far fa-eye" aria-hidden="true" ></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
 
           <p>The file is tabular with annotations of the observations. i.e. the cells. Here there are only the barcodes as annotation, so only one column, being also the index for the count matrix.</p>
 
@@ -1515,7 +1198,7 @@ AAAACCTCACCCAACA
 
       </blockquote>
     </li>
-    <li><span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/iuc/anndata_inspect/anndata_inspect/0.7.5+galaxy1" title="Inspect AnnData tool"><strong>Inspect AnnData</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: toolshed.g2.bx.psu.edu/repos/iuc/anndata_inspect/anndata_inspect/0.7.5+galaxy1</span></span>  with the following parameters:
+    <li><span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/iuc/anndata_inspect/anndata_inspect/0.7.5+galaxy1" title="Inspect AnnData tool" aria-role="link"><strong>Inspect AnnData</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: toolshed.g2.bx.psu.edu/repos/iuc/anndata_inspect/anndata_inspect/0.7.5+galaxy1</span></span> with the following parameters:
       <ul>
         <li><i class="far fa-file" aria-hidden="true"></i><span class="visually-hidden">param-file</span> <em>“Annotated data matrix”</em>: <code class="language-plaintext highlighter-rouge">PBMC 1k chr21 Anndata</code></li>
         <li><em>“What to inspect?”</em>: <code class="language-plaintext highlighter-rouge">Key-indexed annotation of variables/features (var)</code></li>
@@ -1525,7 +1208,7 @@ AAAACCTCACCCAACA
       <p>Inspect the generated file</p>
 
       <blockquote class="question">
-        <div class="box-title question-title" id="question-6"><i class="far fa-question-circle" aria-hidden="true"></i> Question</div>
+        <div class="box-title question-title" id="question-6"><i class="far fa-question-circle" aria-hidden="true" ></i> Question</div>
 
         <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>chr21_10272276_10272566
 chr21_10330743_10330987
@@ -1537,7 +1220,7 @@ chr21_14027127_14027558
         <p>What is stored in the generated file?</p>
 
         <blockquote class="solution">
-          <div class="box-title solution-title" id="solution-6"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-6" aria-expanded="true"><i class="far fa-eye" aria-hidden="true"></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
+          <div class="box-title solution-title" id="solution-6"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-6" aria-expanded="true"><i class="far fa-eye" aria-hidden="true" ></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
 
           <p>The file is tabular with annotations of the variables, i.e. the peaks.</p>
 
@@ -1557,7 +1240,7 @@ chr21_14027127_14027558
 </code></pre></div></div>
 
 <blockquote class="question">
-  <div class="box-title question-title" id="question-7"><i class="far fa-question-circle" aria-hidden="true"></i> Question</div>
+  <div class="box-title question-title" id="question-7"><i class="far fa-question-circle" aria-hidden="true" ></i> Question</div>
 
   <ol>
     <li>How many barcodes and features are there?</li>
@@ -1565,7 +1248,7 @@ chr21_14027127_14027558
   </ol>
 
   <blockquote class="solution">
-    <div class="box-title solution-title" id="solution-7"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-7" aria-expanded="true"><i class="far fa-eye" aria-hidden="true"></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
+    <div class="box-title solution-title" id="solution-7"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-7" aria-expanded="true"><i class="far fa-eye" aria-hidden="true" ></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
 
     <ol>
       <li>There are 441038 barcodes and 70120 features</li>
@@ -1580,10 +1263,10 @@ chr21_14027127_14027558
 <p>First remove any potential empty features or barcodes. A non-empty cell should have a minimum number of non-empty features and a non-empty feature should be present in a minimum number of non-empty cells. Here we will different minimum thresholds for filtering cells and features.</p>
 
 <blockquote class="notranslate hands_on">
-  <div class="box-title hands-on-title" id="hands-on-initial-filtering"><i class="fas fa-pencil-alt" aria-hidden="true"></i> Hands-on: Initial filtering</div>
+  <div class="box-title hands-on-title" id="hands-on-initial-filtering"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Initial filtering</div>
 
   <ol>
-    <li><span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/iuc/episcanpy_preprocess/episcanpy_preprocess/0.3.2+galaxy1" title="scATAC-seq Preprocessing with EpiScanpy tool"><strong>scATAC-seq Preprocessing with EpiScanpy</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: toolshed.g2.bx.psu.edu/repos/iuc/episcanpy_preprocess/episcanpy_preprocess/0.3.2+galaxy1</span></span>  with the following parameters:
+    <li><span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/iuc/episcanpy_preprocess/episcanpy_preprocess/0.3.2+galaxy1" title="scATAC-seq Preprocessing with EpiScanpy tool" aria-role="link"><strong>scATAC-seq Preprocessing with EpiScanpy</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: toolshed.g2.bx.psu.edu/repos/iuc/episcanpy_preprocess/episcanpy_preprocess/0.3.2+galaxy1</span></span> with the following parameters:
       <ul>
         <li><em>“Annotated data matrix”</em>: <code class="language-plaintext highlighter-rouge">atac_pbmc_1k_uniq_peaks.h5ad</code></li>
         <li><em>“Method used for filtering”</em>: <code class="language-plaintext highlighter-rouge">Filter cell outliers based on counts and numbers of features expressed, using 'pp.filter_cells'</code></li>
@@ -1591,7 +1274,7 @@ chr21_14027127_14027558
         <li><em>“Minimum features”</em>: <code class="language-plaintext highlighter-rouge">100</code></li>
       </ul>
     </li>
-    <li><span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/iuc/episcanpy_preprocess/episcanpy_preprocess/0.3.2+galaxy1" title="scATAC-seq Preprocessing with EpiScanpy tool"><strong>scATAC-seq Preprocessing with EpiScanpy</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: toolshed.g2.bx.psu.edu/repos/iuc/episcanpy_preprocess/episcanpy_preprocess/0.3.2+galaxy1</span></span>  with the following parameters:
+    <li><span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/iuc/episcanpy_preprocess/episcanpy_preprocess/0.3.2+galaxy1" title="scATAC-seq Preprocessing with EpiScanpy tool" aria-role="link"><strong>scATAC-seq Preprocessing with EpiScanpy</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: toolshed.g2.bx.psu.edu/repos/iuc/episcanpy_preprocess/episcanpy_preprocess/0.3.2+galaxy1</span></span> with the following parameters:
       <ul>
         <li><em>“Annotated data matrix”</em>: Output of the previous (<code class="language-plaintext highlighter-rouge">pp.filter_cells</code>) step</li>
         <li><em>“Method used for filtering”</em>: <code class="language-plaintext highlighter-rouge">Filter features based on counts and numbers of features expressed, using 'pp.filter_features'</code></li>
@@ -1602,12 +1285,12 @@ chr21_14027127_14027558
   </ol>
 
   <blockquote class="question">
-    <div class="box-title question-title" id="question-8"><i class="far fa-question-circle" aria-hidden="true"></i> Question</div>
+    <div class="box-title question-title" id="question-8"><i class="far fa-question-circle" aria-hidden="true" ></i> Question</div>
 
     <p>How much data was filtered out?</p>
 
     <blockquote class="solution">
-      <div class="box-title solution-title" id="solution-8"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-8" aria-expanded="true"><i class="far fa-eye" aria-hidden="true"></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
+      <div class="box-title solution-title" id="solution-8"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-8" aria-expanded="true"><i class="far fa-eye" aria-hidden="true" ></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
 
       <p>The resulting matrix has dimensions of 1815 x 67766, i.e., more than 99.5% of the cells and less than 4% of features were filtered out. This indicates the high sparsity of the count matrix.</p>
 
@@ -1620,10 +1303,10 @@ chr21_14027127_14027558
 <p>We will first plot the number of features per cell. This information is stored as <code class="language-plaintext highlighter-rouge">nb_features</code> layer of observations. As we are dealing with numbers with huge variances, it is sometimes hard to visualize them. Hence, we compute the <em>log</em> of <code class="language-plaintext highlighter-rouge">nb_features</code> first then plot the absolute and log values together.</p>
 
 <blockquote class="notranslate hands_on">
-  <div class="box-title hands-on-title" id="hands-on-violing-plots-of-number-of-features"><i class="fas fa-pencil-alt" aria-hidden="true"></i> Hands-on: Violing plots of number of features</div>
+  <div class="box-title hands-on-title" id="hands-on-violing-plots-of-number-of-features"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Violing plots of number of features</div>
 
   <ol>
-    <li><span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/iuc/episcanpy_preprocess/episcanpy_preprocess/0.3.2+galaxy1" title="scATAC-seq Preprocessing with EpiScanpy tool"><strong>scATAC-seq Preprocessing with EpiScanpy</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: toolshed.g2.bx.psu.edu/repos/iuc/episcanpy_preprocess/episcanpy_preprocess/0.3.2+galaxy1</span></span>  with the following parameters:
+    <li><span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/iuc/episcanpy_preprocess/episcanpy_preprocess/0.3.2+galaxy1" title="scATAC-seq Preprocessing with EpiScanpy tool" aria-role="link"><strong>scATAC-seq Preprocessing with EpiScanpy</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: toolshed.g2.bx.psu.edu/repos/iuc/episcanpy_preprocess/episcanpy_preprocess/0.3.2+galaxy1</span></span> with the following parameters:
       <ul>
         <li><em>“Annotated data matrix”“</em>: Output of previous (<code class="language-plaintext highlighter-rouge">pp.filter_features</code>) step</li>
         <li><em>“Method used for filtering”</em>: <code class="language-plaintext highlighter-rouge">Compute log10 of nb_features</code></li>
@@ -1631,7 +1314,7 @@ chr21_14027127_14027558
     </li>
     <li>Check if observations have an extra <code class="language-plaintext highlighter-rouge">log_nb_features</code> in addition to <code class="language-plaintext highlighter-rouge">nb_features</code> layer.</li>
     <li>Rename the resulting dataset to <code class="language-plaintext highlighter-rouge">PBMC 1k after initial filtering</code></li>
-    <li><span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/iuc/scanpy_plot/scanpy_plot/1.7.1+galaxy0" title="Plot with scanpy tool"><strong>Plot with scanpy</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: toolshed.g2.bx.psu.edu/repos/iuc/scanpy_plot/scanpy_plot/1.7.1+galaxy0</span></span>  with the following parameters:
+    <li><span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/iuc/scanpy_plot/scanpy_plot/1.7.1+galaxy0" title="Plot with scanpy tool" aria-role="link"><strong>Plot with scanpy</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: toolshed.g2.bx.psu.edu/repos/iuc/scanpy_plot/scanpy_plot/1.7.1+galaxy0</span></span> with the following parameters:
       <ul>
         <li><i class="far fa-file" aria-hidden="true"></i><span class="visually-hidden">param-file</span> <em>“Annotated data matrix”</em>: <code class="language-plaintext highlighter-rouge">PBMC 1k after initial filtering</code></li>
         <li><em>“Method used for plotting”</em>: <code class="language-plaintext highlighter-rouge">Generic: Violin plot, using 'pl.violin'</code>
@@ -1667,13 +1350,13 @@ chr21_14027127_14027558
   </ol>
 
   <blockquote class="question">
-    <div class="box-title question-title" id="question-9"><i class="far fa-question-circle" aria-hidden="true"></i> Question</div>
+    <div class="box-title question-title" id="question-9"><i class="far fa-question-circle" aria-hidden="true" ></i> Question</div>
 
     <p>What trends of the data do you observe in the plots?</p>
 
     <blockquote class="solution">
-      <div class="box-title solution-title" id="solution-9"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-9" aria-expanded="true"><i class="far fa-eye" aria-hidden="true"></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
-      <figure id="figure-7"><img src="/training-material/topics/single-cell/images/scatac-pre-processing/violin_after_initial_filtering.png" alt="IntialViolin. " width="1009" height="490" loading="lazy" /><figcaption><span class="figcaption-prefix"><strong>Figure 7</strong>:</span> Violin plot of number of features per cell after initial filtering</figcaption></figure>
+      <div class="box-title solution-title" id="solution-9"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-9" aria-expanded="true"><i class="far fa-eye" aria-hidden="true" ></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
+      <figure id="figure-7" style="max-width: 90%; margin:auto;"><img src="/training-material/topics/single-cell/images/scatac-pre-processing/violin_after_initial_filtering.png" alt="IntialViolin. " width="1009" height="490" loading="lazy" /><figcaption><span class="figcaption-prefix"><strong>Figure 7</strong>:</span> Violin plot of number of features per cell after initial filtering</figcaption></figure>
       <p>Both plots indicate that there are two distinct sets of cells:</p>
       <ol>
         <li>Cells with an acceptable number of open chromatin regions.</li>
@@ -1688,10 +1371,10 @@ chr21_14027127_14027558
 <p>To determine decent filtering thresholds, we will further look at some histograms of cell-peak coverage trends. We will plot histograms of the number of open features per cell and feature commonness in cells.</p>
 
 <blockquote class="notranslate hands_on">
-  <div class="box-title hands-on-title" id="hands-on-coverage-cells"><i class="fas fa-pencil-alt" aria-hidden="true"></i> Hands-on: Coverage cells</div>
+  <div class="box-title hands-on-title" id="hands-on-coverage-cells"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Coverage cells</div>
 
   <ol>
-    <li><span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/iuc/episcanpy_preprocess/episcanpy_preprocess/0.3.2+galaxy1" title="scATAC-seq Preprocessing with EpiScanpy tool"><strong>scATAC-seq Preprocessing with EpiScanpy</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: toolshed.g2.bx.psu.edu/repos/iuc/episcanpy_preprocess/episcanpy_preprocess/0.3.2+galaxy1</span></span>  with the following parameters:
+    <li><span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/iuc/episcanpy_preprocess/episcanpy_preprocess/0.3.2+galaxy1" title="scATAC-seq Preprocessing with EpiScanpy tool" aria-role="link"><strong>scATAC-seq Preprocessing with EpiScanpy</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: toolshed.g2.bx.psu.edu/repos/iuc/episcanpy_preprocess/episcanpy_preprocess/0.3.2+galaxy1</span></span> with the following parameters:
       <ul>
         <li><em>“Annotated data matrix”“</em>: <code class="language-plaintext highlighter-rouge">PBMC 1k after initial filtering</code></li>
         <li><em>“Method used for filtering”</em>: <code class="language-plaintext highlighter-rouge">Coverage cells: Histogram of the number of open features (in the case of ATAC-seq data) per cell, using 'pp.coverage_cells'</code></li>
@@ -1699,7 +1382,7 @@ chr21_14027127_14027558
         <li><em>“Minimum number of cells or minimum number of features to be indicated in the plot”</em>: <code class="language-plaintext highlighter-rouge">1000</code></li>
       </ul>
     </li>
-    <li><span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/iuc/episcanpy_preprocess/episcanpy_preprocess/0.3.2+galaxy1" title="scATAC-seq Preprocessing with EpiScanpy tool"><strong>scATAC-seq Preprocessing with EpiScanpy</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: toolshed.g2.bx.psu.edu/repos/iuc/episcanpy_preprocess/episcanpy_preprocess/0.3.2+galaxy1</span></span>  with the following parameters:
+    <li><span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/iuc/episcanpy_preprocess/episcanpy_preprocess/0.3.2+galaxy1" title="scATAC-seq Preprocessing with EpiScanpy tool" aria-role="link"><strong>scATAC-seq Preprocessing with EpiScanpy</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: toolshed.g2.bx.psu.edu/repos/iuc/episcanpy_preprocess/episcanpy_preprocess/0.3.2+galaxy1</span></span> with the following parameters:
       <ul>
         <li><em>“Annotated data matrix”“</em>: <code class="language-plaintext highlighter-rouge">PBMC 1k after initial filtering</code></li>
         <li><em>“Method used for filtering”</em>: <code class="language-plaintext highlighter-rouge">Coverage cells: Histogram of the number of open features (in the case of ATAC-seq data) per cell, using 'pp.coverage_cells'</code></li>
@@ -1712,7 +1395,7 @@ chr21_14027127_14027558
   </ol>
 
   <blockquote class="question">
-    <div class="box-title question-title" id="question-10"><i class="far fa-question-circle" aria-hidden="true"></i> Question</div>
+    <div class="box-title question-title" id="question-10"><i class="far fa-question-circle" aria-hidden="true" ></i> Question</div>
 
     <ol>
       <li>What information do you see in these plots?</li>
@@ -1720,9 +1403,9 @@ chr21_14027127_14027558
     </ol>
 
     <blockquote class="solution">
-      <div class="box-title solution-title" id="solution-10"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-10" aria-expanded="true"><i class="far fa-eye" aria-hidden="true"></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
-      <figure id="figure-8"><img src="/training-material/topics/single-cell/images/scatac-pre-processing/coverage_cells.png" alt="CoverageCells. " width="571" height="432" loading="lazy" /><figcaption><span class="figcaption-prefix"><strong>Figure 8</strong>:</span> Histogram of the number of open chromatin regions per cell</figcaption></figure>
-      <figure id="figure-9"><img src="/training-material/topics/single-cell/images/scatac-pre-processing/coverage_cells_log.png" alt="CoverageCellsLog. " width="571" height="432" loading="lazy" /><figcaption><span class="figcaption-prefix"><strong>Figure 9</strong>:</span> Histogram of the number of open chromatin regions per cell in log scale</figcaption></figure>
+      <div class="box-title solution-title" id="solution-10"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-10" aria-expanded="true"><i class="far fa-eye" aria-hidden="true" ></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
+      <figure id="figure-8" style="max-width: 90%; margin:auto;"><img src="/training-material/topics/single-cell/images/scatac-pre-processing/coverage_cells.png" alt="CoverageCells. " width="571" height="432" loading="lazy" /><figcaption><span class="figcaption-prefix"><strong>Figure 8</strong>:</span> Histogram of the number of open chromatin regions per cell</figcaption></figure>
+      <figure id="figure-9" style="max-width: 90%; margin:auto;"><img src="/training-material/topics/single-cell/images/scatac-pre-processing/coverage_cells_log.png" alt="CoverageCellsLog. " width="571" height="432" loading="lazy" /><figcaption><span class="figcaption-prefix"><strong>Figure 9</strong>:</span> Histogram of the number of open chromatin regions per cell in log scale</figcaption></figure>
       <ol>
         <li>The plots show the number of open chromatin regions per cell in 50 bins on the x-axis and the number of cells per bin on the y-axis. It is basically a histogram of the number of open chromatin regions per cell.</li>
         <li>From the first plot with absolute counts, we see that with our threshold of 1000, we can separate between the cells with few detected peaks and cells with high chromatin accessibility.</li>
@@ -1734,10 +1417,10 @@ chr21_14027127_14027558
 </blockquote>
 
 <blockquote class="notranslate hands_on">
-  <div class="box-title hands-on-title" id="hands-on-coverage-features"><i class="fas fa-pencil-alt" aria-hidden="true"></i> Hands-on: Coverage features</div>
+  <div class="box-title hands-on-title" id="hands-on-coverage-features"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Coverage features</div>
 
   <ol>
-    <li><span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/iuc/episcanpy_preprocess/episcanpy_preprocess/0.3.2+galaxy1" title="scATAC-seq Preprocessing with EpiScanpy tool"><strong>scATAC-seq Preprocessing with EpiScanpy</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: toolshed.g2.bx.psu.edu/repos/iuc/episcanpy_preprocess/episcanpy_preprocess/0.3.2+galaxy1</span></span>  with the following parameters:
+    <li><span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/iuc/episcanpy_preprocess/episcanpy_preprocess/0.3.2+galaxy1" title="scATAC-seq Preprocessing with EpiScanpy tool" aria-role="link"><strong>scATAC-seq Preprocessing with EpiScanpy</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: toolshed.g2.bx.psu.edu/repos/iuc/episcanpy_preprocess/episcanpy_preprocess/0.3.2+galaxy1</span></span> with the following parameters:
       <ul>
         <li><em>“Annotated data matrix”“</em>: <code class="language-plaintext highlighter-rouge">PBMC 1k after initial filtering</code></li>
         <li><em>“Method used for filtering”</em>: <code class="language-plaintext highlighter-rouge">Coverage features: Distribution of the feature commonness in cells, using 'pp.coverage_features'</code></li>
@@ -1745,7 +1428,7 @@ chr21_14027127_14027558
         <li><em>“Minimum number of cells or minimum number of features to be indicated in the plot”</em>: <code class="language-plaintext highlighter-rouge">5</code></li>
       </ul>
     </li>
-    <li><span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/iuc/episcanpy_preprocess/episcanpy_preprocess/0.3.2+galaxy1" title="scATAC-seq Preprocessing with EpiScanpy tool"><strong>scATAC-seq Preprocessing with EpiScanpy</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: toolshed.g2.bx.psu.edu/repos/iuc/episcanpy_preprocess/episcanpy_preprocess/0.3.2+galaxy1</span></span>  with the following parameters:
+    <li><span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/iuc/episcanpy_preprocess/episcanpy_preprocess/0.3.2+galaxy1" title="scATAC-seq Preprocessing with EpiScanpy tool" aria-role="link"><strong>scATAC-seq Preprocessing with EpiScanpy</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: toolshed.g2.bx.psu.edu/repos/iuc/episcanpy_preprocess/episcanpy_preprocess/0.3.2+galaxy1</span></span> with the following parameters:
       <ul>
         <li><em>“Annotated data matrix”“</em>: <code class="language-plaintext highlighter-rouge">PBMC 1k after initial filtering</code></li>
         <li><em>“Method used for filtering”</em>: <code class="language-plaintext highlighter-rouge">Coverage features: Distribution of the feature commonness in cells, using 'pp.coverage_features'</code></li>
@@ -1758,7 +1441,7 @@ chr21_14027127_14027558
   </ol>
 
   <blockquote class="question">
-    <div class="box-title question-title" id="question-11"><i class="far fa-question-circle" aria-hidden="true"></i> Question</div>
+    <div class="box-title question-title" id="question-11"><i class="far fa-question-circle" aria-hidden="true" ></i> Question</div>
 
     <ol>
       <li>What information do you see in these plots?</li>
@@ -1766,9 +1449,9 @@ chr21_14027127_14027558
     </ol>
 
     <blockquote class="solution">
-      <div class="box-title solution-title" id="solution-11"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-11" aria-expanded="true"><i class="far fa-eye" aria-hidden="true"></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
-      <figure id="figure-10"><img src="/training-material/topics/single-cell/images/scatac-pre-processing/coverage_features.png" alt="CoverageFeatures. " width="589" height="432" loading="lazy" /><figcaption><span class="figcaption-prefix"><strong>Figure 10</strong>:</span> Histogram of feature commonness in cells</figcaption></figure>
-      <figure id="figure-11"><img src="/training-material/topics/single-cell/images/scatac-pre-processing/coverage_features_log.png" alt="CoverageFeaturesLog. " width="580" height="432" loading="lazy" /><figcaption><span class="figcaption-prefix"><strong>Figure 11</strong>:</span> Histogram of feature commonness in cells in log scale</figcaption></figure>
+      <div class="box-title solution-title" id="solution-11"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-11" aria-expanded="true"><i class="far fa-eye" aria-hidden="true" ></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
+      <figure id="figure-10" style="max-width: 90%; margin:auto;"><img src="/training-material/topics/single-cell/images/scatac-pre-processing/coverage_features.png" alt="CoverageFeatures. " width="589" height="432" loading="lazy" /><figcaption><span class="figcaption-prefix"><strong>Figure 10</strong>:</span> Histogram of feature commonness in cells</figcaption></figure>
+      <figure id="figure-11" style="max-width: 90%; margin:auto;"><img src="/training-material/topics/single-cell/images/scatac-pre-processing/coverage_features_log.png" alt="CoverageFeaturesLog. " width="580" height="432" loading="lazy" /><figcaption><span class="figcaption-prefix"><strong>Figure 11</strong>:</span> Histogram of feature commonness in cells in log scale</figcaption></figure>
       <ol>
         <li>The plots show a histogram of the number of cells sharing a feature. As we initially pooled the data from all the cells to detect the peaks, it is expected to see only a small number of cells have more than 10000 peaks in common.</li>
         <li>The red vertical line of our 5 cells threshold is nearly at the left end of the histogram representing the majority of the features have at least 5 cells in common. 
@@ -1786,10 +1469,10 @@ So our threshold of 5 is a decent cutoff for filtering out the features. From th
 <p>Based on the above QC plots, we will filter out all the cells with less than 1000 features and all the features that have less than 5 cells in common. Additionally, we will also filter out extreme outlier cells (which can be seen in the initial violin plot or coverage cells plot) with more than 12500 features.</p>
 
 <blockquote class="notranslate hands_on">
-  <div class="box-title hands-on-title" id="hands-on-final-filtering-based-on-qc-plots"><i class="fas fa-pencil-alt" aria-hidden="true"></i> Hands-on: Final filtering based on QC plots</div>
+  <div class="box-title hands-on-title" id="hands-on-final-filtering-based-on-qc-plots"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Final filtering based on QC plots</div>
 
   <ol>
-    <li><span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/iuc/episcanpy_preprocess/episcanpy_preprocess/0.3.2+galaxy1" title="scATAC-seq Preprocessing with EpiScanpy tool"><strong>scATAC-seq Preprocessing with EpiScanpy</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: toolshed.g2.bx.psu.edu/repos/iuc/episcanpy_preprocess/episcanpy_preprocess/0.3.2+galaxy1</span></span>  with the following parameters:
+    <li><span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/iuc/episcanpy_preprocess/episcanpy_preprocess/0.3.2+galaxy1" title="scATAC-seq Preprocessing with EpiScanpy tool" aria-role="link"><strong>scATAC-seq Preprocessing with EpiScanpy</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: toolshed.g2.bx.psu.edu/repos/iuc/episcanpy_preprocess/episcanpy_preprocess/0.3.2+galaxy1</span></span> with the following parameters:
       <ul>
         <li><em>“Annotated data matrix”</em>: <code class="language-plaintext highlighter-rouge">PBMC 1k after initial filtering</code></li>
         <li><em>“Method used for filtering”</em>: <code class="language-plaintext highlighter-rouge">Filter cell outliers based on counts and numbers of features expressed, using 'pp.filter_cells'</code></li>
@@ -1797,7 +1480,7 @@ So our threshold of 5 is a decent cutoff for filtering out the features. From th
         <li><em>“Minimum features”</em>: <code class="language-plaintext highlighter-rouge">1000</code></li>
       </ul>
     </li>
-    <li><span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/iuc/episcanpy_preprocess/episcanpy_preprocess/0.3.2+galaxy1" title="scATAC-seq Preprocessing with EpiScanpy tool"><strong>scATAC-seq Preprocessing with EpiScanpy</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: toolshed.g2.bx.psu.edu/repos/iuc/episcanpy_preprocess/episcanpy_preprocess/0.3.2+galaxy1</span></span>  with the following parameters:
+    <li><span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/iuc/episcanpy_preprocess/episcanpy_preprocess/0.3.2+galaxy1" title="scATAC-seq Preprocessing with EpiScanpy tool" aria-role="link"><strong>scATAC-seq Preprocessing with EpiScanpy</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: toolshed.g2.bx.psu.edu/repos/iuc/episcanpy_preprocess/episcanpy_preprocess/0.3.2+galaxy1</span></span> with the following parameters:
       <ul>
         <li><em>“Annotated data matrix”</em>: Output of previous (<code class="language-plaintext highlighter-rouge">pp.filter_cells</code>) step</li>
         <li><em>“Method used for filtering”</em>: <code class="language-plaintext highlighter-rouge">Filter cell outliers based on counts and numbers of features expressed, using 'pp.filter_cells'</code></li>
@@ -1805,7 +1488,7 @@ So our threshold of 5 is a decent cutoff for filtering out the features. From th
         <li><em>“Minimum features”</em>: <code class="language-plaintext highlighter-rouge">12500</code></li>
       </ul>
     </li>
-    <li><span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/iuc/episcanpy_preprocess/episcanpy_preprocess/0.3.2+galaxy1" title="scATAC-seq Preprocessing with EpiScanpy tool"><strong>scATAC-seq Preprocessing with EpiScanpy</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: toolshed.g2.bx.psu.edu/repos/iuc/episcanpy_preprocess/episcanpy_preprocess/0.3.2+galaxy1</span></span>  with the following parameters:
+    <li><span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/iuc/episcanpy_preprocess/episcanpy_preprocess/0.3.2+galaxy1" title="scATAC-seq Preprocessing with EpiScanpy tool" aria-role="link"><strong>scATAC-seq Preprocessing with EpiScanpy</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: toolshed.g2.bx.psu.edu/repos/iuc/episcanpy_preprocess/episcanpy_preprocess/0.3.2+galaxy1</span></span> with the following parameters:
       <ul>
         <li><em>“Annotated data matrix”</em>: Output of previous (<code class="language-plaintext highlighter-rouge">pp.filter_cells</code>) step</li>
         <li><em>“Method used for filtering”</em>: <code class="language-plaintext highlighter-rouge">Filter features based on counts and numbers of features expressed, using 'pp.filter_features'</code></li>
@@ -1816,12 +1499,12 @@ So our threshold of 5 is a decent cutoff for filtering out the features. From th
   </ol>
 
   <blockquote class="question">
-    <div class="box-title question-title" id="question-12"><i class="far fa-question-circle" aria-hidden="true"></i> Question</div>
+    <div class="box-title question-title" id="question-12"><i class="far fa-question-circle" aria-hidden="true" ></i> Question</div>
 
     <p>What are the dimensions of the count matrix after the final filtering?</p>
 
     <blockquote class="solution">
-      <div class="box-title solution-title" id="solution-12"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-12" aria-expanded="true"><i class="far fa-eye" aria-hidden="true"></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
+      <div class="box-title solution-title" id="solution-12"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-12" aria-expanded="true"><i class="far fa-eye" aria-hidden="true" ></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
 
       <p>The resulting matrix has 1024 cells and 67719 peaks. The number of cells after filtering is close to what we expect in this dataset.</p>
 
@@ -1896,6 +1579,9 @@ So our threshold of 5 is a decent cutoff for filtering out the features. From th
                             Pavankumar Videm,  <b>Pre-processing of 10X Single-Cell ATAC-seq Datasets (Galaxy Training Materials)</b>. <a href="https://training.galaxyproject.org/training-material/topics/single-cell/tutorials/scatac-preprocessing-tenx/tutorial.html">https://training.galaxyproject.org/training-material/topics/single-cell/tutorials/scatac-preprocessing-tenx/tutorial.html</a> Online; accessed TODAY
                         </li>
                         <li>
+                        Hiltemann, Saskia, Rasche, Helena et al., 2023 <b>Galaxy Training: A Powerful Framework for Teaching!</b> PLOS Computational Biology <a href="https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1010752">10.1371/journal.pcbi.1010752</a>
+                        </li>
+                        <li>
                         Batut et al., 2018 <b>Community-Driven Data Analysis Training for Biology</b> Cell Systems <a href="https://doi.org/10.1016%2Fj.cels.2018.05.012">10.1016/j.cels.2018.05.012</a>
                         </li>
                     </ol>
@@ -1917,12 +1603,12 @@ So our threshold of 5 is a decent cutoff for filtering out the features. From th
 
 <code id="citation-code">@misc{single-cell-scatac-preprocessing-tenx,
 author = "Pavankumar Videm",
-title = "Pre-processing of 10X Single-Cell ATAC-seq Datasets (Galaxy Training Materials)",
-year = "",
-month = "",
-day = ""
-url = "\url{https://training.galaxyproject.org/training-material/topics/single-cell/tutorials/scatac-preprocessing-tenx/tutorial.html}",
-note = "[Online; accessed TODAY]"
+	title = "Pre-processing of 10X Single-Cell ATAC-seq Datasets (Galaxy Training Materials)",
+	year = "",
+	month = "",
+	day = ""
+	url = "\url{https://training.galaxyproject.org/training-material/topics/single-cell/tutorials/scatac-preprocessing-tenx/tutorial.html}",
+	note = "[Online; accessed TODAY]"
 }
 @article{Hiltemann_2023,
 	doi = {10.1371/journal.pcbi.1010752},
@@ -1948,9 +1634,9 @@ note = "[Online; accessed TODAY]"
 
 <script>
 // update the date on load, or leave fallback of 'today'
-var d = new Date();
-document.getElementById("citation-code").innerHTML = document.getElementById("citation-code").innerHTML.replace("TODAY", d.toDateString());
-document.getElementById("citation-text").innerHTML = document.getElementById("citation-text").innerHTML.replace("TODAY", d.toDateString());
+const citationTodaysDate = new Date();
+document.getElementById("citation-code").innerHTML = document.getElementById("citation-code").innerHTML.replace("TODAY", citationTodaysDate.toDateString());
+document.getElementById("citation-text").innerHTML = document.getElementById("citation-text").innerHTML.replace("TODAY", citationTodaysDate.toDateString());
 </script>
 
                 <i class="far fa-thumbs-up" aria-hidden="true"></i> Congratulations on successfully completing this tutorial!
@@ -1959,6 +1645,7 @@ document.getElementById("citation-text").innerHTML = document.getElementById("ci
 
                 
                 <blockquote class="agenda follow-up">
+                    <div class="box-title">Go Further</div>
                     <strong class="follow-up"><i class="fas fa-graduation-cap" aria-hidden="true"></i> Do you want to extend your knowledge? Follow one of our recommended follow-up trainings:</strong>
                     <ul>
                         
@@ -2035,6 +1722,88 @@ document.getElementById("citation-text").innerHTML = document.getElementById("ci
                     </ul>
                 </blockquote>
                 
+
+		
+                <blockquote class="agenda follow-up" id="admins-install-missing-tools">
+                    <div class="box-title">Galaxy Administrators: Install the missing tools</div>
+			<p>You can use Ephemeris's <code>shed-tools install</code> command to install the tools used in this tutorial.</p>
+<div class="highlight"><pre class="highlight"><code>shed-tools install [-g GALAXY] [-a API_KEY] -t &lt;(curl https://training.galaxyproject.org/training-material/api/topics/single-cell/tutorials/scatac-preprocessing-tenx/tutorial.json | jq .admin_install_yaml -r)</code></pre></div>
+<p>Alternatively you can copy and paste the following YAML</p>
+<div class="highlight"><pre class="highlight"><code>---
+install_tool_dependencies: true
+install_repository_dependencies: true
+install_resolver_dependencies: true
+tools:
+- name: text_processing
+  owner: bgruening
+  revisions: d698c222f354
+  tool_panel_section_label: Single Cell
+  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+- name: bwa
+  owner: devteam
+  revisions: e188dc7a68e6
+  tool_panel_section_label: Single Cell
+  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+- name: fastqc
+  owner: devteam
+  revisions: 3d0c7bdf12f5
+  tool_panel_section_label: Single Cell
+  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+- name: anndata_inspect
+  owner: iuc
+  revisions: ee98d611afc6
+  tool_panel_section_label: Single Cell
+  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+- name: bedtools
+  owner: iuc
+  revisions: a1a923cd89e8
+  tool_panel_section_label: Single Cell
+  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+- name: episcanpy_build_matrix
+  owner: iuc
+  revisions: 31a21ba2c5ea
+  tool_panel_section_label: Single Cell
+  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+- name: episcanpy_preprocess
+  owner: iuc
+  revisions: 29f5f25b9935
+  tool_panel_section_label: Single Cell
+  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+- name: macs2
+  owner: iuc
+  revisions: 424aefbd7777
+  tool_panel_section_label: Single Cell
+  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+- name: macs2
+  owner: iuc
+  revisions: 640d3af5d833
+  tool_panel_section_label: Single Cell
+  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+- name: scanpy_plot
+  owner: iuc
+  revisions: 6adf98e782f3
+  tool_panel_section_label: Single Cell
+  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+- name: scanpy_plot
+  owner: iuc
+  revisions: aa0c474463c2
+  tool_panel_section_label: Single Cell
+  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+- name: sinto_barcode
+  owner: iuc
+  revisions: d1b34ac42b8f
+  tool_panel_section_label: Single Cell
+  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+- name: sinto_fragments
+  owner: iuc
+  revisions: 29e6bfb2cf49
+  tool_panel_section_label: Single Cell
+  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+</code></pre></div>
+                </blockquote>
+		
+
+
                 </section>
 
             </div>
@@ -2046,38 +1815,52 @@ document.getElementById("citation-text").innerHTML = document.getElementById("ci
 <br/>
 
         </div>
-        
-        <script src="/training-material/assets/js/jquery.slim.min.js"></script>
-        <script src="/training-material/assets/js/popper.min.js"></script>
-        <script src="/training-material/assets/js/bootstrap.min.js?v=3"></script>
-        <script src="/training-material/assets/js/details-element-polyfill.js"></script>
+        <footer>
+	<hr />
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-6" style="text-align: left">
+				<p>
+					The <a href="https://galaxyproject.org/teach/gtn/">Galaxy Training Network</a>
+					provides researchers with online training materials, connects them with local trainers, and helps promoting FAIR and Open Science practices worldwide. All contributions are subject to the <a rel="code-of-conduct" href="https://galaxyproject.org/community/coc/">Galaxy Project Code of Conduct</a>.
+				</p>
+				<p>
+				The GTN infrastructure is licensed under <a rel="license" href="https://github.com/galaxyproject/training-material/blob/main/LICENSE.md">MIT</a>
+				</p>
+				<p>
+				Revision <a href="https://github.com/galaxyproject/training-material/commit/476574d2b382dd1db6c2c408d8fb6ec4393a6904">476574d</a>, built with Jekyll (4.3.2 | production)
+				</p>
+			</div>
+			<div class="col-sm-6" style="text-align: right">
+				
+				<p>
+					Resource <i class="fas fa-fingerprint" aria-hidden="true"></i><span class="visually-hidden">purl</span><abbr title="Persistent URL">PURL</abbr>: <a href="https://gxy.io/GTN:T00335">https://gxy.io/GTN:T00335</a>
+				</p>
+				
+				<p>
+					<i>This Material</i>:
+					
+					is licensed under
+					<a rel="license" href="https://spdx.org/licenses/CC-BY-4.0">
+						Creative Commons Attribution 4.0 International License
+					</a>
+				</p>
+				<p>
+					<a href="https://github.com/galaxyproject/training-material/edit/main/topics/single-cell/tutorials/scatac-preprocessing-tenx/tutorial.md" title="Edit on GitHub">
+					<i class="fab fa-github" aria-hidden="true"></i><span class="visually-hidden">github</span> Edit on GitHub
+					</a>
+				</p>
+			</div>
+		</div>
+	</div>
+</footer>
+
+
+    </div>
+</footer>
+
+
+        <script src='/training-material/assets/js/bundle.main.js?v=1687830693'></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-        <script src="/training-material/assets/js/bootstrap-toc.min.js"></script>
-        <script src="/training-material/assets/js/main.js"></script>
-        <script src="/training-material/assets/js/clipboard.min.js"></script>
-        <script>
-        var snippets=document.querySelectorAll('div.highlight');
-        [].forEach.call(snippets,function(snippet){
-            snippet.firstChild.insertAdjacentHTML('beforebegin','<button class="btn btn-light" data-clipboard-snippet tabindex="0"><i class="fa fa-copy"></i>&nbsp;Copy</button>');
-        });
-
-        var clipboardSnippets=new ClipboardJS('[data-clipboard-snippet]',{
-            target:function(trigger){return trigger.nextElementSibling;
-        }});
-        </script>
-        
-
-        <script type="text/javascript">
-            if(window.location.hostname === "galaxyproject.github.io") {
-                // Redirect
-                var redirect = "https://training.galaxyproject.org" + window.location.pathname + window.location.search;
-                $('div.container.main-content').prepend("<div class='alert alert-warning'><strong>Note: </strong>This content has a new home at <a href=\"" + redirect + "\">" + redirect + "</a>, which you will be redirected to in 5 seconds.</div>");
-
-                window.setTimeout(function(){
-                    window.location.href = redirect;
-                }, 5000)
-
-            }
-        </script>
     </body>
 </html>

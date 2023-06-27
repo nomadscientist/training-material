@@ -8,22 +8,51 @@
         
             <script async defer data-domain="training.galaxyproject.org" src="https://plausible.galaxyproject.eu/js/plausible.js"></script>
 
+<!-- JavaScript Error Monitoring, and performance tracking. -->
+<script
+  src="https://browser.sentry-cdn.com/7.52.1/bundle.tracing.min.js"
+  integrity="sha384-muuFXKS3752PNA4rPm9Uq6BLvOfV4CXyr9MHDBPvozOJJUWLKkogEFWOIRoVps43"
+  crossorigin="anonymous"
+></script>
+<script type="text/javascript">
+Sentry.init({
+  dsn: "https://45e0ec6e4373462b92969505df37cf40@sentry.galaxyproject.org/10",
+  release: "galaxy-training-network@476574d2b382dd1db6c2c408d8fb6ec4393a6904",
+  integrations: [new Sentry.BrowserTracing(), new Sentry.Replay()],
+  sampleRate: 0.1,
+  tracesSampleRate: 0.1,
+  // Capture Replay for no sessions by default
+  replaysSessionSampleRate: 0.01,
+  // plus for 1% of sessions with an error
+  replaysOnErrorSampleRate: 0.01,
+  // PII OFF
+  sendDefaultPii: false, // Off by default but just in case.
+  environment: "production",
+});
+</script>
+
         
-        <link rel="stylesheet" href="/training-material/assets/css/bootstrap.min.css?v=3">
-        <link rel="stylesheet" href="/training-material/assets/css/bootstrap-toc.min.css">
-        <link rel="stylesheet" href="/training-material/assets/css/main.css?v=2">
-        <link rel="stylesheet" href="/training-material/assets/fontawesome/css/all.css">
-        <link rel="stylesheet" href="/training-material/assets/css/academicons.css">
         <link rel="shortcut icon" href="/training-material/favicon.ico" type="image/x-icon">
         <link rel="alternate" type="application/atom+xml" href="/training-material/feed.xml">
         <link rel="canonical" href="https://training.galaxyproject.org/training-material/topics/assembly/tutorials/metagenomics-assembly/tutorial.html">
-        <link rel="license" href="https://creativecommons.org/licenses/by/4.0/">
+        <link rel="license" href="https://spdx.org/licenses/CC-BY-4.0">
+        <link rel="preload" href="/training-material/assets/fonts/AtkinsonHyperlegible/Atkinson-Hyperlegible-Regular-102a.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="preload" href="/training-material/assets/fonts/AtkinsonHyperlegible/Atkinson-Hyperlegible-Bold-102a.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="preload" href="/training-material/assets/fonts/AtkinsonHyperlegible/Atkinson-Hyperlegible-Italic-102a.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML" as="script" crossorigin>
+        <link rel="preload" href="/training-material/assets/css/main.css?v=3" as="style">
+        <link rel='preload' href='/training-material/assets/js/bundle.theme.js?v=1687830693' as='script'>
+<link rel='preload' href='/training-material/assets/js/bundle.main.js?v=1687830693' as='script'>
+        <link rel="stylesheet" href="/training-material/assets/css/main.css?v=3">
+        <link rel="manifest" href="/training-material/manifest.json">
+        <meta name="theme-color" content="#2c3143"/>
+
 
         <meta name="DC.identifier" content="https://github.com/galaxyproject/training-material">
 <meta name="DC.type" content="text">
 <meta name="DC.title" content="Assembly of metagenomic sequencing data">
 <meta name="DC.publisher" content="Galaxy Training Network">
-<meta name="DC.date" content="2023-06-26 01:57:48 +0000">
+<meta name="DC.date" content="2023-06-27 01:51:35 +0000">
 <meta name="DC.creator" content="Polina Polunina">
 <meta name="DC.creator" content="Bérénice Batut">
 
@@ -65,7 +94,7 @@
     "name": "Galaxy Training Network",
     "url": "https://galaxyproject.org/teach/gtn/"
   },
-  "dateModified": "2023-06-26 01:57:48 +0000",
+  "dateModified": "2023-06-27 01:51:35 +0000",
   "discussionUrl": "https://gitter.im/Galaxy-Training-Network/Lobby",
   "headline": "Assembly of metagenomic sequencing data",
   "interactivityType": "mixed",
@@ -91,6 +120,10 @@
     "url": "https://galaxyproject.org/teach/gtn/"
   },
   "identifier": "https://github.com/galaxyproject/training-material",
+  "workTranslation": [
+
+  ],
+  "creativeWorkStatus": "Active",
   "accessMode": [
     "textual",
     "visual"
@@ -118,6 +151,7 @@
   "name": "Hands-on for 'Assembly of metagenomic sequencing data' tutorial",
   "url": "https://training.galaxyproject.org/training-material/topics/assembly/tutorials/metagenomics-assembly/tutorial.html",
   "timeRequired": "PT2H",
+  "teaches": "Describe what an assembly is\n - Describe what de-replication is\n - Explain the difference between co-assembly and individual assembly\n - Explain the difference between reads, contigs and scaffolds\n - Explain how tools based on De Bruijn graph work\n - Apply appropriate tools for analyzing the quality of metagenomic data\n - Construct and apply simple assembly pipelines on short read data\n - Apply appropriate tools for analyzing the quality of metagenomic assembly\n - Evaluate the Quality of the Assembly with Quast, Bowtie2, and CoverM-Genome",
   "keywords": "assembly, assembly, metagenomics",
   "description": "The questions this  addresses are:\n - Why metagenomic data should be assembled?\n - What is the difference between co-assembly and individual assembly?\n - What is the difference between reads, contigs and scaffolds?\n - How tools based on De Bruijn graph work?\n - How to assess the quality of metagenomic data assembly?\n\n\nThe objectives are:\n - Describe what an assembly is\n - Describe what de-replication is\n - Explain the difference between co-assembly and individual assembly\n - Explain the difference between reads, contigs and scaffolds\n - Explain how tools based on De Bruijn graph work\n - Apply appropriate tools for analyzing the quality of metagenomic data\n - Construct and apply simple assembly pipelines on short read data\n - Apply appropriate tools for analyzing the quality of metagenomic assembly\n - Evaluate the Quality of the Assembly with Quast, Bowtie2, and CoverM-Genome\n\n",
   "inLanguage": {
@@ -170,6 +204,54 @@
       }
     }
   ],
+  "author": [
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "http://purl.org/dc/terms/conformsTo": {
+        "@id": "https://bioschemas.org/profiles/Person/0.3-DRAFT",
+        "@type": "CreativeWork"
+      },
+      "url": "https://training.galaxyproject.org/training-material/hall-of-fame/plushz/",
+      "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/plushz/",
+      "name": "Polina Polunina",
+      "image": "https://avatars.githubusercontent.com/plushz",
+      "description": "A contributor to the GTN project.",
+      "memberOf": [
+        {
+          "@type": "Organization",
+          "email": "galaxytrainingnetwork@gmail.com",
+          "name": "Galaxy Training Network",
+          "url": "https://galaxyproject.org/teach/gtn/"
+        }
+      ],
+      "identifier": "https://orcid.org/0000-0002-0507-4602",
+      "orcid": "https://orcid.org/0000-0002-0507-4602"
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "http://purl.org/dc/terms/conformsTo": {
+        "@id": "https://bioschemas.org/profiles/Person/0.3-DRAFT",
+        "@type": "CreativeWork"
+      },
+      "url": "https://training.galaxyproject.org/training-material/hall-of-fame/bebatut/",
+      "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/bebatut/",
+      "name": "Bérénice Batut",
+      "image": "https://avatars.githubusercontent.com/bebatut",
+      "description": "A contributor to the GTN project.",
+      "memberOf": [
+        {
+          "@type": "Organization",
+          "email": "galaxytrainingnetwork@gmail.com",
+          "name": "Galaxy Training Network",
+          "url": "https://galaxyproject.org/teach/gtn/"
+        }
+      ],
+      "identifier": "https://orcid.org/0000-0001-9852-1987",
+      "orcid": "https://orcid.org/0000-0001-9852-1987"
+    }
+  ],
   "about": [
     {
       "@type": "CreativeWork",
@@ -185,13 +267,24 @@
       "url": "https://bioportal.bioontology.org/ontologies/EDAM/?p=classes&conceptid=http%3A%2F%2Fedamontology.org%2Ftopic_0196"
     }
   ],
-  "educationalLevel": "Beginner"
+  "educationalLevel": "Beginner",
+  "mentions": [
+    {
+      "@type": "Thing",
+      "name": "assembly"
+    },
+    {
+      "@type": "Thing",
+      "name": "metagenomics"
+    }
+  ],
+  "abstract": "# Introduction"
 }
         </script>
         
     </head>
     <body data-spy="scroll" data-target="#toc">
-        <script type="text/javascript" src="/training-material/assets/js/theme.js"></script>
+        <script src='/training-material/assets/js/bundle.theme.js?v=1687830693'></script>
         <header>
     <nav class="navbar navbar-expand-md navbar-dark" aria-label="Site Navigation">
         <div class="container">
@@ -260,7 +353,6 @@
     </a>
     <div class="dropdown-menu dropdown-menu-right">
 
-        
         <a class="dropdown-item" href="https://github.com/galaxyproject/training-material/edit/main/topics/assembly/tutorials/metagenomics-assembly/tutorial.md" title="Edit on GitHub">
           <i class="fab fa-github" aria-hidden="true"></i><span class="visually-hidden">github</span> Edit on GitHub
         </a>
@@ -308,13 +400,13 @@
 
             <div id="archive-selector">
             
-                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2020-01-06/topics/assembly/tutorials/metagenomics-assembly/tutorial.html" title="Version 2020-01-06">2020-01-06</a>
+                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2020-01-06/topics/assembly/tutorials/metagenomics-assembly/tutorial.html">2020-01-06</a>
             
-                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2019-12-01/topics/assembly/tutorials/metagenomics-assembly/tutorial.html" title="Version 2019-12-01">2019-12-01</a>
+                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2019-12-01/topics/assembly/tutorials/metagenomics-assembly/tutorial.html">2019-12-01</a>
             
-                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2019-11-01/topics/assembly/tutorials/metagenomics-assembly/tutorial.html" title="Version 2019-11-01">2019-11-01</a>
+                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2019-11-01/topics/assembly/tutorials/metagenomics-assembly/tutorial.html">2019-11-01</a>
             
-                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/" title="Older Versions">Older Versions</a>
+                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/">Older Versions</a>
             </div>
 
         </div>
@@ -327,7 +419,7 @@
                     <li class="nav-item">
                       <div id="navbarSupportedContent" role="search">
                         <!-- Search form -->
-                        <form class="form-inline mr-auto" method="GET" action="/training-material/search">
+                        <form class="form-inline mr-auto" method="GET" action="/training-material/search2">
                           <i class="fas fa-search nav-link" aria-hidden="true"></i>
                           <div class="md-form mb-2">
                             <input name="query" class="form-control nicer" type="text" placeholder="Search Tutorials" aria-label="Search">
@@ -364,164 +456,7 @@
 
 
 
-<script>
-  ((window.gitter = {}).chat = {}).options = {
-  room: 'Galaxy-Training-Network/Lobby'
-  };
-</script>
 
-
-<script src="https://sidecar.gitter.im/dist/sidecar.v1.js" async defer></script>
-
-<script type="application/ld+json">
-    
-
-
-{
-  "@context": "http://schema.org",
-  "@type": "LearningResource",
-  "http://purl.org/dc/terms/conformsTo": {
-    "@id": "https://bioschemas.org/profiles/TrainingMaterial/1.0-RELEASE",
-    "@type": "CreativeWork"
-  },
-  "audience": {
-    "@type": "EducationalAudience",
-    "educationalRole": "Students"
-  },
-  "citation": {
-    "@type": "CreativeWork",
-    "name": "Community-Driven Data Analysis Training for Biology",
-    "url": "https://doi.org/10.1016/j.cels.2018.05.012"
-  },
-  "copyrightHolder": {
-    "@type": "Organization",
-    "email": "galaxytrainingnetwork@gmail.com",
-    "name": "Galaxy Training Network",
-    "url": "https://galaxyproject.org/teach/gtn/"
-  },
-  "dateModified": "2023-06-26 01:57:48 +0000",
-  "discussionUrl": "https://gitter.im/Galaxy-Training-Network/Lobby",
-  "headline": "Assembly of metagenomic sequencing data",
-  "interactivityType": "mixed",
-  "isAccessibleForFree": true,
-  "isFamilyFriendly": true,
-  "license": "https://spdx.org/licenses/CC-BY-4.0.html",
-  "producer": {
-    "@type": "Organization",
-    "email": "galaxytrainingnetwork@gmail.com",
-    "name": "Galaxy Training Network",
-    "url": "https://galaxyproject.org/teach/gtn/"
-  },
-  "provider": {
-    "@type": "Organization",
-    "email": "galaxytrainingnetwork@gmail.com",
-    "name": "Galaxy Training Network",
-    "url": "https://galaxyproject.org/teach/gtn/"
-  },
-  "sourceOrganization": {
-    "@type": "Organization",
-    "email": "galaxytrainingnetwork@gmail.com",
-    "name": "Galaxy Training Network",
-    "url": "https://galaxyproject.org/teach/gtn/"
-  },
-  "identifier": "https://github.com/galaxyproject/training-material",
-  "accessMode": [
-    "textual",
-    "visual"
-  ],
-  "accessModeSufficient": [
-    "textual",
-    "visual"
-  ],
-  "accessibilityControl": [
-    "fullKeyboardControl",
-    "fullMouseControl"
-  ],
-  "accessibilityFeature": [
-    "alternativeText",
-    "tableOfContents"
-  ],
-  "accessibilitySummary": "The text aims to be as accessible as possible. Image descriptions will vary per tutorial, from images being completely inaccessible, to images with good descriptions for non-visual users.",
-  "isPartOf": {
-    "@type": "CreativeWork",
-    "name": "Assembly",
-    "description": "DNA sequence data has become an indispensable tool for Molecular Biology & Evolutionary Biology. Study in these fields now require a genome sequence to work from. We call this a 'Reference Sequence.' We need to build a reference for each species. We do this by Genome Assembly. De novo Genome Assembly is the process of reconstructing the original DNA sequence from the fragment reads alone.",
-    "url": "https://training.galaxyproject.org/training-material/topics/assembly/"
-  },
-  "learningResourceType": "hands-on tutorial",
-  "name": "Hands-on for 'Assembly of metagenomic sequencing data' tutorial",
-  "url": "https://training.galaxyproject.org/training-material/topics/assembly/tutorials/metagenomics-assembly/tutorial.html",
-  "timeRequired": "PT2H",
-  "keywords": "assembly, assembly, metagenomics",
-  "description": "The questions this  addresses are:\n - Why metagenomic data should be assembled?\n - What is the difference between co-assembly and individual assembly?\n - What is the difference between reads, contigs and scaffolds?\n - How tools based on De Bruijn graph work?\n - How to assess the quality of metagenomic data assembly?\n\n\nThe objectives are:\n - Describe what an assembly is\n - Describe what de-replication is\n - Explain the difference between co-assembly and individual assembly\n - Explain the difference between reads, contigs and scaffolds\n - Explain how tools based on De Bruijn graph work\n - Apply appropriate tools for analyzing the quality of metagenomic data\n - Construct and apply simple assembly pipelines on short read data\n - Apply appropriate tools for analyzing the quality of metagenomic assembly\n - Evaluate the Quality of the Assembly with Quast, Bowtie2, and CoverM-Genome\n\n",
-  "inLanguage": {
-    "@type": "Language",
-    "name": "English",
-    "alternateName": "en"
-  },
-  "competencyRequired": [
-    {
-      "@context": "http://schema.org",
-      "@type": "LearningResource",
-      "url": "https://training.galaxyproject.org/training-material/topics/introduction/",
-      "name": "Introduction to Galaxy Analyses",
-      "description": "Introduction to Galaxy Analyses",
-      "provider": {
-        "@type": "Organization",
-        "email": "galaxytrainingnetwork@gmail.com",
-        "name": "Galaxy Training Network",
-        "url": "https://galaxyproject.org/teach/gtn/"
-      }
-    },
-    {
-      "@context": "http://schema.org",
-      "@type": "LearningResource",
-      "url": "https://training.galaxyproject.org/training-material/topics/sequence-analysis/tutorials/quality-control/slides.html",
-      "name": "Quality Control",
-      "description": "Slides for 'Quality Control' tutorial",
-      "learningResourceType": "slides",
-      "interactivityType": "expositive",
-      "provider": {
-        "@type": "Organization",
-        "email": "galaxytrainingnetwork@gmail.com",
-        "name": "Galaxy Training Network",
-        "url": "https://galaxyproject.org/teach/gtn/"
-      }
-    },
-    {
-      "@context": "http://schema.org",
-      "@type": "LearningResource",
-      "url": "https://training.galaxyproject.org/training-material/topics/sequence-analysis/tutorials/quality-control/tutorial.html",
-      "name": "Quality Control",
-      "description": "Hands-on for 'Quality Control' tutorial",
-      "learningResourceType": "hands-on tutorial",
-      "interactivityType": "expositive",
-      "provider": {
-        "@type": "Organization",
-        "email": "galaxytrainingnetwork@gmail.com",
-        "name": "Galaxy Training Network",
-        "url": "https://galaxyproject.org/teach/gtn/"
-      }
-    }
-  ],
-  "about": [
-    {
-      "@type": "CreativeWork",
-      "name": "Assembly",
-      "description": "DNA sequence data has become an indispensable tool for Molecular Biology & Evolutionary Biology. Study in these fields now require a genome sequence to work from. We call this a 'Reference Sequence.' We need to build a reference for each species. We do this by Genome Assembly. De novo Genome Assembly is the process of reconstructing the original DNA sequence from the fragment reads alone.",
-      "url": "https://training.galaxyproject.org/training-material/topics/assembly/"
-    },
-    {
-      "@type": "DefinedTerm",
-      "@id": "http://edamontology.org/topic_0196",
-      "inDefinedTermSet": "http://edamontology.org",
-      "termCode": "topic_0196",
-      "url": "https://bioportal.bioontology.org/ontologies/EDAM/?p=classes&conceptid=http%3A%2F%2Fedamontology.org%2Ftopic_0196"
-    }
-  ],
-  "educationalLevel": "Beginner"
-}
-</script>
 
 <article class="tutorial topic-assembly">
     <h1 data-toc-skip>Assembly of metagenomic sequencing data</h1>
@@ -537,7 +472,7 @@
 	<tr>
 		<td><abbr title="These people wrote the bulk of the tutorial, they may have done the analysis, built the workflow, and wrote the text themselves.">Author(s)</abbr></td>
 		<td>
-			<a href="/training-material/hall-of-fame/plushz/" class="contributor-badge contributor-plushz"><img src="/training-material/assets/images/orcid.png" alt="orcid logo"/><img src="https://avatars.githubusercontent.com/plushz?s=27" alt="Avatar">Polina Polunina</a><a href="/training-material/hall-of-fame/bebatut/" class="contributor-badge contributor-bebatut"><img src="/training-material/assets/images/orcid.png" alt="orcid logo"/><img src="https://avatars.githubusercontent.com/bebatut?s=27" alt="Avatar">Bérénice Batut</a>
+			<a href="/training-material/hall-of-fame/plushz/" class="contributor-badge contributor-plushz"><img src="/training-material/assets/images/orcid.png" alt="orcid logo" width="36" height="36"/><img src="https://avatars.githubusercontent.com/plushz?s=36" alt="Avatar" width="36" height="36">Polina Polunina</a><a href="/training-material/hall-of-fame/bebatut/" class="contributor-badge contributor-bebatut"><img src="/training-material/assets/images/orcid.png" alt="orcid logo" width="36" height="36"/><img src="https://avatars.githubusercontent.com/bebatut?s=36" alt="Avatar" width="36" height="36">Bérénice Batut</a>
 		</td>
 	</tr>
 	
@@ -748,169 +683,58 @@
                 <li class="btn btn-default supporting_material">
 
 
+
+
+
     <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false" title="Where to run the tutorial">
         <i class="fas fa-globe" aria-hidden="true"></i><span class="visually-hidden">instances</span>&nbsp;Available on these Galaxies 
     </a>
     <ul class="dropdown-menu">
+	<li class="dropdown-header">
+		<b>Known Working</b>
+	</li>
+	
+	
+
     
+    
+	<li class="dropdown-header">
+		<b>Possibly Working</b>
+	</li>
+    
+	<li>
+		<a class="dropdown-item" href="https://usegalaxy.eu" title="">
+			UseGalaxy.eu
+		</a>
+	</li>
+    
+
+    
+	<li class="dropdown-header">
+		Containers
+	</li>
         <li>
-            <a class="dropdown-item" href="https://github.com/galaxyproject/training-material/tree/main/topics/assembly/docker" title="Docker image for this tutorial">
+            <a class="dropdown-item" href="https://github.com/galaxyproject/training-material/tree/main/topics//docker" title="Docker image for this tutorial">
                 <i class="fab fa-docker" aria-hidden="true"></i><span class="visually-hidden">docker_image</span> Docker image
             </a>
         </li>
     
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-        <a class="dropdown-item" href="https://africa.usegalaxy.eu/" title="Galaxy Africa">
-            Galaxy Africa
-        </a>
-        
-    
-        
-        <a class="dropdown-item" href="https://india.usegalaxy.eu/" title="Galaxy India">
-            Galaxy India
-        </a>
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-        <a class="dropdown-item" href="https://streetscience.usegalaxy.eu/" title="Street Science">
-            Street Science
-        </a>
-        
-    
-        
-    
-        
-        <a class="dropdown-item" href="https://usegalaxy.eu" title="UseGalaxy.eu">
-            UseGalaxy.eu
-        </a>
-        
-    
-        
-    
-        
-        <a class="dropdown-item" href="https://usegalaxy.no/" title="UseGalaxy.no">
-            UseGalaxy.no
-        </a>
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
     </ul>
-
 
 </li>
             
         </ul>
         
 
-        <div><strong><i class="far fa-calendar" aria-hidden="true"></i> Last modification:</strong> Jun 26, 2023 </div>
+        <div><strong><i class="far fa-calendar" aria-hidden="true"></i> Last modification:</strong> Jun 27, 2023 </div>
         <div><strong><i class="fas fa-balance-scale" aria-hidden="true"></i> License:</strong>
+		
             
-            <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Tutorial Content is licensed under Creative Commons Attribution 4.0 International License</a>
-            
-            <a rel="license" href="https://github.com/galaxyproject/training-material/blob/main/LICENSE.md">The GTN Framework is licensed under MIT</a>
+            <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Tutorial Content is licensed under Creative Commons Attribution 4.0 International License</a>.
+             The GTN Framework is licensed under <a rel="license" href="https://github.com/galaxyproject/training-material/blob/main/LICENSE.md">MIT</a>
         </div>
         
-        <div><strong>Short Link:</strong> <a href="https://gxy.io/GTN:T00035">https://gxy.io/GTN:T00035</a> </div>
+        <div><strong><i class="fas fa-fingerprint" aria-hidden="true"></i><span class="visually-hidden">purl</span><abbr title="Persistent URL">PURL</abbr>:</strong> <a href="https://gxy.io/GTN:T00035">https://gxy.io/GTN:T00035</a> </div>
         
     </blockquote>
     </section>
@@ -934,7 +758,7 @@
 <p>Assembling seems intuitively similar to putting together a jigsaw puzzle. Essentially, it looks for reads “that work together” or more precisely, reads that overlap. Tasks like this are <strong>not straightforward</strong>, but rather complex because of the complexity of the genomics (specially the repeats), the missing pieces and the errors introduced during sequencing.</p>
 
 <blockquote class="comment">
-  <div class="box-title comment-title" id="comment"><i class="far fa-comment-dots" aria-hidden="true"></i> Comment</div>
+  <div class="box-title comment-title" id="comment"><i class="far fa-comment-dots" aria-hidden="true" ></i> Comment</div>
 
   <p>Do you want to learn more about the principles behind single genome assembly? Follow our <a href="/training-material/topics/assembly/index.html">tutorials</a>.</p>
 </blockquote>
@@ -950,7 +774,7 @@
 </ul>
 
 <blockquote class="details">
-  <div class="box-title details-title" id="details-strategies-for-assembly"><button class="gtn-boxify-button details" type="button" aria-controls="details-strategies-for-assembly" aria-expanded="true"><i class="fas fa-info-circle" aria-hidden="true"></i> Details: Strategies for assembly<span class="fold-unfold fa fa-minus-square"></span></button></div>
+  <div class="box-title details-title" id="details-strategies-for-assembly"><button class="gtn-boxify-button details" type="button" aria-controls="details-strategies-for-assembly" aria-expanded="true"><i class="fas fa-info-circle" aria-hidden="true" ></i> Details: Strategies for assembly<span class="fold-unfold fa fa-minus-square"></span></button></div>
   <p>For assembly, there are 3 main strategies:</p>
   <ol>
     <li>Greedy extension</li>
@@ -958,7 +782,7 @@
     <li>De Bruijn graphs. The following figure illustrates these strategies in brief.</li>
   </ol>
 
-  <figure id="figure-1"><img src="./images/assembly-algorithms.png" alt="Image shows greedy extention, overlap layout consensus, and de Brujin graphs assembly algorithms. " width="868" height="777" loading="lazy" /><figcaption><span class="figcaption-prefix"><strong>Figure 1</strong>:</span> Assembly algorithms. Image from <span class="citation"><a href="#carpentries">“<b>Metagenome Assembly – Data Processing and Visualization for Metagenomics</b>”</a></span></figcaption></figure>
+  <figure id="figure-1" style="max-width: 90%; margin:auto;"><img src="./images/assembly-algorithms.png" alt="Image shows greedy extention, overlap layout consensus, and de Brujin graphs assembly algorithms. " width="868" height="777" loading="lazy" /><figcaption><span class="figcaption-prefix"><strong>Figure 1</strong>:</span> Assembly algorithms. Image from <span class="citation"><a href="#carpentries">“<b>Metagenome Assembly – Data Processing and Visualization for Metagenomics</b>”</a></span></figcaption></figure>
 
   <p>The nice paper <span class="citation"><a href="#miller2010">Miller <i>et al.</i> 2010</a></span> on assemblers based on these algorithms will help you to better understand how they work.</p>
 </blockquote>
@@ -993,7 +817,7 @@
 <p>To run assembly, we first need to get the data into Galaxy. Any analysis should get its own Galaxy history. So let’s start by creating a new one:</p>
 
 <blockquote class="notranslate hands_on">
-  <div class="box-title hands-on-title" id="hands-on-prepare-the-galaxy-history"><i class="fas fa-pencil-alt" aria-hidden="true"></i> Hands-on: Prepare the Galaxy history</div>
+  <div class="box-title hands-on-title" id="hands-on-prepare-the-galaxy-history"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Prepare the Galaxy history</div>
 
   <ol>
     <li>
@@ -1001,12 +825,14 @@
 
       <!--SNIPPET-->
       <blockquote class="tip">   <div class="box-title tip-title" id="tip-creating-a-new-history"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-creating-a-new-history" aria-expanded="true"><i class="far fa-lightbulb" aria-hidden="true"></i> Tip: Creating a new history<span class="fold-unfold fa fa-minus-square"></span></button></div>   <p>Click the <i class="fas fa-plus" aria-hidden="true"></i><span class="visually-hidden">new-history</span> icon at the top of the history panel.</p>   <p>If the <i class="fas fa-plus" aria-hidden="true"></i><span class="visually-hidden">new-history</span> is missing:</p>   <ol>   <li>Click on the <i class="fas fa-cog" aria-hidden="true"></i><span class="visually-hidden">galaxy-gear</span> icon (<strong>History options</strong>) on the top of the history panel</li>   <li>Select the option <strong>Create New</strong> from the menu</li> </ol> </blockquote>
+      <p><!--END_SNIPPET--></p>
     </li>
     <li>
       <p>Rename the history</p>
 
       <!--SNIPPET-->
       <blockquote class="tip">   <div class="box-title tip-title" id="tip-renaming-a-history"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-renaming-a-history" aria-expanded="true"><i class="far fa-lightbulb" aria-hidden="true"></i> Tip: Renaming a history<span class="fold-unfold fa fa-minus-square"></span></button></div>   <ol>   <li>Click on <i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden">galaxy-pencil</span> (<strong>Edit</strong>) next to the history name (which by default is “Unnamed history”)</li>   <li>Type the new name</li>   <li>Click on <strong>Save</strong></li> </ol>   <p>If you do not have the <i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden">galaxy-pencil</span> (<strong>Edit</strong>) next to the history name:</p>   <ol>   <li>Click on <strong>Unnamed history</strong> (or the current name of the history) (<strong>Click to rename history</strong>) at the top of your history panel</li>   <li>Type the new name</li>   <li>Press <kbd>Enter</kbd></li> </ol> </blockquote>
+      <p><!--END_SNIPPET--></p>
     </li>
   </ol>
 
@@ -1017,7 +843,7 @@
 <p>In case of a not very large dataset it’s more convenient to upload data directly from your computer to Galaxy.</p>
 
 <blockquote class="notranslate hands_on">
-  <div class="box-title hands-on-title" id="hands-on-upload-data-into-galaxy"><i class="fas fa-pencil-alt" aria-hidden="true"></i> Hands-on: Upload data into Galaxy</div>
+  <div class="box-title hands-on-title" id="hands-on-upload-data-into-galaxy"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Upload data into Galaxy</div>
 
   <ol>
     <li>
@@ -1038,12 +864,15 @@ https://zenodo.org/record/7818827/files/ERR2231572_2.fastqsanger.gz
 </code></pre></div>      </div>
 
       <!--SNIPPET-->
-      <blockquote class="tip">   <div class="box-title tip-title" id="tip-importing-via-links"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-importing-via-links" aria-expanded="true"><i class="far fa-lightbulb" aria-hidden="true"></i> Tip: Importing via links<span class="fold-unfold fa fa-minus-square"></span></button></div>   <ul>   <li>Copy the link location</li>   <li>     <p>Open the Galaxy Upload Manager (<i class="fas fa-upload" aria-hidden="true"></i><span class="visually-hidden">galaxy-upload</span> on the top-right of the tool panel)</p>   </li>   <li>Select <strong>Paste/Fetch Data</strong></li>   <li>     <p>Paste the link(s) into the text field</p>   </li>   <li>     <p>Press <strong>Start</strong></p>   </li>   <li><strong>Close</strong> the window</li> </ul> </blockquote>
+      <blockquote class="tip">   <div class="box-title tip-title" id="tip-importing-via-links"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-importing-via-links" aria-expanded="true"><i class="far fa-lightbulb" aria-hidden="true"></i> Tip: Importing via links<span class="fold-unfold fa fa-minus-square"></span></button></div>   <ul>   <li>Copy the link location</li>   <li>     <p>Click <i class="fas fa-upload" aria-hidden="true"></i><span class="visually-hidden">galaxy-upload</span> <strong>Upload Data</strong> at the top of the tool panel</p>   </li>   <li>Select <i class="fa fa-edit" aria-hidden="true"></i><span class="visually-hidden">galaxy-wf-edit</span> <strong>Paste/Fetch Data</strong></li>   <li>     <p>Paste the link(s) into the text field</p>   </li>   <li>     <p>Press <strong>Start</strong></p>   </li>   <li><strong>Close</strong> the window</li> </ul> </blockquote>
+      <p><!--END_SNIPPET--></p>
+
       <!--SNIPPET-->
-      <blockquote class="tip">   <div class="box-title tip-title" id="tip-importing-data-from-a-data-library"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-importing-data-from-a-data-library" aria-expanded="true"><i class="far fa-lightbulb" aria-hidden="true"></i> Tip: Importing data from a data library<span class="fold-unfold fa fa-minus-square"></span></button></div>   <p>As an alternative to uploading the data from a URL or your computer, the files may also have been made available from a <em>shared data library</em>:</p>   <ul>   <li>Go into <strong>Shared data</strong> (top panel) then <strong>Data libraries</strong></li>   <li>Navigate to  the correct folder as indicated by your instructor</li>   <li>Select the desired files</li>   <li>Click on the <strong>To History</strong> button near the top and select <strong>as Datasets</strong> from the dropdown menu</li>   <li>In the pop-up window, select the history you want to import the files to (or create a new one)</li>   <li>Click on <strong>Import</strong></li> </ul> </blockquote>
+      <blockquote class="tip">   <div class="box-title tip-title" id="tip-importing-data-from-a-data-library"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-importing-data-from-a-data-library" aria-expanded="true"><i class="far fa-lightbulb" aria-hidden="true"></i> Tip: Importing data from a data library<span class="fold-unfold fa fa-minus-square"></span></button></div>   <p>As an alternative to uploading the data from a URL or your computer, the files may also have been made available from a <em>shared data library</em>:</p>   <ol>   <li>Go into <strong>Shared data</strong> (top panel) then <strong>Data libraries</strong></li>   <li>Navigate to  the correct folder as indicated by your instructor.     <ul>       <li>On most Galaxies tutorial data will be provided in a folder named <strong>GTN - Material –&gt; Topic Name -&gt; Tutorial Name</strong>.</li>     </ul>   </li>   <li>Select the desired files</li>   <li>Click on <strong>Add to History</strong> <i class="fas fa-caret-down" aria-hidden="true"></i><span class="visually-hidden">galaxy-dropdown</span> near the top and select <strong>as Datasets</strong> from the dropdown menu</li>   <li>     <p>In the pop-up window, choose</p>     <ul>       <li><em>“Select history”</em>: the history you want to import the data to (or create a new one)</li>     </ul>   </li>   <li>Click on <strong>Import</strong></li> </ol> </blockquote>
+      <p><!--END_SNIPPET--></p>
 
       <blockquote class="comment">
-        <div class="box-title comment-title" id="comment-1"><i class="far fa-comment-dots" aria-hidden="true"></i> Comment</div>
+        <div class="box-title comment-title" id="comment-1"><i class="far fa-comment-dots" aria-hidden="true" ></i> Comment</div>
         <p>In case of large dataset, we can use FTP server or the <a href="/training-material/topics/galaxy-interface/tutorials/upload-rules/tutorial.html">Galaxy Rule-based Uploader</a>.</p>
       </blockquote>
     </li>
@@ -1052,6 +881,7 @@ https://zenodo.org/record/7818827/files/ERR2231572_2.fastqsanger.gz
 
       <!--SNIPPET-->
       <blockquote class="tip">   <div class="box-title tip-title" id="tip-creating-a-paired-collection"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-creating-a-paired-collection" aria-expanded="true"><i class="far fa-lightbulb" aria-hidden="true"></i> Tip: Creating a paired collection<span class="fold-unfold fa fa-minus-square"></span></button></div>   <ul>   <li>Click on <i class="far fa-check-square" aria-hidden="true"></i><span class="visually-hidden">galaxy-selector</span> <strong>Select Items</strong> at the top of the history panel <img src="/training-material/topics/galaxy-interface/images/historyItemControls.png" alt="Select Items button" /></li>   <li>Check all the datasets in your history you would like to include</li>   <li>     <p>Click <strong>n of N selected</strong> and choose <strong>Build List of Dataset Pairs</strong></p>   </li>   <li>Change the text of <em>unpaired forward</em> to a common selector for the forward reads</li>   <li>Change the text of <em>unpaired reverse</em> to a common selector for the reverse reads</li>   <li>Click <strong>Pair these datasets</strong> for each valid <em>forward</em> and <em>reverse</em> pair.</li>   <li>Enter a name for your collection</li>   <li>Click <strong>Create List</strong> to build your collection</li>   <li>Click on the checkmark icon at the top of your history again</li> </ul> </blockquote>
+      <p><!--END_SNIPPET--></p>
     </li>
   </ol>
 
@@ -1069,7 +899,7 @@ https://zenodo.org/record/7818827/files/ERR2231572_2.fastqsanger.gz
 
 <p>To reduce the differences in coverage between samples, we can use a <strong>co-assembly</strong> approach, where reads from all samples are aligned together.:</p>
 
-<figure id="figure-2"><img src="./images/co-assembly.png" alt="Image show one pile of sample1 reads and another pile of sample2 reads, then, green arrow leads to assembled reads from both piles. " width="482" height="348" loading="lazy" /><figcaption><span class="figcaption-prefix"><strong>Figure 2</strong>:</span> Co-assembly</figcaption></figure>
+<figure id="figure-2" style="max-width: 90%; margin:auto;"><img src="./images/co-assembly.png" alt="Image show one pile of sample1 reads and another pile of sample2 reads, then, green arrow leads to assembled reads from both piles. " width="482" height="348" loading="lazy" /><figcaption><span class="figcaption-prefix"><strong>Figure 2</strong>:</span> Co-assembly</figcaption></figure>
 
 <table>
   <thead>
@@ -1100,7 +930,7 @@ https://zenodo.org/record/7818827/files/ERR2231572_2.fastqsanger.gz
   <li>Binned contigs are likely to be misclassified: MAGs must be treated as a population genome.</li>
 </ul>
 
-<figure id="figure-3"><img src="./images/co-assembly-process.png" alt="Image shows the process of assembled reads from 2 samples followed by binning and there is detailed information about broken contigs, dominant coverage, chimeric contigs found during assembly process. " width="512" height="200" loading="lazy" /><figcaption><span class="figcaption-prefix"><strong>Figure 3</strong>:</span> Co-assembly process</figcaption></figure>
+<figure id="figure-3" style="max-width: 90%; margin:auto;"><img src="./images/co-assembly-process.png" alt="Image shows the process of assembled reads from 2 samples followed by binning and there is detailed information about broken contigs, dominant coverage, chimeric contigs found during assembly process. " width="512" height="200" loading="lazy" /><figcaption><span class="figcaption-prefix"><strong>Figure 3</strong>:</span> Co-assembly process</figcaption></figure>
 
 <p>In these cases, co-assembly is reasonable if:</p>
 <ul>
@@ -1112,12 +942,12 @@ https://zenodo.org/record/7818827/files/ERR2231572_2.fastqsanger.gz
 
 <p>If it is not the case, <strong>individual assembly</strong> should be prefered. In this case, an extra step of <strong>de-replication</strong> should be used:</p>
 
-<figure id="figure-4"><img src="./images/individual-assembly.png" alt="Image shows the process of individual assembly on two strains and five samples, after individual assembly of samples two samples are chosen for de-replication process. In parallel, co-assembly on all five samples is performed. " width="512" height="316" loading="lazy" /><figcaption><span class="figcaption-prefix"><strong>Figure 4</strong>:</span> Individual assembly followed by de-replication vs co-assembly. Source: dRep documentation</figcaption></figure>
+<figure id="figure-4" style="max-width: 90%; margin:auto;"><img src="./images/individual-assembly.png" alt="Image shows the process of individual assembly on two strains and five samples, after individual assembly of samples two samples are chosen for de-replication process. In parallel, co-assembly on all five samples is performed. " width="512" height="316" loading="lazy" /><figcaption><span class="figcaption-prefix"><strong>Figure 4</strong>:</span> Individual assembly followed by de-replication vs co-assembly. Source: dRep documentation</figcaption></figure>
 
 <p>Co-assembly is more commonly used than individual assembly and then de-replication after binning. But in this tutorial, to show all steps, we will run an <strong>individual assembly</strong>.</p>
 
 <blockquote class="comment">
-  <div class="box-title comment-title" id="comment-2"><i class="far fa-comment-dots" aria-hidden="true"></i> Comment</div>
+  <div class="box-title comment-title" id="comment-2"><i class="far fa-comment-dots" aria-hidden="true" ></i> Comment</div>
   <p>Sometimes it is important to run assembly tools both on individual samples and on all pooled samples, and use both outputs to get the better outputs for the certain dataset.</p>
 </blockquote>
 
@@ -1141,9 +971,9 @@ https://zenodo.org/record/7818827/files/ERR2231572_2.fastqsanger.gz
 <p>Both tools are available in Galaxy. But currently, only MEGAHIT can be used in individual mode for several samples.</p>
 
 <blockquote class="notranslate hands_on">
-  <div class="box-title hands-on-title" id="hands-on-individual-assembly-of-short-reads-with-megahit"><i class="fas fa-pencil-alt" aria-hidden="true"></i> Hands-on: Individual assembly of short-reads with MEGAHIT</div>
+  <div class="box-title hands-on-title" id="hands-on-individual-assembly-of-short-reads-with-megahit"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Individual assembly of short-reads with MEGAHIT</div>
   <ol>
-    <li><span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/iuc/megahit/megahit/1.2.9+galaxy0" title="MEGAHIT tool"><strong>MEGAHIT</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: toolshed.g2.bx.psu.edu/repos/iuc/megahit/megahit/1.2.9+galaxy0</span></span>  with parameters:
+    <li><span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/iuc/megahit/megahit/1.2.9+galaxy0" title="MEGAHIT tool" aria-role="link"><strong>MEGAHIT</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: toolshed.g2.bx.psu.edu/repos/iuc/megahit/megahit/1.2.9+galaxy0</span></span> with parameters:
       <ul>
         <li><em>“Select your input option”</em>: <code class="language-plaintext highlighter-rouge">Paired-end collection</code>
           <ul>
@@ -1151,7 +981,7 @@ https://zenodo.org/record/7818827/files/ERR2231572_2.fastqsanger.gz
               <p><em>“Run in batch mode?”</em>: <code class="language-plaintext highlighter-rouge">Run individually</code></p>
 
               <blockquote class="comment">
-                <div class="box-title comment-title" id="comment-3"><i class="far fa-comment-dots" aria-hidden="true"></i> Comment</div>
+                <div class="box-title comment-title" id="comment-3"><i class="far fa-comment-dots" aria-hidden="true" ></i> Comment</div>
                 <p>To run as co-assembly, select <code class="language-plaintext highlighter-rouge">Merge all fastq pair-end</code>, instead of <code class="language-plaintext highlighter-rouge">Run individually</code></p>
               </blockquote>
             </li>
@@ -1182,12 +1012,12 @@ https://zenodo.org/record/7818827/files/ERR2231572_2.fastqsanger.gz
 <p>Contrary to <strong>MetaSPAdes</strong>, <strong>MEGAHIT</strong> does not output <strong>scaffolds</strong>, i.e. segments of genome sequence reconstructed fron contigs and gaps. The gaps occur when reads from the two sequenced ends of at least one fragment overlap with other reads from two different contigs (as long as the arrangement is otherwise consistent with the contigs being adjacent). It is possible to estimate the number of bases between contigs based on fragment lengths.</p>
 
 <blockquote class="comment">
-  <div class="box-title comment-title" id="comment-4"><i class="far fa-comment-dots" aria-hidden="true"></i> Comment</div>
+  <div class="box-title comment-title" id="comment-4"><i class="far fa-comment-dots" aria-hidden="true" ></i> Comment</div>
 
   <p>Since the assembly process would take ~1h we are just going to import the results of the assembly previously run.</p>
 
   <blockquote class="notranslate hands_on">
-    <div class="box-title hands-on-title" id="hands-on-import-generated-assembly-files"><i class="fas fa-pencil-alt" aria-hidden="true"></i> Hands-on: Import generated assembly files</div>
+    <div class="box-title hands-on-title" id="hands-on-import-generated-assembly-files"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Import generated assembly files</div>
 
     <ol>
       <li>
@@ -1210,7 +1040,7 @@ https://zenodo.org/record/7818827/files/contigs_ERR2231572.fasta
 </blockquote>
 
 <blockquote class="question">
-  <div class="box-title question-title" id="question"><i class="far fa-question-circle" aria-hidden="true"></i> Question</div>
+  <div class="box-title question-title" id="question"><i class="far fa-question-circle" aria-hidden="true" ></i> Question</div>
 
   <ol>
     <li>How many contigs has been for ERR2231568 sample?</li>
@@ -1219,7 +1049,7 @@ https://zenodo.org/record/7818827/files/contigs_ERR2231572.fasta
   </ol>
 
   <blockquote class="solution">
-    <div class="box-title solution-title" id="solution"><button class="gtn-boxify-button solution" type="button" aria-controls="solution" aria-expanded="true"><i class="far fa-eye" aria-hidden="true"></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
+    <div class="box-title solution-title" id="solution"><button class="gtn-boxify-button solution" type="button" aria-controls="solution" aria-expanded="true"><i class="far fa-eye" aria-hidden="true" ></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
 
     <ol>
       <li>There are 228,719 sequences in the file so 228,719 contigs</li>
@@ -1232,13 +1062,13 @@ https://zenodo.org/record/7818827/files/contigs_ERR2231572.fasta
 </blockquote>
 
 <blockquote class="details">
-  <div class="box-title details-title" id="details-co-assembly-with-metaspades"><button class="gtn-boxify-button details" type="button" aria-controls="details-co-assembly-with-metaspades" aria-expanded="true"><i class="fas fa-info-circle" aria-hidden="true"></i> Details: Co-assembly with MetaSPAdes<span class="fold-unfold fa fa-minus-square"></span></button></div>
+  <div class="box-title details-title" id="details-co-assembly-with-metaspades"><button class="gtn-boxify-button details" type="button" aria-controls="details-co-assembly-with-metaspades" aria-expanded="true"><i class="fas fa-info-circle" aria-hidden="true" ></i> Details: Co-assembly with MetaSPAdes<span class="fold-unfold fa fa-minus-square"></span></button></div>
 
   <blockquote class="notranslate hands_on">
-    <div class="box-title hands-on-title" id="hands-on-assembly-with-metaspades"><i class="fas fa-pencil-alt" aria-hidden="true"></i> Hands-on: Assembly with MetaSPAdes</div>
+    <div class="box-title hands-on-title" id="hands-on-assembly-with-metaspades"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Assembly with MetaSPAdes</div>
 
     <ol>
-      <li><span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/nml/metaspades/metaspades/3.15.4+galaxy2" title="MetaSPAdes tool"><strong>MetaSPAdes</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: toolshed.g2.bx.psu.edu/repos/nml/metaspades/metaspades/3.15.4+galaxy2</span></span>  with following parameters
+      <li><span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/nml/metaspades/metaspades/3.15.4+galaxy2" title="MetaSPAdes tool" aria-role="link"><strong>MetaSPAdes</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: toolshed.g2.bx.psu.edu/repos/nml/metaspades/metaspades/3.15.4+galaxy2</span></span> with following parameters
         <ul>
           <li><em>“Pair-end reads input format”</em>: <code class="language-plaintext highlighter-rouge">Paired-end: list of dataset pairs</code>
             <ul>
@@ -1263,10 +1093,10 @@ https://zenodo.org/record/7818827/files/contigs_ERR2231572.fasta
 <p>Assemblies can be evaluated with <strong>metaQUAST</strong> (<span class="citation"><a href="#mikheenko2016">Mikheenko <i>et al.</i> 2016</a></span>), the metagenomics mode of <strong>QUAST</strong> (<span class="citation"><a href="#gurevich2013">Gurevich <i>et al.</i> 2013</a></span>).</p>
 
 <blockquote class="notranslate hands_on">
-  <div class="box-title hands-on-title" id="hands-on-evaluation-assembly-quality-with-metaquast"><i class="fas fa-pencil-alt" aria-hidden="true"></i> Hands-on: Evaluation assembly quality with metaQUAST</div>
+  <div class="box-title hands-on-title" id="hands-on-evaluation-assembly-quality-with-metaquast"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Evaluation assembly quality with metaQUAST</div>
 
   <ol>
-    <li><span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/iuc/quast/quast/5.2.0+galaxy1" title="Quast tool"><strong>Quast</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: toolshed.g2.bx.psu.edu/repos/iuc/quast/quast/5.2.0+galaxy1</span></span>  with parameters:
+    <li><span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/iuc/quast/quast/5.2.0+galaxy1" title="Quast tool" aria-role="link"><strong>Quast</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: toolshed.g2.bx.psu.edu/repos/iuc/quast/quast/5.2.0+galaxy1</span></span> with parameters:
       <ul>
         <li><em>“Assembly mode?</em>”: <code class="language-plaintext highlighter-rouge">Individual assembly (1 contig file per samples)</code>
           <ul>
@@ -1279,7 +1109,7 @@ https://zenodo.org/record/7818827/files/contigs_ERR2231572.fasta
               <p><em>“Reads options”</em>: <code class="language-plaintext highlighter-rouge">Illumina paired-end reads in paired collection</code></p>
 
               <blockquote class="comment">
-                <div class="box-title comment-title" id="comment-5"><i class="far fa-comment-dots" aria-hidden="true"></i> Comment</div>
+                <div class="box-title comment-title" id="comment-5"><i class="far fa-comment-dots" aria-hidden="true" ></i> Comment</div>
                 <p>To make the job quicker, you can select <code class="language-plaintext highlighter-rouge">Disabled</code> here. The raw reads will then not been mapped to the assembly to compute metrics, like the coverage.</p>
               </blockquote>
             </li>
@@ -1295,12 +1125,12 @@ https://zenodo.org/record/7818827/files/contigs_ERR2231572.fasta
 </blockquote>
 
 <blockquote class="comment">
-  <div class="box-title comment-title" id="comment-6"><i class="far fa-comment-dots" aria-hidden="true"></i> Comment</div>
+  <div class="box-title comment-title" id="comment-6"><i class="far fa-comment-dots" aria-hidden="true" ></i> Comment</div>
 
   <p>Since the Quast process would take times we are just going to import the results:</p>
 
   <blockquote class="notranslate hands_on">
-    <div class="box-title hands-on-title" id="hands-on-import-generated-metaquast-results"><i class="fas fa-pencil-alt" aria-hidden="true"></i> Hands-on: Import generated metaQuast results</div>
+    <div class="box-title hands-on-title" id="hands-on-import-generated-metaquast-results"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Import generated metaQuast results</div>
 
     <ol>
       <li>
@@ -1340,7 +1170,7 @@ https://zenodo.org/record/7818827/files/quast_ERR2231572.html
         <p>For each identified genomes, the genome fraction is given when clicking on <strong>Genome fraction (%)</strong></p>
 
         <blockquote class="question">
-          <div class="box-title question-title" id="question-1"><i class="far fa-question-circle" aria-hidden="true"></i> Question</div>
+          <div class="box-title question-title" id="question-1"><i class="far fa-question-circle" aria-hidden="true" ></i> Question</div>
 
           <ol>
             <li>What is the genome fraction for ERR2231568? And for ERR2231572?</li>
@@ -1348,7 +1178,7 @@ https://zenodo.org/record/7818827/files/quast_ERR2231572.html
           </ol>
 
           <blockquote class="solution">
-            <div class="box-title solution-title" id="solution-1"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-1" aria-expanded="true"><i class="far fa-eye" aria-hidden="true"></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
+            <div class="box-title solution-title" id="solution-1"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-1" aria-expanded="true"><i class="far fa-eye" aria-hidden="true" ></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
 
             <ol>
               <li>The genome fraction is 30.22% for ERR2231568 and 58.73% for ERR2231572</li>
@@ -1365,7 +1195,7 @@ https://zenodo.org/record/7818827/files/quast_ERR2231572.html
         <p>If an assembly contains many contigs that cover the same regions of the reference, the duplication ratio may be much larger than 1.</p>
 
         <blockquote class="question">
-          <div class="box-title question-title" id="question-2"><i class="far fa-question-circle" aria-hidden="true"></i> Question</div>
+          <div class="box-title question-title" id="question-2"><i class="far fa-question-circle" aria-hidden="true" ></i> Question</div>
 
           <ol>
             <li>What is the duplication ratio for ERR2231568? And for ERR2231572?</li>
@@ -1373,7 +1203,7 @@ https://zenodo.org/record/7818827/files/quast_ERR2231572.html
           </ol>
 
           <blockquote class="solution">
-            <div class="box-title solution-title" id="solution-2"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-2" aria-expanded="true"><i class="far fa-eye" aria-hidden="true"></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
+            <div class="box-title solution-title" id="solution-2"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-2" aria-expanded="true"><i class="far fa-eye" aria-hidden="true" ></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
 
             <ol>
               <li>The duplication ratio is 1.068 for ERR2231568 and 1.1 for ERR2231572 (column ERR2231572 in ERR2231572 report)</li>
@@ -1390,7 +1220,7 @@ https://zenodo.org/record/7818827/files/quast_ERR2231572.html
     <p><strong>Read mapping</strong>: results of the mapping of the raw reads on the different assemblies (only if the <em>“Reads options”</em> is not disabled)</p>
 
     <blockquote class="question">
-      <div class="box-title question-title" id="question-3"><i class="far fa-question-circle" aria-hidden="true"></i> Question</div>
+      <div class="box-title question-title" id="question-3"><i class="far fa-question-circle" aria-hidden="true" ></i> Question</div>
 
       <ol>
         <li>What is the % of read mapped for ERR2231568 assembly to ERR2231568 raw reads? And for ERR2231572 assembly to ERR2231572 raw reads?</li>
@@ -1398,7 +1228,7 @@ https://zenodo.org/record/7818827/files/quast_ERR2231572.html
       </ol>
 
       <blockquote class="solution">
-        <div class="box-title solution-title" id="solution-3"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-3" aria-expanded="true"><i class="far fa-eye" aria-hidden="true"></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
+        <div class="box-title solution-title" id="solution-3"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-3" aria-expanded="true"><i class="far fa-eye" aria-hidden="true" ></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
 
         <ol>
           <li>79.47% of ERR2231568 raw reads were mapped to ERR2231568 assembly and 86.98% of ERR2231572 raw reads to ERR2231572 assembly.</li>
@@ -1409,7 +1239,7 @@ https://zenodo.org/record/7818827/files/quast_ERR2231572.html
     </blockquote>
 
     <blockquote class="details">
-      <div class="box-title details-title" id="details-alternative-ways-to-compute-coverage"><button class="gtn-boxify-button details" type="button" aria-controls="details-alternative-ways-to-compute-coverage" aria-expanded="true"><i class="fas fa-info-circle" aria-hidden="true"></i> Details: Alternative ways to compute coverage<span class="fold-unfold fa fa-minus-square"></span></button></div>
+      <div class="box-title details-title" id="details-alternative-ways-to-compute-coverage"><button class="gtn-boxify-button details" type="button" aria-controls="details-alternative-ways-to-compute-coverage" aria-expanded="true"><i class="fas fa-info-circle" aria-hidden="true" ></i> Details: Alternative ways to compute coverage<span class="fold-unfold fa fa-minus-square"></span></button></div>
 
       <p>2 alternative ways to compute coverage are to</p>
       <ol>
@@ -1417,10 +1247,10 @@ https://zenodo.org/record/7818827/files/quast_ERR2231572.html
           <p>Use <a href="https://github.com/wwood/CoverM">CoverM</a>, which is available in Galaxy</p>
 
           <blockquote class="notranslate hands_on">
-            <div class="box-title hands-on-title" id="hands-on-calculate-coverage-using-coverm"><i class="fas fa-pencil-alt" aria-hidden="true"></i> Hands-on: Calculate coverage using CoverM</div>
+            <div class="box-title hands-on-title" id="hands-on-calculate-coverage-using-coverm"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Calculate coverage using CoverM</div>
 
             <ol>
-              <li><span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/iuc/coverm_contig/coverm_contig/0.2.1" title="CoverM-CONTIG tool"><strong>CoverM-CONTIG</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: toolshed.g2.bx.psu.edu/repos/iuc/coverm_contig/coverm_contig/0.2.1</span></span>  with parameters:
+              <li><span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/iuc/coverm_contig/coverm_contig/0.2.1" title="CoverM-CONTIG tool" aria-role="link"><strong>CoverM-CONTIG</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: toolshed.g2.bx.psu.edu/repos/iuc/coverm_contig/coverm_contig/0.2.1</span></span> with parameters:
                 <ul>
                   <li><em>“Read type”</em>: <code class="language-plaintext highlighter-rouge">Paired collection</code>
                     <ul>
@@ -1438,10 +1268,10 @@ https://zenodo.org/record/7818827/files/quast_ERR2231572.html
           <p>Map the original reads onto contigs and extract the percentage of mapped reads:</p>
 
           <blockquote class="notranslate hands_on">
-            <div class="box-title hands-on-title" id="hands-on-computation-of-the-reads-used-in-assemblies"><i class="fas fa-pencil-alt" aria-hidden="true"></i> Hands-on: Computation of the % reads used in assemblies</div>
+            <div class="box-title hands-on-title" id="hands-on-computation-of-the-reads-used-in-assemblies"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Computation of the % reads used in assemblies</div>
 
             <ol>
-              <li><span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/devteam/bowtie2/bowtie2/2.5.0+galaxy0" title="Bowtie2 tool"><strong>Bowtie2</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: toolshed.g2.bx.psu.edu/repos/devteam/bowtie2/bowtie2/2.5.0+galaxy0</span></span>  with the following parameters:
+              <li><span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/devteam/bowtie2/bowtie2/2.5.0+galaxy0" title="Bowtie2 tool" aria-role="link"><strong>Bowtie2</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: toolshed.g2.bx.psu.edu/repos/devteam/bowtie2/bowtie2/2.5.0+galaxy0</span></span> with the following parameters:
                 <ul>
                   <li><em>“Is this single or paired library”</em>: <code class="language-plaintext highlighter-rouge">Paired-end Dataset Collection</code>
                     <ul>
@@ -1461,7 +1291,7 @@ https://zenodo.org/record/7818827/files/quast_ERR2231572.html
           </blockquote>
 
           <blockquote class="question">
-            <div class="box-title question-title" id="question-4"><i class="far fa-question-circle" aria-hidden="true"></i> Question</div>
+            <div class="box-title question-title" id="question-4"><i class="far fa-question-circle" aria-hidden="true" ></i> Question</div>
 
             <ol>
               <li>What is the overall alignment rate for ERR2231567? and ERR2231571?</li>
@@ -1469,7 +1299,7 @@ https://zenodo.org/record/7818827/files/quast_ERR2231572.html
             </ol>
 
             <blockquote class="solution">
-              <div class="box-title solution-title" id="solution-4"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-4" aria-expanded="true"><i class="far fa-eye" aria-hidden="true"></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
+              <div class="box-title solution-title" id="solution-4"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-4" aria-expanded="true"><i class="far fa-eye" aria-hidden="true" ></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
 
               <ol>
                 <li>The overall alignment rate for ERR2231567 is 65.97% and 73.67% for ERR2231571</li>
@@ -1488,7 +1318,7 @@ https://zenodo.org/record/7818827/files/quast_ERR2231572.html
 
     <p>Quast identifies missassemblies by mapping the contigs to the reference genomes of the identified organisms. 3 types of misassemblies can be identified:</p>
 
-    <figure id="figure-5"><img src="./images/quast_misassemblies.png" alt="Image shows on the top a contig with a blue and a gren parts with white arrows (pointing on the right) on them and below a reference with 2 chromosomes. The 3 types of misassemblies are after schematized. Relocation: the blue and gren parts of the contig are on chr 1 but separated. Inversion: the blue and gren parts of the contig are on chr 1 but separated and with the arrows facing each other. Translocation: the blue part is on chr 1 and gren part on chr 2." width="592" height="180" loading="lazy" /><figcaption><span class="figcaption-prefix"><strong>Figure 5</strong>:</span> Source: <a href="https://quast.sourceforge.net/docs/manual.html#sec3.1.2">QUAST manual</a></figcaption></figure>
+    <figure id="figure-5" style="max-width: 90%; margin:auto;"><img src="./images/quast_misassemblies.png" alt="Image shows on the top a contig with a blue and a gren parts with white arrows (pointing on the right) on them and below a reference with 2 chromosomes. The 3 types of misassemblies are after schematized. Relocation: the blue and gren parts of the contig are on chr 1 but separated. Inversion: the blue and gren parts of the contig are on chr 1 but separated and with the arrows facing each other. Translocation: the blue part is on chr 1 and gren part on chr 2." width="592" height="180" loading="lazy" /><figcaption><span class="figcaption-prefix"><strong>Figure 5</strong>:</span> Source: <a href="https://quast.sourceforge.net/docs/manual.html#sec3.1.2">QUAST manual</a></figcaption></figure>
 
     <ol>
       <li><strong>Relocation</strong> occur based on signal from two mappings of the same contig against the same chromosome, with 2 cases:
@@ -1497,10 +1327,10 @@ https://zenodo.org/record/7818827/files/quast_ERR2231572.html
           <li>they map on the same chromosome with a shared mapping area of at least 1 kbp</li>
         </ol>
 
-        <figure id="figure-6"><img src="./images/relocation.svg" alt="Image shows on the top a contig with a blue and a gren parts with white arrows (pointing on the right) on them and below a reference with 2 chromosomes. The 3 types of misassemblies are after schematized. Relocation: the blue and gren parts of the contig are on chr 1 but separated. Inversion: the blue and gren parts of the contig are on chr 1 but separated and with the arrows facing each other. Translocation: the blue part is on chr 1 and gren part on chr 2." width="802" height="219" loading="lazy" /><figcaption><span class="figcaption-prefix"><strong>Figure 6</strong>:</span> Source: <a href="https://blog.pierre.marijon.fr/misassemblies-in-noisy-assemblies/">Yet Another Bioinformatic blog by Pierre Marijon</a></figcaption></figure>
+        <figure id="figure-6" style="max-width: 90%; margin:auto;"><div style="overflow-x: auto"><object data="./images/relocation.svg" width="80%" type="image/svg+xml" alt="Image shows on the top a contig with a blue and a gren parts with white arrows (pointing on the right) on them and below a reference with 2 chromosomes. The 3 types of misassemblies are after schematized. Relocation: the blue and gren parts of the contig are on chr 1 but separated. Inversion: the blue and gren parts of the contig are on chr 1 but separated and with the arrows facing each other. Translocation: the blue part is on chr 1 and gren part on chr 2.">Image shows on the top a contig with a blue and a gren parts with white arrows (pointing on the right) on them and below a reference with 2 chromosomes. The 3 types of misassemblies are after schematized. Relocation: the blue and gren parts of the contig are on chr 1 but separated. Inversion: the blue and gren parts of the contig are on chr 1 but separated and with the arrows facing each other. Translocation: the blue part is on chr 1 and gren part on chr 2.</object></div><small><a target="_blank" href="./images/relocation.svg">Open image in new tab</a></small><figcaption><span class="figcaption-prefix"><strong>Figure 6</strong>:</span> Source: <a href="https://blog.pierre.marijon.fr/misassemblies-in-noisy-assemblies/">Yet Another Bioinformatic blog by Pierre Marijon</a></figcaption></figure>
 
         <blockquote class="question">
-          <div class="box-title question-title" id="question-5"><i class="far fa-question-circle" aria-hidden="true"></i> Question</div>
+          <div class="box-title question-title" id="question-5"><i class="far fa-question-circle" aria-hidden="true" ></i> Question</div>
 
           <ol>
             <li>How many relocations has been found for ERR2231568? And for ERR2231572?</li>
@@ -1508,7 +1338,7 @@ https://zenodo.org/record/7818827/files/quast_ERR2231572.html
           </ol>
 
           <blockquote class="solution">
-            <div class="box-title solution-title" id="solution-5"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-5" aria-expanded="true"><i class="far fa-eye" aria-hidden="true"></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
+            <div class="box-title solution-title" id="solution-5"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-5" aria-expanded="true"><i class="far fa-eye" aria-hidden="true" ></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
 
             <ol>
               <li>78 for ERR2231568 and 151 for ERR2231572</li>
@@ -1522,7 +1352,7 @@ https://zenodo.org/record/7818827/files/quast_ERR2231572.html
         <p><strong>Translocation</strong> occur when a contig has mapped on more than one reference chromosomes</p>
 
         <blockquote class="question">
-          <div class="box-title question-title" id="question-6"><i class="far fa-question-circle" aria-hidden="true"></i> Question</div>
+          <div class="box-title question-title" id="question-6"><i class="far fa-question-circle" aria-hidden="true" ></i> Question</div>
 
           <ol>
             <li>How many translocations has been found for ERR2231568? And for ERR2231572?</li>
@@ -1532,7 +1362,7 @@ https://zenodo.org/record/7818827/files/quast_ERR2231572.html
           </ol>
 
           <blockquote class="solution">
-            <div class="box-title solution-title" id="solution-6"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-6" aria-expanded="true"><i class="far fa-eye" aria-hidden="true"></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
+            <div class="box-title solution-title" id="solution-6"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-6" aria-expanded="true"><i class="far fa-eye" aria-hidden="true" ></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
 
             <ol>
               <li>25 for ERR2231568 and 55 for ERR2231572.</li>
@@ -1548,7 +1378,7 @@ https://zenodo.org/record/7818827/files/quast_ERR2231572.html
         <p><strong>Inversion</strong> occurs when a contig has two consecutive mappings on the same chromosome but in different strands</p>
 
         <blockquote class="question">
-          <div class="box-title question-title" id="question-7"><i class="far fa-question-circle" aria-hidden="true"></i> Question</div>
+          <div class="box-title question-title" id="question-7"><i class="far fa-question-circle" aria-hidden="true" ></i> Question</div>
 
           <ol>
             <li>How many inversion has been found for ERR2231568? And for ERR2231572?</li>
@@ -1556,7 +1386,7 @@ https://zenodo.org/record/7818827/files/quast_ERR2231572.html
           </ol>
 
           <blockquote class="solution">
-            <div class="box-title solution-title" id="solution-7"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-7" aria-expanded="true"><i class="far fa-eye" aria-hidden="true"></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
+            <div class="box-title solution-title" id="solution-7"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-7" aria-expanded="true"><i class="far fa-eye" aria-hidden="true" ></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
 
             <ol>
               <li>4 for ERR2231568 and 6 for ERR2231572.</li>
@@ -1572,7 +1402,7 @@ https://zenodo.org/record/7818827/files/quast_ERR2231572.html
     <p><strong>Mismatches</strong> or mismatched bases in the contig-reference alignment</p>
 
     <blockquote class="question">
-      <div class="box-title question-title" id="question-8"><i class="far fa-question-circle" aria-hidden="true"></i> Question</div>
+      <div class="box-title question-title" id="question-8"><i class="far fa-question-circle" aria-hidden="true" ></i> Question</div>
 
       <ol>
         <li>How many mismatches have been identified for ERR2231568? And for ERR2231572?</li>
@@ -1580,7 +1410,7 @@ https://zenodo.org/record/7818827/files/quast_ERR2231572.html
       </ol>
 
       <blockquote class="solution">
-        <div class="box-title solution-title" id="solution-8"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-8" aria-expanded="true"><i class="far fa-eye" aria-hidden="true"></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
+        <div class="box-title solution-title" id="solution-8"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-8" aria-expanded="true"><i class="far fa-eye" aria-hidden="true" ></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
 
         <ol>
           <li>503,352 for ERR2231568 and 287,270 for ERR2231572.</li>
@@ -1598,7 +1428,7 @@ https://zenodo.org/record/7818827/files/quast_ERR2231572.html
         <p><strong># contigs</strong>: total number of contigs</p>
 
         <blockquote class="question">
-          <div class="box-title question-title" id="question-9"><i class="far fa-question-circle" aria-hidden="true"></i> Question</div>
+          <div class="box-title question-title" id="question-9"><i class="far fa-question-circle" aria-hidden="true" ></i> Question</div>
 
           <ol>
             <li>How many contigs are for ERR2231568? And for ERR2231572?</li>
@@ -1609,7 +1439,7 @@ https://zenodo.org/record/7818827/files/quast_ERR2231572.html
           </ol>
 
           <blockquote class="solution">
-            <div class="box-title solution-title" id="solution-9"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-9" aria-expanded="true"><i class="far fa-eye" aria-hidden="true"></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
+            <div class="box-title solution-title" id="solution-9"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-9" aria-expanded="true"><i class="far fa-eye" aria-hidden="true" ></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
 
             <ol>
               <li>66,434 contigs for ERR2231568 and 36,112 for ERR2231572.</li>
@@ -1626,7 +1456,7 @@ https://zenodo.org/record/7818827/files/quast_ERR2231572.html
         <p><strong>Largest contig</strong>: length of the longest contig in the assembly</p>
 
         <blockquote class="question">
-          <div class="box-title question-title" id="question-10"><i class="far fa-question-circle" aria-hidden="true"></i> Question</div>
+          <div class="box-title question-title" id="question-10"><i class="far fa-question-circle" aria-hidden="true" ></i> Question</div>
 
           <ol>
             <li>What is the length of the longest contig in ERR2231568? And in ERR2231572?</li>
@@ -1634,7 +1464,7 @@ https://zenodo.org/record/7818827/files/quast_ERR2231572.html
           </ol>
 
           <blockquote class="solution">
-            <div class="box-title solution-title" id="solution-10"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-10" aria-expanded="true"><i class="far fa-eye" aria-hidden="true"></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
+            <div class="box-title solution-title" id="solution-10"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-10" aria-expanded="true"><i class="far fa-eye" aria-hidden="true" ></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
 
             <ol>
               <li>63,871 bp in ERR2231568 and 65,608 for ERR2231572.</li>
@@ -1658,7 +1488,7 @@ https://zenodo.org/record/7818827/files/quast_ERR2231572.html
         </ul>
 
         <blockquote class="question">
-          <div class="box-title question-title" id="question-11"><i class="far fa-question-circle" aria-hidden="true"></i> Question</div>
+          <div class="box-title question-title" id="question-11"><i class="far fa-question-circle" aria-hidden="true" ></i> Question</div>
 
           <ol>
             <li>What is N50 for ERR2231568? And for ERR2231572?</li>
@@ -1666,7 +1496,7 @@ https://zenodo.org/record/7818827/files/quast_ERR2231572.html
           </ol>
 
           <blockquote class="solution">
-            <div class="box-title solution-title" id="solution-11"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-11" aria-expanded="true"><i class="far fa-eye" aria-hidden="true"></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
+            <div class="box-title solution-title" id="solution-11"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-11" aria-expanded="true"><i class="far fa-eye" aria-hidden="true" ></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
 
             <ol>
               <li>921 for ERR2231568 and 1,233 for ERR2231572.</li>
@@ -1694,14 +1524,14 @@ https://zenodo.org/record/7818827/files/quast_ERR2231572.html
         <p>If we take the previous example in N50, L50 = 3.</p>
 
         <blockquote class="question">
-          <div class="box-title question-title" id="question-12"><i class="far fa-question-circle" aria-hidden="true"></i> Question</div>
+          <div class="box-title question-title" id="question-12"><i class="far fa-question-circle" aria-hidden="true" ></i> Question</div>
 
           <ol>
             <li>What is the L50 for ERR2231568? And for ERR2231572?</li>
           </ol>
 
           <blockquote class="solution">
-            <div class="box-title solution-title" id="solution-12"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-12" aria-expanded="true"><i class="far fa-eye" aria-hidden="true"></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
+            <div class="box-title solution-title" id="solution-12"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-12" aria-expanded="true"><i class="far fa-eye" aria-hidden="true" ></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
 
             <ol>
               <li>17,280 for ERR2231568 and 7,496 for ERR2231572.</li>
@@ -1723,11 +1553,11 @@ https://zenodo.org/record/7818827/files/quast_ERR2231572.html
 <p>This viewer draws contigs ordered from longest to shortest. Let’s inspect this viewer for ERR2231568.</p>
 
 <blockquote class="question">
-  <div class="box-title question-title" id="question-13"><i class="far fa-question-circle" aria-hidden="true"></i> Question</div>
+  <div class="box-title question-title" id="question-13"><i class="far fa-question-circle" aria-hidden="true" ></i> Question</div>
 
   <p>Open the Contig size viewer for ERR2231568 and define start as <code class="language-plaintext highlighter-rouge">0</code> and end as <code class="language-plaintext highlighter-rouge">500000</code></p>
 
-  <p><img src="./images/ERR2231568-contig-size-viewer.png" alt="Image shows on the Icarus Contig size viewer for ERR2231568, with a zoom between 0 500000. Below the menu, the contigs are drawn from the longest on the left to the shortest on the right. Each contig is filled with a different color: green for correct, red for misassembled, etc. Below the contigs is dispayed a bar to navigate through the contigs. " loading="lazy" /></p>
+  <p><img src="./images/ERR2231568-contig-size-viewer.png" alt="Image shows on the Icarus Contig size viewer for ERR2231568, with a zoom between 0 500000. Below the menu, the contigs are drawn from the longest on the left to the shortest on the right. Each contig is filled with a different color: green for correct, red for misassembled, etc. Below the contigs is dispayed a bar to navigate through the contigs. " width="1499" height="658" loading="lazy" /></p>
 
   <ol>
     <li>What is the color of the first contig? Why?</li>
@@ -1735,7 +1565,7 @@ https://zenodo.org/record/7818827/files/quast_ERR2231572.html
   </ol>
 
   <blockquote class="solution">
-    <div class="box-title solution-title" id="solution-13"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-13" aria-expanded="true"><i class="far fa-eye" aria-hidden="true"></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
+    <div class="box-title solution-title" id="solution-13"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-13" aria-expanded="true"><i class="far fa-eye" aria-hidden="true" ></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
 
     <ol>
       <li>The first contig is white because &gt;50% of the contigs is unaligned. By clicking on the contig, we see that only a small block is aligned: 223.41 – 223.65 kbp to Leuconostoc_pseudomesenteroides_KCTC_3652_NZ_BMBP01000002.1.</li>
@@ -1789,11 +1619,11 @@ https://zenodo.org/record/7818827/files/quast_ERR2231572.html
 <p>When clicking on the genome name, the contigs are displayed according to their mapping to the reference genome. The viewer can additionally visualize genes, operons, and read coverage distribution along the genome, if any of those were fed to QUAST.</p>
 
 <blockquote class="question">
-  <div class="box-title question-title" id="question-14"><i class="far fa-question-circle" aria-hidden="true"></i> Question</div>
+  <div class="box-title question-title" id="question-14"><i class="far fa-question-circle" aria-hidden="true" ></i> Question</div>
 
   <p>Open the Contig alignment viewer for ERR2231568 and <em>Leuconostoc pseudomesenteroides</em> KCTC 3652, the most covered by contigs</p>
 
-  <p><img src="./images/ERR2231568-contig-alignment-viewer-leuconostoc.png" alt="Image shows on the Icarus alignment size viewer of ERR2231568 contigs for Leuconostoc pseudomesenteroides KCTC 3652. On the top are displayed the contigs aligend on the reference genome, with a zoom. Each contig is filled with a different color: green for correct, red for misassembled, etc. Below the contigs is dispayed a bar to navigate through the contigs. Below is a graph representing the GC percentage and coverage along the reference genome. " loading="lazy" /></p>
+  <p><img src="./images/ERR2231568-contig-alignment-viewer-leuconostoc.png" alt="Image shows on the Icarus alignment size viewer of ERR2231568 contigs for Leuconostoc pseudomesenteroides KCTC 3652. On the top are displayed the contigs aligend on the reference genome, with a zoom. Each contig is filled with a different color: green for correct, red for misassembled, etc. Below the contigs is dispayed a bar to navigate through the contigs. Below is a graph representing the GC percentage and coverage along the reference genome. " width="1508" height="741" loading="lazy" /></p>
 
   <ol>
     <li>How are the organized the contigs on the top?</li>
@@ -1803,7 +1633,7 @@ https://zenodo.org/record/7818827/files/quast_ERR2231572.html
   </ol>
 
   <blockquote class="solution">
-    <div class="box-title solution-title" id="solution-14"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-14" aria-expanded="true"><i class="far fa-eye" aria-hidden="true"></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
+    <div class="box-title solution-title" id="solution-14"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-14" aria-expanded="true"><i class="far fa-eye" aria-hidden="true" ></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
 
     <ol>
       <li>The contigs are displayed based on their mapping on the reference genome of <em>Leuconostoc pseudomesenteroides</em> KCTC 3652</li>
@@ -1816,7 +1646,7 @@ https://zenodo.org/record/7818827/files/quast_ERR2231572.html
 </blockquote>
 
 <blockquote class="details">
-  <div class="box-title details-title" id="details-visualization-of-the-de-novo-assembly-graph"><button class="gtn-boxify-button details" type="button" aria-controls="details-visualization-of-the-de-novo-assembly-graph" aria-expanded="true"><i class="fas fa-info-circle" aria-hidden="true"></i> Details: Visualization of the *de novo* assembly graph<span class="fold-unfold fa fa-minus-square"></span></button></div>
+  <div class="box-title details-title" id="details-visualization-of-the-de-novo-assembly-graph"><button class="gtn-boxify-button details" type="button" aria-controls="details-visualization-of-the-de-novo-assembly-graph" aria-expanded="true"><i class="fas fa-info-circle" aria-hidden="true" ></i> Details: Visualization of the *de novo* assembly graph<span class="fold-unfold fa fa-minus-square"></span></button></div>
 
   <p>Current metagenome assemblers like MEGAHIT and MetaSPAdes use <strong>graphs</strong>, most typically a de Bruijn graph to stich reads together. In an ideal case, the graph would contain one distinct path for each genome of each micro-organisms, but complexities such as repeated sequences usually prevent this.</p>
 
@@ -1825,17 +1655,17 @@ https://zenodo.org/record/7818827/files/quast_ERR2231572.html
   <p><strong>Bandage</strong> (<span class="citation"><a href="#wick2015bandage">Wick <i>et al.</i> 2015</a></span>) is a tool creating interactive visualisations of assembly graphs.</p>
 
   <blockquote class="notranslate hands_on">
-    <div class="box-title hands-on-title" id="hands-on-visualization-the-assembly-graph"><i class="fas fa-pencil-alt" aria-hidden="true"></i> Hands-on: Visualization the assembly graph</div>
+    <div class="box-title hands-on-title" id="hands-on-visualization-the-assembly-graph"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Visualization the assembly graph</div>
 
     <ol>
-      <li><span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/iuc/megahit_contig2fastg/megahit_contig2fastg/1.1.3+galaxy10" title="megahit contig2fastg tool"><strong>megahit contig2fastg</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: toolshed.g2.bx.psu.edu/repos/iuc/megahit_contig2fastg/megahit_contig2fastg/1.1.3+galaxy10</span></span>  with parameters:
+      <li><span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/iuc/megahit_contig2fastg/megahit_contig2fastg/1.1.3+galaxy10" title="megahit contig2fastg tool" aria-role="link"><strong>megahit contig2fastg</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: toolshed.g2.bx.psu.edu/repos/iuc/megahit_contig2fastg/megahit_contig2fastg/1.1.3+galaxy10</span></span> with parameters:
         <ul>
           <li><i class="far fa-folder" aria-hidden="true"></i><span class="visually-hidden">param-collection</span> <em>“Contig file”</em>: Output of <strong>MEGAHIT</strong></li>
           <li>
             <p><em>“K-mer length”</em>: <code class="language-plaintext highlighter-rouge">91</code></p>
 
             <blockquote class="comment">
-              <div class="box-title comment-title" id="comment-7"><i class="far fa-comment-dots" aria-hidden="true"></i> Comment</div>
+              <div class="box-title comment-title" id="comment-7"><i class="far fa-comment-dots" aria-hidden="true" ></i> Comment</div>
               <p>To get the value, you need to</p>
               <ol>
                 <li>Go into the <strong>MEGAHIT</strong> output collection</li>
@@ -1847,7 +1677,7 @@ https://zenodo.org/record/7818827/files/quast_ERR2231572.html
           </li>
         </ul>
       </li>
-      <li><span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/iuc/bandage/bandage_image/0.8.1+galaxy4" title="Bandage Image tool"><strong>Bandage Image</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: toolshed.g2.bx.psu.edu/repos/iuc/bandage/bandage_image/0.8.1+galaxy4</span></span>  with parameters:
+      <li><span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/iuc/bandage/bandage_image/0.8.1+galaxy4" title="Bandage Image tool" aria-role="link"><strong>Bandage Image</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: toolshed.g2.bx.psu.edu/repos/iuc/bandage/bandage_image/0.8.1+galaxy4</span></span> with parameters:
         <ul>
           <li><i class="far fa-folder" aria-hidden="true"></i><span class="visually-hidden">param-collection</span> <em>“Graphical Fragment Assembly”</em>: Output of <strong>megahit contig2fastg</strong></li>
         </ul>
@@ -1856,22 +1686,22 @@ https://zenodo.org/record/7818827/files/quast_ERR2231572.html
     </ol>
   </blockquote>
 
-  <figure id="figure-7"><img src="./images/ERR2231571_graph.jpg" alt="Image shows the assembly graphs, with longer stretch on the top and many small contigs on the bottom. " width="1292" height="1000" loading="lazy" /><figcaption><span class="figcaption-prefix"><strong>Figure 7</strong>:</span> Assembly graph for ERR2231571 sample</figcaption></figure>
+  <figure id="figure-7" style="max-width: 90%; margin:auto;"><img src="./images/ERR2231571_graph.jpg" alt="Image shows the assembly graphs, with longer stretch on the top and many small contigs on the bottom. " width="1292" height="1000" loading="lazy" /><figcaption><span class="figcaption-prefix"><strong>Figure 7</strong>:</span> Assembly graph for ERR2231571 sample</figcaption></figure>
 
   <p>The graph is quite disconnected. On the top, we can see the longer stretches, that includes multiples contigs (each contig having a different color). On the bottom are the shortest stretches or single contigs.</p>
 
   <p>But it is really hard to read or extract any information from the graph. Let’s inspect the information about the assembly graph</p>
 
   <blockquote class="notranslate hands_on">
-    <div class="box-title hands-on-title" id="hands-on-visualization-the-de-novo-assembly-graph"><i class="fas fa-pencil-alt" aria-hidden="true"></i> Hands-on: Visualization the *de novo* assembly graph</div>
+    <div class="box-title hands-on-title" id="hands-on-visualization-the-de-novo-assembly-graph"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Visualization the *de novo* assembly graph</div>
 
     <ol>
-      <li><span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/iuc/bandage/bandage_info/0.8.1+galaxy2" title="Bandage Info tool"><strong>Bandage Info</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: toolshed.g2.bx.psu.edu/repos/iuc/bandage/bandage_info/0.8.1+galaxy2</span></span>  with parameters:
+      <li><span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/iuc/bandage/bandage_info/0.8.1+galaxy2" title="Bandage Info tool" aria-role="link"><strong>Bandage Info</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: toolshed.g2.bx.psu.edu/repos/iuc/bandage/bandage_info/0.8.1+galaxy2</span></span> with parameters:
         <ul>
           <li><i class="far fa-folder" aria-hidden="true"></i><span class="visually-hidden">param-collection</span> <em>“Graphical Fragment Assembly”</em>: Output of <strong>megahit contig2fastg</strong></li>
         </ul>
       </li>
-      <li><span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/iuc/collection_column_join/collection_column_join/0.0.3" title="Column join tool"><strong>Column join</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: toolshed.g2.bx.psu.edu/repos/iuc/collection_column_join/collection_column_join/0.0.3</span></span>  with parameters:
+      <li><span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/iuc/collection_column_join/collection_column_join/0.0.3" title="Column join tool" aria-role="link"><strong>Column join</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: toolshed.g2.bx.psu.edu/repos/iuc/collection_column_join/collection_column_join/0.0.3</span></span> with parameters:
         <ul>
           <li><i class="far fa-folder" aria-hidden="true"></i><span class="visually-hidden">param-collection</span> <em>“Tabular files”</em>: Output of <strong>Bandage Info</strong></li>
         </ul>
@@ -1881,7 +1711,7 @@ https://zenodo.org/record/7818827/files/quast_ERR2231572.html
   </blockquote>
 
   <blockquote class="question">
-    <div class="box-title question-title" id="question-15"><i class="far fa-question-circle" aria-hidden="true"></i> Question</div>
+    <div class="box-title question-title" id="question-15"><i class="far fa-question-circle" aria-hidden="true" ></i> Question</div>
 
     <ol>
       <li>How many nodes are in the graph for ERR2231568? And for ERR2231572? What does they correspond to?</li>
@@ -1894,7 +1724,7 @@ https://zenodo.org/record/7818827/files/quast_ERR2231572.html
     </ol>
 
     <blockquote class="solution">
-      <div class="box-title solution-title" id="solution-15"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-15" aria-expanded="true"><i class="far fa-eye" aria-hidden="true"></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
+      <div class="box-title solution-title" id="solution-15"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-15" aria-expanded="true"><i class="far fa-eye" aria-hidden="true" ></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
 
       <ol>
         <li>There are 228,719 nodes for ERR2231568 and 122,526 for ERR2231572. They correspond to the number of contigs</li>
@@ -1916,7 +1746,7 @@ De-replication is the process of identifying sets of genomes that are the "same"
 
 A common use for genome de-replication is the case of individual assembly of metagenomic data. If metagenomic samples are collected in a series, a common way to assemble the short reads is with a “co-assembly”. That is, combining the reads from all samples and assembling them together. The problem with this is assembling similar strains together can severely fragment assemblies, precluding recovery of a good genome bin. An alternative option is to assemble each sample separately, and then “de-replicate” the bins from each assembly to make a final genome set.
 
-<figure id="figure-8"><img src="./images/individual-assembly.png" alt="Image shows the process of individual assembly on two strains and five samples, after individual assembly of samples two samples are chosen for de-replication process. In parallel, co-assembly on all five samples is performed. " width="80%" width="512" height=316 loading="lazy"><figcaption><span class="figcaption-prefix"><strong>Figure 8</strong>:</span> Individual assembly followed by de-replication vs co-assembly</figcaption></figure>
+<figure id="figure-8" style="max-width: 90%; margin:auto;"><img src="./images/individual-assembly.png"  alt="Image shows the process of individual assembly on two strains and five samples, after individual assembly of samples two samples are chosen for de-replication process. In parallel, co-assembly on all five samples is performed. " width="80%" width="512" height=316 loading="lazy"><figcaption><span class="figcaption-prefix"><strong>Figure 8</strong>:</span> Individual assembly followed by de-replication vs co-assembly</figcaption></figure>
 
 If we have different samples, then we do an individual assembly for each sample. In the figure above we see that after individual assembly we have results for every individual assembly represented with pie charts. Different colours on these charts show different strains (organisms). Every chart has a different percentage of every strain which means that the assemblies contain different strains in different proportions in each sample.
 
@@ -2026,6 +1856,9 @@ We will perform steps from 1 to 3 in this tutorial a bit later while steps 4 - 8
                             Polina Polunina, Bérénice Batut,  <b>Assembly of metagenomic sequencing data (Galaxy Training Materials)</b>. <a href="https://training.galaxyproject.org/training-material/topics/assembly/tutorials/metagenomics-assembly/tutorial.html">https://training.galaxyproject.org/training-material/topics/assembly/tutorials/metagenomics-assembly/tutorial.html</a> Online; accessed TODAY
                         </li>
                         <li>
+                        Hiltemann, Saskia, Rasche, Helena et al., 2023 <b>Galaxy Training: A Powerful Framework for Teaching!</b> PLOS Computational Biology <a href="https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1010752">10.1371/journal.pcbi.1010752</a>
+                        </li>
+                        <li>
                         Batut et al., 2018 <b>Community-Driven Data Analysis Training for Biology</b> Cell Systems <a href="https://doi.org/10.1016%2Fj.cels.2018.05.012">10.1016/j.cels.2018.05.012</a>
                         </li>
                     </ol>
@@ -2047,12 +1880,12 @@ We will perform steps from 1 to 3 in this tutorial a bit later while steps 4 - 8
 
 <code id="citation-code">@misc{assembly-metagenomics-assembly,
 author = "Polina Polunina and Bérénice Batut",
-title = "Assembly of metagenomic sequencing data (Galaxy Training Materials)",
-year = "",
-month = "",
-day = ""
-url = "\url{https://training.galaxyproject.org/training-material/topics/assembly/tutorials/metagenomics-assembly/tutorial.html}",
-note = "[Online; accessed TODAY]"
+	title = "Assembly of metagenomic sequencing data (Galaxy Training Materials)",
+	year = "",
+	month = "",
+	day = ""
+	url = "\url{https://training.galaxyproject.org/training-material/topics/assembly/tutorials/metagenomics-assembly/tutorial.html}",
+	note = "[Online; accessed TODAY]"
 }
 @article{Hiltemann_2023,
 	doi = {10.1371/journal.pcbi.1010752},
@@ -2081,9 +1914,9 @@ note = "[Online; accessed TODAY]"
 
 <script>
 // update the date on load, or leave fallback of 'today'
-var d = new Date();
-document.getElementById("citation-code").innerHTML = document.getElementById("citation-code").innerHTML.replace("TODAY", d.toDateString());
-document.getElementById("citation-text").innerHTML = document.getElementById("citation-text").innerHTML.replace("TODAY", d.toDateString());
+const citationTodaysDate = new Date();
+document.getElementById("citation-code").innerHTML = document.getElementById("citation-code").innerHTML.replace("TODAY", citationTodaysDate.toDateString());
+document.getElementById("citation-text").innerHTML = document.getElementById("citation-text").innerHTML.replace("TODAY", citationTodaysDate.toDateString());
 </script>
 
                 <i class="far fa-thumbs-up" aria-hidden="true"></i> Congratulations on successfully completing this tutorial!
@@ -2091,6 +1924,118 @@ document.getElementById("citation-text").innerHTML = document.getElementById("ci
                 
 
                 
+
+		
+                <blockquote class="agenda follow-up" id="admins-install-missing-tools">
+                    <div class="box-title">Galaxy Administrators: Install the missing tools</div>
+			<p>You can use Ephemeris's <code>shed-tools install</code> command to install the tools used in this tutorial.</p>
+<div class="highlight"><pre class="highlight"><code>shed-tools install [-g GALAXY] [-a API_KEY] -t &lt;(curl https://training.galaxyproject.org/training-material/api/topics/assembly/tutorials/metagenomics-assembly/tutorial.json | jq .admin_install_yaml -r)</code></pre></div>
+<p>Alternatively you can copy and paste the following YAML</p>
+<div class="highlight"><pre class="highlight"><code>---
+install_tool_dependencies: true
+install_repository_dependencies: true
+install_resolver_dependencies: true
+tools:
+- name: text_processing
+  owner: bgruening
+  revisions: d698c222f354
+  tool_panel_section_label: Assembly
+  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+- name: unique
+  owner: bgruening
+  revisions: 7ce75adb93be
+  tool_panel_section_label: Assembly
+  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+- name: bamtools
+  owner: devteam
+  revisions: befc9dad4ca8
+  tool_panel_section_label: Assembly
+  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+- name: bowtie2
+  owner: devteam
+  revisions: f6877ad76b00
+  tool_panel_section_label: Assembly
+  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+- name: bowtie2
+  owner: devteam
+  revisions: 03e9b2fbc005
+  tool_panel_section_label: Assembly
+  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+- name: fastqc
+  owner: devteam
+  revisions: 3d0c7bdf12f5
+  tool_panel_section_label: Assembly
+  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+- name: bandage
+  owner: iuc
+  revisions: 21e491ad532a
+  tool_panel_section_label: Assembly
+  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+- name: bandage
+  owner: iuc
+  revisions: 21e491ad532a
+  tool_panel_section_label: Assembly
+  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+- name: collection_column_join
+  owner: iuc
+  revisions: 3ddd99c7efee
+  tool_panel_section_label: Assembly
+  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+- name: coverm_contig
+  owner: iuc
+  revisions: 6941d0d453ba
+  tool_panel_section_label: Assembly
+  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+- name: filter_tabular
+  owner: iuc
+  revisions: 34d29339abab
+  tool_panel_section_label: Assembly
+  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+- name: megahit
+  owner: iuc
+  revisions: 14ddfc8ffb93
+  tool_panel_section_label: Assembly
+  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+- name: megahit_contig2fastg
+  owner: iuc
+  revisions: 4ec5b3777508
+  tool_panel_section_label: Assembly
+  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+- name: ngsutils_bam_filter
+  owner: iuc
+  revisions: 2e957d4c4b95
+  tool_panel_section_label: Assembly
+  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+- name: quast
+  owner: iuc
+  revisions: 3061c8b029e5
+  tool_panel_section_label: Assembly
+  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+- name: quast
+  owner: iuc
+  revisions: 72472698a2df
+  tool_panel_section_label: Assembly
+  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+- name: seqtk
+  owner: iuc
+  revisions: 3da72230c066
+  tool_panel_section_label: Assembly
+  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+- name: cutadapt
+  owner: lparsons
+  revisions: 5915ea1ec9b1
+  tool_panel_section_label: Assembly
+  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+- name: metaspades
+  owner: nml
+  revisions: fd128c111ab0
+  tool_panel_section_label: Assembly
+  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+</code></pre></div>
+                </blockquote>
+		
+
+
                 </section>
 
             </div>
@@ -2102,38 +2047,52 @@ document.getElementById("citation-text").innerHTML = document.getElementById("ci
 <br/>
 
         </div>
-        
-        <script src="/training-material/assets/js/jquery.slim.min.js"></script>
-        <script src="/training-material/assets/js/popper.min.js"></script>
-        <script src="/training-material/assets/js/bootstrap.min.js?v=3"></script>
-        <script src="/training-material/assets/js/details-element-polyfill.js"></script>
+        <footer>
+	<hr />
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-6" style="text-align: left">
+				<p>
+					The <a href="https://galaxyproject.org/teach/gtn/">Galaxy Training Network</a>
+					provides researchers with online training materials, connects them with local trainers, and helps promoting FAIR and Open Science practices worldwide. All contributions are subject to the <a rel="code-of-conduct" href="https://galaxyproject.org/community/coc/">Galaxy Project Code of Conduct</a>.
+				</p>
+				<p>
+				The GTN infrastructure is licensed under <a rel="license" href="https://github.com/galaxyproject/training-material/blob/main/LICENSE.md">MIT</a>
+				</p>
+				<p>
+				Revision <a href="https://github.com/galaxyproject/training-material/commit/476574d2b382dd1db6c2c408d8fb6ec4393a6904">476574d</a>, built with Jekyll (4.3.2 | production)
+				</p>
+			</div>
+			<div class="col-sm-6" style="text-align: right">
+				
+				<p>
+					Resource <i class="fas fa-fingerprint" aria-hidden="true"></i><span class="visually-hidden">purl</span><abbr title="Persistent URL">PURL</abbr>: <a href="https://gxy.io/GTN:T00035">https://gxy.io/GTN:T00035</a>
+				</p>
+				
+				<p>
+					<i>This Material</i>:
+					
+					is licensed under
+					<a rel="license" href="https://spdx.org/licenses/CC-BY-4.0">
+						Creative Commons Attribution 4.0 International License
+					</a>
+				</p>
+				<p>
+					<a href="https://github.com/galaxyproject/training-material/edit/main/topics/assembly/tutorials/metagenomics-assembly/tutorial.md" title="Edit on GitHub">
+					<i class="fab fa-github" aria-hidden="true"></i><span class="visually-hidden">github</span> Edit on GitHub
+					</a>
+				</p>
+			</div>
+		</div>
+	</div>
+</footer>
+
+
+    </div>
+</footer>
+
+
+        <script src='/training-material/assets/js/bundle.main.js?v=1687830693'></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-        <script src="/training-material/assets/js/bootstrap-toc.min.js"></script>
-        <script src="/training-material/assets/js/main.js"></script>
-        <script src="/training-material/assets/js/clipboard.min.js"></script>
-        <script>
-        var snippets=document.querySelectorAll('div.highlight');
-        [].forEach.call(snippets,function(snippet){
-            snippet.firstChild.insertAdjacentHTML('beforebegin','<button class="btn btn-light" data-clipboard-snippet tabindex="0"><i class="fa fa-copy"></i>&nbsp;Copy</button>');
-        });
-
-        var clipboardSnippets=new ClipboardJS('[data-clipboard-snippet]',{
-            target:function(trigger){return trigger.nextElementSibling;
-        }});
-        </script>
-        
-
-        <script type="text/javascript">
-            if(window.location.hostname === "galaxyproject.github.io") {
-                // Redirect
-                var redirect = "https://training.galaxyproject.org" + window.location.pathname + window.location.search;
-                $('div.container.main-content').prepend("<div class='alert alert-warning'><strong>Note: </strong>This content has a new home at <a href=\"" + redirect + "\">" + redirect + "</a>, which you will be redirected to in 5 seconds.</div>");
-
-                window.setTimeout(function(){
-                    window.location.href = redirect;
-                }, 5000)
-
-            }
-        </script>
     </body>
 </html>

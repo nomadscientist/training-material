@@ -8,16 +8,45 @@
         
             <script async defer data-domain="training.galaxyproject.org" src="https://plausible.galaxyproject.eu/js/plausible.js"></script>
 
+<!-- JavaScript Error Monitoring, and performance tracking. -->
+<script
+  src="https://browser.sentry-cdn.com/7.52.1/bundle.tracing.min.js"
+  integrity="sha384-muuFXKS3752PNA4rPm9Uq6BLvOfV4CXyr9MHDBPvozOJJUWLKkogEFWOIRoVps43"
+  crossorigin="anonymous"
+></script>
+<script type="text/javascript">
+Sentry.init({
+  dsn: "https://45e0ec6e4373462b92969505df37cf40@sentry.galaxyproject.org/10",
+  release: "galaxy-training-network@476574d2b382dd1db6c2c408d8fb6ec4393a6904",
+  integrations: [new Sentry.BrowserTracing(), new Sentry.Replay()],
+  sampleRate: 0.1,
+  tracesSampleRate: 0.1,
+  // Capture Replay for no sessions by default
+  replaysSessionSampleRate: 0.01,
+  // plus for 1% of sessions with an error
+  replaysOnErrorSampleRate: 0.01,
+  // PII OFF
+  sendDefaultPii: false, // Off by default but just in case.
+  environment: "production",
+});
+</script>
+
         
-        <link rel="stylesheet" href="/training-material/assets/css/bootstrap.min.css?v=3">
-        <link rel="stylesheet" href="/training-material/assets/css/bootstrap-toc.min.css">
-        <link rel="stylesheet" href="/training-material/assets/css/main.css?v=2">
-        <link rel="stylesheet" href="/training-material/assets/fontawesome/css/all.css">
-        <link rel="stylesheet" href="/training-material/assets/css/academicons.css">
         <link rel="shortcut icon" href="/training-material/favicon.ico" type="image/x-icon">
         <link rel="alternate" type="application/atom+xml" href="/training-material/feed.xml">
         <link rel="canonical" href="https://training.galaxyproject.org/training-material/topics/dev/tutorials/tool-from-scratch/tutorial.html">
-        <link rel="license" href="https://creativecommons.org/licenses/by/4.0/">
+        <link rel="license" href="https://spdx.org/licenses/CC-BY-4.0">
+        <link rel="preload" href="/training-material/assets/fonts/AtkinsonHyperlegible/Atkinson-Hyperlegible-Regular-102a.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="preload" href="/training-material/assets/fonts/AtkinsonHyperlegible/Atkinson-Hyperlegible-Bold-102a.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="preload" href="/training-material/assets/fonts/AtkinsonHyperlegible/Atkinson-Hyperlegible-Italic-102a.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML" as="script" crossorigin>
+        <link rel="preload" href="/training-material/assets/css/main.css?v=3" as="style">
+        <link rel='preload' href='/training-material/assets/js/bundle.theme.js?v=1687830693' as='script'>
+<link rel='preload' href='/training-material/assets/js/bundle.main.js?v=1687830693' as='script'>
+        <link rel="stylesheet" href="/training-material/assets/css/main.css?v=3">
+        <link rel="manifest" href="/training-material/manifest.json">
+        <meta name="theme-color" content="#2c3143"/>
+
 
         <meta name="DC.identifier" content="https://github.com/galaxyproject/training-material">
 <meta name="DC.type" content="text">
@@ -92,6 +121,10 @@
     "url": "https://galaxyproject.org/teach/gtn/"
   },
   "identifier": "https://github.com/galaxyproject/training-material",
+  "workTranslation": [
+
+  ],
+  "creativeWorkStatus": "Active",
   "accessMode": [
     "textual",
     "visual"
@@ -119,6 +152,7 @@
   "name": "Hands-on for 'Creating Galaxy tools from Conda Through Deployment' tutorial",
   "url": "https://training.galaxyproject.org/training-material/topics/dev/tutorials/tool-from-scratch/tutorial.html",
   "timeRequired": "PT3H",
+  "teaches": "Learn how to make and deploy a conda package\n - Understand how to write a Galaxy tool wrapper\n - Be able to use a tool wrapper locally\n - Be able to test the tool wrapper\n - Learn how to add tools to the Galaxy toolshed and make them available to any user",
   "keywords": "dev",
   "description": "The questions this  addresses are:\n - How do you create a conda package used as a dependency in a Galaxy tool wrapper?\n - How do you create a Galaxy tool wrapper and all of its requirements?\n - How do you test a Galaxy tool wrapper after it's written?\n - How do you deploy a Galaxy tool wrapper?\n - How to do you make a Galaxy tool wrapper publicly available?\n\n\nThe objectives are:\n - Learn how to make and deploy a conda package\n - Understand how to write a Galaxy tool wrapper\n - Be able to use a tool wrapper locally\n - Be able to test the tool wrapper\n - Learn how to add tools to the Galaxy toolshed and make them available to any user\n\n",
   "inLanguage": {
@@ -131,8 +165,8 @@
       "@context": "https://schema.org",
       "@type": "Person",
       "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
+        "@id": "https://bioschemas.org/profiles/Person/0.3-DRAFT",
+        "@type": "CreativeWork"
       },
       "url": "https://training.galaxyproject.org/training-material/hall-of-fame/astrovsky01/",
       "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/astrovsky01/",
@@ -154,8 +188,8 @@
       "@context": "https://schema.org",
       "@type": "Person",
       "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
+        "@id": "https://bioschemas.org/profiles/Person/0.3-DRAFT",
+        "@type": "CreativeWork"
       },
       "url": "https://training.galaxyproject.org/training-material/hall-of-fame/davebx/",
       "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/davebx/",
@@ -175,75 +209,8 @@
       "@context": "https://schema.org",
       "@type": "Person",
       "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
-      },
-      "url": "https://training.galaxyproject.org/training-material/hall-of-fame/bernt-matthias/",
-      "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/bernt-matthias/",
-      "name": "Matthias Bernt",
-      "image": "https://avatars.githubusercontent.com/bernt-matthias",
-      "description": "A contributor to the GTN project.",
-      "memberOf": [
-        {
-          "@type": "Organization",
-          "email": "galaxytrainingnetwork@gmail.com",
-          "name": "Galaxy Training Network",
-          "url": "https://galaxyproject.org/teach/gtn/"
-        }
-      ]
-    }
-  ],
-  "contributor": [
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
-      },
-      "url": "https://training.galaxyproject.org/training-material/hall-of-fame/astrovsky01/",
-      "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/astrovsky01/",
-      "name": "Alex Ostrovsky",
-      "image": "https://avatars.githubusercontent.com/astrovsky01",
-      "description": "A contributor to the GTN project.",
-      "memberOf": [
-        {
-          "@type": "Organization",
-          "email": "galaxytrainingnetwork@gmail.com",
-          "name": "Galaxy Training Network",
-          "url": "https://galaxyproject.org/teach/gtn/"
-        }
-      ],
-      "identifier": "https://orcid.org/0000-0002-7901-7109",
-      "orcid": "https://orcid.org/0000-0002-7901-7109"
-    },
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
-      },
-      "url": "https://training.galaxyproject.org/training-material/hall-of-fame/davebx/",
-      "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/davebx/",
-      "name": "Dave B.",
-      "image": "https://avatars.githubusercontent.com/davebx",
-      "description": "A contributor to the GTN project.",
-      "memberOf": [
-        {
-          "@type": "Organization",
-          "email": "galaxytrainingnetwork@gmail.com",
-          "name": "Galaxy Training Network",
-          "url": "https://galaxyproject.org/teach/gtn/"
-        }
-      ]
-    },
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
+        "@id": "https://bioschemas.org/profiles/Person/0.3-DRAFT",
+        "@type": "CreativeWork"
       },
       "url": "https://training.galaxyproject.org/training-material/hall-of-fame/bernt-matthias/",
       "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/bernt-matthias/",
@@ -274,13 +241,18 @@
       "termCode": "topic_3372",
       "url": "https://bioportal.bioontology.org/ontologies/EDAM/?p=classes&conceptid=http%3A%2F%2Fedamontology.org%2Ftopic_3372"
     }
-  ]
+  ],
+  "educationalLevel": "Introductory",
+  "mentions": [
+
+  ],
+  "abstract": "# Introduction"
 }
         </script>
         
     </head>
     <body data-spy="scroll" data-target="#toc">
-        <script type="text/javascript" src="/training-material/assets/js/theme.js"></script>
+        <script src='/training-material/assets/js/bundle.theme.js?v=1687830693'></script>
         <header>
     <nav class="navbar navbar-expand-md navbar-dark" aria-label="Site Navigation">
         <div class="container">
@@ -349,7 +321,6 @@
     </a>
     <div class="dropdown-menu dropdown-menu-right">
 
-        
         <a class="dropdown-item" href="https://github.com/galaxyproject/training-material/edit/main/topics/dev/tutorials/tool-from-scratch/tutorial.md" title="Edit on GitHub">
           <i class="fab fa-github" aria-hidden="true"></i><span class="visually-hidden">github</span> Edit on GitHub
         </a>
@@ -397,13 +368,13 @@
 
             <div id="archive-selector">
             
-                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2020-01-06/topics/dev/tutorials/tool-from-scratch/tutorial.html" title="Version 2020-01-06">2020-01-06</a>
+                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2020-01-06/topics/dev/tutorials/tool-from-scratch/tutorial.html">2020-01-06</a>
             
-                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2019-12-01/topics/dev/tutorials/tool-from-scratch/tutorial.html" title="Version 2019-12-01">2019-12-01</a>
+                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2019-12-01/topics/dev/tutorials/tool-from-scratch/tutorial.html">2019-12-01</a>
             
-                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2019-11-01/topics/dev/tutorials/tool-from-scratch/tutorial.html" title="Version 2019-11-01">2019-11-01</a>
+                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2019-11-01/topics/dev/tutorials/tool-from-scratch/tutorial.html">2019-11-01</a>
             
-                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/" title="Older Versions">Older Versions</a>
+                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/">Older Versions</a>
             </div>
 
         </div>
@@ -416,7 +387,7 @@
                     <li class="nav-item">
                       <div id="navbarSupportedContent" role="search">
                         <!-- Search form -->
-                        <form class="form-inline mr-auto" method="GET" action="/training-material/search">
+                        <form class="form-inline mr-auto" method="GET" action="/training-material/search2">
                           <i class="fas fa-search nav-link" aria-hidden="true"></i>
                           <div class="md-form mb-2">
                             <input name="query" class="form-control nicer" type="text" placeholder="Search Tutorials" aria-label="Search">
@@ -453,252 +424,7 @@
 
 
 
-<script>
-  ((window.gitter = {}).chat = {}).options = {
-  room: 'galaxyproject/dev'
-  };
-</script>
 
-
-<script src="https://sidecar.gitter.im/dist/sidecar.v1.js" async defer></script>
-
-<script type="application/ld+json">
-    
-
-
-{
-  "@context": "http://schema.org",
-  "@type": "LearningResource",
-  "http://purl.org/dc/terms/conformsTo": {
-    "@id": "https://bioschemas.org/profiles/TrainingMaterial/1.0-RELEASE",
-    "@type": "CreativeWork"
-  },
-  "audience": {
-    "@type": "EducationalAudience",
-    "educationalRole": "Students"
-  },
-  "citation": {
-    "@type": "CreativeWork",
-    "name": "Community-Driven Data Analysis Training for Biology",
-    "url": "https://doi.org/10.1016/j.cels.2018.05.012"
-  },
-  "copyrightHolder": {
-    "@type": "Organization",
-    "email": "galaxytrainingnetwork@gmail.com",
-    "name": "Galaxy Training Network",
-    "url": "https://galaxyproject.org/teach/gtn/"
-  },
-  "dateModified": "2022-10-20 09:46:55 +0000",
-  "discussionUrl": "https://gitter.im/Galaxy-Training-Network/Lobby",
-  "headline": "Creating Galaxy tools from Conda Through Deployment",
-  "interactivityType": "mixed",
-  "isAccessibleForFree": true,
-  "isFamilyFriendly": true,
-  "license": "https://spdx.org/licenses/CC-BY-4.0.html",
-  "producer": {
-    "@type": "Organization",
-    "email": "galaxytrainingnetwork@gmail.com",
-    "name": "Galaxy Training Network",
-    "url": "https://galaxyproject.org/teach/gtn/"
-  },
-  "provider": {
-    "@type": "Organization",
-    "email": "galaxytrainingnetwork@gmail.com",
-    "name": "Galaxy Training Network",
-    "url": "https://galaxyproject.org/teach/gtn/"
-  },
-  "sourceOrganization": {
-    "@type": "Organization",
-    "email": "galaxytrainingnetwork@gmail.com",
-    "name": "Galaxy Training Network",
-    "url": "https://galaxyproject.org/teach/gtn/"
-  },
-  "identifier": "https://github.com/galaxyproject/training-material",
-  "accessMode": [
-    "textual",
-    "visual"
-  ],
-  "accessModeSufficient": [
-    "textual",
-    "visual"
-  ],
-  "accessibilityControl": [
-    "fullKeyboardControl",
-    "fullMouseControl"
-  ],
-  "accessibilityFeature": [
-    "alternativeText",
-    "tableOfContents"
-  ],
-  "accessibilitySummary": "The text aims to be as accessible as possible. Image descriptions will vary per tutorial, from images being completely inaccessible, to images with good descriptions for non-visual users.",
-  "isPartOf": {
-    "@type": "CreativeWork",
-    "name": "Development in Galaxy",
-    "description": "Galaxy is an open-source project. Everyone can contribute to its development with core Galaxy development, integration of softwares in Galaxy environment, ...",
-    "url": "https://training.galaxyproject.org/training-material/topics/dev/"
-  },
-  "learningResourceType": "hands-on tutorial",
-  "name": "Hands-on for 'Creating Galaxy tools from Conda Through Deployment' tutorial",
-  "url": "https://training.galaxyproject.org/training-material/topics/dev/tutorials/tool-from-scratch/tutorial.html",
-  "timeRequired": "PT3H",
-  "keywords": "dev",
-  "description": "The questions this  addresses are:\n - How do you create a conda package used as a dependency in a Galaxy tool wrapper?\n - How do you create a Galaxy tool wrapper and all of its requirements?\n - How do you test a Galaxy tool wrapper after it's written?\n - How do you deploy a Galaxy tool wrapper?\n - How to do you make a Galaxy tool wrapper publicly available?\n\n\nThe objectives are:\n - Learn how to make and deploy a conda package\n - Understand how to write a Galaxy tool wrapper\n - Be able to use a tool wrapper locally\n - Be able to test the tool wrapper\n - Learn how to add tools to the Galaxy toolshed and make them available to any user\n\n",
-  "inLanguage": {
-    "@type": "Language",
-    "name": "English",
-    "alternateName": "en"
-  },
-  "author": [
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
-      },
-      "url": "https://training.galaxyproject.org/training-material/hall-of-fame/astrovsky01/",
-      "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/astrovsky01/",
-      "name": "Alex Ostrovsky",
-      "image": "https://avatars.githubusercontent.com/astrovsky01",
-      "description": "A contributor to the GTN project.",
-      "memberOf": [
-        {
-          "@type": "Organization",
-          "email": "galaxytrainingnetwork@gmail.com",
-          "name": "Galaxy Training Network",
-          "url": "https://galaxyproject.org/teach/gtn/"
-        }
-      ],
-      "identifier": "https://orcid.org/0000-0002-7901-7109",
-      "orcid": "https://orcid.org/0000-0002-7901-7109"
-    },
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
-      },
-      "url": "https://training.galaxyproject.org/training-material/hall-of-fame/davebx/",
-      "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/davebx/",
-      "name": "Dave B.",
-      "image": "https://avatars.githubusercontent.com/davebx",
-      "description": "A contributor to the GTN project.",
-      "memberOf": [
-        {
-          "@type": "Organization",
-          "email": "galaxytrainingnetwork@gmail.com",
-          "name": "Galaxy Training Network",
-          "url": "https://galaxyproject.org/teach/gtn/"
-        }
-      ]
-    },
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
-      },
-      "url": "https://training.galaxyproject.org/training-material/hall-of-fame/bernt-matthias/",
-      "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/bernt-matthias/",
-      "name": "Matthias Bernt",
-      "image": "https://avatars.githubusercontent.com/bernt-matthias",
-      "description": "A contributor to the GTN project.",
-      "memberOf": [
-        {
-          "@type": "Organization",
-          "email": "galaxytrainingnetwork@gmail.com",
-          "name": "Galaxy Training Network",
-          "url": "https://galaxyproject.org/teach/gtn/"
-        }
-      ]
-    }
-  ],
-  "contributor": [
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
-      },
-      "url": "https://training.galaxyproject.org/training-material/hall-of-fame/astrovsky01/",
-      "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/astrovsky01/",
-      "name": "Alex Ostrovsky",
-      "image": "https://avatars.githubusercontent.com/astrovsky01",
-      "description": "A contributor to the GTN project.",
-      "memberOf": [
-        {
-          "@type": "Organization",
-          "email": "galaxytrainingnetwork@gmail.com",
-          "name": "Galaxy Training Network",
-          "url": "https://galaxyproject.org/teach/gtn/"
-        }
-      ],
-      "identifier": "https://orcid.org/0000-0002-7901-7109",
-      "orcid": "https://orcid.org/0000-0002-7901-7109"
-    },
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
-      },
-      "url": "https://training.galaxyproject.org/training-material/hall-of-fame/davebx/",
-      "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/davebx/",
-      "name": "Dave B.",
-      "image": "https://avatars.githubusercontent.com/davebx",
-      "description": "A contributor to the GTN project.",
-      "memberOf": [
-        {
-          "@type": "Organization",
-          "email": "galaxytrainingnetwork@gmail.com",
-          "name": "Galaxy Training Network",
-          "url": "https://galaxyproject.org/teach/gtn/"
-        }
-      ]
-    },
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
-      },
-      "url": "https://training.galaxyproject.org/training-material/hall-of-fame/bernt-matthias/",
-      "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/bernt-matthias/",
-      "name": "Matthias Bernt",
-      "image": "https://avatars.githubusercontent.com/bernt-matthias",
-      "description": "A contributor to the GTN project.",
-      "memberOf": [
-        {
-          "@type": "Organization",
-          "email": "galaxytrainingnetwork@gmail.com",
-          "name": "Galaxy Training Network",
-          "url": "https://galaxyproject.org/teach/gtn/"
-        }
-      ]
-    }
-  ],
-  "about": [
-    {
-      "@type": "CreativeWork",
-      "name": "Development in Galaxy",
-      "description": "Galaxy is an open-source project. Everyone can contribute to its development with core Galaxy development, integration of softwares in Galaxy environment, ...",
-      "url": "https://training.galaxyproject.org/training-material/topics/dev/"
-    },
-    {
-      "@type": "DefinedTerm",
-      "@id": "http://edamontology.org/topic_3372",
-      "inDefinedTermSet": "http://edamontology.org",
-      "termCode": "topic_3372",
-      "url": "https://bioportal.bioontology.org/ontologies/EDAM/?p=classes&conceptid=http%3A%2F%2Fedamontology.org%2Ftopic_3372"
-    }
-  ]
-}
-</script>
 
 <article class="tutorial topic-dev">
     <h1 data-toc-skip>Creating Galaxy tools from Conda Through Deployment</h1>
@@ -708,7 +434,7 @@
     <div markdown="0">
 
 	<div class="contributors-line">
-		Authors: <a href="/training-material/hall-of-fame/astrovsky01/" class="contributor-badge contributor-astrovsky01"><img src="/training-material/assets/images/orcid.png" alt="orcid logo"/><img src="https://avatars.githubusercontent.com/astrovsky01?s=27" alt="Avatar">Alex Ostrovsky</a><a href="/training-material/hall-of-fame/davebx/" class="contributor-badge contributor-davebx"><img src="https://avatars.githubusercontent.com/davebx?s=27" alt="Avatar">Dave B.</a><a href="/training-material/hall-of-fame/bernt-matthias/" class="contributor-badge contributor-bernt-matthias"><img src="https://avatars.githubusercontent.com/bernt-matthias?s=27" alt="Avatar">Matthias Bernt</a>
+		Authors: <a href="/training-material/hall-of-fame/astrovsky01/" class="contributor-badge contributor-astrovsky01"><img src="/training-material/assets/images/orcid.png" alt="orcid logo" width="36" height="36"/><img src="https://avatars.githubusercontent.com/astrovsky01?s=36" alt="Avatar" width="36" height="36">Alex Ostrovsky</a><a href="/training-material/hall-of-fame/davebx/" class="contributor-badge contributor-davebx"><img src="https://avatars.githubusercontent.com/davebx?s=36" alt="Avatar" width="36" height="36">Dave B.</a><a href="/training-material/hall-of-fame/bernt-matthias/" class="contributor-badge contributor-bernt-matthias"><img src="https://avatars.githubusercontent.com/bernt-matthias?s=36" alt="Avatar" width="36" height="36">Matthias Bernt</a>
 	</div>
 
 </div>
@@ -844,20 +570,55 @@
                 <li class="btn btn-default supporting_material">
 
 
+
+
+
     <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false" title="Where to run the tutorial">
         <i class="fas fa-globe" aria-hidden="true"></i><span class="visually-hidden">instances</span>&nbsp;Available on these Galaxies 
     </a>
     <ul class="dropdown-menu">
+	<li class="dropdown-header">
+		<b>Known Working</b>
+	</li>
+	
+	
+
     
+    
+	<li class="dropdown-header">
+		<b>Possibly Working</b>
+	</li>
+    
+	<li>
+		<a class="dropdown-item" href="https://usegalaxy.eu" title="">
+			UseGalaxy.eu
+		</a>
+	</li>
+    
+	<li>
+		<a class="dropdown-item" href="https://usegalaxy.org" title="">
+			UseGalaxy.org
+		</a>
+	</li>
+    
+	<li>
+		<a class="dropdown-item" href="https://usegalaxy.org.au" title="">
+			UseGalaxy.org.au
+		</a>
+	</li>
+    
+
+    
+	<li class="dropdown-header">
+		Containers
+	</li>
         <li>
-            <a class="dropdown-item" href="https://github.com/galaxyproject/training-material/tree/main/topics/dev/docker" title="Docker image for this tutorial">
+            <a class="dropdown-item" href="https://github.com/galaxyproject/training-material/tree/main/topics//docker" title="Docker image for this tutorial">
                 <i class="fab fa-docker" aria-hidden="true"></i><span class="visually-hidden">docker_image</span> Docker image
             </a>
         </li>
     
-    
     </ul>
-
 
 </li>
             
@@ -866,13 +627,13 @@
 
         <div><strong><i class="far fa-calendar" aria-hidden="true"></i> Last modification:</strong> Oct 20, 2022 </div>
         <div><strong><i class="fas fa-balance-scale" aria-hidden="true"></i> License:</strong>
+		
             
-            <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Tutorial Content is licensed under Creative Commons Attribution 4.0 International License</a>
-            
-            <a rel="license" href="https://github.com/galaxyproject/training-material/blob/main/LICENSE.md">The GTN Framework is licensed under MIT</a>
+            <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Tutorial Content is licensed under Creative Commons Attribution 4.0 International License</a>.
+             The GTN Framework is licensed under <a rel="license" href="https://github.com/galaxyproject/training-material/blob/main/LICENSE.md">MIT</a>
         </div>
         
-        <div><strong>Short Link:</strong> <a href="https://gxy.io/GTN:T00117">https://gxy.io/GTN:T00117</a> </div>
+        <div><strong><i class="fas fa-fingerprint" aria-hidden="true"></i><span class="visually-hidden">purl</span><abbr title="Persistent URL">PURL</abbr>:</strong> <a href="https://gxy.io/GTN:T00117">https://gxy.io/GTN:T00117</a> </div>
         
     </blockquote>
     </section>
@@ -965,13 +726,13 @@ Recipes should always define the following 6 sections in the <code class="langua
 <p>Let’s write a Bioconda recipe for the tool we want to package: <a href="https://github.com/davebx/bellerophon">bellerophon</a></p>
 
 <blockquote class="warning">
-  <div class="box-title warning-title" id="warning-naming-collision"><i class="fas fa-exclamation-triangle" aria-hidden="true"></i> Warning: Naming collision</div>
+  <div class="box-title warning-title" id="warning-naming-collision"><i class="fas fa-exclamation-triangle" aria-hidden="true" ></i> Warning: Naming collision</div>
   <p>As this tool is already packaged in Bioconda, to prevent any naming collision, we will slightly modify its name from <code class="language-plaintext highlighter-rouge">bellerophon</code> to <code class="language-plaintext highlighter-rouge">bellerophon_bis</code> in the recipe.
 <strong>This should never be done in real life, we only do it for this exercise!</strong></p>
 </blockquote>
 
 <blockquote class="notranslate hands_on">
-  <div class="box-title hands-on-title" id="hands-on-writing-a-bioconda-recipe"><i class="fas fa-pencil-alt" aria-hidden="true"></i> Hands-on: Writing a Bioconda Recipe</div>
+  <div class="box-title hands-on-title" id="hands-on-writing-a-bioconda-recipe"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Writing a Bioconda Recipe</div>
 
   <ol>
     <li>
@@ -985,7 +746,7 @@ Recipes should always define the following 6 sections in the <code class="langua
 conda-build preinstalled, and a folder for the meta.yaml file.</p>
 
       <blockquote class="code-in">
-        <div class="box-title code-in-title" id="code-in-bash"><i class="far fa-keyboard" aria-hidden="true"></i> Input: Bash</div>
+        <div class="box-title code-in-title" id="code-in-bash"><i class="far fa-keyboard" aria-hidden="true" ></i> Input: Bash</div>
         <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git checkout <span class="nt">-b</span> bellerophon_bioconda
 conda create <span class="nt">-y</span> <span class="nt">--name</span> bellerophon_bioconda pip python conda-build
 conda activate bellerophon_bioconda
@@ -997,14 +758,14 @@ conda activate bellerophon_bioconda
       <p>Next we determine the SHA-256 checksum of the source tarball.</p>
 
       <blockquote class="code-in">
-        <div class="box-title code-in-title" id="code-in-bash-1"><i class="far fa-keyboard" aria-hidden="true"></i> Input: Bash</div>
+        <div class="box-title code-in-title" id="code-in-bash-1"><i class="far fa-keyboard" aria-hidden="true" ></i> Input: Bash</div>
         <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>wget <span class="nt">-O</span> bellerophon.tar.gz https://github.com/davebx/bellerophon/archive/1.0.tar.gz
 <span class="nb">sha256sum </span>bellerophon.tar.gz <span class="c"># Copy the 64-character hexadecimal number that this outputs.</span>
 </code></pre></div>        </div>
       </blockquote>
 
       <blockquote class="code-out">
-        <div class="box-title code-out-title" id="code-out"><i class="fas fa-laptop-code" aria-hidden="true"></i> Output</div>
+        <div class="box-title code-out-title" id="code-out"><i class="fas fa-laptop-code" aria-hidden="true" ></i> Output</div>
         <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>036c5e23f53ed5b612525d3a32095acca073a9c8d2bf73883deb852c89f40dcf  bellerophon.tar.gz
 </code></pre></div>        </div>
       </blockquote>
@@ -1016,7 +777,7 @@ With these definitions, Bioconda’s automatic version updater should recognize 
 create a pull request to update the Bioconda package.</p>
 
       <blockquote class="code-in">
-        <div class="box-title code-in-title" id="code-in-bash-2"><i class="far fa-keyboard" aria-hidden="true"></i> Input: Bash</div>
+        <div class="box-title code-in-title" id="code-in-bash-2"><i class="far fa-keyboard" aria-hidden="true" ></i> Input: Bash</div>
         <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>vim recipes/bellerophon_bis/meta.yaml <span class="c"># vim can of course be replaced with any other editor.</span>
 </code></pre></div>        </div>
       </blockquote>
@@ -1107,12 +868,12 @@ homepage, and optionally the github username of the person responsible for maint
   <p>Putting all these parts together, we end up with a complete conda recipe for version 1.0 of bellerophon.</p>
 
   <blockquote class="question">
-    <div class="box-title question-title" id="question"><i class="far fa-question-circle" aria-hidden="true"></i> Question</div>
+    <div class="box-title question-title" id="question"><i class="far fa-question-circle" aria-hidden="true" ></i> Question</div>
 
     <p>What does your final file look like?</p>
 
     <blockquote class="solution">
-      <div class="box-title solution-title" id="solution"><button class="gtn-boxify-button solution" type="button" aria-controls="solution" aria-expanded="true"><i class="far fa-eye" aria-hidden="true"></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
+      <div class="box-title solution-title" id="solution"><button class="gtn-boxify-button solution" type="button" aria-controls="solution" aria-expanded="true"><i class="far fa-eye" aria-hidden="true" ></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
 
       <div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="pi">{</span><span class="err">%</span> <span class="nv">set name = "bellerophon_bis" %</span><span class="pi">}</span>
 <span class="pi">{</span><span class="err">%</span> <span class="nv">set version = "1.0" %</span><span class="pi">}</span>
@@ -1156,7 +917,7 @@ homepage, and optionally the github username of the person responsible for maint
 </blockquote>
 
 <blockquote class="comment">
-  <div class="box-title comment-title" id="comment-using-build-sh"><i class="far fa-comment-dots" aria-hidden="true"></i> Comment: Using build.sh</div>
+  <div class="box-title comment-title" id="comment-using-build-sh"><i class="far fa-comment-dots" aria-hidden="true" ></i> Comment: Using build.sh</div>
 
   <p>In this recipe, the command to execute for installing the package is very short, that’s why we write it directly in the <code class="language-plaintext highlighter-rouge">meta.yaml</code> file. When you need to run more complex commands (like compilation steps), it is preferable to remove the <code class="language-plaintext highlighter-rouge">build &gt; script</code> entry in the <code class="language-plaintext highlighter-rouge">meta.yaml</code> file, and write all the commands in a script named <code class="language-plaintext highlighter-rouge">build.sh</code> in the same directory.</p>
 
@@ -1167,14 +928,14 @@ homepage, and optionally the github username of the person responsible for maint
 <p>Now that your recipe is written, you can try to build it locally.</p>
 
 <blockquote class="notranslate hands_on">
-  <div class="box-title hands-on-title" id="hands-on-building-the-recipe-locally"><i class="fas fa-pencil-alt" aria-hidden="true"></i> Hands-on: Building the recipe locally</div>
+  <div class="box-title hands-on-title" id="hands-on-building-the-recipe-locally"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Building the recipe locally</div>
 
   <ol>
     <li>
       <p>Run conda-build</p>
 
       <blockquote class="code-in">
-        <div class="box-title code-in-title" id="code-in-bash-3"><i class="far fa-keyboard" aria-hidden="true"></i> Input: Bash</div>
+        <div class="box-title code-in-title" id="code-in-bash-3"><i class="far fa-keyboard" aria-hidden="true" ></i> Input: Bash</div>
         <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>conda build recipes/bellerophon_bis
 </code></pre></div>        </div>
       </blockquote>
@@ -1184,7 +945,7 @@ homepage, and optionally the github username of the person responsible for maint
 At the end, you should see something like this:</p>
 
       <blockquote class="code-out">
-        <div class="box-title code-out-title" id="code-out-1"><i class="fas fa-laptop-code" aria-hidden="true"></i> Output</div>
+        <div class="box-title code-out-title" id="code-out-1"><i class="fas fa-laptop-code" aria-hidden="true" ></i> Output</div>
 
         <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>TEST END: /home/abretaud/miniconda3/conda-bld/noarch/bellerophon-1.0-py_0.tar.bz2
 Renaming work directory [...]
@@ -1206,7 +967,7 @@ anaconda_upload is not set.  Not uploading wheels: []
 </blockquote>
 
 <blockquote class="comment">
-  <div class="box-title comment-title" id="comment-note-on-building-locally"><i class="far fa-comment-dots" aria-hidden="true"></i> Comment: Note on building locally</div>
+  <div class="box-title comment-title" id="comment-note-on-building-locally"><i class="far fa-comment-dots" aria-hidden="true" ></i> Comment: Note on building locally</div>
 
   <p>While building locally is a quick way to check if a recipe is working, it’s not the most reliable way.
 That’s because the build is occurring directly on your system, which means you might get interference between the conda requirements in the recipe and your system-wide installed libraries and system configuration.
@@ -1219,20 +980,20 @@ The automatic testing of your recipe on GitHub when you create a Pull Request is
 <p>After the recipe is complete, and when we have checked that it builds locally, we can commit and push to our fork, so that the recipe can eventually be integrated into Bioconda.</p>
 
 <blockquote class="notranslate hands_on">
-  <div class="box-title hands-on-title" id="hands-on-creating-the-pr"><i class="fas fa-pencil-alt" aria-hidden="true"></i> Hands-on: Creating the PR</div>
+  <div class="box-title hands-on-title" id="hands-on-creating-the-pr"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Creating the PR</div>
 
   <ol>
     <li>
       <p>We start by making sure we’re on a branch, and that <code class="language-plaintext highlighter-rouge">recipes/bellerophon/meta.yaml</code> is the only modified file.</p>
 
       <blockquote class="code-in">
-        <div class="box-title code-in-title" id="code-in-bash-4"><i class="far fa-keyboard" aria-hidden="true"></i> Input: Bash</div>
+        <div class="box-title code-in-title" id="code-in-bash-4"><i class="far fa-keyboard" aria-hidden="true" ></i> Input: Bash</div>
         <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git status
 </code></pre></div>        </div>
       </blockquote>
 
       <blockquote class="code-out">
-        <div class="box-title code-out-title" id="code-out-2"><i class="fas fa-laptop-code" aria-hidden="true"></i> Output</div>
+        <div class="box-title code-out-title" id="code-out-2"><i class="fas fa-laptop-code" aria-hidden="true" ></i> Output</div>
 
         <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>On branch bellerophon_bioconda
 Untracked files:
@@ -1248,7 +1009,7 @@ no changes added to commit (use "git add" and/or "git commit -a")
       <p>Add your recipes folder, commit, and push it.</p>
 
       <blockquote class="code-in">
-        <div class="box-title code-in-title" id="code-in-bash-5"><i class="far fa-keyboard" aria-hidden="true"></i> Input: Bash</div>
+        <div class="box-title code-in-title" id="code-in-bash-5"><i class="far fa-keyboard" aria-hidden="true" ></i> Input: Bash</div>
         <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git add recipes/bellerophon_bis
 git commit <span class="nt">-m</span> <span class="s1">'Add recipe for bellerophon 1.0'</span>
 git push origin <span class="nt">-u</span> bellerophon_bioconda
@@ -1258,7 +1019,7 @@ git push origin <span class="nt">-u</span> bellerophon_bioconda
       <p>Git will give you a url for creating the pull request, which can be clicked to be taken to github.</p>
 
       <blockquote class="code-out">
-        <div class="box-title code-out-title" id="code-out-3"><i class="fas fa-laptop-code" aria-hidden="true"></i> Output</div>
+        <div class="box-title code-out-title" id="code-out-3"><i class="fas fa-laptop-code" aria-hidden="true" ></i> Output</div>
         <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>git push origin <span class="nt">-u</span> bellerophon_bioconda
 Total 0 <span class="o">(</span>delta 0<span class="o">)</span>, reused 0 <span class="o">(</span>delta 0<span class="o">)</span>
 remote:
@@ -1274,7 +1035,7 @@ Branch bellerophon_bioconda <span class="nb">set </span>up to track remote branc
   </ol>
 
   <blockquote class="warning">
-    <div class="box-title warning-title" id="warning-don-t-create-the-pull-request-for-real"><i class="fas fa-exclamation-triangle" aria-hidden="true"></i> Warning: Don't create the Pull request for real!</div>
+    <div class="box-title warning-title" id="warning-don-t-create-the-pull-request-for-real"><i class="fas fa-exclamation-triangle" aria-hidden="true" ></i> Warning: Don't create the Pull request for real!</div>
 
     <p>You can click on the link to see the diff of what would be included in the Pull Request, and how the form looks like. But please don’t click on the <code class="language-plaintext highlighter-rouge">Create pull request</code> button! We don’t want to get duplicate versions of this recipe integrated in bioconda everytime someone follows this tutorial!</p>
 
@@ -1282,7 +1043,7 @@ Branch bellerophon_bioconda <span class="nb">set </span>up to track remote branc
 
   <p>Once on the github pull request page, you see a preview of the changes we propose, and you can write a short description of the recipe we want to merge. Have a look at the guidelines in the text box to understand how to properly fill the form, and get your Pull Request merged in the end. In real life, when creating a real new recipe, you would then click the <code class="language-plaintext highlighter-rouge">Create pull request</code> button.</p>
 
-  <figure id="figure-1"><img src="../../images/create_pr.png" alt="Github PR. " width="927" height="612" loading="lazy" /><figcaption><span class="figcaption-prefix"><strong>Figure 1</strong>:</span> An open pull request for the bellerophon conda recipe</figcaption></figure>
+  <figure id="figure-1" style="max-width: 90%; margin:auto;"><img src="../../images/create_pr.png" alt="Github PR. " width="927" height="612" loading="lazy" /><figcaption><span class="figcaption-prefix"><strong>Figure 1</strong>:</span> An open pull request for the bellerophon conda recipe</figcaption></figure>
 </blockquote>
 
 <h2 id="installing-a-conda-package">Installing a Conda Package</h2>
@@ -1308,7 +1069,7 @@ anyone wrapping a tool, a more complete list is available in <a href="https://do
 <p>Initializing a tool wrapper to be run in Galaxy is simple</p>
 
 <blockquote class="notranslate hands_on">
-  <div class="box-title hands-on-title" id="hands-on-creating-a-tool-wrapper-skeleton"><i class="fas fa-pencil-alt" aria-hidden="true"></i> Hands-on: Creating a Tool Wrapper Skeleton</div>
+  <div class="box-title hands-on-title" id="hands-on-creating-a-tool-wrapper-skeleton"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Creating a Tool Wrapper Skeleton</div>
   <ol>
     <li>Go to the “tools” directory in your Galaxy instance.</li>
     <li>Make a new directory for tools you will be wrapping.</li>
@@ -1373,7 +1134,7 @@ anyone wrapping a tool, a more complete list is available in <a href="https://do
 The tool ID and name are defined here as well as which minimum version of Galaxy is required to run it.</p>
 
 <blockquote class="notranslate hands_on">
-  <div class="box-title hands-on-title" id="hands-on-defining-the-tool-section"><i class="fas fa-pencil-alt" aria-hidden="true"></i> Hands-on: Defining the tool section:</div>
+  <div class="box-title hands-on-title" id="hands-on-defining-the-tool-section"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Defining the tool section:</div>
   <p>For this section, the following is necessary:</p>
 
   <ul>
@@ -1406,7 +1167,7 @@ The tool ID and name are defined here as well as which minimum version of Galaxy
 The description is simply presented as plaintext between the tags. Bellerophon’s would look like this:</p>
 
 <blockquote class="notranslate hands_on">
-  <div class="box-title hands-on-title" id="hands-on-adding-a-description"><i class="fas fa-pencil-alt" aria-hidden="true"></i> Hands-on: Adding a description</div>
+  <div class="box-title hands-on-title" id="hands-on-adding-a-description"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Adding a description</div>
   <p>Add the following description to your tool</p>
   <div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;description&gt;</span>chimeric reads from Arima Genomics<span class="nt">&lt;/description&gt;</span>
 </code></pre></div>  </div>
@@ -1426,7 +1187,7 @@ useful for tools which have multiple options/modes that reuse parameters. We wil
 <p>The @TOOL_VERSION@ and @VERSION_SUFFIX@ used in the Tool line are defined here. Each need their own ‘token’ line, resulting in</p>
 
 <blockquote class="notranslate hands_on">
-  <div class="box-title hands-on-title" id="hands-on-macros"><i class="fas fa-pencil-alt" aria-hidden="true"></i> Hands-on: Macros</div>
+  <div class="box-title hands-on-title" id="hands-on-macros"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Macros</div>
   <p>Add the following macros section to your tool:</p>
   <div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;macros&gt;</span>
     <span class="nt">&lt;token</span> <span class="na">name=</span><span class="s">"@TOOL_VERSION@"</span><span class="nt">&gt;</span>1.0<span class="nt">&lt;/token&gt;</span>
@@ -1461,11 +1222,11 @@ of the requirement would change the value for <code class="language-plaintext hi
 <p>We will now add a useful macro entry. With the Galaxy ecosystem is becoming more reliant on metadata, a bio.tools ID can help Galaxy to pull standardized metadata for your tool. This enables users to find and use the tool more easily from across the web, so we highly recommend setting a bio.tools identifier. If an entry already exists on <a href="https://bio.tools">https://bio.tools</a>, it’s a simple task.</p>
 
 <blockquote class="notranslate hands_on">
-  <div class="box-title hands-on-title" id="hands-on-setting-a-bio-tools-id"><i class="fas fa-pencil-alt" aria-hidden="true"></i> Hands-on: Setting a bio.tools ID:</div>
+  <div class="box-title hands-on-title" id="hands-on-setting-a-bio-tools-id"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Setting a bio.tools ID:</div>
 
   <p>If we go to <a href="https://bio.tools">https://bio.tools</a> and search “Bellerophon”, we find that it already has a bio.tools entry:</p>
 
-  <p><img src="../../images/biotools-profile.png" alt="Bellerophon bio.tools webpage. " loading="lazy" /></p>
+  <p><img src="../../images/biotools-profile.png" alt="Bellerophon bio.tools webpage. " width="610" height="274" loading="lazy" /></p>
 
   <p>We just have to add the biotools ID as a <code class="language-plaintext highlighter-rouge">&lt;macro&gt;</code> tag.</p>
 
@@ -1519,7 +1280,7 @@ This specifies the</p>
 </ul>
 
 <blockquote class="notranslate hands_on">
-  <div class="box-title hands-on-title" id="hands-on-adding-requirements"><i class="fas fa-pencil-alt" aria-hidden="true"></i> Hands-on: Adding requirements</div>
+  <div class="box-title hands-on-title" id="hands-on-adding-requirements"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Adding requirements</div>
   <p>In the case of bellerophon, which requires two dependencies, bellerophon and samtools, the requirements section appears like so. Add them to your tool XML.</p>
 
   <div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="nt">&lt;requirements&gt;</span>
@@ -1532,12 +1293,12 @@ This specifies the</p>
 <p>This uses the macro token for @TOOL_VERSION@ for the Bioconda package version to retrieve the version number for bellerophon, while samtools’ version is set manually.</p>
 
 <blockquote class="question">
-  <div class="box-title question-title" id="question-1"><i class="far fa-question-circle" aria-hidden="true"></i> Question</div>
+  <div class="box-title question-title" id="question-1"><i class="far fa-question-circle" aria-hidden="true" ></i> Question</div>
 
   <p>If you wanted to add a requirement for the Seurat package of version 3.2, what would that look like?</p>
 
   <blockquote class="solution">
-    <div class="box-title solution-title" id="solution-1"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-1" aria-expanded="true"><i class="far fa-eye" aria-hidden="true"></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
+    <div class="box-title solution-title" id="solution-1"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-1" aria-expanded="true"><i class="far fa-eye" aria-hidden="true" ></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
 
     <div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="nt">&lt;requirements&gt;</span>
         <span class="nt">&lt;requirement</span> <span class="na">type=</span><span class="s">"package"</span> <span class="na">version=</span><span class="s">"3.2"</span><span class="nt">&gt;</span>seurat<span class="nt">&lt;/requirement&gt;</span>
@@ -1703,18 +1464,18 @@ goes to the stderr instead of an output file, this can also be skipped. All thre
 but not exposed to the user.</p>
 
 <blockquote class="notranslate hands_on">
-  <div class="box-title hands-on-title" id="hands-on-adding-parameters-to-your-tool"><i class="fas fa-pencil-alt" aria-hidden="true"></i> Hands-on: Adding parameters to your tool</div>
+  <div class="box-title hands-on-title" id="hands-on-adding-parameters-to-your-tool"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Adding parameters to your tool</div>
   <ol>
     <li>Using information in the above sections, add parameters for the forward, reverse, and quality flags to your tool xml.</li>
   </ol>
 
   <blockquote class="question">
-    <div class="box-title question-title" id="question-2"><i class="far fa-question-circle" aria-hidden="true"></i> Question</div>
+    <div class="box-title question-title" id="question-2"><i class="far fa-question-circle" aria-hidden="true" ></i> Question</div>
 
     <p>What does your <code class="language-plaintext highlighter-rouge">&lt;inputs/&gt;</code> section look like?</p>
 
     <blockquote class="solution">
-      <div class="box-title solution-title" id="solution-2"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-2" aria-expanded="true"><i class="far fa-eye" aria-hidden="true"></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
+      <div class="box-title solution-title" id="solution-2"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-2" aria-expanded="true"><i class="far fa-eye" aria-hidden="true" ></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
       <p>To include all of the necessary parameters, then, the inputs section would appear like this</p>
 
       <div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;inputs&gt;</span>
@@ -1737,7 +1498,7 @@ a user from inputting a value below a specified number. Here, the quality flag c
 It also defines the format of that file and the name shown to the user in the history.</p>
 
 <blockquote class="notranslate hands_on">
-  <div class="box-title hands-on-title" id="hands-on-adding-your-outputs"><i class="fas fa-pencil-alt" aria-hidden="true"></i> Hands-on: Adding your outputs</div>
+  <div class="box-title hands-on-title" id="hands-on-adding-your-outputs"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Adding your outputs</div>
   <p>As Bellerophon has a single output file, add the following outputs section to your tool:</p>
 
   <div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;outputs&gt;</span>
@@ -1854,7 +1615,7 @@ For example</p>
 <h4 id="in-practice"><em>In practice</em></h4>
 
 <blockquote class="notranslate hands_on">
-  <div class="box-title hands-on-title" id="hands-on-writing-the-command-block"><i class="fas fa-pencil-alt" aria-hidden="true"></i> Hands-on: Writing the command block</div>
+  <div class="box-title hands-on-title" id="hands-on-writing-the-command-block"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Writing the command block</div>
 
   <p>The bellerophon command section would, based on the variables set previously, would be as follows. Add it to your tool XML.</p>
 
@@ -1912,7 +1673,7 @@ for the test. These params can also be placed inside a conditional, simulating t
 <p>As all parameters in bellerophon are accessible at once, and do not contradict one another, only one test is necessary.</p>
 
 <blockquote class="notranslate hands_on">
-  <div class="box-title hands-on-title" id="hands-on-adding-a-test"><i class="fas fa-pencil-alt" aria-hidden="true"></i> Hands-on: Adding a test</div>
+  <div class="box-title hands-on-title" id="hands-on-adding-a-test"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Adding a test</div>
   <p>Add the following test case to your tool:</p>
   <div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="nt">&lt;tests&gt;</span>
         <span class="nt">&lt;test</span> <span class="na">expect_num_outputs=</span><span class="s">"1"</span><span class="nt">&gt;</span>
@@ -1982,7 +1743,7 @@ of an Arima Genomics tool in association with the Vertebrate Genomes project, th
 <p>Multiple citations can be added by using additional citation tags.</p>
 
 <blockquote class="notranslate hands_on">
-  <div class="box-title hands-on-title" id="hands-on-adding-a-citation"><i class="fas fa-pencil-alt" aria-hidden="true"></i> Hands-on: Adding a citation</div>
+  <div class="box-title hands-on-title" id="hands-on-adding-a-citation"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Adding a citation</div>
   <p>Add the citation above using either method (but not both!)</p>
 </blockquote>
 
@@ -2093,7 +1854,7 @@ see it in action linting, testing, and serving the tool.</p>
 If you not have conda installed we suggest to use <code class="language-plaintext highlighter-rouge">pip</code> for installing <code class="language-plaintext highlighter-rouge">planemo</code>.</p>
 
 <blockquote class="notranslate hands_on">
-  <div class="box-title hands-on-title" id="hands-on-installing-planemo-via-pip"><i class="fas fa-pencil-alt" aria-hidden="true"></i> Hands-on: Installing `planemo` via pip</div>
+  <div class="box-title hands-on-title" id="hands-on-installing-planemo-via-pip"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Installing `planemo` via pip</div>
 
   <p>It is advised to install <code class="language-plaintext highlighter-rouge">planemo</code> in a virtual environment (step 1-2).</p>
 
@@ -2105,7 +1866,7 @@ If you not have conda installed we suggest to use <code class="language-plaintex
 </blockquote>
 
 <blockquote class="notranslate hands_on">
-  <div class="box-title hands-on-title" id="hands-on-installing-planemo-via-conda"><i class="fas fa-pencil-alt" aria-hidden="true"></i> Hands-on: Installing `planemo` via conda</div>
+  <div class="box-title hands-on-title" id="hands-on-installing-planemo-via-conda"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Installing `planemo` via conda</div>
 
   <ol>
     <li>Install <a href="https://conda.io/projects/conda/en/latest/user-guide/install/index.html">miniconda</a></li>
@@ -2117,20 +1878,20 @@ If you not have conda installed we suggest to use <code class="language-plaintex
 <p>Note that for using <code class="language-plaintext highlighter-rouge">planemo</code>from a new shell you will need to activate the python/conda environment again.</p>
 
 <blockquote class="notranslate hands_on">
-  <div class="box-title hands-on-title" id="hands-on-testing-planemo-and-getting-help"><i class="fas fa-pencil-alt" aria-hidden="true"></i> Hands-on: Testing `planemo` and getting help</div>
+  <div class="box-title hands-on-title" id="hands-on-testing-planemo-and-getting-help"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Testing `planemo` and getting help</div>
 
   <ol>
     <li>
       <p>In order to test if the installation worked execute</p>
 
       <blockquote class="code-in">
-        <div class="box-title code-in-title" id="code-in-bash-6"><i class="far fa-keyboard" aria-hidden="true"></i> Input: Bash</div>
+        <div class="box-title code-in-title" id="code-in-bash-6"><i class="far fa-keyboard" aria-hidden="true" ></i> Input: Bash</div>
         <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>planemo <span class="nt">--version</span>
 </code></pre></div>        </div>
       </blockquote>
 
       <blockquote class="code-out">
-        <div class="box-title code-out-title" id="code-out-4"><i class="fas fa-laptop-code" aria-hidden="true"></i> Output</div>
+        <div class="box-title code-out-title" id="code-out-4"><i class="fas fa-laptop-code" aria-hidden="true" ></i> Output</div>
         <p>This should output the version of <code class="language-plaintext highlighter-rouge">planemo</code>, e.g.</p>
         <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>planemo, version 0.74.3
 </code></pre></div>        </div>
@@ -2155,7 +1916,7 @@ If you not have conda installed we suggest to use <code class="language-plaintex
 By default <code class="language-plaintext highlighter-rouge">planemo</code> will fail if any warning or error is found, i.e. return a non-zero exit code.</p>
 
 <blockquote class="notranslate hands_on">
-  <div class="box-title hands-on-title" id="hands-on-lint-a-tool-with-planemo"><i class="fas fa-pencil-alt" aria-hidden="true"></i> Hands-on: Lint a tool with `planemo`</div>
+  <div class="box-title hands-on-title" id="hands-on-lint-a-tool-with-planemo"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Lint a tool with `planemo`</div>
 
   <ol>
     <li>Change into the directory containing the tool</li>
@@ -2181,7 +1942,7 @@ In order to do so <code class="language-plaintext highlighter-rouge">planemo</co
 </ul>
 
 <blockquote class="notranslate hands_on">
-  <div class="box-title hands-on-title" id="hands-on-test-a-tool-with-planemo"><i class="fas fa-pencil-alt" aria-hidden="true"></i> Hands-on: Test a tool with `planemo`</div>
+  <div class="box-title hands-on-title" id="hands-on-test-a-tool-with-planemo"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Test a tool with `planemo`</div>
 
   <ol>
     <li>Change into the directory containing the tool</li>
@@ -2204,7 +1965,7 @@ TOOL_NAME (Test #2): passed
 
       <p>The HTML report contains a table on the top giving the number of executed, successful, and failed tests:</p>
 
-      <figure id="figure-2"><img src="../../images/planemo_html.png" alt="Planemo HTML report. " width="704" height="565" loading="lazy" /><figcaption><span class="figcaption-prefix"><strong>Figure 2</strong>:</span> Planemo HTML report</figcaption></figure>
+      <figure id="figure-2" style="max-width: 90%; margin:auto;"><img src="../../images/planemo_html.png" alt="Planemo HTML report. " width="704" height="565" loading="lazy" /><figcaption><span class="figcaption-prefix"><strong>Figure 2</strong>:</span> Planemo HTML report</figcaption></figure>
 
       <p>If there are passed or failed tests you will find the text <code class="language-plaintext highlighter-rouge">Passed tests</code>, <code class="language-plaintext highlighter-rouge">Failed tests</code>, resp., below the table.
 Clicking on this text will unfold the list of passed or failed tests, resp. Clicking again on one of the tests
@@ -2215,7 +1976,7 @@ to determine the source of the test failure.</p>
 </blockquote>
 
 <blockquote class="tip">
-  <div class="box-title tip-title" id="tip-useful-parameters-for-planemo-test"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-useful-parameters-for-planemo-test" aria-expanded="true"><i class="far fa-lightbulb" aria-hidden="true"></i> Tip: Useful parameters for `planemo test`<span class="fold-unfold fa fa-minus-square"></span></button></div>
+  <div class="box-title tip-title" id="tip-useful-parameters-for-planemo-test"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-useful-parameters-for-planemo-test" aria-expanded="true"><i class="far fa-lightbulb" aria-hidden="true" ></i> Tip: Useful parameters for `planemo test`<span class="fold-unfold fa fa-minus-square"></span></button></div>
 
   <ul>
     <li><code class="language-plaintext highlighter-rouge">--failed</code> Will make <code class="language-plaintext highlighter-rouge">planemo</code> rerun only the tests that failed in the previous execution.</li>
@@ -2225,7 +1986,7 @@ to determine the source of the test failure.</p>
 </blockquote>
 
 <blockquote class="details">
-  <div class="box-title details-title" id="details-understanding-planemo-s-output-in-more-detail"><button class="gtn-boxify-button details" type="button" aria-controls="details-understanding-planemo-s-output-in-more-detail" aria-expanded="true"><i class="fas fa-info-circle" aria-hidden="true"></i> Details: Understanding `planemo`'s output in more detail<span class="fold-unfold fa fa-minus-square"></span></button></div>
+  <div class="box-title details-title" id="details-understanding-planemo-s-output-in-more-detail"><button class="gtn-boxify-button details" type="button" aria-controls="details-understanding-planemo-s-output-in-more-detail" aria-expanded="true"><i class="fas fa-info-circle" aria-hidden="true" ></i> Details: Understanding `planemo`'s output in more detail<span class="fold-unfold fa fa-minus-square"></span></button></div>
 
   <p>Sometimes it can be helpful to understand the <code class="language-plaintext highlighter-rouge">planemo</code> output in more detail.</p>
 
@@ -2262,7 +2023,7 @@ to determine the source of the test failure.</p>
 <p>It can be very useful to check how Galaxy renders a tool and if this meets the expectations of the developer. For instance this is the best way to check if the help section is rendered as expected.</p>
 
 <blockquote class="notranslate hands_on">
-  <div class="box-title hands-on-title" id="hands-on-serve-a-tool-with-planemo"><i class="fas fa-pencil-alt" aria-hidden="true"></i> Hands-on: Serve a tool with `planemo`</div>
+  <div class="box-title hands-on-title" id="hands-on-serve-a-tool-with-planemo"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Serve a tool with `planemo`</div>
 
   <ol>
     <li>Change into the directory containing the tool</li>
@@ -2276,7 +2037,7 @@ to determine the source of the test failure.</p>
 </blockquote>
 
 <blockquote class="tip">
-  <div class="box-title tip-title" id="tip-useful-parameters-for-planemo-test-1"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-useful-parameters-for-planemo-test-1" aria-expanded="true"><i class="far fa-lightbulb" aria-hidden="true"></i> Tip: Useful parameters for `planemo test`<span class="fold-unfold fa fa-minus-square"></span></button></div>
+  <div class="box-title tip-title" id="tip-useful-parameters-for-planemo-test-1"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-useful-parameters-for-planemo-test-1" aria-expanded="true"><i class="far fa-lightbulb" aria-hidden="true" ></i> Tip: Useful parameters for `planemo test`<span class="fold-unfold fa fa-minus-square"></span></button></div>
 
   <p>In order to stop <code class="language-plaintext highlighter-rouge">planemo serve</code> just press <kbd>Ctrl-C</kbd></p>
 </blockquote>
@@ -2334,7 +2095,7 @@ But, the steps can be adapted easily by exchanging the repository URLs. Note tha
 the development branch may have the name <code class="language-plaintext highlighter-rouge">master</code> instead of <code class="language-plaintext highlighter-rouge">main</code>.</p>
 
 <blockquote class="notranslate hands_on">
-  <div class="box-title hands-on-title" id="hands-on-fork-and-clone-the-iuc-github-repository"><i class="fas fa-pencil-alt" aria-hidden="true"></i> Hands-on: Fork and clone the IUC github repository</div>
+  <div class="box-title hands-on-title" id="hands-on-fork-and-clone-the-iuc-github-repository"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Fork and clone the IUC github repository</div>
 
   <ol>
     <li>If you don’t have an account on github you need to sign up at first.</li>
@@ -2343,7 +2104,7 @@ the development branch may have the name <code class="language-plaintext highlig
 
   <ul>
     <li>Click the <code class="language-plaintext highlighter-rouge">fork</code> button on the top right
-      <figure id="figure-3"><img src="../../images/iuc-github.png" alt="IUC github repository. " width="1264" height="660" loading="lazy" /><figcaption><span class="figcaption-prefix"><strong>Figure 3</strong>:</span> IUC github repository</figcaption></figure>
+      <figure id="figure-3" style="max-width: 90%; margin:auto;"><img src="../../images/iuc-github.png" alt="IUC github repository. " width="1264" height="660" loading="lazy" /><figcaption><span class="figcaption-prefix"><strong>Figure 3</strong>:</span> IUC github repository</figcaption></figure>
     </li>
     <li>In the following dialog select your account</li>
     <li>After a short while you will be redirected to your fork of the sandbox repository
@@ -2355,7 +2116,7 @@ the development branch may have the name <code class="language-plaintext highlig
       <p>In order to obtain a clone (i.e. a local copy of your fork) click the green button with text “Code” and copy the link. And execute the following commands on your computer</p>
 
       <blockquote class="code-in">
-        <div class="box-title code-in-title" id="code-in-bash-7"><i class="far fa-keyboard" aria-hidden="true"></i> Input: Bash</div>
+        <div class="box-title code-in-title" id="code-in-bash-7"><i class="far fa-keyboard" aria-hidden="true" ></i> Input: Bash</div>
         <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cd </span>A_DIR_WHERE_YOU_WANT_TO_CREATE_THE_CLONE
 git clone LINK_TO_YOUR_FORK
 <span class="nb">cd </span>tools-iuc/
@@ -2373,7 +2134,7 @@ The last command will add the original sandbox repository as a remote with the n
 </blockquote>
 
 <blockquote class="notranslate hands_on">
-  <div class="box-title hands-on-title" id="hands-on-keeping-your-fork-in-sync"><i class="fas fa-pencil-alt" aria-hidden="true"></i> Hands-on: Keeping your fork in sync</div>
+  <div class="box-title hands-on-title" id="hands-on-keeping-your-fork-in-sync"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Keeping your fork in sync</div>
 
   <p>You should execute the following steps always before creating a new branch:</p>
 
@@ -2387,7 +2148,7 @@ The last command will add the original sandbox repository as a remote with the n
 <h2 id="create-a-pull-request-for-a-new-tool">Create a pull request for a new tool</h2>
 
 <blockquote class="notranslate hands_on">
-  <div class="box-title hands-on-title" id="hands-on-create-a-pull-request"><i class="fas fa-pencil-alt" aria-hidden="true"></i> Hands-on: Create a pull request</div>
+  <div class="box-title hands-on-title" id="hands-on-create-a-pull-request"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Create a pull request</div>
   <ol>
     <li><code class="language-plaintext highlighter-rouge">git checkout main</code></li>
     <li><code class="language-plaintext highlighter-rouge">git checkout -b NAME_OF_THE_BRANCH</code>: create a new feature branch and change to this branch. The branch name should not contain names and should be short and if possible descriptive, e.g. the tool name.</li>
@@ -2402,7 +2163,7 @@ The last command will add the original sandbox repository as a remote with the n
 <p>After you created a PR your changes will be reviewed and improvements will be requested. You can add changes to the PR as follows.</p>
 
 <blockquote class="notranslate hands_on">
-  <div class="box-title hands-on-title" id="hands-on-adding-changes-to-a-pr"><i class="fas fa-pencil-alt" aria-hidden="true"></i> Hands-on: Adding changes to a PR</div>
+  <div class="box-title hands-on-title" id="hands-on-adding-changes-to-a-pr"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Adding changes to a PR</div>
   <ol>
     <li><code class="language-plaintext highlighter-rouge">git checkout NAME_OF_THE_BRANCH</code></li>
     <li>Make changes as requested.</li>
@@ -2439,7 +2200,7 @@ The last command will add the original sandbox repository as a remote with the n
 
 <p>The link “Details” on the right of the job brings you to a page showing the detailed output of the jobs (Alternatively the “Checks” tab on top of the PR page brings you to the CI output page.)</p>
 
-<figure id="figure-4"><img src="../../images/iuc-ci.png" alt="IUC output of the CI workflow. " width="1599" height="1061" loading="lazy" /><figcaption><span class="figcaption-prefix"><strong>Figure 4</strong>:</span> output of the CI workflow</figcaption></figure>
+<figure id="figure-4" style="max-width: 90%; margin:auto;"><img src="../../images/iuc-ci.png" alt="IUC output of the CI workflow. " width="1599" height="1061" loading="lazy" /><figcaption><span class="figcaption-prefix"><strong>Figure 4</strong>:</span> output of the CI workflow</figcaption></figure>
 
 <p>The image above shows the CI page for a PR:</p>
 
@@ -2516,6 +2277,9 @@ Test tools: planemo test – contains the output of <code class="language-plaint
                             Alex Ostrovsky, Dave B., Matthias Bernt,  <b>Creating Galaxy tools from Conda Through Deployment (Galaxy Training Materials)</b>. <a href="https://training.galaxyproject.org/training-material/topics/dev/tutorials/tool-from-scratch/tutorial.html">https://training.galaxyproject.org/training-material/topics/dev/tutorials/tool-from-scratch/tutorial.html</a> Online; accessed TODAY
                         </li>
                         <li>
+                        Hiltemann, Saskia, Rasche, Helena et al., 2023 <b>Galaxy Training: A Powerful Framework for Teaching!</b> PLOS Computational Biology <a href="https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1010752">10.1371/journal.pcbi.1010752</a>
+                        </li>
+                        <li>
                         Batut et al., 2018 <b>Community-Driven Data Analysis Training for Biology</b> Cell Systems <a href="https://doi.org/10.1016%2Fj.cels.2018.05.012">10.1016/j.cels.2018.05.012</a>
                         </li>
                     </ol>
@@ -2537,12 +2301,12 @@ Test tools: planemo test – contains the output of <code class="language-plaint
 
 <code id="citation-code">@misc{dev-tool-from-scratch,
 author = "Alex Ostrovsky and Dave B. and Matthias Bernt",
-title = "Creating Galaxy tools from Conda Through Deployment (Galaxy Training Materials)",
-year = "",
-month = "",
-day = ""
-url = "\url{https://training.galaxyproject.org/training-material/topics/dev/tutorials/tool-from-scratch/tutorial.html}",
-note = "[Online; accessed TODAY]"
+	title = "Creating Galaxy tools from Conda Through Deployment (Galaxy Training Materials)",
+	year = "",
+	month = "",
+	day = ""
+	url = "\url{https://training.galaxyproject.org/training-material/topics/dev/tutorials/tool-from-scratch/tutorial.html}",
+	note = "[Online; accessed TODAY]"
 }
 @article{Hiltemann_2023,
 	doi = {10.1371/journal.pcbi.1010752},
@@ -2568,9 +2332,9 @@ note = "[Online; accessed TODAY]"
 
 <script>
 // update the date on load, or leave fallback of 'today'
-var d = new Date();
-document.getElementById("citation-code").innerHTML = document.getElementById("citation-code").innerHTML.replace("TODAY", d.toDateString());
-document.getElementById("citation-text").innerHTML = document.getElementById("citation-text").innerHTML.replace("TODAY", d.toDateString());
+const citationTodaysDate = new Date();
+document.getElementById("citation-code").innerHTML = document.getElementById("citation-code").innerHTML.replace("TODAY", citationTodaysDate.toDateString());
+document.getElementById("citation-text").innerHTML = document.getElementById("citation-text").innerHTML.replace("TODAY", citationTodaysDate.toDateString());
 </script>
 
                 <i class="far fa-thumbs-up" aria-hidden="true"></i> Congratulations on successfully completing this tutorial!
@@ -2578,6 +2342,23 @@ document.getElementById("citation-text").innerHTML = document.getElementById("ci
                 
 
                 
+
+		
+                <blockquote class="agenda follow-up" id="admins-install-missing-tools">
+                    <div class="box-title">Galaxy Administrators: Install the missing tools</div>
+			<p>You can use Ephemeris's <code>shed-tools install</code> command to install the tools used in this tutorial.</p>
+<div class="highlight"><pre class="highlight"><code>shed-tools install [-g GALAXY] [-a API_KEY] -t &lt;(curl https://training.galaxyproject.org/training-material/api/topics/dev/tutorials/tool-from-scratch/tutorial.json | jq .admin_install_yaml -r)</code></pre></div>
+<p>Alternatively you can copy and paste the following YAML</p>
+<div class="highlight"><pre class="highlight"><code>---
+install_tool_dependencies: true
+install_repository_dependencies: true
+install_resolver_dependencies: true
+tools: []
+</code></pre></div>
+                </blockquote>
+		
+
+
                 </section>
 
             </div>
@@ -2589,38 +2370,52 @@ document.getElementById("citation-text").innerHTML = document.getElementById("ci
 <br/>
 
         </div>
-        
-        <script src="/training-material/assets/js/jquery.slim.min.js"></script>
-        <script src="/training-material/assets/js/popper.min.js"></script>
-        <script src="/training-material/assets/js/bootstrap.min.js?v=3"></script>
-        <script src="/training-material/assets/js/details-element-polyfill.js"></script>
+        <footer>
+	<hr />
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-6" style="text-align: left">
+				<p>
+					The <a href="https://galaxyproject.org/teach/gtn/">Galaxy Training Network</a>
+					provides researchers with online training materials, connects them with local trainers, and helps promoting FAIR and Open Science practices worldwide. All contributions are subject to the <a rel="code-of-conduct" href="https://galaxyproject.org/community/coc/">Galaxy Project Code of Conduct</a>.
+				</p>
+				<p>
+				The GTN infrastructure is licensed under <a rel="license" href="https://github.com/galaxyproject/training-material/blob/main/LICENSE.md">MIT</a>
+				</p>
+				<p>
+				Revision <a href="https://github.com/galaxyproject/training-material/commit/476574d2b382dd1db6c2c408d8fb6ec4393a6904">476574d</a>, built with Jekyll (4.3.2 | production)
+				</p>
+			</div>
+			<div class="col-sm-6" style="text-align: right">
+				
+				<p>
+					Resource <i class="fas fa-fingerprint" aria-hidden="true"></i><span class="visually-hidden">purl</span><abbr title="Persistent URL">PURL</abbr>: <a href="https://gxy.io/GTN:T00117">https://gxy.io/GTN:T00117</a>
+				</p>
+				
+				<p>
+					<i>This Material</i>:
+					
+					is licensed under
+					<a rel="license" href="https://spdx.org/licenses/CC-BY-4.0">
+						Creative Commons Attribution 4.0 International License
+					</a>
+				</p>
+				<p>
+					<a href="https://github.com/galaxyproject/training-material/edit/main/topics/dev/tutorials/tool-from-scratch/tutorial.md" title="Edit on GitHub">
+					<i class="fab fa-github" aria-hidden="true"></i><span class="visually-hidden">github</span> Edit on GitHub
+					</a>
+				</p>
+			</div>
+		</div>
+	</div>
+</footer>
+
+
+    </div>
+</footer>
+
+
+        <script src='/training-material/assets/js/bundle.main.js?v=1687830693'></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-        <script src="/training-material/assets/js/bootstrap-toc.min.js"></script>
-        <script src="/training-material/assets/js/main.js"></script>
-        <script src="/training-material/assets/js/clipboard.min.js"></script>
-        <script>
-        var snippets=document.querySelectorAll('div.highlight');
-        [].forEach.call(snippets,function(snippet){
-            snippet.firstChild.insertAdjacentHTML('beforebegin','<button class="btn btn-light" data-clipboard-snippet tabindex="0"><i class="fa fa-copy"></i>&nbsp;Copy</button>');
-        });
-
-        var clipboardSnippets=new ClipboardJS('[data-clipboard-snippet]',{
-            target:function(trigger){return trigger.nextElementSibling;
-        }});
-        </script>
-        
-
-        <script type="text/javascript">
-            if(window.location.hostname === "galaxyproject.github.io") {
-                // Redirect
-                var redirect = "https://training.galaxyproject.org" + window.location.pathname + window.location.search;
-                $('div.container.main-content').prepend("<div class='alert alert-warning'><strong>Note: </strong>This content has a new home at <a href=\"" + redirect + "\">" + redirect + "</a>, which you will be redirected to in 5 seconds.</div>");
-
-                window.setTimeout(function(){
-                    window.location.href = redirect;
-                }, 5000)
-
-            }
-        </script>
     </body>
 </html>

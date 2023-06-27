@@ -8,22 +8,51 @@
         
             <script async defer data-domain="training.galaxyproject.org" src="https://plausible.galaxyproject.eu/js/plausible.js"></script>
 
+<!-- JavaScript Error Monitoring, and performance tracking. -->
+<script
+  src="https://browser.sentry-cdn.com/7.52.1/bundle.tracing.min.js"
+  integrity="sha384-muuFXKS3752PNA4rPm9Uq6BLvOfV4CXyr9MHDBPvozOJJUWLKkogEFWOIRoVps43"
+  crossorigin="anonymous"
+></script>
+<script type="text/javascript">
+Sentry.init({
+  dsn: "https://45e0ec6e4373462b92969505df37cf40@sentry.galaxyproject.org/10",
+  release: "galaxy-training-network@476574d2b382dd1db6c2c408d8fb6ec4393a6904",
+  integrations: [new Sentry.BrowserTracing(), new Sentry.Replay()],
+  sampleRate: 0.1,
+  tracesSampleRate: 0.1,
+  // Capture Replay for no sessions by default
+  replaysSessionSampleRate: 0.01,
+  // plus for 1% of sessions with an error
+  replaysOnErrorSampleRate: 0.01,
+  // PII OFF
+  sendDefaultPii: false, // Off by default but just in case.
+  environment: "production",
+});
+</script>
+
         
-        <link rel="stylesheet" href="/training-material/assets/css/bootstrap.min.css?v=3">
-        <link rel="stylesheet" href="/training-material/assets/css/bootstrap-toc.min.css">
-        <link rel="stylesheet" href="/training-material/assets/css/main.css?v=2">
-        <link rel="stylesheet" href="/training-material/assets/fontawesome/css/all.css">
-        <link rel="stylesheet" href="/training-material/assets/css/academicons.css">
         <link rel="shortcut icon" href="/training-material/favicon.ico" type="image/x-icon">
         <link rel="alternate" type="application/atom+xml" href="/training-material/feed.xml">
         <link rel="canonical" href="https://training.galaxyproject.org/training-material/topics/ecology/tutorials/x-array-map-plot/tutorial.html">
-        <link rel="license" href="https://creativecommons.org/licenses/by/4.0/">
+        <link rel="license" href="https://spdx.org/licenses/CC-BY-4.0">
+        <link rel="preload" href="/training-material/assets/fonts/AtkinsonHyperlegible/Atkinson-Hyperlegible-Regular-102a.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="preload" href="/training-material/assets/fonts/AtkinsonHyperlegible/Atkinson-Hyperlegible-Bold-102a.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="preload" href="/training-material/assets/fonts/AtkinsonHyperlegible/Atkinson-Hyperlegible-Italic-102a.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML" as="script" crossorigin>
+        <link rel="preload" href="/training-material/assets/css/main.css?v=3" as="style">
+        <link rel='preload' href='/training-material/assets/js/bundle.theme.js?v=1687830693' as='script'>
+<link rel='preload' href='/training-material/assets/js/bundle.main.js?v=1687830693' as='script'>
+        <link rel="stylesheet" href="/training-material/assets/css/main.css?v=3">
+        <link rel="manifest" href="/training-material/manifest.json">
+        <meta name="theme-color" content="#2c3143"/>
+
 
         <meta name="DC.identifier" content="https://github.com/galaxyproject/training-material">
 <meta name="DC.type" content="text">
 <meta name="DC.title" content="Visualization of Climate Data using  NetCDF xarray Map Plotting">
 <meta name="DC.publisher" content="Galaxy Training Network">
-<meta name="DC.date" content="2023-03-20 10:42:32 +0000">
+<meta name="DC.date" content="2023-05-17 17:21:19 +0000">
 <meta name="DC.creator" content="Soumya Jha">
 
         
@@ -64,7 +93,7 @@
     "name": "Galaxy Training Network",
     "url": "https://galaxyproject.org/teach/gtn/"
   },
-  "dateModified": "2023-03-20 10:42:32 +0000",
+  "dateModified": "2023-05-17 17:21:19 +0000",
   "discussionUrl": "https://gitter.im/Galaxy-Training-Network/Lobby",
   "headline": "Visualization of Climate Data using  NetCDF xarray Map Plotting",
   "interactivityType": "mixed",
@@ -90,6 +119,10 @@
     "url": "https://galaxyproject.org/teach/gtn/"
   },
   "identifier": "https://github.com/galaxyproject/training-material",
+  "workTranslation": [
+
+  ],
+  "creativeWorkStatus": "Active",
   "accessMode": [
     "textual",
     "visual"
@@ -117,6 +150,7 @@
   "name": "Hands-on for 'Visualization of Climate Data using  NetCDF xarray Map Plotting' tutorial",
   "url": "https://training.galaxyproject.org/training-material/topics/ecology/tutorials/x-array-map-plot/tutorial.html",
   "timeRequired": "PT1H",
+  "teaches": "Learn about plotting Climate Data\n - Learn about NetCDF xarray map plotting tool\n - Learn about visualizing the climate data using NetCDF xarray map plotting using the different kinds of projections and colormap options",
   "keywords": "ecology, pangeo",
   "description": "The questions this  addresses are:\n - What is xarray map plotting?\n - How to plot NetCDF data using xarray map plotting tool?\n - What are the different types of projections and colormap options available in the tool?\n\n\nThe objectives are:\n - Learn about plotting Climate Data\n - Learn about NetCDF xarray map plotting tool\n - Learn about visualizing the climate data using NetCDF xarray map plotting using the different kinds of projections and colormap options\n\n",
   "inLanguage": {
@@ -159,31 +193,8 @@
       "@context": "https://schema.org",
       "@type": "Person",
       "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
-      },
-      "url": "https://training.galaxyproject.org/training-material/hall-of-fame/Quickbeasts51429/",
-      "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/Quickbeasts51429/",
-      "name": "Soumya Jha",
-      "image": "https://avatars.githubusercontent.com/Quickbeasts51429",
-      "description": "A contributor to the GTN project.",
-      "memberOf": [
-        {
-          "@type": "Organization",
-          "email": "galaxytrainingnetwork@gmail.com",
-          "name": "Galaxy Training Network",
-          "url": "https://galaxyproject.org/teach/gtn/"
-        }
-      ]
-    }
-  ],
-  "contributor": [
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
+        "@id": "https://bioschemas.org/profiles/Person/0.3-DRAFT",
+        "@type": "CreativeWork"
       },
       "url": "https://training.galaxyproject.org/training-material/hall-of-fame/Quickbeasts51429/",
       "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/Quickbeasts51429/",
@@ -214,13 +225,21 @@
       "termCode": "topic_0610",
       "url": "https://bioportal.bioontology.org/ontologies/EDAM/?p=classes&conceptid=http%3A%2F%2Fedamontology.org%2Ftopic_0610"
     }
-  ]
+  ],
+  "educationalLevel": "Introductory",
+  "mentions": [
+    {
+      "@type": "Thing",
+      "name": "pangeo"
+    }
+  ],
+  "abstract": "><div class="box-title comment-title" id="comment"><i class="far fa-comment-dots" aria-hidden="true" ></i> Comment</div>"
 }
         </script>
         
     </head>
     <body data-spy="scroll" data-target="#toc">
-        <script type="text/javascript" src="/training-material/assets/js/theme.js"></script>
+        <script src='/training-material/assets/js/bundle.theme.js?v=1687830693'></script>
         <header>
     <nav class="navbar navbar-expand-md navbar-dark" aria-label="Site Navigation">
         <div class="container">
@@ -289,7 +308,6 @@
     </a>
     <div class="dropdown-menu dropdown-menu-right">
 
-        
         <a class="dropdown-item" href="https://github.com/galaxyproject/training-material/edit/main/topics/ecology/tutorials/x-array-map-plot/tutorial.md" title="Edit on GitHub">
           <i class="fab fa-github" aria-hidden="true"></i><span class="visually-hidden">github</span> Edit on GitHub
         </a>
@@ -337,13 +355,13 @@
 
             <div id="archive-selector">
             
-                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2020-01-06/topics/ecology/tutorials/x-array-map-plot/tutorial.html" title="Version 2020-01-06">2020-01-06</a>
+                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2020-01-06/topics/ecology/tutorials/x-array-map-plot/tutorial.html">2020-01-06</a>
             
-                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2019-12-01/topics/ecology/tutorials/x-array-map-plot/tutorial.html" title="Version 2019-12-01">2019-12-01</a>
+                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2019-12-01/topics/ecology/tutorials/x-array-map-plot/tutorial.html">2019-12-01</a>
             
-                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2019-11-01/topics/ecology/tutorials/x-array-map-plot/tutorial.html" title="Version 2019-11-01">2019-11-01</a>
+                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2019-11-01/topics/ecology/tutorials/x-array-map-plot/tutorial.html">2019-11-01</a>
             
-                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/" title="Older Versions">Older Versions</a>
+                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/">Older Versions</a>
             </div>
 
         </div>
@@ -356,7 +374,7 @@
                     <li class="nav-item">
                       <div id="navbarSupportedContent" role="search">
                         <!-- Search form -->
-                        <form class="form-inline mr-auto" method="GET" action="/training-material/search">
+                        <form class="form-inline mr-auto" method="GET" action="/training-material/search2">
                           <i class="fas fa-search nav-link" aria-hidden="true"></i>
                           <div class="md-form mb-2">
                             <input name="query" class="form-control nicer" type="text" placeholder="Search Tutorials" aria-label="Search">
@@ -393,194 +411,7 @@
 
 
 
-<script>
-  ((window.gitter = {}).chat = {}).options = {
-  room: 'Galaxy-Training-Network/Lobby'
-  };
-</script>
 
-
-<script src="https://sidecar.gitter.im/dist/sidecar.v1.js" async defer></script>
-
-<script type="application/ld+json">
-    
-
-
-{
-  "@context": "http://schema.org",
-  "@type": "LearningResource",
-  "http://purl.org/dc/terms/conformsTo": {
-    "@id": "https://bioschemas.org/profiles/TrainingMaterial/1.0-RELEASE",
-    "@type": "CreativeWork"
-  },
-  "audience": {
-    "@type": "EducationalAudience",
-    "educationalRole": "Students"
-  },
-  "citation": {
-    "@type": "CreativeWork",
-    "name": "Community-Driven Data Analysis Training for Biology",
-    "url": "https://doi.org/10.1016/j.cels.2018.05.012"
-  },
-  "copyrightHolder": {
-    "@type": "Organization",
-    "email": "galaxytrainingnetwork@gmail.com",
-    "name": "Galaxy Training Network",
-    "url": "https://galaxyproject.org/teach/gtn/"
-  },
-  "dateModified": "2023-03-20 10:42:32 +0000",
-  "discussionUrl": "https://gitter.im/Galaxy-Training-Network/Lobby",
-  "headline": "Visualization of Climate Data using  NetCDF xarray Map Plotting",
-  "interactivityType": "mixed",
-  "isAccessibleForFree": true,
-  "isFamilyFriendly": true,
-  "license": "https://spdx.org/licenses/CC-BY-4.0.html",
-  "producer": {
-    "@type": "Organization",
-    "email": "galaxytrainingnetwork@gmail.com",
-    "name": "Galaxy Training Network",
-    "url": "https://galaxyproject.org/teach/gtn/"
-  },
-  "provider": {
-    "@type": "Organization",
-    "email": "galaxytrainingnetwork@gmail.com",
-    "name": "Galaxy Training Network",
-    "url": "https://galaxyproject.org/teach/gtn/"
-  },
-  "sourceOrganization": {
-    "@type": "Organization",
-    "email": "galaxytrainingnetwork@gmail.com",
-    "name": "Galaxy Training Network",
-    "url": "https://galaxyproject.org/teach/gtn/"
-  },
-  "identifier": "https://github.com/galaxyproject/training-material",
-  "accessMode": [
-    "textual",
-    "visual"
-  ],
-  "accessModeSufficient": [
-    "textual",
-    "visual"
-  ],
-  "accessibilityControl": [
-    "fullKeyboardControl",
-    "fullMouseControl"
-  ],
-  "accessibilityFeature": [
-    "alternativeText",
-    "tableOfContents"
-  ],
-  "accessibilitySummary": "The text aims to be as accessible as possible. Image descriptions will vary per tutorial, from images being completely inaccessible, to images with good descriptions for non-visual users.",
-  "isPartOf": {
-    "@type": "CreativeWork",
-    "name": "Ecology",
-    "description": "Learn to analyse Ecological data through Galaxy.",
-    "url": "https://training.galaxyproject.org/training-material/topics/ecology/"
-  },
-  "learningResourceType": "hands-on tutorial",
-  "name": "Hands-on for 'Visualization of Climate Data using  NetCDF xarray Map Plotting' tutorial",
-  "url": "https://training.galaxyproject.org/training-material/topics/ecology/tutorials/x-array-map-plot/tutorial.html",
-  "timeRequired": "PT1H",
-  "keywords": "ecology, pangeo",
-  "description": "The questions this  addresses are:\n - What is xarray map plotting?\n - How to plot NetCDF data using xarray map plotting tool?\n - What are the different types of projections and colormap options available in the tool?\n\n\nThe objectives are:\n - Learn about plotting Climate Data\n - Learn about NetCDF xarray map plotting tool\n - Learn about visualizing the climate data using NetCDF xarray map plotting using the different kinds of projections and colormap options\n\n",
-  "inLanguage": {
-    "@type": "Language",
-    "name": "English",
-    "alternateName": "en"
-  },
-  "competencyRequired": [
-    {
-      "@context": "http://schema.org",
-      "@type": "LearningResource",
-      "url": "https://training.galaxyproject.org/training-material/topics/introduction/",
-      "name": "Introduction to Galaxy Analyses",
-      "description": "Introduction to Galaxy Analyses",
-      "provider": {
-        "@type": "Organization",
-        "email": "galaxytrainingnetwork@gmail.com",
-        "name": "Galaxy Training Network",
-        "url": "https://galaxyproject.org/teach/gtn/"
-      }
-    },
-    {
-      "@context": "http://schema.org",
-      "@type": "LearningResource",
-      "url": "https://training.galaxyproject.org/training-material/topics/climate/tutorials/climate-101/tutorial.html",
-      "name": "Getting your hands-on climate data",
-      "description": "Hands-on for 'Getting your hands-on climate data' tutorial",
-      "learningResourceType": "hands-on tutorial",
-      "interactivityType": "expositive",
-      "provider": {
-        "@type": "Organization",
-        "email": "galaxytrainingnetwork@gmail.com",
-        "name": "Galaxy Training Network",
-        "url": "https://galaxyproject.org/teach/gtn/"
-      }
-    }
-  ],
-  "author": [
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
-      },
-      "url": "https://training.galaxyproject.org/training-material/hall-of-fame/Quickbeasts51429/",
-      "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/Quickbeasts51429/",
-      "name": "Soumya Jha",
-      "image": "https://avatars.githubusercontent.com/Quickbeasts51429",
-      "description": "A contributor to the GTN project.",
-      "memberOf": [
-        {
-          "@type": "Organization",
-          "email": "galaxytrainingnetwork@gmail.com",
-          "name": "Galaxy Training Network",
-          "url": "https://galaxyproject.org/teach/gtn/"
-        }
-      ]
-    }
-  ],
-  "contributor": [
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
-      },
-      "url": "https://training.galaxyproject.org/training-material/hall-of-fame/Quickbeasts51429/",
-      "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/Quickbeasts51429/",
-      "name": "Soumya Jha",
-      "image": "https://avatars.githubusercontent.com/Quickbeasts51429",
-      "description": "A contributor to the GTN project.",
-      "memberOf": [
-        {
-          "@type": "Organization",
-          "email": "galaxytrainingnetwork@gmail.com",
-          "name": "Galaxy Training Network",
-          "url": "https://galaxyproject.org/teach/gtn/"
-        }
-      ]
-    }
-  ],
-  "about": [
-    {
-      "@type": "CreativeWork",
-      "name": "Ecology",
-      "description": "Learn to analyse Ecological data through Galaxy.",
-      "url": "https://training.galaxyproject.org/training-material/topics/ecology/"
-    },
-    {
-      "@type": "DefinedTerm",
-      "@id": "http://edamontology.org/topic_0610",
-      "inDefinedTermSet": "http://edamontology.org",
-      "termCode": "topic_0610",
-      "url": "https://bioportal.bioontology.org/ontologies/EDAM/?p=classes&conceptid=http%3A%2F%2Fedamontology.org%2Ftopic_0610"
-    }
-  ]
-}
-</script>
 
 <article class="tutorial topic-ecology">
     <h1 data-toc-skip>Visualization of Climate Data using  NetCDF xarray Map Plotting</h1>
@@ -590,7 +421,7 @@
     <div markdown="0">
 
 	<div class="contributors-line">
-		Authors: <a href="/training-material/hall-of-fame/Quickbeasts51429/" class="contributor-badge contributor-Quickbeasts51429"><img src="https://avatars.githubusercontent.com/Quickbeasts51429?s=27" alt="Avatar">Soumya Jha</a>
+		Authors: <a href="/training-material/hall-of-fame/Quickbeasts51429/" class="contributor-badge contributor-Quickbeasts51429"><img src="https://avatars.githubusercontent.com/Quickbeasts51429?s=36" alt="Avatar" width="36" height="36">Soumya Jha</a>
 	</div>
 
 </div>
@@ -752,177 +583,64 @@
                 <li class="btn btn-default supporting_material">
 
 
+
+
+
     <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false" title="Where to run the tutorial">
         <i class="fas fa-globe" aria-hidden="true"></i><span class="visually-hidden">instances</span>&nbsp;Available on these Galaxies 
     </a>
     <ul class="dropdown-menu">
+	<li class="dropdown-header">
+		<b>Known Working</b>
+	</li>
+	
+	
+
     
+	<li>
+		<a class="dropdown-item" href="https://usegalaxy.eu" title="">
+			UseGalaxy.eu <abbr title="This instance supports the precise tool versions used in this tutorial">✅</abbr> ⭐️
+		</a>
+	</li>
+    
+    
+	<li>
+		<a class="dropdown-item" href="https://galaxy.genouest.org" title="">
+			Galaxy@GenOuest <abbr title="This instance supports the precise tool versions used in this tutorial">✅</abbr>
+		</a>
+	</li>
+    
+	<li class="dropdown-header">
+		<b>Possibly Working</b>
+	</li>
+    
+
+    
+	<li class="dropdown-header">
+		Containers
+	</li>
         <li>
-            <a class="dropdown-item" href="https://github.com/galaxyproject/training-material/tree/main/topics/ecology/docker" title="Docker image for this tutorial">
+            <a class="dropdown-item" href="https://github.com/galaxyproject/training-material/tree/main/topics//docker" title="Docker image for this tutorial">
                 <i class="fab fa-docker" aria-hidden="true"></i><span class="visually-hidden">docker_image</span> Docker image
             </a>
         </li>
     
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-        <a class="dropdown-item" href="https://climate.usegalaxy.eu/" title="Climate Science Workbench">
-            Climate Science Workbench
-        </a>
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-        <a class="dropdown-item" href="https://africa.usegalaxy.eu/" title="Galaxy Africa">
-            Galaxy Africa
-        </a>
-        
-    
-        
-        <a class="dropdown-item" href="https://india.usegalaxy.eu/" title="Galaxy India">
-            Galaxy India
-        </a>
-        
-    
-        
-    
-        
-        <a class="dropdown-item" href="https://ecology.usegalaxy.eu/" title="Galaxy for Ecology">
-            Galaxy for Ecology
-        </a>
-        
-    
-        
-    
-        
-        <a class="dropdown-item" href="https://galaxy.genouest.org" title="Galaxy@GenOuest">
-            Galaxy@GenOuest
-        </a>
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-        <a class="dropdown-item" href="https://streetscience.usegalaxy.eu/" title="Street Science">
-            Street Science
-        </a>
-        
-    
-        
-    
-        
-        <a class="dropdown-item" href="https://usegalaxy.eu" title="UseGalaxy.eu">
-            UseGalaxy.eu
-        </a>
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
     </ul>
-
 
 </li>
             
         </ul>
         
 
-        <div><strong><i class="far fa-calendar" aria-hidden="true"></i> Last modification:</strong> Mar 20, 2023 </div>
+        <div><strong><i class="far fa-calendar" aria-hidden="true"></i> Last modification:</strong> May 17, 2023 </div>
         <div><strong><i class="fas fa-balance-scale" aria-hidden="true"></i> License:</strong>
+		
             
-            <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Tutorial Content is licensed under Creative Commons Attribution 4.0 International License</a>
-            
-            <a rel="license" href="https://github.com/galaxyproject/training-material/blob/main/LICENSE.md">The GTN Framework is licensed under MIT</a>
+            <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Tutorial Content is licensed under Creative Commons Attribution 4.0 International License</a>.
+             The GTN Framework is licensed under <a rel="license" href="https://github.com/galaxyproject/training-material/blob/main/LICENSE.md">MIT</a>
         </div>
         
-        <div><strong>Short Link:</strong> <a href="https://gxy.io/GTN:T00136">https://gxy.io/GTN:T00136</a> </div>
+        <div><strong><i class="fas fa-fingerprint" aria-hidden="true"></i><span class="visually-hidden">purl</span><abbr title="Persistent URL">PURL</abbr>:</strong> <a href="https://gxy.io/GTN:T00136">https://gxy.io/GTN:T00136</a> </div>
         
     </blockquote>
     </section>
@@ -938,7 +656,7 @@
 
                 <section aria-label="Tutorial Content" id="tutorial-content">
                 <blockquote class="comment">
-  <div class="box-title comment-title" id="comment"><i class="far fa-comment-dots" aria-hidden="true"></i> Comment</div>
+  <div class="box-title comment-title" id="comment-1"><i class="far fa-comment-dots" aria-hidden="true" ></i> Comment</div>
 
   <p>The tutorial aims for establishing a good knowledge about meaningful visualization of climate data.</p>
 
@@ -975,7 +693,7 @@
 </blockquote>
 
 <blockquote class="comment">
-  <div class="box-title comment-title" id="comment-background"><i class="far fa-comment-dots" aria-hidden="true"></i> Comment: Background</div>
+  <div class="box-title comment-title" id="comment-background"><i class="far fa-comment-dots" aria-hidden="true" ></i> Comment: Background</div>
 
   <p>According to <a href="https://www.un.org/en/climatechange/what-is-climate-change">UN</a> , Climate is the long term shift in temperature and weather patterns which may be due to natural or artificial causes. To learn more about climate, refer this <a href="/training-material/topics/climate/tutorials/climate-101/tutorial.html">tutorial</a> from the GTN. Due to the frequently changing nature of the weather patterns, the size of the collected data is huge.
 The climate data is mainly represented in these three categories : <a href="https://en.wikipedia.org/wiki/NetCDF">NetCDF</a> (Network Common Data Form), <a href="https://en.wikipedia.org/wiki/Hierarchical_Data_Format">HDF</a> (Hierarchical Data Format) , <a href="https://en.wikipedia.org/wiki/GRIB">GRIB</a> (GRIdded Binary or General Regularly-distributed Information in Binary form).</p>
@@ -994,7 +712,7 @@ The climate data is mainly represented in these three categories : <a href="http
 <h1 id="get-data">Get data</h1>
 
 <blockquote class="notranslate hands_on">
-  <div class="box-title hands-on-title" id="hands-on-data-upload"><i class="fas fa-pencil-alt" aria-hidden="true"></i> Hands-on: Data upload</div>
+  <div class="box-title hands-on-title" id="hands-on-data-upload"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Data upload</div>
 
   <ol>
     <li>
@@ -1002,6 +720,7 @@ The climate data is mainly represented in these three categories : <a href="http
 
       <!--SNIPPET-->
       <blockquote class="tip">   <div class="box-title tip-title" id="tip-creating-a-new-history"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-creating-a-new-history" aria-expanded="true"><i class="far fa-lightbulb" aria-hidden="true"></i> Tip: Creating a new history<span class="fold-unfold fa fa-minus-square"></span></button></div>   <p>Click the <i class="fas fa-plus" aria-hidden="true"></i><span class="visually-hidden">new-history</span> icon at the top of the history panel.</p>   <p>If the <i class="fas fa-plus" aria-hidden="true"></i><span class="visually-hidden">new-history</span> is missing:</p>   <ol>   <li>Click on the <i class="fas fa-cog" aria-hidden="true"></i><span class="visually-hidden">galaxy-gear</span> icon (<strong>History options</strong>) on the top of the history panel</li>   <li>Select the option <strong>Create New</strong> from the menu</li> </ol> </blockquote>
+      <p><!--END_SNIPPET--></p>
     </li>
     <li><strong>Import remote files</strong>
       <ul>
@@ -1010,6 +729,7 @@ The climate data is mainly represented in these three categories : <a href="http
 
       <!--SNIPPET-->
       <blockquote class="tip">   <div class="box-title tip-title" id="tip-importing-data-from-remote-files"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-importing-data-from-remote-files" aria-expanded="true"><i class="far fa-lightbulb" aria-hidden="true"></i> Tip: Importing data from remote files<span class="fold-unfold fa fa-minus-square"></span></button></div>   <p>As an alternative to uploading the data from a URL or your computer, the files may also have been made available from a <em>Choose remote files</em>:</p>   <ol>   <li>Click on <strong>Upload Data</strong> on the top of the left panel</li>   <li>     <p>Click on <strong>Choose remote files</strong> and scroll down to find your data folder or type the folder name in the <code class="language-plaintext highlighter-rouge">search box</code> on the top.</p>     <ul>       <li>Look for your data under:<code class="language-plaintext highlighter-rouge">ECMWF ERA4 Reanalysis -&gt; 2022 -&gt; 05 -&gt; data -&gt; air_temperature_at_2_metres.nc</code></li>     </ul>   </li>   <li>click on <strong>OK</strong></li>   <li>Click on <strong>Start</strong></li>   <li>Click on <strong>Close</strong></li>   <li>You can find the dataset has begun loading in you history.</li> </ol> </blockquote>
+      <p><!--END_SNIPPET--></p>
 
       <p><strong>or</strong>, if this is not available, you can import from <a href="https://doi.org/10.5281/zenodo.6621460">Zenodo</a>:</p>
 
@@ -1017,7 +737,8 @@ The climate data is mainly represented in these three categories : <a href="http
 </code></pre></div>      </div>
 
       <!--SNIPPET-->
-      <blockquote class="tip">   <div class="box-title tip-title" id="tip-importing-via-links"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-importing-via-links" aria-expanded="true"><i class="far fa-lightbulb" aria-hidden="true"></i> Tip: Importing via links<span class="fold-unfold fa fa-minus-square"></span></button></div>   <ul>   <li>Copy the link location</li>   <li>     <p>Open the Galaxy Upload Manager (<i class="fas fa-upload" aria-hidden="true"></i><span class="visually-hidden">galaxy-upload</span> on the top-right of the tool panel)</p>   </li>   <li>Select <strong>Paste/Fetch Data</strong></li>   <li>     <p>Paste the link(s) into the text field</p>   </li>   <li>     <p>Press <strong>Start</strong></p>   </li>   <li><strong>Close</strong> the window</li> </ul> </blockquote>
+      <blockquote class="tip">   <div class="box-title tip-title" id="tip-importing-via-links"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-importing-via-links" aria-expanded="true"><i class="far fa-lightbulb" aria-hidden="true"></i> Tip: Importing via links<span class="fold-unfold fa fa-minus-square"></span></button></div>   <ul>   <li>Copy the link location</li>   <li>     <p>Click <i class="fas fa-upload" aria-hidden="true"></i><span class="visually-hidden">galaxy-upload</span> <strong>Upload Data</strong> at the top of the tool panel</p>   </li>   <li>Select <i class="fa fa-edit" aria-hidden="true"></i><span class="visually-hidden">galaxy-wf-edit</span> <strong>Paste/Fetch Data</strong></li>   <li>     <p>Paste the link(s) into the text field</p>   </li>   <li>     <p>Press <strong>Start</strong></p>   </li>   <li><strong>Close</strong> the window</li> </ul> </blockquote>
+      <p><!--END_SNIPPET--></p>
     </li>
     <li><strong>Check the datatype</strong> of uploaded data, it should be <code class="language-plaintext highlighter-rouge">netCDF</code>.
       <ul>
@@ -1026,6 +747,7 @@ The climate data is mainly represented in these three categories : <a href="http
 
       <!--SNIPPET-->
       <blockquote class="tip">   <div class="box-title tip-title" id="tip-converting-the-file-format"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-converting-the-file-format" aria-expanded="true"><i class="far fa-lightbulb" aria-hidden="true"></i> Tip: Converting the file format<span class="fold-unfold fa fa-minus-square"></span></button></div>   <ul>   <li>Click on the <i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden">galaxy-pencil</span> <strong>pencil icon</strong> for the dataset to edit its attributes</li>   <li>In the central panel, click on the <i class="fas fa-cog" aria-hidden="true"></i><span class="visually-hidden">galaxy-gear</span> <strong>Convert</strong> tab on the top</li>   <li>In the upper part <i class="fas fa-cog" aria-hidden="true"></i><span class="visually-hidden">galaxy-gear</span> <strong>Convert</strong>, select <code class="language-plaintext highlighter-rouge">Convert h5 to netCDF</code></li>   <li>Click the <strong>Create dataset</strong> button to start the conversion.</li> </ul> </blockquote>
+      <p><!--END_SNIPPET--></p>
     </li>
     <li>
       <p><strong>Rename Datasets</strong> <i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden">galaxy-pencil</span> if you find the name to be too long or you have something more meaningful in your mind.</p>
@@ -1034,7 +756,8 @@ The climate data is mainly represented in these three categories : <a href="http
       <p><strong>Tag Datasets</strong> <i class="fas fa-tags" aria-hidden="true"></i><span class="visually-hidden">galaxy-tags</span> with the tag <code class="language-plaintext highlighter-rouge">#ecmwf</code></p>
 
       <!--SNIPPET-->
-      <blockquote class="tip">   <div class="box-title tip-title" id="tip-adding-a-tag"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-adding-a-tag" aria-expanded="true"><i class="far fa-lightbulb" aria-hidden="true"></i> Tip: Adding a tag<span class="fold-unfold fa fa-minus-square"></span></button></div>   <ul>   <li>Click on the dataset</li>   <li>Click on <i class="fas fa-tags" aria-hidden="true"></i><span class="visually-hidden">galaxy-tags</span> <strong>Add Tags</strong></li>   <li>     <p>Add a tag starting with <code class="language-plaintext highlighter-rouge">#</code></p>     <p>Tags starting with <code class="language-plaintext highlighter-rouge">#</code> will be automatically propagated to the outputs of tools using this dataset.</p>   </li>   <li>Check that the tag is appearing below the dataset name</li> </ul> </blockquote>
+      <blockquote class="tip">   <div class="box-title tip-title" id="tip-adding-a-tag"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-adding-a-tag" aria-expanded="true"><i class="far fa-lightbulb" aria-hidden="true"></i> Tip: Adding a tag<span class="fold-unfold fa fa-minus-square"></span></button></div>   <ol>   <li>Click on the dataset to expand it</li>   <li>Click on <strong>Add Tags</strong> <i class="fas fa-tags" aria-hidden="true"></i><span class="visually-hidden">galaxy-tags</span></li>   <li>Add a tag  starting with <code class="language-plaintext highlighter-rouge">#</code>     <ul>       <li>Tags starting with <code class="language-plaintext highlighter-rouge">#</code> will be automatically propagated to the outputs of tools using this dataset.</li>     </ul>   </li>   <li>Press <kbd>Enter</kbd></li>   <li>Check that the tag appears below the dataset name</li> </ol> </blockquote>
+      <p><!--END_SNIPPET--></p>
     </li>
   </ol>
 
@@ -1059,10 +782,10 @@ For a multidimensional data consisting of latitudes and longitudes along with th
 <h2 id="netcdf-xarray-metadata-info">NetCDF xarray Metadata Info</h2>
 
 <blockquote class="notranslate hands_on">
-  <div class="box-title hands-on-title" id="hands-on-netcdf-dataset-with-xarray-metadata-galaxy-tool"><i class="fas fa-pencil-alt" aria-hidden="true"></i> Hands-on: netCDF dataset with xarray metadata Galaxy Tool</div>
+  <div class="box-title hands-on-title" id="hands-on-netcdf-dataset-with-xarray-metadata-galaxy-tool"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: netCDF dataset with xarray metadata Galaxy Tool</div>
 
   <ol>
-    <li>In the tools search for <span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/ecology/xarray_metadata_info/xarray_metadata_info/0.15.1" title="NetCDF xarray Metadata Info tool"><strong>NetCDF xarray Metadata Info</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: toolshed.g2.bx.psu.edu/repos/ecology/xarray_metadata_info/xarray_metadata_info/0.15.1</span></span>  with the following parameter:
+    <li>In the tools search for <span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/ecology/xarray_metadata_info/xarray_metadata_info/0.15.1" title="NetCDF xarray Metadata Info tool" aria-role="link"><strong>NetCDF xarray Metadata Info</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: toolshed.g2.bx.psu.edu/repos/ecology/xarray_metadata_info/xarray_metadata_info/0.15.1</span></span> with the following parameter:
       <ul>
         <li><i class="far fa-file" aria-hidden="true"></i><span class="visually-hidden">param-file</span> <em>“Netcdf file”</em>: <code class="language-plaintext highlighter-rouge">air_temperature_at_2_metres.nc</code>
  and click on <code class="language-plaintext highlighter-rouge">Execute</code>.</li>
@@ -1078,14 +801,14 @@ For a multidimensional data consisting of latitudes and longitudes along with th
 </blockquote>
 
 <blockquote class="question">
-  <div class="box-title question-title" id="question"><i class="far fa-question-circle" aria-hidden="true"></i> Question</div>
+  <div class="box-title question-title" id="question"><i class="far fa-question-circle" aria-hidden="true" ></i> Question</div>
 
   <ol>
     <li>What is the name of the variable for air temperature at 2 metres. What are its physical units?</li>
   </ol>
 
   <blockquote class="solution">
-    <div class="box-title solution-title" id="solution"><button class="gtn-boxify-button solution" type="button" aria-controls="solution" aria-expanded="true"><i class="far fa-eye" aria-hidden="true"></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
+    <div class="box-title solution-title" id="solution"><button class="gtn-boxify-button solution" type="button" aria-controls="solution" aria-expanded="true"><i class="far fa-eye" aria-hidden="true" ></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
     <ol>
       <li>Information about variable names and units can be found in <strong>info file</strong> that was generated by xarray metadata Galaxy Tool.
         <ul>
@@ -1096,7 +819,7 @@ For a multidimensional data consisting of latitudes and longitudes along with th
     </ol>
 
     <blockquote class="code-out">
-      <div class="box-title code-out-title" id="code-out"><i class="fas fa-laptop-code" aria-hidden="true"></i> Output</div>
+      <div class="box-title code-out-title" id="code-out"><i class="fas fa-laptop-code" aria-hidden="true" ></i> Output</div>
       <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>xarray.Dataset <span class="o">{</span>
 dimensions:
 lat <span class="o">=</span> 721 <span class="p">;</span>
@@ -1142,10 +865,10 @@ variables:
 <h2 id="sub-step-with-netcdf-xarray-coordinate-info">Sub-step with <strong>NetCDF xarray Coordinate Info</strong></h2>
 
 <blockquote class="notranslate hands_on">
-  <div class="box-title hands-on-title" id="hands-on-get-coordinate-information-with-xarray-coordinate"><i class="fas fa-pencil-alt" aria-hidden="true"></i> Hands-on:  Get Coordinate information with xarray Coordinate</div>
+  <div class="box-title hands-on-title" id="hands-on-get-coordinate-information-with-xarray-coordinate"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on:  Get Coordinate information with xarray Coordinate</div>
 
   <ol>
-    <li><span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/ecology/xarray_coords_info/xarray_coords_info/0.20.2+galaxy0" title="NetCDF xarray Coordinate Info tool"><strong>NetCDF xarray Coordinate Info</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: toolshed.g2.bx.psu.edu/repos/ecology/xarray_coords_info/xarray_coords_info/0.20.2+galaxy0</span></span>  with the following parameters:
+    <li><span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/ecology/xarray_coords_info/xarray_coords_info/0.20.2+galaxy0" title="NetCDF xarray Coordinate Info tool" aria-role="link"><strong>NetCDF xarray Coordinate Info</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: toolshed.g2.bx.psu.edu/repos/ecology/xarray_coords_info/xarray_coords_info/0.20.2+galaxy0</span></span> with the following parameters:
       <ul>
         <li><i class="far fa-file" aria-hidden="true"></i><span class="visually-hidden">param-file</span> <em>“Netcdf file”</em>: <code class="language-plaintext highlighter-rouge">air_temperature_at_2_metres.nc</code>.</li>
       </ul>
@@ -1163,14 +886,14 @@ variables:
 </blockquote>
 
 <blockquote class="comment">
-  <div class="box-title comment-title" id="comment-1"><i class="far fa-comment-dots" aria-hidden="true"></i> Comment</div>
+  <div class="box-title comment-title" id="comment-2"><i class="far fa-comment-dots" aria-hidden="true" ></i> Comment</div>
 
   <p>The number of tabular files returned by this programme is proportional to the number of coordinate variables in your input file. No further processing is done after decoding the values from the netCDF input file. As a result, depending on how the original input file was coded, units for latitudes, longitudes, (level, if this dimension was present, which is not the case in this particular case) and time may differ from one file to the next.</p>
 
 </blockquote>
 
 <blockquote class="question">
-  <div class="box-title question-title" id="question-understanding-air-temperature-coordinates-at-2-metres"><i class="far fa-question-circle" aria-hidden="true"></i> Question: Understanding air temperature coordinates at 2 metres</div>
+  <div class="box-title question-title" id="question-understanding-air-temperature-coordinates-at-2-metres"><i class="far fa-question-circle" aria-hidden="true" ></i> Question: Understanding air temperature coordinates at 2 metres</div>
 
   <ol>
     <li>What is the format of time coordinate?</li>
@@ -1178,13 +901,13 @@ variables:
   </ol>
 
   <blockquote class="solution">
-    <div class="box-title solution-title" id="solution-1"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-1" aria-expanded="true"><i class="far fa-eye" aria-hidden="true"></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
+    <div class="box-title solution-title" id="solution-1"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-1" aria-expanded="true"><i class="far fa-eye" aria-hidden="true" ></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
     <ol>
       <li>The <code class="language-plaintext highlighter-rouge">info file</code> tells us that <code class="language-plaintext highlighter-rouge">time0</code> is coded as <code class="language-plaintext highlighter-rouge">timedelta64[ns]</code> i.e. the time differences are in ns (here in nanoseconds). The format of time is <code class="language-plaintext highlighter-rouge">yy-mm-dd  hh:mm:ss</code>. If we look at the tabular file named <code class="language-plaintext highlighter-rouge">time0</code> (generated by <code class="language-plaintext highlighter-rouge">NetCDF xarray Coordinate Info</code>), we see that these times are automatically converted to human readable time format when printed:</li>
     </ol>
 
     <blockquote class="code-out">
-      <div class="box-title code-out-title" id="code-out-1"><i class="fas fa-laptop-code" aria-hidden="true"></i> Output</div>
+      <div class="box-title code-out-title" id="code-out-1"><i class="fas fa-laptop-code" aria-hidden="true" ></i> Output</div>
       <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0  2022-05-01 00:00:00
 1  2022-05-01 01:00:00
 2  2022-05-01 02:00:00
@@ -1206,10 +929,10 @@ variables:
 <p>We have hourly data. In order to plot it, we must first extract the hours from the bigger dataset. This is done using the <code class="language-plaintext highlighter-rouge">seltimestep</code> and the <code class="language-plaintext highlighter-rouge">splithour</code> options available in the <code class="language-plaintext highlighter-rouge">CDO Operations</code> tool. <code class="language-plaintext highlighter-rouge">splithour</code> is used when we wish to plot more than an hour. Our main aim is to plot the last hour data on the last day present in the dataset.</p>
 
 <blockquote class="notranslate hands_on">
-  <div class="box-title hands-on-title" id="hands-on-defining-a-particular-time-range-using-seltimestep"><i class="fas fa-pencil-alt" aria-hidden="true"></i> Hands-on: Defining a particular time range using seltimestep</div>
+  <div class="box-title hands-on-title" id="hands-on-defining-a-particular-time-range-using-seltimestep"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Defining a particular time range using seltimestep</div>
 
   <ol>
-    <li><span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/climate/cdo_operations/cdo_operations/2.0.0+galaxy0" title="CDO Operations tool"><strong>CDO Operations</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: toolshed.g2.bx.psu.edu/repos/climate/cdo_operations/cdo_operations/2.0.0+galaxy0</span></span>  with the following parameters:
+    <li><span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/climate/cdo_operations/cdo_operations/2.0.0+galaxy0" title="CDO Operations tool" aria-role="link"><strong>CDO Operations</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: toolshed.g2.bx.psu.edu/repos/climate/cdo_operations/cdo_operations/2.0.0+galaxy0</span></span> with the following parameters:
       <ul>
         <li>In <em>“CDO Operators”</em>:
           <ul>
@@ -1227,14 +950,16 @@ variables:
   </ol>
 
   <blockquote class="comment">
-    <div class="box-title comment-title" id="comment-2"><i class="far fa-comment-dots" aria-hidden="true"></i> Comment</div>
+    <div class="box-title comment-title" id="comment-3"><i class="far fa-comment-dots" aria-hidden="true" ></i> Comment</div>
 
     <p>The syntax of using the <code class="language-plaintext highlighter-rouge">seltimestep</code> is <code class="language-plaintext highlighter-rouge">(initial data number / final data entry)</code>. An important thing to pay attention to is how the data entries are numbered: are they numbered starting from 0 or 1. Accordingly we can add or skip adding 1 to the data number to achieve the desired result.</p>
 
     <p>Although we are not using <code class="language-plaintext highlighter-rouge">splithour</code> here, you can find below the syntax for future uses.</p>
 
     <ol>
-      <li><span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/climate/cdo_operations/cdo_operations/2.0.0+galaxy0" title="CDO Operations tool"><strong>CDO Operations</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: toolshed.g2.bx.psu.edu/repos/climate/cdo_operations/cdo_operations/2.0.0+galaxy0</span></span>  with the following parameters:
+      <li>
+        <p><span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/climate/cdo_operations/cdo_operations/2.0.0+galaxy0" title="CDO Operations tool" aria-role="link"><strong>CDO Operations</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: toolshed.g2.bx.psu.edu/repos/climate/cdo_operations/cdo_operations/2.0.0+galaxy0</span></span> with the following parameters:</p>
+
         <ul>
           <li>In <em>“CDO Operators”</em>:</li>
           <li><i class="far fa-plus-square" aria-hidden="true"></i><span class="visually-hidden">param-repeat</span> <em>“Insert CDO Operators”</em></li>
@@ -1254,10 +979,10 @@ Suppose your selected range was <code class="language-plaintext highlighter-roug
 <h2 id="finding-the--netcdf-xarray-metadata-info">Finding the  <strong>NetCDF xarray Metadata Info</strong></h2>
 
 <blockquote class="notranslate hands_on">
-  <div class="box-title hands-on-title" id="hands-on-netcdf-dataset-with-xarray-metadata-galaxy-tool-for-the-hourly-plots"><i class="fas fa-pencil-alt" aria-hidden="true"></i> Hands-on: netCDF dataset with xarray metadata Galaxy Tool for the hourly plots</div>
+  <div class="box-title hands-on-title" id="hands-on-netcdf-dataset-with-xarray-metadata-galaxy-tool-for-the-hourly-plots"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: netCDF dataset with xarray metadata Galaxy Tool for the hourly plots</div>
 
   <ol>
-    <li><span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/ecology/xarray_metadata_info/xarray_metadata_info/0.15.1" title="NetCDF xarray Metadata Info tool"><strong>NetCDF xarray Metadata Info</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: toolshed.g2.bx.psu.edu/repos/ecology/xarray_metadata_info/xarray_metadata_info/0.15.1</span></span>  with the following parameters:
+    <li><span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/ecology/xarray_metadata_info/xarray_metadata_info/0.15.1" title="NetCDF xarray Metadata Info tool" aria-role="link"><strong>NetCDF xarray Metadata Info</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: toolshed.g2.bx.psu.edu/repos/ecology/xarray_metadata_info/xarray_metadata_info/0.15.1</span></span> with the following parameters:
       <ul>
         <li><i class="far fa-file" aria-hidden="true"></i><span class="visually-hidden">param-file</span> <em>“Netcdf file”</em>: <code class="language-plaintext highlighter-rouge">outfile.netcdf</code>. .</li>
       </ul>
@@ -1274,11 +999,11 @@ Suppose your selected range was <code class="language-plaintext highlighter-roug
 <h1 id="map-plotting-using-netcdf-xarray-map-plotting">Map Plotting using <strong>NetCDF xarray map plotting</strong></h1>
 
 <blockquote class="notranslate hands_on">
-  <div class="box-title hands-on-title" id="hands-on-plotting-the-data-of-the-last-hour-of-the-day"><i class="fas fa-pencil-alt" aria-hidden="true"></i> Hands-on: Plotting the data of the last hour of the day</div>
+  <div class="box-title hands-on-title" id="hands-on-plotting-the-data-of-the-last-hour-of-the-day"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Plotting the data of the last hour of the day</div>
   <p>The air temperatures corresponding to the 744th time step from the original netCDF file, namely <code class="language-plaintext highlighter-rouge">23:00:00</code> for 31st May 2022 is plotted here :</p>
 
   <ol>
-    <li><span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/ecology/xarray_mapplot/xarray_mapplot/0.20.2+galaxy0" title="NetCDF xarray map plotting tool"><strong>NetCDF xarray map plotting</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: toolshed.g2.bx.psu.edu/repos/ecology/xarray_mapplot/xarray_mapplot/0.20.2+galaxy0</span></span>  with the following parameters:
+    <li><span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/ecology/xarray_mapplot/xarray_mapplot/0.20.2+galaxy0" title="NetCDF xarray map plotting tool" aria-role="link"><strong>NetCDF xarray map plotting</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: toolshed.g2.bx.psu.edu/repos/ecology/xarray_mapplot/xarray_mapplot/0.20.2+galaxy0</span></span> with the following parameters:
       <ul>
         <li><i class="far fa-file" aria-hidden="true"></i><span class="visually-hidden">param-file</span> <em>“Netcdf file”</em>: <code class="language-plaintext highlighter-rouge">outfile.netcdf</code></li>
         <li><i class="far fa-file" aria-hidden="true"></i><span class="visually-hidden">param-file</span> <em>“Tabular of variables”</em>: <code class="language-plaintext highlighter-rouge">Metadata infos from outfile.netcdf</code> (output of <strong>NetCDF xarray Metadata Info</strong> &gt;<i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span>)</li>
@@ -1297,12 +1022,12 @@ Suppose your selected range was <code class="language-plaintext highlighter-roug
     </li>
   </ol>
 
-  <p><img src="../../images/x-array-map-plot/plot1.png" alt="ECMWF Reanalysis Air temperature a 2 metres on 2022-05-31 at 23:00:00 UTC. " loading="lazy" /></p>
+  <p><img src="../../images/x-array-map-plot/plot1.png" alt="ECMWF Reanalysis Air temperature a 2 metres on 2022-05-31 at 23:00:00 UTC. " width="2000" height="1000" loading="lazy" /></p>
 
 </blockquote>
 
 <blockquote class="details">
-  <div class="box-title details-title" id="details-syntax-for-projections"><button class="gtn-boxify-button details" type="button" aria-controls="details-syntax-for-projections" aria-expanded="true"><i class="fas fa-info-circle" aria-hidden="true"></i> Details: Syntax for Projections<span class="fold-unfold fa fa-minus-square"></span></button></div>
+  <div class="box-title details-title" id="details-syntax-for-projections"><button class="gtn-boxify-button details" type="button" aria-controls="details-syntax-for-projections" aria-expanded="true"><i class="fas fa-info-circle" aria-hidden="true" ></i> Details: Syntax for Projections<span class="fold-unfold fa fa-minus-square"></span></button></div>
   <p><strong>Xarray Map Plotting</strong> comes with a variety of projections. There are basically four types of projections available namely <strong>Azimuthal, Conic, Cylindrical and Pseudo-cylindrical.</strong></p>
 
   <p>The <strong>Azimuthal projection</strong> depicts the surface of the earth with the help of a flat plane. It is also known as ‘<strong>Plane Projection</strong>.’ This simple projection type forms a family of projections by considering the poles in “normal aspect.” Another form of this projection is <strong>Azimuthal Equidistant Projection</strong>. It preserves both directions and distance from the central point of the earth. The <strong>stereographic projection</strong> which is a type of azimuthal projection was created before 150AD and deployed while mapping areas over the poles.
@@ -1318,150 +1043,150 @@ The <strong>conic type</strong> is based on the concept of projecting the surfac
 
   <p><strong>PlateCarree</strong>
 <strong>Syntax: {“proj”:”PlateCarree”}</strong>
-<img src="../../images/x-array-map-plot/projections/PlateCarree.png" alt="PlateCarree. " loading="lazy" /></p>
+<img src="../../images/x-array-map-plot/projections/PlateCarree.png" alt="PlateCarree. " width="2000" height="1000" loading="lazy" /></p>
 
   <p><strong>EquidistantConic</strong>
 <strong>Syntax: {“proj”:”EquidistantConic”, “central_longitude”: 20.0, “central_latitude”: 70.0 }</strong>
-<img src="../../images/x-array-map-plot/projections/EquidistantConic.png" alt="EquidistantConic. " loading="lazy" /></p>
+<img src="../../images/x-array-map-plot/projections/EquidistantConic.png" alt="EquidistantConic. " width="2000" height="1000" loading="lazy" /></p>
 
   <p><strong>AlbersEqualArea</strong>
 <strong>Syntax: {“proj”:”AlbersEqualArea”, “central_longitude”: 20.0, “central_latitude”: 70.0 }</strong>
-<img src="../../images/x-array-map-plot/projections/AlbersEqualArea.png" alt="AlbersEqualArea. " loading="lazy" /></p>
+<img src="../../images/x-array-map-plot/projections/AlbersEqualArea.png" alt="AlbersEqualArea. " width="2000" height="1000" loading="lazy" /></p>
 
   <p><strong>EuroPP</strong>
 <strong>Syntax: {“proj”:”EuroPP”}</strong>
-<img src="../../images/x-array-map-plot/projections/EuroPP.png" alt="EuroPP. " loading="lazy" /></p>
+<img src="../../images/x-array-map-plot/projections/EuroPP.png" alt="EuroPP. " width="2000" height="1000" loading="lazy" /></p>
 
   <p><strong>LambertConformal</strong>
 <strong>Syntax:{“proj”:”LambertConformal”  }</strong>
-<img src="../../images/x-array-map-plot/projections/LambertConformal.png" alt="LambertConformal. " loading="lazy" /></p>
+<img src="../../images/x-array-map-plot/projections/LambertConformal.png" alt="LambertConformal. " width="2000" height="1000" loading="lazy" /></p>
 
   <p><strong>AzimuthalEquidistant</strong>
 <strong>Syntax: {“proj”:”AzimuthalEquidistant” }</strong>
-<img src="../../images/x-array-map-plot/projections/AzimuthalEquidistant.png" alt="AzimuthalEquidistant. " loading="lazy" /></p>
+<img src="../../images/x-array-map-plot/projections/AzimuthalEquidistant.png" alt="AzimuthalEquidistant. " width="2000" height="1000" loading="lazy" /></p>
 
   <p><strong>LambertCylindrical</strong>
 <strong>Syntax:{“proj”:”LambertCylindrical”}</strong>
-<img src="../../images/x-array-map-plot/projections/LambertCylindrical.png" alt="LambertCylindrical. " loading="lazy" /></p>
+<img src="../../images/x-array-map-plot/projections/LambertCylindrical.png" alt="LambertCylindrical. " width="2000" height="1000" loading="lazy" /></p>
 
   <p><strong>Mercator</strong>
 <strong>Syntax: {“proj”:”Mercator” }</strong>
-<img src="../../images/x-array-map-plot/projections/Mercator.png" alt="Mercator. " loading="lazy" /></p>
+<img src="../../images/x-array-map-plot/projections/Mercator.png" alt="Mercator. " width="2000" height="1000" loading="lazy" /></p>
 
   <p><strong>Miller</strong>
 <strong>Syntax: {“proj”:”Miller”  }</strong>
-<img src="../../images/x-array-map-plot/projections/Miller.png" alt="Miller. " loading="lazy" /></p>
+<img src="../../images/x-array-map-plot/projections/Miller.png" alt="Miller. " width="2000" height="1000" loading="lazy" /></p>
 
   <p><strong>Mollweide</strong>
 <strong>Syntax: {“proj”:”Mollweide” }</strong>
-<img src="../../images/x-array-map-plot/projections/Mollweide.png" alt="Mollweide. " loading="lazy" /></p>
+<img src="../../images/x-array-map-plot/projections/Mollweide.png" alt="Mollweide. " width="2000" height="1000" loading="lazy" /></p>
 
   <p><strong>Orthographic</strong>
 <strong>Syntax:{“proj”:”Orthographic”  }</strong>
-<img src="../../images/x-array-map-plot/projections/Orthographic.png" alt="Orthographic. " loading="lazy" /></p>
+<img src="../../images/x-array-map-plot/projections/Orthographic.png" alt="Orthographic. " width="2000" height="1000" loading="lazy" /></p>
 
   <p><strong>Robinson</strong>
 <strong>Syntax: {“proj”:”Robinson”  }</strong>
-<img src="../../images/x-array-map-plot/projections/Robinson.png" alt="Robinson. " loading="lazy" /></p>
+<img src="../../images/x-array-map-plot/projections/Robinson.png" alt="Robinson. " width="2000" height="1000" loading="lazy" /></p>
 
   <p><strong>Sinusoidal</strong>
 <strong>Syntax: {“proj”:”Sinusoidal”  }</strong>
-<img src="../../images/x-array-map-plot/projections/sinusoidal.png" alt="Sinusoidal. " loading="lazy" /></p>
+<img src="../../images/x-array-map-plot/projections/sinusoidal.png" alt="Sinusoidal. " width="2000" height="1000" loading="lazy" /></p>
 
   <p><strong>Stereographic</strong>
 <strong>Syntax: {“proj”:”Stereographic”  }</strong>
-<img src="../../images/x-array-map-plot/projections/Stereographic.png" alt="Stereographic. " loading="lazy" /></p>
+<img src="../../images/x-array-map-plot/projections/Stereographic.png" alt="Stereographic. " width="2000" height="1000" loading="lazy" /></p>
 
   <p><strong>TransverseMercator</strong>
 <strong>Syntax:{“proj”:”TransverseMercator”  }</strong>
-<img src="../../images/x-array-map-plot/projections/TransverseMercator.png" alt="TransverseMercator. " loading="lazy" /></p>
+<img src="../../images/x-array-map-plot/projections/TransverseMercator.png" alt="TransverseMercator. " width="2000" height="1000" loading="lazy" /></p>
 
   <p><strong>InterruptedGoodeHomolosine</strong>
 <strong>Syntax: {“proj”:”InterruptedGoodeHomolosine”  }</strong>
-<img src="../../images/x-array-map-plot/projections/InterruptedGoodeHomolosine.png" alt="InterruptedGoodeHomolosine. " loading="lazy" /></p>
+<img src="../../images/x-array-map-plot/projections/InterruptedGoodeHomolosine.png" alt="InterruptedGoodeHomolosine. " width="2000" height="1000" loading="lazy" /></p>
 
   <p><strong>RotatedPole</strong>
 <strong>Syntax: {“proj”:”RotatedPole”  }</strong>
-<img src="../../images/x-array-map-plot/projections/RotatedPole.png" alt="RotatedPole. " loading="lazy" /></p>
+<img src="../../images/x-array-map-plot/projections/RotatedPole.png" alt="RotatedPole. " width="2000" height="1000" loading="lazy" /></p>
 
   <p><strong>OSGB</strong>
 <strong>Syntax:{“proj”:”OSGB”  }</strong>
-<img src="../../images/x-array-map-plot/projections/OSGB.png" alt="OSGB. " loading="lazy" /></p>
+<img src="../../images/x-array-map-plot/projections/OSGB.png" alt="OSGB. " width="2000" height="1000" loading="lazy" /></p>
 
   <p><strong>Geostationary</strong>
 <strong>Syntax: {“proj”:”Geostationary”  }</strong>
-<img src="../../images/x-array-map-plot/projections/Geostationary.png" alt="Geostationary. " loading="lazy" /></p>
+<img src="../../images/x-array-map-plot/projections/Geostationary.png" alt="Geostationary. " width="2000" height="1000" loading="lazy" /></p>
 
   <p><strong>NearsidePerspective</strong>
 <strong>Syntax:{“proj”:”NearsidePerspective” }</strong>
-<img src="../../images/x-array-map-plot/projections/NearsidePerspective.png" alt="NearsidePerspective. " loading="lazy" /></p>
+<img src="../../images/x-array-map-plot/projections/NearsidePerspective.png" alt="NearsidePerspective. " width="2000" height="1000" loading="lazy" /></p>
 
   <p><strong>EckertI</strong>
 <strong>Syntax: {“proj”:”EckertI” }</strong>
-<img src="../../images/x-array-map-plot/projections/EckertI.png" alt="EckertI. " loading="lazy" /></p>
+<img src="../../images/x-array-map-plot/projections/EckertI.png" alt="EckertI. " width="2000" height="1000" loading="lazy" /></p>
 
   <p><strong>EckertII</strong>
 <strong>Syntax: {“proj”:”EckertII” }</strong>
-<img src="../../images/x-array-map-plot/projections/EckertII.png" alt="EckertII. " loading="lazy" /></p>
+<img src="../../images/x-array-map-plot/projections/EckertII.png" alt="EckertII. " width="2000" height="1000" loading="lazy" /></p>
 
   <p><strong>EckertIII</strong>
 <strong>Syntax: {“proj”:”EckertIII” }</strong>
-<img src="../../images/x-array-map-plot/projections/EckertIII.png" alt="EckertIII. " loading="lazy" /></p>
+<img src="../../images/x-array-map-plot/projections/EckertIII.png" alt="EckertIII. " width="2000" height="1000" loading="lazy" /></p>
 
   <p><strong>EckertIV</strong>
 <strong>Syntax: {“proj”:”EckertIV” }</strong>
-<img src="../../images/x-array-map-plot/projections/EckertIV.png" alt="EckertIV. " loading="lazy" /></p>
+<img src="../../images/x-array-map-plot/projections/EckertIV.png" alt="EckertIV. " width="2000" height="1000" loading="lazy" /></p>
 
   <p><strong>EckertV</strong>
 <strong>Syntax: {“proj”:”EckertV” }</strong>
-<img src="../../images/x-array-map-plot/projections/EckertV.png" alt="EckertV. " loading="lazy" /></p>
+<img src="../../images/x-array-map-plot/projections/EckertV.png" alt="EckertV. " width="2000" height="1000" loading="lazy" /></p>
 
   <p><strong>EckertVI</strong>
 <strong>Syntax: {“proj”:”EckertVI” }</strong>
-<img src="../../images/x-array-map-plot/projections/EckertVI.png" alt="EckertVI. " loading="lazy" /></p>
+<img src="../../images/x-array-map-plot/projections/EckertVI.png" alt="EckertVI. " width="2000" height="1000" loading="lazy" /></p>
 
   <p><strong>EqualEarth</strong>
 <strong>Syntax:{“proj”:”EqualEarth” }</strong>
-<img src="../../images/x-array-map-plot/projections/EqualEarth.png" alt="EqualEarth. " loading="lazy" /></p>
+<img src="../../images/x-array-map-plot/projections/EqualEarth.png" alt="EqualEarth. " width="2000" height="1000" loading="lazy" /></p>
 
   <p><strong>Gnomonic</strong>
 <strong>Syntax: {“proj”:”Gnomonic” }</strong>
-<img src="../../images/x-array-map-plot/projections/Gnomonic.png" alt="Gnomonic. " loading="lazy" /></p>
+<img src="../../images/x-array-map-plot/projections/Gnomonic.png" alt="Gnomonic. " width="2000" height="1000" loading="lazy" /></p>
 
   <p><strong>LambertAzimuthalEqualArea</strong>
 <strong>Syntax: {“proj”:”LambertAzimuthalEqualArea” }</strong>
-<img src="../../images/x-array-map-plot/projections/LambertAzimuthalEqualArea.png" alt="LambertAzimuthalEqualArea. " loading="lazy" /></p>
+<img src="../../images/x-array-map-plot/projections/LambertAzimuthalEqualArea.png" alt="LambertAzimuthalEqualArea. " width="2000" height="1000" loading="lazy" /></p>
 
   <p><strong>NorthPolarStereo</strong>
 <strong>Syntax: {“proj”:”NorthPolarStereo” }</strong>
-<img src="../../images/x-array-map-plot/projections/NorthPolarStereo.png" alt="NorthPolarStereo. " loading="lazy" /></p>
+<img src="../../images/x-array-map-plot/projections/NorthPolarStereo.png" alt="NorthPolarStereo. " width="2000" height="1000" loading="lazy" /></p>
 
   <p><strong>OSNI</strong>
 <strong>Syntax: {“proj”:”OSNI” }</strong>
-<img src="../../images/x-array-map-plot/projections/OSNI.png" alt="OSNI. " loading="lazy" /></p>
+<img src="../../images/x-array-map-plot/projections/OSNI.png" alt="OSNI. " width="2000" height="1000" loading="lazy" /></p>
 
   <p><strong>SouthPolarStereo</strong>
 <strong>Syntax: {“proj”:”SouthPolarStereo” }</strong>
-<img src="../../images/x-array-map-plot/projections/SouthPolarStereo.png" alt="SouthPolarStereo. " loading="lazy" /></p>
+<img src="../../images/x-array-map-plot/projections/SouthPolarStereo.png" alt="SouthPolarStereo. " width="2000" height="1000" loading="lazy" /></p>
 
 </blockquote>
 
 <blockquote class="question">
-  <div class="box-title question-title" id="question-1"><i class="far fa-question-circle" aria-hidden="true"></i> Question</div>
+  <div class="box-title question-title" id="question-1"><i class="far fa-question-circle" aria-hidden="true" ></i> Question</div>
 
   <p>What are the different kinds of projections that can be used?</p>
 
   <blockquote class="solution">
-    <div class="box-title solution-title" id="solution-2"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-2" aria-expanded="true"><i class="far fa-eye" aria-hidden="true"></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
+    <div class="box-title solution-title" id="solution-2"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-2" aria-expanded="true"><i class="far fa-eye" aria-hidden="true" ></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
 
     <p>There are many projections which can be used in the <code class="language-plaintext highlighter-rouge">NetCDF xarray map plotting</code> tool. Different projections have different purposes and need to be carefully chosen.</p>
 
     <p>Plotting different projections using <strong>NetCDF xarray map plotting</strong>:</p>
     <blockquote class="notranslate hands_on">
-      <div class="box-title hands-on-title" id="hands-on-plotting-the-major-projections-using-the-xarray-tool"><i class="fas fa-pencil-alt" aria-hidden="true"></i> Hands-on: Plotting the major projections using the xarray tool.</div>
+      <div class="box-title hands-on-title" id="hands-on-plotting-the-major-projections-using-the-xarray-tool"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Plotting the major projections using the xarray tool.</div>
 
       <ol>
-        <li><span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/ecology/xarray_mapplot/xarray_mapplot/0.20.2+galaxy0" title="NetCDF xarray map plotting tool"><strong>NetCDF xarray map plotting</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: toolshed.g2.bx.psu.edu/repos/ecology/xarray_mapplot/xarray_mapplot/0.20.2+galaxy0</span></span>  with the following parameters:
+        <li><span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/ecology/xarray_mapplot/xarray_mapplot/0.20.2+galaxy0" title="NetCDF xarray map plotting tool" aria-role="link"><strong>NetCDF xarray map plotting</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: toolshed.g2.bx.psu.edu/repos/ecology/xarray_mapplot/xarray_mapplot/0.20.2+galaxy0</span></span> with the following parameters:
           <ul>
             <li><i class="far fa-file" aria-hidden="true"></i><span class="visually-hidden">param-file</span> <em>“Netcdf file”</em>: <code class="language-plaintext highlighter-rouge">outfile.netcdf</code></li>
             <li><i class="far fa-file" aria-hidden="true"></i><span class="visually-hidden">param-file</span> <em>“Tabular of variables”</em>: <code class="language-plaintext highlighter-rouge">Metadata infos from outfile.netcdf</code> (output of <strong>NetCDF xarray Metadata Info</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span>)</li>
@@ -1482,344 +1207,344 @@ The <strong>conic type</strong> is based on the concept of projecting the surfac
 
       <p>The final plot is shown below:</p>
 
-      <p><img src="../../images/x-array-map-plot/Interrupted_GoodeHomolosine.png" alt="ECMWF Reanalysis Air temperature a 2 metres on 2022-05-31 at 23:00:00 : Interrupted_GoodeHomolosine. " loading="lazy" /></p>
+      <p><img src="../../images/x-array-map-plot/Interrupted_GoodeHomolosine.png" alt="ECMWF Reanalysis Air temperature a 2 metres on 2022-05-31 at 23:00:00 : Interrupted_GoodeHomolosine. " width="2000" height="1000" loading="lazy" /></p>
 
       <p>Some other potentially interesting types of projections can be found below :</p>
 
       <p><em>{“proj”:”LambertCylindrical” }</em>
-<img src="../../images/x-array-map-plot/Lam.png" alt="ECMWF Reanalysis Air temperature a 2 metres on 2022-05-31 at 23:00:00 : LambertCylindrical. " loading="lazy" />
+<img src="../../images/x-array-map-plot/Lam.png" alt="ECMWF Reanalysis Air temperature a 2 metres on 2022-05-31 at 23:00:00 : LambertCylindrical. " width="2000" height="1000" loading="lazy" />
 <em>{“proj”:”Orthographic”  }</em>
-<img src="../../images/x-array-map-plot/Ortho.png" alt="ECMWF Reanalysis Air temperature a 2 metres on 2022-05-31 at 23:00:00 : Orthographic. " loading="lazy" />
+<img src="../../images/x-array-map-plot/Ortho.png" alt="ECMWF Reanalysis Air temperature a 2 metres on 2022-05-31 at 23:00:00 : Orthographic. " width="2000" height="1000" loading="lazy" />
 <em>{“proj”:”Sinusoidal” }</em>
-<img src="../../images/x-array-map-plot/sinu.png" alt="ECMWF Reanalysis Air temperature a 2 metres on 2022-05-31 at 23:00:00 : Sinusoidal. " loading="lazy" />
+<img src="../../images/x-array-map-plot/sinu.png" alt="ECMWF Reanalysis Air temperature a 2 metres on 2022-05-31 at 23:00:00 : Sinusoidal. " width="2000" height="1000" loading="lazy" />
 <em>{“proj”:”EquidistantConic”}</em>
-<img src="../../images/x-array-map-plot/Equidi.png" alt="ECMWF Reanalysis Air temperature a 2 metres on 2022-05-31 at 23:00:00 : EquidistantConic. " loading="lazy" />
+<img src="../../images/x-array-map-plot/Equidi.png" alt="ECMWF Reanalysis Air temperature a 2 metres on 2022-05-31 at 23:00:00 : EquidistantConic. " width="2000" height="1000" loading="lazy" />
 <em>{“proj”:”LambertConformal” }</em>
-<img src="../../images/x-array-map-plot/Lamcon.png" alt="ECMWF Reanalysis Air temperature a 2 metres on 2022-05-31 at 23:00:00 : LambertConformal. " loading="lazy" />
+<img src="../../images/x-array-map-plot/Lamcon.png" alt="ECMWF Reanalysis Air temperature a 2 metres on 2022-05-31 at 23:00:00 : LambertConformal. " width="2000" height="1000" loading="lazy" />
 <em>{“proj”:”AzimuthalEquidistant” }</em>
-<img src="../../images/x-array-map-plot/Azi.png" alt="ECMWF Reanalysis Air temperature a 2 metres on 2022-05-31 at 23:00:00 : AzimuthalEquidistant. " loading="lazy" /></p>
+<img src="../../images/x-array-map-plot/Azi.png" alt="ECMWF Reanalysis Air temperature a 2 metres on 2022-05-31 at 23:00:00 : AzimuthalEquidistant. " width="2000" height="1000" loading="lazy" /></p>
     </blockquote>
   </blockquote>
 </blockquote>
 
 <blockquote class="details">
-  <div class="box-title details-title" id="details-available-colormaps"><button class="gtn-boxify-button details" type="button" aria-controls="details-available-colormaps" aria-expanded="true"><i class="fas fa-info-circle" aria-hidden="true"></i> Details: Available ColorMaps<span class="fold-unfold fa fa-minus-square"></span></button></div>
+  <div class="box-title details-title" id="details-available-colormaps"><button class="gtn-boxify-button details" type="button" aria-controls="details-available-colormaps" aria-expanded="true"><i class="fas fa-info-circle" aria-hidden="true" ></i> Details: Available ColorMaps<span class="fold-unfold fa fa-minus-square"></span></button></div>
   <p>There are about <strong>150 different kinds of maps available in the  colormaps</strong> options. This document contains a list of all the types of projections and colormaps available to the users while using the Xarray Map Plotting. These depict the global air temperature at 2 metres on a Kelvin Scale of range 220 K TO 320 K. Let’s get started!
 Below is the complete list for reference.</p>
 
   <p><strong>ACCENT</strong>
-<img src="../../images/x-array-map-plot/colormaps/Accent.png" alt="Accent. " loading="lazy" />
+<img src="../../images/x-array-map-plot/colormaps/Accent.png" alt="Accent. " width="2000" height="1000" loading="lazy" />
  <strong>BLUES</strong>
-<img src=" ../../images/x-array-map-plot/colormaps/Blues.png " alt="Blues. " loading="lazy" />
+<img src="../../images/x-array-map-plot/colormaps/Blues.png" alt="Blues. " width="2000" height="1000" loading="lazy" />
  <strong>BrBg</strong>
-<img src=" ../../images/x-array-map-plot/colormaps/BrBG.png " alt="BrBg. " loading="lazy" />
+<img src="../../images/x-array-map-plot/colormaps/BrBG.png" alt="BrBg. " width="2000" height="1000" loading="lazy" />
  <strong>BuGn</strong>
-<img src=" ../../images/x-array-map-plot/colormaps/BuGn.png " alt="BuGn. " loading="lazy" />
+<img src="../../images/x-array-map-plot/colormaps/BuGn.png" alt="BuGn. " width="2000" height="1000" loading="lazy" />
  <strong>BuPu</strong>
-<img src="../../images/x-array-map-plot/colormaps/BuPu.png  " alt="BuPu. " loading="lazy" />
+<img src="../../images/x-array-map-plot/colormaps/BuPu.png" alt="BuPu. " width="2000" height="1000" loading="lazy" />
  <strong>CMRmap</strong>
-<img src=" ../../images/x-array-map-plot/colormaps/CMRmap.png " alt="CMRmap. " loading="lazy" />
+<img src="../../images/x-array-map-plot/colormaps/CMRmap.png" alt="CMRmap. " width="2000" height="1000" loading="lazy" />
  <strong>Dark2</strong>
-<img src="../../images/x-array-map-plot/colormaps/Dark2.png  " alt="Dark2. " loading="lazy" />
+<img src="../../images/x-array-map-plot/colormaps/Dark2.png" alt="Dark2. " width="2000" height="1000" loading="lazy" />
  <strong>Acton</strong>
-<img src="../../images/x-array-map-plot/colormaps/acton.png  " alt="Acton. " loading="lazy" />
+<img src="../../images/x-array-map-plot/colormaps/acton.png" alt="Acton. " width="2000" height="1000" loading="lazy" />
  <strong>Acton_r</strong>
-<img src=" ../../images/x-array-map-plot/colormaps/acton_r.png " alt="Acton_r. " loading="lazy" />
+<img src="../../images/x-array-map-plot/colormaps/acton_r.png" alt="Acton_r. " width="2000" height="1000" loading="lazy" />
  <strong>Afmhot</strong>
-<img src=" ../../images/x-array-map-plot/colormaps/afmhot.png " alt="Afmhot. " loading="lazy" />
+<img src="../../images/x-array-map-plot/colormaps/afmhot.png" alt="Afmhot. " width="2000" height="1000" loading="lazy" />
  <strong>Autumn</strong>
-<img src=" ../../images/x-array-map-plot/colormaps/autumn.png " alt="Autumn. " loading="lazy" />
+<img src="../../images/x-array-map-plot/colormaps/autumn.png" alt="Autumn. " width="2000" height="1000" loading="lazy" />
  <strong>Bam</strong>
-<img src=" ../../images/x-array-map-plot/colormaps/bam.png  " alt="BamO. " loading="lazy" />
+<img src="../../images/x-array-map-plot/colormaps/bam.png" alt="BamO. " width="2000" height="1000" loading="lazy" />
  <strong>BamO</strong>
-<img src=" ../../images/x-array-map-plot/colormaps/bam0.png " alt="BamO. " loading="lazy" />
+<img src="../../images/x-array-map-plot/colormaps/bam0.png" alt="BamO. " width="2000" height="1000" loading="lazy" />
  <strong>BamO_r</strong>
-<img src=" ../../images/x-array-map-plot/colormaps/bamO_r.png " alt="bamO_r. " loading="lazy" />
+<img src="../../images/x-array-map-plot/colormaps/bamO_r.png" alt="bamO_r. " width="2000" height="1000" loading="lazy" />
  <strong>Bamako</strong>
-<img src=" ../../images/x-array-map-plot/colormaps/bamako.png " alt="Accent. " loading="lazy" />
+<img src="../../images/x-array-map-plot/colormaps/bamako.png" alt="Accent. " width="2000" height="1000" loading="lazy" />
  <strong>Bamako_r</strong>
-<img src=" ../../images/x-array-map-plot/colormaps/bamako_r.png " alt="bamako_r. " loading="lazy" />
+<img src="../../images/x-array-map-plot/colormaps/bamako_r.png" alt="bamako_r. " width="2000" height="1000" loading="lazy" />
  <strong>Batlow</strong>
-<img src=" ../../images/x-array-map-plot/colormaps/batlow.png  " alt="Batlow. " loading="lazy" />
+<img src="../../images/x-array-map-plot/colormaps/batlow.png" alt="Batlow. " width="2000" height="1000" loading="lazy" />
  <strong>BatlowK</strong>
-<img src=" ../../images/x-array-map-plot/colormaps/batlowK.png " alt="BatlowK. " loading="lazy" />
+<img src="../../images/x-array-map-plot/colormaps/batlowK.png" alt="BatlowK. " width="2000" height="1000" loading="lazy" />
  <strong>BatlowK_r</strong>
-<img src=" ../../images/x-array-map-plot/colormaps/batlowK_r.png " alt="BatlowK_r. " loading="lazy" />
+<img src="../../images/x-array-map-plot/colormaps/batlowK_r.png" alt="BatlowK_r. " width="2000" height="1000" loading="lazy" />
  <strong>BatlowW</strong>
-<img src=" ../../images/x-array-map-plot/colormaps/batlowW.png " alt="batlowW. " loading="lazy" />
+<img src="../../images/x-array-map-plot/colormaps/batlowW.png" alt="batlowW. " width="2000" height="1000" loading="lazy" />
  <strong>BatlowW_r</strong>
-<img src=" ../../images/x-array-map-plot/colormaps/batlowW_r.png " alt="batlowW_r. " loading="lazy" />
+<img src="../../images/x-array-map-plot/colormaps/batlowW_r.png" alt="batlowW_r. " width="2000" height="1000" loading="lazy" />
  <strong>Batlow_r</strong>
-<img src=" ../../images/x-array-map-plot/colormaps/batlow_r.png " alt="Batlow_r. " loading="lazy" />
+<img src="../../images/x-array-map-plot/colormaps/batlow_r.png" alt="Batlow_r. " width="2000" height="1000" loading="lazy" />
  <strong>Berlin</strong>
-<img src=" ../../images/x-array-map-plot/colormaps/berlin.png " alt="Berlin. " loading="lazy" />
+<img src="../../images/x-array-map-plot/colormaps/berlin.png" alt="Berlin. " width="2000" height="1000" loading="lazy" />
  <strong>berlin_r</strong>
-<img src=" ../../images/x-array-map-plot/colormaps/berlin_r.png " alt="Berlin_r. " loading="lazy" />
+<img src="../../images/x-array-map-plot/colormaps/berlin_r.png" alt="Berlin_r. " width="2000" height="1000" loading="lazy" />
  <strong>Bilbao</strong>
-<img src="  ../../images/x-array-map-plot/colormaps/bilbao.png" alt="bilbao. " loading="lazy" />
+<img src="../../images/x-array-map-plot/colormaps/bilbao.png" alt="bilbao. " width="2000" height="1000" loading="lazy" />
  <strong>Bilbao_r</strong>
-<img src=" ../../images/x-array-map-plot/colormaps/bilbao_r.png " alt="Bilbao_r. " loading="lazy" />
+<img src="../../images/x-array-map-plot/colormaps/bilbao_r.png" alt="Bilbao_r. " width="2000" height="1000" loading="lazy" />
  <strong>Binary</strong>
-<img src=" ../../images/x-array-map-plot/colormaps/binary.png " alt="Binary. " loading="lazy" />
+<img src="../../images/x-array-map-plot/colormaps/binary.png" alt="Binary. " width="2000" height="1000" loading="lazy" />
  <strong>Bone</strong>
-<img src=" ../../images/x-array-map-plot/colormaps/bone.png " alt="Bone. " loading="lazy" />
+<img src="../../images/x-array-map-plot/colormaps/bone.png" alt="Bone. " width="2000" height="1000" loading="lazy" />
  <strong>Brg</strong>
-<img src=" ../../images/x-array-map-plot/colormaps/brg.png " alt="Brg. " loading="lazy" />
+<img src="../../images/x-array-map-plot/colormaps/brg.png" alt="Brg. " width="2000" height="1000" loading="lazy" />
  <strong>Broc</strong>
-<img src=" ../../images/x-array-map-plot/colormaps/broc.png " alt="Broc. " loading="lazy" />
+<img src="../../images/x-array-map-plot/colormaps/broc.png" alt="Broc. " width="2000" height="1000" loading="lazy" />
  <strong>BrocO</strong>
-<img src=" ../../images/x-array-map-plot/colormaps/brocO.png " alt="BrocO. " loading="lazy" />
+<img src="../../images/x-array-map-plot/colormaps/brocO.png" alt="BrocO. " width="2000" height="1000" loading="lazy" />
  <strong>BrocO_r</strong>
-<img src=" ../../images/x-array-map-plot/colormaps/brocO_r.png " alt="BrocO_r. " loading="lazy" />
+<img src="../../images/x-array-map-plot/colormaps/brocO_r.png" alt="BrocO_r. " width="2000" height="1000" loading="lazy" />
  <strong>Broc_r</strong>
-<img src=" ../../images/x-array-map-plot/colormaps/broc_r.png " alt="Broc_r. " loading="lazy" />
+<img src="../../images/x-array-map-plot/colormaps/broc_r.png" alt="Broc_r. " width="2000" height="1000" loading="lazy" />
  <strong>Buda</strong>
-<img src=" ../../images/x-array-map-plot/colormaps/buda.png " alt="Buda. " loading="lazy" />
+<img src="../../images/x-array-map-plot/colormaps/buda.png" alt="Buda. " width="2000" height="1000" loading="lazy" />
  <strong>Buda_r</strong>
-<img src=" ../../images/x-array-map-plot/colormaps/buda_r.png " alt="Buda_r. " loading="lazy" />
+<img src="../../images/x-array-map-plot/colormaps/buda_r.png" alt="Buda_r. " width="2000" height="1000" loading="lazy" />
  <strong>Bukavu</strong>
-<img src=" ../../images/x-array-map-plot/colormaps/bukavu.png " alt="Bukavu. " loading="lazy" />
+<img src="../../images/x-array-map-plot/colormaps/bukavu.png" alt="Bukavu. " width="2000" height="1000" loading="lazy" />
  <strong>Bukavu_r</strong>
-<img src=" ../../images/x-array-map-plot/colormaps/bukavu_r.png " alt="Bukavu_r. " loading="lazy" />
+<img src="../../images/x-array-map-plot/colormaps/bukavu_r.png" alt="Bukavu_r. " width="2000" height="1000" loading="lazy" />
  <strong>Bwr</strong>
-<img src=" ../../images/x-array-map-plot/colormaps/bwr.png " alt="Bwr. " loading="lazy" />
+<img src="../../images/x-array-map-plot/colormaps/bwr.png" alt="Bwr. " width="2000" height="1000" loading="lazy" />
  <strong>Cool</strong>
-<img src=" ../../images/x-array-map-plot/colormaps/cool.png " alt="Cool. " loading="lazy" />
+<img src="../../images/x-array-map-plot/colormaps/cool.png" alt="Cool. " width="2000" height="1000" loading="lazy" />
  <strong>Coolwarm</strong>
-<img src=" ../../images/x-array-map-plot/colormaps/coolwarm.png " alt="Coolwarm. " loading="lazy" />
+<img src="../../images/x-array-map-plot/colormaps/coolwarm.png" alt="Coolwarm. " width="2000" height="1000" loading="lazy" />
  <strong>Copper</strong>
-<img src=" ../../images/x-array-map-plot/colormaps/copper.png " alt="Copper. " loading="lazy" />
+<img src="../../images/x-array-map-plot/colormaps/copper.png" alt="Copper. " width="2000" height="1000" loading="lazy" />
  <strong>Cork</strong>
-<img src=" ../../images/x-array-map-plot/colormaps/cork.png " alt="Cork. " loading="lazy" />
+<img src="../../images/x-array-map-plot/colormaps/cork.png" alt="Cork. " width="2000" height="1000" loading="lazy" />
  <strong>CorkO</strong>
-<img src=" ../../images/x-array-map-plot/colormaps/corkO.png " alt="CorkO. " loading="lazy" />
+<img src="../../images/x-array-map-plot/colormaps/corkO.png" alt="CorkO. " width="2000" height="1000" loading="lazy" />
  <strong>CorkO_r</strong>
-<img src=" ../../images/x-array-map-plot/colormaps/corkO_r.png " alt="CorkO_r. " loading="lazy" />
+<img src="../../images/x-array-map-plot/colormaps/corkO_r.png" alt="CorkO_r. " width="2000" height="1000" loading="lazy" />
  <strong>Cork_r</strong>
-<img src=" ../../images/x-array-map-plot/colormaps/cork_r.png " alt="Cork_r. " loading="lazy" />
+<img src="../../images/x-array-map-plot/colormaps/cork_r.png" alt="Cork_r. " width="2000" height="1000" loading="lazy" />
  <strong>Cubehelix</strong>
-<img src=" ../../images/x-array-map-plot/colormaps/cubehelix.png " alt="Cubehelix. " loading="lazy" />
+<img src="../../images/x-array-map-plot/colormaps/cubehelix.png" alt="Cubehelix. " width="2000" height="1000" loading="lazy" />
  <strong>Davos</strong>
-<img src=" ../../images/x-array-map-plot/colormaps/davos.png " alt="Davos. " loading="lazy" />
+<img src="../../images/x-array-map-plot/colormaps/davos.png" alt="Davos. " width="2000" height="1000" loading="lazy" />
  <strong>GnBu</strong>
-<img src=" ../../images/x-array-map-plot/colormaps/GnBu.png " alt="GnBu. " loading="lazy" />
+<img src="../../images/x-array-map-plot/colormaps/GnBu.png" alt="GnBu. " width="2000" height="1000" loading="lazy" />
  <strong>Greens</strong>
-<img src=" ../../images/x-array-map-plot/colormaps/Greens.png " alt="Greens. " loading="lazy" />
+<img src="../../images/x-array-map-plot/colormaps/Greens.png" alt="Greens. " width="2000" height="1000" loading="lazy" />
  <strong>Greys</strong>
-<img src=" ../../images/x-array-map-plot/colormaps/Greys.png " alt="Greys. " loading="lazy" />
+<img src="../../images/x-array-map-plot/colormaps/Greys.png" alt="Greys. " width="2000" height="1000" loading="lazy" />
  <strong>Imola</strong>
-<img src=" ../../images/x-array-map-plot/colormaps/Imola.png " alt="Imola. " loading="lazy" />
+<img src="../../images/x-array-map-plot/colormaps/Imola.png" alt="Imola. " width="2000" height="1000" loading="lazy" />
  <strong>OrRd</strong>
-<img src=" ../../images/x-array-map-plot/colormaps/OrRd.png " alt="OrRd. " loading="lazy" />
+<img src="../../images/x-array-map-plot/colormaps/OrRd.png" alt="OrRd. " width="2000" height="1000" loading="lazy" />
  <strong>Oranges</strong>
-<img src=" ../../images/x-array-map-plot/colormaps/Oranges.png " alt="Oranges. " loading="lazy" />
+<img src="../../images/x-array-map-plot/colormaps/Oranges.png" alt="Oranges. " width="2000" height="1000" loading="lazy" />
  <strong>Paired</strong>
-<img src=" ../../images/x-array-map-plot/colormaps/Paired.png " alt="Paired. " loading="lazy" />
+<img src="../../images/x-array-map-plot/colormaps/Paired.png" alt="Paired. " width="2000" height="1000" loading="lazy" />
  <strong>Pastel1</strong>
-<img src=" ../../images/x-array-map-plot/colormaps/Pastel1.png " alt="Pastel1. " loading="lazy" />
+<img src="../../images/x-array-map-plot/colormaps/Pastel1.png" alt="Pastel1. " width="2000" height="1000" loading="lazy" />
  <strong>Pastel2</strong>
-<img src=" ../../images/x-array-map-plot/colormaps/Pastel2.png " alt="Pastel2. " loading="lazy" />
+<img src="../../images/x-array-map-plot/colormaps/Pastel2.png" alt="Pastel2. " width="2000" height="1000" loading="lazy" />
  <strong>Davos_r</strong>
-<img src=" ../../images/x-array-map-plot/colormaps/davos_r.png " alt="Davos_r. " loading="lazy" />
+<img src="../../images/x-array-map-plot/colormaps/davos_r.png" alt="Davos_r. " width="2000" height="1000" loading="lazy" />
  <strong>Devon_r</strong>
-<img src=" ../../images/x-array-map-plot/colormaps/devon_r.png " alt="Devon_r. " loading="lazy" />
+<img src="../../images/x-array-map-plot/colormaps/devon_r.png" alt="Devon_r. " width="2000" height="1000" loading="lazy" />
  <strong>Devon</strong>
-<img src=" ../../images/x-array-map-plot/colormaps/devon.png " alt="Devon. " loading="lazy" />
+<img src="../../images/x-array-map-plot/colormaps/devon.png" alt="Devon. " width="2000" height="1000" loading="lazy" />
  <strong>Fes</strong>
-<img src=" ../../images/x-array-map-plot/colormaps/fes.png " alt="Fes. " loading="lazy" />
+<img src="../../images/x-array-map-plot/colormaps/fes.png" alt="Fes. " width="2000" height="1000" loading="lazy" />
  <strong>Fes_r</strong>
-<img src=" ../../images/x-array-map-plot/colormaps/fes_r.png " alt="Fes_r. " loading="lazy" />
+<img src="../../images/x-array-map-plot/colormaps/fes_r.png" alt="Fes_r. " width="2000" height="1000" loading="lazy" />
  <strong>Flag</strong>
-<img src=" ../../images/x-array-map-plot/colormaps/flag.png " alt="Flag. " loading="lazy" />
+<img src="../../images/x-array-map-plot/colormaps/flag.png" alt="Flag. " width="2000" height="1000" loading="lazy" />
  <strong>Gist_earth</strong>
-<img src=" ../../images/x-array-map-plot/colormaps/gist_earth.png " alt="Gist_earth. " loading="lazy" />
+<img src="../../images/x-array-map-plot/colormaps/gist_earth.png" alt="Gist_earth. " width="2000" height="1000" loading="lazy" />
  <strong>Gist_gray</strong>
-<img src=" ../../images/x-array-map-plot/colormaps/gist_gray.png " alt="Gist_gray. " loading="lazy" />
+<img src="../../images/x-array-map-plot/colormaps/gist_gray.png" alt="Gist_gray. " width="2000" height="1000" loading="lazy" />
  <strong>Gist_heat</strong>
-<img src=" ../../images/x-array-map-plot/colormaps/gist_heat.png " alt="Gist_heat. " loading="lazy" />
+<img src="../../images/x-array-map-plot/colormaps/gist_heat.png" alt="Gist_heat. " width="2000" height="1000" loading="lazy" />
  <strong>Gist_ncar</strong>
-<img src=" ../../images/x-array-map-plot/colormaps/gist_ncar.png " alt="Gist_ncar. " loading="lazy" />
+<img src="../../images/x-array-map-plot/colormaps/gist_ncar.png" alt="Gist_ncar. " width="2000" height="1000" loading="lazy" />
  <strong>Gist_rainbow</strong>
-<img src=" ../../images/x-array-map-plot/colormaps/gist_rainbow.png" alt="Gist_rainbow. " loading="lazy" />
+<img src="../../images/x-array-map-plot/colormaps/gist_rainbow.png" alt="Gist_rainbow. " width="2000" height="1000" loading="lazy" />
  <strong>Gist_stern</strong>
-<img src=" ../../images/x-array-map-plot/colormaps/gist_stern.png" alt="Gist_stern. " loading="lazy" />
+<img src="../../images/x-array-map-plot/colormaps/gist_stern.png" alt="Gist_stern. " width="2000" height="1000" loading="lazy" />
  <strong>Gist_yarg</strong>
-<img src=" ../../images/x-array-map-plot/colormaps/gist_yarg.png" alt="Gist_yarg. " loading="lazy" />
+<img src="../../images/x-array-map-plot/colormaps/gist_yarg.png" alt="Gist_yarg. " width="2000" height="1000" loading="lazy" />
  <strong>Gnuplot</strong>
-<img src=" ../../images/x-array-map-plot/colormaps/gnuplot.png" alt="Gnuplot. " loading="lazy" />
+<img src="../../images/x-array-map-plot/colormaps/gnuplot.png" alt="Gnuplot. " width="2000" height="1000" loading="lazy" />
  <strong>Gnuplot2</strong>
-<img src=" ../../images/x-array-map-plot/colormaps/gnuplot2.png" alt="Gnuplot2. " loading="lazy" />
+<img src="../../images/x-array-map-plot/colormaps/gnuplot2.png" alt="Gnuplot2. " width="2000" height="1000" loading="lazy" />
  <strong>Gray</strong>
-<img src=" ../../images/x-array-map-plot/colormaps/gray.png" alt="Gray. " loading="lazy" />
+<img src="../../images/x-array-map-plot/colormaps/gray.png" alt="Gray. " width="2000" height="1000" loading="lazy" />
  <strong>GrayC</strong>
-<img src="../../images/x-array-map-plot/colormaps/grayC.png " alt="GrayC. " loading="lazy" />
+<img src="../../images/x-array-map-plot/colormaps/grayC.png" alt="GrayC. " width="2000" height="1000" loading="lazy" />
  <strong>GrayC_r</strong>
-<img src=" ../../images/x-array-map-plot/colormaps/grayC_r.png" alt="GrayC_r. " loading="lazy" />
+<img src="../../images/x-array-map-plot/colormaps/grayC_r.png" alt="GrayC_r. " width="2000" height="1000" loading="lazy" />
  <strong>Hawaii</strong>
-<img src=" ../../images/x-array-map-plot/colormaps/hawaii.png" alt="Hawaii. " loading="lazy" />
+<img src="../../images/x-array-map-plot/colormaps/hawaii.png" alt="Hawaii. " width="2000" height="1000" loading="lazy" />
  <strong>Hawaii_r</strong>
-<img src=" ../../images/x-array-map-plot/colormaps/hawaii_r.png" alt="Hawaii_r. " loading="lazy" />
+<img src="../../images/x-array-map-plot/colormaps/hawaii_r.png" alt="Hawaii_r. " width="2000" height="1000" loading="lazy" />
  <strong>Hot</strong>
-<img src=" ../../images/x-array-map-plot/colormaps/hot.png " alt="Hot. " loading="lazy" />
+<img src="../../images/x-array-map-plot/colormaps/hot.png" alt="Hot. " width="2000" height="1000" loading="lazy" />
  <strong>Hsv</strong>
-<img src=" ../../images/x-array-map-plot/colormaps/hsv.png " alt="Hsv. " loading="lazy" />
+<img src="../../images/x-array-map-plot/colormaps/hsv.png" alt="Hsv. " width="2000" height="1000" loading="lazy" />
  <strong>Imola_r</strong>
-<img src=" ../../images/x-array-map-plot/colormaps/imola_r.png " alt="Imola_r. " loading="lazy" />
+<img src="../../images/x-array-map-plot/colormaps/imola_r.png" alt="Imola_r. " width="2000" height="1000" loading="lazy" />
  <strong>Jet</strong>
-<img src=" ../../images/x-array-map-plot/colormaps/jet.png " alt="Jet. " loading="lazy" />
+<img src="../../images/x-array-map-plot/colormaps/jet.png" alt="Jet. " width="2000" height="1000" loading="lazy" />
  <strong>Lajolla</strong>
-<img src=" ../../images/x-array-map-plot/colormaps/lajolla.png " alt="Lajolla. " loading="lazy" />
+<img src="../../images/x-array-map-plot/colormaps/lajolla.png" alt="Lajolla. " width="2000" height="1000" loading="lazy" />
  <strong>Lajolla_r</strong>
-<img src=" ../../images/x-array-map-plot/colormaps/lajolla_r.png " alt="Lajolla_r. " loading="lazy" />
+<img src="../../images/x-array-map-plot/colormaps/lajolla_r.png" alt="Lajolla_r. " width="2000" height="1000" loading="lazy" />
  <strong>Lapaz</strong>
-<img src=" ../../images/x-array-map-plot/colormaps/lapaz.png " alt="Lapaz. " loading="lazy" />
+<img src="../../images/x-array-map-plot/colormaps/lapaz.png" alt="Lapaz. " width="2000" height="1000" loading="lazy" />
  <strong>Lapaz_r</strong>
-<img src=" ../../images/x-array-map-plot/colormaps/lapaz_r.png " alt="Lapaz_r. " loading="lazy" />
+<img src="../../images/x-array-map-plot/colormaps/lapaz_r.png" alt="Lapaz_r. " width="2000" height="1000" loading="lazy" />
  <strong>Lisbon</strong>
-<img src="  ../../images/x-array-map-plot/colormaps/lisbon.png" alt="Lisbon. " loading="lazy" />
+<img src="../../images/x-array-map-plot/colormaps/lisbon.png" alt="Lisbon. " width="2000" height="1000" loading="lazy" />
  <strong>Lisbon_r</strong>
-<img src=" ../../images/x-array-map-plot/colormaps/lisbon_r.png " alt="Lisbon_r. " loading="lazy" />
+<img src="../../images/x-array-map-plot/colormaps/lisbon_r.png" alt="Lisbon_r. " width="2000" height="1000" loading="lazy" />
  <strong>Nipy_spectral</strong>
-<img src=" ../../images/x-array-map-plot/colormaps/nipy_spectral.png " alt="Nipy_spectral. " loading="lazy" />
+<img src="../../images/x-array-map-plot/colormaps/nipy_spectral.png" alt="Nipy_spectral. " width="2000" height="1000" loading="lazy" />
  <strong>Nuuk</strong>
-<img src=" ../../images/x-array-map-plot/colormaps/nuuk.png " alt="Nuuk. " loading="lazy" />
+<img src="../../images/x-array-map-plot/colormaps/nuuk.png" alt="Nuuk. " width="2000" height="1000" loading="lazy" />
  <strong>Nuuk_r</strong>
-<img src=" ../../images/x-array-map-plot/colormaps/nuuk_r.png " alt="Nuuk_r. " loading="lazy" />
+<img src="../../images/x-array-map-plot/colormaps/nuuk_r.png" alt="Nuuk_r. " width="2000" height="1000" loading="lazy" />
  <strong>Ocean</strong>
-<img src=" ../../images/x-array-map-plot/colormaps/ocean.png " alt="Ocean. " loading="lazy" />
+<img src="../../images/x-array-map-plot/colormaps/ocean.png" alt="Ocean. " width="2000" height="1000" loading="lazy" />
  <strong>Oleron</strong>
-<img src=" ../../images/x-array-map-plot/colormaps/oleron.png " alt="Oleron. " loading="lazy" />
+<img src="../../images/x-array-map-plot/colormaps/oleron.png" alt="Oleron. " width="2000" height="1000" loading="lazy" />
  <strong>Oslo</strong>
-<img src=" ../../images/x-array-map-plot/colormaps/oslo.png " alt="Oslo. " loading="lazy" />
+<img src="../../images/x-array-map-plot/colormaps/oslo.png" alt="Oslo. " width="2000" height="1000" loading="lazy" />
  <strong>Oslo_r</strong>
-<img src=" ../../images/x-array-map-plot/colormaps/oslo_r.png " alt="Oslo_r. " loading="lazy" />
+<img src="../../images/x-array-map-plot/colormaps/oslo_r.png" alt="Oslo_r. " width="2000" height="1000" loading="lazy" />
  <strong>Pink</strong>
-<img src=" ../../images/x-array-map-plot/colormaps/pink.png " alt="Pink. " loading="lazy" />
+<img src="../../images/x-array-map-plot/colormaps/pink.png" alt="Pink. " width="2000" height="1000" loading="lazy" />
  <strong>PRGn</strong>
-<img src=" ../../images/x-array-map-plot/colormaps/PRGn.png " alt="PRGn. " loading="lazy" />
+<img src="../../images/x-array-map-plot/colormaps/PRGn.png" alt="PRGn. " width="2000" height="1000" loading="lazy" />
  <strong>PiYG</strong>
-<img src=" ../../images/x-array-map-plot/colormaps/PiYG.png " alt="PiYG. " loading="lazy" />
+<img src="../../images/x-array-map-plot/colormaps/PiYG.png" alt="PiYG. " width="2000" height="1000" loading="lazy" />
  <strong>PuBu</strong>
-<img src=" ../../images/x-array-map-plot/colormaps/PuBu.png " alt="PuBu. " loading="lazy" />
+<img src="../../images/x-array-map-plot/colormaps/PuBu.png" alt="PuBu. " width="2000" height="1000" loading="lazy" />
  <strong>PuBuGn</strong>
-<img src="  ../../images/x-array-map-plot/colormaps/PuBuGn.png" alt="PuBuGn. " loading="lazy" />
+<img src="../../images/x-array-map-plot/colormaps/PuBuGn.png" alt="PuBuGn. " width="2000" height="1000" loading="lazy" />
  <strong>PuOr</strong>
-<img src=" ../../images/x-array-map-plot/colormaps/PuOr.png " alt="PuOr. " loading="lazy" />
+<img src="../../images/x-array-map-plot/colormaps/PuOr.png" alt="PuOr. " width="2000" height="1000" loading="lazy" />
  <strong>PuRd</strong>
-<img src=" ../../images/x-array-map-plot/colormaps/PuRd.png " alt="PuRd. " loading="lazy" />
+<img src="../../images/x-array-map-plot/colormaps/PuRd.png" alt="PuRd. " width="2000" height="1000" loading="lazy" />
  <strong>Purples</strong>
-<img src=" ../../images/x-array-map-plot/colormaps/Purples.png " alt="Purples. " loading="lazy" />
+<img src="../../images/x-array-map-plot/colormaps/Purples.png" alt="Purples. " width="2000" height="1000" loading="lazy" />
  <strong>RdBu</strong>
-<img src=" ../../images/x-array-map-plot/colormaps/RdBu.png " alt="RdBu. " loading="lazy" />
+<img src="../../images/x-array-map-plot/colormaps/RdBu.png" alt="RdBu. " width="2000" height="1000" loading="lazy" />
  <strong>RdBu_r</strong>
-<img src=" ../../images/x-array-map-plot/colormaps/RdBu_r.png " alt="RdBu_r. " loading="lazy" />
+<img src="../../images/x-array-map-plot/colormaps/RdBu_r.png" alt="RdBu_r. " width="2000" height="1000" loading="lazy" />
  <strong>RdBu_r</strong>
-<img src=" ../../images/x-array-map-plot/colormaps/RdBu_r.png" alt="RdBu_r. " loading="lazy" />
+<img src="../../images/x-array-map-plot/colormaps/RdBu_r.png" alt="RdBu_r. " width="2000" height="1000" loading="lazy" />
  <strong>RdGy_r</strong>
-<img src=" ../../images/x-array-map-plot/colormaps/RdGy_r.png " alt="RdGy_r. " loading="lazy" />
+<img src="../../images/x-array-map-plot/colormaps/RdGy_r.png" alt="RdGy_r. " width="2000" height="1000" loading="lazy" />
  <strong>RdPu</strong>
-<img src=" ../../images/x-array-map-plot/colormaps/RdPu.png" alt="RdPu. " loading="lazy" />
+<img src="../../images/x-array-map-plot/colormaps/RdPu.png" alt="RdPu. " width="2000" height="1000" loading="lazy" />
 <strong>RdPu_r</strong>
-<img src="../../images/x-array-map-plot/colormaps/RdPu_r.png " alt="RdPu_r. " loading="lazy" />
+<img src="../../images/x-array-map-plot/colormaps/RdPu_r.png" alt="RdPu_r. " width="2000" height="1000" loading="lazy" />
 <strong>RdYIBu</strong>
-<img src=" ../../images/x-array-map-plot/colormaps/RdYIBu.png" alt="RdYIBu. " loading="lazy" />
+<img src="../../images/x-array-map-plot/colormaps/RdYIBu.png" alt="RdYIBu. " width="2000" height="1000" loading="lazy" />
 <strong>RdYIGn</strong>
-<img src=" ../../images/x-array-map-plot/colormaps/RdYIGn.png" alt="RdYIGn. " loading="lazy" />
+<img src="../../images/x-array-map-plot/colormaps/RdYIGn.png" alt="RdYIGn. " width="2000" height="1000" loading="lazy" />
 <strong>Reds</strong>
-<img src="../../images/x-array-map-plot/colormaps/Reds.png " alt="Reds. " loading="lazy" />
+<img src="../../images/x-array-map-plot/colormaps/Reds.png" alt="Reds. " width="2000" height="1000" loading="lazy" />
 <strong>Set1</strong>
-<img src=" ../../images/x-array-map-plot/colormaps/Set1.png" alt="Set1. " loading="lazy" />
+<img src="../../images/x-array-map-plot/colormaps/Set1.png" alt="Set1. " width="2000" height="1000" loading="lazy" />
 <strong>Set2</strong>
-<img src=" ../../images/x-array-map-plot/colormaps/Set2.png " alt="Set2. " loading="lazy" />
+<img src="../../images/x-array-map-plot/colormaps/Set2.png" alt="Set2. " width="2000" height="1000" loading="lazy" />
 <strong>Set3</strong>
-<img src=" ../../images/x-array-map-plot/colormaps/Set3.png " alt="Set3. " loading="lazy" />
+<img src="../../images/x-array-map-plot/colormaps/Set3.png" alt="Set3. " width="2000" height="1000" loading="lazy" />
 <strong>Spectral</strong>
-<img src=" ../../images/x-array-map-plot/colormaps/Spectral.png " alt="Spectral. " loading="lazy" />
+<img src="../../images/x-array-map-plot/colormaps/Spectral.png" alt="Spectral. " width="2000" height="1000" loading="lazy" />
 <strong>Wistia</strong>
-<img src=" ../../images/x-array-map-plot/colormaps/Wistia.png " alt="Wistia. " loading="lazy" />
+<img src="../../images/x-array-map-plot/colormaps/Wistia.png" alt="Wistia. " width="2000" height="1000" loading="lazy" />
 <strong>YIGn</strong>
-<img src=" ../../images/x-array-map-plot/colormaps/YIGn.png " alt="YIGn. " loading="lazy" />
+<img src="../../images/x-array-map-plot/colormaps/YIGn.png" alt="YIGn. " width="2000" height="1000" loading="lazy" />
 <strong>YIGnBu</strong>
-<img src=" ../../images/x-array-map-plot/colormaps/YIGnBu.png " alt="YIGnBu. " loading="lazy" />
+<img src="../../images/x-array-map-plot/colormaps/YIGnBu.png" alt="YIGnBu. " width="2000" height="1000" loading="lazy" />
 <strong>YIOrBr</strong>
-<img src=" ../../images/x-array-map-plot/colormaps/YIOrBr.png " alt="YIOrBr. " loading="lazy" />
+<img src="../../images/x-array-map-plot/colormaps/YIOrBr.png" alt="YIOrBr. " width="2000" height="1000" loading="lazy" />
 <strong>YIOrRd</strong>
-<img src=" ../../images/x-array-map-plot/colormaps/YIOrRd.png " alt="YIOrRd. " loading="lazy" />
+<img src="../../images/x-array-map-plot/colormaps/YIOrRd.png" alt="YIOrRd. " width="2000" height="1000" loading="lazy" />
 <strong>Prism</strong>
-<img src=" ../../images/x-array-map-plot/colormaps/prism.png " alt="Prism. " loading="lazy" />
+<img src="../../images/x-array-map-plot/colormaps/prism.png" alt="Prism. " width="2000" height="1000" loading="lazy" />
 <strong>Rainbow</strong>
-<img src=" ../../images/x-array-map-plot/colormaps/rainbow.png " alt="Rainbow. " loading="lazy" />
+<img src="../../images/x-array-map-plot/colormaps/rainbow.png" alt="Rainbow. " width="2000" height="1000" loading="lazy" />
 <strong>Roma</strong>
-<img src=" ../../images/x-array-map-plot/colormaps/roma.png " alt="Roma. " loading="lazy" />
+<img src="../../images/x-array-map-plot/colormaps/roma.png" alt="Roma. " width="2000" height="1000" loading="lazy" />
 <strong>RomaO</strong>
-<img src=" ../../images/x-array-map-plot/colormaps/romaO.png " alt="RomaO. " loading="lazy" />
+<img src="../../images/x-array-map-plot/colormaps/romaO.png" alt="RomaO. " width="2000" height="1000" loading="lazy" />
 <strong>RomaO_r</strong>
-<img src=" ../../images/x-array-map-plot/colormaps/romaO_r.png " alt="RomaO_r. " loading="lazy" />
+<img src="../../images/x-array-map-plot/colormaps/romaO_r.png" alt="RomaO_r. " width="2000" height="1000" loading="lazy" />
 <strong>Roma_r</strong>
-<img src=" ../../images/x-array-map-plot/colormaps/roma_r.png " alt="Roma_r. " loading="lazy" />
+<img src="../../images/x-array-map-plot/colormaps/roma_r.png" alt="Roma_r. " width="2000" height="1000" loading="lazy" />
 <strong>Seismic</strong>
-<img src=" ../../images/x-array-map-plot/colormaps/seismic.png " alt="Seismic. " loading="lazy" />
+<img src="../../images/x-array-map-plot/colormaps/seismic.png" alt="Seismic. " width="2000" height="1000" loading="lazy" />
 <strong>Spring</strong>
-<img src=" ../../images/x-array-map-plot/colormaps/spring.png  " alt="Spring. " loading="lazy" />
+<img src="../../images/x-array-map-plot/colormaps/spring.png" alt="Spring. " width="2000" height="1000" loading="lazy" />
 <strong>Summer</strong>
-<img src=" ../../images/x-array-map-plot/colormaps/summer.png " alt="Summer. " loading="lazy" />
+<img src="../../images/x-array-map-plot/colormaps/summer.png" alt="Summer. " width="2000" height="1000" loading="lazy" />
 <strong>Tab10</strong>
-<img src=" ../../images/x-array-map-plot/colormaps/tab10.png " alt="Tab10. " loading="lazy" />
+<img src="../../images/x-array-map-plot/colormaps/tab10.png" alt="Tab10. " width="2000" height="1000" loading="lazy" />
 <strong>Tab20</strong>
-<img src=" ../../images/x-array-map-plot/colormaps/tab20.png " alt="Tab20. " loading="lazy" />
+<img src="../../images/x-array-map-plot/colormaps/tab20.png" alt="Tab20. " width="2000" height="1000" loading="lazy" />
 <strong>Tab20b</strong>
-<img src=" ../../images/x-array-map-plot/colormaps/tab20b.png " alt="Tab20b. " loading="lazy" />
+<img src="../../images/x-array-map-plot/colormaps/tab20b.png" alt="Tab20b. " width="2000" height="1000" loading="lazy" />
 <strong>Tab20c</strong>
-<img src=" ../../images/x-array-map-plot/colormaps/tab20c.png " alt="Tab20c. " loading="lazy" />
+<img src="../../images/x-array-map-plot/colormaps/tab20c.png" alt="Tab20c. " width="2000" height="1000" loading="lazy" />
 <strong>Terrain</strong>
-<img src=" ../../images/x-array-map-plot/colormaps/terrain.png " alt="Terrain. " loading="lazy" />
+<img src="../../images/x-array-map-plot/colormaps/terrain.png" alt="Terrain. " width="2000" height="1000" loading="lazy" />
 <strong>Tofino</strong>
-<img src=" ../../images/x-array-map-plot/colormaps/tofino.png" alt="Tofino. " loading="lazy" />
+<img src="../../images/x-array-map-plot/colormaps/tofino.png" alt="Tofino. " width="2000" height="1000" loading="lazy" />
 <strong>Tofino_r</strong>
-<img src=" ../../images/x-array-map-plot/colormaps/tofino_r.png " alt="Tofino_r. " loading="lazy" />
+<img src="../../images/x-array-map-plot/colormaps/tofino_r.png" alt="Tofino_r. " width="2000" height="1000" loading="lazy" />
 <strong>Tokyo</strong>
-<img src=" ../../images/x-array-map-plot/colormaps/tokyo.png " alt="Tokyo. " loading="lazy" />
+<img src="../../images/x-array-map-plot/colormaps/tokyo.png" alt="Tokyo. " width="2000" height="1000" loading="lazy" />
 <strong>Tokyo_r</strong>
-<img src=" ../../images/x-array-map-plot/colormaps/tokyo_r.png " alt="Tokyo_r. " loading="lazy" />
+<img src="../../images/x-array-map-plot/colormaps/tokyo_r.png" alt="Tokyo_r. " width="2000" height="1000" loading="lazy" />
 <strong>Turku</strong>
-<img src=" ../../images/x-array-map-plot/colormaps/turku.png " alt="Turku. " loading="lazy" />
+<img src="../../images/x-array-map-plot/colormaps/turku.png" alt="Turku. " width="2000" height="1000" loading="lazy" />
 <strong>Turku_r</strong>
-<img src=" ../../images/x-array-map-plot/colormaps/turku_r.png " alt="Turku_r. " loading="lazy" />
+<img src="../../images/x-array-map-plot/colormaps/turku_r.png" alt="Turku_r. " width="2000" height="1000" loading="lazy" />
 <strong>Vanimo</strong>
-<img src=" ../../images/x-array-map-plot/colormaps/vanimo.png " alt="Vanimo. " loading="lazy" />
+<img src="../../images/x-array-map-plot/colormaps/vanimo.png" alt="Vanimo. " width="2000" height="1000" loading="lazy" />
 <strong>Vanimo_r</strong>
-<img src=" ../../images/x-array-map-plot/colormaps/vanimo_r.png " alt="Vanimo_r. " loading="lazy" />
+<img src="../../images/x-array-map-plot/colormaps/vanimo_r.png" alt="Vanimo_r. " width="2000" height="1000" loading="lazy" />
 <strong>Vik</strong>
-<img src=" ../../images/x-array-map-plot/colormaps/vik.png " alt="Vik. " loading="lazy" />
+<img src="../../images/x-array-map-plot/colormaps/vik.png" alt="Vik. " width="2000" height="1000" loading="lazy" />
 <strong>VikO</strong>
-<img src=" ../../images/x-array-map-plot/colormaps/vikO.png " alt="VikO. " loading="lazy" />
+<img src="../../images/x-array-map-plot/colormaps/vikO.png" alt="VikO. " width="2000" height="1000" loading="lazy" />
 <strong>VikO_r</strong>
-<img src=" ../../images/x-array-map-plot/colormaps/vikO_r.png " alt="VikO_r. " loading="lazy" />
+<img src="../../images/x-array-map-plot/colormaps/vikO_r.png" alt="VikO_r. " width="2000" height="1000" loading="lazy" />
 <strong>Vik_r</strong>
-<img src=" ../../images/x-array-map-plot/colormaps/vik_r.png " alt="Vik_r. " loading="lazy" />
+<img src="../../images/x-array-map-plot/colormaps/vik_r.png" alt="Vik_r. " width="2000" height="1000" loading="lazy" />
 <strong>Winter</strong>
-<img src=" ../../images/x-array-map-plot/colormaps/winter.png " alt="Winter. " loading="lazy" /></p>
+<img src="../../images/x-array-map-plot/colormaps/winter.png" alt="Winter. " width="2000" height="1000" loading="lazy" /></p>
 
 </blockquote>
 
 <blockquote class="question">
-  <div class="box-title question-title" id="question-2"><i class="far fa-question-circle" aria-hidden="true"></i> Question</div>
+  <div class="box-title question-title" id="question-2"><i class="far fa-question-circle" aria-hidden="true" ></i> Question</div>
 
   <ol>
     <li>What are the different kinds of colormaps that can be used?</li>
   </ol>
 
   <blockquote class="solution">
-    <div class="box-title solution-title" id="solution-3"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-3" aria-expanded="true"><i class="far fa-eye" aria-hidden="true"></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
+    <div class="box-title solution-title" id="solution-3"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-3" aria-expanded="true"><i class="far fa-eye" aria-hidden="true" ></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
 
     <p>When it comes to conveying the correct information, through visualisation, colors play a major role. Suppose you want to display a cold region, its an obvious practice of using cooler tones such as a <code class="language-plaintext highlighter-rouge">blue</code>. Thus it is important to understand the choices we have.</p>
 
     <h2 id="plotting-different-colormaps-using-netcdf-xarray-map-plotting">Plotting different colormaps using <strong>NetCDF xarray map plotting</strong></h2>
     <blockquote class="notranslate hands_on">
-      <div class="box-title hands-on-title" id="hands-on-plotting-the-major-colormaps-using-the-xarray-tool"><i class="fas fa-pencil-alt" aria-hidden="true"></i> Hands-on: Plotting the major colormaps using the xarray tool.</div>
+      <div class="box-title hands-on-title" id="hands-on-plotting-the-major-colormaps-using-the-xarray-tool"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Plotting the major colormaps using the xarray tool.</div>
 
       <ol>
-        <li><span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/ecology/xarray_mapplot/xarray_mapplot/0.20.2+galaxy0" title="NetCDF xarray map plotting tool"><strong>NetCDF xarray map plotting</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: toolshed.g2.bx.psu.edu/repos/ecology/xarray_mapplot/xarray_mapplot/0.20.2+galaxy0</span></span>  with the following parameters:
+        <li><span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/ecology/xarray_mapplot/xarray_mapplot/0.20.2+galaxy0" title="NetCDF xarray map plotting tool" aria-role="link"><strong>NetCDF xarray map plotting</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: toolshed.g2.bx.psu.edu/repos/ecology/xarray_mapplot/xarray_mapplot/0.20.2+galaxy0</span></span> with the following parameters:
           <ul>
             <li><i class="far fa-file" aria-hidden="true"></i><span class="visually-hidden">param-file</span> <em>“Netcdf file”</em>: <code class="language-plaintext highlighter-rouge">outfile.netcdf</code></li>
             <li><i class="far fa-file" aria-hidden="true"></i><span class="visually-hidden">param-file</span> <em>“Tabular of variables”</em>: <code class="language-plaintext highlighter-rouge">Metadata infos from outfile.netcdf</code> (output of <strong>NetCDF xarray Metadata Info</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span>)</li>
@@ -1841,19 +1566,19 @@ Below is the complete list for reference.</p>
       </ol>
 
       <p>The final plot is shown below:
-   <img src="../../images/x-array-map-plot/bat.png" alt="ECMWF Reanalysis Air temperature a 2 metres on 2022-05-25 &gt;at 18:00:00. " loading="lazy" />
+   <img src="../../images/x-array-map-plot/bat.png" alt="ECMWF Reanalysis Air temperature a 2 metres on 2022-05-25 &gt;at 18:00:00. " width="2000" height="1000" loading="lazy" />
 Some other important color variants of the same map can be found below :</p>
       <ul>
         <li><em>colormap : oslo</em>
-<img src="../../images/x-array-map-plot/os.png" alt="ECMWF Reanalysis Air temperature a 2 metres on 2022-05-25 &gt;at 18:00:00. " loading="lazy" /></li>
+<img src="../../images/x-array-map-plot/os.png" alt="ECMWF Reanalysis Air temperature a 2 metres on 2022-05-25 &gt;at 18:00:00. " width="2000" height="1000" loading="lazy" /></li>
         <li><em>colormap : bamako</em>
-<img src="../../images/x-array-map-plot/bama.png" alt="ECMWF Reanalysis Air temperature a 2 metres on 2022-05-25 &gt;at 18:00:00. " loading="lazy" /></li>
+<img src="../../images/x-array-map-plot/bama.png" alt="ECMWF Reanalysis Air temperature a 2 metres on 2022-05-25 &gt;at 18:00:00. " width="2000" height="1000" loading="lazy" /></li>
         <li><em>colormap : vik</em>
-<img src="../../images/x-array-map-plot/vi.png" alt="ECMWF Reanalysis Air temperature a 2 metres on 2022-05-25 &gt;at 18:00:00. " loading="lazy" /></li>
+<img src="../../images/x-array-map-plot/vi.png" alt="ECMWF Reanalysis Air temperature a 2 metres on 2022-05-25 &gt;at 18:00:00. " width="2000" height="1000" loading="lazy" /></li>
         <li><em>colormap : tokyo</em>
-<img src="../../images/x-array-map-plot/tok.png" alt="ECMWF Reanalysis Air temperature a 2 metres on 2022-05-25 &gt;at 18:00:00. " loading="lazy" /></li>
+<img src="../../images/x-array-map-plot/tok.png" alt="ECMWF Reanalysis Air temperature a 2 metres on 2022-05-25 &gt;at 18:00:00. " width="2000" height="1000" loading="lazy" /></li>
         <li><em>colormap : hawaii</em>
-<img src="../../images/x-array-map-plot/hawa.png" alt="ECMWF Reanalysis Air temperature a 2 metres on 2022-05-25 &gt;at 18:00:00. " loading="lazy" /></li>
+<img src="../../images/x-array-map-plot/hawa.png" alt="ECMWF Reanalysis Air temperature a 2 metres on 2022-05-25 &gt;at 18:00:00. " width="2000" height="1000" loading="lazy" /></li>
       </ul>
     </blockquote>
 
@@ -1862,7 +1587,7 @@ Some other important color variants of the same map can be found below :</p>
 </blockquote>
 
 <blockquote class="question">
-  <div class="box-title question-title" id="question-3"><i class="far fa-question-circle" aria-hidden="true"></i> Question</div>
+  <div class="box-title question-title" id="question-3"><i class="far fa-question-circle" aria-hidden="true" ></i> Question</div>
 
   <ol>
     <li>What insights can be driven from the data and how is the data important on a local level?</li>
@@ -1870,28 +1595,28 @@ Some other important color variants of the same map can be found below :</p>
   </ol>
 
   <blockquote class="solution">
-    <div class="box-title solution-title" id="solution-4"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-4" aria-expanded="true"><i class="far fa-eye" aria-hidden="true"></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
+    <div class="box-title solution-title" id="solution-4"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-4" aria-expanded="true"><i class="far fa-eye" aria-hidden="true" ></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
 
     <ol>
       <li>Every piece of data recites a story. The air temperature at a certain height has a lot of significance in major commercial and day to day activities. Read this data-blog on the above analysis. <a href="https://quickbeasts51429.github.io/Outreachy_Galaxy_Community_contributor/">Click Here</a>.</li>
-      <li>The tutorial has summed up a proper way of plotting data from a netcdf file. It has discussed everything from loading of data to its final display. Some other key points to keep in mind are :
-        <blockquote>
-          <ol>
-            <li>It may take some time while plotting the maps. It depends on traffic / load on the Galaxy server. It is suggested to have a 64-bit processor with 8GB RAM storage. Be patient.</li>
-            <li>You can view as well as download the generated plots to use further.</li>
-            <li>Plotting over global maps is very convinient as you saw above. But many a times,  you want to plot a specific region, it becomes very easy using CDO tool. Refer to <a href="/training-material/topics/climate/tutorials/pangeo/tutorial.html">this tutorial</a> for more info.</li>
-          </ol>
-        </blockquote>
+      <li>
+        <p>The tutorial has summed up a proper way of plotting data from a netcdf file. It has discussed everything from loading of data to its final display. Some other key points to keep in mind are :</p>
+
+        <ol>
+          <li>It may take some time while plotting the maps. It depends on traffic / load on the Galaxy server. It is suggested to have a 64-bit processor with 8GB RAM storage. Be patient.</li>
+          <li>You can view as well as download the generated plots to use further.</li>
+          <li>Plotting over global maps is very convinient as you saw above. But many a times,  you want to plot a specific region, it becomes very easy using CDO tool. Refer to <a href="/training-material/topics/climate/tutorials/pangeo/tutorial.html">this tutorial</a> for more info.</li>
+        </ol>
       </li>
       <li>If you wish to present all the plotted maps at one place for comparision or analysis. It is a short and simple step and can be doe using the tool name <code class="language-plaintext highlighter-rouge">Image Montage</code>.</li>
     </ol>
 
-    <p><span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/bgruening/graphicsmagick_image_montage/graphicsmagick_image_montage/1.3.31+galaxy1" title="Image Montage tool"><strong>Image Montage</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: toolshed.g2.bx.psu.edu/repos/bgruening/graphicsmagick_image_montage/graphicsmagick_image_montage/1.3.31+galaxy1</span></span>  with the following parameters:</p>
+    <p><span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/bgruening/graphicsmagick_image_montage/graphicsmagick_image_montage/1.3.31+galaxy1" title="Image Montage tool" aria-role="link"><strong>Image Montage</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: toolshed.g2.bx.psu.edu/repos/bgruening/graphicsmagick_image_montage/graphicsmagick_image_montage/1.3.31+galaxy1</span></span> with the following parameters:</p>
     <ul>
       <li><i class="far fa-copy" aria-hidden="true"></i><span class="visually-hidden">param-files</span> <em>“Images”</em>: <code class="language-plaintext highlighter-rouge">Map plots</code></li>
       <li><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden">param-text</span> <em>”# of images wide”</em>: <code class="language-plaintext highlighter-rouge">4</code>
 Here you can see that all the projections we plotted above have been shown in a single image using <code class="language-plaintext highlighter-rouge">Image Montage</code>.
-<img src="../../images/x-array-map-plot/montage.png" alt="ECMWF Reanalysis Air temperature a 2 metres on 2022-05-31 Monatge for 23:00:00 . " loading="lazy" /></li>
+<img src="../../images/x-array-map-plot/montage.png" alt="ECMWF Reanalysis Air temperature a 2 metres on 2022-05-31 Monatge for 23:00:00 . " width="8000" height="2000" loading="lazy" /></li>
     </ul>
   </blockquote>
 
@@ -1955,6 +1680,9 @@ Here you can see that all the projections we plotted above have been shown in a 
                             Soumya Jha,  <b>Visualization of Climate Data using  NetCDF xarray Map Plotting (Galaxy Training Materials)</b>. <a href="https://training.galaxyproject.org/training-material/topics/ecology/tutorials/x-array-map-plot/tutorial.html">https://training.galaxyproject.org/training-material/topics/ecology/tutorials/x-array-map-plot/tutorial.html</a> Online; accessed TODAY
                         </li>
                         <li>
+                        Hiltemann, Saskia, Rasche, Helena et al., 2023 <b>Galaxy Training: A Powerful Framework for Teaching!</b> PLOS Computational Biology <a href="https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1010752">10.1371/journal.pcbi.1010752</a>
+                        </li>
+                        <li>
                         Batut et al., 2018 <b>Community-Driven Data Analysis Training for Biology</b> Cell Systems <a href="https://doi.org/10.1016%2Fj.cels.2018.05.012">10.1016/j.cels.2018.05.012</a>
                         </li>
                     </ol>
@@ -1976,12 +1704,12 @@ Here you can see that all the projections we plotted above have been shown in a 
 
 <code id="citation-code">@misc{ecology-x-array-map-plot,
 author = "Soumya Jha",
-title = "Visualization of Climate Data using  NetCDF xarray Map Plotting (Galaxy Training Materials)",
-year = "",
-month = "",
-day = ""
-url = "\url{https://training.galaxyproject.org/training-material/topics/ecology/tutorials/x-array-map-plot/tutorial.html}",
-note = "[Online; accessed TODAY]"
+	title = "Visualization of Climate Data using  NetCDF xarray Map Plotting (Galaxy Training Materials)",
+	year = "",
+	month = "",
+	day = ""
+	url = "\url{https://training.galaxyproject.org/training-material/topics/ecology/tutorials/x-array-map-plot/tutorial.html}",
+	note = "[Online; accessed TODAY]"
 }
 @article{Hiltemann_2023,
 	doi = {10.1371/journal.pcbi.1010752},
@@ -2007,9 +1735,9 @@ note = "[Online; accessed TODAY]"
 
 <script>
 // update the date on load, or leave fallback of 'today'
-var d = new Date();
-document.getElementById("citation-code").innerHTML = document.getElementById("citation-code").innerHTML.replace("TODAY", d.toDateString());
-document.getElementById("citation-text").innerHTML = document.getElementById("citation-text").innerHTML.replace("TODAY", d.toDateString());
+const citationTodaysDate = new Date();
+document.getElementById("citation-code").innerHTML = document.getElementById("citation-code").innerHTML.replace("TODAY", citationTodaysDate.toDateString());
+document.getElementById("citation-text").innerHTML = document.getElementById("citation-text").innerHTML.replace("TODAY", citationTodaysDate.toDateString());
 </script>
 
                 <i class="far fa-thumbs-up" aria-hidden="true"></i> Congratulations on successfully completing this tutorial!
@@ -2017,6 +1745,48 @@ document.getElementById("citation-text").innerHTML = document.getElementById("ci
                 
 
                 
+
+		
+                <blockquote class="agenda follow-up" id="admins-install-missing-tools">
+                    <div class="box-title">Galaxy Administrators: Install the missing tools</div>
+			<p>You can use Ephemeris's <code>shed-tools install</code> command to install the tools used in this tutorial.</p>
+<div class="highlight"><pre class="highlight"><code>shed-tools install [-g GALAXY] [-a API_KEY] -t &lt;(curl https://training.galaxyproject.org/training-material/api/topics/ecology/tutorials/x-array-map-plot/tutorial.json | jq .admin_install_yaml -r)</code></pre></div>
+<p>Alternatively you can copy and paste the following YAML</p>
+<div class="highlight"><pre class="highlight"><code>---
+install_tool_dependencies: true
+install_repository_dependencies: true
+install_resolver_dependencies: true
+tools:
+- name: graphicsmagick_image_montage
+  owner: bgruening
+  revisions: 39881709807e
+  tool_panel_section_label: Ecology
+  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+- name: cdo_operations
+  owner: climate
+  revisions: d5355f6fa02b
+  tool_panel_section_label: Ecology
+  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+- name: xarray_coords_info
+  owner: ecology
+  revisions: 3e73f657a998
+  tool_panel_section_label: Ecology
+  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+- name: xarray_mapplot
+  owner: ecology
+  revisions: dc05bf0af58f
+  tool_panel_section_label: Ecology
+  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+- name: xarray_metadata_info
+  owner: ecology
+  revisions: e8650cdf092f
+  tool_panel_section_label: Ecology
+  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+</code></pre></div>
+                </blockquote>
+		
+
+
                 </section>
 
             </div>
@@ -2028,38 +1798,52 @@ document.getElementById("citation-text").innerHTML = document.getElementById("ci
 <br/>
 
         </div>
-        
-        <script src="/training-material/assets/js/jquery.slim.min.js"></script>
-        <script src="/training-material/assets/js/popper.min.js"></script>
-        <script src="/training-material/assets/js/bootstrap.min.js?v=3"></script>
-        <script src="/training-material/assets/js/details-element-polyfill.js"></script>
+        <footer>
+	<hr />
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-6" style="text-align: left">
+				<p>
+					The <a href="https://galaxyproject.org/teach/gtn/">Galaxy Training Network</a>
+					provides researchers with online training materials, connects them with local trainers, and helps promoting FAIR and Open Science practices worldwide. All contributions are subject to the <a rel="code-of-conduct" href="https://galaxyproject.org/community/coc/">Galaxy Project Code of Conduct</a>.
+				</p>
+				<p>
+				The GTN infrastructure is licensed under <a rel="license" href="https://github.com/galaxyproject/training-material/blob/main/LICENSE.md">MIT</a>
+				</p>
+				<p>
+				Revision <a href="https://github.com/galaxyproject/training-material/commit/476574d2b382dd1db6c2c408d8fb6ec4393a6904">476574d</a>, built with Jekyll (4.3.2 | production)
+				</p>
+			</div>
+			<div class="col-sm-6" style="text-align: right">
+				
+				<p>
+					Resource <i class="fas fa-fingerprint" aria-hidden="true"></i><span class="visually-hidden">purl</span><abbr title="Persistent URL">PURL</abbr>: <a href="https://gxy.io/GTN:T00136">https://gxy.io/GTN:T00136</a>
+				</p>
+				
+				<p>
+					<i>This Material</i>:
+					
+					is licensed under
+					<a rel="license" href="https://spdx.org/licenses/CC-BY-4.0">
+						Creative Commons Attribution 4.0 International License
+					</a>
+				</p>
+				<p>
+					<a href="https://github.com/galaxyproject/training-material/edit/main/topics/ecology/tutorials/x-array-map-plot/tutorial.md" title="Edit on GitHub">
+					<i class="fab fa-github" aria-hidden="true"></i><span class="visually-hidden">github</span> Edit on GitHub
+					</a>
+				</p>
+			</div>
+		</div>
+	</div>
+</footer>
+
+
+    </div>
+</footer>
+
+
+        <script src='/training-material/assets/js/bundle.main.js?v=1687830693'></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-        <script src="/training-material/assets/js/bootstrap-toc.min.js"></script>
-        <script src="/training-material/assets/js/main.js"></script>
-        <script src="/training-material/assets/js/clipboard.min.js"></script>
-        <script>
-        var snippets=document.querySelectorAll('div.highlight');
-        [].forEach.call(snippets,function(snippet){
-            snippet.firstChild.insertAdjacentHTML('beforebegin','<button class="btn btn-light" data-clipboard-snippet tabindex="0"><i class="fa fa-copy"></i>&nbsp;Copy</button>');
-        });
-
-        var clipboardSnippets=new ClipboardJS('[data-clipboard-snippet]',{
-            target:function(trigger){return trigger.nextElementSibling;
-        }});
-        </script>
-        
-
-        <script type="text/javascript">
-            if(window.location.hostname === "galaxyproject.github.io") {
-                // Redirect
-                var redirect = "https://training.galaxyproject.org" + window.location.pathname + window.location.search;
-                $('div.container.main-content').prepend("<div class='alert alert-warning'><strong>Note: </strong>This content has a new home at <a href=\"" + redirect + "\">" + redirect + "</a>, which you will be redirected to in 5 seconds.</div>");
-
-                window.setTimeout(function(){
-                    window.location.href = redirect;
-                }, 5000)
-
-            }
-        </script>
     </body>
 </html>

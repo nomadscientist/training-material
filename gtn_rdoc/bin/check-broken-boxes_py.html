@@ -61,13 +61,12 @@
   <h3>Pages</h3>
 
   <ul class="link-list">
-    <li><a href="../bin/add_galaxy_instance_annotations_py.html">add_galaxy_instance_annotations.py</a>
     <li><a href="../bin/add_galaxy_instance_badges_py.html">add_galaxy_instance_badges.py</a>
+    <li><a href="../bin/ari-gen-sample-audio_sh.html">ari-gen-sample-audio.sh</a>
     <li><a href="../bin/ari-make_sh.html">ari-make.sh</a>
     <li><a href="../bin/ari-quick_sh.html">ari-quick.sh</a>
     <li><a href="../bin/ari_sh.html">ari.sh</a>
     <li><a href="../bin/check-broken-boxes_py.html">check-broken-boxes.py</a>
-    <li><a href="../bin/check_instance_py.html">check_instance.py</a>
     <li><a href="../bin/data-library-update_sh.html">data-library-update.sh</a>
     <li><a href="../bin/data_libarary_download_sh.html">data_libarary_download.sh</a>
     <li><a href="../bin/docker-install-tutorials_sh.html">docker-install-tutorials.sh</a>
@@ -86,6 +85,8 @@
     <li><a href="../bin/publish-archive.html">publish-archive</a>
     <li><a href="../bin/schema-contributors_yaml.html">schema-contributors.yaml</a>
     <li><a href="../bin/schema-faq_yaml.html">schema-faq.yaml</a>
+    <li><a href="../bin/schema-learning-pathway_yaml.html">schema-learning-pathway.yaml</a>
+    <li><a href="../bin/schema-news_yaml.html">schema-news.yaml</a>
     <li><a href="../bin/schema-quiz_yaml.html">schema-quiz.yaml</a>
     <li><a href="../bin/schema-requirement-external_yaml.html">schema-requirement-external.yaml</a>
     <li><a href="../bin/schema-requirement-internal_yaml.html">schema-requirement-internal.yaml</a>
@@ -94,6 +95,7 @@
     <li><a href="../bin/schema-tutorial_yaml.html">schema-tutorial.yaml</a>
     <li><a href="../bin/setup_training_content_py.html">setup_training_content.py</a>
     <li><a href="../bin/slides-fix_css.html">slides-fix.css</a>
+    <li><a href="../bin/supported-fetch_py.html">supported-fetch.py</a>
     <li><a href="../bin/validate-has-workflow_sh.html">validate-has-workflow.sh</a>
     <li><a href="../bin/video-browser-recorder_js.html">video-browser-recorder.js</a>
     <li><a href="../bin/video-builder_py.html">video-builder.py</a>
@@ -101,7 +103,6 @@
     <li><a href="../bin/video-extract-script_py.html">video-extract-script.py</a>
     <li><a href="../bin/video-term-demo-magic_sh.html">video-term-demo-magic.sh</a>
     <li><a href="../bin/video-term-recorder_sh.html">video-term-recorder.sh</a>
-    <li><a href="../bin/workflow_to_tool_yaml_sh.html">workflow_to_tool_yaml.sh</a>
     <li><a href="../bin/yaml2json_py.html">yaml2json.py</a>
   </ul>
 </div>
@@ -111,11 +112,21 @@
 
 <main role="main" aria-label="Page bin/check-broken-boxes.py">
 
-<p>#!/usr/bin/env python import copy import re import sys</p>
+<p>#!/usr/bin/env python import copy import re import sys import logging</p>
 
-<p># read in a tutorial, and check the structure of it. file = <a href="1">sys.argv</a> tuto = open(file, &#39;r&#39;)</p>
+<p># read in a tutorial, and check the structure of it. file = <a href="1">sys.argv</a> if len(sys.argv) &gt; 2 and <a href="2">sys.argv</a> == &#39;–debug&#39;:</p>
 
-<p>boxes = <a href="\s>“>r’^(</a>*&gt;[s&gt;]*)&#39; box_open = <a href="a-z-">r’<(</a>*)-<a href="a-z-">title>(.*)<\/</a>*-title&gt;&#39; box_close = r&#39;{:<a href=”^}“>s*(.</a>*)s*}&#39; whitespace = r&#39;^(s*)&#39;</p>
+<pre class="ruby"><span class="ruby-identifier">logging</span>.<span class="ruby-identifier">basicConfig</span>(<span class="ruby-identifier">level</span>=<span class="ruby-identifier">logging</span>.<span class="ruby-constant">DEBUG</span>)
+</pre>
+
+<p>else:</p>
+
+<pre class="ruby"><span class="ruby-identifier">logging</span>.<span class="ruby-identifier">basicConfig</span>(<span class="ruby-identifier">level</span>=<span class="ruby-identifier">logging</span>.<span class="ruby-constant">ERROR</span>)
+</pre>
+
+<p>tuto = open(file, &#39;r&#39;)</p>
+
+<p>boxes = <a href="\s>“>r’^(</a>*&gt;[s&gt;]*)&#39; box_open = <a href="a-z-">r’<(</a>*)-<a href="a-z-">title>(.*)<\/</a>*-title&gt;&#39; box_close = r&#39;{:<a href=”^}“>s*(.</a>*)s*}&#39; whitespace = r&#39;^(s*)&#39; pre = r&#39;^“`&#39; in_pre = False</p>
 
 <p>tag_stack = [] prev_depth = 0</p>
 
@@ -150,16 +161,20 @@ if m:
     depth = m.group(1).count(&#39;&gt;&#39;)
 else:
     depth = 0
-# print(f&#39;{depth} {line} {text}&#39;)
+logging.debug(f&#39;A|{&quot;[pre]&quot; if in_pre else &quot;&quot;} depth={depth} line={line} {text:120s} tss={[x[&quot;tag&quot;] for x in tag_stack]}&#39;)
 
 mw = re.match(whitespace, text).group(1)
 
-if depth &gt; prev_depth:
+# Handling pre toggling
+unprefixed = stripN(text, depth)
+pre_toggle = re.match(pre, unprefixed)
+
+if not in_pre and depth &gt; prev_depth:
     unprefixed = stripN(text, depth)
     m1 = re.match(box_open, unprefixed)
     if m1:
         tag = m1.group(1).replace(&#39;-&#39;, &#39;_&#39;)
-        # print(f&#39;{mw}{&quot; &quot; * (depth - 1)}&lt;{tag}&gt;&#39;)
+        logging.debug(f&#39;B|{&quot;[pre]&quot; if in_pre else &quot;&quot;} line={line} {mw}{&quot; &quot; * (depth - 1)}&lt;{tag}&gt;&#39;)
 
         tag_stack.append({
             &#39;tag&#39;: tag,
@@ -168,31 +183,33 @@ if depth &gt; prev_depth:
             &#39;mw&#39;: mw,
         })
     else:
-        # print(f&#39;{mw}{&quot; &quot; * (depth - 1)}&lt;NONE&gt;&#39;)
+        logging.debug(f&#39;C|{&quot;[pre]&quot; if in_pre else &quot;&quot;} LINE={line} {mw}{&quot; &quot; * (depth - 1)}&lt;NONE&gt;&#39;)
         tag_stack.append({
             &#39;tag&#39;: None,
             &#39;line&#39;: line,
             &#39;text&#39;: text,
             &#39;mw&#39;: mw,
         })
-        # print(f&quot;{line} Potential Quote/Hidden/Spoken&quot;)
+        logging.debug(f&quot;D|{&#39;[pre]&#39; if in_pre else &#39;&#39;} {line} Potential Quote/Hidden/Spoken&quot;)
         # error?
 
-elif depth &lt; prev_depth:
+elif not in_pre and depth &lt; prev_depth:
     unprefixed = stripN(text, depth)
-    m1 = re.match(box_close, unprefixed)
-    # print(f&#39;prev={prev_depth} -&gt; curr={depth} line={line} m={m1} ts={len(tag_stack)} tss={[x[&quot;tag&quot;] for x in tag_stack]}&#39;)
+    m1 = re.match(box_close, unprefixed.strip())
+    logging.debug(f&#39;E|{&quot;[pre]&quot; if in_pre else &quot;&quot;} prev={prev_depth} -&gt; curr={depth} line={line} m1={m1} ({box_close} =~ {unprefixed}) ts={len(tag_stack)} tss={[x[&quot;tag&quot;] for x in tag_stack]}&#39;)
     if m1 is None:
-        # print(f&#39;NONE {line} |{text}|&#39;)
-        # print(tag_stack[-1])
-        # print(f&quot;{mw}{&#39; &#39; * (depth)}&lt;/NONE&gt;&quot;)
+        message = f&quot;Potential broken box. A {tag_stack[-1][&#39;tag&#39;]} was opened on {tag_stack[-1][&#39;line&#39;]}, but not closed on line {line}&quot;
+        print(f&quot;{file}:{line}: {message}&quot;)
+        logging.warning(f&quot;{file}:{line}: {message}&quot;)
+        logging.debug(f&#39;F|{&quot;[pre]&quot; if in_pre else &quot;&quot;} NONE {line} |{text}|&#39;)
+        logging.debug(tag_stack[-1])
+        logging.debug(f&quot;{mw}{&#39; &#39; * (depth)}&lt;/NONE&gt;&quot;)
         tag_stack.pop()
     else:
         if any([skippable_tag(BASE_SKIPPABLE_TAGS, t) for t in m1.groups()]):
-            # print(f&quot;{mw}{&#39; &#39; * (depth)}&lt;/NONE-skip tag={m1.groups()[0]}&gt;&quot;)
-            # print(f&#39;NONE {line} |{text}|&#39;)
-            # print(tag_stack[-1])
-            if &#39;code-2col&#39; in m1.groups()[0] and (len(tag_stack) == 0 or tag_stack[-1][&#39;tag&#39;] is not None):
+            logging.debug(f&quot;G|{&#39;[pre]&#39; if in_pre else &#39;&#39;} {mw}{&#39; &#39; * (depth)}&lt;/NONE-skip tag={m1.groups()[0]}&gt;&quot;)
+            logging.debug(f&#39;H|NONE {line} |{text}|&#39;)
+            if (&#39;code-2col&#39; in m1.groups()[0] or &#39;hidden&#39; in m1.groups()[0]) and (len(tag_stack) == 0 or tag_stack[-1][&#39;tag&#39;] is not None):
                 pass
                 # This is a special case.
                 # Here we don&#39;t have tag_stack[-1][&#39;tag&#39;] is None
@@ -202,21 +219,32 @@ elif depth &lt; prev_depth:
         else:
             closing_tags = m1.groups(1)[0].replace(&#39;-&#39;, &#39;_&#39;).lstrip(&#39;.&#39;).split(&#39;.&#39;)
             closing_tag = closing_tags[0].strip()
-            # print(tag_stack[-1])
-            # print(f&quot;{mw}{&#39; &#39; * (depth)}&lt;/{closing_tag}&gt;&quot;)
+            logging.debug(tag_stack[-1])
+            logging.debug(f&quot;I|{mw}{&#39; &#39; * (depth)}&lt;/{closing_tag}&gt;&quot;)
 
             if len(tag_stack) == 0:
                 message = f&quot;Potential broken was closed with {closing_tag} on line {line}&quot;
                 print(f&quot;{file}:{line}: {message}&quot;)
+                logging.warning(f&quot;{file}:{line}: {message}&quot;)
             if tag_stack[-1][&#39;tag&#39;] == closing_tag:
                 p = tag_stack.pop()
             else:
-                # print(f&#39;prev={prev_depth} -&gt; curr={depth} line={line} m={m1} c={closing_tags}&#39;)
+                logging.debug(f&#39;J|{&quot;[pre]&quot; if in_pre else &quot;&quot;} prev={prev_depth} -&gt; curr={depth} line={line} m={m1} c={closing_tags}&#39;)
                 if not (tag_stack[-1][&#39;tag&#39;] is None and closing_tag not in BASE_EXPECTED_TAGS):
                     message = f&quot;A {tag_stack[-1][&#39;tag&#39;]} was opened, but closed with {closing_tag} on line {line}&quot;
                     print(f&quot;{file}:{line}: {message}&quot;)
+                    logging.warning(f&quot;{file}:{line}: {message}&quot;)
                 else:
                     p = tag_stack.pop()
+else:
+    pass
+    #unprefixed = stripN(text, depth)
+    #pre_toggle = re.match(pre, unprefixed)
+    #if pre_toggle:
+    #    in_pre = not in_pre
+    #    logging.debug(f&#39;{&quot;[pre]&quot; if in_pre else &quot;&quot;} line={line} PRE {&quot;OPEN&quot; if in_pre else &quot;CLOSE&quot;} {text}&#39;)
+if pre_toggle:
+    in_pre = not in_pre
 
 prev_depth = depth</pre>
 
