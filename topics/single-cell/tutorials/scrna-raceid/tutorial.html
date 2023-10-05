@@ -6,29 +6,64 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <title>Downstream Single-cell RNA analysis with RaceID</title>
         
-            <script async defer data-domain="training.galaxyproject.org" src="https://plausible.galaxyproject.eu/js/plausible.js"></script>
+            <!--
+<script async defer data-domain="training.galaxyproject.org" src="https://plausible.galaxyproject.eu/js/plausible.js"></script>
+-->
+<!-- We let users opt-out, so if they've opted in, we need to append the plausible script to the body -->
+
+<script>
+var scriptElement = document.createElement("script");
+scriptElement.async = true;
+scriptElement.defer = true;
+scriptElement.setAttribute("data-domain", "training.galaxyproject.org");
+scriptElement.src = "https://plausible.galaxyproject.eu/js/plausible.js";
+
+// Appending the script element to the body
+if(localStorage.getItem('plausible-opt-out') !== 'opt-out' && navigator.doNotTrack !== "1") {
+	console.log("Plausible: opt-in");
+	// Wait for the document to be available
+	document.addEventListener("DOMContentLoaded", function(event) {
+		document.body.appendChild(scriptElement);
+	});
+}
+</script>
 
 <!-- JavaScript Error Monitoring, and performance tracking. -->
+<!--
 <script
   src="https://browser.sentry-cdn.com/7.52.1/bundle.tracing.min.js"
   integrity="sha384-muuFXKS3752PNA4rPm9Uq6BLvOfV4CXyr9MHDBPvozOJJUWLKkogEFWOIRoVps43"
   crossorigin="anonymous"
 ></script>
+-->
 <script type="text/javascript">
-Sentry.init({
-  dsn: "https://45e0ec6e4373462b92969505df37cf40@sentry.galaxyproject.org/10",
-  release: "galaxy-training-network@a9ed6e37970b1e5f4eac481a3b787017374b10e2",
-  integrations: [new Sentry.BrowserTracing(), new Sentry.Replay()],
-  sampleRate: 0.1,
-  tracesSampleRate: 0.1,
-  // Capture Replay for no sessions by default
-  replaysSessionSampleRate: 0.01,
-  // plus for 1% of sessions with an error
-  replaysOnErrorSampleRate: 0.01,
-  // PII OFF
-  sendDefaultPii: false, // Off by default but just in case.
-  environment: "production",
-});
+var scriptElement = document.createElement("script");
+scriptElement.src = "https://browser.sentry-cdn.com/7.52.1/bundle.tracing.min.js";
+scriptElement.integrity = "sha384-muuFXKS3752PNA4rPm9Uq6BLvOfV4CXyr9MHDBPvozOJJUWLKkogEFWOIRoVps43";
+scriptElement.crossOrigin = "anonymous";
+
+if(localStorage.getItem('sentry-opt-out') !== 'opt-out' && navigator.doNotTrack !== "1") {
+	console.log("Sentry: opt-in");
+	// Appending the script element to the body
+	document.addEventListener("DOMContentLoaded", function(event) {
+		document.body.appendChild(scriptElement);
+	});
+		
+	Sentry.init({
+	  dsn: "https://45e0ec6e4373462b92969505df37cf40@sentry.galaxyproject.org/10",
+	  release: "galaxy-training-network@909acb7f5a504d70212af435e02573f69d98ee8a",
+	  integrations: [new Sentry.BrowserTracing(), new Sentry.Replay()],
+	  sampleRate: 0.1,
+	  tracesSampleRate: 0.1,
+	  // Capture Replay for no sessions by default
+	  replaysSessionSampleRate: 0.01,
+	  // plus for 1% of sessions with an error
+	  replaysOnErrorSampleRate: 0.01,
+	  // PII OFF
+	  sendDefaultPii: false, // Off by default but just in case.
+	  environment: "production",
+	});
+}
 </script>
 
         
@@ -41,8 +76,8 @@ Sentry.init({
         <link rel="preload" href="/training-material/assets/fonts/AtkinsonHyperlegible/Atkinson-Hyperlegible-Italic-102a.woff2" as="font" type="font/woff2" crossorigin>
         <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML" as="script" crossorigin>
         <link rel="preload" href="/training-material/assets/css/main.css?v=3" as="style">
-        <link rel='preload' href='/training-material/assets/js/bundle.theme.js?v=1696382003' as='script'>
-<link rel='preload' href='/training-material/assets/js/bundle.main.js?v=1696382003' as='script'>
+        <link rel='preload' href='/training-material/assets/js/bundle.theme.js?v=1696468357' as='script'>
+<link rel='preload' href='/training-material/assets/js/bundle.main.js?v=1696468357' as='script'>
         <link rel="stylesheet" href="/training-material/assets/css/main.css?v=3">
         <link rel="manifest" href="/training-material/manifest.json">
         <meta name="theme-color" content="#2c3143"/>
@@ -144,7 +179,7 @@ Sentry.init({
   "isPartOf": {
     "@type": "CreativeWork",
     "name": "Single Cell",
-    "description": "Training material and practicals for all kinds of single cell analysis (particularly scRNA-seq!). When you generate your lovely gene lists for your cells, consider checking out our Transcriptomics tutorials for further network analysis!",
+    "description": "Training material and practicals for all kinds of single cell analysis (particularly scRNA-seq!). When you generate your lovely gene lists for your cells, consider checking out our Transcriptomics tutorials for further network analysis!\n\nWhat else do you want to see? You can submit tool and/or tutorial requests through an Issue, as well as up-vote requests from others at our [Single Cell Community Tool Request Site](https://github.com/nomadscientist/single-cell-galaxy/issues).\n",
     "url": "https://training.galaxyproject.org/training-material/topics/single-cell/"
   },
   "learningResourceType": "hands-on tutorial",
@@ -239,7 +274,7 @@ Sentry.init({
     {
       "@type": "CreativeWork",
       "name": "Single Cell",
-      "description": "Training material and practicals for all kinds of single cell analysis (particularly scRNA-seq!). When you generate your lovely gene lists for your cells, consider checking out our Transcriptomics tutorials for further network analysis!",
+      "description": "Training material and practicals for all kinds of single cell analysis (particularly scRNA-seq!). When you generate your lovely gene lists for your cells, consider checking out our Transcriptomics tutorials for further network analysis!\n\nWhat else do you want to see? You can submit tool and/or tutorial requests through an Issue, as well as up-vote requests from others at our [Single Cell Community Tool Request Site](https://github.com/nomadscientist/single-cell-galaxy/issues).\n",
       "url": "https://training.galaxyproject.org/training-material/topics/single-cell/"
     }
   ],
@@ -255,8 +290,8 @@ Sentry.init({
         </script>
         
     </head>
-    <body data-spy="scroll" data-target="#toc">
-        <script src='/training-material/assets/js/bundle.theme.js?v=1696382003'></script>
+    <body data-spy="scroll" data-target="#toc" data-brightness="auto" data-contrast="auto">
+        <script src='/training-material/assets/js/bundle.theme.js?v=1696468357'></script>
         <header>
     <nav class="navbar navbar-expand-md navbar-dark" aria-label="Site Navigation">
         <div class="container">
@@ -299,7 +334,7 @@ Sentry.init({
         </form>
         -->
 
-        <a class="dropdown-item" href="/training-material/faq" title="Check our FAQs">
+	<a class="dropdown-item" href="/training-material/faqs/index.html" title="Check our FAQs">
            <i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden">question</span> FAQs
         </a>
         
@@ -347,23 +382,9 @@ Sentry.init({
             
         
 
-        <div class="dropdown-item">
-            <div>
-                <i class="fas fa-palette" aria-hidden="true"></i><span class="visually-hidden">gtn-theme</span> Theme
-            </div>
-
-            <div id="theme-selector" data-toggle="buttons">
-                    <button class="btn" data-theme="default">Default</button>
-                    <button class="btn" data-theme="night">Night</button>
-                    <button class="btn" data-theme="midnight">Midnight</button>
-                    <button class="btn" data-theme="rainbow">Rainbow</button>
-                    <button class="btn" data-theme="blm">✊🏿</button>
-                    <button class="btn" data-theme="progress" >🏳️‍🌈</button>
-                    <button class="btn" data-theme="halloween">🎃</button>
-                    <button class="btn" data-theme="straya">🇦🇺</button>
-            </div>
-
-        </div>
+		<a href="/training-material/preferences.html" class="dropdown-item">
+			<i class="fas fa-palette" aria-hidden="true"></i><span class="visually-hidden">gtn-theme</span> Themes have moved <span class="badge badge-secondary">New</span>
+		</a>
 
         <div class="dropdown-item">
             <div>
@@ -408,7 +429,6 @@ Sentry.init({
         
         <div class="container main-content" role="main">
         
-
 
 
 
@@ -573,6 +593,10 @@ Sentry.init({
                     
                         
                     
+                        
+                    
+                        
+                    
                 
             </ul>
         
@@ -589,9 +613,9 @@ Sentry.init({
         
 
         
-        
 
         
+
         <div id="supporting-materials"><strong><i class="fa fa-external-link" aria-hidden="true"></i> Supporting Materials:</strong></div>
         <ul class="supporting_material">
             
@@ -651,8 +675,18 @@ Sentry.init({
 
 
             
+                
+                <li class="btn btn-default supporting_material">
+
+
+
+
+
+
+</li>
+                
+            
         </ul>
-        
 
         <div><strong><i class="far fa-calendar" aria-hidden="true"></i> Last modification:</strong> May 18, 2023 </div>
         <div><strong><i class="fas fa-balance-scale" aria-hidden="true"></i> License:</strong>
@@ -670,7 +704,7 @@ Sentry.init({
     <div class="container">
         <div class="row">
             <!-- sidebar, which will move to the top on a small screen -->
-            <div class="col-sm-2">
+            <div class="col-sm-2 hide-when-printing">
                 <nav id="toc" data-toggle="toc" class="sticky-top" aria-label="Table of Contents"></nav>
             </div>
             <div class="col-sm-10">
@@ -947,7 +981,7 @@ Sentry.init({
 <blockquote class="details">
   <div class="box-title details-title" id="details-library-size-and-number-of-features-definitions"><button class="gtn-boxify-button details" type="button" aria-controls="details-library-size-and-number-of-features-definitions" aria-expanded="true"><i class="fas fa-info-circle" aria-hidden="true" ></i> Details: Library Size and Number of Features (Definitions)<span class="fold-unfold fa fa-minus-square"></span></button></div>
 
-  <figure id="figure-1" style="max-width: 90%; margin:auto;"><img src="/training-material/topics/single-cell/images/scrna-raceid/libsize.svg" alt="Library Size and Detected Genes. " width="576" height="437" loading="lazy" /><figcaption><span class="figcaption-prefix"><strong>Figure 1</strong>:</span> Library Size and Number of Features</figcaption></figure>
+  <p><a href="/training-material/topics/single-cell/images/scrna-raceid/libsize.svg" rel="noopener noreferrer"><figure id="figure-1" style="max-width: 90%; margin:auto;"><img src="/training-material/topics/single-cell/images/scrna-raceid/libsize.svg" alt="Library Size and Detected Genes. " width="576" height="437" loading="lazy" />&lt;figcaption&gt;<span class="figcaption-prefix"><strong>Figure 1</strong>:</span> Library Size and Number of Features&lt;/figcaption&gt;</figure></a></p>
 
   <ul>
     <li><strong>Library Size</strong>: The total number of transcripts in a cell, or a column sum. <em>The minimum threshold for this can be set by “Min Transcripts” (= 3000)</em>.</li>
@@ -974,7 +1008,7 @@ Sentry.init({
 
 <p>Four histograms are generated with the top line giving the raw expression data fed into the tool, and the bottom line giving the filtered data (cells with at least 3,000 transcripts in total and genes with at least 5 transcripts in at least 5 cells).</p>
 
-<figure id="figure-2" style="max-width: 90%; margin:auto;"><img src="/training-material/topics/single-cell/images/scrna-raceid/filter_plots.png" alt="Histograms of raw and filtered data. " width="915" height="883" loading="lazy" /><figcaption><span class="figcaption-prefix"><strong>Figure 2</strong>:</span> RaceID Histograms of raw and filtered data</figcaption></figure>
+<p><a href="/training-material/topics/single-cell/images/scrna-raceid/filter_plots.png" rel="noopener noreferrer"><figure id="figure-2" style="max-width: 90%; margin:auto;"><img src="/training-material/topics/single-cell/images/scrna-raceid/filter_plots.png" alt="Histograms of raw and filtered data. " width="915" height="883" loading="lazy" />&lt;figcaption&gt;<span class="figcaption-prefix"><strong>Figure 2</strong>:</span> RaceID Histograms of raw and filtered data&lt;/figcaption&gt;</figure></a></p>
 
 <ul>
   <li>
@@ -1088,7 +1122,7 @@ As the variables of the dataset, the more genes included, the more complex the m
 
 <h2 id="biological-variation">Biological Variation</h2>
 
-<figure id="figure-3" style="max-width: 90%; margin:auto;"><img src="/training-material/topics/single-cell/images/scrna-raceid/cellcycle.svg" alt="Sources of variation. " width="830" height="406" loading="lazy" /><figcaption><span class="figcaption-prefix"><strong>Figure 3</strong>:</span> Sources of unwanted biological variation: (Left) Transcriptional Bursting, and (Right) Cell-cycle Variation</figcaption></figure>
+<p><a href="/training-material/topics/single-cell/images/scrna-raceid/cellcycle.svg" rel="noopener noreferrer"><figure id="figure-3" style="max-width: 90%; margin:auto;"><img src="/training-material/topics/single-cell/images/scrna-raceid/cellcycle.svg" alt="Sources of variation. " width="830" height="406" loading="lazy" />&lt;figcaption&gt;<span class="figcaption-prefix"><strong>Figure 3</strong>:</span> Sources of unwanted biological variation: (Left) Transcriptional Bursting, and (Right) Cell-cycle Variation&lt;/figcaption&gt;</figure></a></p>
 
 <p>Transcriptional bursting is a stochastic model for the transcription process in a cell, where transcription does not occur as a smooth or continuous process but occurs in spontaneous and discrete ‘bursts’ thought to be only loosely associated with chromatin conformation/availability. It is an effect that is not seen in bulk RNA-seq due to the smoothing effect of measuring average gene expression across a tissue. The effect is more pronounced in single-cell and is hard to model against.</p>
 
@@ -1096,7 +1130,7 @@ As the variables of the dataset, the more genes included, the more complex the m
 
 <h2 id="technical-variation">Technical Variation</h2>
 
-<figure id="figure-4" style="max-width: 90%; margin:auto;"><img src="/training-material/topics/single-cell/images/scrna-raceid/technical_variation.svg" alt="Sources of variation. " width="862" height="426" loading="lazy" /><figcaption><span class="figcaption-prefix"><strong>Figure 4</strong>:</span> Sources of unwanted technical variation</figcaption></figure>
+<p><a href="/training-material/topics/single-cell/images/scrna-raceid/technical_variation.svg" rel="noopener noreferrer"><figure id="figure-4" style="max-width: 90%; margin:auto;"><img src="/training-material/topics/single-cell/images/scrna-raceid/technical_variation.svg" alt="Sources of variation. " width="862" height="426" loading="lazy" />&lt;figcaption&gt;<span class="figcaption-prefix"><strong>Figure 4</strong>:</span> Sources of unwanted technical variation&lt;/figcaption&gt;</figure></a></p>
 
 <p>Technical variation appears in three main forms: <em>Library size variation</em>, <em>Amplification bias</em>, and <em>Dropout events</em>.</p>
 
@@ -1156,7 +1190,7 @@ As the variables of the dataset, the more genes included, the more complex the m
   <p>In order to perform clustering, the proximity of cells to one another are first defined by a distance metric
 such as <a href="https://en.wikipedia.org/wiki/Metric_(mathematics)">Euclidean distance or other</a>.</p>
 
-  <figure id="figure-5" style="max-width: 90%; margin:auto;"><img src="/training-material/topics/single-cell/images/scrna-raceid/distance.svg" alt="Distances. " width="571" height="349" loading="lazy" /><figcaption><span class="figcaption-prefix"><strong>Figure 5</strong>:</span> Euclidean distance between three points (R, P, V) across three features (G1, G2, G3)</figcaption></figure>
+  <p><a href="/training-material/topics/single-cell/images/scrna-raceid/distance.svg" rel="noopener noreferrer"><figure id="figure-5" style="max-width: 90%; margin:auto;"><img src="/training-material/topics/single-cell/images/scrna-raceid/distance.svg" alt="Distances. " width="571" height="349" loading="lazy" />&lt;figcaption&gt;<span class="figcaption-prefix"><strong>Figure 5</strong>:</span> Euclidean distance between three points (R, P, V) across three features (G1, G2, G3)&lt;/figcaption&gt;</figure></a></p>
 
   <p>The clustering then tries to find groupings of cells using this distance matrix.</p>
 
@@ -1184,7 +1218,7 @@ such as <a href="https://en.wikipedia.org/wiki/Metric_(mathematics)">Euclidean d
 
 <p>The first three plots in the PDF report tell us about the stability/reliability of our clusters, and are more important indicators for the quality of our clustering than any of the resultant graph projections, such as PCA or tSNE.</p>
 
-<figure id="figure-6" style="max-width: 90%; margin:auto;"><img src="/training-material/topics/single-cell/images/scrna-raceid/sat_jacc.png" alt="Stability Plots. " width="896" height="842" loading="lazy" /><figcaption><span class="figcaption-prefix"><strong>Figure 6</strong>:</span> RaceID Saturation and Jaccard Distance Plots</figcaption></figure>
+<p><a href="/training-material/topics/single-cell/images/scrna-raceid/sat_jacc.png" rel="noopener noreferrer"><figure id="figure-6" style="max-width: 90%; margin:auto;"><img src="/training-material/topics/single-cell/images/scrna-raceid/sat_jacc.png" alt="Stability Plots. " width="896" height="842" loading="lazy" />&lt;figcaption&gt;<span class="figcaption-prefix"><strong>Figure 6</strong>:</span> RaceID Saturation and Jaccard Distance Plots&lt;/figcaption&gt;</figure></a></p>
 
 <ul>
   <li>
@@ -1224,7 +1258,7 @@ such as <a href="https://en.wikipedia.org/wiki/Metric_(mathematics)">Euclidean d
 
   <p>In the case of single-cell data, sets are defined as the cells contained within a given cluster, and the Jaccard similarity score provides a quantitative measure for how distinct a given cluster is, based on its similarity to other sets.</p>
 
-  <figure id="figure-7" style="max-width: 90%; margin:auto;"><img src="/training-material/topics/single-cell/images/scrna-raceid/jaccard.svg" alt="Jaccard. " width="836" height="607" loading="lazy" /><figcaption><span class="figcaption-prefix"><strong>Figure 7</strong>:</span> Example Jaccard Distance calculation</figcaption></figure>
+  <p><a href="/training-material/topics/single-cell/images/scrna-raceid/jaccard.svg" rel="noopener noreferrer"><figure id="figure-7" style="max-width: 90%; margin:auto;"><img src="/training-material/topics/single-cell/images/scrna-raceid/jaccard.svg" alt="Jaccard. " width="836" height="607" loading="lazy" />&lt;figcaption&gt;<span class="figcaption-prefix"><strong>Figure 7</strong>:</span> Example Jaccard Distance calculation&lt;/figcaption&gt;</figure></a></p>
 
 </blockquote>
 
@@ -1238,7 +1272,7 @@ such as <a href="https://en.wikipedia.org/wiki/Metric_(mathematics)">Euclidean d
 
 <p>The next three plots attempts to do this by describing the variation of the gene expression, given by; a Background plot, a Sensitivity plot, and an Outlier probability plot.</p>
 
-<figure id="figure-8" style="max-width: 90%; margin:auto;"><img src="/training-material/topics/single-cell/images/scrna-raceid/gexpr.png" alt="Gene Expression Plots. " width="907" height="812" loading="lazy" /><figcaption><span class="figcaption-prefix"><strong>Figure 8</strong>:</span> RaceID Gene Expression Plots</figcaption></figure>
+<p><a href="/training-material/topics/single-cell/images/scrna-raceid/gexpr.png" rel="noopener noreferrer"><figure id="figure-8" style="max-width: 90%; margin:auto;"><img src="/training-material/topics/single-cell/images/scrna-raceid/gexpr.png" alt="Gene Expression Plots. " width="907" height="812" loading="lazy" />&lt;figcaption&gt;<span class="figcaption-prefix"><strong>Figure 8</strong>:</span> RaceID Gene Expression Plots&lt;/figcaption&gt;</figure></a></p>
 
 <ul>
   <li>
@@ -1370,7 +1404,7 @@ such as <a href="https://en.wikipedia.org/wiki/Metric_(mathematics)">Euclidean d
     </li>
   </ul>
 
-  <figure id="figure-9" style="max-width: 90%; margin:auto;"><img src="https://upload.wikimedia.org/wikipedia/commons/e/ea/K-means_convergence.gif" alt="K-means. " loading="lazy" /><figcaption><span class="figcaption-prefix"><strong>Figure 9</strong>:</span> K-means convergence (Wikimedia Commons)</figcaption></figure>
+  <p><a href="https://upload.wikimedia.org/wikipedia/commons/e/ea/K-means_convergence.gif" rel="noopener noreferrer"><figure id="figure-9" style="max-width: 90%; margin:auto;"><img src="https://upload.wikimedia.org/wikipedia/commons/e/ea/K-means_convergence.gif" alt="K-means. " loading="lazy" />&lt;figcaption&gt;<span class="figcaption-prefix"><strong>Figure 9</strong>:</span> K-means convergence (Wikimedia Commons)&lt;/figcaption&gt;</figure></a></p>
 
   <p>In terms of single-cell data, for <em>G</em> genes, each datapoint is a G-dimensional cell. The distances between cells are computed using a <a href="#performing-the-clustering">given metric</a>, and the k points are G-dimensional points indicating the centre of cluster. The k points are then updated for each iteration of the algorithm.</p>
 
@@ -1394,7 +1428,7 @@ such as <a href="https://en.wikipedia.org/wiki/Metric_(mathematics)">Euclidean d
 
 </blockquote>
 
-<figure id="figure-10" style="max-width: 90%; margin:auto;"><img src="/training-material/topics/single-cell/images/scrna-raceid/heatmaps.png" alt="Heatmaps. " width="2019" height="940" loading="lazy" /><figcaption><span class="figcaption-prefix"><strong>Figure 10</strong>:</span> RaceID Heatmaps for initial and final clusters</figcaption></figure>
+<p><a href="/training-material/topics/single-cell/images/scrna-raceid/heatmaps.png" rel="noopener noreferrer"><figure id="figure-10" style="max-width: 90%; margin:auto;"><img src="/training-material/topics/single-cell/images/scrna-raceid/heatmaps.png" alt="Heatmaps. " width="2019" height="940" loading="lazy" />&lt;figcaption&gt;<span class="figcaption-prefix"><strong>Figure 10</strong>:</span> RaceID Heatmaps for initial and final clusters&lt;/figcaption&gt;</figure></a></p>
 
 <p>The difference shown between the initial and final clustering is sometimes subtle depending which of the clusters the new clusters have been extracted from.</p>
 
@@ -1420,7 +1454,7 @@ such as <a href="https://en.wikipedia.org/wiki/Metric_(mathematics)">Euclidean d
 
 <p>All the following plots are heatmaps for the individual genes expressed in each cluster.</p>
 
-<figure id="figure-11" style="max-width: 90%; margin:auto;"><img src="/training-material/topics/single-cell/images/scrna-raceid/geneheatmaps.png" alt="Gene Heatmaps. " width="6500" height="6500" loading="lazy" /><figcaption><span class="figcaption-prefix"><strong>Figure 11</strong>:</span> RaceID Individual (final) heatmaps for the top 10 significant genes in clusters 1 to 4</figcaption></figure>
+<p><a href="/training-material/topics/single-cell/images/scrna-raceid/geneheatmaps.png" rel="noopener noreferrer"><figure id="figure-11" style="max-width: 90%; margin:auto;"><img src="/training-material/topics/single-cell/images/scrna-raceid/geneheatmaps.png" alt="Gene Heatmaps. " width="6500" height="6500" loading="lazy" />&lt;figcaption&gt;<span class="figcaption-prefix"><strong>Figure 11</strong>:</span> RaceID Individual (final) heatmaps for the top 10 significant genes in clusters 1 to 4&lt;/figcaption&gt;</figure></a></p>
 
 <p>The top 10 defining genes from each cluster (above only <code class="language-plaintext highlighter-rouge">c1</code>-<code class="language-plaintext highlighter-rouge">c4</code> are shown) give us an idea of how unique these genes are to the cluster.</p>
 
@@ -1476,7 +1510,7 @@ such as <a href="https://en.wikipedia.org/wiki/Metric_(mathematics)">Euclidean d
 
 <blockquote class="details">
   <div class="box-title details-title" id="details-dimension-reduction"><button class="gtn-boxify-button details" type="button" aria-controls="details-dimension-reduction" aria-expanded="true"><i class="fas fa-info-circle" aria-hidden="true" ></i> Details: Dimension Reduction<span class="fold-unfold fa fa-minus-square"></span></button></div>
-  <figure id="figure-12" style="max-width: 90%; margin:auto;"><img src="/training-material/topics/single-cell/images/scrna-raceid/dimred.svg" alt="Dim red. " width="854" height="265" loading="lazy" /><figcaption><span class="figcaption-prefix"><strong>Figure 12</strong>:</span> Reducing a set of 4 observations from 3D to 2D space, whilst approximating the 3D relationships</figcaption></figure>
+  <p><a href="/training-material/topics/single-cell/images/scrna-raceid/dimred.svg" rel="noopener noreferrer"><figure id="figure-12" style="max-width: 90%; margin:auto;"><img src="/training-material/topics/single-cell/images/scrna-raceid/dimred.svg" alt="Dim red. " width="854" height="265" loading="lazy" />&lt;figcaption&gt;<span class="figcaption-prefix"><strong>Figure 12</strong>:</span> Reducing a set of 4 observations from 3D to 2D space, whilst approximating the 3D relationships&lt;/figcaption&gt;</figure></a></p>
 
   <p>Dimension reduction aims to preserve the distances and relationship of the higher dimensional (G-dimensional) data in a lower dimensional (usually 2D) space.</p>
 
@@ -1510,7 +1544,7 @@ such as <a href="https://en.wikipedia.org/wiki/Metric_(mathematics)">Euclidean d
 
 <p><strong>RaceID</strong> makes use of tSNE and force-directed (Fruchterman-Reingold) graph layouts to space the clusters in a visually meaningful manner to show the separation and relative proximity of clusters to one another.</p>
 
-<figure id="figure-13" style="max-width: 90%; margin:auto;"><img src="/training-material/topics/single-cell/images/scrna-raceid/tsne_umap_fr.png" alt="Clusters. " width="3758" height="5491" loading="lazy" /><figcaption><span class="figcaption-prefix"><strong>Figure 13</strong>:</span> RaceID Initial and Final clusters using tSNE, UMAP and F-R projections</figcaption></figure>
+<p><a href="/training-material/topics/single-cell/images/scrna-raceid/tsne_umap_fr.png" rel="noopener noreferrer"><figure id="figure-13" style="max-width: 90%; margin:auto;"><img src="/training-material/topics/single-cell/images/scrna-raceid/tsne_umap_fr.png" alt="Clusters. " width="3758" height="5491" loading="lazy" />&lt;figcaption&gt;<span class="figcaption-prefix"><strong>Figure 13</strong>:</span> RaceID Initial and Final clusters using tSNE, UMAP and F-R projections&lt;/figcaption&gt;</figure></a></p>
 
 <p>The figure above displays the initial (left top/bottom) clusters detected during the clustering stage, as well as the final (right top/bottom) clusters determined during the outlier detection stage, projected using tSNE and Fruchterman-Rheingold graph layouts.</p>
 
@@ -1545,13 +1579,13 @@ such as <a href="https://en.wikipedia.org/wiki/Metric_(mathematics)">Euclidean d
 <blockquote class="details">
   <div class="box-title details-title" id="details-continuous-phenotypes-vs-discrete-clustering-methods"><button class="gtn-boxify-button details" type="button" aria-controls="details-continuous-phenotypes-vs-discrete-clustering-methods" aria-expanded="true"><i class="fas fa-info-circle" aria-hidden="true" ></i> Details: Continuous Phenotypes vs Discrete Clustering Methods<span class="fold-unfold fa fa-minus-square"></span></button></div>
 
-  <figure id="figure-14" style="max-width: 90%; margin:auto;"><img src="/training-material/topics/single-cell/images/scrna-raceid/contpheno.svg" alt="Continuous Phenotypes. " width="869" height="332" loading="lazy" /><figcaption><span class="figcaption-prefix"><strong>Figure 14</strong>:</span> The continuous phenotypes along a red blood cell development trajectory</figcaption></figure>
+  <p><a href="/training-material/topics/single-cell/images/scrna-raceid/contpheno.svg" rel="noopener noreferrer"><figure id="figure-14" style="max-width: 90%; margin:auto;"><img src="/training-material/topics/single-cell/images/scrna-raceid/contpheno.svg" alt="Continuous Phenotypes. " width="869" height="332" loading="lazy" />&lt;figcaption&gt;<span class="figcaption-prefix"><strong>Figure 14</strong>:</span> The continuous phenotypes along a red blood cell development trajectory&lt;/figcaption&gt;</figure></a></p>
 
   <p>The gene expression profile for Reticulocytes is distinct from the gene expression profile for the mature Red Blood Cells that they will become, but the cells that are actually undergoing this short-lived transition from Reticulocyte to Red Blood Cell will not fit neatly into the two aforementioned gene expression profiles, instead having their own profile which lies somewhere in between.</p>
 
   <p>As a result it is often false to think of cell clustering as an exercise in classification, but better to be thought of as a desire to find the relatedness between expression profiles. A helpful visual example of this is to not think of assigning cells to different disconnected ‘peaks’ of expression, but to place cells along an expression peak landscape that describes not only which expression profile they resemble the most, but along which gradient (or development trajectory) they adhere to, allowing transient cell types to be better assigned.</p>
 
-  <figure id="figure-15" style="max-width: 90%; margin:auto;"><img src="/training-material/topics/single-cell/images/scrna-raceid/mountains.svg" alt="Discrete vs Continuous. " width="652" height="557" loading="lazy" /><figcaption><span class="figcaption-prefix"><strong>Figure 15</strong>:</span> (Above) Cells assigned to discrete profiles, compared to (Below) Cells placed along a continuous expression profile landscape.</figcaption></figure>
+  <p><a href="/training-material/topics/single-cell/images/scrna-raceid/mountains.svg" rel="noopener noreferrer"><figure id="figure-15" style="max-width: 90%; margin:auto;"><img src="/training-material/topics/single-cell/images/scrna-raceid/mountains.svg" alt="Discrete vs Continuous. " width="652" height="557" loading="lazy" />&lt;figcaption&gt;<span class="figcaption-prefix"><strong>Figure 15</strong>:</span> (Above) Cells assigned to discrete profiles, compared to (Below) Cells placed along a continuous expression profile landscape.&lt;/figcaption&gt;</figure></a></p>
 
   <p>The clustering of cells with single-cell RNA-seq data, is therefore not a classification problem, but a <em>manifold</em> detection one, where the manifold ultimately describes the topology of the data, and allows us to see relatedness between clusters.</p>
 
@@ -1628,7 +1662,7 @@ such as <a href="https://en.wikipedia.org/wiki/Metric_(mathematics)">Euclidean d
 
 </blockquote>
 
-<figure id="figure-16" style="max-width: 90%; margin:auto;"><img src="/training-material/topics/single-cell/images/scrna-raceid/clustinspect_cells.png" alt="Cluster Inspection of Cells. " width="886" height="821" loading="lazy" /><figcaption><span class="figcaption-prefix"><strong>Figure 16</strong>:</span> RaceID MA plot of cells in cluster 1 and cluster 3</figcaption></figure>
+<p><a href="/training-material/topics/single-cell/images/scrna-raceid/clustinspect_cells.png" rel="noopener noreferrer"><figure id="figure-16" style="max-width: 90%; margin:auto;"><img src="/training-material/topics/single-cell/images/scrna-raceid/clustinspect_cells.png" alt="Cluster Inspection of Cells. " width="886" height="821" loading="lazy" />&lt;figcaption&gt;<span class="figcaption-prefix"><strong>Figure 16</strong>:</span> RaceID MA plot of cells in cluster 1 and cluster 3&lt;/figcaption&gt;</figure></a></p>
 
 <p>The genes shown as grey dots are not labelled because they are not so differentially expressed between the two clusters, but the genes as labelled red dots on the fringes do display significant variability between the clusters.</p>
 
@@ -1685,7 +1719,7 @@ such as <a href="https://en.wikipedia.org/wiki/Metric_(mathematics)">Euclidean d
 
 </blockquote>
 
-<figure id="figure-17" style="max-width: 90%; margin:auto;"><img src="/training-material/topics/single-cell/images/scrna-raceid/goi.png" alt="Expression Plot. " width="5993" height="5408" loading="lazy" /><figcaption><span class="figcaption-prefix"><strong>Figure 17</strong>:</span> RaceID Expression plot of genes of interest across different cells.</figcaption></figure>
+<p><a href="/training-material/topics/single-cell/images/scrna-raceid/goi.png" rel="noopener noreferrer"><figure id="figure-17" style="max-width: 90%; margin:auto;"><img src="/training-material/topics/single-cell/images/scrna-raceid/goi.png" alt="Expression Plot. " width="5993" height="5408" loading="lazy" />&lt;figcaption&gt;<span class="figcaption-prefix"><strong>Figure 17</strong>:</span> RaceID Expression plot of genes of interest across different cells.&lt;/figcaption&gt;</figure></a></p>
 
 <p>The above figure shows where the combined expression of <em>Gstm3</em>, <em>St3gal4</em>, and <em>Gna11</em> is centred, which from the tSNE plot (top-left) appears to be concentrated in cluster 6. The log expression plot (top-right) changes the scale so that lesser expression in other clusters is still visible. The bottom images provide the same information but using the F-R layout.</p>
 
@@ -1763,7 +1797,7 @@ such as <a href="https://en.wikipedia.org/wiki/Metric_(mathematics)">Euclidean d
 
 </blockquote>
 
-<figure id="figure-18" style="max-width: 90%; margin:auto;"><img src="/training-material/topics/single-cell/images/scrna-raceid/stemid_lineage.png" alt="Lineage Computation Plots. " width="5843" height="5720" loading="lazy" /><figcaption><span class="figcaption-prefix"><strong>Figure 18</strong>:</span> StemID Lineage Tree and Branches of significance.</figcaption></figure>
+<p><a href="/training-material/topics/single-cell/images/scrna-raceid/stemid_lineage.png" rel="noopener noreferrer"><figure id="figure-18" style="max-width: 90%; margin:auto;"><img src="/training-material/topics/single-cell/images/scrna-raceid/stemid_lineage.png" alt="Lineage Computation Plots. " width="5843" height="5720" loading="lazy" />&lt;figcaption&gt;<span class="figcaption-prefix"><strong>Figure 18</strong>:</span> StemID Lineage Tree and Branches of significance.&lt;/figcaption&gt;</figure></a></p>
 
 <ul>
   <li>
@@ -1859,7 +1893,7 @@ such as <a href="https://en.wikipedia.org/wiki/Metric_(mathematics)">Euclidean d
 
 <p>To see how the link score is actually calculated, the image below provides some context:</p>
 
-<figure id="figure-19" style="max-width: 90%; margin:auto;"><img src="/training-material/topics/single-cell/images/scrna-raceid/stemid_linkscores.png" alt="Link scores. " width="2996" height="2996" loading="lazy" /><figcaption><span class="figcaption-prefix"><strong>Figure 19</strong>:</span> StemID Link scores between branches.</figcaption></figure>
+<p><a href="/training-material/topics/single-cell/images/scrna-raceid/stemid_linkscores.png" rel="noopener noreferrer"><figure id="figure-19" style="max-width: 90%; margin:auto;"><img src="/training-material/topics/single-cell/images/scrna-raceid/stemid_linkscores.png" alt="Link scores. " width="2996" height="2996" loading="lazy" />&lt;figcaption&gt;<span class="figcaption-prefix"><strong>Figure 19</strong>:</span> StemID Link scores between branches.&lt;/figcaption&gt;</figure></a></p>
 
 <p>The top of the three charts shows the number of links above a threshold that each cluster exhibits to another. The more links a cluster has, the more evidence that the cluster describes a progenitor cell type that gives rise to other more mature types.</p>
 
@@ -1901,7 +1935,7 @@ such as <a href="https://en.wikipedia.org/wiki/Metric_(mathematics)">Euclidean d
 </blockquote>
 
 <!--
-<figure id="figure-20" style="max-width: 90%; margin:auto;"><img src="/training-material/topics/single-cell/images/scrna-raceid/stemid_other.png"  alt="Other link scores. "  width="6500" height=2996 loading="lazy"><figcaption><span class="figcaption-prefix"><strong>Figure 20</strong>:</span> Other link scores between branches.</figcaption></figure>
+<a href="/training-material/topics/single-cell/images/scrna-raceid/stemid_other.png" rel="noopener noreferrer"><figure id="figure-20" style="max-width: 90%; margin:auto;"><img src="/training-material/topics/single-cell/images/scrna-raceid/stemid_other.png"  alt="Other link scores. "  width="6500" height=2996 loading="lazy"><figcaption><span class="figcaption-prefix"><strong>Figure 20</strong>:</span> Other link scores between branches.</figcaption></figure></a>
 -->
 
 <p>In a similar vein to how clusters were explored individually in RaceID, we can also explore individual branches of the lineage tree to see how some genes are up or down regulated.</p>
@@ -1946,7 +1980,7 @@ such as <a href="https://en.wikipedia.org/wiki/Metric_(mathematics)">Euclidean d
 
 </blockquote>
 
-<figure id="figure-21" style="max-width: 90%; margin:auto;"><img src="/training-material/topics/single-cell/images/scrna-raceid/stemid_cells.png" alt="Heatmap Cells. " width="2955" height="5672" loading="lazy" /><figcaption><span class="figcaption-prefix"><strong>Figure 21</strong>:</span> (Top) StemID Minimal spanning tree of all cells projected along the links between clusters. (Bottom) StemID Heatmap of Cluster 3 cells compared to other clusters.</figcaption></figure>
+<p><a href="/training-material/topics/single-cell/images/scrna-raceid/stemid_cells.png" rel="noopener noreferrer"><figure id="figure-21" style="max-width: 90%; margin:auto;"><img src="/training-material/topics/single-cell/images/scrna-raceid/stemid_cells.png" alt="Heatmap Cells. " width="2955" height="5672" loading="lazy" />&lt;figcaption&gt;<span class="figcaption-prefix"><strong>Figure 21</strong>:</span> (Top) StemID Minimal spanning tree of all cells projected along the links between clusters. (Bottom) StemID Heatmap of Cluster 3 cells compared to other clusters.&lt;/figcaption&gt;</figure></a></p>
 
 <p>The vertical names along the heatmap are the cells from <code class="language-plaintext highlighter-rouge">c3</code> being compared to all other clusters.</p>
 
@@ -2030,7 +2064,7 @@ Unsurprisingly, there is a higher score for the 3 to 1 trajectory for `c1` cells
 
 </blockquote>
 
-<figure id="figure-22" style="max-width: 90%; margin:auto;"><img src="/training-material/topics/single-cell/images/scrna-raceid/fateid.png" alt="Heatmap FateID. " width="6098" height="6026" loading="lazy" /><figcaption><span class="figcaption-prefix"><strong>Figure 22</strong>:</span> FateID Heatmap</figcaption></figure>
+<p><a href="/training-material/topics/single-cell/images/scrna-raceid/fateid.png" rel="noopener noreferrer"><figure id="figure-22" style="max-width: 90%; margin:auto;"><img src="/training-material/topics/single-cell/images/scrna-raceid/fateid.png" alt="Heatmap FateID. " width="6098" height="6026" loading="lazy" />&lt;figcaption&gt;<span class="figcaption-prefix"><strong>Figure 22</strong>:</span> FateID Heatmap&lt;/figcaption&gt;</figure></a></p>
 
 <p>The heatmaps generated depict the same data, but at different “heat” scales to better colourise the map. The genes here are not genes, but are gene expression modules, which can be interpreted as gene motifs that are present in both <code class="language-plaintext highlighter-rouge">c1</code> and <code class="language-plaintext highlighter-rouge">c5</code>, but at different levels of expression.</p>
 
@@ -2059,7 +2093,7 @@ Unsurprisingly, there is a higher score for the 3 to 1 trajectory for `c1` cells
 
 <p>The steps of this workflow can be found in the related workflow.</p>
 
-<figure id="figure-23" style="max-width: 90%; margin:auto;"><img src="/training-material/topics/single-cell/images/scrna-raceid/workflow.png" alt="Workflow. " width="1111" height="707" loading="lazy" /><figcaption><span class="figcaption-prefix"><strong>Figure 23</strong>:</span> RaceID Workflow</figcaption></figure>
+<p><a href="/training-material/topics/single-cell/images/scrna-raceid/workflow.png" rel="noopener noreferrer"><figure id="figure-23" style="max-width: 90%; margin:auto;"><img src="/training-material/topics/single-cell/images/scrna-raceid/workflow.png" alt="Workflow. " width="1111" height="707" loading="lazy" />&lt;figcaption&gt;<span class="figcaption-prefix"><strong>Figure 23</strong>:</span> RaceID Workflow&lt;/figcaption&gt;</figure></a></p>
 
 <p>All steps of the workflow have produced an R Data object (RDS) that serves as an input into the next step, but these objects can also be loaded into an R environment and analysed using any desired library.</p>
 
@@ -2263,6 +2297,10 @@ document.getElementById("citation-text").innerHTML = document.getElementById("ci
                     
                         
                     
+                        
+                    
+                        
+                    
                 
             </ul>
         
@@ -2358,7 +2396,7 @@ tools:
 				The GTN infrastructure is licensed under <a rel="license" href="https://github.com/galaxyproject/training-material/blob/main/LICENSE.md">MIT</a>
 				</p>
 				<p>
-				Revision <a href="https://github.com/galaxyproject/training-material/commit/a9ed6e37970b1e5f4eac481a3b787017374b10e2">a9ed6e3</a>, built with Jekyll (4.3.2 | production)
+				Revision <a href="https://github.com/galaxyproject/training-material/commit/909acb7f5a504d70212af435e02573f69d98ee8a">909acb7</a>, built with Jekyll (4.3.2 | production)
 				</p>
 			</div>
 			<div class="col-sm-6" style="text-align: right">
@@ -2390,7 +2428,7 @@ tools:
 </footer>
 
 
-        <script src='/training-material/assets/js/bundle.main.js?v=1696382003'></script>
+        <script src='/training-material/assets/js/bundle.main.js?v=1696468357'></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     </body>
 </html>

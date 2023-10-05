@@ -6,29 +6,64 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <title>How I learned to stop worrying and love the systemd</title>
         
-            <script async defer data-domain="training.galaxyproject.org" src="https://plausible.galaxyproject.eu/js/plausible.js"></script>
+            <!--
+<script async defer data-domain="training.galaxyproject.org" src="https://plausible.galaxyproject.eu/js/plausible.js"></script>
+-->
+<!-- We let users opt-out, so if they've opted in, we need to append the plausible script to the body -->
+
+<script>
+var scriptElement = document.createElement("script");
+scriptElement.async = true;
+scriptElement.defer = true;
+scriptElement.setAttribute("data-domain", "training.galaxyproject.org");
+scriptElement.src = "https://plausible.galaxyproject.eu/js/plausible.js";
+
+// Appending the script element to the body
+if(localStorage.getItem('plausible-opt-out') !== 'opt-out' && navigator.doNotTrack !== "1") {
+	console.log("Plausible: opt-in");
+	// Wait for the document to be available
+	document.addEventListener("DOMContentLoaded", function(event) {
+		document.body.appendChild(scriptElement);
+	});
+}
+</script>
 
 <!-- JavaScript Error Monitoring, and performance tracking. -->
+<!--
 <script
   src="https://browser.sentry-cdn.com/7.52.1/bundle.tracing.min.js"
   integrity="sha384-muuFXKS3752PNA4rPm9Uq6BLvOfV4CXyr9MHDBPvozOJJUWLKkogEFWOIRoVps43"
   crossorigin="anonymous"
 ></script>
+-->
 <script type="text/javascript">
-Sentry.init({
-  dsn: "https://45e0ec6e4373462b92969505df37cf40@sentry.galaxyproject.org/10",
-  release: "galaxy-training-network@a9ed6e37970b1e5f4eac481a3b787017374b10e2",
-  integrations: [new Sentry.BrowserTracing(), new Sentry.Replay()],
-  sampleRate: 0.1,
-  tracesSampleRate: 0.1,
-  // Capture Replay for no sessions by default
-  replaysSessionSampleRate: 0.01,
-  // plus for 1% of sessions with an error
-  replaysOnErrorSampleRate: 0.01,
-  // PII OFF
-  sendDefaultPii: false, // Off by default but just in case.
-  environment: "production",
-});
+var scriptElement = document.createElement("script");
+scriptElement.src = "https://browser.sentry-cdn.com/7.52.1/bundle.tracing.min.js";
+scriptElement.integrity = "sha384-muuFXKS3752PNA4rPm9Uq6BLvOfV4CXyr9MHDBPvozOJJUWLKkogEFWOIRoVps43";
+scriptElement.crossOrigin = "anonymous";
+
+if(localStorage.getItem('sentry-opt-out') !== 'opt-out' && navigator.doNotTrack !== "1") {
+	console.log("Sentry: opt-in");
+	// Appending the script element to the body
+	document.addEventListener("DOMContentLoaded", function(event) {
+		document.body.appendChild(scriptElement);
+	});
+		
+	Sentry.init({
+	  dsn: "https://45e0ec6e4373462b92969505df37cf40@sentry.galaxyproject.org/10",
+	  release: "galaxy-training-network@909acb7f5a504d70212af435e02573f69d98ee8a",
+	  integrations: [new Sentry.BrowserTracing(), new Sentry.Replay()],
+	  sampleRate: 0.1,
+	  tracesSampleRate: 0.1,
+	  // Capture Replay for no sessions by default
+	  replaysSessionSampleRate: 0.01,
+	  // plus for 1% of sessions with an error
+	  replaysOnErrorSampleRate: 0.01,
+	  // PII OFF
+	  sendDefaultPii: false, // Off by default but just in case.
+	  environment: "production",
+	});
+}
 </script>
 
         
@@ -41,8 +76,8 @@ Sentry.init({
         <link rel="preload" href="/training-material/assets/fonts/AtkinsonHyperlegible/Atkinson-Hyperlegible-Italic-102a.woff2" as="font" type="font/woff2" crossorigin>
         <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML" as="script" crossorigin>
         <link rel="preload" href="/training-material/assets/css/main.css?v=3" as="style">
-        <link rel='preload' href='/training-material/assets/js/bundle.theme.js?v=1696382003' as='script'>
-<link rel='preload' href='/training-material/assets/js/bundle.main.js?v=1696382003' as='script'>
+        <link rel='preload' href='/training-material/assets/js/bundle.theme.js?v=1696468357' as='script'>
+<link rel='preload' href='/training-material/assets/js/bundle.main.js?v=1696468357' as='script'>
         <link rel="stylesheet" href="/training-material/assets/css/main.css?v=3">
         <link rel="manifest" href="/training-material/manifest.json">
         <meta name="theme-color" content="#2c3143"/>
@@ -52,7 +87,7 @@ Sentry.init({
 <meta name="DC.type" content="text">
 <meta name="DC.title" content="How I learned to stop worrying and love the systemd">
 <meta name="DC.publisher" content="Galaxy Training Network">
-<meta name="DC.date" content="2022-09-28 13:13:58 +0000">
+<meta name="DC.date" content="2023-09-27 06:52:01 +0000">
 <meta name="DC.creator" content="Helena Rasche">
 
         
@@ -93,7 +128,7 @@ Sentry.init({
     "name": "Galaxy Training Network",
     "url": "https://galaxyproject.org/teach/gtn/"
   },
-  "dateModified": "2022-09-28 13:13:58 +0000",
+  "dateModified": "2023-09-27 06:52:01 +0000",
   "discussionUrl": "https://gitter.im/Galaxy-Training-Network/Lobby",
   "headline": "How I learned to stop worrying and love the systemd",
   "interactivityType": "mixed",
@@ -239,8 +274,8 @@ Sentry.init({
         </script>
         
     </head>
-    <body data-spy="scroll" data-target="#toc">
-        <script src='/training-material/assets/js/bundle.theme.js?v=1696382003'></script>
+    <body data-spy="scroll" data-target="#toc" data-brightness="auto" data-contrast="auto">
+        <script src='/training-material/assets/js/bundle.theme.js?v=1696468357'></script>
         <header>
     <nav class="navbar navbar-expand-md navbar-dark" aria-label="Site Navigation">
         <div class="container">
@@ -283,7 +318,7 @@ Sentry.init({
         </form>
         -->
 
-        <a class="dropdown-item" href="/training-material/faq" title="Check our FAQs">
+	<a class="dropdown-item" href="/training-material/faqs/index.html" title="Check our FAQs">
            <i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden">question</span> FAQs
         </a>
         
@@ -331,23 +366,9 @@ Sentry.init({
             
         
 
-        <div class="dropdown-item">
-            <div>
-                <i class="fas fa-palette" aria-hidden="true"></i><span class="visually-hidden">gtn-theme</span> Theme
-            </div>
-
-            <div id="theme-selector" data-toggle="buttons">
-                    <button class="btn" data-theme="default">Default</button>
-                    <button class="btn" data-theme="night">Night</button>
-                    <button class="btn" data-theme="midnight">Midnight</button>
-                    <button class="btn" data-theme="rainbow">Rainbow</button>
-                    <button class="btn" data-theme="blm">✊🏿</button>
-                    <button class="btn" data-theme="progress" >🏳️‍🌈</button>
-                    <button class="btn" data-theme="halloween">🎃</button>
-                    <button class="btn" data-theme="straya">🇦🇺</button>
-            </div>
-
-        </div>
+		<a href="/training-material/preferences.html" class="dropdown-item">
+			<i class="fas fa-palette" aria-hidden="true"></i><span class="visually-hidden">gtn-theme</span> Themes have moved <span class="badge badge-secondary">New</span>
+		</a>
 
         <div class="dropdown-item">
             <div>
@@ -392,7 +413,6 @@ Sentry.init({
         
         <div class="container main-content" role="main">
         
-
 
 
 
@@ -635,9 +655,9 @@ Sentry.init({
         
 
         
-        
 
         
+
         <div id="supporting-materials"><strong><i class="fa fa-external-link" aria-hidden="true"></i> Supporting Materials:</strong></div>
         <ul class="supporting_material">
             
@@ -674,10 +694,11 @@ Sentry.init({
 
 
             
+                
+            
         </ul>
-        
 
-        <div><strong><i class="far fa-calendar" aria-hidden="true"></i> Last modification:</strong> Sep 28, 2022 </div>
+        <div><strong><i class="far fa-calendar" aria-hidden="true"></i> Last modification:</strong> Sep 27, 2023 </div>
         <div><strong><i class="fas fa-balance-scale" aria-hidden="true"></i> License:</strong>
 		
             
@@ -693,7 +714,7 @@ Sentry.init({
     <div class="container">
         <div class="row">
             <!-- sidebar, which will move to the top on a small screen -->
-            <div class="col-sm-2">
+            <div class="col-sm-2 hide-when-printing">
                 <nav id="toc" data-toggle="toc" class="sticky-top" aria-label="Table of Contents"></nav>
             </div>
             <div class="col-sm-10">
@@ -714,6 +735,7 @@ Sentry.init({
       <li><a href="#status" id="markdown-toc-status">Status</a></li>
       <li><a href="#restarting" id="markdown-toc-restarting">Restarting</a></li>
       <li><a href="#failed-units" id="markdown-toc-failed-units">Failed Units</a></li>
+      <li><a href="#enabling-units" id="markdown-toc-enabling-units">Enabling Units</a></li>
       <li><a href="#editing-units-or-overriding" id="markdown-toc-editing-units-or-overriding">Editing Units or Overriding</a></li>
       <li><a href="#masking-units" id="markdown-toc-masking-units">Masking Units</a></li>
       <li><a href="#unit-security-optimisation" id="markdown-toc-unit-security-optimisation">Unit Security Optimisation</a></li>
@@ -852,6 +874,19 @@ WantedBy=multi-user.target
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>systemctl <span class="nt">--failed</span>
 </code></pre></div></div>
 
+<h2 id="enabling-units">Enabling Units</h2>
+
+<p>In order to start at boot time, it must be “enabled”, so you can run a service once knowing it won’t come back when the machine reboots (or vice versa). But you should be sure that a unit is enabled if you want it available on restart. You can do this in separate commands</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>systemctl <span class="nb">enable </span>my.service
+systemctl start my.service
+</code></pre></div></div>
+
+<p>Or simultaneously, <a href="https://unix.stackexchange.com/questions/374280/the-now-switch-of-systemctl">if you’re on a systemd v220 or newer</a>:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>systemctl <span class="nb">enable</span> <span class="nt">--now</span> my.service
+</code></pre></div></div>
+
 <h2 id="editing-units-or-overriding">Editing Units or Overriding</h2>
 
 <p>Sometimes one of the system units provided will have some weird behaviour that you need to override (or your ansible role doesn’t expose it), then you can use <code class="language-plaintext highlighter-rouge">systemctl edit unit</code> to override some settings.</p>
@@ -866,7 +901,7 @@ WantedBy=multi-user.target
 
 <p>This command will prevent the device from reaching or activating any of those targets. Useful for servers when you’re in a bind and don’t know how to remove power management:</p>
 
-<div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="go">systemctl mask sleep.target suspend.target hibernate.target hybrid-sleep.target
+<div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="go">systemctl mask sleep.target suspend.target hibernate.target hybrid-sleep.target
 </span></code></pre></div></div>
 
 <h2 id="unit-security-optimisation">Unit Security Optimisation</h2>
@@ -876,7 +911,7 @@ WantedBy=multi-user.target
 <div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">ubuntu@gat-1:~$</span><span class="w"> </span>systemd-analyze security galaxy
 <span class="go">  NAME                                       DESCRIPTION                                         EXPOSURE
 ✗ PrivateNetwork=                            Service has access to the host's network            0.5
-✓ User=/DynamicUser=                         Service runs under a static non-root user identity  
+✓ User=/DynamicUser=                         Service runs under a static non-root user identity
 </span><span class="c">....
 </span><span class="go">✗ CapabilityBoundingSet=~CAP_SYS_CHROOT      Service may issue chroot()                          0.1
 ✗ ProtectHostname=                           Service may change system host/domainname           0.1
@@ -915,7 +950,7 @@ graphical.target reached after 11.547s in userspace
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>systemd-analyze plot <span class="o">&gt;</span> plot.svg
 </code></pre></div></div>
 
-<figure id="figure-1" style="max-width: 90%; margin:auto;"><div style="overflow-x: auto"><object data="images/plot.svg" type="image/svg+xml" alt="waterfall graphic of systemd boot time, cloud-init has the most, largest red bars. ">waterfall graphic of systemd boot time, cloud-init has the most, largest red bars.</object></div><small><a target="_blank" href="images/plot.svg">Open image in new tab</a></small><figcaption><span class="figcaption-prefix"><strong>Figure 1</strong>:</span> Notice how many units wait for network to finish being ready, and are stuck until that is ready. This image was generated from a training VM. Can you spot Galaxy? It doesn't show the red bars, because it does not currently notify systemd when it's done starting up.</figcaption></figure>
+<p><a href="images/plot.svg" rel="noopener noreferrer"><figure id="figure-1" style="max-width: 90%; margin:auto;">&lt;div style="overflow-x: auto"&gt;<object data="images/plot.svg" type="image/svg+xml" alt="waterfall graphic of systemd boot time, cloud-init has the most, largest red bars. ">waterfall graphic of systemd boot time, cloud-init has the most, largest red bars.</object>&lt;/div&gt;<small><a target="_blank" href="images/plot.svg">Open image in new tab</a></small>&lt;figcaption&gt;<span class="figcaption-prefix"><strong>Figure 1</strong>:</span> Notice how many units wait for network to finish being ready, and are stuck until that is ready. This image was generated from a training VM. Can you spot Galaxy? It doesn’t show the red bars, because it does not currently notify systemd when it’s done starting up.&lt;/figcaption&gt;</figure></a></p>
 
 <h2 id="procons-of-systemd">Pro/Cons of systemd</h2>
 
@@ -1492,7 +1527,7 @@ tools: []
 				The GTN infrastructure is licensed under <a rel="license" href="https://github.com/galaxyproject/training-material/blob/main/LICENSE.md">MIT</a>
 				</p>
 				<p>
-				Revision <a href="https://github.com/galaxyproject/training-material/commit/a9ed6e37970b1e5f4eac481a3b787017374b10e2">a9ed6e3</a>, built with Jekyll (4.3.2 | production)
+				Revision <a href="https://github.com/galaxyproject/training-material/commit/909acb7f5a504d70212af435e02573f69d98ee8a">909acb7</a>, built with Jekyll (4.3.2 | production)
 				</p>
 			</div>
 			<div class="col-sm-6" style="text-align: right">
@@ -1524,7 +1559,7 @@ tools: []
 </footer>
 
 
-        <script src='/training-material/assets/js/bundle.main.js?v=1696382003'></script>
+        <script src='/training-material/assets/js/bundle.main.js?v=1696468357'></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     </body>
 </html>
