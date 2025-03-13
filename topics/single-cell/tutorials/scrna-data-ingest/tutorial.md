@@ -30,7 +30,7 @@ contributions:
     - pavanvidem
     - mtekman
   funding:
-    - elixir-fair-data
+    - elixir-uk-dash
 zenodo_link: 'https://zenodo.org/record/4574153'
 
 requirements:

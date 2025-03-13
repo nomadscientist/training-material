@@ -33,7 +33,6 @@ key_points:
 - Create a scanpy-accessible AnnData object from FASTQ files, including relevant gene
   metadata
 tags:
-- 10x
 - paper-replication
 - MIGHTS
 contributions:

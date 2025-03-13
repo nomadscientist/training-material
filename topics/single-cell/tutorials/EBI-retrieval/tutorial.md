@@ -22,7 +22,7 @@ contributions:
     - wee-snufkin
     - nomadscientist
   funding:
-    - elixir-fair-data
+    - elixir-uk-dash
 
 answer_histories:
   - label: "EBI SCXA retrieval tool (UseGalaxy.eu)"

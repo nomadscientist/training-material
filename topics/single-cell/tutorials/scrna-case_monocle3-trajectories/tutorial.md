@@ -57,7 +57,6 @@ follow_up_training:
         - GO-enrichment
 
 tags:
-- 10x
 - paper-replication
 - MIGHTS
 

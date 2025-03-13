@@ -34,7 +34,7 @@ contributions:
   testing:
     - pavanvidem
   funding:
-    - elixir-fair-data
+    - elixir-uk-dash
 
 requirements:
     -

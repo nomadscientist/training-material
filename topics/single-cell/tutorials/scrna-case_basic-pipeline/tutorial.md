@@ -48,7 +48,6 @@ requirements:
         - scrna-case_alevin
         - scrna-case_alevin-combine-datasets
 tags:
-- 10x
 - paper-replication
 - MIGHTS
 

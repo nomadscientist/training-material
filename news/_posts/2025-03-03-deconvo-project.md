@@ -2,7 +2,7 @@
 title: "Bioinformatics Projects Pathway for Students: New insights from public data!"
 contributions:
   authorship: [nomadscientist]
-  funding: [elixir-fair-data]
+  funding: [elixir-uk-dash]
 tags: [gtn, single-cell]
 layout: news
 cover: "assets/images/wab-lp-deconvolution.png"

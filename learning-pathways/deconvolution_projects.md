@@ -11,7 +11,7 @@ editorial_board:
 - mtekman
 
 funding:
-  - elixir-fair-data
+  - elixir-uk-dash
 
 title: "Bioinformatics Projects: Using deconvolution to get new insights from old bulk RNA-seq data"
 description: |

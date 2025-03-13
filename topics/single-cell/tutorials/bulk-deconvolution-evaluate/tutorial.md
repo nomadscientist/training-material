@@ -29,7 +29,7 @@ contributions:
   testing:
     - carloscheemendonca
   funding:
-    - elixir-fair-data
+    - elixir-uk-dash
 
 follow_up_training:
   -

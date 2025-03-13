@@ -52,9 +52,7 @@ follow_up_training:
         - EBI-retrieval
 
 tags:
-- 10x
 - paper-replication
-- Python
 - MIGHTS
 
 contributions:

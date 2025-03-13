@@ -44,7 +44,6 @@ key_points:
   - Retreive partially analysed data from a public repository
 
 tags:
-  - 10x
   - paper-replication
   - MIGHTS
 
