@@ -36,7 +36,7 @@ pathway:
     description: |
       Now that you have your material, what does it look like in the Galaxy training site? How can you add bells and whistles, like questions or tips? How can you visualise these changes? Here, you'll find a way to render your materials and change formatting to get the most out of the training platform. You will also learn how to embed images, or even turn coding notebooks automatically into training material.
     tutorials:
-      - name: gitpod
+      - name: rendering_gtn
         topic: contributing
       - name: create-new-tutorial-content
         topic: contributing

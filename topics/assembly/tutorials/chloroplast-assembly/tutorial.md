@@ -260,7 +260,7 @@ Now make a JBrowse file to view the annotations (the GFF3 file - produced from e
 > 1. {% tool [JBrowse genome browser](toolshed.g2.bx.psu.edu/repos/iuc/jbrowse/jbrowse/1.16.4+galaxy3) %}:
 >    - *"Reference genome to display"*: `Use a genome from history`
 >        - *"Select a reference genome"*: `polished-assembly.fasta`
->    - *"Produce Standalone Instance"*: `Yes`
+>    - *"Output JBrowse"*: `Minimal for viewing (Documentation removed)`
 >    - *"Genetic Code"*: `11. The Bacterial, Archaeal and Plant Plastid Code`
 >    - *"JBrowse-in-Galaxy Action"*: `New JBrowse instance`
 >    - *"Insert Track Group"*
@@ -306,7 +306,7 @@ We will look at the original sequencing reads mapped to the genome assembly. In 
 > 1. {% tool [JBrowse genome browser](toolshed.g2.bx.psu.edu/repos/iuc/jbrowse/jbrowse/1.16.4+galaxy3) %}:
 >    - *"Reference genome to display"*: `Use a genome from history`
 >        - *"Select a reference genome"*: `polished-assembly.fasta`
->    - *"Produce Standalone Instance"*: `Yes`
+>    - *"Output JBrowse"*: `Minimal for viewing (Documentation removed)`
 >    - *"Genetic Code"*: `11. The Bacterial, Archaeal and Plant Plastid Code`
 >    - *"JBrowse-in-Galaxy Action"*: `New JBrowse instance`
 >    - *"Insert Track Group"*

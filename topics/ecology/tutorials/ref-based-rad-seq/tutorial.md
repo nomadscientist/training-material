@@ -19,8 +19,11 @@ objectives:
   - "Calculate population genomics statistics from RAD sequencing data"
 time_estimation: "8h"
 key_points:
-contributors:
+contributions:
+  authorship:
   - yvanlebras
+  editing:
+  - VerenaMoo
 
 subtopic: ecologyanalysis
 ---
@@ -179,11 +182,13 @@ We propose to continue the tutorial using the dataset collection containing the 
 
 ## Quality control
 
-For quality control, we use similar tools as described in [NGS-QC tutorial]({{site.baseurl}}/topics/sequence-analysis/tutorials/quality-control/tutorial.html): [FastQC](https://www.bioinformatics.babraham.ac.uk/projects/fastqc/).
+For quality control, we use similar tools as described in [NGS-QC tutorial]({{site.baseurl}}/topics/sequence-analysis/tutorials/quality-control/tutorial.html): [Falco](https://falco.readthedocs.io/en/latest/)
+
+Falco is an efficiency-optimized rewrite of [FastQC](https://www.bioinformatics.babraham.ac.uk/projects/fastqc/).
 
 > <hands-on-title>Quality control</hands-on-title>
 >
-> 1. **FastQC** {% icon tool %} to check the quality of the reads:
+> 1. **Falco** {% icon tool %} to check the quality of the reads:
 >    - {% icon param-collection %} *"Short read data from your current history"*: the fastq files (collection)
 >
 >    > <question-title></question-title>
@@ -196,9 +201,9 @@ For quality control, we use similar tools as described in [NGS-QC tutorial]({{si
 >    {: .question}
 >
 > 2. **MultiQC** {% icon tool %} with the following parameters:
->    - *"Which tool was used generate logs?"*: `FastQC`
+>    - *"Which tool was used generate logs?"*: `FastQC` (no matter whether FastQC or Falco was used)
 >    - *"Type of FastQC output?"*: `raw data`
->    - {% icon param-collection %} *"FASTQC output"*: the `raw data` output of FastQC (collection)
+>    - {% icon param-collection %} *"FASTQC output"*: the `raw data` output of Falco (collection)
 {: .hands_on}
 
 ![MultiQC output](../../images/RAD4_Population_Genomics/multiqc.PNG)

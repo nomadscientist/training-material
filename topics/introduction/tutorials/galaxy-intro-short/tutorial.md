@@ -36,7 +36,7 @@ contributions:
   editing:
   - bebatut
   - ahmedhamidawan
-  - philreeddata
+  - PhilReedData
   funding:
   - AustralianBioCommons
   - elixir-europe
@@ -94,7 +94,7 @@ The first time you use Galaxy, there will be no files in your history panel.
 
 ## Name your current history
 
-Your "History" is in the panel at the right. It is a record of the actions you have taken. 
+Your "History" is in the panel at the right. It is a record of the actions you have taken.
 
 > <hands-on-title>Name history</hands-on-title>
 > 1. Go to the **History** panel (on the right)
