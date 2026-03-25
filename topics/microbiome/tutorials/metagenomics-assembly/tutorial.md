@@ -334,23 +334,6 @@ Assemblies can be evaluated with **metaQUAST** ({%cite mikheenko2016%}), the met
 > ![Screenshot of QUAST HTML report](./images/quast_html_report.png)
 {: .hands_on}
 
-> <hands-on-title>Import MetaQUAST results</hands-on-title>
->
-> 1. Since the QUAST process would take times we are just going to import the results from [Zenodo]({{ page.zenodo_link }}):
->
->    ```text
->    {{ page.zenodo_link }}/files/quast_ERR2231567.html
->    {{ page.zenodo_link }}/files/quast_ERR2231568.html
->    {{ page.zenodo_link }}/files/quast_ERR2231569.html
->    {{ page.zenodo_link }}/files/quast_ERR2231570.html
->    {{ page.zenodo_link }}/files/quast_ERR2231571.html
->    {{ page.zenodo_link }}/files/quast_ERR2231572.html
->    ```
->
-> {% snippet faqs/galaxy/datasets_import_via_link.md %}
->
-{: .hands_on}
-
 
 QUAST main output are HTML reports which aggregate different metrics.
 
