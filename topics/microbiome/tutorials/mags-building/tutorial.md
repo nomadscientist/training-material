@@ -90,7 +90,7 @@ tags:
 - metagenomics
 - microgalaxy
 recordings:
-- youtube_id: TODO
+- youtube_id: TH258Yn4iSk
   length: 2h46M
   galaxy_version: '25.1'
   date: '2026-04-03'
