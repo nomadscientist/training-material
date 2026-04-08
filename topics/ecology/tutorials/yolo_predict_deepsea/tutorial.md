@@ -55,22 +55,24 @@ We will use selected images from the SEANOE dataset {% cite lebeaud2024deepsea %
 
 The [SEANOE](https://www.seanoe.org/data/00907/101899) collection features real underwater images captured by deep‑sea observatories as part of a citizen science initiative called Deep Sea Spy. These non‑destructive imaging stations continuously monitor marine ecosystems and provide snapshots of various fauna. In this dataset, multiple annotators, including trained scientists and enthusiastic citizen scientists, have manually labeled images with polygons, lines, or points highlighting marine organisms. These annotations were then cleaned and converted into bounding boxes to create a training-ready dataset for object detection with YOLOv8. Though the exact species vary, images often include deep-sea fish, species, making this dataset well-suited for practicing detection tasks.
 
-<img src="../../images/yolo/CAM-TEMPO.jpg" style="width:40%; display:inline-block;" alt="sample buccinid data">
-<img src="../../images/yolo/MOMAR.jpg" style="width:40%; display:inline-block;" alt="sample bythongraede data">
-<img src="../../images/yolo/CAM-TEMPO2.jpg" style="width:40%; display:inline-block;" alt="sample buccinid2 data">
-<img src="../../images/yolo/CAM-TEMPO3.jpg" style="width:40%; display:inline-block;" alt="sample buccinid3 data">
+![sample buccinid data](../../images/yolo/CAM-TEMPO.jpg){: style="width:40%; display:inline-block;"}
+![sample bythongraede data](../../images/yolo/MOMAR.jpg){: style="width:40%; display:inline-block;"}
+![sample buccinid2 data](../../images/yolo/CAM-TEMPO2.jpg){: style="width:40%; display:inline-block;"}
+![sample buccinid3 data](../../images/yolo/CAM-TEMPO3.jpg){: style="width:40%; display:inline-block;"}
+
 
 ### Get data
 
 > <hands-on-title> Data Upload </hands-on-title>
 >
-> 1. Create a new history for this tutorial and give it a name (example: “DeepSeaSpy Yolo tutorial”) for you to find it again later if needed.
+> 1. **Create a new history** for this tutorial
+>    - Give it a name (example: “DeepSeaSpy Yolo tutorial”) for you to find it again later if needed.
 >
 >    {% snippet faqs/galaxy/histories_create_new.md %}
 >
 >    {% snippet faqs/galaxy/histories_rename.md %}
 >
-> 2. Import image data files and models from [SEANOE marine datawarehouse](https://www.seanoe.org/data/00907/101899/).
+> 2. **Import** image data files and models from [SEANOE marine datawarehouse](https://www.seanoe.org/data/00907/101899/).
 >
 >    DeepSeaSpy image data files and models as a zip file:
 >    ```
@@ -79,13 +81,16 @@ The [SEANOE](https://www.seanoe.org/data/00907/101899) collection features real 
 >
 >    {% snippet faqs/galaxy/datasets_import_via_link.md %}
 >
-> 3. Use  {% tool [Unzip](toolshed.g2.bx.psu.edu/repos/imgteam/unzip/unzip/6.0+galaxy0) %} to create a data collection in your history where all archive files will be unzipped.
+> 3. {% tool [Unzip](toolshed.g2.bx.psu.edu/repos/imgteam/unzip/unzip/6.0+galaxy0) %} with the following parameters:
+>    - *"Input file"*: `115473.zip`
 >
-> 4. Unhide the models data files.
+>    This will create a data collection in your history where all archive files will be unzipped.
 >
->    History search `name:detection deleted:false visible:any` then unhide the 2 model files
->    - "dataset_seanoe_101899_YOLOv8-weights-for-Bythograeidae-detection" and
->    - "dataset_seanoe_101899_YOLOv8-weights-for-Buccinidae-detection".
+> 4. **Unhide** {% icon galaxy-show-hidden %} the models data files:
+>    - In the history search bar, enter: `name:detection deleted:false visible:any`
+>    - Then unhide {% icon galaxy-show-hidden %} the 2 model files
+>      - "dataset_seanoe_101899_YOLOv8-weights-for-Bythograeidae-detection" and
+>      - "dataset_seanoe_101899_YOLOv8-weights-for-Buccinidae-detection".
 >
 >
 >    {% snippet faqs/galaxy/datasets_unhidden.md %}
@@ -98,9 +103,12 @@ The [SEANOE](https://www.seanoe.org/data/00907/101899) collection features real 
 >    - click on "All 3979 selected" and "Build Dataset List",
 >    - select 100 files and give a name of the data collection, "DeepSeaSpy 100 images sample" for example.
 >
->    Tips: To select only last 100 files, you can use the history search function and specify `extension:jpg deleted:false hid>XXXX visible:any` in the search bar where XXXX is the id of the last image dataset minus 100 (for example `extension:jpg deleted:false hid>3886 visible:any` if you have images until the history dataset ID 3986.
+>    > <tip-title> Filter history to only show 100 files </tip-title>
+>    > To select only last 100 files, you can use the history search function and specify `extension:jpg deleted:false hid>XXXX visible:any` in the search bar where XXXX is the id of the last image dataset minus 100.
+>    > For example `extension:jpg deleted:false hid>3886 visible:any` if you have images until the history dataset ID 3986.
+>    {: .tip}
 >
-> 6. Create class name file "Buccinide", copying and pasting this content in the file uploader:
+> 6. **Create class name file** "Buccinide", copying and pasting this content in the file uploader:
 >
 >    ```
 >    Autre poisson
@@ -119,6 +127,9 @@ The [SEANOE](https://www.seanoe.org/data/00907/101899) collection features real 
 >    Ver polynoidé
 >    Vers polynoidés
 >    ```
+>
+>    {% snippet faqs/galaxy/datasets_create_new_file.md %}
+>
 {: .hands_on}
 
 ## Model
@@ -217,7 +228,7 @@ Since we used detect mode, this tool will not generate segmentation masks (like 
 
 Want to go further?
 
-- Train your own model on SEANOE annotations using [YOLO training tool in Galaxy](https://usegalaxy.eu/root?tool_id=toolshed.g2.bx.psu.edu/repos/bgruening/yolo_training/yolo_training/8.3.0+galaxy2)
+- Train your own model on SEANOE annotations using {% tool [YOLO training tool in Galaxy](toolshed.g2.bx.psu.edu/repos/bgruening/yolo_training/yolo_training/8.3.0+galaxy2) %}
 - Get more information from [YOLOv8 training notebook](https://docs.ultralytics.com)
 
 
