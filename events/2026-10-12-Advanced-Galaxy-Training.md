@@ -71,8 +71,6 @@ location:
 infrastructure:
   tiaas: false
   servers:
-    - server: https://usegalaxy.eu
-      name: Galaxy EU
     - server: https://usegalaxy.fr
       name: Galaxy FR
 
@@ -326,6 +324,8 @@ At the end of the workshop, you will be able to:
 - Prior knowledge and experience using Galaxy
 - Prior knowledge and experience using command line
 - Fluent in French (materials will be in English and discussions will happen in French)
+- Your own computer
+- Optional but encouraged: your own workflow and dataset for the Bring Your Own Work (BYOW) session. The workflow and the dataset must be shareable and non-sensitive (i.e., they must not contain any patient-related information or confidential data). The dataset size must be small.
 
 ## Registration
 
