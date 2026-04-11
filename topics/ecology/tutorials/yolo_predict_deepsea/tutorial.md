@@ -211,7 +211,7 @@ These images are useful for visually checking whether detections are correct or 
 The `?` character you see in the annotation is due to an incompatibility between the class names in the pre-trained model and the character encoding used on the system where the model was originally trained. This typically happens when non-UTF-8 characters are not properly handled during training or export.
 
 ### No masks or segmentation files
-Since we used detect mode, this tool will not generate segmentation masks (like .tiff or polygon files). Those are only available in segment mode, which we'll cover next.
+Since we used detect mode, this tool will not generate segmentation masks (like .tiff or polygon files). Those are only available in segment mode, which we'll cover in a separate tutorial.
 
 
 ## What to Look For
