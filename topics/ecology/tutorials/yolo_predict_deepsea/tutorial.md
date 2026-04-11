@@ -95,8 +95,6 @@ The [SEANOE](https://www.seanoe.org/data/00907/101899) collection features real 
 >
 >    {% snippet faqs/galaxy/datasets_unhidden.md %}
 >
->    {% snippet faqs/galaxy/datasets_change_datatype.md datatype="tabular" %}
->
 > 5. Select a sample of 100 image files and create a dedicated data collection
 >    - History search `extension:jpg deleted:false visible:any` then
 >    - click on "Select" and "Select All".
