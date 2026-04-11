@@ -106,7 +106,7 @@ The [SEANOE](https://www.seanoe.org/data/00907/101899) collection features real 
 >    > For example `extension:jpg deleted:false hid>3885visible:any` if you have images until the history dataset ID 3985.
 >    {: .tip}
 >
-> 6. **Create class name file** "Buccinide_classnames", copying and pasting this content in the file uploader:
+> 6. **Create class name file** "Buccinide_classnames", copying and pasting this content in the file uploader:    ***Optional step - Only if using under "Galaxy Version 8.3.0+galaxy5" tool version***
 >
 >    ```
 >    Autre poisson
