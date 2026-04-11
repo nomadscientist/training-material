@@ -98,12 +98,12 @@ The [SEANOE](https://www.seanoe.org/data/00907/101899) collection features real 
 > 5. Select a sample of 100 image files and create a dedicated data collection
 >    - History search `extension:jpg deleted:false visible:any` then
 >    - click on "Select" and "Select All".
->    - click on "All 3979 selected" and "Build Dataset List",
+>    - click on "All 3979 selected" and "Build Dataset List" (or "Auto build list" depending on the selection mode),
 >    - select 100 files and give a name of the data collection, "DeepSeaSpy 100 images sample" for example.
 >
 >    > <tip-title> Filter history to only show 100 files </tip-title>
 >    > To select only last 100 files, you can use the history search function and specify `extension:jpg deleted:false hid>XXXX visible:any` in the search bar where XXXX is the id of the last image dataset minus 100.
->    > For example `extension:jpg deleted:false hid>3886 visible:any` if you have images until the history dataset ID 3986.
+>    > For example `extension:jpg deleted:false hid>3885visible:any` if you have images until the history dataset ID 3985.
 >    {: .tip}
 >
 > 6. **Create class name file** "Buccinide", copying and pasting this content in the file uploader:
