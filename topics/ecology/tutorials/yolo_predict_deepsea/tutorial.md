@@ -200,9 +200,11 @@ which means:
 
 These are your original images with colored boxes drawn around detected species. Each box also includes:
 The class name and the confidence score. For example, you might see a box labeled:
-`Crabe bythograeid 0.54`
+`Esxcargot buccinidé 0.40`
 
 ![buccinid](../../images/yolo/buccinid.jpeg)
+
+And if you reexecute the Yolo labeling tool specifying the "dataset_seanoe_101899_YOLOv8-weights-for-Bythograeidae-detection" model file, you will obtain detection result for crabs.
 ![bythog](../../images/yolo/bythog2.jpeg)
 
 
