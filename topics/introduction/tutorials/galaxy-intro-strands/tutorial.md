@@ -477,7 +477,7 @@ It turns out that **Lift-Over** and **Collection Operations** are not what we wa
 >
 > 1. *Open* the **Text Manipulation** toolbox.
 > 2. Near the top of the toolbox is **Concatenate datasets tail-to-head**. *Click* on it.  Lets try that tool.
-> 3. {% tool [Concatenate](cat1) %} with the following parameters:
+> 3. {% tool [Concatenate multiple datasets or collections](cat1) %} with the following parameters:
 >   - {% icon param-files %} *"Concatenate Dataset"*: `Overlapping reverse genes`.
 >   - *"Dataset*"
 >      - Click on {% icon param-repeat %} *"Insert Dataset"*
