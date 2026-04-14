@@ -80,12 +80,12 @@ The data for this tutoriel is a dataset from *Citrobacter phage Merlin*.
 
 If you have used JBrowse1 before, using JBrowse2 on Galaxy is very similar. If this is your first time, don't worry, it's easy to use. We'll start by adding the structural annotation as a track in JBrowse2.
 
-If you’re not familiar with structural annotation, we recommend reading the [general introduction to annotation](https://training.galaxyproject.org/training-material/topics/genome-annotation/tutorials/introduction/slides.html#1) and following the tutorials on annotating genomes (e.g. [Bacterial Genome Annotation](https://training.galaxyproject.org/training-material/topics/genome-annotation/tutorials/bacterial-genome-annotation/tutorial.html), or [Genome annotation with Helixer](https://training.galaxyproject.org/training-material/topics/genome-annotation/tutorials/helixer/tutorial.html)). 
+If you’re not familiar with structural annotation, we recommend reading the [general introduction to annotation{% link topics/genome-annotation/tutorials/introduction/slides.md#1 %}#1) and following the tutorials on annotating genomes (e.g. [Bacterial Genome Annotation](https://training.galaxyproject.org/training-material/topics/genome-annotation/tutorials/bacterial-genome-annotation/tutorial.html), or [Genome annotation with Helixer](https://training.galaxyproject.org/training-material/topics/genome-annotation/tutorials/helixer/tutorial.html)). 
 
 
 > <hands-on-title>Build the JBrowse2</hands-on-title>
 >
-> 1. {% tool [JBrowse2](toolshed.g2.bx.psu.edu/view/fubar/jbrowse2/3.7.0+galxy0)%} with the following parameters:
+> 1. {% tool [JBrowse2](toolshed.g2.bx.psu.edu/view/fubar/jbrowse2/3.7.0+galxy0) %} with the following parameters:
 >    - *"Reference genome to display"*: `Use a genome from history`
 >        - {% icon param-file %} *"Select the reference genome"*: `merlin.fa`
 >    - Click on *"Insert Track Category"*:
@@ -121,7 +121,7 @@ As mentioned in the introduction, JBrowse2 supports a wide range of input format
 
 > <hands-on-title>Build a JBrowse2 with mulitple tracks</hands-on-title>
 >
-> 1. {% tool [JBrowse2](toolshed.g2.bx.psu.edu/view/fubar/jbrowse2/3.7.0+galxy0)%} with the following parameters:
+> 1. {% tool [JBrowse2](toolshed.g2.bx.psu.edu/view/fubar/jbrowse2/3.7.0+galxy0) %} with the following parameters:
 >    - *"Reference genome to display"*: `Use a genome from history`
 >        - {% icon param-file %} *"Select the reference genome"*: `merlin.fa`
 >    - Click on *"Insert Track Category"*:
@@ -159,7 +159,7 @@ The .hic file is a standard format used to store Hi-C interaction matrices. Thes
 
 > <hands-on-title>Build the JBrowse2 with Hi-C data</hands-on-title>
 >
-> 1. {% tool [JBrowse2](toolshed.g2.bx.psu.edu/view/fubar/jbrowse2/3.7.0+galxy0)%} with the following parameters:
+> 1. {% tool [JBrowse2](toolshed.g2.bx.psu.edu/view/fubar/jbrowse2/3.7.0+galxy0) %} with the following parameters:
 >    - *"Reference genome to display"*: `Use a genome from history`
 >        - {% icon param-file %} *"Select the reference genome"*: `merlin.fa`
 >    - Click on *"Insert Track Category"*:
