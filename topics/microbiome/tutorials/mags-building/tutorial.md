@@ -1167,7 +1167,7 @@ Let's add the relative abundance values.
 >
 >    {% snippet faqs/galaxy/datasets_create_new_file.md name="header" format="tabular" %}
 >
-> 9. {% tool [Concatenate datasets](cat1) %} with following parameters:
+> 9. {% tool [Concatenate multiple datasets or collections](cat1) %} with following parameters:
 >    - {% icon param-file %} *"Concatenate Dataset"*: the `header` dataset
 >    - *"Dataset"*
 >       - Click on {% icon param-repeat %} *"Insert Dataset"*
