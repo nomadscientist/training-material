@@ -1,47 +1,45 @@
 ---
 layout: tutorial_hands_on
-
-title: "Assembly of metagenomic sequencing data"
-zenodo_link: "https://zenodo.org/record/7818827"
+title: Assembly of metagenomic sequencing data
+zenodo_link: https://zenodo.org/record/7818827
 level: Introductory
 questions:
-  - "Why metagenomic data should be assembled?"
-  - "What is the difference between co-assembly and individual assembly?"
-  - "What is the difference between reads, contigs and scaffolds?"
-  - "How tools based on De Bruijn graph work?"
-  - "How to assess the quality of metagenomic data assembly?"
+- Why metagenomic data should be assembled?
+- What is the difference between co-assembly and individual assembly?
+- What is the difference between reads, contigs and scaffolds?
+- How tools based on De Bruijn graph work?
+- How to assess the quality of metagenomic data assembly?
 objectives:
-  - "Describe what an assembly is."
-  - "Explain the difference between co-assembly and individual assembly."
-  - "Explain the difference between reads, contigs and scaffolds."
-  - "Explain how tools based on de Bruijn graph work."
-  - "Evaluate the quality of the Assembly with QUAST, Bowtie2, and CoverM-Contig."
-  - "Construct and apply simple assembly pipelines on short read data."
-time_estimation: "2H"
+- Describe what an assembly is.
+- Explain the difference between co-assembly and individual assembly.
+- Explain the difference between reads, contigs and scaffolds.
+- Explain how tools based on de Bruijn graph work.
+- Evaluate the quality of the Assembly with QUAST, Bowtie2, and CoverM-Contig.
+- Construct and apply simple assembly pipelines on short read data.
+time_estimation: 2H
 key_points:
-  - "Assembly groups reads into contigs and scaffolds."
-  - "de Brujin Graphs use k-mers to assembly reads."
-  - "MetaSPAdes and MEGAHIT are short-read assemblers."
-  - "MetaQUAST is a tool to assess metagenomic assembly quality."
+- Assembly groups reads into contigs and scaffolds.
+- de Brujin Graphs use k-mers to assembly reads.
+- MetaSPAdes and MEGAHIT are short-read assemblers.
+- MetaQUAST is a tool to assess metagenomic assembly quality.
 edam_ontology:
-  - topic_3174 # Metagenomics
-  - topic_0196 # Sequence assembly
+- topic_3174
+- topic_0196
 contributions:
   authorship:
-    - plushz
-    - bebatut
-    - vinisalazar
-    - paulzierep
+  - plushz
+  - bebatut
+  - vinisalazar
+  - paulzierep
   funding:
-    - gallantries
+  - gallantries
 subtopic: metagenomics
 tags:
-  - assembly
-  - metagenomics
-  - microgalaxy
+- assembly
+- metagenomics
+- microgalaxy
 redirect_from:
-  - /topics/metagenomics/tutorials/metagenomics-assembly/tutorial
-
+- "/topics/metagenomics/tutorials/metagenomics-assembly/tutorial"
 recordings:
 - youtube_id: 1ZYGy85Im7w
   date: '2023-05-02'
@@ -52,8 +50,18 @@ recordings:
   captioners:
   - bebatut
   - sophia120199
+- youtube_id: KzqLR4btsic
+  length: 1H15M
+  galaxy_version: 25.1.2.dev0
+  date: '2026-03-26'
+  speakers:
+    - gdefazio
+  captioners:
+    - gdefazio
+    - natalie-wa
 
 ---
+
 
 Metagenomics involves the extraction, sequencing and analysis of combined genomic DNA from **entire microbiome** samples. It includes then DNA from **many different organisms**, with different taxonomic background.
 
