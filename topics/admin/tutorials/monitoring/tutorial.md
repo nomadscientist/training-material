@@ -903,7 +903,7 @@ You can also import a [copy of the dashboard]({{ site.baseurl }}{{ page.dir }}da
 {% snippet topics/admin/faqs/missed-something.md step=13 %}
 
 # Galaxy Job Radar
-GJR is a project that visualizes traffic between [Galaxy](https://galaxyproject.org) and its [Pulsars](https://github.com/galaxyproject/pulsar).
+Another possibility for data visualisation in Galaxy ecosystem is Galaxy Job Radar (GJR). GJR is a project that visualizes traffic between [Galaxy server](https://galaxyproject.org) and its [Pulsars](https://github.com/galaxyproject/pulsar).
 
 ![image](django_server_files/static/gjr_logo.png)
 
@@ -932,7 +932,9 @@ GJR periodically requests data from each connected Galaxy through their own `Inf
 
 For this to work we need the contributors to run an InfluxDB, fill it periodically with anonymous new data (with `gxadmin` scripts below) and give us read access to this data on InfluxDB. 
 
-Note: If you do not run InfluxDB for monitoring yet there is a Galaxy [training section](https://training.galaxyproject.org/training-material/topics/admin/#st-monitoring) available which will explain reasons and guide you through the setup. Simplified schema of the full setup:
+Note: If you do not run InfluxDB for monitoring yet there is a Galaxy [training section](https://training.galaxyproject.org/training-material/topics/admin/#st-monitoring) above available which will explain reasons and guide you through the setup. 
+
+Simplified schema of the full setup:
 
 <img width="537" height="212" alt="galaxy_data_flow" src="https://github.com/user-attachments/assets/b8d4dc16-8542-4c41-9e1b-b7800781c819" />
 
