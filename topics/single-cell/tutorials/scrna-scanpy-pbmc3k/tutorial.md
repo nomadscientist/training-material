@@ -1289,6 +1289,39 @@ Here, we will reduce the neighborhood to 2 UMAP components and then we will chec
 > {: .solution}
 {: .question}
 
+The static plots above give us a first overview of the data, but it can be difficult to explore all dimensions at once. [Vitessce](http://vitessce.io) is an interactive visualization framework for single-cell data that allows you to explore multiple linked views simultaneously — for example, selecting cells in a UMAP and seeing their gene expression highlighted in a heatmap at the same time.
+
+We can generate a Vitessce configuration file directly from Scanpy plot by enabling the *"Make an interactive plot?"* option.
+
+> <hands-on-title>Explore marker genes interactively with Vitessce</hands-on-title>
+>
+> 1. {% tool [Scanpy plot](toolshed.g2.bx.psu.edu/repos/iuc/scanpy_plot/scanpy_plot/1.11.5+galaxy0) %} with the following parameters:
+>    - {% icon param-file %} *"Annotated data matrix"*: `3k PBMC with only HVG, after scaling, PCA, KNN graph, UMAP`
+>    - *"Method used for plotting"*: `Embeddings: Scatter plot in UMAP basis, using 'pl.umap'`
+>    - *"Make an interactive plot?"*: `Yes`
+>    - *"Keys for annotations of observations/cells or variables/genes"*: `CST3, NKG7, PPBP`
+>
+> 2. Rename the `vitessce.json` output to `Vitessce config  - marker genes`
+>
+> 3. Click on the {% icon galaxy-eye %} (**View data**) icon of the `Vitessce config - marker genes` dataset to explore the marker genes interactively in Vitessce
+>
+>    ![Vitessce interactive visualization of marker genes](../../images/scrna-scanpy-pbmc3k/marker-genes-vitessce.png "Vitessce showing CST3, NKG7 and PPBP expression in UMAP space.")
+>
+>    > <question-title></question-title>
+>    >
+>    > Explore the marker genes in Vitessce. Can you see differences in expression between cells? How does this compare to the static plot above?
+>    >
+>    > > <solution-title></solution-title>
+>    > >
+>    > > In Vitessce you can hover over individual cells to see their exact expression values, and select groups of cells to highlight them across views. The expression patterns of CST3, NKG7 and PPBP should match the static UMAP above, but now you can interactively explore which cells express each gene and compare them simultaneously.
+>    > >
+>    > {: .solution}
+>    >
+>    {: .question}
+>
+{: .hands_on}
+
+
 ## Clustering of the neighborhood graph
 
 Given the first visualization, we can now cluster the cells within a neighborhood graph.
@@ -1357,31 +1390,19 @@ The cells in the same clusters should be co-localized in the UMAP coordinate plo
 > {: .solution}
 {: .question}
 
-> <hands-on-title>Explore clusters interactively with Vitessce</hands-on-title>
+> <hands-on-title>Explore marker genes interactively with Vitessce</hands-on-title>
 >
 > 1. {% tool [Scanpy plot](toolshed.g2.bx.psu.edu/repos/iuc/scanpy_plot/scanpy_plot/1.11.5+galaxy0) %} with the following parameters:
->    - {% icon param-file %} *"Annotated data matrix"*: `3k PBMC with only HVG, after scaling, PCA, KNN graph, UMAP, clustering`
+>    - {% icon param-file %} *"Annotated data matrix"*: `3k PBMC with only HVG, after scaling, PCA, KNN graph, UMAP`
 >    - *"Method used for plotting"*: `Embeddings: Scatter plot in UMAP basis, using 'pl.umap'`
->      - *"Make an interactive plot?"*: `Yes`
->      - *"Keys for annotations of observations/cells or variables/genes"*: `louvain`
+>    - *"Make an interactive plot?"*: `Yes`
+>    - *"Keys for annotations of observations/cells or variables/genes"*: `CST3, NKG7, PPBP`
 >
-> 2. Rename the `vitessce.json` output to `Vitessce config - clusters`
+> 2. Rename the `vitessce.json` output to `Vitessce config - marker genes`
 >
-> 3. Click on the {% icon galaxy-eye %} (**View data**) icon of the `Vitessce config - clusters` dataset to explore the clusters interactively in Vitessce
+> 3. Click on the {% icon galaxy-eye %} (**View data**) icon of the `Vitessce config - marker genes` dataset to explore the marker genes interactively in Vitessce
 >
->    ![Vitessce interactive visualization of Louvain clusters](../../images/scrna-scanpy-pbmc3k/vitessce_clusters.png "Vitessce showing the UMAP with the 8 Louvain clusters and Cell Sets panel.")
->
->    > <question-title></question-title>
->    >
->    > Explore the UMAP in Vitessce. Can you identify distinct groups of cells? How does this compare to the static plot above?
->    >
->    > > <solution-title></solution-title>
->    > >
->    > > Vitessce allows you to interactively explore the clusters by hovering over cells, selecting groups, and linking views. The 8 Louvain clusters should be clearly visible. This interactive view will be especially useful after cell type annotation, when we can compare the cluster labels with the predicted cell types.
->    > >
->    > {: .solution}
->    >
->    {: .question}
+>    ![Vitessce interactive visualization of marker genes](../../images/scrna-scanpy-pbmc3k/marker-genes-vitessce.png "Vitessce showing CST3, NKG7 and PPBP expression in UMAP space.")
 >
 {: .hands_on}
 
@@ -1947,14 +1968,12 @@ The automated approach uses CellTypist, a tool that applies pre-trained logistic
 >
 {: .comment}
 
-> <hands-on-title>Automated cell type annotation with CellTypist (Train from AnnData)</hands-on-title>
+> <hands-on-title>Automated cell type annotation with CellTypist</hands-on-title>
 >
 > 1. {% tool [CellTypist](toolshed.g2.bx.psu.edu/repos/iuc/celltypist/celltypist/1.7.1+galaxy0) %} with the following parameters:
 >    - {% icon param-file %} *"Input AnnData file"*: `3k PBMC with only HVG, after scaling, PCA, KNN graph, UMAP, clustering, marker genes with Wilcoxon test, annotation`
->    - *"Select model from"*: `History`
->      - *"Select a models or train a model from history"*: `Train a model on an existing AnnData and use it`
->        - {% icon param-file %} *"Select an AnnData file from history"*: `3k PBMC with only HVG, after scaling, PCA, KNN graph, UMAP, clustering, marker genes with Wilcoxon test`
->        - *"The column name in the .obs attribute of the training AnnData file that contains the cell type labels"*: `louvain`
+>    - *"Select model from"*: `Cached`
+>      - *"Choose CellTypist model"*: `immune sub-populations combined from 20 tissues of 18 studies (v2)`
 >    - *"Refine the predicted labels by running the majority voting classifier after over-clustering"*: `Yes`
 >    - *"Annotation mode"*: `Choose the cell type with the largest score/probability as the final prediction`
 >    - *"Probability threshold"*: `0.5`
@@ -1967,45 +1986,29 @@ The automated approach uses CellTypist, a tool that applies pre-trained logistic
 >
 > 3. Inspect the dotplot output
 >
->    ![CellTypist label transfer dotplot](../../images/scrna-scanpy-pbmc3k/celltypist_dotplot.png "CellTypist label transfer dotplot showing the predicted cell types against the Louvain clusters.")
->
-{: .hands_on}
-
-> <hands-on-title>Automated cell type annotation with CellTypist (Cached model)</hands-on-title>
->
-> 1. {% tool [CellTypist](toolshed.g2.bx.psu.edu/repos/iuc/celltypist/celltypist/1.7.1+galaxy0) %} with the following parameters:
->    - {% icon param-file %} *"Input AnnData file"*: `3k PBMC with only HVG, after scaling, PCA, KNN graph, UMAP, clustering, marker genes with Wilcoxon test`
->    - *"Select model from"*: `Cached`
->      - *"Choose CellTypist model"*: `immune sub-populations combined from 20 tissues of 18 studies (v2)`
->    - *"Refine the predicted labels by running the majority voting classifier after over-clustering"*: `Yes`
->    - *"Annotation mode"*: `Choose the cell type with the largest score/probability as the final prediction`
->    - *"Probability threshold"*: `0.5`
->    - *"Generate a dotplot of the predicted cell types"*: `Yes`
->      - *"Reference column in AnnData.obs for dotplot"*: `louvain`
->      - *"Prediction label in AnnData.obs for dotplot"*: `predicted_labels`
->      - *"Dotplot format"*: `png`
->
-> 2. Rename the generated output `3k PBMC CellTypist annotated with model`
->
-> 3. Inspect the dotplot output
->
 >    ![CellTypist cached model dotplot](../../images/scrna-scanpy-pbmc3k/celltypist_dotplot_cached.png "CellTypist label transfer dotplot using the cached immune model, showing predicted cell type labels against the Louvain clusters.")
 >
 {: .hands_on}
+
+> <tip-title>Training a custom CellTypist model</tip-title>
+>
+> If you are working with a dataset from a tissue or organism not covered by the available CellTypist models, you can train a custom model using your own annotated AnnData. To do so, select *"Select model from"*: `History` → *"Train a model on an existing AnnData and use it"*, and provide your AnnData file along with the column name in `.obs` that contains your cell type labels (e.g. `louvain`). This is particularly useful when studying tissues with unique or poorly characterized cell populations.
+>
+{: .tip}
 
 > <hands-on-title>Explore CellTypist annotations interactively with Vitessce</hands-on-title>
 >
 > 1. {% tool [Scanpy plot](toolshed.g2.bx.psu.edu/repos/iuc/scanpy_plot/scanpy_plot/1.11.5+galaxy0) %} with the following parameters:
 >    - {% icon param-file %} *"Annotated data matrix"*: `3k PBMC CellTypist annotated`
 >    - *"Method used for plotting"*: `Embeddings: Scatter plot in UMAP basis, using 'pl.umap'`
->      - *"Keys for annotations of observations/cells or variables/genes"*: `louvain`
 >      - *"Make an interactive plot?"*: `Yes`
+>      - *"Keys for annotations of observations/cells or variables/genes"*: `louvain`
 >
 > 2. Rename the `vitessce.json` output to `Vitessce config - CellTypist`
 >
 > 3. Click on the {% icon galaxy-eye %} (**View data**) icon of the `Vitessce config - CellTypist` dataset to explore the annotations interactively
 >
->    ![Vitessce interactive visualization of CellTypist annotations](../../images/scrna-scanpy-pbmc3k/celltypist_vitessce.png "Vitessce showing the UMAP with CellTypist-annotated cell types and Cell Sets panel.")
+>    ![Vitessce interactive visualization of CellTypist annotations](../../images/scrna-scanpy-pbmc3k/vitessce_animated.gif "Vitessce showing the UMAP with CellTypist-annotated cell types and Cell Sets panel.")
 >
 >    > <question-title></question-title>
 >    >
