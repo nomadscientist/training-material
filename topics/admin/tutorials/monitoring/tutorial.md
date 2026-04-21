@@ -905,7 +905,7 @@ You can also import a [copy of the dashboard]({{ site.baseurl }}{{ page.dir }}da
 # Galaxy Job Radar
 Another possibility for data visualisation in Galaxy ecosystem is Galaxy Job Radar (GJR). GJR is a project that visualizes traffic between [Galaxy server](https://galaxyproject.org) and its [Pulsars](https://github.com/galaxyproject/pulsar).
 
-![image](django_server_files/static/gjr_logo.png)
+![image](../../images/gjr_logo.png "Logo of GJR project.")
 
 Namely it shows jobs of a Galaxy instance, their distribution over Pulsar computational nodes, in which state they are and more. It supports both live view and history replay of traffic and past schedule evaluation.
 
