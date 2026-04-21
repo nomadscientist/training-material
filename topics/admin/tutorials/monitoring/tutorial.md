@@ -903,7 +903,7 @@ You can also import a [copy of the dashboard]({{ site.baseurl }}{{ page.dir }}da
 {% snippet topics/admin/faqs/missed-something.md step=13 %}
 
 # Galaxy Job Radar
-Another possibility for data visualisation in Galaxy ecosystem is Galaxy Job Radar (GJR). GJR is a project that visualizes traffic between [Galaxy server](https://galaxyproject.org) and its [Pulsars](https://github.com/galaxyproject/pulsar).
+Another possibility for data visualisation in Galaxy ecosystem is [Galaxy Job Radar](https://github.com/CESNET/gjr) (GJR). GJR is a project that visualizes traffic between [Galaxy server](https://galaxyproject.org) and its [Pulsars](https://github.com/galaxyproject/pulsar).
 
 ![image](../../images/gjr_logo.png "Logo of GJR project.")
 
