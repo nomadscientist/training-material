@@ -24,6 +24,8 @@ contributions:
     - Sch-Da
   funding:
     - deKCD
+    - mwk
+    - deNBI
 ---
 
 
