@@ -167,6 +167,7 @@ program:
       - title: Digital Humanities
       - title: From Zero to Hero with Python
       - title: Machine Learning
+        link: events/tracks/gta2026-ml.md
       - title: Microbiome
       - title: Proteomics
       - title: Single Cell
