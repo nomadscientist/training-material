@@ -932,7 +932,7 @@ GJR periodically requests data from each connected Galaxy through their own `Inf
 
 For this to work we need the contributors to run an InfluxDB, fill it periodically with anonymous new data (with `gxadmin` scripts below) and give us read access to this data on InfluxDB. 
 
-Note: If you do not run InfluxDB for monitoring yet there is a Galaxy [training section](https://training.galaxyproject.org/training-material/topics/admin/#st-monitoring) above available which will explain reasons and guide you through the setup. 
+Note: If you do not run InfluxDB for monitoring yet there is a Galaxy [training section]({% link topics/admin/#st-monitoring %}) above available which will explain reasons and guide you through the setup. 
 
 Simplified schema of the full setup:
 
