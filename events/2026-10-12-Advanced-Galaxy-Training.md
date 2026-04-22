@@ -57,6 +57,7 @@ contributions:
     #testing:
     funding:
         - ifb
+        - pasteur
 
 location:
   name: Institut Pasteur
