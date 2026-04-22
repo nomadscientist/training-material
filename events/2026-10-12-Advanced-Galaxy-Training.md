@@ -45,7 +45,7 @@ contributions:
         - clsiguret
         - rlibouba
         - fmareuil
-        - Lucie Khamvongsa-Charbonnier
+        - lkhamvongsa
     instructors:
         - abretaud
         - bebatut
