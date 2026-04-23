@@ -13,6 +13,11 @@ objectives:
   - Learn to clean and compare two texts.
   - Extract specific information from texts.
   - Visualise your results in a word cloud.
+requirements:
+  - type: "internal"
+    topic_name: digital-humanities
+    tutorials:
+      - introduction_to_dh
 time_estimation: 1H
 key_points:
   - The *diff* tool allows comparing two similar texts automatically
@@ -30,15 +35,15 @@ contributions:
 
 
 The British Hong Kong Government censored Chinese newspapers before their publication in the colony in the 1930s ({% cite Ng2022 %}).
-Replacement characters like × visibly marked those redactions, making them visible even to those who did not read any Chinese.
+Replacement characters like × visibly marked those redactions, making them obvious even to those who did not read any Chinese.
 
 ![Example of a Chinese article with symbol × marking censored characters]({% link topics/digital-humanities/tutorials/text_mining_chinese/images/Example_x_censored_Chinese_article.svg %} "Example of a Chinese article with symbol × marking censored characters")
 
-The schematic example, adapted from {% cite Schneider2024 %}, shows what such a censored Chinese article looked like. It is read from right to left and top to bottom. The two more prominent lines on the right are the article title, and the following text is the article's main body. It contains the character × several times, indicating various instances where it was censored.
+The schematic example in Figure 1, adapted from {% cite Schneider2024 %}, shows what such a censored Chinese article looked like. It is read from right to left and top to bottom. The two more prominent lines on the right are the article title, and the following text is the article's main body. It contains the character × several times, indicating various instances where it was censored.
 
 Despite this obvious form of censorship, no research is looking into what Chinese characters the × replaced. My dissertation ({% cite Schneider2024 %}), which informs this workflow, started at this point. Through extensive research, I found several articles censored in the Hong Kong edition of Da gong bao (大公報) as uncensored versions. Those mostly came from Chinese editions printed in mainland China, where different censorship regulations applied. Those articles from China were not censored and openly showed the characters redacted in the Hong Kong versions. An example of a censored article could be {% cite Anon..16.10.1938_5598 %} and of the uncensored version {% cite TKP.16.10.1938_18864 %}.
 
-The tutorial uses text mining to compare censored and uncensored text and to answer the following question: What characters were censored in a Chinese newspaper published in Hong Kong in the 1930s?
+This tutorial uses text mining to compare two newspaper articles, a censored and an uncensored text to answer what characters were censored in a Chinese newspaper published in Hong Kong in the 1930s.
 
 
 > <agenda-title></agenda-title>
@@ -51,9 +56,9 @@ The tutorial uses text mining to compare censored and uncensored text and to ans
 {: .agenda}
 
 
-# Uploading the texts
+# Upload the texts
 
-The machine-readable versions of the Chinese newspaper articles I originally used in my dissertation come from a proprietary database and can not be shared here. Instead, I generated a dummy article with a similar setup in GPT and manually adapted the censorship symbols based on my research. The articles differ in style and punctuation, as is consistent with the articles in my research. Therefore, the input files are two texts in traditional Chinese. The first is censored, containing ×, and the second one is uncensored and does not contain replacement symbols. Both texts slightly differ in their layout, which will be unified later.
+The machine-readable versions of the Chinese newspaper articles I originally used in my dissertation come from a proprietary database and can not be shared here. Instead, I generated a dummy article with a similar setup in GPT and manually adapted the censorship symbols based on my research. As a result, those dummy articles differ in style and punctuation, as the articles in my research. Therefore, the input files are two texts in traditional Chinese. The first is censored, containing ×, and the second one is uncensored and does not contain replacement symbols. Both texts slightly differ in their layout, which will be unified later.
 
 > <hands-on-title> Upload the Texts </hands-on-title>
 >
@@ -95,9 +100,9 @@ The machine-readable versions of the Chinese newspaper articles I originally use
 {: .question}
 
 
-# Pre-processing
+# Clean both texts
 
-We pre-process and clean both texts to make the comparison easier and more apparent. This step will unify their layout. It uses Regular Expressions (Regex) to find and replace certain text parts. Here, the Regex also helps to restructure the text.
+We pre-process and clean both texts to make the comparison easier and more apparent. Regular Expressions (Regex) helps unifying the text and finding and replacing certain text parts. Here, the Regex also helps to restructure the text.
 
 
 > <details-title> More on Regular Expressions (optional) </details-title>
@@ -107,10 +112,7 @@ We pre-process and clean both texts to make the comparison easier and more appar
 >
 {: .details}
 
-
-## Clean up both texts
-
-We will use Regular Expressions in a tool called "Replace text". It contains four different sub-steps. Those will vary if you upload different texts. Apply this step first to the censored and then to the uncensored text to get two cleaned texts.
+We will use Regular Expressions in a tool called "Replace text" with four different sub-steps. Those will vary if you upload different texts. Apply this step first to the censored and then to the uncensored text to get two cleaned texts.
 
 > <hands-on-title> Cleaning the Text with Regular Expressions </hands-on-title>
 >
@@ -166,7 +168,7 @@ Remember to apply those steps to both the censored and the uncensored text. Rena
 
 
 
-# Comparing the censored and uncensored text
+# Compare the censored and uncensored text
 
 We can now compare the two cleaned texts. This will visualise the differences between the two texts and mark them by colour. Make sure to upload the cleaned censored text with the replacement characters like ‘×’ first. As text two, upload the cleaned uncensored text without the replacement characters.  This version (HTML version) creates an HTML file, which colour codes differences as additions (green) or extractions (red) when comparing the texts.
 
@@ -200,12 +202,14 @@ The HTML file could look like this:
 ![Screenshot of the diff tool comparing the censored and uncensored text]({% link topics/digital-humanities/tutorials/text_mining_chinese/images/Diff_WF_HTML.jpg %} "Example of the HTML file comparing the censored and uncensored text")
 
 It shows what passages differ in the two texts. Red parts show deletions, and green-coloured areas are additions.
-This output is very convenient for researchers, as it shows differences quickly. However, it is not helpful for further processing with Galaxy. For this, we run this tool a second time with slightly changed parameters. The output is the basis for our further analysis.
+It passages are identical in both texts, they remain uncoloured.
+This output is very convenient for researchers, as it shows differences quickly. However, it is not helpful for further technical processing with Galaxy. For this, we run this tool a second time with slightly changed parameters. The output is the basis for our further analysis steps.
 
 
 ## Create a _diff_ file for further processing
 This step runs the text comparison line by line again to create another raw file that the computer can work with.
-It is less intuitive to understand at first glance. Again, clean the censored text with the replacement characters like ‘×’ first and the uncensored text second.
+It is less intuitive to understand at first glance. Again, upload the cleaned censored text containing `×` first and the uncensored text second.
+But this time, choose another report format.
 
 > <hands-on-title> Run another <em>diff</em> tool </hands-on-title>
 >
@@ -216,13 +220,13 @@ It is less intuitive to understand at first glance. Again, clean the censored te
 >    - Click *"Run Tool"*
 >
 >    > <comment-title> The output format </comment-title>
->    > As you can see above, the output of this file is a text file, compared to the HTML in the last step.
+>    > As you can see above, the output of this file is a text file, compared to the HTML output in the last step.
 >    {: .comment}
 >
 {: .hands_on}
 
 
-> <question-title>Look at this step's output</question-title>
+> <question-title>Look at this diff file</question-title>
 >
 > 1. How does this file differ from the HTML file in the last step?
 >
@@ -235,42 +239,19 @@ It is less intuitive to understand at first glance. Again, clean the censored te
 >
 {: .question}
 
-The tools we use in the next steps need tabular files. Therefore, we will change the datatype of this last text file to a tabular file to enable the next steps:
-
-> <hands-on-title>Change Datatype</hands-on-title>
->
-> 1. **Set the datatype** {% icon galaxy-pencil %} to `tabular`
->
->    {% snippet faqs/galaxy/datasets_change_datatype.md datatype="tabular" %}
->
-{: .hands_on}
-
-You have successfully changed the file's format to tabular, which helps for the next steps.
-Now you can see that the additional symbols like '>' or '<' all appear in Column 8.
-
 # Select only censored lines
-In the next step, we want to extract specific lines only. To determine what content was redacted in the first text, we filter the last step's raw output for lines containing the censorship symbol ×.
+In the next step, we want to extract specific lines only. To determine what content was redacted in the first text, we filter the last steps' raw output for lines containing the censorship symbol ×. 
 
 > <hands-on-title> Filter text </hands-on-title>
 >
-> 1. {% tool [Filter](Filter1) %} with the following parameters:
->    - {% icon param-file %} *"Filter"*: `diff_file` (output of **diff** {% icon tool %})
->    - *"With following condition"*: `ord(c1) == 215`
+> 1. {% tool [Select lines that match an expression](Grep1) %} with the following parameters:
+>    - {% icon param-file %} *"Select lines"*: `diff_file` (output of **diff** {% icon tool %})
+>    - *"that are"*: `Matching`
+>    - *"the pattern"*: `×`
 >    - Click *"Run Tool"*
 >
+> Remember to rename your file `Censored lines`.
 >
->    > <details-title> How to select the correct characters here (optional) </details-title>
->    >
->    > The condition "ord(c1) == 215" means that column c1's lines, which contain the censored text, are selected if they match ×. The symbol × is unspecific. Therefore, the Unicode identifier of the character (215) is used for clarity in this condition.
->    {: .details}
->
-> Remember to rename your file "Censored lines".
->
->    > <comment-title> Filter for other characters </comment-title>
->    > Add another Unicode here if you want to select a different character, for example, '□' or '△'.
->    > For example, you can get the respective code on [Character Code Finder](https://www.mauvecloud.net/charsets/CharCodeFinder.html).
->    > Copy the character you want to filter for in the "input" window and select "Decimal Character Codes" as an output. If you do this for symbol ×, you get 215.
->    {: .comment}
 >
 {: .hands_on}
 
@@ -286,6 +267,27 @@ In the next step, we want to extract specific lines only. To determine what cont
 > {: .solution}
 >
 {: .question}
+
+Check the datatype of this file, it should be `txt`.
+The tools we use in the next steps need tabular files instead. 
+Therefore, we will change the datatype of this raw diff text file to `tabular` to enable the next steps:
+
+> <hands-on-title>Change Datatype</hands-on-title>
+>
+> 1. **Set the datatype** {% icon galaxy-pencil %} to `tabular`
+>
+>    {% snippet faqs/galaxy/datasets_change_datatype.md datatype="tabular" %}
+>
+{: .hands_on}
+
+When you have changed the format successfully, you should see × in Column 1 and the Chinese characters in Column 9.
+
+
+
+
+
+
+
 
 
 # Ensure consistent file format
