@@ -31,6 +31,10 @@ contributions:
     - deKCD
     - mwk
     - deNBI
+answer_histories:
+  - label: "UseGalaxy.eu"
+    history: https://usegalaxy.eu/u/schnda/h/example-answer-history-text-mining-differences-in-chinese-newspaper-articles
+    date: 2026-04-27
 ---
 
 
@@ -281,13 +285,6 @@ Therefore, we will change the datatype of this raw diff text file to `tabular` t
 {: .hands_on}
 
 When you have changed the format successfully, you should see × in Column 1 and the Chinese characters in Column 9.
-
-
-
-
-
-
-
 
 
 # Ensure consistent file format
