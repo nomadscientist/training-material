@@ -107,12 +107,20 @@ If you’re not familiar with structural annotation, we recommend reading the [g
 >
 {: .hands_on}
 
+> <tip-title>Slect or remove tracks</tip-title>
+>
+> * To view the tracks, you need to select them. 
+> * To do this, click on **Open track selector** in the top-left corner, as shown in blue in the screenshot.
+> * A list of all your tracks will appear on the right. You can select or deselect tracks to view.
+>    ![sequencing tracks in JBrowse2](../../images/jbrowse2_select-remove_tracks.png "Select or remove some tracks")
+
+{: .tip}
+
+
 If you are not familiar with JBrowse2, here are a few important points:
-- To view the tracks, click the menu in the upper-left corner, under “File”. This allows you to select or deselect the tracks you are interested in. Then, click the cross in the upper-right corner to clear the selection.
 - To navigate along the genome, use your mouse by left-clicking and dragging. Arrows for moving are also available.
 - To zoom in on an area, you have several options. The first is to use the magnifying glass icon. The second option is to select your zoom level using your mouse.
 - If an area interests you, you can highlight it. Select the area in question, right-click, and select “Bookmark region”. You can change the color if you want to distinguish between different areas.
-- If you would like more information about a genomic element in your genome, click on it and a small window will appear on the right with all the details (e.g., length, type of genomic element, genomic sequence, position, etc.)
 
 # Complex Gene Tracks
 
@@ -147,7 +155,7 @@ As mentioned in the introduction, JBrowse2 supports a wide range of input format
 > 2. Execute
 > 3. View the output
 >
->    ![complex gene tracks in JBrowse2](../../images/jbrowse/JBrowse2_complex_gene_tracks.png "Example view of JBrowse2 with multiple tracks (reference genome, structural annotation, RNA-seq alignment, etc.).")
+>    ![complex gene tracks in JBrowse2](../../images/JBrowse2_complex_gene_tracks.png "Example view of JBrowse2 with multiple tracks (reference genome, structural annotation, RNA-seq alignment, etc.).")
 >
 {: .hands_on}
 
