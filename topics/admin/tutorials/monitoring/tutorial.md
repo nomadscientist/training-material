@@ -928,7 +928,7 @@ Namely it shows jobs of a Galaxy instance, their distribution over Pulsar comput
 
 GJR periodically requests data from each connected Galaxy through their own `InfluxDB` instance. Schema of this setup:
 
-<img width="583" height="449" alt="image" src="https://github.com/user-attachments/assets/d1429cd4-53da-4c33-a8f0-dec6896d314a" />
+![image](../../images/gjr_global_data_flow.png "Flow of data from all connected Galaxy servers to shared InfluxDB."){: width="583" height="449"}
 
 For this to work we need the contributors to run an InfluxDB, fill it periodically with anonymous new data (with `gxadmin` scripts below) and give us read access to this data on InfluxDB. 
 
@@ -936,7 +936,7 @@ Note: If you do not run InfluxDB for monitoring yet there is a Galaxy [training 
 
 Simplified schema of the full setup:
 
-<img width="537" height="212" alt="galaxy_data_flow" src="https://github.com/user-attachments/assets/b8d4dc16-8542-4c41-9e1b-b7800781c819" />
+![image](../../images/gjr_local_data_flow.png "How collected Galaxy statistics are being visualized."){: width="537" height="212"}
 
 # Conclusion
 
