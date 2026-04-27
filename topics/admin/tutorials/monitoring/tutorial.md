@@ -919,10 +919,10 @@ Namely it shows jobs of a Galaxy instance, their distribution over Pulsar comput
 
 *Start with writing us an email at galaxy@cesnet.cz that you'd like to join. First we will celebrate and then happily walk you through what needs to be done.*
 
-1) Your Galaxy needs to be sending data to your InfluxDB via [gxadmin scripts](https://github.com/usegalaxy-eu/infrastructure-playbook/tree/master/roles/usegalaxy-eu.job-radar-stats-influxdb)
-1) You give us access to read the InfluxDB (we need: `influxdb_password_var_name;influxdb_host;influxdb_port;influxdb_username`) and some basic information about your server (we need: `name;lat;long;`)
-1) You send us information about your Pulsar servers (we need: `galaxy;pulsar_id;lat;long;node_count;desc`)
-1) Wait few days and your Galaxy and Pulsars show up at [https://gjr.metacentrum.cz](https://gjr.metacentrum.cz)
+1. Your Galaxy needs to be sending data to your InfluxDB via [gxadmin scripts](https://github.com/usegalaxy-eu/infrastructure-playbook/tree/master/roles/usegalaxy-eu.job-radar-stats-influxdb)
+2. You give us access to read the InfluxDB (we need: `influxdb_password_var_name;influxdb_host;influxdb_port;influxdb_username`) and some basic information about your server (we need: `name;lat;long;`)
+3. You send us information about your Pulsar servers (we need: `galaxy;pulsar_id;lat;long;node_count;desc`)
+4. Wait few days and your Galaxy and Pulsars show up at [https://gjr.metacentrum.cz](https://gjr.metacentrum.cz)
 
 ### Details
 
