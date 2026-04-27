@@ -26,6 +26,7 @@ key_points:
   - Use Grafana to visualise these metrics, and monitor their values
 contributors:
   - hexylena
+  - tomasvondrak
 requirements:
   - type: "internal"
     topic_name: admin
