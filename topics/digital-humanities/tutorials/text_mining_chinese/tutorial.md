@@ -33,8 +33,8 @@ contributions:
     - deNBI
 answer_histories:
   - label: "UseGalaxy.eu"
-    history: https://usegalaxy.eu/u/schnda/h/example-answer-history-text-mining-differences-in-chinese-newspaper-articles
-    date: 2026-04-27
+    history: https://usegalaxy.eu/u/schnda/h/example-answer-history-text-mining-differences-in-chinese-newspaper-articles-1
+    date: 2026-04-28
 ---
 
 
@@ -395,11 +395,11 @@ The last step is to visualise the results within a word cloud. It shows which ch
 
 > <hands-on-title> Task description </hands-on-title>
 >
-> 1. {% tool [Generate a word cloud](toolshed.g2.bx.psu.edu/repos/bgruening/wordcloud/wordcloud/1.9.4+galaxy1) %} with the following parameters:
+> 1. {% tool [Generate a word cloud](toolshed.g2.bx.psu.edu/repos/bgruening/wordcloud/wordcloud/1.9.6+galaxy0) %} with the following parameters:
 >    - {% icon param-file %} *"Input file"*: `out_file1` (output of **Cut** {% icon tool %})
 >    - *"Do you want to select a special font?": `Select from a list of fonts`: `Noto Sans Traditional Chinese`
->    - *"Smallest font size to use"*: `8`
->    - *"Color option"*: `Color`
+>    - *"Smallest font size to show"*: `8`
+>    - *"Color option"*: `Colormap`
 >    - *"Ratio of times to try horizontal fitting as opposed to vertical"*: `1.0`
 >    - *"Scaling of words by frequency (0 - 1)"*: `0.9`
 >    - Click *"Run Tool"*
