@@ -49,7 +49,6 @@ Despite this obvious form of censorship, no research is looking into what Chines
 
 This tutorial uses text mining to compare two newspaper articles, a censored and an uncensored text to answer what characters were censored in a Chinese newspaper published in Hong Kong in the 1930s.
 
-
 > <agenda-title></agenda-title>
 >
 > In this tutorial, we will cover:
