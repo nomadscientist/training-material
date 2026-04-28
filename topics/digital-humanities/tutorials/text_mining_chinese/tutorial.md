@@ -119,7 +119,7 @@ We will use Regular Expressions in a tool called "Replace text" with four differ
 
 > <hands-on-title> Cleaning the Text with Regular Expressions </hands-on-title>
 >
-> 1. {% tool [Replace Text](toolshed.g2.bx.psu.edu/repos/bgruening/text_processing/tp_replace_in_line/9.5+galaxy0) %} with the following parameters:
+> 1. {% tool [Replace Text in entire line](toolshed.g2.bx.psu.edu/repos/bgruening/text_processing/tp_replace_in_line/9.5+galaxy3) %} with the following parameters:
 >    - {% icon param-file %} *"File to process"*: `Example_Chinese_newspaper_censored.txt` (censored text you uploaded)
 >    - In *"Replacement"*:
 >        - {% icon param-repeat %} *"Insert Replacement"*
@@ -292,7 +292,7 @@ After filtering for censored lines, we add a sub-step to ensure smooth computati
 
 > <hands-on-title> Compute to ensure all columns exist </hands-on-title>
 >
-> 1. {% tool [Compute](toolshed.g2.bx.psu.edu/repos/devteam/column_maker/Add_a_column1/2.1) %} with the following parameters:
+> 1. {% tool [Compute](toolshed.g2.bx.psu.edu/repos/devteam/column_maker/Add_a_column1/2.1+galaxy0) %} with the following parameters:
 >    - {% icon param-file %} *"Input file"*: `out_file1` (output of **Filter** {% icon tool %})
 >    - *"Input has a header line with column names?"*: `No`
 >        - In *"Expressions"*:
