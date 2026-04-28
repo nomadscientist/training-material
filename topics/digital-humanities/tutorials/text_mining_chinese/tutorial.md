@@ -33,7 +33,7 @@ contributions:
     - deNBI
 answer_histories:
   - label: "UseGalaxy.eu"
-    history: https://usegalaxy.eu/u/schnda/h/example-answer-history-text-mining-differences-in-chinese-newspaper-articles-1
+    history: https://usegalaxy.eu/u/schnda/h/example-answer-history-text-mining-differences-in-chinese-newspaper-articles-2
     date: 2026-04-28
 ---
 
