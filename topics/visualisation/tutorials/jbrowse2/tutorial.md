@@ -109,11 +109,11 @@ If you’re not familiar with structural annotation, we recommend reading the [g
 
 > <tip-title>Slect or remove tracks</tip-title>
 >
-> * To view the tracks, you need to select them. 
+> * To view the tracks, you need to select them.
 > * To do this, click on **Open track selector** in the top-left corner, as shown in blue in the screenshot.
 > * A list of all your tracks will appear on the right. You can select or deselect tracks to view.
 >    ![sequencing tracks in JBrowse2](../../images/jbrowse2_select-remove_tracks.png "Select or remove some tracks")
-
+>
 {: .tip}
 
 
