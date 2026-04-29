@@ -33,8 +33,8 @@ contributions:
     - deNBI
 answer_histories:
   - label: "UseGalaxy.eu"
-    history: https://usegalaxy.eu/u/schnda/h/example-answer-history-text-mining-differences-in-chinese-newspaper-articles-2
-    date: 2026-04-28
+    history: https://usegalaxy.eu/u/schnda/h/answer-key-history-text-mining-differences-in-chinese-newspaper-articles
+    date: 2026-04-29
 ---
 
 
@@ -180,8 +180,8 @@ We can now compare the two cleaned texts. This will visualise the differences be
 > <hands-on-title> Comparing the texts using <em>diff</em> tool </hands-on-title>
 >
 > 1. {% tool [diff](toolshed.g2.bx.psu.edu/repos/bgruening/diff/diff/3.10+galaxy1) %} with the following parameters:
->    - {% icon param-file %} *"Cleaned Censored Text"*: `outfile` (output of **Replace Text** {% icon tool %})
->    - {% icon param-file %} *"Cleaned Uncensored Text"*: `outfile` (output of **Replace Text** {% icon tool %})
+>    - {% icon param-file %} *"First input file"*: `Cleaned Censored Text` (output of **Replace Text** {% icon tool %})
+>    - {% icon param-file %} *"Second input file"*: `Cleaned Uncensored Text` (output of **Replace Text** {% icon tool %})
 >    - *"Choose a report format"*: `Generates an HTML report to visualize the differences`
 >    - Click *"Run Tool"*
 {: .hands_on}
@@ -206,19 +206,22 @@ The HTML file could look like this:
 
 It shows what passages differ in the two texts. Red parts indicate deletions, and green areas indicate additions.
 If passages are identical in both texts, they remain uncoloured.
-This output is very convenient for researchers, as it shows differences quickly. However, it is not helpful for further technical processing with Galaxy. For this, we run this tool a second time with slightly changed parameters. The output is the basis for our further analysis steps.
+This output is very convenient for researchers, as it shows differences quickly. 
+If all you want to do is compare the two texts - you have achieved your goal and can stop here. Congratulations! 
+
+If you want to extract the censored passages in the next steps, this HTML output is not helpful for further technical processing with Galaxy. For this, we run this _diff_ tool a second time with slightly changed parameters. The output is the basis for our further analysis steps.
 
 
 ## Create a _diff_ file for further processing
 This step runs the text comparison line by line again to create another raw file that the computer can work with.
-It is less intuitive to understand at first glance. Again, upload the cleaned, censored text containing `×` first and the uncensored text second.
+It is less intuitive to understand at first glance. Again, select the cleaned, censored text containing `×` first and the uncensored text second.
 But this time, choose another report format.
 
 > <hands-on-title> Run another <em>diff</em> tool </hands-on-title>
 >
 > 1. {% tool [diff](toolshed.g2.bx.psu.edu/repos/bgruening/diff/diff/3.10+galaxy1) %} with the following parameters:
->    - {% icon param-file %} *"Cleaned Censored Text"*: `outfile` (output of **Replace Text** {% icon tool %})
->    - {% icon param-file %} *"Cleaned Uncensored Text"*: `outfile` (output of **Replace Text** {% icon tool %})
+>    - {% icon param-file %} *"First input file"*: `Cleaned Censored Text` (output of **Replace Text** {% icon tool %})
+>    - {% icon param-file %} *"Second input file"*: `Cleaned Uncensored Text` (output of **Replace Text** {% icon tool %})
 >    - *"Choose a report format"*: `Text file, side-by-side (-y)`
 >    - Click *"Run Tool"*
 >
@@ -226,10 +229,11 @@ But this time, choose another report format.
 >    > As you can see above, the output of this file is a text file, compared to the HTML output in the last step.
 >    {: .comment}
 >
+>2. Rename your file `diff raw`.
 {: .hands_on}
 
 
-> <question-title>Look at this diff file</question-title>
+> <question-title>Look at the diff raw file</question-title>
 >
 > 1. How does this file differ from the HTML file in the last step?
 >
@@ -242,18 +246,20 @@ But this time, choose another report format.
 >
 {: .question}
 
-# Select only censored lines
-In the next step, we want to extract only specific lines. To determine what content was redacted in the first text, we filter the last steps' raw output for lines containing the censorship symbol ×. 
+Great, we can use this file for our next steps.
 
-> <hands-on-title> Filter text </hands-on-title>
+# Select only censored lines
+Now we want to extract only specific lines. To determine what content was redacted in the first text, we filter the last steps' raw output for lines containing the censorship symbol ×. 
+
+> <hands-on-title> Select text </hands-on-title>
 >
 > 1. {% tool [Select lines that match an expression](Grep1) %} with the following parameters:
->    - {% icon param-file %} *"Select lines"*: `diff_file` (output of **diff** {% icon tool %})
+>    - {% icon param-file %} *"Select lines"*: `diff_raw` (output of **diff** {% icon tool %})
 >    - *"that are"*: `Matching`
 >    - *"the pattern"*: `×`
 >    - Click *"Run Tool"*
 >
-> Remember to rename your file `Censored lines`.
+>2. Rename your file `Selected lines`.
 >
 >
 {: .hands_on}
@@ -273,11 +279,11 @@ In the next step, we want to extract only specific lines. To determine what cont
 
 Check the datatype of this file, it should be `txt`.
 The tools we use in the next steps need tabular files instead. 
-Therefore, we will change the datatype of this raw diff text file to `tabular` to enable the next steps:
+Therefore, we will change the datatype of this file to `tabular` to enable the next steps:
 
 > <hands-on-title>Change Datatype</hands-on-title>
 >
-> 1. **Set the datatype** {% icon galaxy-pencil %} to `tabular`
+> 1. **Set the datatype** of `Selected lines` {% icon galaxy-pencil %} to `tabular`.
 >
 >    {% snippet faqs/galaxy/datasets_change_datatype.md datatype="tabular" %}
 >
@@ -293,7 +299,7 @@ After filtering for censored lines, we add a sub-step to ensure smooth computati
 > <hands-on-title> Compute to ensure all columns exist </hands-on-title>
 >
 > 1. {% tool [Compute](toolshed.g2.bx.psu.edu/repos/devteam/column_maker/Add_a_column1/2.1+galaxy0) %} with the following parameters:
->    - {% icon param-file %} *"Input file"*: `out_file1` (output of **Filter** {% icon tool %})
+>    - {% icon param-file %} *"Input file"*: `Selected lines` (output of **Select** {% icon tool %})
 >    - *"Input has a header line with column names?"*: `No`
 >        - In *"Expressions"*:
 >                - *"Add expression"*: `c9`
@@ -302,9 +308,12 @@ After filtering for censored lines, we add a sub-step to ensure smooth computati
 >    - In *"Error handling"*:
 >        - *"If an expression cannot be computed for a row"*: `Produce an empty column value for the row`
 >    - Click *"Run Tool"*
+>
+> 2. Rename the result to `Censored lines`.
+>
 {: .hands_on}
 
-Rename the result to "Censored lines final".
+
 
 # Summarise your findings
 
@@ -312,8 +321,8 @@ This step summarises how often each character appeared in the table previously.
 
 > <hands-on-title> Task description </hands-on-title>
 >
-> 1. {% tool [Datamash](toolshed.g2.bx.psu.edu/repos/iuc/datamash_ops/datamash_ops/1.8+galaxy0) %} with the following parameters:
->    - {% icon param-file %} *"Input tabular dataset"*: `out_file1` (output of **Compute** {% icon tool %})
+> 1. {% tool [Datamash](toolshed.g2.bx.psu.edu/repos/iuc/datamash_ops/datamash_ops/1.9+galaxy0) %} with the following parameters:
+>    - {% icon param-file %} *"Input tabular dataset"*: `Censored lines` (output of **Compute** {% icon tool %})
 >    - *"Group by fields"*: `9`
 >    - *"Sort input"*: `Yes`
 >    - In *"Operation to perform on each group"*:
@@ -321,7 +330,11 @@ This step summarises how often each character appeared in the table previously.
 >            - *"Type"*: `count`
 >            - *"On column"*: `column 9`
 >   - Click *"Run Tool"*
+>
+> 2. Rename the output file `Quantified Results`.
+>
 {: .hands_on}
+
 
 > <question-title></question-title>
 >
@@ -343,9 +356,11 @@ If you are only interested in the quantitative results, this can be your final o
 > <hands-on-title> Sort </hands-on-title>
 >
 > 1. {% tool [Sort](sort1) %} with the following parameters:
->    - {% icon param-file %} *"Sort Dataset"*: `out_file` (output of **Datamash** {% icon tool %})
+>    - {% icon param-file %} *"Sort Dataset"*: `Quantified Results` (output of **Datamash** {% icon tool %})
 >    - *"on column"*: `c2`
 >    - Click *"Run Tool"*
+>
+> 2. Rename the output file `Sorted Results`. 
 >
 >    > <comment-title> How to sort? </comment-title>
 >    >
@@ -370,7 +385,7 @@ Why would the British Hong Kong Government consistently censor this character? J
 
 # Cut out the censored characters only
 
-If you want to visualise your results, this step gets you there. We use the file "Censored lines final" that we created in the "Ensure consistent file format" step.
+If you want to visualise your results, this step gets you there. We use the file `Censored lines` that we created in the "Ensure consistent file format" step.
 Unlike the last step, this tabular file contains all 13 lines in 9 columns.
 From this file, we cut out all uncensored characters. The result is a single column with multiple rows of Chinese characters.
 It allows scaling words by frequency in the word cloud in the next step. As a result, characters that appear more often appear bigger, making the results evident at first sight.
@@ -379,8 +394,10 @@ It allows scaling words by frequency in the word cloud in the next step. As a re
 >
 > 1. {% tool [Cut](Cut1) %} with the following parameters:
 >    - *"Cut columns"*: `c9`
->    - {% icon param-file %} *"From"*: `out_file1` (output of **Compute** {% icon tool %})
+>    - {% icon param-file %} *"From"*: `Censored lines` (output of **Compute** {% icon tool %})
 >    - Click *"Run Tool"*
+>
+> 2. Rename the output file `Uncensored characters`.
 >
 >    > <details-title> What do I select here? (optional) </details-title>
 >    >
@@ -396,13 +413,15 @@ The last step is to visualise the results within a word cloud. It shows which ch
 > <hands-on-title> Task description </hands-on-title>
 >
 > 1. {% tool [Generate a word cloud](toolshed.g2.bx.psu.edu/repos/bgruening/wordcloud/wordcloud/1.9.6+galaxy0) %} with the following parameters:
->    - {% icon param-file %} *"Input file"*: `out_file1` (output of **Cut** {% icon tool %})
+>    - {% icon param-file %} *"Input file"*: `Uncensored characters` (output of **Cut** {% icon tool %})
 >    - *"Do you want to select a special font?": `Select from a list of fonts`: `Noto Sans Traditional Chinese`
 >    - *"Smallest font size to show"*: `8`
 >    - *"Color option"*: `Colormap`
 >    - *"Ratio of times to try horizontal fitting as opposed to vertical"*: `1.0`
 >    - *"Scaling of words by frequency (0 - 1)"*: `0.9`
 >    - Click *"Run Tool"*
+>
+> 2. Rename the output file `Wordcloud of uncensored characters`. 
 >
 >    > <details-title> Optimise your word cloud (optional) </details-title>
 >    >
