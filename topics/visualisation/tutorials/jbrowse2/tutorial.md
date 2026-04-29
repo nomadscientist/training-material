@@ -31,7 +31,7 @@ contributions:
 
 JBrowse is an open-source genomic browser developed to view and explore genomoc data interactively. The first version, released in 2009, gained popularity due to its simplicity and its ability to display data in various formats: GFF3/GTF for annotations, BAM for RNA-seq alignements, BigWig for coverage, and VCF for variants.
 
-With JBrowse2, released in 2020, the possibilities have been significantly expanded. This new version now allows for visualization of Hi-C data, offering a 3D representation of chromosomal interactions, a major asset forstudying genome structure. 
+With JBrowse2, released in 2020, the possibilities have been significantly expanded. This new version now allows for visualization of Hi-C data, offering a 3D representation of chromosomal interactions, a major asset forstudying genome structure.
 
 JBrowse2 also introduces circular view, ideal for analyzing bacterial genomes or plasmids, as well as dotplots, which facilitate the comparison of syntenic regions across species. These new features enable a more in-depth and visual analysis of relationship between genomes.
 
@@ -39,7 +39,7 @@ Another key advantage is support for the CRAM format, a more compact alternative
 
 For more information on JBrowse2, please visit this [website](https://jbrowse.org/jb2/).
 
-In this tutorial, we will use JBrowse2, which is available on Galaxy. 
+In this tutorial, we will use JBrowse2, which is available on Galaxy.
 
 
 > <agenda-title></agenda-title>
@@ -74,7 +74,7 @@ In this tutorial, we will use JBrowse2, which is available on Galaxy.
 >
 {: .hands_on}
 
-The data for this tutoriel is a dataset from *Citrobacter phage Merlin*.
+The data for this tutorial is a dataset from *Citrobacter phage Merlin*.
 
 # Simple Gene Tracks
 
@@ -98,7 +98,23 @@ If you’re not familiar with structural annotation, we recommend reading the [g
 >
 > 4. Turn on both tracks of data.
 >
+>    > <tip-title>Slect or remove tracks</tip-title>
+>    >
+>    > * To view the tracks, you need to select them.
+>    > * To do this, click on **Open track selector** in the top-left corner, as shown in blue in the screenshot.
+>    > * A list of all your tracks will appear on the right. You can select or deselect tracks to view.
+>    > ![sequencing tracks in JBrowse2](../../images/jbrowse2_select-remove_tracks.png "Select or remove some tracks")
+>    >
+>    {: .tip}
+>
+>
 > 5. Navigate along the genome. Feel free to zoom in on specific areas.
+>
+>    > <tip-title> Navigating in Jbrowse </tip-title>
+>    > - To **navigate along the genome**, use your mouse by left-clicking and dragging. Arrows for moving are also available.
+>    > - To **zoom in** on an area, you have several options. The first is to use the magnifying glass icon. The second option is to select your zoom level using your mouse.
+>    > - If an area interests you, you can highlight it. Select the area in question, right-click, and select **“Bookmark region”**. You can change the color if you want to distinguish between different areas.
+>    {: .tip}
 >
 > 6. By clicking on a gene, you will be able to get information about it, such as the type (CDS, exon, gene), its length and its position.
 >
@@ -107,24 +123,15 @@ If you’re not familiar with structural annotation, we recommend reading the [g
 >
 {: .hands_on}
 
-> <tip-title>Slect or remove tracks</tip-title>
->
-> * To view the tracks, you need to select them.
-> * To do this, click on **Open track selector** in the top-left corner, as shown in blue in the screenshot.
-> * A list of all your tracks will appear on the right. You can select or deselect tracks to view.
->    ![sequencing tracks in JBrowse2](../../images/jbrowse2_select-remove_tracks.png "Select or remove some tracks")
->
-{: .tip}
-
 
 If you are not familiar with JBrowse2, here are a few important points:
-- To navigate along the genome, use your mouse by left-clicking and dragging. Arrows for moving are also available.
-- To zoom in on an area, you have several options. The first is to use the magnifying glass icon. The second option is to select your zoom level using your mouse.
-- If an area interests you, you can highlight it. Select the area in question, right-click, and select “Bookmark region”. You can change the color if you want to distinguish between different areas.
+- To **navigate along the genome**, use your mouse by left-clicking and dragging. Arrows for moving are also available.
+- To **zoom in** on an area, you have several options. The first is to use the magnifying glass icon. The second option is to select your zoom level using your mouse.
+- If an area interests you, you can highlight it. Select the area in question, right-click, and select **“Bookmark region”**. You can change the color if you want to distinguish between different areas.
 
 # Complex Gene Tracks
 
-As mentioned in the introduction, JBrowse2 supports a wide range of input formats for tracks. We previously launched JBrowse2 with a single track, so let’s launch it with multiple tracks. 
+As mentioned in the introduction, JBrowse2 supports a wide range of input formats for tracks. We previously launched JBrowse2 with a single track, so let’s launch it with multiple tracks.
 
 > <hands-on-title>Build a JBrowse2 with multiple tracks</hands-on-title>
 >
@@ -159,7 +166,7 @@ As mentioned in the introduction, JBrowse2 supports a wide range of input format
 >
 {: .hands_on}
 
-# Hi-C Data Visualization 
+# Hi-C Data Visualization
 
 The .hic file is a standard format used to store Hi-C interaction matrices. These matrices represent physical contacts between chromosomal regions within a genome, thereby revealing its 3D spatial organization. Unlike linear data (such as GFF annotations or BAM alignments), Hi-C provides insight into how regions of the genome are organized and physically interact in space, for example, to form loops or structural domains.
 
@@ -182,16 +189,16 @@ The .hic file is a standard format used to store Hi-C interaction matrices. Thes
 >
 {: .hands_on}
 
-In this image, we can see the chromosomal interactions in the 18,724–43,842 bp region of the *Citrobacter phage Merlin* genome. 
+In this image, we can see the chromosomal interactions in the 18,724–43,842 bp region of the *Citrobacter phage Merlin* genome.
 
-How should we interpret our results? 
+How should we interpret our results?
 
 A heatmap contains several patterns:
 - The diagonal line shows local interactions between neighboring regions on the linear genome.
 - The red blocks indicate long-range interactions between distant regions on the linear sequence. These blocks are often symmetrical and form an “X” or “checkerboard” pattern. This may correspond to:
   - DNA loops formed during replication or packaging of the viral genome.
   - Interactions between regulatory elements (e.g., promoters) that can influence gene transcription.
-- Arcs connect regions in physical interaction, which can help us understand how the viral genome is organized within the capsid. 
+- Arcs connect regions in physical interaction, which can help us understand how the viral genome is organized within the capsid.
 
 
 To explore other examples of Hi-C data (such as eukaryotic genomes or more complex matrices), we invite you to check out the [official JBrowse 2 demo](https://jbrowse.org/code/jb2/latest/?config=test_data%2Fconfig_demo.json&session=local-FcsRCX4o_A).
