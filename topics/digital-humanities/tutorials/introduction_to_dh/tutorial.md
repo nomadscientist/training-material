@@ -24,6 +24,8 @@ contributions:
     - RZ9082
   funding:
     - deKCD
+    - mwk
+    - deNBI
 answer_histories:
   - label: "UseGalaxy.eu"
     history: https://usegalaxy.eu/u/schnda/h/introduction-to-dh-in-galaxy-answer-key-history
