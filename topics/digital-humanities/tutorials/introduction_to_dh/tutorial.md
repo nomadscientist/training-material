@@ -276,7 +276,7 @@ Regular Expressions (RegEx) allow you to search for particular patterns in your 
 
 > <hands-on-title> Remove Punctuation in Poem One </hands-on-title>
 >
-> 1. Run {% icon workflow-run %} {% tool [Replace text in entire line](toolshed.g2.bx.psu.edu/repos/bgruening/text_processing/tp_replace_in_line/9.5+galaxy2) %} with the following parameters:
+> 1. Run {% icon workflow-run %} {% tool [Replace text in entire line](toolshed.g2.bx.psu.edu/repos/bgruening/text_processing/tp_replace_in_line/9.5+galaxy3) %} with the following parameters:
 >    - {% icon param-file %} *"File to process"*: `SoY_Cheap_Repo.txt`
 >    - In *"Replacement"*:
 >        - {% icon param-repeat %} *"Insert Replacement"*
@@ -299,7 +299,7 @@ Also in text two, we search for the pattern `[[:punct:]]` and omit a replacement
 
 > <hands-on-title> Remove Punctuation in Poem Two </hands-on-title>
 >
-> 1. Run {% icon workflow-run %} {% tool [Replace text in entire line](toolshed.g2.bx.psu.edu/repos/bgruening/text_processing/tp_replace_in_line/9.5+galaxy2) %} with the following parameters:
+> 1. Run {% icon workflow-run %} {% tool [Replace text in entire line](toolshed.g2.bx.psu.edu/repos/bgruening/text_processing/tp_replace_in_line/9.5+galaxy3) %} with the following parameters:
 >    - {% icon param-file %} *"File to process"*: `SoY_Univ_Mag.txt`
 >    - In *"Replacement"*:
 >        - {% icon param-repeat %} *"Insert Replacement"*
@@ -331,7 +331,7 @@ Particularly for larger corpora, a word cloud can be a nice way to get a first i
 
 > <hands-on-title> Visualize the Content of Poem One </hands-on-title>
 >
-> 1. Run {% icon workflow-run %} {% tool [Generate a word cloud](toolshed.g2.bx.psu.edu/repos/bgruening/wordcloud/wordcloud/1.9.4+galaxy4) %} with the following parameters:
+> 1. Run {% icon workflow-run %} {% tool [Generate a word cloud](toolshed.g2.bx.psu.edu/repos/bgruening/wordcloud/wordcloud/1.9.6+galaxy0) %} with the following parameters:
 >    - {% icon param-file %} *"Input file"*: `SoY_Cheap_Repo_cleaned.txt` (output of **Replace Text** {% icon tool %})
 >    - *"Do you want to select a special font?"*: `Use the default DroidSansMono font`
 >    - *"Color option"*: `Colormap`
@@ -352,7 +352,7 @@ This should look as follows:
 
 > <hands-on-title> Visualize the Content of Poem Two </hands-on-title>
 >
-> 1. Run {% icon workflow-run %} {% tool [Generate a word cloud](toolshed.g2.bx.psu.edu/repos/bgruening/wordcloud/wordcloud/1.9.4+galaxy4) %} with the following parameters:
+> 1. Run {% icon workflow-run %} {% tool [Generate a word cloud](toolshed.g2.bx.psu.edu/repos/bgruening/wordcloud/wordcloud/1.9.6+galaxy0) %} with the following parameters:
 >    - {% icon param-file %} *"Input file"*: `SoY_Univ_Mag_cleaned.txt` (output of **Replace Text** {% icon tool %})
 >    - *"Do you want to select a special font?"*: `Use the default DroidSansMono font`
 >    - *"Color option"*: `Colormap`
@@ -412,7 +412,7 @@ That way, each word gets displayed in a different line, which prepares the detai
 
 > <hands-on-title> Changing Layout of Poem One </hands-on-title>
 >
-> 1. Run {% icon workflow-run %} {% tool [Replace text in entire line](toolshed.g2.bx.psu.edu/repos/bgruening/text_processing/tp_replace_in_line/9.5+galaxy2) %} with the following parameters:
+> 1. Run {% icon workflow-run %} {% tool [Replace text in entire line](toolshed.g2.bx.psu.edu/repos/bgruening/text_processing/tp_replace_in_line/9.5+galaxy3) %} with the following parameters:
 >    - {% icon param-file %} *"File to process"*: `SoY_Cheap_Repo_cleaned.txt`
 >    - In *"Replacement"*:
 >        - {% icon param-repeat %} *"Insert Replacement"*
@@ -434,7 +434,7 @@ To match this, we rerun {%icon dataset-rerun %} the step with the same parameter
 
 > <hands-on-title> Changing Layout of Poem Two </hands-on-title>
 >
-> 1. Run {% icon workflow-run %} {% tool [Replace text in entire line](toolshed.g2.bx.psu.edu/repos/bgruening/text_processing/tp_replace_in_line/9.5+galaxy2) %} with the following parameters:
+> 1. Run {% icon workflow-run %} {% tool [Replace text in entire line](toolshed.g2.bx.psu.edu/repos/bgruening/text_processing/tp_replace_in_line/9.5+galaxy3) %} with the following parameters:
 >    - {% icon param-file %} *"File to process"*: `SoY_Univ_Mag_cleaned.txt`
 >    - In *"Replacement"*:
 >        - {% icon param-repeat %} *"Insert Replacement"*
