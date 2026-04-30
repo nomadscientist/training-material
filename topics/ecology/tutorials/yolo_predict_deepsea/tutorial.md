@@ -157,7 +157,7 @@ This dataset provides two pretrained YOLOv8 detection models tailored for the ma
 >
 > > <tip-title>IoU threshold parameter</tip-title>
 > >
-> >   Try changing the confidence and IoU thresholds to see how detection results vary. It helps you find a good balance between sensitivity and accuracy.
+> >   Try changing the confidence and IoU thresholds (this is used for Non-Maximum Suppression (NMS), which removes overlapping detections) to see how detection results vary. It helps you find a good balance between sensitivity and accuracy.
 > >
 > >
 > {: .tip}
