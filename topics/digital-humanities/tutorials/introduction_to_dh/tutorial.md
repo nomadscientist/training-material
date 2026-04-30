@@ -28,8 +28,8 @@ contributions:
     - deNBI
 answer_histories:
   - label: "UseGalaxy.eu"
-    history: https://usegalaxy.eu/u/schnda/h/introduction-to-dh-in-galaxy-answer-key-history
-    date: 2025-11-20
+    history: https://usegalaxy.eu/u/schnda/h/example-answer-history-introduction-to-dh-in-galaxy
+    date: 2026-04-30
 ---
 
 Loosely building on {% cite Richardson2003 %}, this tutorial compares two editions of the poem "The Sorrows of Yamba".[^1]
