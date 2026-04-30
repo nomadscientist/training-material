@@ -276,7 +276,7 @@ Regular Expressions (RegEx) allow you to search for particular patterns in your 
 
 > <hands-on-title> Remove Punctuation in Poem One </hands-on-title>
 >
-> 1. Run {% icon workflow-run %} {% tool [Replace Text - in entire line](toolshed.g2.bx.psu.edu/repos/bgruening/text_processing/tp_replace_in_line/9.5+galaxy2) %} with the following parameters:
+> 1. Run {% icon workflow-run %} {% tool [Replace text in entire line](toolshed.g2.bx.psu.edu/repos/bgruening/text_processing/tp_replace_in_line/9.5+galaxy2) %} with the following parameters:
 >    - {% icon param-file %} *"File to process"*: `SoY_Cheap_Repo.txt`
 >    - In *"Replacement"*:
 >        - {% icon param-repeat %} *"Insert Replacement"*
@@ -299,7 +299,7 @@ Also in text two, we search for the pattern `[[:punct:]]` and omit a replacement
 
 > <hands-on-title> Remove Punctuation in Poem Two </hands-on-title>
 >
-> 1. Run {% icon workflow-run %} {% tool [Replace Text - in entire line](toolshed.g2.bx.psu.edu/repos/bgruening/text_processing/tp_replace_in_line/9.5+galaxy2) %} with the following parameters:
+> 1. Run {% icon workflow-run %} {% tool [Replace text in entire line](toolshed.g2.bx.psu.edu/repos/bgruening/text_processing/tp_replace_in_line/9.5+galaxy2) %} with the following parameters:
 >    - {% icon param-file %} *"File to process"*: `SoY_Univ_Mag.txt`
 >    - In *"Replacement"*:
 >        - {% icon param-repeat %} *"Insert Replacement"*
@@ -315,53 +315,19 @@ To get an idea of how the two cleaned texts compare, we check out their metadata
 
 # Different ways to compare the texts
 
-## Compare quantitatively
+There are various ways to compare two texts. 
+You could, for example, compare them quantitatively with the tool {% tool Line/Word/Character count %}. 
+The output of the tool would show, that the texts have different lengths. 
+While both files are only two lines long, the poem from the cheap repository is 1139 words long, more than double the amount of the second poem. 
 
-The tool {% tool [Line/Word/Character count](wc_gnu) %} allows us to get a quick overview of a text. We want to determine if the cleaned versions differ from one another.
+Another option for comparing the texts is by visualising their content. 
+We will use a word cloud next to do just that. 
 
-> <hands-on-title> Count the Characters of Poem One </hands-on-title>
->
-> 1. Run {% icon workflow-run %} {% tool [Line/Word/Character count](wc_gnu) %} with the following parameters:
->    - {% icon param-file %} *"Text file"*: `SoY_Cheap_Repo_cleaned.txt`
->
-> 2. **Rename** {% icon galaxy-pencil %} the output of this step to `Line/Word/Character count Cheap Repo`.
->
-{: .hands_on}
-
-
-
-Once the dataset has finished running and appears green, click on the eye {% icon galaxy-eye %} symbol. You can see how many lines, words and characters the text consists of.
-And again, we run {% icon workflow-run %} the tool on the second poem.
-
-> <hands-on-title> Count the Characters of Poem Two </hands-on-title>
->
-> 1. Run {% icon workflow-run %} {% tool [Line/Word/Character count](wc_gnu) %} with the following parameters:
->    - {% icon param-file %} *"Text file"*: `SoY_Univ_Mag_cleaned.txt`
->
-> 2. **Rename** {% icon galaxy-pencil%} this output to `Line/Word/Character count Universal` for easier distinction.
->
-{: .hands_on}
-
-
-> <question-title>How do the texts compare</question-title>
->
-> 1. How many lines do the poems have?
-> 2. Which of the two texts contains more words, and how many?
->
-> > <solution-title></solution-title>
-> >
-> > 1. Both texts consist of only two lines.
-> > 2. The poem version from the cheap repository is longer, containing 1139 words, more than double the amount of the second poem.
-> >
-> {: .solution}
->
-{: .question}
-
-The differences between the two texts are quantifiable, but do these also affect the content?
 
 ## Compare visually
 
-A picture says more than 1000 words! Accordingly, we aim to delve deeper into the actual content of both texts. Particularly for larger corpora, a word cloud can be a nice way to get a first idea of what a text is about. Please refrain from using the latest outputs this time, as they contain only metadata and not the texts we want to compare. Select the cleaned poem versions for a more meaningful word cloud output.
+A picture says more than 1000 words! Accordingly, we aim to delve deeper into the actual content of both texts. 
+Particularly for larger corpora, a word cloud can be a nice way to get a first idea of what a text is about. 
 
 > <hands-on-title> Visualize the Content of Poem One </hands-on-title>
 >
@@ -371,6 +337,8 @@ A picture says more than 1000 words! Accordingly, we aim to delve deeper into th
 >    - *"Color option"*: `Colormap`
 >    - *"Scaling of words by frequency (0 - 1)"*: `0.8`
 >
+> 2. **Rename** {% icon galaxy-pencil %} the output file to `Wordcloud Poem One`
+>
 >    > <comment-title> Adapting the Word Cloud </comment-title>
 >    >
 >    > The word cloud has many different features. You can upload a stop word list that should be excluded from the visualization, or play around with other parameters like the text size. Rerun {%icon dataset-rerun %} the tool with some changed parameters and see what happens.
@@ -378,9 +346,9 @@ A picture says more than 1000 words! Accordingly, we aim to delve deeper into th
 >
 {: .hands_on}
 
-We also rerun {%icon dataset-rerun %} the word cloud with the second poem.
-
-The word cloud for the second text is created in the same way. We suggest rerunning the tool with the second text, using the same parameters as those for creating the first word cloud image for better comparability. That makes both comparable.
+The word cloud for the second text is created in the same way. 
+We suggest using the rerun {%icon dataset-rerun %} button on `Wordcloud Poem One`, to reun the tool with `SoY_Univ_Mag_cleaned.txt` as an input and create a wordcloud for it. That way we can make sure to use identical input parameters (e.g. font, color option, etc.) which helps for easy comparison.
+This should look as follows:
 
 > <hands-on-title> Visualize the Content of Poem Two </hands-on-title>
 >
@@ -424,19 +392,25 @@ The visualisation suggests that the text's metrics, which we checked with the li
 
 With this text's length and just two poems, this is, of course, something you can find out by reading both texts. However, this distant reading approach can give you important preliminary insights to guide your close reading, particularly with bigger corpora.
 
-Of course, the word cloud insights are just a first glance and do not allow a proper analysis; we need to compare both texts properly. But what is a good way to do this? We suggest comparing them side by side and line by line. For that, we adapt the layout once more.
+Of course, the word cloud insights are just a first glance and do not allow a proper analysis; 
+we need to compare both texts properly. 
 
+## Compare texts side by side
 
-## Replace spaces with line breaks to prepare side-by-side comparison
+But what is a good way to compare those texts in depth? 
+We suggest comparing them side by side and line by line. 
+For that, we adapt the layout once more.
 
-We used the tool to replace text before. We are not deleting something this time, as we did with the punctuation, but we are replacing some characters. To get a convenient layout that shows one word per line, we replace the spaces (\s) with line breaks (\n). That way, each word gets displayed in a different line, which prepares the detailed comparison in the next step.
+### Replace spaces with line breaks to prepare side-by-side comparison
 
-Regular Expressions help again by changing all spaces with line breaks with just one command.
-
+We used {% tool Replace text in entire line %} to remove the punctuation earlier. 
+This time, we use the tool to replace some characters. 
+To get a convenient layout that shows one word per line, we use Regular Expressions to replace the spaces (\s) with line breaks (\n). 
+That way, each word gets displayed in a different line, which prepares the detailed comparison in the next step.
 
 > <hands-on-title> Changing Layout of Poem One </hands-on-title>
 >
-> 1. Run {% icon workflow-run %} {% tool [Replace Text - in entire line](toolshed.g2.bx.psu.edu/repos/bgruening/text_processing/tp_replace_in_line/9.5+galaxy2) %} with the following parameters:
+> 1. Run {% icon workflow-run %} {% tool [Replace text in entire line](toolshed.g2.bx.psu.edu/repos/bgruening/text_processing/tp_replace_in_line/9.5+galaxy2) %} with the following parameters:
 >    - {% icon param-file %} *"File to process"*: `SoY_Cheap_Repo_cleaned.txt`
 >    - In *"Replacement"*:
 >        - {% icon param-repeat %} *"Insert Replacement"*
@@ -453,14 +427,12 @@ Regular Expressions help again by changing all spaces with line breaks with just
 >
 {: .hands_on}
 
-
-
-When you click on the eye {% icon galaxy-eye %} icon of the data set in the history now, when the dataset turns green, you can see that it now contains one word per line. To match this, we repeat the step with the same parameters also for the second poem.
-
+When you click on the eye {% icon galaxy-eye %} icon of the data set in the history now, when the dataset turns green, you can see that it now contains one word per line. 
+To match this, we rerun {%icon dataset-rerun %} the step with the same parameters also for the second poem.
 
 > <hands-on-title> Changing Layout of Poem Two </hands-on-title>
 >
-> 1. Run {% icon workflow-run %} {% tool [Replace Text - in entire line](toolshed.g2.bx.psu.edu/repos/bgruening/text_processing/tp_replace_in_line/9.5+galaxy2) %} with the following parameters:
+> 1. Run {% icon workflow-run %} {% tool [Replace text in entire line](toolshed.g2.bx.psu.edu/repos/bgruening/text_processing/tp_replace_in_line/9.5+galaxy2) %} with the following parameters:
 >    - {% icon param-file %} *"File to process"*: `SoY_Univ_Mag_cleaned.txt`
 >    - In *"Replacement"*:
 >        - {% icon param-repeat %} *"Insert Replacement"*
@@ -479,15 +451,17 @@ When you click on the eye {% icon galaxy-eye %} icon of the data set in the hist
 >
 > > <solution-title>  </solution-title>
 > >
-> > 1. When you click on the two names of the two new datasets you just worked on, you see that one is now 539, the other 1139 lines long. The number of lines now matches the word number we detected with the tool `Line/Word/Character count`.
+> > 1. When you click on the two names of the two new datasets you just worked on, you see that one is now 539, the other 1139 lines long. The number of lines now matches the word number you might have detected with the tool `Line/Word/Character count`.
 > >
 > {: .solution}
 >
 {: .question}
 
-Now, both poems show one word per line, which is the perfect setup to compare them side by side. Use a tool called `diff` to visualise this. To get the same order as the tutorial, make sure to select the version from the Cheap Repository as the first input file and the one from the Universal Magazine as the second input file.
+Now, both poems show one word per line, which is the perfect setup to compare them side by side. 
+Use a tool called `diff` to visualise this. 
+To get the same order as the tutorial, make sure to select the version from the Cheap Repository as the first input file and the one from the Universal Magazine as the second input file.
 
-## Compare side-by-side with *diff*
+### Using *diff* to compare texts side by side
 
 > <hands-on-title> Compare the Poems </hands-on-title>
 >
