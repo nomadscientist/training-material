@@ -406,7 +406,7 @@ For that, we adapt the layout once more.
 ### Replace spaces with line breaks to prepare side-by-side comparison
 
 We used {% tool Replace text in entire line %} to remove the punctuation earlier. 
-This time, we use the tool to replace some characters. 
+This time, we use the same tool to replace characters in our files. 
 To get a convenient layout that shows one word per line, we use Regular Expressions to replace the spaces (\s) with line breaks (\n). 
 That way, each word gets displayed in a different line, which prepares the detailed comparison in the next step.
 
@@ -422,14 +422,14 @@ That way, each word gets displayed in a different line, which prepares the detai
 >
 >    > <comment-title> How do I understand the RegEx commands? </comment-title>
 >    >
->    > Don't worry, if you have never used regular expressions. Several websites help you find out what patterns to detect and how to catch the passages you need. For now, you can just add the symbols that stand for the space (\s) and the line break (\n).
+>    > Don't worry, if you have never used Regular Expressions. Several websites help you find out what patterns to detect and how to catch the passages you need. For now, you can just add the symbols that stand for the space (\s) and the line break (\n).
 >    {: .comment}
 >
 > 2. **Rename** {% icon galaxy-pencil %} this text `SoY_Cheap_Repo_word_per_line.txt`.
 >
 {: .hands_on}
 
-When you click on the eye {% icon galaxy-eye %} icon of the data set in the history now, when the dataset turns green, you can see that it now contains one word per line. 
+When you click on the eye {% icon galaxy-eye %} icon of the data set in the history, when the dataset turns green, you can see that it now contains one word per line. 
 To match this, we rerun {%icon dataset-rerun %} the step with the same parameters also for the second poem.
 
 > <hands-on-title> Changing Layout of Poem Two </hands-on-title>
@@ -453,7 +453,7 @@ To match this, we rerun {%icon dataset-rerun %} the step with the same parameter
 >
 > > <solution-title>  </solution-title>
 > >
-> > 1. When you click on the two names of the two new datasets you just worked on, you see that one is now 539, the other 1139 lines long. The number of lines now matches the word number you might have detected with the tool `Line/Word/Character count`.
+> > 1. When you click on the two names of the two new datasets you just worked on, you see that one is now 539, the other 1139 lines long. The number of lines matches the amount of words you might have detected with the tool `Line/Word/Character count`.
 > >
 > {: .solution}
 >
@@ -461,7 +461,7 @@ To match this, we rerun {%icon dataset-rerun %} the step with the same parameter
 
 Now, both poems show one word per line, which is the perfect setup to compare them side by side. 
 Use a tool called `diff` to visualise this. 
-To get the same order as the tutorial, make sure to select the version from the Cheap Repository as the first input file and the one from the Universal Magazine as the second input file.
+To reproduce the setup from this tutorial, make sure to select the version from the Cheap Repository as the first input file and the one from the Universal Magazine as the second input file.
 
 ### Using *diff* to compare texts side by side
 
@@ -495,15 +495,27 @@ We get two new files as a result. The HTML report and the raw output it is based
 {: .question}
 
 In the HTML report, you can quickly identify deletions (in red) and additions (in green) between both texts.
-You can also see smaller details, which you might quickly miss manually. Lines 63/64 and 28/29, respectively, show that also changes within one word (prisoner / prisner) are detected. You can furthermore see how the perspective was changed between the poems. While line 359-361 in the cheap repository text states "they sell us", the other text states "they sell them" (l. 298-300), suggesting the reader is (no longer) among the group which is sold. You can go through it and detect further changes in language and length.
+You can also see smaller details, which you might quickly miss manually. 
+Lines 63/64 and 28/29, respectively, show that also changes within one word (prisoner / prisner) are detected. 
+You can furthermore see how the perspective was changed between the poems. 
+While line 359-361 in the cheap repository text states "they sell us", the other text states "they sell them" (l. 298-300), suggesting the reader is (no longer) among the group which is sold. 
+You can go through the HTML file and detect further changes in language and length.
 
-Seeing this, you might want to go into detail with the respective themes once more. As "death" was central in both texts, we will extract sentences containing this word so you can analyze them more closely. The cleaned texts without punctuation and one word per line are not the easiest form for this. Instead, we use an earlier version from our history.
+Seeing this, you might want to go into detail with the respective themes once more. As "death" was central in both word clouds, we will extract sentences containing this word so you can analyze them further. 
+The recent files without punctuation and one word per line are not the easiest form for this. 
+Instead, we use an earlier version from our history.
 
 # Extract specific sentences
 
 ## Breaking text into sentences
 
-We return to Regular Expressions a third time, but this time we use a different tool with further functionalities. We use it to divide the text into more lines, to make it easier to extract those containing the word "death." Here, punctuation is a helpful stop point. We use full stops to indicate a sentence, which will not be perfectly accurate but sufficient for this case. We then add a line break after the full stops to get complete sentences. Of course, you could spend more time on this and make it neater. Make sure to use not the last input but the poems without a hyperlink, but including punctuation. It will not work if the text contains no more full stops.
+We return to Regular Expressions a third time, but this time we use a different tool with further functionalities. 
+We use it to divide the text into more lines, to make it easier to extract those containing the word "death".
+Here, punctuation is a helpful stop point. 
+We use full stops to indicate a sentence, which will not be perfectly accurate but sufficient for this case. We then add a line break after the full stops to get complete sentences. 
+Of course, you could spend more time on this and make it neater. 
+Make sure to use not the last input but the poems without a hyperlink, but including punctuation. 
+This will not work if the text contains no more full stops.
 
 > <hands-on-title> Rearrange Poem One </hands-on-title>
 >
