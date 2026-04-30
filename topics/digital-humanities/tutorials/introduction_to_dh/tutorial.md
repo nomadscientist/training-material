@@ -337,7 +337,7 @@ Particularly for larger corpora, a word cloud can be a nice way to get a first i
 >    - *"Color option"*: `Colormap`
 >    - *"Scaling of words by frequency (0 - 1)"*: `0.8`
 >
-> 2. **Rename** {% icon galaxy-pencil %} the output file to `Wordcloud Poem One`
+> 2. **Rename** {% icon galaxy-pencil %} the output file to `Wordcloud Poem One`.
 >
 >    > <comment-title> Adapting the Word Cloud </comment-title>
 >    >
@@ -358,6 +358,8 @@ This should look as follows:
 >    - *"Color option"*: `Colormap`
 >    - *"Scaling of words by frequency (0 - 1)"*: `0.8`
 >
+> 2. **Rename** {% icon galaxy-pencil %} the output file to `Wordcloud Poem Two`.
+
 >    > <comment-title> Uniqueness of the Word Cloud </comment-title>
 >    >
 >    > The word cloud from this tool looks a little different each time you run it. The layout may vary even when you redo it with the exact same text and inputs.
