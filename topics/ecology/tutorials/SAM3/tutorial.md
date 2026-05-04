@@ -140,7 +140,7 @@ In this first section, we will run SAM3 on the photo `Moorev-jellyfish.jpg` to d
 >    > You can also use more descriptive prompts like `small blue fish`, but results may vary.
 >    {: .tip}
 >
-> 2. Click **Execute**
+> 2. Click **Run Tool**
 >
 >    > <comment-title>Processing time</comment-title>
 >    >
