@@ -76,3 +76,8 @@ examples:
 {% else %}
 * 5- **Close** the window
 {% endif %}
+{% if include.collection %}
+![Galaxy upload link](../../images/SAM3/upload_by_link_collection.gif){: style="width:80%; display:block; margin:auto;"}
+{% else %}
+![Galaxy upload link](../../images/SAM3/upload_by_link.gif){: style="width:80%; display:block; margin:auto;"}
+{% endif %}
