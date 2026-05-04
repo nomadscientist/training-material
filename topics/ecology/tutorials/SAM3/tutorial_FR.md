@@ -68,38 +68,20 @@ Nous allons travailler sur deux exemples concrets (liés au projet Moorev) :
 
 # Charger les données dans Galaxy
 
-Avant de lancer SAM3, vous devez importer dans Galaxy :
-- La photo de méduse : [Moorev-jellyfish.jpg](https://zenodo.org/records/19890809/files/Moorev-jellyfish.jpg?download=1)
-- La vidéo de crevettes : [2024-09-20-PorzBreign-shrimps.mp4](https://zenodo.org/records/19891364/files/2024-09-20-PorzBreign-shrimps.mp4?download=1) 
+Avant de lancer SAM3, vous devez importer les fichiers suivants dans Galaxy :
+- La photo de méduse : `https://zenodo.org/records/19890809/files/Moorev-jellyfish.jpg?download=1`
+- La vidéo de crevettes : `https://zenodo.org/records/19891364/files/2024-09-20-PorzBreign-shrimps.mp4?download=1`
 
 > <tip-title>Téléverser les données dans Galaxy</tip-title>
 >
-> 1. Cliquez sur l'outil de téléversement {% icon galaxy-upload %} en haut à gauche du panneau des outils
+> * Copiez le lien correspondant au fichier à importer
+> * 1- Cliquez sur {% icon galaxy-upload %} **Upload** en haut du panneau d'activité
+> * 2- Sélectionnez {% icon galaxy-wf-edit %} **Paste/Fetch Data**
+> * 3- Collez le lien dans le champ de texte `https://zenodo.org/records/19890809/files/Moorev-jellyfish.jpg`
+> * 4- Cliquez sur **Start**
+> * 5- Cliquez sur **Close** pour fermer la fenêtre
 >
-> 2. Sélectionnez **Choose local files**
->    ![Fenêtre de téléversement Galaxy](../../images/champbloc/upload.png "Téléverser vos données")
->
-> 3. Naviguez dans votre ordinateur et sélectionnez les deux fichiers :
->    - `Moorev-jellyfish.jpg`
->    - `2024-09-20-PorzBreign-shrimps.mp4`
->
-> 4. Cliquez sur **Start**
->    ![Bouton Start du téléversement](../../images/champbloc/start.png "Lancer le chargement")
->
-> 5. Cliquez sur **Close** une fois le chargement terminé
->    ![Bouton Close](../../images/champbloc/close.png "Fermer la fenêtre")
->
->    Attendez que les fichiers apparaissent en **vert** dans le panneau d'historique à droite avant de continuer.
->    ![Jeux de données prêts](../../images/champbloc/avant_apres.png "Fichiers prêts à l'emploi")
->
-> > <tip-title>Créer un nouvel historique</tip-title>
-> >
-> > Créez un nouvel historique pour ce tutoriel et donnez-lui un nom (par exemple : "SAM3 – Moorev") afin de le retrouver facilement.
-> >
-> > {% snippet faqs/galaxy/histories_create_new.md box_type="none" %}
-> >
-> {: .tip}
->
+> ![Fenêtre de téléversement Galaxy](../../images/SAM3/upload_by_link.gif){: style="width:80%; display:block; margin:auto;"}
 >
 {: .tip}
 
