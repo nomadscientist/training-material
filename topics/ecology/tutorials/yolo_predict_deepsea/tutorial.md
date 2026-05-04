@@ -188,13 +188,20 @@ These are plain text files containing the detection results. Each line in a file
 ```
 
 For example: ```0 0.82 350 200 100 120```
-which means:
 
- - Class ID 0 (in our case, Buccinidae)
-
- - Detected with 82% confidence
-
- - The bounding box is centered at (350, 200) and has a width of 100 and height of 120 (in pixels, relative to the image. You can use this file to do further analysis, like counting species or tracking locations over time.
+> <question-title></question-title>
+>
+> 1. What is the meaning of these lines ?
+>
+> > <solution-title></solution-title>
+> >
+> > 1. Class ID 0 (in our case, Buccinidae)
+> > 2. Detected with 82% confidence
+> > 3. The bounding box is centered at (350, 200) and has a width of 100 and height of 120 (in pixels, relative to the image. You can use this file to do further analysis, like counting species or tracking locations over time
+> >
+> {: .solution}
+>
+{: .question}
 
 ### Overlay images (*.jpg)
 
