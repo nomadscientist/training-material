@@ -118,7 +118,7 @@ In this first section, we will run SAM3 on the photo `Moorev-jellyfish.jpg` to d
 >    > `jellyfish, shrimp, fish`
 >    >
 >    > Avoid overly vague descriptions like `animal` if you are specifically looking for a jellyfish.
->    > You can also use more descriptive prompts like `small blue fish`, but results may vary.
+>    > You can also use more descriptive prompt like `small blue fish`, but results may vary depending on the objects you want to detect.
 >    {: .tip}
 >
 > 2. Click **Run Tool**
@@ -151,11 +151,11 @@ In this first section, we will run SAM3 on the photo `Moorev-jellyfish.jpg` to d
 >    ![SAM3 segmentation mask on the jellyfish photo](../../images/SAM3/display_picture.png "Segmentation result"){: style="width:75%; display:block; margin:auto;"}
 >
 > 5. Exploring the COCO file
->    - Click **COCO Annotation** in your history
+>    - Look at the content of your **COCO Annotation** in your history
 >    - Click {% icon galaxy-eye %} to view the JSON, or {% icon galaxy-save %} to download it
 >
 >    The file contains the `images`, `annotations`, and `categories` fields. Each annotation includes:
->    - `segmentation`: the polygon contour coordinates of the mask
+>    - `segmentation`: the polygon coordinates of the mask
 >    - `bbox`: the bounding box `[x, y, width, height]`
 >    - `category_id`: the identifier of the detected class (`1` = `jellyfish`)
 >
