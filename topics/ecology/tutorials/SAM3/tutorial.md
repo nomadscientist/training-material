@@ -69,38 +69,19 @@ We will work through two concrete examples from the Moorev project:
 # Loading data into Galaxy
 
 Before running SAM3, you need to import the following files into Galaxy:
-- The jellyfish photo: [Moorev-jellyfish.jpg](https://zenodo.org/records/19890809/files/Moorev-jellyfish.jpg?download=1)
-- The shrimp video: [2024-09-20-PorzBreign-shrimps.mp4](https://zenodo.org/records/19891364/files/2024-09-20-PorzBreign-shrimps.mp4?download=1)
+- The jellyfish photo: `https://zenodo.org/records/19890809/files/Moorev-jellyfish.jpg?download=1`
+- The shrimp video: `https://zenodo.org/records/19891364/files/2024-09-20-PorzBreign-shrimps.mp4?download=1`
 
 > <tip-title>Upload data to Galaxy</tip-title>
->
-> 1. Click the upload tool {% icon galaxy-upload %} at the top left of the tools panel
->
-> 2. Select **Choose local files**
->    ![Galaxy upload window](../../images/champbloc/upload.png "Upload your data")
->
-> 3. Browse your computer and select the two files:
->    - `Moorev-jellyfish.jpg`
->    - `2024-09-20-PorzBreign-shrimps.mp4`
->
-> 4. Click **Start**
->    ![Upload Start button](../../images/champbloc/start.png "Start the upload")
->
-> 5. Click **Close** once the upload is complete
->    ![Close button](../../images/champbloc/close.png "Close the window")
->
->    Wait until the files appear in **green** in the history panel on the right before continuing.
->    ![Datasets ready](../../images/champbloc/avant_apres.png "Files ready to use")
->
-> > <tip-title>Create a new history</tip-title>
-> >
-> > Create a new history for this tutorial and give it a name (for example: "SAM3 – Moorev") so you can find it easily later.
-> >
-> > {% snippet faqs/galaxy/histories_create_new.md box_type="none" %}
-> >
-> {: .tip}
->
+> * Copy the link location
+> * 1- Click {% icon galaxy-upload %} **Upload** at the top of the activity panel
+> * 2- Select {% icon galaxy-wf-edit %} **Paste/Fetch Data**
+> * 3- Paste the link(s) into the text field `https://zenodo.org/records/19890809/files/Moorev-jellyfish.jpg`
+> * 4- Press **Start**
+> * 5- **Close** the window
+> ![Galaxy upload link](../../images/SAM3/upload_by_link.gif){: style="width:80%; display:block; margin:auto;"}
 {: .tip}
+
 
 # Segmenting an image: the jellyfish photograph
 
@@ -232,7 +213,7 @@ In this second section, we will apply SAM3 to the video `2024-09-20-PorzBreign-s
 >    >
 >    {: .tip}
 >
-> 2. Click **Run Tool**
+> 2. Click **Execute**
 >
 >    > <comment-title>Video processing time</comment-title>
 >    >
