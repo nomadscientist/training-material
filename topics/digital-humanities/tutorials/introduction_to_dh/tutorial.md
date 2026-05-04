@@ -28,8 +28,8 @@ contributions:
     - deNBI
 answer_histories:
   - label: "UseGalaxy.eu"
-    history: https://usegalaxy.eu/u/schnda/h/example-answer-history-introduction-to-dh-in-galaxy
-    date: 2026-04-30
+    history: https://usegalaxy.eu/u/schnda/h/answer-key-history-introduction-to-dh-in-galaxy
+    date: 2026-05-04
 ---
 
 Loosely building on {% cite Richardson2003 %}, this tutorial compares two editions of the poem "The Sorrows of Yamba".[^1]
@@ -422,7 +422,7 @@ That way, each word gets displayed in a different line, which prepares the detai
 >
 >    > <comment-title> How do I understand the RegEx commands? </comment-title>
 >    >
->    > Don't worry, if you have never used Regular Expressions. Several websites help you find out what patterns to detect and how to catch the passages you need. For now, you can just add the symbols that stand for the space (\s) and the line break (\n).
+>    > Don't worry, if you have never used Regular Expressions. Several websites help you find out what patterns to detect and how to catch the passages you need. For now, you can just add the symbols that stand for the space `\s` and the line break `\n`.
 >    {: .comment}
 >
 > 2. **Rename** {% icon galaxy-pencil %} this text `SoY_Cheap_Repo_word_per_line.txt`.
@@ -510,9 +510,9 @@ Instead, we use an earlier version from our history.
 ## Breaking text into sentences
 
 We return to Regular Expressions a third time, but this time we use a different tool with further functionalities. 
-We use it to divide the text into more lines, to make it easier to extract those containing the word "death".
-Here, punctuation is a helpful stop point. 
-We use full stops to indicate a sentence, which will not be perfectly accurate but sufficient for this case. We then add a line break after the full stops to get complete sentences. 
+The tools helps us to divide the text into more lines, to make it easier to extract sentences containing the word "death".
+
+Full stops  help us to indicate a sentence, which will not be perfectly accurate but sufficient for this case. 
 Of course, you could spend more time on this and make it neater. 
 Make sure to use not the last input but the poems without a hyperlink, but including punctuation. 
 This will not work if the text contains no more full stops.
@@ -531,7 +531,7 @@ This will not work if the text contains no more full stops.
 >
 >    > <comment-title> What do those inputs mean? </comment-title>
 >    >
->    > A full stop (.) has its own meaning in regular expressions. It stands for all elements. To show that we do not mean all characters but actually a full stop, we need to escape it in RegEx by putting `\.` instead of `.` if we mean a full stop. We want to add a line break afterwards, which we already learned is indicated as `\n`. The replacement pattern, therefore, is `\.\n`.
+>    > A full stop `.` has its own meaning in Regular Expressions. It stands for all elements. To show that we do not mean all characters but actually a full stop, we need to escape it in RegEx by putting `\.` instead of `.` if we mean a full stop. We want to add a line break afterwards, which we already learned is indicated as `\n`. The replacement pattern, therefore, is `\.\n`. As a result, the text will now be split in multiple lines.
 >    {: .comment}
 >
 > 2. **Rename** {% icon galaxy-pencil %} your resulting file to `SoY_Cheap_Repo_sent_per_line.txt`.
@@ -540,7 +540,7 @@ This will not work if the text contains no more full stops.
 
 
 
-Remember to redo this step for the second poem when you have finished this step.
+when you have finished this step, remember to rerun {%icon dataset-rerun %} this tool for the second poem 
 
 > <hands-on-title> Rearrange Poem Two </hands-on-title>
 >
@@ -563,7 +563,7 @@ As a result, you get two files, each split at full stops. How can you now extrac
 
 ## Extract sentences containing 'death'
 
-Use {% tool [Search in textfiles](toolshed.g2.bx.psu.edu/repos/bgruening/text_processing/tp_grep_tool/9.5+galaxy2) %} to select all lines containing the word "death".
+Use {% tool Search in textfiles %} to select all lines containing the word "death".
 
 > <hands-on-title> Extract particular sentences </hands-on-title>
 >
@@ -573,7 +573,7 @@ Use {% tool [Search in textfiles](toolshed.g2.bx.psu.edu/repos/bgruening/text_pr
 >
 >    > <comment-title> Further Functionalities </comment-title>
 >    >
->    > You can see that the tool has many parameters you can tweak.  The ones not mentioned here are kept at the default input, like `Match` and `Perl,` which is the kind of RegEx applied. But you could also select all lines that do not contain death by selecting `Do not match` or extracting lines before or after the line containing the content you chose.
+>    > You can see that the tool has many parameters you can tweak.  The ones not mentioned here are kept at the default input, like `Match` and `Perl,` which is the kind of RegEx applied. But you could also select all lines that do not contain "death" by selecting `Do not match` or extracting lines before or after the line containing the content you chose.
 >    {: .comment}
 >
 > 2. **Rename** {% icon galaxy-pencil %} your output `SoY_Cheap_Repo_death.txt`
@@ -582,7 +582,7 @@ Use {% tool [Search in textfiles](toolshed.g2.bx.psu.edu/repos/bgruening/text_pr
 
 
 
-And for the last time, we redo this step for the second poem.
+And for the last time, we rerun {%icon dataset-rerun %} this step for the second poem.
 
 > <hands-on-title> Extract particular sentences from Poem Two </hands-on-title>
 >
@@ -595,7 +595,7 @@ And for the last time, we redo this step for the second poem.
 {: .hands_on}
 
 
-When you enable the window manager at the top bar, you can click on the eye {% icon galaxy-eye %} symbols of your last two outputs and visualize them side by side in two different windows. Six and seven lines from the poem contain the term, respectively. You could analyze them in detail now to see where they differ. While the first lines are nearly identical, the last ones are completely different in both versions of the poem. An intriguing insight for further analysis. No wonder the poems and their many editions have sparked the interest of many researchers.
+When you enable the window manager at the top bar, you can click on the eye {% icon galaxy-eye %} symbols of your last two outputs and visualize them side by side in two different windows. Six and seven lines from the poems contain the term, respectively. You could analyze them in detail now to see where they differ. While the first lines are nearly identical, the last ones are completely different in both versions of the poem. An intriguing insight for further analysis. No wonder the poems and their many editions have sparked the interest of many researchers.
 
 If you only analyze those two poems, you might find it easier to do those steps manually. But particularly, if you create a workflow out of this, you can reproduce this process with only a few clicks, saving you considerable work.
 
