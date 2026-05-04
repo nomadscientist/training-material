@@ -23,7 +23,8 @@ contributions:
     - paulzierep
     - scorreard
     - BirdmanRidesAgain
-
+  editing:
+    - martincarrere
 ---
 
 The **Community lab**, a centralised webpage that enables communities to rapidly aggregate, curate, integrate, display, and launch relevant tools, workflows, and training on different Galaxy servers. This user-friendly interface, built on the Galaxy framework, provides community members with data analysis capacity without requiring programming expertise. Users can run individual tools or create complex workflows, with full provenance tracking to ensure reproducibility, designed specifically for the community research (Nasr et al., 2024).
