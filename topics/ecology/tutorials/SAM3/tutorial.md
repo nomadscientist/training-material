@@ -232,7 +232,7 @@ In this second section, we will apply SAM3 to the video `2024-09-20-PorzBreign-s
 >    >
 >    {: .tip}
 >
-> 2. Click **Execute**
+> 2. Click **Run Tool**
 >
 >    > <comment-title>Video processing time</comment-title>
 >    >
