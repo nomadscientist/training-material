@@ -1305,7 +1305,7 @@ We can generate a Vitessce configuration file directly from Scanpy plot by enabl
 >
 > 3. Click on the {% icon galaxy-eye %} (**View data**) icon of the `Vitessce config - marker genes` dataset to explore the marker genes interactively in Vitessce
 >
->    ![Vitessce interactive visualization of marker genes](../../images/scrna-scanpy-pbmc3k/marker-genes-vitessce.png "Vitessce showing CST3, NKG7 and PPBP expression in UMAP space.")
+>    ![Vitessce interactive visualization of marker genes](../../images/scrna-scanpy-pbmc3k/marker-genes-vitessce.gif "Vitessce showing CST3, NKG7 and PPBP expression in UMAP space.")
 >
 >    > <question-title></question-title>
 >    >
@@ -1390,21 +1390,6 @@ The cells in the same clusters should be co-localized in the UMAP coordinate plo
 > {: .solution}
 {: .question}
 
-> <hands-on-title>Explore marker genes interactively with Vitessce</hands-on-title>
->
-> 1. {% tool [Scanpy plot](toolshed.g2.bx.psu.edu/repos/iuc/scanpy_plot/scanpy_plot/1.11.5+galaxy0) %} with the following parameters:
->    - {% icon param-file %} *"Annotated data matrix"*: `3k PBMC with only HVG, after scaling, PCA, KNN graph, UMAP`
->    - *"Method used for plotting"*: `Embeddings: Scatter plot in UMAP basis, using 'pl.umap'`
->    - *"Make an interactive plot?"*: `Yes`
->    - *"Keys for annotations of observations/cells or variables/genes"*: `CST3, NKG7, PPBP`
->
-> 2. Rename the `vitessce.json` output to `Vitessce config - marker genes`
->
-> 3. Click on the {% icon galaxy-eye %} (**View data**) icon of the `Vitessce config - marker genes` dataset to explore the marker genes interactively in Vitessce
->
->    ![Vitessce interactive visualization of marker genes](../../images/scrna-scanpy-pbmc3k/marker-genes-vitessce.png "Vitessce showing CST3, NKG7 and PPBP expression in UMAP space.")
->
-{: .hands_on}
 
 # Finding marker genes
 
