@@ -8,10 +8,9 @@ objectives:
 - Segment marine animals in a photograph and/or video using a text prompt
 time_estimation: 20M
 key_points:
-- SAM3
-- IA
-- Segmentation
-- Semantic
+- Adding annotation to images and videos automatically through a prompt is something biodiversity data are waiting for
+- Segment, identify and track animals is now something several Galaxy tools can help to do
+- SAM3 Galaxy tool allows user to do it using a prompt
 tags:
   - Marine ecosystems
   - Biodiversity
@@ -19,11 +18,14 @@ tags:
 contributions:
   authorship:
     - TuturBaba
+    - yvanlebras
+    - nadinelebris
   funding:
     - Moorev
     - sorbonneuniv
     - ISYEB
     - mnhn
+    - pndb    
 lang: en
 translations:
     - fr
@@ -49,7 +51,7 @@ We will work through two concrete examples from the Moorev project:
 >
 > **Log in to Galaxy**
 > 1. Open your preferred web browser (Chrome, Safari, or Firefox — not Edge!)
-> 2. Go to your Galaxy instance
+> 2. Go to your Galaxy instance (please verify that the Galaxy instance you want to use propose SAM3 tool as Galaxy Europe is doing) 
 > 3. Log in or create an account
 >
 > ![Screenshot of the Galaxy interface with the login button highlighted](../../images/SAM3/galaxy_homepage.png)
@@ -68,7 +70,7 @@ We will work through two concrete examples from the Moorev project:
 
 # Loading data into Galaxy
 
-Before running SAM3, you need to import the following files into Galaxy:
+Before running SAM3 Galaxy tool, you need to import the following files into Galaxy:  
 - The jellyfish photo: `https://zenodo.org/records/19890809/files/Moorev-jellyfish.jpg?download=1`
 - The shrimp video: `https://zenodo.org/records/19891364/files/2024-09-20-PorzBreign-shrimps.mp4?download=1`
 
@@ -85,7 +87,7 @@ Before running SAM3, you need to import the following files into Galaxy:
 
 # Segmenting an image: the jellyfish photograph
 
-In this first section, we will run SAM3 on the photo `Moorev-jellyfish.jpg` to detect and segment the jellyfish.
+In this first section, we will run SAM3 Galaxy tool on the photo `Moorev-jellyfish.jpg` to detect and segment the jellyfish.  
 
 > <tip-title>How to access the SAM3 tool?</tip-title>
 >
@@ -142,7 +144,7 @@ In this first section, we will run SAM3 on the photo `Moorev-jellyfish.jpg` to d
 >    > Click on **Annotated Outputs** in the history panel:
 >    > ![Click on Annotated Outputs](../../images/SAM3/history-annoted-outputs.png){: style="width:50%; display:block; margin:auto;"}
 >    >
->    > Then click the {% icon galaxy-eye %} icon to display the image in the central panel:
+>    > Then use the {% icon galaxy-eye %} icon to display the image in the central panel:  
 >    > ![Click the eye icon to display](../../images/SAM3/history-clic-eye.png){: style="width:50%; display:block; margin:auto;"}
 >    >
 >    > Or click {% icon galaxy-save %} to download the file directly.
@@ -151,8 +153,8 @@ In this first section, we will run SAM3 on the photo `Moorev-jellyfish.jpg` to d
 >    ![SAM3 segmentation mask on the jellyfish photo](../../images/SAM3/display_picture.png "Segmentation result"){: style="width:75%; display:block; margin:auto;"}
 >
 > 5. Exploring the COCO file
->    - Look at the content of your **COCO Annotation** in your history
->    - Click {% icon galaxy-eye %} to view the JSON, or {% icon galaxy-save %} to download it
+>    - Look at the content of your **COCO Annotation** file in your history  
+>    - Use {% icon galaxy-eye %} to view the JSON, or {% icon galaxy-save %} to download it
 >
 >    The file contains the `images`, `annotations`, and `categories` fields. Each annotation includes:
 >    - `segmentation`: the polygon coordinates of the mask
@@ -181,7 +183,7 @@ In this first section, we will run SAM3 on the photo `Moorev-jellyfish.jpg` to d
 
 # Segmenting a video: the shrimp video
 
-In this second section, we will apply SAM3 to the video `2024-09-20-PorzBreign-shrimps.mp4`. SAM3 analyses the video frame by frame, tracking the shrimps over time.
+In this second section, we will execute SAM3 tool to the video `2024-09-20-PorzBreign-shrimps.mp4`. SAM3 model analyses the video frame by frame, tracking the shrimps over time.  
 
 ## Configuring SAM3 for the video
 
@@ -242,7 +244,7 @@ In this second section, we will apply SAM3 to the video `2024-09-20-PorzBreign-s
 >    > > - The file is too large for your internet connection
 >    > > - The {% icon param-select %} *"Video quality"*: `Original quality (copy)` setting makes in-browser playback unavailable
 >    > >
->    > > In that case, click {% icon galaxy-save %} to download the video and play it locally with your usual media player.
+>    > > In that case, use {% icon galaxy-save %} to download the video and play it locally with your usual media player.  
 >    > {: .warning}
 >    >
 >    {: .tip}
@@ -253,11 +255,11 @@ In this second section, we will apply SAM3 to the video `2024-09-20-PorzBreign-s
 >
 > 5. Downloading the annotated video
 >    - Click the **Annotated Outputs** collection
->    - Click {% icon galaxy-save %} to download the `.mp4` video
+>    - Use {% icon galaxy-save %} to download the `.mp4` video
 >
 >    > <comment-title>Limitations of SAM3 and pre-processing</comment-title>
 >    >
->    > As you can see, SAM3 is far from perfect. Adjusting the confidence threshold can help, but it does not solve everything. Pre-processing your images or videos is often necessary to improve results.
+>   > SAM3 tool is a first attempt to propose prompt-based  Galaxy tool. As it is using SAM3 model, you can have highly heterogenous results in term of quality depending on the objects you are searching to segment, notably if such kind of object can be on data used to train the SAM3 model. Adjusting the confidence threshold can help, but it does not solve everything. Pre-processing your images or videos is often necessary to improve results.  
 >    > To learn more, check out the dedicated tutorial: **Tuto Moorev**
 >    >
 >    {: .comment}

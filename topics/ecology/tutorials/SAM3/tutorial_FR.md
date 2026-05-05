@@ -8,10 +8,9 @@ objectives:
 - Segmenter des animaux marins sur une photographie et/ou vidéo en utilisant un prompt textuel
 time_estimation: 20M
 key_points:
-- SAM3
-- IA
-- Segmentation
-- Semantic
+- L'annotation automatique d'images et de vidéos par prompt est une avancée très attendue dans le domaine de la biodiversité. 
+- Segmenter, identifier et suivre des animaux est désormais possible grâce à plusieurs outils Galaxy. 
+- L'outil Galaxy SAM3 permet de le faire à partir d'un simple prompt.
 tags:
   - Marine ecosystems
   - biodiversity
@@ -19,11 +18,14 @@ tags:
 contributions:
   authorship:
     - TuturBaba 
+    - yvanlebras
+    - nadinelebris
   funding:
     - Moorev
     - sorbonneuniv
     - ISYEB
     - mnhn
+    - pndb
 lang: fr
 translations:
     - en
@@ -49,7 +51,7 @@ Nous allons travailler sur deux exemples concrets (liés au projet Moorev) :
 >
 > **Se connecter à Galaxy**
 > 1. Ouvrez votre navigateur internet préféré (Chrome, Safari ou Firefox — pas Edge !)
-> 2. Rendez-vous sur votre instance Galaxy
+> 2. Rendez-vous sur votre instance Galaxy (Attention vérifier que l'instance Galaxy que vous utilisez propose l'outil SAM3, comme l'instance Galaxy Europe)
 > 3. Connectez-vous ou créez un compte
 >
 > ![Capture d'écran de l'interface Galaxy avec le bouton de connexion en surbrillance](../../images/SAM3/galaxy_homepage.png )
@@ -262,7 +264,7 @@ Dans cette seconde partie, nous allons appliquer SAM3 à la vidéo `2024-09-20-P
 >
 >    > <comment-title>Limites de SAM3 et pré-traitement</comment-title>
 >    >
->    > Comme vous pouvez le constater, SAM3 est loin d'être parfait. Il est possible de jouer sur le seuil de confiance, mais cela ne résout pas tout. C'est pourquoi un pré-traitement des images ou vidéos est souvent nécessaire pour améliorer les résultats.
+>    >L'outil SAM3 est une première tentative de proposer un outil Galaxy basé sur des prompts. Comme il utilise le modèle SAM3, les résultats peuvent être très hétérogènes en termes de qualité selon les objets que vous cherchez à segmenter, notamment si ce type d'objet était présent dans les données utilisées pour entraîner le modèle SAM3. Ajuster le seuil de confiance peut aider, mais cela ne résout pas tout. Un pré-traitement de vos images ou vidéos est souvent nécessaire pour améliorer les résultats.
 >    > Pour en savoir plus, consultez le tutoriel dédié : **Tuto Moorev**
 >    >
 >    {: .comment}
