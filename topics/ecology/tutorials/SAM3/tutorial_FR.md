@@ -71,8 +71,8 @@ Nous allons travailler sur deux exemples concrets (liés au projet Moorev) :
 # Charger les données dans Galaxy
 
 Avant de lancer SAM3, vous devez importer les fichiers suivants dans Galaxy :
-- La photo de méduse : `https://zenodo.org/records/19890809/files/Moorev-jellyfish.jpg?download=1`
-- La vidéo de crevettes : `https://zenodo.org/records/19891364/files/2024-09-20-PorzBreign-shrimps.mp4?download=1`
+- La photo de méduse : `https://zenodo.org/records/19890809/files/Moorev-jellyfish.jpg`
+- La vidéo de crevettes : `https://zenodo.org/records/19891364/files/2024-09-20-PorzBreign-shrimps.mp4`
 
 > <tip-title>Téléverser les données dans Galaxy</tip-title>
 >
