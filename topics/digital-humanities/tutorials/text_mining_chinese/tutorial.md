@@ -355,9 +355,11 @@ If you are only interested in the quantitative results, this can be your final o
 
 > <hands-on-title> Sort </hands-on-title>
 >
-> 1. {% tool [Sort](sort1) %} with the following parameters:
->    - {% icon param-file %} *"Sort Dataset"*: `Quantified Results` (output of **Datamash** {% icon tool %})
->    - *"on column"*: `c2`
+> 1. {% tool [Sort](toolshed.g2.bx.psu.edu%2Frepos%2Fbgruening%2Ftext_processing%2Ftp_sort_header_tool%2F9.5%2Bgalaxy3&version=latest) %} with the following parameters:
+>    - {% icon param-file %} *"Sort Query"*: `Quantified Results` (output of **Datamash** {% icon tool %})
+>    - *"Sort on column"*: `Column 2`
+>    - *"in"*: `Descending order`
+>    - *"using sort flavor"*: `Fast numeric sort`
 >    - Click *"Run Tool"*
 >
 > 2. Rename the output file `Sorted Results`. 
