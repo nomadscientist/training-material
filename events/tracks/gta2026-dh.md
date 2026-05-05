@@ -8,7 +8,7 @@ You can go through the tutorials at your own pace.
 If you need support, contact us via the Slack Channel [tbd](tbd). 
 🚨 **Please use the EU Galaxy instance to follow this training.** The others currently do not support all the tools needed to follow along.
 
-slack_channel: 
+slack_channel:  gta-digitalhumanities
 
 
 contributions:
