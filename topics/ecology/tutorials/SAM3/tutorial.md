@@ -25,7 +25,7 @@ contributions:
     - sorbonneuniv
     - ISYEB
     - mnhn
-    - pndb    
+    - pndb  
 lang: en
 translations:
     - fr
@@ -71,8 +71,8 @@ We will work through two concrete examples from the Moorev project:
 # Loading data into Galaxy
 
 Before running SAM3 Galaxy tool, you need to import the following files into Galaxy:  
-- The jellyfish photo: `https://zenodo.org/records/19890809/files/Moorev-jellyfish.jpg?download=1`
-- The shrimp video: `https://zenodo.org/records/19891364/files/2024-09-20-PorzBreign-shrimps.mp4?download=1`
+- The jellyfish photo: `https://zenodo.org/records/19890809/files/Moorev-jellyfish.jpg`
+- The shrimp video: `https://zenodo.org/records/19891364/files/2024-09-20-PorzBreign-shrimps.mp4`
 
 > <tip-title>Upload data to Galaxy</tip-title>
 > * Copy the link location
@@ -268,7 +268,7 @@ In this second section, we will execute SAM3 tool to the video `2024-09-20-PorzB
 
 # Conclusion
 
-You now know how to use SAM3 on Galaxy to:
+You now know how to use SAM3 Galaxy tool to:
 - Segment objects in an **image** using a simple text prompt
 - Segment objects in a **video** frame by frame with temporal tracking
 - Export results in **COCO** format (for annotation and evaluation tools) or **YOLO** format (for model training)
