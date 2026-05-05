@@ -353,6 +353,7 @@ This step summarises how often each character appeared in the table previously.
 Particularly if you get a long list in the last step, sorting the results from the most to least frequent characters is necessary.
 If you are only interested in the quantitative results, this can be your final output.
 
+
 > <hands-on-title> Sort </hands-on-title>
 >
 > 1. {% tool [Sort](toolshed.g2.bx.psu.edu%2Frepos%2Fbgruening%2Ftext_processing%2Ftp_sort_header_tool%2F9.5%2Bgalaxy3&version=latest) %} with the following parameters:
