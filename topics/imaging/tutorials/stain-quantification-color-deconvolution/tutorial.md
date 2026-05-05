@@ -26,7 +26,7 @@ contributors:
 
 Histological staining is widely used in biomedical research and pathology to visualize specific tissue components, proteins, or structures. However, visual assessment of staining intensity and coverage is inherently subjective and difficult to reproduce across studies. Computational quantification of stained area provides an objective, reproducible measurement that can be applied consistently across large image datasets and used to address different research questions.
 
-**Color deconvolution** is a key technique for this purpose. Originally described by {% cite Ruifrok2001 %}, it mathematically separates the individual stain components in a brightfield RGB image based on their characteristic optical absorption spectra (stain vectors). This allows you to isolate one stain from the counterstain and independently quantify its coverage. For example, in IHC it is possible to separate the DAB (3,3'-diaminobenzidine) signal from the hematoxylin counterstain.
+**Color deconvolution** is a key technique for this purpose. Originally described by {% cite Ruifrok2001 %}, it mathematically separates the individual stain components in a brightfield RGB image based on their characteristic optical absorption spectra (stain vectors). This allows you to isolate one stain from the counterstain and independently quantify its coverage. For example, in Immunohistochemistry (IHC) it is possible to separate the DAB (3,3'-diaminobenzidine) signal from the hematoxylin counterstain.
 
 In this tutorial, you will learn how to use Galaxy's image analysis tools to:
 
