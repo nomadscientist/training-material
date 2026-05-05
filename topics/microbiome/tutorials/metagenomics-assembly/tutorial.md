@@ -342,23 +342,14 @@ Assemblies can be evaluated with **metaQUAST** ({%cite mikheenko2016%}), the met
 > ![Screenshot of QUAST HTML report](./images/quast_html_report.png)
 {: .hands_on}
 
-> <hands-on-title>Import MetaQUAST results</hands-on-title>
->
-> 1. Since the QUAST process would take times we are just going to import the results from [Zenodo]({{ page.zenodo_link }}):
->
->    ```text
->    {{ page.zenodo_link }}/files/quast_ERR2231567.html
->    {{ page.zenodo_link }}/files/quast_ERR2231568.html
->    {{ page.zenodo_link }}/files/quast_ERR2231569.html
->    {{ page.zenodo_link }}/files/quast_ERR2231570.html
->    {{ page.zenodo_link }}/files/quast_ERR2231571.html
->    {{ page.zenodo_link }}/files/quast_ERR2231572.html
->    ```
->
-> {% snippet faqs/galaxy/datasets_import_via_link.md %}
->
-{: .hands_on}
 
+> <tip-title>Preview MetaQUAST results</tip-title>
+>
+> 1. Since the QUAST process takes some time, we also provide an example history here:
+>
+>    - [Galaxy EU](https://usegalaxy.eu/histories/view?id=11ac94870d0bb33aeff2ed936aab8446)
+>
+{: .tip}
 
 QUAST main output are HTML reports which aggregate different metrics.
 
@@ -501,7 +492,7 @@ On the top of each report is a table with in rows statistics for contigs larger 
         1. the 2 mappings are separated by an unmapped region of at least 1 kbp
         2. they map on the same chromosome with a shared mapping area of at least 1 kbp
 
-        ![Image shows on the top a contig with a blue and a gren parts with white arrows (pointing on the right) on them and below a reference with 2 chromosomes. The 3 types of misassemblies are after schematized. Relocation: the blue and gren parts of the contig are on chr 1 but separated. Inversion: the blue and gren parts of the contig are on chr 1 but separated and with the arrows facing each other. Translocation: the blue part is on chr 1 and gren part on chr 2.](./images/relocation.svg "Source: <a href="https://blog.pierre.marijon.fr/misassemblies-in-noisy-assemblies/">Yet Another Bioinformatic blog by Pierre Marijon</a>"){:width="80%"}
+        ![Image shows on the top a contig with a blue and a gren parts with white arrows (pointing on the right) on them and below a reference with 2 chromosomes. The 3 types of misassemblies are after schematized. Relocation: the blue and gren parts of the contig are on chr 1 but separated. Inversion: the blue and gren parts of the contig are on chr 1 but separated and with the arrows facing each other. Translocation: the blue part is on chr 1 and gren part on chr 2.](./images/relocation.svg "Source: <a href="https:///blog.pierre.marijon.fr/misassemblies-in-noisy-assemblies/">Yet Another Bioinformatic blog by Pierre Marijon</a>"){:width="80%"}
 
         > <question-title></question-title>
         >

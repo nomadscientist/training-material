@@ -14,18 +14,18 @@ date_start: 2026-10-12
 date_end: 2026-10-16
 
 
-cost: 850-900 euros (To be confirmed)
+cost: 700 euros
 audience: |
     This course is designed for **data scientists, advanced Galaxy users, and team leaders** who need to scale up their data analysis workflows for **batch processing, automation, or production-level applications**. Whether you're looking to optimize workflows, integrate external tools, or enhance reproducibility and scalability, this training will provide the skills to leverage Galaxy effectively. The sessions will be conducted in **French**, while the training materials (slides) will be in **English**.
-contact_email: berenice.batut@france-bioinformatique.fr
+contact_email: contact-formation@groupes.france-bioinformatique.fr
 
 # async: false
 mode: onsite
 
 registration:
-  link: 
-  deadline: 2026-05-31
-  open: false
+  link: https://framaforms.org/pre-registration-for-ifb-training-galaxy-beyond-basics-2026-1772622577
+  deadline: 2026-06-05
+  open: true
 
 tags:
 - galaxy-interface
@@ -45,11 +45,11 @@ contributions:
         - clsiguret
         - rlibouba
         - fmareuil
+        - lkhamvongsa
     instructors:
         - abretaud
         - bebatut
         - lecorguille
-        - scorreard
         - Marie59
         - lleroi
         - rlibouba
@@ -57,6 +57,7 @@ contributions:
     #testing:
     funding:
         - ifb
+        - pasteur
 
 location:
   name: Institut Pasteur
@@ -329,7 +330,11 @@ At the end of the workshop, you will be able to:
 
 ## Registration
 
-This **in-person-only workshop** is limited to **20 participants** to ensure personalized attention and hands-on support. The course will proceed with a **minimum of 10 registrations**. Registration will open in **April 2026**—stay tuned for updates!
+Pre-registration is now open for this in-person workshop.
+https://framaforms.org/pre-registration-for-ifb-training-galaxy-beyond-basics-2026-1772622577
+
+The course is limited to 20 participants to ensure high-quality interaction and personalized support. A minimum of 16 participants is required for the course to take place. We encourage early pre-registration to secure your spot.
+
 
 
 
