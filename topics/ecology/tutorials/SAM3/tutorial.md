@@ -3,7 +3,7 @@ layout: tutorial_hands_on
 
 title: SAM3 – AI-based Semantic Segmentation of marine biodiversity Images and Videos
 questions:
-- How can you automatically segment objects in images or videos using a simple text prompt?
+- How can you automatically segment marine biodiversity objects in images or videos using a simple text prompt?
 objectives:
 - Segment marine animals in a photograph and/or video using a text prompt
 time_estimation: 20M
