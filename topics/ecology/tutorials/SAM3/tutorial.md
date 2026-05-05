@@ -14,7 +14,7 @@ key_points:
 - Semantic
 tags:
   - Marine ecosystems
-  - biodiversity
+  - Biodiversity
   - AI segmentation
 contributions:
   authorship:
