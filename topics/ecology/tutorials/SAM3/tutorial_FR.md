@@ -17,11 +17,14 @@ tags:
   - AI segmentation
 contributions:
   authorship:
-    - TuturBaba 
+    - TuturBaba
     - yvanlebras
     - nadinelebris
+  testing: 
+    - PaulineSGN
+    - kpayet26
   funding:
-    - Moorev
+    - moorev
     - sorbonneuniv
     - ISYEB
     - mnhn
@@ -46,11 +49,8 @@ Nous allons travailler sur deux exemples concrets (liés au projet Moorev) :
 
 > <details-title>Rapide introduction sur le fonctionnement de Galaxy</details-title>
 >
-> Vous pouvez quitter le tutoriel et revenir à l'écran principal en cliquant en dehors de la fenêtre du tutoriel.
-> Vous pouvez reprendre là où vous en étiez à tout moment en cliquant sur {% icon level %}.
->
 > **Se connecter à Galaxy**
-> 1. Ouvrez votre navigateur internet préféré (Chrome, Safari ou Firefox — pas Edge !)
+> 1. Ouvrez votre navigateur internet préféré 
 > 2. Rendez-vous sur votre instance Galaxy (Attention vérifier que l'instance Galaxy que vous utilisez propose l'outil SAM3, comme l'instance Galaxy Europe)
 > 3. Connectez-vous ou créez un compte
 >

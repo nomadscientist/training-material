@@ -20,8 +20,11 @@ contributions:
     - TuturBaba
     - yvanlebras
     - nadinelebris
+  testing: 
+    - PaulineSGN
+    - kpayet26
   funding:
-    - Moorev
+    - moorev
     - sorbonneuniv
     - ISYEB
     - mnhn
@@ -46,11 +49,8 @@ We will work through two concrete examples from the Moorev project:
 
 > <details-title>Quick introduction to how Galaxy works</details-title>
 >
-> You can leave the tutorial and return to the main screen by clicking outside the tutorial window.
-> You can resume where you left off at any time by clicking {% icon level %}.
->
 > **Log in to Galaxy**
-> 1. Open your preferred web browser (Chrome, Safari, or Firefox — not Edge!)
+> 1. Open your preferred web browser 
 > 2. Go to your Galaxy instance (please verify that the Galaxy instance you want to use propose SAM3 tool as Galaxy Europe is doing) 
 > 3. Log in or create an account
 >
