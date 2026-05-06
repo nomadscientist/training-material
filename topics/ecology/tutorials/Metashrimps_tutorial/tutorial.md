@@ -20,11 +20,11 @@ key_points:
 - Creating metadata as FAIR as possible is a must
 - Be carefull of the format and standard of metadata used only EML metadata will work
 tags:
-  - Metadata
+  - metadata
   - EML
   - FAIR
-  - Data Paper
-  - Biodiversity
+  - data paper
+  - biodiversity
 contributions:
     authorship:
         - TanguyGen
