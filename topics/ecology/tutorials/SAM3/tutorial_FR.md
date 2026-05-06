@@ -19,7 +19,7 @@ contributions:
   authorship:
     - TuturBaba
     - yvanlebras
-    - nadinelebris
+    - NadineLeBris
   testing: 
     - PaulineSGN
     - kpayet26
