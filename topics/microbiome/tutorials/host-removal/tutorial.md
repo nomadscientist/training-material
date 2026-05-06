@@ -21,7 +21,7 @@ contributions:
   - minamehr
   - bebatut
 recordings:
-- youtube_id: TODO
+- youtube_id: DNO3ZG-EOBo
   length: 23M
   galaxy_version: 26.0.1.dev1
   date: '2026-05-06'
