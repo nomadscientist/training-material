@@ -221,19 +221,19 @@ We can then see that Stack_ID 330 for female corresponds to the 39 for male:
 >
 {: .hands_on}
 
-### Genotypes.tsv files
+## Genotypes.tsv files
 
 One line by locus, one column by individual (aa, ab, AB if automatic correction applied, bb, bc, ...) with observed genotype for each locus:
 
 ![Genotypes.tsv file overview](../../images/RAD2_Genetic_Map/genotypes_tsv.png)
 
-### Genotypes.txt files
+## Genotypes.txt files
 
 One line by individual, and for each individual, for each catalog locus, genotype:
 
 ![Genotypes.txt file overview](../../images/RAD2_Genetic_Map/genotypes_txt.png)
 
-### Haplotypes.tsv files
+## Haplotypes.tsv files
 
 One line by locus, one column by individual (aa, ab, AB if automatic correction applied, bb, bc, ...) with observed genotype for each locus:
 
