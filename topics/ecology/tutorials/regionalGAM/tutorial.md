@@ -15,8 +15,8 @@ key_points:
     - "We learned how to interpret a trend using modeling and data visualization"
     - "This tool compute phenology in order to predict missing data, no definitive conclusion can be made on the phenology using this tool"
 tags:
-   - Species populations EBV class
-   - Species traits EBV class
+   - species populations EBV class
+   - species traits EBV class
    - EBV dataset
    - EBV workflow
    - biodiversity
