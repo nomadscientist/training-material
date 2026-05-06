@@ -355,7 +355,7 @@ If you are only interested in the quantitative results, this can be your final o
 
 > <hands-on-title> Sort </hands-on-title>
 >
-> 1. {% tool [Sort](toolshed.g2.bx.psu.edu%2Frepos%2Fbgruening%2Ftext_processing%2Ftp_sort_header_tool%2F9.5%2Bgalaxy3&version=latest) %} with the following parameters:
+> 1. {% tool [Sort](toolshed.g2.bx.psu.edu/repos/bgruening/text_processing/tp_sort_header_tool/9.5+galaxy3) %} with the following parameters:
 >    - {% icon param-file %} *"Sort Query"*: `Quantified Results` (output of **Datamash** {% icon tool %})
 >    - *"Sort on column"*: `Column 2`
 >    - *"in"*: `Descending order`
