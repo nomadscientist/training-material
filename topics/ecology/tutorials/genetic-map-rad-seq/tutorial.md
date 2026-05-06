@@ -168,7 +168,7 @@ Run `Stacks: De novo map` Galaxy tool. This program will run `ustacks`, `cstacks
 >
 {: .hands_on}
 
-### Matches files
+## Matches files
 
 Here are `sample1.snps` (left) and `sample2.snps` (right)
 
