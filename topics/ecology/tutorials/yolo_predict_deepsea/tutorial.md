@@ -31,6 +31,7 @@ contributions:
     - mjoudy
     - yvanlebras
 
+subtopic: ecologymediaannotation
 ---
 
 YOLO (You Only Look Once) is a fast, deep learning-based algorithm for real-time object detection. It predicts object classes and bounding boxes in a single pass over the image. YOLOv8 is a specific version, offering improved accuracy and speed.
