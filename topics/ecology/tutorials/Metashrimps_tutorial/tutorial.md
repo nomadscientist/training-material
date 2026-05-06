@@ -24,7 +24,7 @@ tags:
   - EML
   - FAIR
   - Data Paper
-  - biodiversity
+  - Biodiversity
 contributions:
     authorship:
         - TanguyGen
