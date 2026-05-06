@@ -91,7 +91,7 @@ tags:
 - microgalaxy
 recordings:
 - youtube_id: TH258Yn4iSk
-  length: 2h46M
+  length: 2H46M
   galaxy_version: '25.1'
   date: '2026-04-03'
   speakers:
