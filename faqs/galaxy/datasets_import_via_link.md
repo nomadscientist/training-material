@@ -77,7 +77,7 @@ examples:
 * 5- **Close** the window
 {% endif %}
 {% if include.collection %}
-![Galaxy upload link](../images/datasets_import_via_link_collection.gif){: style="width:80%; display:block; margin:auto;"}
+![Galaxy upload link]({% link faqs/galaxy/images/datasets_import_via_link_collection.gif %}){: style="width:75%; display:block; margin:auto;"}
 {% else %}
-![Galaxy upload link](../images/datasets_import_via_link.gif){: style="width:80%; display:block; margin:auto;"}
+![Galaxy upload link]({% link faqs/galaxy/images/datasets_import_via_link.gif %}){: style="width:75%; display:block; margin:auto;"}
 {% endif %}
