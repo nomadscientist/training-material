@@ -7,7 +7,7 @@ title: "RAD-Seq to construct genetic maps"
 zenodo_link: "https://doi.org/10.5281/zenodo.1219888"
 tags:
   - RAD-seq
-  - Genetic composition EBV class
+  - genetic composition EBV class
   - EBV dataset
   - EBV workflowz
   - biodiversity
