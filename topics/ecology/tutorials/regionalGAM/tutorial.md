@@ -20,7 +20,7 @@ tags:
    - EBV dataset
    - EBV workflow
    - biodiversity
-contributors:
+contributions:
   authorship:
     - claraurf
     - emichn
