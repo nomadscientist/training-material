@@ -23,6 +23,8 @@ tags:
 - object-detection
 - deep-learning
 - ecology
+- biodiversity
+- marine
 
 priority: 5
 
@@ -30,6 +32,11 @@ contributions:
   authorship:
     - mjoudy
     - yvanlebras
+  testing:
+    - Marie59
+    - TuturBaba
+  funding:
+    - pndb
 
 subtopic: ecologymediaannotation
 ---
