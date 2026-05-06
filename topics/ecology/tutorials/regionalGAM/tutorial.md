@@ -21,11 +21,14 @@ tags:
    - EBV workflow
    - biodiversity
 contributors:
+  authorship:
     - claraurf
     - emichn
     - yvanlebras
     - bebatut
     - sbenateau
+  funding:
+    - mnhn
 
 subtopic: ecologyanalysis
 ---
