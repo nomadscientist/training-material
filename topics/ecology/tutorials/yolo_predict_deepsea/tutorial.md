@@ -112,7 +112,7 @@ The [SEANOE](https://www.seanoe.org/data/00907/101899) collection features real 
 >
 >    > <tip-title> Filter history to only show 100 files </tip-title>
 >    > To select only last 100 files, you can use the history search function and specify `extension:jpg deleted:false hid>XXXX visible:any` in the search bar where XXXX is the id of the last image dataset minus 100.
->    > For example `extension:jpg deleted:false hid>3885visible:any` if you have images until the history dataset ID 3985.
+>    > For example `extension:jpg deleted:false hid>3885 visible:any` if you have images until the history dataset ID 3985.
 >    {: .tip}
 >
 > 6. **Create class name file** "Buccinide_classnames", copying and pasting this content in the file uploader:    ***Optional step - Only if using under "Galaxy Version 8.3.0+galaxy5" tool version***
