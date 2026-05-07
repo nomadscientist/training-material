@@ -18,7 +18,7 @@ key_points:
   profiling.
 contributions:
   authorship:
-  - minamehr
+  - Minamehr
   - bebatut
 recordings:
 - youtube_id: DNO3ZG-EOBo
