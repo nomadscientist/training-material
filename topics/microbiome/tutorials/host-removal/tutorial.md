@@ -18,7 +18,7 @@ key_points:
   profiling.
 contributions:
   authorship:
-  - Minamehr
+  - minamehr
   - bebatut
 recordings:
 - youtube_id: DNO3ZG-EOBo
@@ -26,8 +26,9 @@ recordings:
   galaxy_version: 26.0.1.dev1
   date: '2026-05-06'
   speakers:
-  - Minamehr
+  - minamehr
   captioners:
+  - minamehr
   bot-timestamp: 1778066484
 
 
