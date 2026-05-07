@@ -7,14 +7,30 @@ date_start: 2026-06-29
 date_end: 2026-07-03
 cost: "250 EUR (academic) / 350 EUR (industry)"
 audience: Biological or biomedical PhD and Post-Doc research scientists. Basic knowledge of UNIX shell (bash) and an active Google Account are required.
-contact_email: claudio.donati@fmach.it, bruno.fosso@uniba.it, monica.santamaria@uniba.it
+contact_email: 
+  - claudio.donati@fmach.it
+  - bruno.fosso@uniba.it
+  - monica.santamaria@uniba.it
 mode: onsite
 registration:
   link: https://forms.gle/dsgaZQ6B7zFY4VmQ9
   deadline: 2026-05-20
 contributions:
-  organisers and instructors: Giuseppe Defazio, Claudio Donati, Bruno Fosso, Pierfrancesco Novielli, Elisabetta Notario, Monica Santamaria
-  invited_speakers: Eugenio Parente, Mina Hojat Ansari
+  organisers:
+    - Giuseppe Defazio
+    - Claudio Donati
+    - Bruno Fosso
+    - Monica Santamaria
+  instructors: 
+    - Giuseppe Defazio
+    - Claudio Donati
+    - Bruno Fosso
+    - Pierfrancesco Novielli
+    - Elisabetta Notario
+    - Monica Santamaria
+  invited_speakers: 
+    - Eugenio Parente
+    - Mina Hojat Ansari
 location:
   name: University of Bari Aldo Moro
   address: Aula 4, Vecchi Istituti Biologici, Via Orabona 4
@@ -22,11 +38,10 @@ location:
   postcode: 70125
   country: Italy
 tags:
-  microbiome,
-  metagenomics,
-  sequence-analysis,
-  machine-learning,
-  Galaxy
+  - microbiome
+  - metagenomics
+  - sequence-analysis
+  - Galaxy
 program: https://elixir-iib-training.github.io/site/2026-06-29-Profiling_microbial_communities
 ---
 
