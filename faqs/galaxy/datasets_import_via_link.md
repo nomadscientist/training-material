@@ -34,7 +34,7 @@ examples:
 ---
 
 * Copy the link location
-* 1- Click {% icon galaxy-upload %} **Upload** at the top of the activity panel
+* Click {% icon galaxy-upload %} **Upload** at the top of the activity panel
 {% if include.reset_form %}
 * Click **Reset** button at the bottom of the form. If the button is greyed out -> skip to the next step.
 {% endif %}
@@ -44,8 +44,8 @@ examples:
 {% if include.collection_type %}
 * Click on **Collection Type** and select `{{ include.collection_type }}`
 {% endif %}
-* 2- Select {% icon galaxy-wf-edit %} **Paste/Fetch Data**
-* 3- Paste the link(s) into the text field
+* Select {% icon galaxy-wf-edit %} **Paste/Fetch Data**
+* Paste the link(s) into the text field
 {% if include.link %}
   `{{ include.link }}`
 {% endif %}
@@ -58,7 +58,7 @@ examples:
 {% if include.genome %}
 * Change **Genome** to `{{ include.genome }}`
 {% endif %}
-* 4- Press **Start**
+* Press **Start**
 {% if include.collection %}
 * Click on **Build** when available
 {% if include.pairswaptext %}
@@ -74,7 +74,7 @@ examples:
 {% endif %}
 * Click on **Create list** (and wait a bit)
 {% else %}
-* 5- **Close** the window
+* **Close** the window
 {% endif %}
 {% if include.collection %}
 ![Galaxy upload link]({% link faqs/galaxy/images/datasets_import_via_link_collection.gif %}){: style="width:75%; display:block; margin:auto;"}
