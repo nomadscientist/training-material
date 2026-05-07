@@ -3,7 +3,7 @@ title: Importing via links
 area: data upload
 box_type: tip
 layout: faq
-contributors: [bebatut,hexylena,mtekman,lecorguille,shiltemann,nomadscientist,nekrut,mblue9]
+contributors: [bebatut,hexylena,mtekman,lecorguille,shiltemann,nomadscientist,nekrut,mblue9,TuturBaba]
 optional_parameters:
   reset_form: Tell the user to reset the form first
   collection: Adds step to click the collection button
