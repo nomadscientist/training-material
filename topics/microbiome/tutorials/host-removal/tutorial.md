@@ -26,6 +26,7 @@ recordings:
   galaxy_version: 26.0.1.dev1
   date: '2026-05-06'
   speakers:
+  - Minamehr
   captioners:
   bot-timestamp: 1778066484
 
