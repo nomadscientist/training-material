@@ -17,17 +17,17 @@ registration:
   deadline: 2026-05-20
 contributions:
   organisers:
-    - Giuseppe Defazio
-    - Claudio Donati
-    - Bruno Fosso
-    - Monica Santamaria
+    - gefazio
+    - claudiodonati
+    - bfosso
+    - msantamaria
   instructors: 
-    - Giuseppe Defazio
-    - Claudio Donati
-    - Bruno Fosso
-    - Pierfrancesco Novielli
-    - Elisabetta Notario
-    - Monica Santamaria
+    - gdefazio
+    - claudiodonati
+    - bfosso
+    - pierfrancesco2021
+    - enotario
+    - msantamaria
   invited_speakers: 
     - Eugenio Parente
     - Mina Hojat Ansari
