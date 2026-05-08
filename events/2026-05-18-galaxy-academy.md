@@ -170,8 +170,10 @@ program:
       - title: Machine Learning
         link: events/tracks/gta2026-ml.md
       - title: Microbiome
+        link: events/tracks/gta2026-microbiome.md
       - title: Proteomics
-      - title: events/tracks/gta2026-single-cell.md
+      - title: Single Cell
+        link: events/tracks/gta2026-single-cell.md
       - title: Transcriptomics
       - title: Variant Analysis
 
