@@ -32,6 +32,8 @@ contributions:
 lang: en
 translations:
     - fr
+
+subtopic: ecologymediaannotation
 ---
 
 This tutorial will guide you through using the {% tool [SAM3](toolshed.g2.bx.psu.edu/repos/ecology/sam3_semantic_segmentation/sam3_semantic_segmentation/1.0.1+galaxy4) %} (Segment Anything Model 3) tool on Galaxy. SAM3 can automatically detect and segment objects in images or videos using text prompts, with no specific training required.
