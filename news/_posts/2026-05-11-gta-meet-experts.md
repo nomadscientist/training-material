@@ -9,7 +9,7 @@ coveralt: "New for GTA 2026: Meet the Experts"
 ---
 ### New for Galaxy Training Academy 2026: Meet the Experts
 
-We are pleased to announce a new feature for the Galaxy Training Academy in 2026: a meet the experts daily video. Each day for the week of May 18, we will drop a new video from an expert in a field of interest of Galaxy users. Here are the experts we have lined up for this GTA:
+We are pleased to announce a new feature for the [Galaxy Training Academy in 2026](/training-material/events/2026-05-18-galaxy-academy.html): a meet the experts daily video. Each day for the week of May 18, we will drop a new video from an expert in a field of interest of Galaxy users. Here are the experts we have lined up for this GTA:
 
 #### Monday, May 18: Delphine Larivière
 
