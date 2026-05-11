@@ -313,7 +313,7 @@ Both tools are available in Galaxy. But currently, only **MEGAHIT** can be used 
 >
 >     - *"Select k-mer detection option"*: `User specific`
 >       - *"K-mer size values"*: `21,33,55,77`
-{: .hands_on}
+> {: .hands_on}
 {: .details}
 
 # Quality control of assembly
