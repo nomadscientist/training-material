@@ -1,48 +1,22 @@
 ---
 layout: event-external
+
+external: https://elixir-iib-training.github.io/site/2026-06-29-Profiling_microbial_communities
+
 title: Profiling of microbial communities using targeted and shotgun metagenomics
 description: This training course focuses on the study of the microbiota using Next Generation Sequencing (NGS) techniques. The course introduces DNA metabarcoding and shotgun metagenomics and illustrates the major computational tools for the analysis of metagenomic data, including Machine Learning methods. The course includes both theoretical and practical sessions with real data.
-language: English
 date_start: 2026-06-29
 date_end: 2026-07-03
-cost: "250 EUR (academic) / 350 EUR (industry)"
-audience: Biological or biomedical PhD and Post-Doc research scientists. Basic knowledge of UNIX shell (bash) and an active Google Account are required.
-contact_email: 
-  - claudio.donati@fmach.it
-  - bruno.fosso@uniba.it
-  - monica.santamaria@uniba.it
-mode: onsite
-registration:
-  link: https://forms.gle/dsgaZQ6B7zFY4VmQ9
-  deadline: 2026-05-20
 contributions:
   organisers:
-    - gefazio
-    - claudiodonati
-    - bfosso
-    - msantamaria
-  instructors: 
     - gdefazio
-    - claudiodonati
-    - bfosso
-    - pierfrancesco2021
-    - enotario
-    - msantamaria
-  invited_speakers: 
-    - Eugenio Parente
-    - Mina Hojat Ansari
 location:
   name: University of Bari Aldo Moro
   address: Aula 4, Vecchi Istituti Biologici, Via Orabona 4
   city: Bari
-  postcode: 70125
+  postcode: "70125"
   country: Italy
-tags:
-  - microbiome
-  - metagenomics
-  - sequence-analysis
-  - Galaxy
-external: https://elixir-iib-training.github.io/site/2026-06-29-Profiling_microbial_communities
+
 ---
 
 # Profiling of microbial communities using targeted and shotgun metagenomics
