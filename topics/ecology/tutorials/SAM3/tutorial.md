@@ -76,16 +76,15 @@ Before running SAM3 Galaxy tool, you need to import the following files into Gal
 - The jellyfish photo: `https://zenodo.org/records/19890809/files/Moorev-jellyfish.jpg`
 - The shrimp video: `https://zenodo.org/records/19891364/files/2024-09-20-PorzBreign-shrimps.mp4`
 
-> <tip-title>Upload data to Galaxy</tip-title>
-> * Copy the link location
-> * 1- Click {% icon galaxy-upload %} **Upload** at the top of the activity panel
-> * 2- Select {% icon galaxy-wf-edit %} **Paste/Fetch Data**
-> * 3- Paste the link(s) into the text field `https://zenodo.org/records/19890809/files/Moorev-jellyfish.jpg`
-> * 4- Press **Start**
-> * 5- **Close** the window
-> ![Galaxy upload link](../../images/SAM3/upload_by_link.gif){: style="width:80%; display:block; margin:auto;"}
-{: .tip}
+> {% snippet faqs/galaxy/datasets_import_via_link.md %}
 
+> <warning-title>File format not recognised?</warning-title>
+>
+> If you want to try with other files, make sure the file extension is correct before uploading, as Galaxy may not detect it automatically. In that case, two options:
+> - During upload, specify the format using the **Type (set all)** field
+> - From the history, click the {% icon galaxy-pencil %} **pencil** icon, go to the **Datatype** tab and search for your extension
+>
+{: .warning}
 
 # Segmenting an image: the jellyfish photograph
 
@@ -107,7 +106,7 @@ In this first section, we will run SAM3 Galaxy tool on the photo `Moorev-jellyfi
 >
 >    - {% icon param-file %} *"Model data"*: `Segment Anything Model 3 (SAM 3)` (default)
 >    - {% icon param-select %} *"Input type"*: `One or more images` (default)
->    - {% icon param-file %} *"Input images"*: `Moorev-jellyfish.jpg`
+>    - {% icon param-file %} *"Input images"*: `Moorev-jellyfish.jpg` 
 >    - {% icon param-select %} *"Output formats"*: `COCO`
 >    - {% icon param-text %} *"Text prompt"*: `jellyfish`
 >    - {% icon version%} *"Confidence threshold"*: `0.5`
