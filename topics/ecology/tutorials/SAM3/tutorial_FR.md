@@ -94,8 +94,6 @@ Avant de lancer SAM3, vous devez importer les fichiers suivants dans Galaxy :
 > - Lors de l'upload, spécifiez le format via le champ **Type (set all)**
 > - Depuis l'historique, cliquez sur l'icône {% icon galaxy-pencil %} **crayon**, allez dans l'onglet **Datatype** et recherchez votre extension
 >
-
-{: .warning}
 {: .warning}
 
 # Segmentation d'une image : la photo de méduse
