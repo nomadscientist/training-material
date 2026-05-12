@@ -106,7 +106,7 @@ In this first section, we will run SAM3 Galaxy tool on the photo `Moorev-jellyfi
 >
 >    - {% icon param-file %} *"Model data"*: `Segment Anything Model 3 (SAM 3)` (default)
 >    - {% icon param-select %} *"Input type"*: `One or more images` (default)
->    - {% icon param-file %} *"Input images"*: `Moorev-jellyfish.jpg` 
+>    - {% icon param-file %} *"Input images"*: `Moorev-jellyfish.jpg`
 >    - {% icon param-select %} *"Output formats"*: `COCO`
 >    - {% icon param-text %} *"Text prompt"*: `jellyfish`
 >    - {% icon version%} *"Confidence threshold"*: `0.5`
