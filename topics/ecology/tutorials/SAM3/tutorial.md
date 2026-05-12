@@ -76,7 +76,7 @@ Before running SAM3 Galaxy tool, you need to import the following files into Gal
 - The jellyfish photo: `https://zenodo.org/records/19890809/files/Moorev-jellyfish.jpg`
 - The shrimp video: `https://zenodo.org/records/19891364/files/2024-09-20-PorzBreign-shrimps.mp4`
 
-> {% snippet faqs/galaxy/datasets_import_via_link.md %}
+{% snippet faqs/galaxy/datasets_import_via_link.md %}
 
 > <warning-title>File format not recognised?</warning-title>
 >
