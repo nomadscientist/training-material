@@ -145,10 +145,10 @@ Since the purpose of this tutorial is not to replicate the exact model, we will 
 >    {: .tip}
 >    {% snippet faqs/galaxy/datasets_import_via_link.md %}
 >
-> 3. Check that the data format assigned for the file is **tabular**.
+> 3. Check that the data format assigned for the file is`tabular`.
 >    If it is not, follow the Changing the datatype tip.
 >
->    {% snippet faqs/galaxy/datasets_change_datatype.md datatype="datatypes" %}
+>    {% snippet faqs/galaxy/datasets_change_datatype.md datatype="tabular" %}
 >
 > 5. Add a tag (`LORIS_model_dataset`) to the dataset corresponding to `Chowell_train_Response.tsv` and `Chowell_test_Response.tsv`
 >    This is important to trace back on what dataset the model was built on.
