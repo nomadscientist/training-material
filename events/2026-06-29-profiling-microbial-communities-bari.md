@@ -1,5 +1,5 @@
 ---
-layout: event_external
+layout: event-external
 title: Profiling of microbial communities using targeted and shotgun metagenomics
 description: This training course focuses on the study of the microbiota using Next Generation Sequencing (NGS) techniques. The course introduces DNA metabarcoding and shotgun metagenomics and illustrates the major computational tools for the analysis of metagenomic data, including Machine Learning methods. The course includes both theoretical and practical sessions with real data.
 language: English
