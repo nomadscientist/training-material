@@ -150,7 +150,7 @@ Since the purpose of this tutorial is not to replicate the exact model, we will 
 >
 >    {% snippet faqs/galaxy/datasets_change_datatype.md datatype="datatypes" %}
 >
-> 5. Add a tag (`LORIS model dataset`) to the dataset corresponding to `Chowell_train_Response.tsv` and `Chowell_test_Response.tsv`
+> 5. Add a tag (`LORIS_model_dataset`) to the dataset corresponding to `Chowell_train_Response.tsv` and `Chowell_test_Response.tsv`
 >    This is important to trace back on what dataset the model was built on.
 >
 >    {% snippet faqs/galaxy/datasets_add_tag.md %}
