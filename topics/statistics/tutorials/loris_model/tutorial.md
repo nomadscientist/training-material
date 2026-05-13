@@ -145,7 +145,7 @@ Since the purpose of this tutorial is not to replicate the exact model, we will 
 >    {: .tip}
 >    {% snippet faqs/galaxy/datasets_import_via_link.md %}
 >
-> 3. Check that the data format assigned for the file is`tabular`.
+> 3. Check that the data format assigned for the file is `tabular`.
 >    If it is not, follow the Changing the datatype tip.
 >
 >    {% snippet faqs/galaxy/datasets_change_datatype.md datatype="tabular" %}
