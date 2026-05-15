@@ -26,6 +26,12 @@ answer_histories:
     - label: "usegalaxy.eu"
       history: https://usegalaxy.eu/u/nilchia/h/modeling-breast-cancer-subtypes-with-flexynesis
       date: 2026-05-15
+- youtube_id: I8CtAab-4c4
+  length: 20M
+  galaxy_version: 26.0
+  date: '2025-05-15'
+  speakers:
+  - Nilchia
 ---
 
 Flexynesis represents a state-of-the-art deep learning framework specifically designed for multi-modal data integration in biological research ({% cite Uyar2024 %}). What sets Flexynesis apart is its comprehensive suite of deep learning architectures that can handle various data integration scenarios while providing robust feature selection and hyperparameter optimization.
