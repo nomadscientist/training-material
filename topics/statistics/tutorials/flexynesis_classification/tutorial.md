@@ -26,10 +26,13 @@ answer_histories:
     - label: "usegalaxy.eu"
       history: https://usegalaxy.eu/u/nilchia/h/modeling-breast-cancer-subtypes-with-flexynesis
       date: 2026-05-15
-- youtube_id: I8CtAab-4c4
+recordings:
+- captioners:
+  - Nilchia
+  date: '2026-05-15'
+  galaxy_version: '26.0'
   length: 20M
-  galaxy_version: 26.0
-  date: '2025-05-15'
+  youtube_id: I8CtAab-4c4
   speakers:
   - Nilchia
 ---
