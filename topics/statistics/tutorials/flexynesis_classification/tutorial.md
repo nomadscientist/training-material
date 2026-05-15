@@ -155,8 +155,8 @@ It is possible to set early stopping criteria in Flexynesis, which is basically 
 >    - *"I certify that I am not using this tool for commercial purposes."*: `Yes`
 >    - *"Type of Analysis"*: `Supervised training`
 >        - {% icon param-file %} *"Training clinical data"*: `train_clin_brca.tabular`
->        - {% icon param-file %} *"Test clinical data"*: `test_clin_brca.tabular`
 >        - {% icon param-file %} *"Training omics data"*: `train_gex_brca.tabular`
+>        - {% icon param-file %} *"Test clinical data"*: `test_clin_brca.tabular`
 >        - {% icon param-file %} *"Test omics data"*: `test_gex_brca.tabular`
 >        - *"What type of assay is your input?"*: `gex`
 >        - In *"Multiple omics layers?"*:
@@ -291,8 +291,8 @@ In reality, hyperparameter optimization should run for multiple steps so that th
 >    - *"I certify that I am not using this tool for commercial purposes."*: `Yes`
 >    - *"Type of Analysis"*: `Supervised training`
 >        - {% icon param-file %} *"Training clinical data"*: `train_clin_brca.tabular`
->        - {% icon param-file %} *"Test clinical data"*: `test_clin_brca.tabular`
 >        - {% icon param-file %} *"Training omics data"*: `train_gex_brca.tabular`
+>        - {% icon param-file %} *"Test clinical data"*: `test_clin_brca.tabular`
 >        - {% icon param-file %} *"Test omics data"*: `test_gex_brca.tabular`
 >        - *"What type of assay is your input?"*: `gex`
 >        - In *"Multiple omics layers?"*:
