@@ -174,6 +174,7 @@ It is possible to set early stopping criteria in Flexynesis, which is basically 
 >        - In *"Visualization"*:
 >            - *"Generate embeddings plot?"*: `Yes`
 >            - *"Generate precision-recall curves plot?"*: `Yes`
+>        - Finally set the *"Save the trained model?"* to `No`
 >
 {: .hands_on}
 
@@ -310,6 +311,7 @@ In reality, hyperparameter optimization should run for multiple steps so that th
 >        - In *"Visualization"*:
 >            - *"Generate embeddings plot?"*: `Yes`
 >            - *"Generate precision-recall curves plot?"*: `Yes`
+>        - Finally set the *"Save the trained model?"* to `No`
 >
 {: .hands_on}
 
@@ -803,6 +805,7 @@ To make comparison of TabPFN and Flexynesis fair, we should apply Flexynesis on 
 >        - In *"Visualization"*:
 >            - *"Generate embeddings plot?"*: `Yes`
 >            - *"Generate precision-recall curves plot?"*: `Yes`
+>        - Finally set the *"Save the trained model?"* to `No`
 >
 {: .hands_on}
 
@@ -826,6 +829,7 @@ To make comparison of TabPFN and Flexynesis fair, we should apply Flexynesis on 
 >        - In *"Visualization"*:
 >            - *"Generate embeddings plot?"*: `Yes`
 >            - *"Generate precision-recall curves plot?"*: `Yes`
+>        - Finally set the *"Save the trained model?"* to `No`
 >
 {: .hands_on}
 
