@@ -7,7 +7,7 @@ description: This module will introduce you to the world of machine learning usi
 🚨 **Please note**: 
 
 - The French Galaxy server does not support the Galaxy machine learning tools at the moment. Please choose one of the other Galaxy instances - [US/Main](https://usegalaxy.org/), [EU](https://usegalaxy.eu/), [AU](https://usegalaxy.org.au/) - to follow the training
-- The tutorial 'Building the LORIS LLR6 PanCancer Model Using PyCaret' achieves faster performance on the US server. On the EU server, you may experience slower performance.
+- The tutorial 'Building the LORIS LLR6 PanCancer Model Using PyCaret' works on the US and the EU servers.
 
 slack_channel: gta_machine-learning
 
