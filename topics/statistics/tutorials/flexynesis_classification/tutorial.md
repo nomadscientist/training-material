@@ -151,7 +151,7 @@ It is possible to set early stopping criteria in Flexynesis, which is basically 
 
 > <hands-on-title> Flexynesis </hands-on-title>
 >
-> 1. {% tool [Flexynesis](toolshed.g2.bx.psu.edu/repos/bgruening/flexynesis/flexynesis/0.2.20+galaxy3) %} with the following parameters:
+> 1. {% tool [Flexynesis](toolshed.g2.bx.psu.edu/repos/bgruening/flexynesis/flexynesis/1.1.10+galaxy0) %} with the following parameters:
 >    - *"I certify that I am not using this tool for commercial purposes."*: `Yes`
 >    - *"Type of Analysis"*: `Supervised training`
 >        - {% icon param-file %} *"Training clinical data"*: `train_clin_brca.tabular`
@@ -256,7 +256,7 @@ And finally the UMAP plot.
 
 > <hands-on-title> UMAP plot </hands-on-title>
 >
-> 1. {% tool [Flexynesis plot](toolshed.g2.bx.psu.edu/repos/bgruening/flexynesis_plot/flexynesis_plot/0.2.20+galaxy3) %} with the following parameters:
+> 1. {% tool [Flexynesis plot](toolshed.g2.bx.psu.edu/repos/bgruening/flexynesis_plot/flexynesis_plot/1.1.10+galaxy0) %} with the following parameters:
 >    - *"I certify that I am not using this tool for commercial purposes."*: `Yes`
 >    - *"Flexynesis plot"*: `Dimensionality reduction`
 >        - {% icon param-file %} *"Predicted labels"*: `table` (output of **Sort** {% icon tool %})
@@ -287,7 +287,7 @@ In reality, hyperparameter optimization should run for multiple steps so that th
 
 > <hands-on-title> Flexynesis </hands-on-title>
 >
-> 1. {% tool [Flexynesis](toolshed.g2.bx.psu.edu/repos/bgruening/flexynesis/flexynesis/0.2.20+galaxy3) %} with the following parameters:
+> 1. {% tool [Flexynesis](toolshed.g2.bx.psu.edu/repos/bgruening/flexynesis/flexynesis/1.1.10+galaxy0) %} with the following parameters:
 >    - *"I certify that I am not using this tool for commercial purposes."*: `Yes`
 >    - *"Type of Analysis"*: `Supervised training`
 >        - {% icon param-file %} *"Training clinical data"*: `train_clin_brca.tabular`
@@ -367,7 +367,7 @@ And finally the UMAP plot.
 
 > <hands-on-title> UMAP plot </hands-on-title>
 >
-> 1. {% tool [Flexynesis plot](toolshed.g2.bx.psu.edu/repos/bgruening/flexynesis_plot/flexynesis_plot/0.2.20+galaxy3) %} with the following parameters:
+> 1. {% tool [Flexynesis plot](toolshed.g2.bx.psu.edu/repos/bgruening/flexynesis_plot/flexynesis_plot/1.1.10+galaxy0) %} with the following parameters:
 >    - *"I certify that I am not using this tool for commercial purposes."*: `Yes`
 >    - *"Flexynesis plot"*: `Dimensionality reduction`
 >        - {% icon param-file %} *"Predicted labels"*: `table` (output of **Sort** {% icon tool %})
@@ -785,7 +785,7 @@ To make comparison of TabPFN and Flexynesis fair, we should apply Flexynesis on 
 
 > <hands-on-title> Flexynesis on CNA </hands-on-title>
 >
-> 1. {% tool [Flexynesis](toolshed.g2.bx.psu.edu/repos/bgruening/flexynesis/flexynesis/0.2.20+galaxy3) %} with the following parameters:
+> 1. {% tool [Flexynesis](toolshed.g2.bx.psu.edu/repos/bgruening/flexynesis/flexynesis/1.1.10+galaxy0) %} with the following parameters:
 >    - *"I certify that I am not using this tool for commercial purposes."*: `Yes`
 >    - *"Type of Analysis"*: `Supervised training`
 >        - {% icon param-file %} *"Training clinical data"*: `train_clin_brca.tabular`
@@ -808,7 +808,7 @@ To make comparison of TabPFN and Flexynesis fair, we should apply Flexynesis on 
 
 > <hands-on-title> Flexynesis on GEX </hands-on-title>
 >
-> 1. {% tool [Flexynesis](toolshed.g2.bx.psu.edu/repos/bgruening/flexynesis/flexynesis/0.2.20+galaxy3) %} with the following parameters:
+> 1. {% tool [Flexynesis](toolshed.g2.bx.psu.edu/repos/bgruening/flexynesis/flexynesis/1.1.10+galaxy0) %} with the following parameters:
 >    - *"I certify that I am not using this tool for commercial purposes."*: `Yes`
 >    - *"Type of Analysis"*: `Supervised training`
 >        - {% icon param-file %} *"Training clinical data"*: `train_clin_brca.tabular`
