@@ -8,7 +8,7 @@ slack_channel: gta_proteomics
 
 contributions:
     organisers:
-        - ribouba
+        - rlibouba
     instructors:
         - pratikdjagtap
         - foellmelanie
