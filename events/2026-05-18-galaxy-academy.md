@@ -42,87 +42,85 @@ tags:
 contributions:
     organisers:
         - delphine-l
-        - teresa-m
         - scottcain
         - natalie-wa
         - shiltemann
+    instructors:
+        - ahmedhamidawan
+        - annasyme
+        - annefou
+        - anuprulez
+        - abretaud
+        - nekrut
+        - dadrasarmin
+        - Nilchia
+        - bebatut
+        - bgruening
+        - clsiguret
+        - Sch-Da
+        - dannon
         - dianichj
-
-#    instructors:
-#        - ahmedhamidawan
-#        - annasyme
-#        - annefou
-#        - anuprulez
-#        - abretaud
-#        - nekrut
-#        - dadrasarmin
-#        - Nilchia
-#        - bebatut
-#        - bgruening
-#        - clsiguret
-#        - Sch-Da
-#        - dannon
-#        - dianichj
-#        - deeptivarshney
-#        - delphine-l
-#        - elifsu-simula
-#        - elichad
-#        - EngyNasr
-#        - emmaustin20
-#        - evenmm
-#        - GarethPrice-Aus
-#        - hrhotz
-#        - hvelab
-#        - igormakunin
-#        - khaled196
-#        - jdavcs
-#        - j34ni
-#        - jennaj
-#        - jhahnfeld
-#        - jochenblom
-#        - lisanna
-#        - lfenske-93
-#        - bernt-matthias
-#        - PfisterMaxJLU
-#        - foellmelanie
-#        - meltemktn
-#        - mschatz
-#        - hujambo-dunia
-#        - mirandaembl
-#        - natalie-wa
-#        - natefoo
-#        - Oliver_Rupp
-#        - oschwengers
-#        - pauldg
-#        - paulzierep
-#        - pavanvidem
-#        - plushz
-#        - poterlowicz-lab
-#        - pratikdjagtap
-#        - RZ9082
-#        - rlibouba
-#        - reytakop
-#        - SaimMomin12
-#        - sanjaysrikakulam
-#        - scottcain
-#        - silviadg87
-#        - stephanierobin
-#        - subinamehta
-#        - teresa-m
-#        - timothygriffin
-#        - tcollins2011
-#        - nomadscientist
-#        - wm75
-#    funding:
-#        - eurosciencegateway
-#        - biont
-#        - nfdi4plants
-#        - deNBI
-#        - elixir-europe
-#        - mwk
-#        - abromics
-#        - ifb
-#        - FAIR2Adapt
+        - deeptivarshney
+        - delphine-l
+        - elifsu-simula
+        - elichad
+        - EngyNasr
+        - emmaustin20
+        - evenmm
+        - GarethPrice-Aus
+        - hrhotz
+        - hvelab
+        - igormakunin
+        - khaled196
+        - jdavcs
+        - j34ni
+        - jennaj
+        - jhahnfeld
+        - jochenblom
+        - lisanna
+        - lfenske-93
+        - meltemktn
+        - bernt-matthias
+        - PfisterMaxJLU
+        - foellmelanie
+        - meltemktn
+        - mschatz
+        - hujambo-dunia
+        - mirandaembl
+        - natalie-wa
+        - natefoo
+        - Oliver_Rupp
+        - oschwengers
+        - pauldg
+        - paulzierep
+        - pavanvidem
+        - plushz
+        - poterlowicz-lab
+        - pratikdjagtap
+        - RZ9082
+        - rlibouba
+        - reytakop
+        - SaimMomin12
+        - sanjaysrikakulam
+        - scottcain
+        - silviadg87
+        - stephanierobin
+        - subinamehta
+        - teresa-m
+        - timothygriffin
+        - tcollins2011
+        - nomadscientist
+        - wm75
+    funding:
+        - eurosciencegateway
+        - biont
+        - nfdi4plants
+        - deNBI
+        - elixir-europe
+        - mwk
+        - abromics
+        - ifb
+        - FAIR2Adapt
 
 location:
   name: online
