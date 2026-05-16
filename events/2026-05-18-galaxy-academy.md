@@ -179,19 +179,19 @@ program:
         description: |
           Watch the [video](https://youtu.be/90tlBmTTFFY)!
       - type: custom
-        name: "Tuesday: TBA"
+        name: "Tuesday: Aaron Quinlan"
         description: |
           Video will be released on the day
       - type: custom
-        name: "Wednesday: TBA"
+        name: "Wednesday: Stephanie Hicks"
         description: |
           Video will be released on the day
       - type: custom
-        name: "Thursday: TBA"
+        name: "Thursday: Timothy Griffin"
         description: |
           Video will be released on the day
       - type: custom
-        name: "Friday: TBA"
+        name: "Friday: Gareth Price"
         description: |
           Video will be released on the day
 
