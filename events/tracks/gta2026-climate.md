@@ -31,8 +31,9 @@ program:
         topic: climate
       - name: jupytergis_collaboration
         topic: climate
-      - name: climate-101
-        topic: climate
       - name: panoply
         topic: climate
+      - name: climate-101
+        topic: climate
+
 ---
