@@ -9,6 +9,14 @@ slack_channel: gta_climate
 contributions:
     organisers:
         - natalie-wa
+    instructors:
+        - annasyme
+        - annefou
+        - elifsu-simula
+        - j34ni
+        - jennaj
+        - evenmm
+        - igormakunin
     funding:
         - FAIR2Adapt
 

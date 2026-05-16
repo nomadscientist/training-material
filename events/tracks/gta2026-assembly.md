@@ -9,7 +9,19 @@ slack_channel: gta_assembly
 contributions:
     organisers:
         - delphine-l
-
+    instructors:
+        - SaimMomin12
+        - annasyme
+        - nekrut
+        - bgruening
+        - delphine-l
+        - igormakunin
+        - jennaj
+        - bernt-matthias
+        - mschatz
+        - SaimMomin12
+        - scottcain
+        - trungN
 
 
 program:
