@@ -35,7 +35,7 @@ tags:
 - Image Learner
 - Skin Lesion Classification
 recordings:
-- youtube_id: TODO
+- youtube_id: rbIHDHVDArU
   length: 39MIN
   galaxy_version: 26.0.1.dev1
   date: '2026-05-13'
