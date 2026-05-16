@@ -156,7 +156,7 @@ program:
       - type: custom
         name: Daily Icebreaker
         description: |
-          Whenever you start each day, start by answering the daily ice breaker! (Mandatory for a certificate)
+          Whenever you start each day, start by answering the daily ice breaker! Post your answers in the Slack  [#social](https://gtnsmrgsbord.slack.com/channels/social) channel. (**Mandatory for a certificate**)
 
           **Monday:** Introduce yourself and let us know what you are hoping to learn this week!
 
@@ -172,26 +172,26 @@ program:
 
   - section: Daily Meet the Experts
     subsection: true
-    description: Each day, we will release a new video in this special series.
+    description: Each day, we will release a new video in this special series. Read more about the speakers in our [news post](/training-material/news/2026/05/11/gta-meet-experts.md)
     tutorials:
       - type: custom
-        name: "Monday: Delphine Larivière"
+        name: "**Monday:** Delphine Larivière"
         description: |
           Watch the [video](https://youtu.be/90tlBmTTFFY)!
       - type: custom
-        name: "Tuesday: Aaron Quinlan"
+        name: "**Tuesday:** Aaron Quinlan"
         description: |
           Video will be released on the day
       - type: custom
-        name: "Wednesday: Stephanie Hicks"
+        name: "**Wednesday:** Stephanie Hicks"
         description: |
           Video will be released on the day
       - type: custom
-        name: "Thursday: Timothy Griffin"
+        name: "**Thursday:** Timothy Griffin"
         description: |
           Video will be released on the day
       - type: custom
-        name: "Friday: Gareth Price"
+        name: "**Friday:** Gareth Price"
         description: |
           Video will be released on the day
 
@@ -200,9 +200,9 @@ program:
     description: |
       Kick off the week with a hands-on introduction to Galaxy, covering everything from basic navigation and data manipulation to reproducing published analyses, quality control, and mapping sequences to a reference genome. Whether you're new to Galaxy or looking to strengthen your skills, today's sessions will equip you with the foundational knowledge needed for more advanced topics.
 
-      In the morning you can take part in the Icebreaker by joining us in the [Slack #social channel]((https://gtnsmrgsbord.slack.com/channels/social)
+      In the morning you can take part in the Icebreaker by joining us in the [Slack #social channel](https://gtnsmrgsbord.slack.com/channels/social)
 
-      **Need help with these tutorials?** Ask your questions via the [Slack introduction channel](https://gtnsmrgsbord.slack.com/channels/gta_introduction).
+      **Need help with these tutorials?** Ask your questions via the Slack [#gta_introduction](https://gtnsmrgsbord.slack.com/channels/gta_introduction) channel.
 
   - section: "New to Galaxy? First introduction to Galaxy"
     subsection: true
@@ -274,7 +274,7 @@ program:
 
   - section: "Friday: Grab bag"
     description: |
-      Can't get enough? You can explore the rest of the [Galaxy Training Network material]({% link index.md %}) and follow any tutorial that interests you!
+      Can't get enough? You can explore the rest of the [Galaxy Training Network material](/training-material/) and follow any tutorial that interests you!
 
       The trainers will still be present on Slack for you if you have a problem and answer questions. However, they may not be experts in the topic you selected.
 
