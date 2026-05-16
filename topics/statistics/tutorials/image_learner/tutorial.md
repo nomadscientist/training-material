@@ -22,6 +22,15 @@ contributors:
 - qchiujunhao
 - afpybus
 - jgoecks
+recordings:
+- youtube_id: rbIHDHVDArU
+  date: '2026-05-15'
+  galaxy_version: '26.0'
+  length: 40M
+  speakers:
+  - paulocilasjr
+  captioners:
+  - paulocilasjr
 tags:
 - HAM10000 Dataset
 - Image Classification
