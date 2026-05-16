@@ -128,7 +128,7 @@ location:
   name: online
 
 infrastructure:
-  tiaas: true
+  tiaas: false
   servers:
     - server: https://usegalaxy.eu
       name: Galaxy EU
@@ -136,8 +136,6 @@ infrastructure:
       name: Galaxy Main
     - server: https://usegalaxy.org.au/
       name: Galaxy AU
-    - server: https://usegalaxy.fr
-      name: Galaxy FR
   support:
     platform: Slack
 
@@ -171,29 +169,28 @@ program:
           Post your answers to Slack [#social](https://gtnsmrgsbord.slack.com/channels/social) channel. *(See the setup tab for instructions for joining Slack)*.
 
   - section: Daily Meet the Experts
-    subsection: true
     description: Each day, we will release a new video in this special series. Read more about the speakers in our [news post](/training-material/news/2026/05/11/gta-meet-experts.html)
     tutorials:
       - type: custom
         name: "**Monday:** Delphine Larivière"
         description: |
-          Watch the [video](https://youtu.be/90tlBmTTFFY)!
+          Watch the [video](https://youtu.be/90tlBmTTFFY)! (Will release on Monday)
       - type: custom
         name: "**Tuesday:** Aaron Quinlan"
         description: |
-          Video will be released on the day
+           Watch the [video](https://youtu.be/t1_VoudLyxY)! (Will release on Tuesday)
       - type: custom
         name: "**Wednesday:** Stephanie Hicks"
         description: |
-          Video will be released on the day
+           Watch the [video](https://youtu.be/HHsSaZJhhzU)! (Will release on Wednesday)
       - type: custom
         name: "**Thursday:** Timothy Griffin"
         description: |
-          Video will be released on the day
+           Watch the [video](https://youtu.be/ZTqG14VZcaY)! (Will release on Thursday)
       - type: custom
         name: "**Friday:** Gareth Price"
         description: |
-          Video will be released on the day
+           Watch the [video](https://youtu.be/MeazAZ3IHDw)! (Will release on Friday)
 
 
   - section: "Monday: Galaxy introduction"
