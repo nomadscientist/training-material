@@ -36,7 +36,7 @@ tags:
 - Skin Lesion Classification
 recordings:
 - youtube_id: rbIHDHVDArU
-  length: 39MIN
+  length: 39M
   galaxy_version: 26.0.1.dev1
   date: '2026-05-13'
   speakers:
