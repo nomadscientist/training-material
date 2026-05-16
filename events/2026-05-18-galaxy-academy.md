@@ -172,7 +172,7 @@ program:
 
   - section: Daily Meet the Experts
     subsection: true
-    description: Each day, we will release a new video in this special series. Read more about the speakers in our [news post](/training-material/news/2026/05/11/gta-meet-experts.md)
+    description: Each day, we will release a new video in this special series. Read more about the speakers in our [news post](/training-material/news/2026/05/11/gta-meet-experts.html)
     tutorials:
       - type: custom
         name: "**Monday:** Delphine Larivière"
