@@ -259,7 +259,7 @@ You can get a certificate for each track you completed. Here are the steps to ge
 - In any order:
   -  Fill the anonymous feedback survey for the Galaxy Training Academy: [Feedback Survey](https://gta-feedback.galaxyproject.org/). You will get a unique token that will be use to claim your certificates. Save it preciously, you won't be able to find it again once you close the page. If you loose the token. fill the survey again. 
   - Fill the form(s) for the track(s) you completed.
-- Claim the certificates with your email adress and your token: [Claim Certificates](https://gta-certificates.dannon-baker.workers.dev/claim-certificates). You can claim the certificates as many times as you want.
+- Claim the certificates with your email adress and your token: [Claim Certificates](https://gta-feedback.galaxyproject.org/claim-certificates). You can claim the certificates as many times as you want.
 
 You will be able to claim your certificates until June 21st. 
 
