@@ -155,6 +155,36 @@ program:
   - section: "Monday: Introduction"
     description: When you are ready to start, just work your way through the program below by watching videos and/or following the text-based tutorials. There are no live sessions, so you can determine your own schedule. A large team of instructors is available on Slack to answer your questions 24/7! Enjoy!
 
+  - section: "Start to get to know Galaxy: Chose one"
+    subsection: true
+    tutorials:
+      - name: galaxy-intro-101
+        topic: introduction
+      - name: galaxy-intro-101-everyone
+        topic: introduction
+  - section: Quick start or fresh up your Galaxy knowledge
+    subsection: true
+    tutorials:
+      - name: galaxy-intro-short
+        topic: introduction
+  - section: "Learn the main features"
+    subsection: true
+      - name: history
+        topic: galaxy-interface
+      - name: collections
+        topic: galaxy-interface
+      - name: data-manipulation-olympics
+        topic: introduction
+      - name: galaxy-intro-ngs-data-managment
+        topic: introduction
+  - section: "Go further if you want: Fundamentals of Sequences analysis"
+    subsection: true
+    tutorials:
+      - name: quality-control
+        topic: sequence-analysis
+      - name: mapping
+        topic: sequence-analysis
+
   - section: "Tuesday to Thursday: Pick a track"
     subsection: true
     description: |
@@ -163,19 +193,25 @@ program:
       For assistance, you can access support through the Slack channel associated with each track module. Please note that while we strive to accommodate all time zones, responses to specific questions may take a bit longer depending on the availability of experts in your time zone.
     tracks:  # Instead of tutorials, you can also define tracks, this will create a button per track that will lead to a different page
       - title: Assembly
+        link: events/tracks/gta2026-assembly.md
       - title: Climate
+        link: events/tracks/gta2026-climate.md
       - title: Digital Humanities
         link: events/tracks/gta2026-dh.md
       - title: From Zero to Hero with Python
+        link: events/tracks/gta2026-python.md
       - title: Machine Learning
         link: events/tracks/gta2026-ml.md
       - title: Microbiome
         link: events/tracks/gta2026-microbiome.md
       - title: Proteomics
+        link: events/tracks/gta2026-proteomics.md
       - title: Single Cell
         link: events/tracks/gta2026-single-cell.md
       - title: Transcriptomics
+        link: events/tracks/gta2026-transcriptomics.md
       - title: Variant Analysis
+        link: events/tracks/gta2026-variant-analyses.md
 
 
   - section: "Friday: Grab bag"
@@ -219,10 +255,16 @@ You will not be alone! If you ever need help, you can contact one of our many tr
 
 **Certificates**
 
-You will be able to obtain a certificate by the end of the event. To ensure you have all the time you need to learn at your own pace, you will be able to claim a certificate for a few weeks after the end of the official event. More information  will be provided as we get closer to the event.
+You can get a certificate for each track you completed. Here are the steps to get your certificate:
+- In any order:
+  -  Fill the anonymous feedback survey for the Galaxy Training Academy: [Feedback Survey](https://gta-feedback.galaxyproject.org/). You will get a unique token that will be use to claim your certificates. Save it preciously, you won't be able to find it again once you close the page. If you loose the token. fill the survey again. 
+  - Fill the form(s) for the track(s) you completed.
+- Claim the certificates with your email adress and your token: [Claim Certificates](https://gta-certificates.dannon-baker.workers.dev/claim-certificates). You can claim the certificates as many times as you want.
 
-## Do you want to join the GTA as a trainer?
+You will be able to claim your certificates until June 21st. 
+
+<!-- ## Do you want to join the GTA as a trainer?
 Please fill out our [Google Form](https://docs.google.com/forms/d/e/1FAIpQLSdyNhUhWtk2W6nxDwpxao4aRgV9921_PGGyQpGIaRbZynHnAQ/viewform?usp=header) to indicate in what capacity you would like to help.
 
 
-
+ -->
