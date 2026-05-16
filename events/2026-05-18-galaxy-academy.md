@@ -152,7 +152,7 @@ program:
       - type: custom
         name: Daily Icebreaker
         description: |
-          Whenever you start each day, start by answering the daily ice breaker! Post your answers in the Slack  [#social](https://gtnsmrgsbord.slack.com/channels/social) channel. (**Mandatory for a certificate**)
+          Whenever you start each day, start by answering the daily ice breaker! Post your answers in the Slack  [#social](https://gtnsmrgsbord.slack.com/channels/social) channel.
 
           **Monday:** Introduce yourself and let us know what you are hoping to learn this week!
 
