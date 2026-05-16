@@ -22,6 +22,15 @@ contributors:
 - afpybus
 - qchiujunhao
 - jgoecks
+recordings:
+- youtube_id: 0LK_3sn7tZQ
+  date: '2026-05-15'
+  galaxy_version: '26.0'
+  length: 22M
+  speakers:
+  - paulocilasjr
+  captioners:
+  - paulocilasjr
 tags:
 - Multimodal Learning
 - GLEAM
