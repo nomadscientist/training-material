@@ -11,10 +11,12 @@ contributions:
         - yvanlebras
     instructors:
         - PaulineSGN
+        - Marie59
         - yvanlebras
     funding:
         - dataterra
         - pndb
+        - gaiadata
 
 program:
   - section: "Ecology / Biodiversity data treatment"
