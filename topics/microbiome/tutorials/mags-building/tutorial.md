@@ -1276,14 +1276,14 @@ Accurate taxonomic classification of MAGs is essential for understanding the mic
 >
 > Taxonomic assignment of MAGs can also be performed by using other tools such as **kMetaShot** ({% cite defazio2025 %}). This is an alignment-free, k-mer/minimizer-based tool relying on NCBI taxonomy. Comparison of results from different tools can improve the reliability of MAGs taxonomic assignment
 >
->> <hands-on-title>kMetaShot assignment</hands-on-title>
->> 1. {% tool [kMetaShot](toolshed.g2.bx.psu.edu/repos/bgruening/kmetashot/kmetashot/2.0+galaxy2) %} with following parameters:
->>    - *"Input type"*: select `bin(s)/MAG(s)`
->>    - {% icon param-collection %} *"Bin(s)/MAG(s) FASTA file(s)"*: collection of .fasta or .fasta.gz files
->>    - *"Select a reference database"*: it is suggested to select the latest
->>    - *"Set ass2ref parameter"*: float from 0 to 1
+> > <hands-on-title>kMetaShot assignment</hands-on-title>
+> > 1. {% tool [kMetaShot](toolshed.g2.bx.psu.edu/repos/bgruening/kmetashot/kmetashot/2.0+galaxy2) %} with following parameters:
+> >    - *"Input type"*: `bin(s)/MAG(s)`
+> >    - {% icon param-collection %} *"Bin(s)/MAG(s) FASTA file(s)"*: collection of .fasta or .fasta.gz files
+> >    - *"Select a reference database"*: the latest
+> >    - *"Set ass2ref parameter"*: float from 0 to 1
 > {: .hands_on}
-{: .detail}
+{: .details}
 
 ## Functional Annotation of MAGs
 
