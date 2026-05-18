@@ -126,6 +126,7 @@ contributions:
         - FAIR2Adapt
         - pndb
         - dataterra
+        - gaiadata
 
 location:
   name: online
