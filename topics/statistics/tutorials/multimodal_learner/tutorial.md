@@ -50,7 +50,7 @@ recordings:
   speakers:
   - paulocilasjr
   captioners:
-  - paulocilasjr
+  - natalie-wa
   bot-timestamp: 1778716166
 
 
