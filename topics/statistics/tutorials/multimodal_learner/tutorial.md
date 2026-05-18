@@ -43,7 +43,7 @@ tags:
 - HANCOCK Dataset
 - Recurrence Prediction
 recordings:
-- youtube_id: TODO
+- youtube_id: 0LK_3sn7tZQ
   length: 22M
   galaxy_version: 26.0.1.dev1
   date: '2026-05-13'
