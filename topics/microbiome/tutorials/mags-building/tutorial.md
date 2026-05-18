@@ -1272,7 +1272,7 @@ Let's add the relative abundance values.
 Taxonomic assignment using **GTDB-Tk** provides a **robust and standardized** approach to classifying MAGs, enabling researchers to **explore microbial diversity, compare communities, and interpret ecological roles**. By leveraging the **Genome Taxonomy Database**, GTDB-Tk ensures that taxonomic classifications are **accurate, reproducible, and up-to-date**, making it an indispensable tool in metagenomic analysis.
 Accurate taxonomic classification of MAGs is essential for understanding the microbial diversity and functional potential within your metagenomic samples. By assigning taxonomic labels to your MAGs, we can explore their evolutionary relationships, ecological roles, and potential functions.
 
-> <details-title>Optional: Taxonomic assignment with ***kMetaShot***</details-title>
+> <details-title>Optional: Taxonomic assignment with kMetaShot</details-title>
 >
 > Taxonomic assignment of MAGs can also be performed by using other tools such as **kMetaShot** ({% cite defazio2025 %}). This is an alignment-free, k-mer/minimizer-based tool relying on NCBI taxonomy. Comparison of results from different tools can improve the reliability of MAGs taxonomic assignment
 >
