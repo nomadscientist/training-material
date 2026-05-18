@@ -38,6 +38,7 @@ tags:
 - variant-analysis
 - climate
 - humanities
+- ecology
 
 contributions:
     organisers:
@@ -92,6 +93,7 @@ contributions:
         - Oliver_Rupp
         - oschwengers
         - pauldg
+        - PaulineSGN
         - paulzierep
         - pavanvidem
         - plushz
@@ -111,6 +113,7 @@ contributions:
         - tcollins2011
         - nomadscientist
         - wm75
+        - yvanlebras
     funding:
         - eurosciencegateway
         - biont
@@ -121,6 +124,8 @@ contributions:
         - abromics
         - ifb
         - FAIR2Adapt
+        - pndb
+        - dataterra
 
 location:
   name: online
@@ -251,6 +256,8 @@ program:
         link: events/tracks/gta2026-climate.md
       - title: Digital Humanities
         link: events/tracks/gta2026-dh.md
+      - title: Ecology
+        link: events/tracks/gta2026-ecology.md
       - title: From Zero to Hero with Python
         link: events/tracks/gta2026-bioNT.md
       - title: Machine Learning
