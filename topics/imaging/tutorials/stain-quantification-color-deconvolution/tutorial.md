@@ -16,27 +16,24 @@ objectives:
 time_estimation: 3H
 key_points:
 - Color deconvolution mathematically separates RGB images into individual stain components based on known absorption spectra
-- The DAB channel is used for IHC quantification, while the aniline blue channel is used for Masson's Trichrome
+- The same H-E-DAB (HED) preset is used for both IHC and Masson's Trichrome; channel selection determines the stain of interest
 - Otsu thresholding provides an automated, reproducible way to distinguish stained from unstained pixels
 - The percent stained area is calculated as (stained pixels / total tissue pixels) × 100
-- This workflow input is a collection of images for batch quantification
+- This workflow accepts a collection of images for batch quantification across multiple samples
 contributors:
 - dianichj
 ---
 
-Histological staining is widely used in biomedical research and pathology to visualize specific tissue components, proteins, or structures. However, visual assessment of staining intensity and coverage is inherently subjective and difficult to reproduce across studies. Computational quantification of stained area provides an objective, reproducible measurement that can be applied consistently across large image datasets and used to address different research questions.
+Manually scoring histological staining across dozens of images is time-consuming and subjective. Two researchers looking at the same slide may reach different conclusions about how much staining is present. Computational quantification solves this: it applies the same criteria to every image, produces a numeric result, and scales to large datasets without additional effort.
 
-**Color deconvolution** is a key technique for this purpose. Originally described by {% cite Ruifrok2001 %}, it mathematically separates the individual stain components in a brightfield RGB image based on their characteristic optical absorption spectra (stain vectors). This allows you to isolate one stain from the counterstain and independently quantify its coverage. For example, in Immunohistochemistry (IHC) it is possible to separate the DAB (3,3'-diaminobenzidine) signal from the hematoxylin counterstain.
+This tutorial walks you through a Galaxy workflow that quantifies stained area in brightfield histological images — from raw microscopy image to a final table of percentages ready for statistical analysis. The approach is built around **color deconvolution**, a technique that mathematically separates overlapping stain signals so you can measure each one independently.
 
-In this tutorial, you will learn how to use Galaxy's image analysis tools to:
+You will work with two types of histological staining:
 
-1. Apply color deconvolution to histological images using predefined stain presets
-2. Isolate the channel of interest for IHC (DAB) or Masson's Trichrome (aniline blue)
-3. Automatically threshold the deconvolved channel to detect positive staining
-4. Extract image features and calculate the percentage of stained area
-5. Compile results across multiple images into a final summary table
+- **IHC (Immunohistochemistry)** — detecting CD11b-positive myeloid cells using a DAB chromogen
+- **Masson's Trichrome (MT)** — quantifying collagen deposition as a measure of cardiac fibrosis
 
-This workflow is applicable to **IHC staining** (e.g. antibody detection with DAB chromogen) and **Masson's Trichrome (MT)** staining (e.g. collagen quantification), and can be extended to other staining combinations by changing the deconvolution preset and adjusting the threshold type accordingly. It was originally inspired by the ImageJ-based collagen quantification method described by {% cite Chen2017 %}, adapted for cardiac tissue section analysis, and subsequently implemented in Galaxy to enable reproducible, scalable batch processing.
+Both use the same core workflow; the only difference is which channel you extract after deconvolution.
 
 > <agenda-title></agenda-title>
 >
@@ -47,52 +44,65 @@ This workflow is applicable to **IHC staining** (e.g. antibody detection with DA
 >
 {: .agenda}
 
-# Background: Color Deconvolution
+# Background: What Is Color Deconvolution and Why Do We Need It?
 
-Before starting the hands-on part, it is important to understand what color deconvolution does and why it is needed.
+When two stains are applied to the same tissue section, for example, hematoxylin (blue) and DAB (brown) in IHC, or Weigert's hematoxylin, Biebrich scarlet, and aniline blue in Masson's Trichrome, their colors overlap in the RGB image. This means that one cannot simply threshold on "brownness" or "blueness" because the RGB channels mix all stain signals together.
 
-In brightfield histology, stains absorb light at specific wavelengths, producing characteristic colors in the RGB image. When two or more stains are applied simultaneously (e.g. hematoxylin + DAB, or Weigert's iron hematoxylin + Biebrich scarlet + aniline blue), their colors overlap in the RGB channels. Simple color thresholding on the raw RGB image cannot reliably separate them.
+**Color deconvolution** solves this by using a **stain matrix**: a set of vectors that describe how much each stain absorbs light in the red, green, and blue channels. The algorithm inverts this matrix to compute the optical density of each stain independently at every pixel, producing one grayscale image per stain component. Higher pixel values in the output correspond to stronger staining.
 
-Color deconvolution solves this by using a **stain matrix**, a set of stain vectors that describe the optical density contributions of each stain across the three RGB channels. The algorithm inverts this matrix to compute the individual optical density of each stain at every pixel, producing a separate grayscale image per stain channel.
+In this tutorial, we use the **H-E-DAB (HED)** preset for both staining types:
 
-**Common stain presets available in Galaxy:**
+| Channel | IHC interpretation | Masson's Trichrome interpretation |
+|---|---|---|
+| Channel 1 (index 0) | Hematoxylin | Weigert's hematoxylin (nuclei) |
+| Channel 2 (index 1) | **DAB — stain of interest** | Biebrich scarlet (muscle/cytoplasm) |
+| Channel 3 (index 2) | Residual | **Aniline blue — stain of interest** |
 
-| Preset | Stain 1 | Stain 2 | Stain 3 | Use case |
-|---|---|---|---|---|
-| H + DAB | Hematoxylin | DAB | (residual) | IHC |
-| H + E + DAB | Hematoxylin | Eosin | DAB | IHC with H&E counterstain |
-| Masson's Trichrome | Weigert's hematoxylin | Biebrich scarlet | Aniline blue | Collagen quantification |
-
-> <details-title> What is a stain vector? </details-title>
+> <details-title>What is a stain vector?</details-title>
 >
 > A stain vector describes how much a given stain absorbs light in each of the three RGB color channels. For example, DAB absorbs strongly in the blue channel and weakly in the red channel, while hematoxylin absorbs more in the red and green channels. These values are determined empirically from pure stain reference images or taken from published standards. The color deconvolution algorithm uses these vectors to solve a system of linear equations and separate the mixed stain signals pixel by pixel.
 >
 {: .details}
 
-# Get Data
-
-The images used in this tutorial are a subset of data from {% cite Rettkowski2025 %}, a study investigating the role of 4-oxo retinoic acid (4-oxo RA) in maintaining hematopoietic stem cell dormancy in the bone marrow following myocardial infarction (MI). The biological model consists of mouse hearts subjected to left anterior descending (LAD) coronary artery ligation to induce MI, with and without 4-oxo RA treatment.
-
-Two staining types were applied to serial cardiac sections:
-
-- **IHC for CD11b** — a surface marker of myeloid leukocytes (monocytes, macrophages, neutrophils) used here as a proxy for local inflammation. In this context, higher CD11b-positive area is associated with greater immune cell presence post-MI.
-- **Masson's Trichrome (MT)** — to visualize and quantify collagen deposition, a hallmark of cardiac fibrosis. Greater collagen content reflects more extensive fibrotic remodeling following infarction.
-
-The hypothesis is that 4-oxo RA treatment reduces immune cell mobilization from the bone marrow, leading to less CD11b-positive infiltration, less fibrosis, and better preservation of cardiac tissue post-MI. Images were acquired from three anatomical zones of the heart (Infarct, Border, and Remote), although zone is not used as a variable in this tutorial.
-
-In the original study, regions of interest (ROIs) were manually selected from whole-slide images to focus the analysis on specific anatomical zones and avoid tissue artifacts. For this tutorial, the ROIs have already been cropped and are provided directly as the input image collection, so you can focus on the quantification workflow itself.
-
-> <comment-title> Sample data vs. full dataset </comment-title>
+> <details-title>When to consider Non-negative Matrix Factorization (NMF) instead</details-title>
 >
-> The images provided here are a representative sample of the full dataset used in {% cite Rettkowski2025 %}. In practice, histological image quantification workflows like this one are run on large batches of images across multiple animals, conditions, and zones. The workflow you will run here is identical to what would be applied at scale.
+> For most standard IHC images with a clean DAB + hematoxylin combination, the HED preset is sufficient. However, when staining is uneven, the signal is weak, or there is significant spectral overlap, a data-driven approach may give better results.
+>
+> **Non-negative Matrix Factorization (NMF)** learns the stain components directly from the image data, without relying on predefined stain vectors. This makes it more flexible when staining deviates from standard reference spectra — for example, due to differences in staining protocols, tissue processing, or scanner calibration. To use NMF, select `Non-negative matrix factorization` as the transformation type. Since NMF components are not labeled by stain name, you will need to visually inspect the output channels to identify which one corresponds to your stain of interest.
+>
+{: .details}
+
+# The Dataset: Cardiac Tissue After Myocardial Infarction
+
+The images in this tutorial come from a study investigating the role of 4-oxo retinoic acid (4-oxo RA) in maintaining hematopoietic stem cell dormancy after myocardial infarction (MI) {% cite Rettkowski2025 %}. Understanding this biological context helps interpret what the numbers mean.
+
+**The experimental model:** Mouse hearts were subjected to LAD coronary artery ligation to induce MI. Animals were treated with 4-oxo RA or with the vehicle solution (DSMO) after MI. Serial cardiac sections were stained to assess two aspects of the post-infarction response:
+
+**IHC for CD11b** detects myeloid leukocytes (monocytes, macrophages, neutrophils) — a readout of local inflammation. Higher CD11b-positive area = more immune cell infiltration after MI.
+
+**Masson's Trichrome** stains collagen blue, allowing quantification of fibrotic remodeling. Higher collagen area = more fibrosis, reflecting more extensive tissue damage.
+
+The hypothesis is that 4-oxo RA reduces immune cell mobilization from bone marrow, leading to less inflammatory infiltration (reduced presence of CD11b+ cells), less fibrosis, and better cardiac tissue preservation post-MI.
+
+**What you are working with:** In the original study, regions of interest (ROIs) were manually selected from whole-slide images to focus on specific anatomical zones (Infarct, Border, Remote) and exclude tissue artifacts. For this tutorial, those ROIs have already been cropped and are provided as ready-to-use image collections — so you can focus entirely on the quantification workflow.
+
+Here is an example of what the raw input images look like:
+
+![Example IHC image showing CD11b staining in brown (DAB) with hematoxylin counterstain in blue. The brown signal marks myeloid cell infiltration in cardiac tissue post-MI.](../../images/example_IHC_input.png "Example input: IHC for CD11b in cardiac tissue after myocardial infarction.")
+
+![Example Masson's Trichrome image showing collagen in blue (aniline blue), muscle in red (Biebrich scarlet), and nuclei in dark purple. Blue area reflects fibrotic remodeling.](../../images/example_MT_input.png "Example input: Masson's Trichrome staining in cardiac tissue after myocardial infarction.")
+
+> <comment-title>Sample data vs. full dataset</comment-title>
+>
+> The images provided here are a representative subset of the full dataset from {% cite Rettkowski2025 %}. In practice, workflows like this one are run across large image batches spanning multiple experiments, animals, conditions, and anatomical zones. The workflow you will run here is similar to what was applied at scale in the original study.
 >
 {: .comment}
 
-## Data upload
+## Data Upload
 
-> <hands-on-title> Data Upload </hands-on-title>
+> <hands-on-title>Upload your images</hands-on-title>
 >
-> 1. Create a new history for this tutorial and name it something meaningful, e.g. `Histology Stain Quantification`
+> 1. Create a new history and name it something meaningful, e.g. `Histology Stain Quantification`
 > 2. Import the images from [Zenodo]({{ page.zenodo_link }}) or from the shared data library (`GTN - Material` → `{{ page.topic_name }}` → `{{ page.title }}`):
 >
 >    ```
@@ -104,112 +114,84 @@ In the original study, regions of interest (ROIs) were manually selected from wh
 >    {% snippet faqs/galaxy/datasets_import_from_data_library.md %}
 >
 > 3. Rename the datasets with descriptive names (e.g. `IHC_sample1.tiff`, `MT_sample1.tiff`)
-> 4. Check that the datatype is set to `tiff` or `png`
+> 4. Check that the datatype is `tiff`
 >
 >    {% snippet faqs/galaxy/datasets_change_datatype.md datatype="tiff" %}
 >
-> 5. Organize your images into a **dataset collection** (one collection per staining type). This allows the workflow to process all images in batch.
+> 5. Organize your images into a **dataset collection** (one collection per staining type). Collections allow the workflow to process all images in a single run.
 >
 >    {% snippet faqs/galaxy/collections_build_list.md %}
 >
-> > <comment-title> Image requirements </comment-title>
+> > <comment-title>Image requirements</comment-title>
 > >
-> > Images must be **brightfield RGB** microscopy images. Fluorescence images are not compatible with color deconvolution. Avoid images with strong artifacts, out-of-focus regions, or uneven illumination, as these will reduce quantification accuracy.
+> > Images must be brightfield RGB microscopy images in TIFF format. Fluorescence images are not compatible with color deconvolution. Avoid images with strong artifacts, out-of-focus regions, or uneven illumination, as these reduce quantification accuracy.
 > >
 > {: .comment}
 >
 {: .hands_on}
 
 {% include _includes/cyoa-choices.html option1="IHC" option2="MT" default="IHC"
-   text="This tutorial can be followed with two different staining types: Immunohistochemistry (IHC) for CD11b, or Masson's Trichrome (MT) for collagen quantification. Choose the one that matches your data!" %}
+   text="This tutorial can be followed with two different staining types: IHC for CD11b, or Masson's Trichrome for collagen quantification. Choose the one that matches your data — the steps are the same, only the channel you extract differs." %}
 
-# Color Deconvolution and Channel Extraction
+# Step 1 — Color Deconvolution
 
-In this section you will apply color deconvolution to your input images and isolate the channel corresponding to your stain of interest.
+The first step separates the mixed stain signals in your brightfield image into individual channels. We use the **H-E-DAB (HED)** color space for both IHC and Masson's Trichrome.
 
-<div class="IHC" markdown="1">
-
-In IHC images stained with DAB chromogen, color deconvolution separates the brown DAB signal from the blue hematoxylin counterstain, producing one grayscale channel per stain component. You will use the DAB channel to quantify CD11b-positive area.
-
-> <hands-on-title> Perform Color Deconvolution (IHC) </hands-on-title>
+> <hands-on-title>Run color deconvolution</hands-on-title>
 >
 > 1. {% tool [Perform color deconvolution or transformation](toolshed.g2.bx.psu.edu/repos/imgteam/color_deconvolution/ip_color_deconvolution/0.9+galaxy0) %} with the following parameters:
->    - {% icon param-collection %} *"Input image"*: your IHC image collection
->    - *"Transformation type"*: `Deconvolve RGB into Hematoxylin + DAB`
+>    - {% icon param-collection %} *"Input image"*: your image collection
+>    - *"Transformation type"*: `Deconvolve RGB into Hematoxylin + Eosin + DAB`
 >
->    > <comment-title> Output </comment-title>
+>    > <comment-title>Output</comment-title>
 >    >
->    > The tool produces one multi-channel TIFF image per input image. Each channel is a grayscale image representing the optical density of one stain component: brighter pixels indicate stronger staining. Channel 1 corresponds to Hematoxylin and channel 2 to DAB.
+>    > Each input image produces one multi-channel TIFF. Each channel is a grayscale image where brighter pixels indicate higher optical density (stronger staining) for that component. You will extract the relevant channel in the next step.
 >    >
 >    {: .comment}
 >
 {: .hands_on}
 
-![Color deconvolution output for IHC (CD11b/DAB). From left to right: original RGB image, Hematoxylin channel (channel 1), and DAB channel (channel 2).](../../images/deconvolution_output_IHC.png "Color deconvolution output for IHC. Left: original RGB image. Middle: Hematoxylin channel. Right: DAB channel.")
+<div class="IHC" markdown="1">
 
-> <details-title> When to use Non-negative Matrix Factorization (NMF) instead </details-title>
->
-> For most standard IHC images with a clean DAB + hematoxylin combination, the `Deconvolve RGB into Hematoxylin + DAB` preset is sufficient. However, in cases where staining is uneven, the DAB signal is weak, or there is significant spectral overlap between stain components, a data-driven approach may give better results.
->
-> **Non-negative Matrix Factorization (NMF)** is an unsupervised method that learns the stain components directly from the image data, without relying on predefined stain vectors. Instead of using fixed optical absorption spectra, NMF decomposes the image into a set of non-negative components that best explain the observed pixel values. This makes it more flexible and potentially more accurate when the staining deviates from the standard reference spectra — for example, due to differences in staining protocols, tissue processing, or scanner calibration across batches.
->
-> To use NMF, select `Non-negative matrix factorization` as the transformation type. Note that since NMF components are not labeled by stain name, you will need to visually inspect the output channels to identify which one corresponds to your stain of interest before proceeding.
->
-{: .details}
+The figure below shows what to expect after deconvolution for an IHC image. The DAB channel (right) clearly isolates the brown signal from the blue hematoxylin counterstain:
+
+![Color deconvolution output for IHC. Left: original RGB image. Middle: Hematoxylin channel. Right: DAB channel isolating the brown CD11b signal.](../../images/deconvolution_output_IHC.png "Color deconvolution output for IHC (CD11b/DAB).")
 
 </div>
 
 <div class="MT" markdown="1">
 
-In Masson's Trichrome images, color deconvolution separates the blue aniline blue signal (collagen) from the red Biebrich scarlet (muscle/cytoplasm) and the dark Weigert's hematoxylin (nuclei). You will use the third channel to quantify collagen-positive area.
+The figure below shows what to expect after deconvolution for a Masson's Trichrome image. Channel 3 (right) isolates the aniline blue collagen signal:
 
-> <hands-on-title> Perform Color Deconvolution (MT) </hands-on-title>
->
-> 1. {% tool [Perform color deconvolution or transformation](toolshed.g2.bx.psu.edu/repos/imgteam/color_deconvolution/ip_color_deconvolution/0.9+galaxy0) %} with the following parameters:
->    - {% icon param-collection %} *"Input image"*: your MT image collection
->    - *"Transformation type"*: `Deconvolve RGB into Hematoxylin + Eosin + DAB`
->
->    > <comment-title> Output </comment-title>
->    >
->    > The tool produces one multi-channel TIFF image per input image. Although this preset is named after H&E+DAB, its stain vectors provide a good separation for Masson's Trichrome components. Channel 1 corresponds to Hematoxylin, channel 2 to Eosin/Biebrich scarlet, and channel 3 to the collagen/aniline blue signal.
->    >
->    {: .comment}
->
-{: .hands_on}
-
-![Color deconvolution output for Masson's Trichrome. From left to right: original RGB image, Hematoxylin channel (channel 1), Eosin/Biebrich scarlet channel (channel 2), and collagen/aniline blue channel (channel 3).](../../images/deconvolution_output_MT.png "Color deconvolution output for Masson's Trichrome. Left: original RGB image. Channels 1-3 shown separately.")
+![Color deconvolution output for Masson's Trichrome. Left: original RGB image. Channels 1–3 shown separately, with channel 3 capturing the aniline blue collagen signal.](../../images/deconvolution_output_MT.png "Color deconvolution output for Masson's Trichrome.")
 
 </div>
 
-# Image Splitting and Channel Extraction
+# Step 2 — Split Channels and Extract the Stain of Interest
 
-Once color deconvolution is complete, you will split the multi-channel output into individual images and extract the channel of interest.
+The deconvolution output is a multi-channel TIFF. You need to split it into individual channel images and then pick the one that corresponds to your stain.
 
-> <hands-on-title> Split image along axes </hands-on-title>
+> <hands-on-title>Split the multi-channel image</hands-on-title>
 >
 > 1. {% tool [Split image along axes](toolshed.g2.bx.psu.edu/repos/imgteam/split_image/ip_split_image/2.3.5+galaxy0) %} with the following parameters:
->    - {% icon param-file %} *"Image to split"*: `output` (output of **Perform color deconvolution or transformation** {% icon tool %})
->
->    > <comment-title> Output </comment-title>
->    >
->    > This tool splits the multi-channel TIFF into a collection of single-channel grayscale images, one per stain component. You will select the channel of interest in the next step.
->    >
->    {: .comment}
+>    - {% icon param-collection %} *"Image to split"*: output of **Perform color deconvolution or transformation** {% icon tool %}
 >
 {: .hands_on}
 
+This produces a collection of single-channel grayscale images — one per stain component. Now extract the channel you need:
+
 <div class="IHC" markdown="1">
 
-> <hands-on-title> Extract DAB channel (IHC) </hands-on-title>
+> <hands-on-title>Extract the DAB channel (IHC)</hands-on-title>
 >
 > 1. {% tool [Extract dataset](__EXTRACT_DATASET__) %} with the following parameters:
->    - {% icon param-file %} *"Input List"*: `output` (output of **Split image along axes** {% icon tool %})
+>    - {% icon param-collection %} *"Input List"*: output of **Split image along axes** {% icon tool %}
 >    - *"How should a dataset be selected?"*: `Select by index`
 >    - *"Element index"*: `1`
 >
->    > <comment-title> Why index 1? </comment-title>
+>    > <comment-title>Why index 1?</comment-title>
 >    >
->    > The split collection is zero-indexed. In the H + DAB preset, DAB is the second channel, corresponding to index `1`.
+>    > The split collection is zero-indexed. In the HED preset, Channel 2 (DAB) corresponds to index `1`.
 >    >
 >    {: .comment}
 >
@@ -219,16 +201,16 @@ Once color deconvolution is complete, you will split the multi-channel output in
 
 <div class="MT" markdown="1">
 
-> <hands-on-title> Extract collagen channel (MT) </hands-on-title>
+> <hands-on-title>Extract the collagen channel (MT)</hands-on-title>
 >
 > 1. {% tool [Extract dataset](__EXTRACT_DATASET__) %} with the following parameters:
->    - {% icon param-file %} *"Input List"*: `output` (output of **Split image along axes** {% icon tool %})
+>    - {% icon param-collection %} *"Input List"*: output of **Split image along axes** {% icon tool %}
 >    - *"How should a dataset be selected?"*: `Select by index`
 >    - *"Element index"*: `2`
 >
->    > <comment-title> Why index 2? </comment-title>
+>    > <comment-title>Why index 2?</comment-title>
 >    >
->    > The split collection is zero-indexed. In the H + E + DAB preset used for MT, the collagen/aniline blue signal is the third channel, corresponding to index `2`.
+>    > The split collection is zero-indexed. In the HED preset, Channel 3 (aniline blue / collagen) corresponds to index `2`.
 >    >
 >    {: .comment}
 >
@@ -239,56 +221,60 @@ Once color deconvolution is complete, you will split the multi-channel output in
 > <question-title></question-title>
 >
 > 1. What does a high pixel intensity value mean in the deconvolved DAB channel?
-> 2. What index would you use to extract the hematoxylin channel from an H + DAB deconvolution?
+> 2. What index would you use to extract the hematoxylin channel from an HED deconvolution?
 >
 > > <solution-title></solution-title>
 > >
-> > 1. After deconvolution, the output is an optical density image. Higher pixel values represent stronger DAB staining, meaning more DAB chromogen is present at that location. Darker regions in the original image correspond to higher values in the deconvolved channel.
-> > 2. Hematoxylin is the first channel, so you would use index `0`.
+> > 1. Higher pixel values in the deconvolved channel represent stronger staining (higher optical density of that dye at that location). Darker brown regions in the original IHC image become bright pixels in the DAB channel.
+> > 2. Hematoxylin is Channel 1, so you would use index `0`.
 > >
 > {: .solution}
 >
 {: .question}
 
-# Retrieve Image Dimensions
+# Step 3 — Capture Total Image Area
 
-To calculate the percentage of stained area, you need two numbers: the area covered by the stain (which you will measure later from the thresholded image), and the total area of the image, which serves as the denominator. In this section you will extract the width and height of each image from its metadata and multiply them to obtain the total pixel area.
+To calculate the *percentage* of stained area, you need two numbers: how many pixels are stained, and how many pixels make up the whole tissue image. You will measure the stained pixels later from the thresholded image. Here you extract the image dimensions to compute the total area.
 
-> <hands-on-title> Get image dimensions </hands-on-title>
+> <hands-on-title>Get image dimensions from the original image</hands-on-title>
 >
 > 1. {% tool [Show image info](toolshed.g2.bx.psu.edu/repos/imgteam/image_info/ip_imageinfo/5.7.1+galaxy1) %} with the following parameters:
->    - {% icon param-collection %} *"Input Image"*: `output` (output of **Perform color deconvolution or transformation** {% icon tool %})
+>    - {% icon param-collection %} *"Input Image"*: your original image collection (the same collection you provided as input to color deconvolution)
+>
+>    > <comment-title>Why use the original image here?</comment-title>
+>    >
+>    > We extract dimensions from the raw input image — not the deconvolved output — because the original image faithfully represents the full tissue area captured by the microscope. This ensures the total area denominator is correct regardless of any processing applied downstream.
+>    >
+>    {: .comment}
 >
 > 2. {% tool [Select](Grep1) %} to extract the image width:
->    - {% icon param-file %} *"Select lines from"*: `output` (output of **Show image info** {% icon tool %})
+>    - {% icon param-collection %} *"Select lines from"*: output of **Show image info** {% icon tool %}
 >    - *"the pattern"*: `Width =`
 >
 > 3. {% tool [Select](Grep1) %} to extract the image height:
->    - {% icon param-file %} *"Select lines from"*: `output` (output of **Show image info** {% icon tool %})
+>    - {% icon param-collection %} *"Select lines from"*: output of **Show image info** {% icon tool %}
 >    - *"the pattern"*: `Height =`
 >
 > 4. {% tool [Text transformation](toolshed.g2.bx.psu.edu/repos/bgruening/text_processing/tp_sed_tool/9.5+galaxy3) %} to isolate the width value:
->    - {% icon param-file %} *"File to process"*: output of **Select** (Width) {% icon tool %}
+>    - {% icon param-collection %} *"File to process"*: output of **Select** (Width) {% icon tool %}
 >    - *"SED Program"*: `s/.*= //`
->    - *"Advanced Options"*: `Hide Advanced Options`
 >
->    > <comment-title> What does this SED expression do? </comment-title>
+>    > <comment-title>What does this expression do?</comment-title>
 >    >
->    > The **Show image info** tool returns metadata as plain text lines, e.g. `Width = 1024`. The expression `s/.*= //` removes everything up to and including the `= ` sign, leaving only the numeric value. This is necessary so the number can be used in a calculation in the next steps.
+>    > The image info tool returns lines like `Width = 1024`. The sed expression `s/.*= //` strips everything up to and including `= `, leaving just the number. This is necessary so it can be used in arithmetic downstream.
 >    >
 >    {: .comment}
 >
 > 5. {% tool [Text transformation](toolshed.g2.bx.psu.edu/repos/bgruening/text_processing/tp_sed_tool/9.5+galaxy3) %} to isolate the height value:
->    - {% icon param-file %} *"File to process"*: output of **Select** (Height) {% icon tool %}
+>    - {% icon param-collection %} *"File to process"*: output of **Select** (Height) {% icon tool %}
 >    - *"SED Program"*: `s/.*= //`
->    - *"Advanced Options"*: `Hide Advanced Options`
 >
-> 6. {% tool [Paste](Paste1) %} to combine width and height into a single file:
->    - {% icon param-file %} *"Paste"*: output of **Text transformation** (width) {% icon tool %}
->    - {% icon param-file %} *"and"*: output of **Text transformation** (height) {% icon tool %}
+> 6. {% tool [Paste](Paste1) %} to combine width and height side by side:
+>    - {% icon param-collection %} *"Paste"*: output of **Text transformation** (width) {% icon tool %}
+>    - {% icon param-collection %} *"and"*: output of **Text transformation** (height) {% icon tool %}
 >
 > 7. {% tool [Compute](toolshed.g2.bx.psu.edu/repos/devteam/column_maker/Add_a_column1/2.1+galaxy0) %} to calculate total pixel area (width × height):
->    - {% icon param-file %} *"Input file"*: output of **Paste** {% icon tool %}
+>    - {% icon param-collection %} *"Input file"*: output of **Paste** {% icon tool %}
 >    - *"Input has a header line with column names?"*: `No`
 >    - In *"Expressions"* → *"Insert Expressions"*:
 >      - *"Add expression"*: `c1 * c2`
@@ -298,177 +284,208 @@ To calculate the percentage of stained area, you need two numbers: the area cove
 
 > <question-title></question-title>
 >
-> An image is 1024 × 768 pixels. What is the total pixel area, and why does it matter for this analysis?
+> An image is 1024 × 768 pixels. What is the total pixel area, and why does it matter?
 >
 > > <solution-title></solution-title>
 > >
-> > The total pixel area is 1024 × 768 = 786,432 pixels. This value is the denominator in the final percentage calculation: stained pixels / total pixels × 100. Without it, you can measure the absolute number of stained pixels but cannot express it as a meaningful percentage that is comparable across images of different sizes.
+> > Total pixel area = 1024 × 768 = 786,432 pixels. This is the denominator in the percentage formula: (stained pixels / total pixels) × 100. Without it you can count stained pixels in absolute terms but cannot compare meaningfully across images of different sizes.
 > >
 > {: .solution}
 >
 {: .question}
 
-# Thresholding and Feature Extraction
+# Step 4 — Threshold the Stain Channel
 
-Once you have isolated the stain channel, you need to convert it into a binary mask (stained vs. unstained pixels) and then measure the area covered by the stain.
+Now you will convert the extracted grayscale channel into a binary mask: pixels are classified as either stained (value = 1) or unstained (value = 0). This is the foundation for measuring stained area.
 
-## Threshold the Stain Channel
-
-> <hands-on-title> Apply automatic thresholding </hands-on-title>
+> <hands-on-title>Apply Otsu thresholding</hands-on-title>
 >
 > 1. {% tool [Threshold image](toolshed.g2.bx.psu.edu/repos/imgteam/2d_auto_threshold/ip_threshold/0.25.2+galaxy0) %} with the following parameters:
->    - {% icon param-file %} *"Input image"*: `output` (output of **Extract dataset** {% icon tool %})
+>    - {% icon param-collection %} *"Input image"*: output of **Extract dataset** {% icon tool %} (your extracted stain channel)
 >    - *"Thresholding method"*: `Globally adaptive / Otsu`
->
->    > <comment-title> Why Otsu thresholding? </comment-title>
->    >
->    > Otsu's method automatically finds an optimal threshold by minimizing the intra-class variance between the two pixel populations (stained and unstained). This makes it more reproducible than manual threshold selection, as it does not require user input per image. It works best when the pixel intensity histogram shows two distinct peaks (bimodal distribution), which is typically the case for well-stained histological sections.
->    >
->    {: .comment}
 >
 {: .hands_on}
 
-The figure below shows an example of the thresholding output. The binary mask highlights the stained pixels in white against a black background:
+Otsu's method automatically finds the threshold that best separates the two pixel populations — stained and unstained — by minimizing the variance within each group. Because it adapts to each image's intensity distribution, you do not need to set a manual value per image, making the results more consistent across a large batch.
 
 <div class="IHC" markdown="1">
 
-![Thresholding output for IHC. Left: deconvolved DAB channel. Right: binary mask after Otsu thresholding, where white pixels represent DAB-positive area.](../../images/threshold_output_IHC.png "Thresholding output for IHC (CD11b/DAB). Left: DAB channel. Right: Otsu binary mask.")
+![Thresholding output for IHC. Left: deconvolved DAB channel. Right: binary Otsu mask where white pixels represent DAB-positive area.](../../images/threshold_output_IHC.png "Otsu thresholding output for IHC (CD11b/DAB).")
 
 </div>
 
 <div class="MT" markdown="1">
 
-![Thresholding output for Masson's Trichrome. Left: deconvolved collagen channel. Right: binary mask after Otsu thresholding, where white pixels represent collagen-positive area.](../../images/threshold_output_MT.png "Thresholding output for MT. Left: collagen channel. Right: Otsu binary mask.")
+![Thresholding output for Masson's Trichrome. Left: deconvolved collagen channel. Right: binary Otsu mask where white pixels represent collagen-positive area.](../../images/threshold_output_MT.png "Otsu thresholding output for Masson's Trichrome.")
 
 </div>
 
 > <question-title></question-title>
 >
-> 1. What does the output of the threshold step look like?
-> 2. When might Otsu thresholding give unreliable results?
+> When might Otsu thresholding give unreliable results?
 >
 > > <solution-title></solution-title>
 > >
-> > 1. The output is a binary mask image: pixels classified as stained are set to `1` (white) and unstained pixels are set to `0` (black).
-> > 2. Otsu thresholding may underperform when the image has very low or very high staining density (unimodal histogram), or when there is significant background noise or uneven illumination. In those cases, consider preprocessing images (e.g. background subtraction) or using a manually set threshold.
+> > Otsu works best when the pixel intensity histogram has two distinct peaks (bimodal distribution). It may underperform when staining is very sparse or very dense (producing a unimodal histogram), or when there is significant background noise or uneven illumination. In those cases, consider preprocessing steps such as background subtraction, or apply a manually set threshold offset.
 > >
 > {: .solution}
 >
 {: .question}
 
-## Extract Image Features from the Binary Mask
+# Step 5 — Generate ROIs for Visual Validation
 
-> <hands-on-title> Measure stained pixel area </hands-on-title>
+Before moving to quantification, it is good practice to visually verify that the thresholded mask captures what you expect. This step detects the stained blobs in the binary mask and generates polygon ROIs around them, which can be inspected or uploaded to OMERO for review alongside the original images.
+
+> <hands-on-title>Detect stained regions and generate ROIs</hands-on-title>
+>
+> 1. {% tool [Analyze particles](toolshed.g2.bx.psu.edu/repos/imgteam/imagej2_analyze_particles_binary/imagej2_analyze_particles_binary/20240614+galaxy0) %} with the following parameters:
+>    - {% icon param-collection %} *"Binary image"*: output of **Threshold image** {% icon tool %}
+>    - *"Minimum size"*: `50`
+>    - *"Black background"*: `Yes`
+>    - *"Export ROIs"*: `Yes`
+>
+>    > <comment-title>What does the minimum size filter do?</comment-title>
+>    >
+>    > Setting a minimum particle size of 50 pixels excludes very small specks that are likely noise or staining artifacts rather than real signal. Adjust this value depending on the scale and resolution of your images.
+>    >
+>    {: .comment}
+>
+{: .hands-on}
+
+This produces two outputs per image: an outline image showing detected particles, and a tabular file with ROI coordinates. Use the outline image to quickly check whether the detected regions match the staining you see in the original.
+
+> <tip-title>Uploading ROIs to OMERO for validation</tip-title>
+>
+> If your facility uses OMERO for image management, the ROI files generated here can be uploaded alongside the original whole-slide images to overlay and visually validate your threshold results at scale.
+>
+{: .tip}
+
+# Step 6 — Extract Quantitative Features
+
+With a validated binary mask, you can now measure the stained area. The feature extraction tool measures properties of the labeled regions in the mask, using the grayscale stain channel for intensity information.
+
+> <hands-on-title>Measure stained pixel area and intensity</hands-on-title>
 >
 > 1. {% tool [Extract image features](toolshed.g2.bx.psu.edu/repos/imgteam/2d_feature_extraction/ip_2d_feature_extraction/0.25.2+galaxy1) %} with the following parameters:
->    - {% icon param-file %} *"Label map"*: `output` (output of **Threshold image** {% icon tool %})
+>    - {% icon param-collection %} *"Label map"*: output of **Threshold image** {% icon tool %}
 >    - *"Features to compute"*: `Use the intensity image to compute additional features`
->      - {% icon param-file %} *"Intensity image"*: `output` (output of **Extract dataset** {% icon tool %})
->      - *"Available features"*: *(select area and intensity features)*
+>      - {% icon param-collection %} *"Intensity image"*: output of **Extract dataset** {% icon tool %}
+>      - *"Available features"*: select `label`, `area`, `area_filled`, `mean_intensity`
 >
->    > <comment-title> What features are extracted? </comment-title>
+>    > <comment-title>What do these features mean?</comment-title>
 >    >
->    > This tool computes morphological and intensity features from labeled regions in the binary mask. The key output here is **area** — the number of pixels classified as stained. This value will be used in the final calculation of percentage stained area.
+>    > - **label** — the pixel class (1 = stained region)
+>    > - **area** — the number of stained pixels (this is what you will use for the percentage)
+>    > - **area_filled** — area including any internal holes in the stained region
+>    > - **mean_intensity** — average pixel intensity within the stained region, which can complement the area measurement as a proxy for staining strength
 >    >
 >    {: .comment}
 >
 {: .hands_on}
 
-# Compiling and Calculating Percentage Stained Area
+# Step 7 — Compile Results and Calculate Percent Stained Area
 
-In this final section, you will gather the stained area values and total image area across all images and compute the percentage stained area for each sample.
+You now have, for each image: the stained pixel area (from feature extraction) and the total pixel area (from image dimensions). This final section merges all per-sample results into a single table and calculates the percentage.
 
-## Collect and Organize Feature Data
+## Merge the Feature Results
 
-> <hands-on-title> Extract and collapse feature values </hands-on-title>
+> <hands-on-title>Collapse per-image results into one table</hands-on-title>
 >
-> 1. {% tool [Extract dataset](__EXTRACT_DATASET__) %} to get the first dataset from the feature collection:
->    - {% icon param-file %} *"Input List"*: `output` (output of **Extract image features** {% icon tool %})
+> 1. {% tool [Extract dataset](__EXTRACT_DATASET__) %} to get the first dataset from the feature collection (used to extract the header row):
+>    - {% icon param-collection %} *"Input List"*: output of **Extract image features** {% icon tool %}
 >    - *"How should a dataset be selected?"*: `The first dataset`
 >
-> 2. {% tool [Select last](Show tail1) %} to get the last row (the stained region values):
->    - *"Select last"*: `1`
->    - {% icon param-file %} *"from"*: `output` (output of **Extract image features** {% icon tool %})
->
-> 3. {% tool [Extract element identifiers](toolshed.g2.bx.psu.edu/repos/iuc/collection_element_identifiers/collection_element_identifiers/0.0.2) %} to retrieve image file names:
->    - {% icon param-file %} *"Dataset collection"*: `output` (output of **Extract image features** {% icon tool %})
->
-> 4. {% tool [Cut](Cut1) %} to extract the stained area column:
->    - *"Cut columns"*: `c3`
->    - {% icon param-file %} *"From"*: `out_file1` (output of **Compute** {% icon tool %})
->
-> 5. {% tool [Select first](Show beginning1) %} to get the header row:
+> 2. {% tool [Select first](Show beginning1) %} to isolate the header row:
 >    - *"Select first"*: `1`
->    - {% icon param-file %} *"from"*: `output` (output of **Extract dataset** {% icon tool %})
+>    - {% icon param-collection %} *"from"*: output of **Extract dataset** {% icon tool %}
+>
+> 3. {% tool [Select last](Show tail1) %} to extract the data row from each image's feature file:
+>    - *"Select last"*: `1`
+>    - {% icon param-collection %} *"from"*: output of **Extract image features** {% icon tool %}
+>
+> 4. {% tool [Extract element identifiers](toolshed.g2.bx.psu.edu/repos/iuc/collection_element_identifiers/collection_element_identifiers/0.0.2) %} to get sample file names:
+>    - {% icon param-collection %} *"Dataset collection"*: output of **Extract image features** {% icon tool %}
+>
+> 5. {% tool [Collapse Collection](toolshed.g2.bx.psu.edu/repos/nml/collapse_collections/collapse_dataset/5.1.0) %} to merge all data rows into one file:
+>    - {% icon param-collection %} *"Collection of files to collapse"*: output of **Select last** {% icon tool %}
+>
+> 6. {% tool [Create text file](toolshed.g2.bx.psu.edu/repos/bgruening/text_processing/tp_text_file_with_recurring_lines/9.5+galaxy3) %} to create a `sample_id` column header:
+>    - *"Line"*: `sample_id`
+>
+> 7. {% tool [Paste](Paste1) %} to combine the sample_id header with the feature header:
+>    - {% icon param-file %} *"Paste"*: output of **Create text file** (sample_id) {% icon tool %}
+>    - {% icon param-file %} *"and"*: output of **Select first** (feature header) {% icon tool %}
+>
+> 8. {% tool [Paste](Paste1) %} to combine sample names with their corresponding data rows:
+>    - {% icon param-file %} *"Paste"*: output of **Extract element identifiers** {% icon tool %}
+>    - {% icon param-file %} *"and"*: output of **Collapse Collection** {% icon tool %}
+>
+> 9. {% tool [Concatenate multiple datasets or collections](cat1) %} to build the full table with header:
+>    - {% icon param-file %} *"Concatenate Dataset"*: output of **Paste** (header row) {% icon tool %}
+>    - In *"Dataset"* → *"Insert Dataset"*:
+>      - {% icon param-file %} *"Select"*: output of **Paste** (data rows) {% icon tool %}
 >
 {: .hands_on}
 
-## Collapse Collections into Summary Tables
+## Add the Total Area Column
 
-> <hands-on-title> Merge results across all images </hands-on-title>
+> <hands-on-title>Merge the total area values</hands-on-title>
 >
-> 1. {% tool [Collapse Collection](toolshed.g2.bx.psu.edu/repos/nml/collapse_collections/collapse_dataset/5.1.0) %} to merge stained area rows:
->    - {% icon param-file %} *"Collection of files to collapse into single dataset"*: `out_file1` (output of **Select last** {% icon tool %})
+> 1. {% tool [Cut](Cut1) %} to extract the total area column (column 3) from the computed area file:
+>    - *"Cut columns"*: `c3`
+>    - {% icon param-collection %} *"From"*: output of **Compute** (width × height) {% icon tool %}
 >
-> 2. {% tool [Collapse Collection](toolshed.g2.bx.psu.edu/repos/nml/collapse_collections/collapse_dataset/5.1.0) %} to merge total area column:
->    - {% icon param-file %} *"Collection of files to collapse into single dataset"*: `out_file1` (output of **Cut** {% icon tool %})
+> 2. {% tool [Collapse Collection](toolshed.g2.bx.psu.edu/repos/nml/collapse_collections/collapse_dataset/5.1.0) %} to merge the total area values across samples:
+>    - {% icon param-collection %} *"Collection of files to collapse"*: output of **Cut** {% icon tool %}
 >
-> 3. {% tool [Paste](Paste1) %} to join image names with stained area:
->    - {% icon param-file %} *"Paste"*: `output` (output of **Extract element identifiers** {% icon tool %})
->    - {% icon param-file %} *"and"*: `output` (output of **Collapse Collection** — stained area {% icon tool %})
+> 3. {% tool [Create text file](toolshed.g2.bx.psu.edu/repos/bgruening/text_processing/tp_text_file_with_recurring_lines/9.5+galaxy3) %} to create a `total_area` column header.
+>    - *"Line"*: `total_area`
 >
-> 4. {% tool [Paste](Paste1) %} to add a header to the table:
->    - {% icon param-file %} *"Paste"*: `outfile` (output of **Create text file** {% icon tool %})
->    - {% icon param-file %} *"and"*: `out_file1` (output of **Select first** {% icon tool %})
->
-> 5. {% tool [Concatenate datasets](toolshed.g2.bx.psu.edu/repos/bgruening/text_processing/tp_cat/9.5+galaxy3) %} to build the total area column:
->    - {% icon param-file %} *"Datasets to concatenate"*: `outfile` (output of **Create text file** {% icon tool %})
+> 4. {% tool [Concatenate datasets](toolshed.g2.bx.psu.edu/repos/bgruening/text_processing/tp_cat/9.5+galaxy3) %} to prepend the header to the total area values:
+>    - {% icon param-file %} *"Datasets to concatenate"*: output of **Create text file** (total_area) {% icon tool %}
 >    - In *"Dataset"* → *"Insert Dataset"*:
->      - {% icon param-file %} *"Select"*: `output` (output of **Collapse Collection** — total area {% icon tool %})
+>      - {% icon param-file %} *"Select"*: output of **Collapse Collection** (total area) {% icon tool %}
 >
-> 6. {% tool [Concatenate multiple datasets or collections](cat1) %} to assemble the full table:
->    - {% icon param-file %} *"Concatenate Dataset"*: `out_file1` (output of **Paste** — names + stained area {% icon tool %})
->    - In *"Dataset"* → *"Insert Dataset"*:
->      - {% icon param-file %} *"Select"*: `out_file1` (output of **Paste** — header {% icon tool %})
->
-> 7. {% tool [Paste](Paste1) %} to combine all columns:
->    - {% icon param-file %} *"Paste"*: `out_file1` (output of **Concatenate multiple datasets or collections** {% icon tool %})
->    - {% icon param-file %} *"and"*: `out_file1` (output of **Concatenate datasets** {% icon tool %})
+> 5. {% tool [Paste](Paste1) %} to join the feature results table with the total area column:
+>    - {% icon param-file %} *"Paste"*: output of **Concatenate multiple datasets or collections** {% icon tool %}
+>    - {% icon param-file %} *"and"*: output of **Concatenate datasets** {% icon tool %}
 >
 {: .hands_on}
 
-## Calculate Percentage Stained Area
+## Calculate Percent Stained Area
 
-This is the final step: dividing the stained pixel area by the total image area and multiplying by 100 to obtain the percentage.
+You now have a single table with all the values you need. The final step divides stained area by total area and multiplies by 100.
 
-> <hands-on-title> Compute percent stained area </hands-on-title>
+> <hands-on-title>Compute percent stained area</hands-on-title>
 >
 > 1. {% tool [Compute](toolshed.g2.bx.psu.edu/repos/devteam/column_maker/Add_a_column1/2.1+galaxy0) %} with the following parameters:
->    - {% icon param-file %} *"Input file"*: `out_file1` (output of **Paste** {% icon tool %})
+>    - {% icon param-file %} *"Input file"*: output of **Paste** (full table) {% icon tool %}
 >    - *"Input has a header line with column names?"*: `Yes`
 >    - In *"Expressions"* → *"Insert Expressions"*:
 >      - *"Add expression"*: `c4 / c6 * 100`
 >      - *"The new column name"*: `percent_area`
 >    - *"If an expression cannot be computed for a row"*: `Fail the entire tool run`
 >
->    > <comment-title> Understanding the formula </comment-title>
+>    > <comment-title>Understanding the formula</comment-title>
 >    >
->    > The expression `c4 / c6 * 100` divides the stained pixel area (column 4) by the total image area (column 6) and multiplies by 100 to express the result as a percentage. Make sure your column assignments match the actual structure of your merged table.
+>    > `c4` = stained pixel area (from feature extraction); `c6` = total pixel area (width × height). Dividing and multiplying by 100 expresses the result as a percentage. If your column order differs, verify the column numbers by inspecting the merged table before running this step.
 >    >
 >    {: .comment}
 >
 {: .hands_on}
 
+Your final output is a TSV table with one row per sample, containing: `sample_id`, `label`, `area`, `area_filled`, `mean_intensity`, `total_area`, and `percent_area`. This file is ready for downstream statistical analysis.
+
 > <question-title></question-title>
 >
 > 1. A tissue image is 2048 × 2048 pixels. The thresholded mask contains 419,430 positive pixels. What is the percent stained area?
-> 2. How would you interpret the results biologically?
+> 2. How would you interpret this result biologically?
 >
 > > <solution-title></solution-title>
 > >
-> > 1. Total pixels = 2048 × 2048 = 4,194,304. Percent area = (419,430 / 4,194,304) × 100 ≈ 10.0%
+> > 1. Total pixels = 2048 × 2048 = 4,194,304. Percent area = (419,430 / 4,194,304) × 100 ≈ **10.0%**
 > >
-> > 2. <div class="IHC" markdown="1">A higher CD11b-positive area indicates greater myeloid cell infiltration, which reflects local inflammation in the infarcted myocardium. In the context of {% cite Rettkowski2025 %}, a reduction in CD11b-positive area in 4-oxo RA-treated animals would suggest that the treatment reduces immune cell mobilization from the bone marrow and limits inflammatory infiltration post-MI. Always compare against negative controls to account for non-specific background staining.</div><div class="MT" markdown="1">A higher collagen-positive area reflects greater fibrotic remodeling of the myocardium following infarction. In the context of {% cite Rettkowski2025 %}, reduced collagen deposition in treated animals would suggest better preservation of cardiac tissue architecture. Results should be interpreted alongside CD11b quantification, as reduced inflammation is expected to correlate with reduced fibrosis.</div>
+> > 2. <div class="IHC" markdown="1">10% CD11b-positive area indicates substantial myeloid cell infiltration in the infarcted myocardium. In the context of {% cite Rettkowski2025 %}, a reduction in this value in 4-oxo RA-treated animals would suggest the treatment suppresses immune cell mobilization and limits post-MI inflammation. Always compare against appropriate controls to account for background staining.</div><div class="MT" markdown="1">10% collagen-positive area reflects moderate fibrotic remodeling. In the context of {% cite Rettkowski2025 %}, lower values in treated animals would suggest 4-oxo RA helps preserve cardiac tissue architecture by reducing fibrosis. These results are most informative when combined with CD11b quantification, since inflammation and fibrosis are closely linked post-MI.</div>
 > >
 > {: .solution}
 >
@@ -476,26 +493,30 @@ This is the final step: dividing the stained pixel area by the total image area 
 
 # Conclusion
 
-In this tutorial, you have learned how to use Galaxy's image analysis tools to quantitatively measure the percentage of stained area in histological images. The key steps of the workflow are:
+You have now built and run a complete image analysis workflow that takes raw histological images and produces a quantitative, reproducible measure of staining coverage. Here is a summary of what each step contributes:
 
-1. **Color deconvolution** — separates mixed stain signals into individual channels using optical absorption spectra
-2. **Channel extraction** — isolates the stain of interest (DAB for IHC, aniline blue for MT)
-3. **Otsu thresholding** — automatically creates a binary mask of stained vs. unstained pixels
-4. **Feature extraction** — measures the pixel area covered by the stain
-5. **Percentage calculation** — expresses the stained area relative to total image area as a percentage
+| Step | What it does | Why it matters |
+|---|---|---|
+| Color deconvolution | Separates mixed stain signals into individual channels | Isolates your stain from the counterstain |
+| Channel extraction | Selects the channel corresponding to your stain of interest | DAB (index 1) for IHC; aniline blue (index 2) for MT |
+| Image dimensions | Captures total pixel area from the original image | Provides the denominator for the percentage |
+| Otsu thresholding | Converts the stain channel into a binary stained/unstained mask | Automated, consistent across images |
+| Analyze particles | Generates ROIs around detected stained regions | Enables visual validation of the threshold |
+| Feature extraction | Measures area and intensity of stained pixels | Produces the numerator for the percentage |
+| Final table + compute | Merges results and calculates percent stained area | Delivers a ready-to-analyze summary |
 
-This approach provides an objective, reproducible, and scalable method for histological stain quantification that can be applied to large image datasets. By adjusting the color deconvolution preset and channel index, the same workflow can be adapted to other staining protocols beyond IHC and Masson's Trichrome.
+The same workflow applies to both IHC and Masson's Trichrome — the only difference is the channel index you select in Step 2. By adjusting this index, the workflow can be adapted to other staining combinations as long as they are compatible with the HED color space.
 
 <div class="IHC" markdown="1">
 
-In the context of this tutorial, the CD11b-positive area quantified from IHC images reflects the degree of myeloid cell infiltration in infarcted cardiac tissue. This type of measurement allows objective comparison between experimental groups — for example, treated vs. untreated animals — and can be applied consistently across large image collections from studies such as {% cite Rettkowski2025 %}.
+In the context of this tutorial, the CD11b-positive area quantified from IHC images reflects myeloid cell infiltration in infarcted cardiac tissue — an objective, reproducible measure that can be compared across experimental groups and applied consistently at scale, as demonstrated in {% cite Rettkowski2025 %}.
 
 </div>
 
 <div class="MT" markdown="1">
 
-In the context of this tutorial, the collagen-positive area quantified from Masson's Trichrome images reflects the degree of fibrotic remodeling in infarcted cardiac tissue. Combined with CD11b quantification, this measurement provides a complementary readout of the inflammatory and fibrotic response post-MI, as studied in {% cite Rettkowski2025 %}.
+In the context of this tutorial, the collagen-positive area from Masson's Trichrome images reflects fibrotic remodeling post-MI. Combined with CD11b quantification, it provides a complementary picture of the inflammatory and structural response to infarction, as studied in {% cite Rettkowski2025 %}.
 
 </div>
 
-![Workflow overview: from raw histological image to percent stained area.](../../images/workflow_overview.png "Overview of the stain quantification workflow.")
+![Overview of the complete stain quantification workflow from raw image to percent stained area table.](../../images/workflow_overview.png "Workflow overview: from raw histological image to percent stained area.")
