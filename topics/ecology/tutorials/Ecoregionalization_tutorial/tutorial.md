@@ -33,6 +33,7 @@ contributions:
     - yvanlebras
     - Marie59
     - Rassine
+    - perrinejegousse
   funding:
     - pndb
     - ASOC
