@@ -30,6 +30,8 @@ contributions:
     - poterlowicz-lab
   funding:
     - elixir-uk-dash
+  editing:
+    - kevinrue
 subtopic: fair-data
 
 requirements:
