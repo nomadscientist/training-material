@@ -102,7 +102,7 @@ contributions:
         - pratikdjagtap
         - RZ9082
         - rlibouba
-        - reytakop
+        - tavakoli
         - SaimMomin12
         - sanjaysrikakulam
         - scottcain
