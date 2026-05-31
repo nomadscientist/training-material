@@ -27,7 +27,7 @@ tags:
 - bioimaging
 contributions:
   authorship:
-    - reytakop
+    - tavakoli
     - dianichj
   reviewing:
     - kostrykin
