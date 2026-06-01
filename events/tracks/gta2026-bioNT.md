@@ -19,7 +19,7 @@ contributions:
         - igormakunin
         - jennaj
         - mirandaembl
-        - reyhaneh_tavakoli
+        - reyhaneh-tavakoli
         - SaimMomin12
         - scottcain
         - silviadg87
