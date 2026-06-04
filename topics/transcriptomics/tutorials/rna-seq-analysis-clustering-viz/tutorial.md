@@ -468,7 +468,7 @@ For filtering the most variable genes, we will compute the coefficient of variat
 >       - *"Custom function on vec"*: `vec.mean()`
 >       - *"For each"*: `row`
 >       - *"Output formatting options"*: keep everything checked. Output should have column and row headers
-> 3. Use the **Join two files** tool to merge the normalised count data with the standard deviation and mean datasets (in two subsequent steps). 
+> 3. Use the **Join two files** tool to merge the VST normalised count data with the standard deviation and mean datasets (in two subsequent steps). 
 >    -  *"First line is a header line"*: `Yes`
 >    -  You may want to give names to the new columns added to indicate which column contains the standard deviation and which the mean using the **Table rename column** tool.
 > 4. Use the **Compute on row** tool to calculate the CV, which is defined as the standard deviation divided by the mean. Check carefully which columns you need for this. Label the new column as `CV` using the **Table rename column** tool.
