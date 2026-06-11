@@ -357,7 +357,7 @@ Use the outline image to quickly check whether the detected regions match the st
 
 > <tip-title>Uploading ROIs to OMERO for validation</tip-title>
 >
-> If your facility uses OMERO for image management, the ROI files generated here can be uploaded alongside the original whole-slide images to overlay and visually validate your threshold results at scale. For a full walkthrough of how to work with OMERO in Galaxy, see the [Overview of the Galaxy OMERO-suite tutorial](https://training.galaxyproject.org/training-material/topics/imaging/tutorials/omero-suite/tutorial.html).
+> If your facility uses OMERO for image management, the ROI files generated here can be uploaded alongside the original whole-slide images to overlay and visually validate your threshold results at scale. For a full walkthrough of how to work with OMERO in Galaxy, see the [Overview of the Galaxy OMERO-suite tutorial]({% link topics/imaging/tutorials/omero-suite/tutorial.md %}).
 >
 {: .tip}
 
