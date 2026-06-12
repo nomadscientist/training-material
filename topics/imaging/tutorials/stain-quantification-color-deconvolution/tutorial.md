@@ -21,8 +21,19 @@ key_points:
 - Otsu thresholding provides an automated, reproducible way to distinguish stained from unstained pixels
 - The percent stained area is calculated as (stained pixels / total tissue pixels) × 100
 - This workflow accepts a collection of images for batch quantification across multiple samples
-contributors:
-- dianichj
+tags:
+  - Microscopy
+  - Bioimaging
+  - Histology
+  - pathology
+contributions:
+  authorship:
+    - dianichj
+  reviewing:
+    - kostrykin
+  funding:
+    - nfdi4bioimage
+    - uni-freiburg
 ---
 
 Manually scoring histological staining across dozens of images is time-consuming and subjective. Two researchers looking at the same slide may reach different conclusions about how much staining is present. Computational automatize quantification solves this problem: it applies the same criteria to every image, produces a numeric result, and scales to large datasets without additional effort.
