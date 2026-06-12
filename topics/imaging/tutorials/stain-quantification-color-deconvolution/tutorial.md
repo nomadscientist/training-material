@@ -2,6 +2,7 @@
 layout: tutorial_hands_on
 
 title: Quantitative Analysis of Histological Staining Using Color Deconvolution
+subtopic: analyses
 zenodo_link: 'https://zenodo.org/records/20629365'
 questions:
 - How can I quantify the percentage of stained area in histological images?
