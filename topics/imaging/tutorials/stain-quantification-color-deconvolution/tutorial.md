@@ -77,7 +77,7 @@ In this tutorial, we use the **H-E-DAB (HED)** preset:
 
 # The Dataset: Cardiac Tissue After Myocardial Infarction
 
-The images in this tutorial come from a study investigating the role of 4-oxo retinoic acid (4-oxo RA) in maintaining hematopoietic stem cell dormancy after myocardial infarction (MI) {% cite Rettkowski2025 %}. Understanding this biological context helps interpret what the numbers mean.
+The images in this tutorial come from a study ({% cite Rettkowski2025 %}) investigating the role of 4-oxo retinoic acid (4-oxo RA) in maintaining hematopoietic stem cell dormancy after myocardial infarction (MI). Understanding this biological context helps interpret what the numbers mean.
 
 **The experimental model:** Mouse hearts were subjected to LAD coronary artery ligation to induce MI. Animals were treated with 4-oxo RA or with the vehicle solution (DSMO) after MI. Serial cardiac sections were stained to assess the post-infarction immune response.
 
