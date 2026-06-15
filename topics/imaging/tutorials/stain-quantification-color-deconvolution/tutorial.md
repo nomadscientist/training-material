@@ -340,7 +340,9 @@ Otsu's method automatically finds the threshold that best separates the two pixe
 
 # Step 6 — Generate ROIs for Visual Validation
 
-Before moving to quantification, it is good practice to visually verify that the thresholded mask captures what you expect. This step detects the stained blobs in the binary mask and generates polygon ROIs around them, which can be inspected or uploaded to OMERO for review alongside the original images.
+Before moving to quantification, it is good practice to visually verify that the thresholded mask captures what you expect. This step detects stained regions in the binary mask and generates polygon ROIs around them. In IHC images like ours, the CD11b-positive cells are small and scattered across the tissue, so the resulting ROIs appear as small point-like outlines that can be difficult to spot in the Galaxy image viewer at full scale. Zooming in on the outline image will help you inspect them more clearly. For a richer validation experience, the ROI files can be uploaded to OMERO and overlaid directly on the original images. At full scale (left), the yellow outlines mark the overall distribution of detected DAB-positive regions. Zooming in (right) makes individual ROIs much easier to identify, as shown below.
+
+![IHC image with detected ROI polygons overlaid in yellow in OMERO. Left: full image scale showing the overall distribution of CD11b-positive detections. Right: zoomed view showing individual ROIs corresponding to small DAB-positive cells scattered across the cardiac tissue.](../../images/stain-quantification-color-deconvolution/OMERO_ROI_overlay.png "ROI overlay in OMERO at full scale and zoomed view for visual validation of detected stained regions.")
 
 > <hands-on-title>Detect stained regions and generate ROIs</hands-on-title>
 >
