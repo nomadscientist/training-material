@@ -24,7 +24,7 @@ The result? Work duplication, wildly different user experiences depending on the
 After a world tour pointing out this massive waste of resources across the galaxy.* communities, the avengers assembled.
 
 1. The Australians appeared, like a star in a dark sky, with a user research tested GalaxyLabs engine - enabling rapid spinning up of community pages.
-2. The European members of the Single-cell and sPatial Omics Community, [already experienced in unifying over duplicating subdomains]({% link news/_posts/2023-10-12/sc_subdomain.md %}) threw their hat in to be the test lab, converting their content to a GalaxyLabs engine, but centralised such that every server could spin up the same instance
+2. The European members of the Single-cell and sPatial Omics Community, [already experienced in unifying over duplicating subdomains]({% link news/_posts/2023-10-12-sc_subdomain.md %}) threw their hat in to be the test lab, converting their content to a GalaxyLabs engine, but centralised such that every server could spin up the same instance
 3. The USA sys admin, Nate Coraor, logged in from a train station to push GalaxyLab created sites onto their servers as proof of principle.
 
 ## The Result
